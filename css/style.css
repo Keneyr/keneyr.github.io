@@ -543,3 +543,6 @@ figure.highlight .section {
   display: block;
   text-align: center;
 }
+.table {
+  table-layout: fixed;
+}
