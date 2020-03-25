@@ -539,6 +539,9 @@ figure.highlight .section {
 .gist .file {
   all: initial;
 }
+/* ---------------------------------
+ *        center image and table 
+ * --------------------------------- */
 .gallery-item {
   display: block;
   text-align: center;
