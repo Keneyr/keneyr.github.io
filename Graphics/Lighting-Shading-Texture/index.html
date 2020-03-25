@@ -7,21 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Tags - QinranY&#39;s Homesite</title>
+<title>Lighting-Shading-Texture - QinranY&#39;s Homesite</title>
 
 
-    <meta name="description" content="Record everystep of exploration">
-<meta property="og:type" content="website">
-<meta property="og:title" content="QinranY&#39;s Homesite">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+    <meta name="description" content="This article is for the novices that do not have too much graphics knowledge but understand the rough meaning of lighting mode&#x2F;shader&#x2F;texture mapping,and it’s better the reader is familiar with Unity.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lighting-Shading-Texture">
+<meta property="og:url" content="http://yoursite.com/Graphics/Lighting-Shading-Texture/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homesite">
-<meta property="og:description" content="Record everystep of exploration">
+<meta property="og:description" content="This article is for the novices that do not have too much graphics knowledge but understand the rough meaning of lighting mode&#x2F;shader&#x2F;texture mapping,and it’s better the reader is familiar with Unity.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="article:published_time" content="2020-03-25T03:35:00.000Z">
+<meta property="article:modified_time" content="2020-03-25T10:36:13.910Z">
 <meta property="article:author" content="Keneyr">
-<meta property="article:tag" content="3d-graphics">
-<meta property="article:tag" content="self">
-<meta property="article:tag" content="c++ template">
 <meta property="article:tag" content="shading">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
@@ -82,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="QinranY&#39;s Homesite" height="28">
+                <img src="/images/logo.svg" alt="Lighting-Shading-Texture" height="28">
             
             </a>
         </div>
@@ -99,7 +98,7 @@
                 <a class="navbar-item"
                 href="/categories">Categories</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/tags">Tags</a>
                 
                 <a class="navbar-item"
@@ -131,46 +130,182 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-25T03:35:00.000Z">2020-03-25</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/3d-graphics/">
-                        <span class="tag">3d-graphics</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/c-template/">
-                        <span class="tag">c++ template</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/self/">
-                        <span class="tag">self</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1410 words)
+                </span>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/shading/">
-                        <span class="tag">shading</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Lighting-Shading-Texture
+            
+        </h1>
+        <div class="content">
+            <p>This article is for the <strong>novices</strong> that do not have too much graphics knowledge but understand the rough meaning of <strong><em>lighting mode/shader/texture mapping</em></strong>,and it’s better the reader is familiar with <strong><em>Unity</em></strong>.</p>
+<p>I want to overview the <strong>Surface Shading &amp; Texture Mapping</strong>,but it’s not a simple glance,I’ll try my best to describe this part in detail,including all kinds of textures:bump textures/environment maps/displacement mapping/shadow maps,the surface shading includes diffuse shading,phong shading etc. So there will be a lot of pictures and formulas.</p>
+<p>With the above simplifications in mind, Let’s begin our trip.</p>
+<a id="more"></a>
+<h2 id="How-to-Understand-Shading"><a href="#How-to-Understand-Shading" class="headerlink" title="How to Understand Shading?"></a>How to Understand Shading?</h2><p>How to understand shading? Just like everything does in the real world, all the scenes we see are under different ligths : the sun, the lamp, the flash light etc. Shading is kind of a technique that has a significant relationship with lights and will present the colorful drawings to us at last. Surface shading means the surface is ‘painted’ with lights, it’s a process of applying a material to an object.</p>
+<h2 id="The-Standard-Local-Lighting-Model"><a href="#The-Standard-Local-Lighting-Model" class="headerlink" title="The Standard Local Lighting Model"></a>The Standard Local Lighting Model</h2><p>I bet that you have heard the term: BRDF(Bidirectional Reflectance Distribution Function) which seems to have inextricable linkes to the Standard Lighting Model. Yes,BRDF will appear in PBS(Physically Based Shading) which is used to make more realistic modeling presenting the reactions between lights and materials. As for Standard Local Lighting Model, they can be considered as simplified versions of PBS, they are empirical models, but they are easier to understand.</p>
+<h3 id="The-Standard-Lighting-Equation-Overview"><a href="#The-Standard-Lighting-Equation-Overview" class="headerlink" title="The Standard Lighting Equation Overview"></a>The Standard Lighting Equation Overview</h3><p>The Standard Lighting Model only cares about <strong>direct light (direct reflection)</strong>.Lights are special entities without any corresponding geometry,and are simulated as if the light were emitting from a sight point. The rendering equation is an equation for the radiance outgoing from a point in any particular direction,the only outgoing direction that mattered in those days were the directions that pointed to the eye. Why say that? Because you know the real world doesn’t work like this where the light may reflect for dozens of times and the process is really complicated, the cost is also a luxury that could not yet be afforded.</p>
+<p>The basic idea is to classify coming into the eye into four distinct categories, each of which has a unique method for calculating its contribution. The four categories are :</p>
+<ul>
+<li><p><strong>Emissive</strong> contribution,denoted as <strong>$c_{emis}$</strong>. It tells the amount of radiance emitted directly from the surface in the given direction. Note that without global illumination techniques,these surfaces do not actually light up anything(except themselves).</p>
+</li>
+<li><p><strong>Specular</strong> contribution,denoted as <strong>$c_{spc}$</strong>. It accounts for light incident directly from the light source that is scattered preferentially in the direction of a perfect “mirror bounce”.</p>
+</li>
+<li><p><strong>Diffuse</strong> contribution,denoted as <strong>$c_{diff}$</strong>. It accounts for light incident directly from the light source that is scattered in every direction evenly.</p>
+</li>
+<li><p><strong>Ambient</strong> contribution,denoted as <strong>$c_{amb}$</strong>. It is a fudge factor to account for all indirect light.<br><img src="/images/lighting-component-overview.png" alt="Fig1. lighting-component-overview)"></p>
+</li>
+</ul>
+<h3 id="The-Ambient-and-Emmisive-Components"><a href="#The-Ambient-and-Emmisive-Components" class="headerlink" title="The Ambient and Emmisive Components"></a>The Ambient and Emmisive Components</h3><p>To model light that is reflected more than one time before it enters the eye,we can use a very crude approximation known as “ambient light”. The ambient portion of the lighting equation depends only on the properties of materials and an ambient lighting value,which is often a global value used for the entire scene.<br>$$<br>c_{amb} = g_{amb} \cdot m_{amb}<br>\tag{1}<br>$$<br>The factor $m_{amb}$ is the material’s “ambient color”. This is almost always the same as the diffuse color (which is often defined using texture map). The other factor,$g_{amb}$,is the ambient light value.</p>
+<p>Somtimes a ray of light travels directly from the light source to the eye,without striking any surface in between. The standard lighting equation accounts for such rays by assigning a material an <em>emissive</em> color. For example,when we render the surface of the light bulb,this surface will probably appear very bright,even if there’s no other light in the scene,because the light bulb is emitting light.</p>
+<p>In many situations,the emissive contribution doesn’t depend on environmental factor; it is simply the emissive color of the material.<br>$$<br>c_{emis} = m_{emis}<br>\tag{2}<br>$$</p>
+<h3 id="The-Diffuse-Component"><a href="#The-Diffuse-Component" class="headerlink" title="The Diffuse Component"></a>The Diffuse Component</h3><p>For diffuse lighting, the location of the viewer is not relevant,since the reflections are scattered randomly, and no matter where we position the camera,it is equally likely that a ray will be sent our way.<br><img src="/images/diffuse-component.png" alt="Fig2. diffuse-component(From[1]))"><br>But the direction if incidence <strong>l</strong>,which is dictated by the position of the light source relative to the surface, is important. Diffuse lighting obeys <strong>Lambert’s law</strong>: the intensity of the reflected light is proportional to the cosine of the angle between the surface normal and the rays of light.<br><img src="/images/lambert-law.png" alt="Fig3. lambert-law"><br>We calculate the diffuse component according to Lambert’s Law:<br>$$<br>c_{diff} = c_{light} \cdot m_{diff} \cdot max(0,n \cdot l)<br>\tag{3}<br>$$<br>as before, <strong>n</strong> is the surface normal and <strong>l</strong> is a unit vector that points towards the light source. The factor $m_{diff}$ is the material’s diffuse color, which is the value that most people think of when they think of the “color” of an object. The diffuse material color often comes from a texture map. The diffuse color of the light source is $c_{light}$.</p>
+<p>On thing needs attention, that is the max(), because we need to prevent the dot result of normal and light negative, we use $max(0,n \cdot l)$, so the object won’t be lighted by the rays from it’s back.</p>
+<h3 id="The-Specular-Component"><a href="#The-Specular-Component" class="headerlink" title="The Specular Component"></a>The Specular Component</h3><p>The specular component is what gives surfaces a “shiny” appearance. If you don’t understand what a specular is, think about the professional term in animes:<br><img src="/images/specular-sister.png" alt="Fig4. specular-in-eyes)"><br>Now let’s see how the standard model calculates the specular contribution. For convenience,we assume that all of these vectors are unit vectors.<br><img src="/images/specular-component.png" alt="Fig5. specular-component)"></p>
+<ul>
+<li><p><strong>n</strong> is the local outward-pointing surface normal</p>
+</li>
+<li><p><strong>v</strong> points towards the viewer.</p>
+</li>
+<li><p><strong>l</strong> points towards the light source.</p>
+</li>
+<li><p><strong>r</strong> is the <em>reflection</em> vector, which is the direction of a “perfect mirror bounce.” It’s the result of reflecting <strong>l</strong> about <strong>n</strong>.</p>
+</li>
+<li><p><strong>$\theta$</strong> is the angle between <strong>r</strong> and <strong>v</strong>.</p>
+</li>
+</ul>
+<p>Of the four vectors, you can see the reflection vector can be computed by<br><img src="/images/reflection-vector.png" alt="Fig6. reflection-vector)"><br>$$<br>r = 2(n \cdot l)n-l<br>$$<br>The <strong>Phong Model</strong> for specular reflection is :<br>$$<br>c_{spec} = c_{light} \cdot m_{spec} \cdot max(0,v \cdot r)^{m_{gls}}<br>\tag{4}<br>$$</p>
+<p>$m_{gls}$ means the glossiness of the material,also known as the <em>Phong exponent, specular exponent</em>, or just as the material <em>shininess</em>. This controls how wide the “hotspot” is - a smaller $m_{gls}$ produces a larger, more gradual falloff from the hotspot,and a larger $m_{gls}$ produces a tight hotspot with sharp falloff. $m_{spec}$ is related to “shininess”, it represents the material’s <em>specular color</em>. While $m_{gls}$ controls the size of the hotspot, $m_{spec}$ controls its intensity and color. $c_{light}$ is essentially the “color” of the light, which contains both its color and intensity.</p>
+<p>But!!We usually use <strong>Blinn Phong Model</strong> instead of <strong>Phong Model</strong>.<br><img src="/images/blinn-phong-model.png" alt="Fig6. blinn-phong-model)"><br>The Blinn phong model can be faster to implement in hardware than the Phong model, if the viewer and light source are far enough away from the object to be considered a constant,since then <strong>h</strong> is a constant and only needs to be computed once. But when <strong>v</strong> or <strong>l</strong> may not be considered constant, the Phong model calculation might be faster.<br>The <strong>Blinn Phong Model</strong> for specualr reflection is :<br>$$<br>c_{spec} = c_{light} \cdot m_{spec} \cdot max(0,n \cdot h)^{m_{gls}}<br>\tag{4}<br>$$<br>$$<br>h = \frac{v + l}{|v + l|}<br>$$</p>
+<blockquote>
+<p><strong>In real coding, vector in the above (1)(2)(3)(4) should be unit vector</strong></p>
+</blockquote>
+<h3 id="Limitations-of-the-Standard-Model"><a href="#Limitations-of-the-Standard-Model" class="headerlink" title="Limitations of the Standard Model"></a>Limitations of the Standard Model</h3><hr>
+<p>References:<br>[1]3D Math Primer for Graphics and Game Development 2nd Edition.<br>[2]Fundamentals of Computer Graphics and 3rd Edition.<br>[3]Unity+Shader入门精要<br>[4]<a href="https://docs.unity3d.com/Manual/index.html">https://docs.unity3d.com/Manual/index.html</a></p>
+<hr>
+<p>Your Majesty, coding and blogging is hard, but a cup of tea/coffee would be the best reward. Scan the QRcode below, I’ll swear my allegiance to you. :) memeda.</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/shading/" rel="tag">shading</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/c-primer/function-template/">
+                <span class="level-item">Function-Template</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '8e90b7a1416b896ae70d3d57b4f21ef2',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
                 
 
 
@@ -558,7 +693,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="QinranY&#39;s Homesite" height="28">
+                    <img src="/images/logo.svg" alt="Lighting-Shading-Texture" height="28">
                 
                 </a>
                 <p class="is-size-7">
