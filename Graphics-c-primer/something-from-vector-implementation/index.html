@@ -7,21 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>To Readers - QinranY&#39;s Homesite</title>
+<title>something-from-vector-implementation - QinranY&#39;s Homesite</title>
 
 
-    <meta name="description" content="Hi,there~This is Anna’s blog hometown.So glad that my articles may help you on your problems.If you have any question, please comment here or contact me at annayin1997@gmail.comNice to meet you and w">
+    <meta name="description" content="This article is for the readers who have a basic background of math, graphics, c++. Although I have written the code about Vector2,Vector3 by c++, but as time goes by, all the principles were forgotte">
 <meta property="og:type" content="article">
-<meta property="og:title" content="To Readers">
-<meta property="og:url" content="http://yoursite.com/self-talking/My-first-blog/index.html">
+<meta property="og:title" content="something-from-vector-implementation">
+<meta property="og:url" content="http://yoursite.com/Graphics-c-primer/something-from-vector-implementation/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homesite">
-<meta property="og:description" content="Hi,there~This is Anna’s blog hometown.So glad that my articles may help you on your problems.If you have any question, please comment here or contact me at annayin1997@gmail.comNice to meet you and w">
+<meta property="og:description" content="This article is for the readers who have a basic background of math, graphics, c++. Although I have written the code about Vector2,Vector3 by c++, but as time goes by, all the principles were forgotte">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="article:published_time" content="2020-02-28T07:38:28.000Z">
-<meta property="article:modified_time" content="2020-03-25T10:38:19.021Z">
+<meta property="article:published_time" content="2020-03-29T04:06:41.000Z">
+<meta property="article:modified_time" content="2020-03-29T07:39:48.534Z">
 <meta property="article:author" content="Keneyr">
-<meta property="article:tag" content="self">
+<meta property="article:tag" content="vector, c++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -81,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="To Readers" height="28">
+                <img src="/images/logo.svg" alt="something-from-vector-implementation" height="28">
             
             </a>
         </div>
@@ -137,17 +137,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-28T07:38:28.000Z">2020-02-28</time>
+                <time class="level-item has-text-grey" datetime="2020-03-29T04:06:41.000Z">2020-03-29</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/self-talking/">self-talking</a>
+                <a class="has-link-grey -link" href="/categories/Graphics-c-primer/">Graphics, c++ primer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 46 words)
+                    11 minutes read (About 1585 words)
                 </span>
                 
                 
@@ -161,23 +161,82 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                To Readers
+                something-from-vector-implementation
             
         </h1>
         <div class="content">
-            <blockquote>
-<p>Hi,there~<br>This is Anna’s blog hometown.<br>So glad that my articles may help you on your problems.<br>If you have any question, please comment here or contact me at <a href="mailto:annayin1997@gmail.com">annayin1997@gmail.com</a><br>Nice to meet you and wish you no bug each day.</p>
-</blockquote>
+            <p>This article is for the readers who have a basic background of <em>math, graphics, c++</em>. Although I have written the code about <em>Vector2,Vector3</em> by c++, but as time goes by, all the principles were forgotten. So I decided to write something about the simple program to get much more strong memory.<br>If you search the implementation of vector in github, you can find lots examples. Here’s an example <a href="https://github.com/lnishan/vector/blob/master/vector.hpp">vector.hpp</a>, actually it’s too hard for me to read. Today’s <em>vector.hpp</em> is about the basic grammer in c++ such as <em>operator overloading, friends, inline</em> etc.</p>
 <a id="more"></a>
 
-<div class="sharethis-inline-reaction-buttons"></div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector3f</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Vector3f()</span><br><span class="line">        : x(<span class="number">0</span>)</span><br><span class="line">        , y(<span class="number">0</span>)</span><br><span class="line">        , z(<span class="number">0</span>)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector3f(<span class="keyword">float</span> xx)</span><br><span class="line">        : x(xx)</span><br><span class="line">        , y(xx)</span><br><span class="line">        , z(xx)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector3f(<span class="keyword">float</span> xx, <span class="keyword">float</span> yy, <span class="keyword">float</span> zz)</span><br><span class="line">        : x(xx)</span><br><span class="line">        , y(yy)</span><br><span class="line">        , z(zz)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">float</span>&amp; r) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x * r, y * r, z * r);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>/(<span class="keyword">const</span> <span class="keyword">float</span>&amp; r) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x / r, y / r, z / r);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Vector3f <span class="keyword">operator</span>*(<span class="keyword">const</span> Vector3f&amp; v) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x * v.x, y * v.y, z * v.z);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>-(<span class="keyword">const</span> Vector3f&amp; v) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x - v.x, y - v.y, z - v.z);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>+(<span class="keyword">const</span> Vector3f&amp; v) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x + v.x, y + v.y, z + v.z);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>-() <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(-x, -y, -z);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f&amp; <span class="keyword">operator</span>+=(<span class="keyword">const</span> Vector3f&amp; v)</span><br><span class="line">    &#123;</span><br><span class="line">        x += v.x, y += v.y, z += v.z;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> Vector3f <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">float</span>&amp; r, <span class="keyword">const</span> Vector3f&amp; v)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(v.x * r, v.y * r, v.z * r);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="built_in">std</span>::ostream&amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream&amp; os, <span class="keyword">const</span> Vector3f&amp; v)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> os &lt;&lt; v.x &lt;&lt; <span class="string">", "</span> &lt;&lt; v.y &lt;&lt; <span class="string">", "</span> &lt;&lt; v.z;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">float</span> x, y, z;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector2f</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Vector2f()</span><br><span class="line">        : x(<span class="number">0</span>)</span><br><span class="line">        , y(<span class="number">0</span>)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector2f(<span class="keyword">float</span> xx)</span><br><span class="line">        : x(xx)</span><br><span class="line">        , y(xx)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector2f(<span class="keyword">float</span> xx, <span class="keyword">float</span> yy)</span><br><span class="line">        : x(xx)</span><br><span class="line">        , y(yy)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector2f <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">float</span>&amp; r) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector2f(x * r, y * r);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector2f <span class="keyword">operator</span>+(<span class="keyword">const</span> Vector2f&amp; v) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector2f(x + v.x, y + v.y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">float</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> Vector3f <span class="title">lerp</span><span class="params">(<span class="keyword">const</span> Vector3f&amp; a, <span class="keyword">const</span> Vector3f&amp; b, <span class="keyword">const</span> <span class="keyword">float</span>&amp; t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a * (<span class="number">1</span> - t) + b * t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> Vector3f <span class="title">normalize</span><span class="params">(<span class="keyword">const</span> Vector3f&amp; v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> mag2 = v.x * v.x + v.y * v.y + v.z * v.z;</span><br><span class="line">    <span class="keyword">if</span> (mag2 &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">float</span> invMag = <span class="number">1</span> / sqrtf(mag2);</span><br><span class="line">        <span class="keyword">return</span> Vector3f(v.x * invMag, v.y * invMag, v.z * invMag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">float</span> <span class="title">dotProduct</span><span class="params">(<span class="keyword">const</span> Vector3f&amp; a, <span class="keyword">const</span> Vector3f&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.x * b.x + a.y * b.y + a.z * b.z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> Vector3f <span class="title">crossProduct</span><span class="params">(<span class="keyword">const</span> Vector3f&amp; a, <span class="keyword">const</span> Vector3f&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Vector3f(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Scan the program above, here’s some tips:</p>
+<ul>
+<li><p>Inline Functions</p>
+</li>
+<li><p>Reference Variables</p>
+</li>
+<li><p>Operator Overloading</p>
+</li>
+<li><p>Friends</p>
+</li>
+</ul>
+<h2 id="Inline-Functions"><a href="#Inline-Functions" class="headerlink" title="Inline Functions"></a>Inline Functions</h2><blockquote>
+<p><em>Inline functions</em> are a C++ enhancement designed to speed up programs.<br>The primary distinction between normal functions and inline functions is not in how you code them but in how the C++ compiler incorporates them into a program.To understand the distinction between inline functions and normal functions,you need to peer more deeply into a program’s innards.Let’s do that now.</p>
+</blockquote>
+<h3 id="How-do-normal-function-calls-work"><a href="#How-do-normal-function-calls-work" class="headerlink" title="How do normal function calls work?"></a>How do normal function calls work?</h3><p>The final product of the <em>compilation process</em> is an executable program,which consists of a set of <em>machine language instructions</em>.When you start a program,the <em>operating system</em> loads these instructions into the computer’s memory so that each instruction has a particular <em>memory address</em>.The computer then goes through these instructions step-by-step.Sometimes,as when you have a loop or a branching statement,program execution skips over instructions,jumping backward or forward to a particular address. Normal function calls also involve having a program jump to another address (the function’s address) and then jump back when the function terminates.<br>Let’s look at a typical implementation of that process in a little more detail.When a program reaches the function call instruction, the program stores the memory address of the instruction immediately following the function call,copies function arguments to the <em>stack</em> (a block of memory reserved for that purpose),jumps to the memory location that marks the beginning of the function,executes the function code (perhaps placing a return value in a register),and then jumps back to the instruction whose address it saved. Jumping back and forth and keeping track of where to jump means that there is an overhead in elapsed time to using functions.</p>
+<h3 id="How-do-inline-functions-work"><a href="#How-do-inline-functions-work" class="headerlink" title="How do inline functions work?"></a>How do inline functions work?</h3><p>C++ <em>inline functions</em> provide an alternative.In an inline function,the compiled code is “in line” with the other code in the program.That is,the compiler replaces the function call with the corresponding function code.With inline code,the program doesn’t have to jump to another location to execute the code and then jump back.</p>
+<blockquote>
+<p>Inline functions thus run a little faster than regular functions,but they come with a memory penalty.If a program calls an inline function at ten separate locations,then the program winds up with ten copies of the function inserted into the code.</p>
+</blockquote>
+<p><img src="/images/inline-functions-versus-regular-functions.png" alt="inline-functions-versus-regular-functions(from[1])"></p>
+<h3 id="When-use-inline"><a href="#When-use-inline" class="headerlink" title="When use inline?"></a>When use inline?</h3><p>You should be selective about using inline functions.If the time needed to execute the function code is long compared to the time needed to handle the function call mechanism,then the time saved is a relatively small portion of the entire process.If the code execution time is short,then an inline call can save a large portion of the time used by the non-inline call.On the other hand,you are now saving a large portion of a relatively quick process,so the absolute time savings may not be that great unless the function is called frequently.</p>
+<h3 id="Inline-versus-Macros"><a href="#Inline-versus-Macros" class="headerlink" title="Inline versus Macros"></a>Inline versus Macros</h3><p>The inline facility is an addition to C++. C uses the preprocessor <em>#define</em> statement to provide macros, which are crude implementations of inline code. For example, here’s a macro for squaring a number:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SQUARE(X) X*X</span></span><br></pre></td></tr></table></figure>
+
+<p>This works not by passing arguments but through text substitution, with the X acting as a symbolic label for the “argument”:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = SQUARE(<span class="number">5.0</span>); is replaced by a = <span class="number">5.0</span>*<span class="number">5.0</span>;</span><br><span class="line">b = SQUARE(<span class="number">4.5</span> + <span class="number">7.5</span>); is replaced by b = <span class="number">4.5</span> + <span class="number">7.5</span> * <span class="number">4.5</span> + <span class="number">7.5</span>;</span><br><span class="line">d = SQUARE(c++); is replaced by d = c++*c++;</span><br></pre></td></tr></table></figure>
+
+<p>Only the first example here works properly. You can improve matters with a liberal application of parentheses:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SQUARE(X) ((X)*(X))</span></span><br></pre></td></tr></table></figure>
+
+<p>Still, the problem remains that macros don’t pass by value. Even with this new definition, SQUARE(c++) increments c twice, but the inline  square() function evaluates c , passes that value to be squared, and then increments  c once. The intent here is not to show you how to write C macros.</p>
+<blockquote>
+<p>Rather, it is to suggest that if you have been using C macros to perform function-like services, you should consider converting them to C++ inline functions.</p>
+</blockquote>
+<h2 id="Reference-Variables"><a href="#Reference-Variables" class="headerlink" title="Reference Variables"></a>Reference Variables</h2><p>The main use for a reference variable is as a formal argument to a function.If you use a reference as an argument,the function works with the original data instead of with a copy.References provide a convenient alternative to pointers for processing large structures with a function,and they are essential for designing classes.</p>
+<h3 id="Creating-a-reference-variable"><a href="#Creating-a-reference-variable" class="headerlink" title="Creating a reference variable"></a>Creating a reference variable</h3><p>‘&amp;’ in c++ has two functions:</p>
+<ul>
+<li><p>to indicate the address of a variable</p>
+</li>
+<li><p>to declare references</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rats;</span><br><span class="line"><span class="keyword">int</span> &amp; rodents = rats; <span class="comment">// makes rodents an alias for rats</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>In this context, &amp; is not the <strong>address operator</strong>.Instead,it serves as part of the <strong>type identifier</strong>.<br>Just as char * in a declaration means pointer-to-char , int &amp; means reference-to-int .The reference declaration allows you to use rats and rodents interchangeably;both refer to the same value and the same memory location.</p>
+</blockquote>
+<h3 id="Difference-between-pointer-and-reference"><a href="#Difference-between-pointer-and-reference" class="headerlink" title="Difference between pointer and reference?"></a>Difference between pointer and reference?</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rats = <span class="number">101</span>;</span><br><span class="line"><span class="keyword">int</span> &amp; rodents = rats; <span class="comment">// rodents a reference</span></span><br><span class="line"><span class="keyword">int</span> * prats = &amp;rats; <span class="comment">// prats a pointer</span></span><br></pre></td></tr></table></figure>
+
+<p>Then you could use the expressions rodents and *prats interchangeably with  rats and use the expressions &amp;rodents and prats interchangeably with &amp;rats .From this standpoint,a reference looks a lot like a pointer in disguised notation in which the * dereferencing operator is understood implicitly.And,in fact,that’s more or less what a reference is.But there are differences besides those of notation.For one,it is necessary to initialize the reference when you declare it;you can’t declare the reference and then assign it a value later the way you can with a pointer:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rat;</span><br><span class="line"><span class="keyword">int</span> &amp; rodent;</span><br><span class="line">rodent = rat; <span class="comment">// No, you can't do this.</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>You should initialize a reference variable when you declare it.</strong><br>A reference is rather like a  const pointer;you have to initialize it when you create it, and when a reference pledges its allegiance to a particular variable,it sticks to its pledge. That is,<br>int &amp; rodents = rats; equals to  int * const pr = &amp; rats;</p>
+</blockquote>
+<h3 id="References-as-Function-Parameters"><a href="#References-as-Function-Parameters" class="headerlink" title="References as Function Parameters"></a>References as Function Parameters</h3><hr>
+<p>References:<br>[1]C++ Primer Plus.</p>
+<hr>
+<p>Your Majesty, coding and blogging is hard, but a cup of tea/coffee would be the best reward. Scan the QRcode below, I’ll swear my allegiance to you. :) memeda</p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/self/" rel="tag">self</a>
+                    <a class="has-link-grey -link" href="/tags/vector-c/" rel="tag">vector, c++</a>
                 </div>
             </div>
         </div>
@@ -228,13 +287,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/Graphics/Graphicspipeline/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Graphics Pipeline Overview</span>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/c-primer/address-opereator/">
+                <span class="level-item">address-opereator</span>
+                <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
-        
         
     </div>
 </div>
@@ -252,7 +311,7 @@
     var gitalk = new Gitalk({
         clientID: 'f7d6d05297c7a1b94ee1',
         clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
-        id: '1ac7318e841e07da4f2e2499b685fc00',
+        id: 'c348719c66cbd1271e38d9f360eced11',
         repo: 'keneyr.github.io',
         owner: 'Keneyr',
         admin: "Keneyr",
@@ -693,7 +752,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="To Readers" height="28">
+                    <img src="/images/logo.svg" alt="something-from-vector-implementation" height="28">
                 
                 </a>
                 <p class="is-size-7">
