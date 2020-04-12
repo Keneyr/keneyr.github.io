@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Archives: 2020/2 - QinranY&#39;s Homesite</title>
+<title>First-Met-With-RayTracing - QinranY&#39;s Homesite</title>
 
 
-    <meta name="description" content="Record everystep of exploration">
-<meta property="og:type" content="website">
-<meta property="og:title" content="QinranY&#39;s Homesite">
-<meta property="og:url" content="http://yoursite.com/archives/2020/02/index.html">
+    <meta name="description" content="Hey guys,speaking of RayTracing,I have to tell u that I’m really confused at the first time–What the hell is RayTracing?! Well u know I’m not the kind of person who is addicted to games, all I know ab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="First-Met-With-RayTracing">
+<meta property="og:url" content="http://yoursite.com/Graphics/First-Met-With-RayTracing/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homesite">
-<meta property="og:description" content="Record everystep of exploration">
+<meta property="og:description" content="Hey guys,speaking of RayTracing,I have to tell u that I’m really confused at the first time–What the hell is RayTracing?! Well u know I’m not the kind of person who is addicted to games, all I know ab">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="article:published_time" content="2020-04-06T07:30:00.000Z">
+<meta property="article:modified_time" content="2020-04-12T13:17:56.189Z">
 <meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="ray-tracing">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -78,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="QinranY&#39;s Homesite" height="28">
+                <img src="/images/logo.svg" alt="First-Met-With-RayTracing" height="28">
             
             </a>
         </div>
@@ -128,38 +131,151 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        February 2020
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-06T07:30:00.000Z">2020-04-06</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-02-28T07:38:28.000Z">2020-02-28</time>
-                        <a href="/self-talking/My-first-blog/" class="title has-link-black-ter is-size-6 has-text-weight-normal">To Readers</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/self-talking/">self-talking</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a>
                 </div>
-            </article>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 524 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
         
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                First-Met-With-RayTracing
+            
+        </h1>
+        <div class="content">
+            <p>Hey guys,speaking of <strong>RayTracing</strong>,I have to tell u that I’m really confused at the first time–What the hell is RayTracing?! Well u know I’m not the kind of person who is addicted to games, all I know about <strong>Graphics</strong> begins with the course <em>UnityGame</em> in my first year of Graduate,before that I am the one who doesn’t even know what pixel is! So not to mention those much more advanced technologies such as <strong><em>RayTracing</em></strong>!</p>
+<p>I assume readers are the same with me! You just learned the really really basic graphics—fuck <strong>coordinates transformation</strong>,fuck <strong>uv mapping</strong>,fuck <strong>something about graphicspipeline</strong>,fuck <strong>unity games</strong>,(ok I admit that I’m a little irritable at present, cuz a bug cannot be fixed for a few days)suddenly a voice told you time to learn RayTracing, and it seems a mess with the existing knowledges in your head. Don’t worry, learn with me.</p>
+<p>This article is going to be very very long, it’s about <strong>RayTracing</strong>,<strong>Acceleration</strong>,<strong>BRDF</strong>,<strong>PathTracing</strong>,<strong>Calculus</strong>,<strong>Global illumination</strong>,<strong>Unity</strong>,<strong>VScode</strong> etc, there will be lots pics and formulas. If you are patient enough to read through it, I promise you can learn something, but before this article, please scan the two articles:<a href="https://keneyr.github.io/Graphics/Lighting-Shading-Texture/#more">Lighting-Shading-Texture</a>,<a href="https://keneyr.github.io/Graphics/Graphicspipeline/#more">Graphicspipeline</a>,cuz we have lots things to link up.</p>
+<a id="more"></a>
+
+<h2 id="RAT-TRACING"><a href="#RAT-TRACING" class="headerlink" title="RAT-TRACING"></a>RAT-TRACING</h2><h3 id="Why-RayTracing"><a href="#Why-RayTracing" class="headerlink" title="Why RayTracing?"></a>Why RayTracing?</h3><h3 id="Acceleration"><a href="#Acceleration" class="headerlink" title="Acceleration"></a>Acceleration</h3><h2 id="Radiometry"><a href="#Radiometry" class="headerlink" title="Radiometry"></a>Radiometry</h2><p>Radiometry is closely related to calculus. If you know nothing about <strong>Calculus</strong>, Sorry, go to learn it and later come back, at least have the conception in your head. Though I’ll begin with mathematics first.</p>
+<h3 id="Spherical-Coordinates"><a href="#Spherical-Coordinates" class="headerlink" title="Spherical Coordinates"></a>Spherical Coordinates</h3><p>We all know <strong>Cartesian coordinates</strong>, cuz we define the points and vectors in Cartesian coordinate system since high school. Actually,we can also use <strong>Spherical coordinates</strong> to define them. In spherical coordinate system,the position of a point or direction and length of a vector are defined by two angles(denoted $\theta$ and $\phi$) and a radial distance($r$). The angle $\theta$ is called <strong>polar angle</strong> and is measured from the fixed zenith direction.The zenith direction in relation to which this polar angle will be measured is the y-axis.</p>
+<p><img src="/images/spherical-coordinate.png" alt="Fig1. sperical-coordinates(from[1])"></p>
+<p>To go from spherical coordinates to cartesian coordinates,we can use the following equation:</p>
+<p>$$<br>x = r sin(\theta)cos(\phi)<br>$$<br>$$<br>y = r cos(\theta)<br>$$<br>$$<br>z = r sin(\theta)sin(\phi)<br>$$</p>
+<p>Also to go from cartesian coordinates to spherical coordinates,we can use the following equation:</p>
+<p>$$<br>r = \sqrt{x^2+y^2+z^2}<br>$$<br>$$<br>\theta = cos^-1(\frac{y}{r})<br>$$<br>$$</p>
+<p>$$</p>
+<hr>
+<p>References:<br>[1]<a href="http://games-cn.org/graphics-intro-ppt-video/">GAMES</a><br>[2]<a href="https://www.scratchapixel.com/">scratchapixel</a><br>[3]3D Math Primer for Graphics and Game Development 2nd Edition.<br>[4]Fundamentals of Computer Graphics and 3rd Edition.<br>[5]Unity+Shader入门精要<br>[6]<a href="https://docs.unity3d.com/Manual/index.html">Unity3d Mannual</a><br>[7]<a href="https://code.visualstudio.com/docs">VSCode Document</a></p>
+<hr>
+<p>Your Majesty, coding and blogging is hard, but a cup of tea/coffee would be the best reward. Scan the QRcode below, I’ll swear my allegiance to you. :) memeda.</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ray-tracing/" rel="tag">ray-tracing</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
         </div>
     </div>
 </div>
 
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Graphics-c-primer/something-from-vector-implementation/">
+                <span class="level-item">something-from-vector-implementation</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '8834a430995425c01ef59f70ca1c4c51',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -607,7 +723,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="QinranY&#39;s Homesite" height="28">
+                    <img src="/images/logo.svg" alt="First-Met-With-RayTracing" height="28">
                 
                 </a>
                 <p class="is-size-7">
