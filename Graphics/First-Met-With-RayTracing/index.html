@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-04-06T07:30:00.000Z">
-<meta property="article:modified_time" content="2020-04-13T15:14:49.446Z">
+<meta property="article:modified_time" content="2020-04-13T15:48:43.786Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="ray-tracing">
 <meta name="twitter:card" content="summary">
@@ -147,7 +147,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes read (About 2187 words)
+                    15 minutes read (About 2211 words)
                 </span>
                 
                 
@@ -278,6 +278,7 @@
 <p>Here come’s <strong>The Rendering Equation</strong>.</p>
 <p>$$<br>L_o(p,\omega_o) = L_e(p,\omega_o) + \int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n\cdot\omega_i)d\omega_i<br>$$</p>
 <p>$L_e(p,\omega_o)$ means the object’point p emit the emissive light to the $\omega_o$ direction(remeber the $\omega_o$ direction should be the view direction), and $\int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n\cdot\omega_i)d\omega_i$ means the reflected light from $L_i(p,\omega_i)$.</p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><img src="/images/term-concept-contrast.png" alt="Fig. term-concept-contrast(from[9])"></p>
 <h2 id="PATH-TRACING"><a href="#PATH-TRACING" class="headerlink" title="PATH TRACING"></a>PATH TRACING</h2><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Monte-Carlo-Methods"><a href="#Monte-Carlo-Methods" class="headerlink" title="Monte Carlo Methods"></a>Monte Carlo Methods</h2><p>Before we start, one question, do u have the background in <strong>Probability and Statistics Theory</strong>? If the answer is no, please go to learn something and later come back.</p>
 <h3 id="What-is-Monte-Carlo"><a href="#What-is-Monte-Carlo" class="headerlink" title="What is Monte Carlo?"></a>What is Monte Carlo?</h3><p>Assume that we want to know the average height of all adults in one city, the most common method is to sample some adults and calculate the average height of them to approximate the true result. Here’s the formula:</p>
 <p>$$<br>Approximation(Average(X)) = \frac{1}{N}\sum_{n=1}^{N}x_{n}<br>$$</p>
@@ -295,6 +296,7 @@
 <p>[6]<a href="https://docs.unity3d.com/Manual/index.html">Unity3d Mannual</a></p>
 <p>[7]<a href="https://code.visualstudio.com/docs">VSCode Document</a></p>
 <p>[8]<a href="https://zhuanlan.zhihu.com/p/21376124">基于物理着色：BRDF</a></p>
+<p>[9]<a href="https://www.zhihu.com/question/20286038/answer/64282761">如何正确理解 BRDF</a></p>
 <hr>
 <p>Your Majesty, coding and blogging is hard, but a cup of tea/coffee would be the best reward. Scan the QRcode below, I’ll swear my allegiance to you. :) memeda.</p>
 
