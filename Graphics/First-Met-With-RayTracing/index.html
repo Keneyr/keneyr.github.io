@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-04-06T07:30:00.000Z">
-<meta property="article:modified_time" content="2020-04-13T13:59:03.798Z">
+<meta property="article:modified_time" content="2020-04-13T15:03:06.321Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="ray-tracing">
 <meta name="twitter:card" content="summary">
@@ -147,7 +147,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 minutes read (About 1683 words)
+                    14 minutes read (About 2126 words)
                 </span>
                 
                 
@@ -260,7 +260,24 @@
 </li>
 </ul>
 <p><img src="/images/incident-exiting-radiance.png" alt="Fig. incident-exiting-radiance(from[1])"></p>
-<h4 id="Concept-list-diagram"><a href="#Concept-list-diagram" class="headerlink" title="Concept list diagram"></a>Concept list diagram</h4><h3 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h3><h2 id="PATH-TRACING"><a href="#PATH-TRACING" class="headerlink" title="PATH TRACING"></a>PATH TRACING</h2><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Monte-Carlo-Methods"><a href="#Monte-Carlo-Methods" class="headerlink" title="Monte Carlo Methods"></a>Monte Carlo Methods</h2><p>Before we start, one question, do u have the background in <strong>Probability and Statistics Theory</strong>? If the answer is no, please go to learn something and later come back.</p>
+<p>Those concepts are really hard to remember, but don’t feel frustrated. Keep going. Read more. If you cannot recall the concepts, turn back, read again.</p>
+<h3 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h3><p>Finally BRDF. Actualy the Radiometry step is for BRDF.<br>As mentioned above what Phong essentially used to simulate the appearance of shiny materials is a function. This function (which includes a specular and a diffuse compute). This function contains a certain number of parameters such as n that can be tweaked to change the appearance of the material, but more importantly, it actually depends on two variables, the incident light direction (which is used to compute both the diffuse and specular component) and the view direction (which is used to compute the specular component only). We could essential write this function as:</p>
+<p>$$<br>f_R(\omega_o,\omega_i)<br>$$<br>Where $\omega_o$ and $\omega_i$ are the angle between the surface normal (N) and the view direction (V) and the surface normal and the light direction (I) respectively.The subscript o stands for outgoing.<br><img src="/images/incoming-I-and-outgoing-V-direction.png" alt="Fig. incoming-I-and-outgoing-V-direction(from[2])"></p>
+<blockquote>
+<p>In computer graphics, this function is given the fancy name of <strong>Bidirectional Reflectance Distribution Function</strong> or in short BRDF. A BRDF is nothing else than a function that <strong>returns the amount of light reflected in the view direction for a given incident light direction</strong>:</p>
+</blockquote>
+<p>$$<br>BRDF(\omega_o,\omega_i)<br>$$</p>
+<p>In the following pic,BRDF represents how much light is reflected into each outgoing direction $\omega_r$ from each incoming direction:</p>
+<p><img src="/images/BRDF.png" alt="Fig. BRDF(from[1])"></p>
+<p>$$<br>f_r(\omega_i \rightarrow \omega_r) = \frac{dL_r(\omega_r)}{dE_i(\omega_i)} = \frac{dL_r(\omega_r)}{L_i(\omega_i)cos\theta_i d\omega_i}<br>\tag{BRDF}<br>$$</p>
+<p>One thing that I want to mention, why camera can see the objects? It’s because when one light beam hits the surface, it will reflact in all directions among the half hemisphere, but only the reflacted light enter the viewer’s eye make sense. So we need to calculate the output reflected light.</p>
+<p>So here come’s <strong>The Reflection Equation</strong>.</p>
+<p><img src="/images/the-reflection-equation.png" alt="Fig. the-reflection-equation(from[1])"></p>
+<p>$$<br>L_r(p,\omega_r) = \int_{H^2}f_r(p,\omega_i \rightarrow \omega_r)L_i(p,\omega_i)cos\theta_i d\omega_i<br>\tag{The-Reflection-Equation}<br>$$</p>
+<p>Please make sure you understand the meaning of each symbol in the above formulas.</p>
+<p>Here come’s <strong>The Rendering Equation</strong>.</p>
+<p>$$<br>L_o(p,\omega_o) = L_e(p,\omega_o) + \int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n\cdot\omega_i)d\omega_i<br>$$</p>
+<h2 id="PATH-TRACING"><a href="#PATH-TRACING" class="headerlink" title="PATH TRACING"></a>PATH TRACING</h2><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Monte-Carlo-Methods"><a href="#Monte-Carlo-Methods" class="headerlink" title="Monte Carlo Methods"></a>Monte Carlo Methods</h2><p>Before we start, one question, do u have the background in <strong>Probability and Statistics Theory</strong>? If the answer is no, please go to learn something and later come back.</p>
 <h3 id="What-is-Monte-Carlo"><a href="#What-is-Monte-Carlo" class="headerlink" title="What is Monte Carlo?"></a>What is Monte Carlo?</h3><p>Assume that we want to know the average height of all adults in one city, the most common method is to sample some adults and calculate the average height of them to approximate the true result. Here’s the formula:</p>
 <p>$$<br>Approximation(Average(X)) = \frac{1}{N}\sum_{n=1}^{N}x_{n}<br>$$</p>
 <p>We generally denote random variables with upper case letters,the height of a population would be called a <strong>random variable</strong>,so the letter X is used.The formula can be read as,the approximation of the average value of the random variable X(the height of the adult population of the given country),is equal to sum of the height of N adults randomly chosen from that population(the samples),divided by the number N(the sample size). This in essence, is called a <strong>Monte Carlo approximation</strong>. In statistics,the average of the random variable X is called an <strong>expectation</strong> and is written <strong>E(X)</strong>.</p>
