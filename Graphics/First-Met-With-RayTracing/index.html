@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-04-06T07:30:00.000Z">
-<meta property="article:modified_time" content="2020-04-13T13:08:39.033Z">
+<meta property="article:modified_time" content="2020-04-13T13:27:30.265Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="ray-tracing">
 <meta name="twitter:card" content="summary">
@@ -147,7 +147,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 minutes read (About 1467 words)
+                    10 minutes read (About 1507 words)
                 </span>
                 
                 
@@ -210,10 +210,10 @@
 <p><strong>Radiant energy</strong> is the energy of electromagnetic radiation. It is measured in units of joules, and denoted by the symbol:</p>
 <p>$$<br>Q[J = Joule]<br>$$</p>
 <p><strong>Radiant flux(power)</strong> is the energy emitted,reflected,transmitted or received, per unit time.</p>
-<p>$$<br>\Phi = \frac{dQ}{dt}[W = Watt][lm = lumen]<br>$$</p>
+<p>$$<br>\Phi = \frac{dQ}{dt} [W = Watt][lm = lumen]<br>$$</p>
+<p>Before go to intensity,irradiance,radiance,here’s a pic.<br><img src="/images/intensity-irradiance-radiance.png" alt="Fig. intensity-irradiance-radiance(from[1])"></p>
 <h4 id="Radiant-Intensity"><a href="#Radiant-Intensity" class="headerlink" title="Radiant Intensity"></a>Radiant Intensity</h4><p><strong>Radiant intensity</strong> is the power per unit <strong>solid angle</strong> emitted by a point light source.</p>
-<p><img src="/images/radiant-intensity.png" alt="Fig. radiant-intensity(from[1])"></p>
-<p>$$<br>I(\omega) = \frac{d\Phi}{d\omega}[\frac{W}{sr}][\frac{lm}{sr}=cd=candela]<br>$$</p>
+<p>$$<br>I(\omega) = \frac{d\Phi}{d\omega} [\frac{W}{sr}][\frac{lm}{sr}=cd=candela]<br>$$</p>
 <p><img src="/images/angles-and-solid-angles.png" alt="Fig. angles-and-solid-angles(from[1])"></p>
 <ul>
 <li><p>Angle:ration of subtended arc length on circle to radius</p>
@@ -231,13 +231,14 @@
 </ul>
 <p><img src="/images/spherical-coordinate.png" alt="Fig. differential-solid-angles(from[1])"></p>
 <p>$$<br>dA = (rd\theta)(rsin\theta d\phi)<br>   = r^2 sin\theta d\theta d\phi<br>$$<br>$$<br>d\omega = \frac{dA}{r^2}<br>        = sin\theta d\theta d\phi<br>$$</p>
-<h4 id="Irradiance"><a href="#Irradiance" class="headerlink" title="Irradiance"></a>Irradiance</h4><h4 id="Radiance"><a href="#Radiance" class="headerlink" title="Radiance"></a>Radiance</h4><h4 id="Concept-list-diagram"><a href="#Concept-list-diagram" class="headerlink" title="Concept list diagram"></a>Concept list diagram</h4><h3 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h3><p>Do you still rememeber that in the <a href="https://keneyr.github.io/Graphics/Lighting-Shading-Texture/#more">Lighting-Shading-Texture</a> article, we mentioned the empirical model <strong>Blinn phong model</strong>, and there’s <strong>diffuse component</strong>, when we calculate the diffuse component, we just assume the point’s worldposition,the point’s worldnormal etc.</p>
+<h4 id="Irradiance"><a href="#Irradiance" class="headerlink" title="Irradiance"></a>Irradiance</h4><p><strong>Irradiance</strong> is the power per(perpendicular/projected)unit area incident on a surface point.</p>
+<p>$$<br>E(x) = \frac{d\Phi(x)}{dA} [\frac{W}{m^2}][\frac{lm}{m^2} = lux]<br>$$</p>
+<p>Do you still rememeber that in the <a href="https://keneyr.github.io/Graphics/Lighting-Shading-Texture/#more">Lighting-Shading-Texture</a> article, we mentioned the empirical model <strong>Blinn phong model</strong>, and there’s <strong>diffuse component</strong>, when we calculate the diffuse component, we just assume the point’s worldposition,the point’s worldnormal etc.</p>
 <p>Actually,we assume this point is not really a point but a very small <strong>surface</strong> which we call <strong>differential area</strong>, denoted as $dA$.Now,what we actually consider as well is the amount of light falling on the surface of this very small area around P.Light that falls at P is not reduced to a single light ray since we are not interested in singular point but the small region $dA$ around that point. Light that falls on this region is contained within a small volume perpendicular to P.<br><img src="/images/differential-area.png" alt="Fig. differential-area(from[2])"></p>
 <p>In the empirical model, the diffuse component is calculated like this:<br>$$<br>c_{diff} = c_{light} \cdot m_{diff} \cdot max(0,n \cdot l)<br>\tag{3}<br>$$<br>as before, <strong>n</strong> is the surface normal and <strong>l</strong> is a unit vector that points towards the light source. The factor $m_{diff}$ is the material’s diffuse color, which is the value that most people think of when they think of the “color” of an object. The diffuse material color often comes from a texture map. The diffuse color of the light source is $c_{light}$.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * <span class="built_in">max</span>(<span class="number">0</span>, dot(worldNormal, worldLightDir));</span><br></pre></td></tr></table></figure>
 
-
-<h2 id="PATH-TRACING"><a href="#PATH-TRACING" class="headerlink" title="PATH TRACING"></a>PATH TRACING</h2><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Monte-Carlo-Methods"><a href="#Monte-Carlo-Methods" class="headerlink" title="Monte Carlo Methods"></a>Monte Carlo Methods</h2><p>Before we start, one question, do u have the background in <strong>Probability and Statistics Theory</strong>? If the answer is no, please go to learn something and later come back.</p>
+<h4 id="Radiance"><a href="#Radiance" class="headerlink" title="Radiance"></a>Radiance</h4><h4 id="Concept-list-diagram"><a href="#Concept-list-diagram" class="headerlink" title="Concept list diagram"></a>Concept list diagram</h4><h3 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h3><h2 id="PATH-TRACING"><a href="#PATH-TRACING" class="headerlink" title="PATH TRACING"></a>PATH TRACING</h2><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Monte-Carlo-Methods"><a href="#Monte-Carlo-Methods" class="headerlink" title="Monte Carlo Methods"></a>Monte Carlo Methods</h2><p>Before we start, one question, do u have the background in <strong>Probability and Statistics Theory</strong>? If the answer is no, please go to learn something and later come back.</p>
 <h3 id="What-is-Monte-Carlo"><a href="#What-is-Monte-Carlo" class="headerlink" title="What is Monte Carlo?"></a>What is Monte Carlo?</h3><p>Assume that we want to know the average height of all adults in one city, the most common method is to sample some adults and calculate the average height of them to approximate the true result. Here’s the formula:</p>
 <p>$$<br>Approximation(Average(X)) = \frac{1}{N}\sum_{n=1}^{N}x_{n}<br>$$</p>
 <p>We generally denote random variables with upper case letters,the height of a population would be called a <strong>random variable</strong>,so the letter X is used.The formula can be read as,the approximation of the average value of the random variable X(the height of the adult population of the given country),is equal to sum of the height of N adults randomly chosen from that population(the samples),divided by the number N(the sample size). This in essence, is called a <strong>Monte Carlo approximation</strong>. In statistics,the average of the random variable X is called an <strong>expectation</strong> and is written <strong>E(X)</strong>.</p>
