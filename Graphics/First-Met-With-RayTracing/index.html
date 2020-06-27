@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-04-06T07:30:00.000Z">
-<meta property="article:modified_time" content="2020-04-13T15:48:43.786Z">
+<meta property="article:modified_time" content="2020-04-14T07:22:44.402Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="ray-tracing">
 <meta name="twitter:card" content="summary">
@@ -147,7 +147,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes read (About 2211 words)
+                    15 minutes read (About 2217 words)
                 </span>
                 
                 
@@ -270,16 +270,20 @@
 <p>In the following pic,BRDF represents how much light is reflected into each outgoing direction $\omega_r$ from each incoming direction:</p>
 <p><img src="/images/BRDF.png" alt="Fig. BRDF(from[1])"></p>
 <p>$$<br>f_r(\omega_i \rightarrow \omega_r) = \frac{dL_r(\omega_r)}{dE_i(\omega_i)} = \frac{dL_r(\omega_r)}{L_i(\omega_i)cos\theta_i d\omega_i}<br>\tag{BRDF}<br>$$</p>
-<p>One thing that I want to mention, why camera can see the objects? It’s because when one light beam hits the surface, it will reflact in all directions among the half hemisphere, but only the reflacted light enter the viewer’s eye make sense. So we need to calculate the output reflected light.</p>
+<p>One thing that I want to mention, why camera can see the objects? It’s because when one light beam hits the surface, it will reflect in all directions among the half hemisphere, but only the reflected light enter the viewer’s eye make sense. So we need to calculate the output reflected light.</p>
+<blockquote>
 <p>So here come’s <strong>The Reflection Equation</strong>.</p>
+</blockquote>
 <p><img src="/images/the-reflection-equation.png" alt="Fig. the-reflection-equation(from[1])"></p>
 <p>$$<br>L_r(p,\omega_r) = \int_{H^2}f_r(p,\omega_i \rightarrow \omega_r)L_i(p,\omega_i)cos\theta_i d\omega_i<br>\tag{The-Reflection-Equation}<br>$$</p>
 <p>Please make sure you understand the meaning of each symbol in the above formulas.</p>
+<blockquote>
 <p>Here come’s <strong>The Rendering Equation</strong>.</p>
-<p>$$<br>L_o(p,\omega_o) = L_e(p,\omega_o) + \int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n\cdot\omega_i)d\omega_i<br>$$</p>
+</blockquote>
+<p>$$<br>L_o(p,\omega_o) = L_e(p,\omega_o) + \int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n\cdot\omega_i)d\omega_i<br>\tag{The-Rendering-Equation}<br>$$</p>
 <p>$L_e(p,\omega_o)$ means the object’point p emit the emissive light to the $\omega_o$ direction(remeber the $\omega_o$ direction should be the view direction), and $\int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n\cdot\omega_i)d\omega_i$ means the reflected light from $L_i(p,\omega_i)$.</p>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><img src="/images/term-concept-contrast.png" alt="Fig. term-concept-contrast(from[9])"></p>
-<h2 id="PATH-TRACING"><a href="#PATH-TRACING" class="headerlink" title="PATH TRACING"></a>PATH TRACING</h2><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Monte-Carlo-Methods"><a href="#Monte-Carlo-Methods" class="headerlink" title="Monte Carlo Methods"></a>Monte Carlo Methods</h2><p>Before we start, one question, do u have the background in <strong>Probability and Statistics Theory</strong>? If the answer is no, please go to learn something and later come back.</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p><img src="/images/term-concept-contrast.png" alt="Fig. term-concept-contrast(from[9])"></p>
+<h3 id="global-illumination"><a href="#global-illumination" class="headerlink" title="global illumination"></a>global illumination</h3><h2 id="PATH-TRACING"><a href="#PATH-TRACING" class="headerlink" title="PATH TRACING"></a>PATH TRACING</h2><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Monte-Carlo-Methods"><a href="#Monte-Carlo-Methods" class="headerlink" title="Monte Carlo Methods"></a>Monte Carlo Methods</h2><p>Before we start, one question, do u have the background in <strong>Probability and Statistics Theory</strong>? If the answer is no, please go to learn something and later come back.</p>
 <h3 id="What-is-Monte-Carlo"><a href="#What-is-Monte-Carlo" class="headerlink" title="What is Monte Carlo?"></a>What is Monte Carlo?</h3><p>Assume that we want to know the average height of all adults in one city, the most common method is to sample some adults and calculate the average height of them to approximate the true result. Here’s the formula:</p>
 <p>$$<br>Approximation(Average(X)) = \frac{1}{N}\sum_{n=1}^{N}x_{n}<br>$$</p>
 <p>We generally denote random variables with upper case letters,the height of a population would be called a <strong>random variable</strong>,so the letter X is used.The formula can be read as,the approximation of the average value of the random variable X(the height of the adult population of the given country),is equal to sum of the height of N adults randomly chosen from that population(the samples),divided by the number N(the sample size). This in essence, is called a <strong>Monte Carlo approximation</strong>. In statistics,the average of the random variable X is called an <strong>expectation</strong> and is written <strong>E(X)</strong>.</p>
@@ -356,6 +360,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/uncategorized/OpenPose-Practice/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">OpenPose-Practice</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -438,7 +449,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            7
+                            9
                         </p>
                     </a>
                 </div>
@@ -619,6 +630,44 @@
         
         <article class="media">
             
+            <a href="/uncategorized/Learn-from-Anima2D/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Learn-from-Anima2D">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-06T02:16:32.000Z">2020-06-06</time></div>
+                    <a href="/uncategorized/Learn-from-Anima2D/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Learn-from-Anima2D</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/uncategorized/OpenPose-Practice/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="OpenPose-Practice">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-26T01:10:37.000Z">2020-05-26</time></div>
+                    <a href="/uncategorized/OpenPose-Practice/" class="title has-link-black-ter is-size-6 has-text-weight-normal">OpenPose-Practice</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/Graphics/First-Met-With-RayTracing/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="First-Met-With-RayTracing">
@@ -674,44 +723,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/Graphics/Lighting-Shading-Texture/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Lighting-Shading-Texture">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-25T03:35:00.000Z">2020-03-25</time></div>
-                    <a href="/Graphics/Lighting-Shading-Texture/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Lighting-Shading-Texture</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/c-primer/function-template/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Function-Template">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-12T04:58:36.000Z">2020-03-12</time></div>
-                    <a href="/c-primer/function-template/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Function-Template</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/c-primer/">c++ primer</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -722,6 +733,28 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">

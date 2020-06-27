@@ -135,6 +135,124 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-06-06T02:16:32.000Z">2020-06-06</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 239 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/uncategorized/Learn-from-Anima2D/">Learn-from-Anima2D</a>
+            
+        </h1>
+        <div class="content">
+            <p>This article is kind of an essay, not a very specific,technical one.</p>
+<p><strong>Anima2D</strong> is a plugin for Unity to make skeleton-based animation,I have learned how to use it making my character Ideling on <a href="https://www.bilibili.com/video/BV14x411i7YA">Bilibili</a>, I pushed the result on <a href="https://github.com/Keneyr/LearnUnity3D/tree/master/Anima2DTest">github</a>.</p>
+<p>However,I am a cs-er.So the source code of this plugin has a fatal attraction for me. I wonder why the author didn’t write any annotation for the project, this makes my reading really really tough. Maybe experienced-man never write annotations…the conclusion was based on my observation in my coding life up to now…Since I am a “chicken dish”,which means “菜鸡” in Chinese,I decided to write my own understanding step by step(kind of diary style)</p>
+<p>Life is so hard```(cry by chicken dish Anna)</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/uncategorized/Learn-from-Anima2D/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-26T01:10:37.000Z">2020-05-26</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 726 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/uncategorized/OpenPose-Practice/">OpenPose-Practice</a>
+            
+        </h1>
+        <div class="content">
+            <p>This article is for <strong>NOBODY</strong>, just for me to record.<br>I tried to download OpenPose from github and run the Demo on my laptop. Since my graphics card is medium-level AMD,and my cpu is i7. So I use the cpu-only model.<br>The <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose">code path</a> is on the master branch. I use v1.5.1,so I can compile the source code by myself, that means I can change the code and make the dll files match my system best.<br><img src="/images/tag.png" alt="choose-tag"></p>
+<p>I have tried the file that they <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/releases">compiled</a> , and It didn’t work on my laptop.<br><img src="/images/openpose-binary-cpu-only.png" alt="openpose-binary-cpu-only wrong on my laptop"></p>
+<p>something that I want the say ,that is the command:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin\OpenPoseDemo.exe --video examples\media\video.avi</span><br></pre></td></tr></table></figure>
+
+<p>I got the idea on this <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1434">issue</a> and I have get the lesson:</p>
+<blockquote>
+<p><strong>read files in the DOC folder first.</strong></p>
+</blockquote>
+<p>you can see the project structure:<br><img src="/images/openpose-binary-files.png" alt="project structure"><br><img src="/images/openpose-binary-structure1.png" alt="project structure1"></p>
+<p>so after downloaded the source code also the models,and do everything followed toturials(include cmake process)<br>I compiled it by my vs2017 enterprise:<br><img src="/images/openpose-vs2017.png" alt="openpose-vs2017"><br>When use cmake,the build folder can be created internally.Note: the red rectangles means that they are created by my self. Be careful about the files in them.<br><img src="/images/openposecode-structure.png" alt="openposecode-structure"></p>
+<p>Here’s some important tutorials I must show:<br><img src="/images/openposecode-onyourcomputer.png" alt="openposecode-onyourcomputer"> Just read them…</p>
+<p>The result about the video is :<br><img src="/images/openpose-command.png" alt="openpose-command"><br><img src="images/penpose-video-result.png" alt="openpose-video-result"><br>the video process is really really slow, I take it becuase the author said the highly recommand 6 cores cpu ,and my cpu is 2 cores.</p>
+<p>I also tried the camera mode , but it’s black for one minute,two minuts,three minutes… I really didn’t think the program would have started if the headlight on my laptop camera hadn’t been on. It was too slow ,tooooooo slow… If the hardwares are good enough, the result canbe realtime I think.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin\OpenPoseDemo.exe</span><br></pre></td></tr></table></figure>
+
+<p>So I will try the NVIDIA+CUDA+CUDNN experiment next time I got the chance to have high-quality hardwares.</p>
+<p>I also tested the <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose_unity_plugin">Openpose-unity-Plugin</a>.</p>
+<p>The project structure is :<br><img src="/images/openpose-unity-plugin-code.png" alt="openpose-unity-plugin-code"></p>
+<p>This plugin needs windows7\8\9, and my system is Windows10,also the Unity version needs to be 2018.3,2018.4,and my Unity version is 2018.3.0f.<br>But it’s not working…<br>the error is:<br><img src="/images/openpose-unity-plugin-error.png" alt="openpose-unity-plugin-error"><br>I changed the .bat file,but nothing happened, even the openposedemo.exe cannot use the cpu mode.So I don’t think their gpu-&gt;cpu conversion can be working…The <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose_unity_plugin/issues/39">issue</a> is.</p>
+<p>Maybe not only testBinary.bat should be changed,the getModels.bat and getPlugins.bat should be changed too.<br><img src="/images/getplugins.png" alt="getplugins.bat"><br>and I wonder whether the models trained on gpu and cpu have any differences or not.But so far as I know, the models’ link are the same.</p>
+<p>So decided make part of the plugin myself,though I choosed the BUILD_UNITY_SUPPORT ,the result has no difference than before.<br><img src="/images/openpose-unity-custom.png" alt="make-own-openpose-unity-plugin"><br>Here’ the difference between their files and mine.<br><img src="/images/comparison-between-theirs-and-mine-dlls.png" alt="comparison-between-theirs-and-mine-dlls"><br>I copyed the files on the left to the right, and the error is :<br>You need to compile OpenPose with CUDA support in order to use GPU resize.</p>
+<p>My GOD!!! SO this means that the Unity-plugin still cannot use cpu mode.</p>
+<p>I take another try, download the release version and copy the plugin folder from older project to it. The error is new:<br><img src="/images/unity-plugin-release-version.png" alt="release version"></p>
+<p>So I ran the bat file to get the default plugin folder,also wrong,beacause it still want to find cuda…<br><img src="/images/unity-plugin-release-version-getpluginfolder.png" alt="getpluginfolder"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-06T07:30:00.000Z">2020-04-06</time>
                 
                 <div class="level-item">
@@ -145,7 +263,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes read (About 2211 words)
+                    15 minutes read (About 2217 words)
                 </span>
                 
                 
@@ -554,7 +672,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            7
+                            9
                         </p>
                     </a>
                 </div>
@@ -735,6 +853,44 @@
         
         <article class="media">
             
+            <a href="/uncategorized/Learn-from-Anima2D/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Learn-from-Anima2D">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-06T02:16:32.000Z">2020-06-06</time></div>
+                    <a href="/uncategorized/Learn-from-Anima2D/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Learn-from-Anima2D</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/uncategorized/OpenPose-Practice/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="OpenPose-Practice">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-26T01:10:37.000Z">2020-05-26</time></div>
+                    <a href="/uncategorized/OpenPose-Practice/" class="title has-link-black-ter is-size-6 has-text-weight-normal">OpenPose-Practice</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/Graphics/First-Met-With-RayTracing/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="First-Met-With-RayTracing">
@@ -790,44 +946,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/Graphics/Lighting-Shading-Texture/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Lighting-Shading-Texture">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-25T03:35:00.000Z">2020-03-25</time></div>
-                    <a href="/Graphics/Lighting-Shading-Texture/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Lighting-Shading-Texture</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/c-primer/function-template/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Function-Template">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-12T04:58:36.000Z">2020-03-12</time></div>
-                    <a href="/c-primer/function-template/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Function-Template</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/c-primer/">c++ primer</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -838,6 +956,28 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/04/">
