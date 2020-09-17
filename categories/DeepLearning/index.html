@@ -13,14 +13,14 @@
     <meta name="description" content="Record everystep of exploration">
 <meta property="og:type" content="website">
 <meta property="og:title" content="QinranY&#39;s Homesite">
-<meta property="og:url" content="http://yoursite.com/categories/DeepLearning/index.html">
+<meta property="og:url" content="https://keneyr.com/categories/DeepLearning/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homesite">
 <meta property="og:description" content="Record everystep of exploration">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:author" content="Keneyr">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
 
 
 
@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 726 words)
+                    5 minutes read (About 727 words)
                 </span>
                 
                 
@@ -169,34 +169,17 @@
             
         </h1>
         <div class="content">
-            <p>This article is for <strong>NOBODY</strong>, just for me to record.<br>I tried to download OpenPose from github and run the Demo on my laptop. Since my graphics card is medium-level AMD,and my cpu is i7. So I use the cpu-only model.<br>The <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose">code path</a> is on the master branch. I use v1.5.1,so I can compile the source code by myself, that means I can change the code and make the dll files match my system best.<br><img src="/images/tag.png" alt="choose-tag"></p>
-<p>I have tried the file that they <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/releases">compiled</a> , and It didn’t work on my laptop.<br><img src="/images/openpose-binary-cpu-only.png" alt="openpose-binary-cpu-only wrong on my laptop"></p>
-<p>something that I want the say ,that is the command:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin\OpenPoseDemo.exe --video examples\media\video.avi</span><br></pre></td></tr></table></figure>
-
-<p>I got the idea on this <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/1434">issue</a> and I have get the lesson:</p>
-<blockquote>
-<p><strong>read files in the DOC folder first.</strong></p>
-</blockquote>
-<p>you can see the project structure:<br><img src="/images/openpose-binary-files.png" alt="project structure"><br><img src="/images/openpose-binary-structure1.png" alt="project structure1"></p>
-<p>so after downloaded the source code also the models,and do everything followed toturials(include cmake process)<br>I compiled it by my vs2017 enterprise:<br><img src="/images/openpose-vs2017.png" alt="openpose-vs2017"><br>When use cmake,the build folder can be created internally.Note: the red rectangles means that they are created by my self. Be careful about the files in them.<br><img src="/images/openposecode-structure.png" alt="openposecode-structure"></p>
-<p>Here’s some important tutorials I must show:<br><img src="/images/openposecode-onyourcomputer.png" alt="openposecode-onyourcomputer"> Just read them…</p>
-<p>The result about the video is :<br><img src="/images/openpose-command.png" alt="openpose-command"><br><img src="images/penpose-video-result.png" alt="openpose-video-result"><br>the video process is really really slow, I take it becuase the author said the highly recommand 6 cores cpu ,and my cpu is 2 cores.</p>
-<p>I also tried the camera mode , but it’s black for one minute,two minuts,three minutes… I really didn’t think the program would have started if the headlight on my laptop camera hadn’t been on. It was too slow ,tooooooo slow… If the hardwares are good enough, the result canbe realtime I think.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin\OpenPoseDemo.exe</span><br></pre></td></tr></table></figure>
-
-<p>So I will try the NVIDIA+CUDA+CUDNN experiment next time I got the chance to have high-quality hardwares.</p>
-<p>I also tested the <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose_unity_plugin">Openpose-unity-Plugin</a>.</p>
-<p>The project structure is :<br><img src="/images/openpose-unity-plugin-code.png" alt="openpose-unity-plugin-code"></p>
-<p>This plugin needs windows7\8\9, and my system is Windows10,also the Unity version needs to be 2018.3,2018.4,and my Unity version is 2018.3.0f.<br>But it’s not working…<br>the error is:<br><img src="/images/openpose-unity-plugin-error.png" alt="openpose-unity-plugin-error"><br>I changed the .bat file,but nothing happened, even the openposedemo.exe cannot use the cpu mode.So I don’t think their gpu-&gt;cpu conversion can be working…The <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose_unity_plugin/issues/39">issue</a> is.</p>
-<p>Maybe not only testBinary.bat should be changed,the getModels.bat and getPlugins.bat should be changed too.<br><img src="/images/getplugins.png" alt="getplugins.bat"><br>and I wonder whether the models trained on gpu and cpu have any differences or not.But so far as I know, the models’ link are the same.</p>
-<p>So decided make part of the plugin myself,though I choosed the BUILD_UNITY_SUPPORT ,the result has no difference than before.<br><img src="/images/openpose-unity-custom.png" alt="make-own-openpose-unity-plugin"><br>Here’ the difference between their files and mine.<br><img src="/images/comparison-between-theirs-and-mine-dlls.png" alt="comparison-between-theirs-and-mine-dlls"><br>I copyed the files on the left to the right, and the error is :<br>You need to compile OpenPose with CUDA support in order to use GPU resize.</p>
-<p>My GOD!!! SO this means that the Unity-plugin still cannot use cpu mode.</p>
-<p>I take another try, download the release version and copy the plugin folder from older project to it. The error is new:<br><img src="/images/unity-plugin-release-version.png" alt="release version"></p>
-<p>So I ran the bat file to get the default plugin folder,also wrong,beacause it still want to find cuda…<br><img src="/images/unity-plugin-release-version-getpluginfolder.png" alt="getpluginfolder"></p>
-
+            <p>This article is for <strong>NOBODY</strong>, just for me to record.<br>I tried to download OpenPose from github and run the Demo on my laptop. Since my graphics card is medium-level AMD,and my cpu is i7. So I use the cpu-only model.</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/DeepLearning/OpenPose-Practice/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -254,7 +237,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            9
+                            10
                         </p>
                     </a>
                 </div>
@@ -266,7 +249,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -278,7 +261,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            9
+                            10
                         </p>
                     </a>
                 </div>
@@ -405,6 +388,14 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/c/">
+            <span class="level-start">
+                <span class="level-item">c++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/c-primer/">
             <span class="level-start">
                 <span class="level-item">c++ primer</span>
@@ -431,7 +422,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/3d-graphics/" style="font-size: 10px;">3d-graphics</a> <a href="/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/tags/Unity-Animation2D/" style="font-size: 10px;">Unity,Animation2D</a> <a href="/tags/c/" style="font-size: 10px;">c++ &</a> <a href="/tags/c-template/" style="font-size: 10px;">c++ template</a> <a href="/tags/ray-tracing/" style="font-size: 10px;">ray-tracing</a> <a href="/tags/self/" style="font-size: 10px;">self</a> <a href="/tags/shading/" style="font-size: 10px;">shading</a> <a href="/tags/vector-c/" style="font-size: 10px;">vector, c++</a>
+        <a href="/tags/3d-graphics/" style="font-size: 10px;">3d-graphics</a> <a href="/tags/OpenPose/" style="font-size: 10px;">OpenPose</a> <a href="/tags/Unity-Animation2D/" style="font-size: 10px;">Unity,Animation2D</a> <a href="/tags/c/" style="font-size: 10px;">c++ &</a> <a href="/tags/c-template/" style="font-size: 10px;">c++ template</a> <a href="/tags/c-11/" style="font-size: 10px;">c++11</a> <a href="/tags/ray-tracing/" style="font-size: 10px;">ray-tracing</a> <a href="/tags/self/" style="font-size: 10px;">self</a> <a href="/tags/shading/" style="font-size: 10px;">shading</a> <a href="/tags/vector-c/" style="font-size: 10px;">vector, c++</a>
     </div>
 </div>
     
@@ -440,6 +431,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/c/const&constexpr/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="const&amp;constexpr">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-09-16T03:29:26.000Z">2020-09-16</time></div>
+                    <a href="/c/const&constexpr/" class="title has-link-black-ter is-size-6 has-text-weight-normal">const&amp;constexpr</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -517,25 +527,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/c-primer/address-opereator/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="address-opereator">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-29T03:20:28.000Z">2020-03-29</time></div>
-                    <a href="/c-primer/address-opereator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">address-opereator</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/c-primer/">c++ primer</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -546,6 +537,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -646,6 +648,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/c-template/">
                         <span class="tag">c++ template</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/c-11/">
+                        <span class="tag">c++11</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -780,7 +789,7 @@ setInterval("createtime()",250);
 <script>
 var IcarusThemeSettings = {
     site: {
-        url: 'http://yoursite.com',
+        url: 'https://keneyr.com',
         external_link: {"enable":true,"exclude":[]}
     },
     article: {
