@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>C3-Determinants - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: Determinants, Linear Transformation, Area or Volume, Cramer’s Rule">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C3-Determinants">
+<meta property="og:url" content="https://keneyr.com/Math/Linear-Algebra/C3-Determinants/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: Determinants, Linear Transformation, Area or Volume, Cramer’s Rule">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-09-25T01:32:07.000Z">
+<meta property="article:modified_time" content="2023-09-25T02:39:57.162Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Linear Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="C3-Determinants" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/reading">Reading</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-09-25T01:32:07.000Z">2023-09-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Math/">Math</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1279 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                C3-Determinants
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: Determinants, Linear Transformation, Area or Volume, Cramer’s Rule</p>
+<a id="more"></a>
+
+<h2 id="Introduction-to-Determinants"><a href="#Introduction-to-Determinants" class="headerlink" title="Introduction to Determinants"></a>Introduction to Determinants</h2><blockquote>
+<p>If $A$ is a triangular matrix, then det $A$ is the product of the entries on the main diagonal of $A$.</p>
+</blockquote>
+<p>The determinant of an $n \times n$ matrix $A$ can be computed by a cofactor expansion across any row or down any column. The expansion across the $i-th$ row using the cofactors is</p>
+<p>$$<br>\begin{aligned}<br>det A &amp;= a_{i1}C_{i1} + a_{i2}C_{i2} + \cdots + a_{in}C_{in}\\<br>C_{ij} &amp;= (-1)^{i+j}detA_{i,j}<br>\end{aligned}<br>$$</p>
+<blockquote>
+<p>在计算机中是怎么计算行列式的？<br>Yet it would be impossible to calculate a $25 \times 25$ determinant by cofactor expansion.<br>In general, a cofactor expansion requires more than $n!$ multiplications, and $25!$ is approximately $1.5 * 10 ^ {25}$ If a computer performs one trillion multiplications per second,  it would have to run for more than $500,000 years$ to compute a $25 \times 25$ determinant by this method. Fortunately, there are faster methods, see the next chapter.</p>
+</blockquote>
+<h2 id="Properties-of-Deternimants"><a href="#Properties-of-Deternimants" class="headerlink" title="Properties of Deternimants"></a>Properties of Deternimants</h2><blockquote>
+<p>Let $A$ be a square matrix.<br>a. If a multiple of one row of $A$ is added to another row to produce a matrix $B$, then $det B = det A$.<br>b. If two rows of $A$ are interchanged to produce $B$, then $det B = - det A$.<br>c. If one row of $A$ is multiplied by $k$ to produce $B$, then $det B = k * det A$.</p>
+</blockquote>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Compute $det A$, where $A = \begin{bmatrix}2 &amp; -8 &amp; 6 &amp; 8\\ 3 &amp; -9 &amp; 5 &amp; 10\\ -3 &amp; 0 &amp; 1 &amp; -2\\1 &amp; -4 &amp; 0 &amp; 6\end{bmatrix}$</p>
+<p>Solution:</p>
+<p>求行列式如下：<br>$$<br>det A = 2<br>\left|<br>\begin{array}{}<br>    1 &amp; -4 &amp; 3 &amp; 4 \\<br>    3 &amp; -9 &amp; 5 &amp; 10\\<br>    -3 &amp; 0 &amp; 1 &amp; -2\\<br>    1 &amp; -4 &amp; 0 &amp; 6<br>\end{array}<br>\right|<br>=<br>2<br>\left|<br>\begin{array}{}<br>    1 &amp; -4 &amp; 3 &amp; 4 \\<br>    0 &amp; 3 &amp; -4 &amp; -2\\<br>    0 &amp; 0 &amp; -6 &amp; 2\\<br>    0 &amp; 0 &amp; 0 &amp; 1<br>\end{array}<br>\right|<br>=<br>2\cdot (1)\cdot(3)\cdot(-6)\cdot(1)<br>= -36<br>$$</p>
+<blockquote>
+<p>A square matrix $A$ is invertible if and only if $det A \neq$ 0 (因为阶梯式下，对角线上如果有0，矩阵肯定不可逆)</p>
+</blockquote>
+<p>$$<br>det A = \begin{cases}<br>(-1)^r \cdot (product\space of \space pivots\space  in \space U) &amp; when \space A \space is\space invertible\\<br>0 &amp; when \space A \space is\space  not \space invertible<br>\end{cases}\tag{1}<br>\\<br>U = \begin{bmatrix}<br>\blacksquare &amp; * &amp; * &amp; * \\<br>0 &amp; \blacksquare &amp; * &amp; * \\<br>0 &amp; 0 &amp; \blacksquare &amp; * \\<br>0 &amp; 0 &amp; 0 &amp; \blacksquare<br>\end{bmatrix}<br>$$</p>
+<p>$r$: interchange operations in the process of matrix $A \rightarrow U$ .</p>
+<blockquote>
+<ol>
+<li>Most computer programs that compute $det A$ for a general matrix $A$ use the method of formula (1) above.</li>
+<li>It can be shown that evaluation of an $n \times n$ determinant using row operations requires about $2n^3 / 3$ arithmetic operations. Any modern microcomputer can calculate a $25 \times 25$ determinant in a fraction of a second, since only about $10,000$ operations are required.</li>
+</ol>
+</blockquote>
+<h3 id="Column-Operations"><a href="#Column-Operations" class="headerlink" title="Column Operations"></a>Column Operations</h3><blockquote>
+<p>If $A$ is an $n \times n$ matrix, then $det A^T = det A$</p>
+</blockquote>
+<h3 id="Determinants-and-Matrix-Products"><a href="#Determinants-and-Matrix-Products" class="headerlink" title="Determinants and Matrix Products"></a>Determinants and Matrix Products</h3><blockquote>
+<p>If $A$ and $B$ are $n \times n$ matrices, then $det AB = detA \cdot detB$.</p>
+</blockquote>
+<h3 id="A-Linearity-Property-of-the-Determinant-Function"><a href="#A-Linearity-Property-of-the-Determinant-Function" class="headerlink" title="A Linearity Property of the Determinant Function"></a>A Linearity Property of the Determinant Function</h3><p>$$<br>A  = \begin{bmatrix}<br>\vec{a_1} &amp; \cdots &amp; \vec{a_{j-1}} &amp; \vec{x}&amp; \vec{a_{j+1}} &amp; \cdots &amp; \vec{a_n}<br>\end{bmatrix}<br>\\<br>T(\vec{x}) = det \begin{bmatrix}<br>\vec{a_1} &amp; \cdots &amp; \vec{a_{j-1}} &amp; \vec{x}&amp; \vec{a_{j+1}} &amp; \cdots &amp; \vec{a_n}<br>\end{bmatrix}<br>\\<br>T(c\vec{x}) = cT(\vec{x})\\<br>T(\vec{u}+\vec{v}) = T(\vec{u}) + T(\vec{v})<br>$$</p>
+<h2 id="Cramer’s-Rule-Volume-Linear-Transformation"><a href="#Cramer’s-Rule-Volume-Linear-Transformation" class="headerlink" title="Cramer’s Rule, Volume, Linear Transformation"></a>Cramer’s Rule, Volume, Linear Transformation</h2><h3 id="Cramer’s-Rule（克拉默法则）"><a href="#Cramer’s-Rule（克拉默法则）" class="headerlink" title="Cramer’s Rule（克拉默法则）"></a>Cramer’s Rule（克拉默法则）</h3><p>Let A be an invertible $n \times n$ matrix. For any $\vec{b}$ in $R^n$, the unique solution $\vec{x}$ of $A\vec{x} = \vec{b}$ has entries given by</p>
+<p>$$<br>\vec{x_i} = \frac{det A_i(\vec{b})}{det A}, i = 1, 2, \cdots, n<br>$$<br>$$<br>det A_i(\vec{b}) =<br>\begin{bmatrix}<br>\vec{a_1} &amp; \cdots &amp; \vec{b} &amp; \cdots &amp; \vec{a_n}<br>\end{bmatrix}<br>第i列的向量改成了\vec{b}向量<br>$$</p>
+<h3 id="Application-to-Engineering"><a href="#Application-to-Engineering" class="headerlink" title="Application to Engineering"></a>Application to Engineering</h3><p><u>Laplace transforms</u>: This approach converts an appropriate system of linear differential equations into a system of linear algebraic equations whose coefficients involve a parameter.（只是提一嘴拉普拉斯变换）</p>
+<p>&#x1F4A1;For example&#x1F4A1;: </p>
+<p>Consider the following system in which $s$ is an unspecified parameter. Determine the values of $s$ for which the system has a unique solution, and use Cramer’s rule to describe the solution.</p>
+<p>$$<br>\begin{cases}<br>3s x_1 - 2x_1 = 4\\<br>-6x_1 + sx_2 = 1<br>\end{cases}<br>$$</p>
+<p>Solution：<br>$$<br>A = \begin{bmatrix}<br>3s &amp; -2\\<br>-6 &amp; s<br>\end{bmatrix},<br>A_1(\vec{b}) = \begin{bmatrix}<br>4 &amp; -2\\<br>1 &amp; s<br>\end{bmatrix},<br>A_2(\vec{b}) = \begin{bmatrix}<br>3s &amp; 4\\<br>-6 &amp; 1<br>\end{bmatrix}<br>$$<br>Since,<br>$$<br>det A = 3s^2-12 = 3(s+2)(s-2)<br>$$<br>so,<br>$$<br>unique-solution: s \neq \pm2<br>\\<br>x_1 = \frac{det A_1(\vec{b})}{det A} = \frac{4s+2}{3(s+2)(s-2)},<br>x_1 = \frac{det A_2(\vec{b})}{det A} = \frac{s+8}{(s+2)(s-2)}<br>$$</p>
+<h3 id="A-Formula-for-A-–1"><a href="#A-Formula-for-A-–1" class="headerlink" title="A Formula for $A^{–1}$"></a>A Formula for $A^{–1}$</h3><p>let $A$ be an invertible $n \times n$ matrix. Then<br>$$<br>A^{-1} = \frac{1}{det A} adj A<br>$$<br>The adjugate matrix is the transpose of the matrix of cofactors</p>
+<p>&#x1F4A1;For example&#x1F4A1;: </p>
+<p>Find the inverse matrix of $A = \begin{bmatrix}2 &amp; 1 &amp; 3\\1 &amp; -1 &amp; 1\\1 &amp; 4 &amp; 2\end{bmatrix}$</p>
+<p>Solution:</p>
+<p>$$<br>C_{11} = + \left|<br>\begin{array}{}<br>    -1 &amp; 1 \\<br>    4 &amp; -2<br>\end{array}<br>\right| = -2 , C_{12} = 3, C_{13} = 5,<br>C_{21} = 14, C_{22} = -7,C_{23} = -7<br>$$<br>$$<br>adj A =<br>\begin{bmatrix}<br>-2 &amp; 14 &amp; 4\\<br>3 &amp; -7 &amp; 1\\<br>5 &amp; -7 &amp; 3\end{bmatrix}<br>接下来套公式即可<br>$$</p>
+<blockquote>
+<p>在计算机中，<br>For a larger $n \times n$ matrix (real or complex), Cramer’s rule is hopelessly inefficient.<br>Computing just one determinant takes about as much work as solving $Ax = b$ by row reduction.</p>
+</blockquote>
+<h3 id="Determinants-as-Area-or-Volume"><a href="#Determinants-as-Area-or-Volume" class="headerlink" title="Determinants as Area or Volume"></a>Determinants as Area or Volume</h3><blockquote>
+<p>If $A$ is a $2 \times 2$ matrix, the area of the parallelogram（平行四边形） determined by the columns of $A$ is $|detA|$.<br>If $A$ is a $3 \times 3$ matrix, the volume of the parallelepiped（平行六面体） determined by the columns of $A$ is $|detA|$.</p>
+</blockquote>
+<p>$$<br>\left|<br>{}det\begin{bmatrix}a &amp; 0 \\ 0 &amp; d\end{bmatrix}<br>\right|=<br>\left|ad\right| = {area \space of \space rectangle}<br>$$</p>
+<p><img src="/images/LinearAlgebra/c3/area.png" alt="area"></p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Calculate the area of the parallelogram determined by the points $(-2,-2),(0,3),(4,-1)and (6,4)$</p>
+<p>Solution:</p>
+<p>求平行四边形面积如下：<br>$$<br>1、平移(如下图),<br>新点：(0,0), (2,5),(6,1),(8,6)<br>$$<br>$$<br>2、建立矩阵列向量,<br>A =<br>\begin{bmatrix}<br>2 &amp; 5\\<br>5 &amp; 1<br>\end{bmatrix},<br>\left|detA\right|  = \left|-28\right|，<br>面积是28<br>$$<br><img src="/images/LinearAlgebra/c3/parallelogram.png" alt="parallelogram"></p>
+<h3 id="Linear-Transformations"><a href="#Linear-Transformations" class="headerlink" title="Linear Transformations"></a>Linear Transformations</h3><p>Let $T:R^2\rightarrow R^2$ be the linear transformation determined by a $2 \times 2$ matrix $A$. If $S$ is a parallelogram(or other finite area) in $R^2$, then </p>
+<p>$$<br>(area-of-T(S)) = \left|detA\right| \cdot (area-of-S)<br>$$</p>
+<p>If $T$ is determined by a $3 \times 3$ matrix $A$, and if $S$ is a parallelepiped(or other finite volume) in $R^3$, then</p>
+<p>$$<br>(volume-of-T(S)) = \left|detA\right| \cdot (volume-of-S)<br>$$</p>
+<p>&#x1F4A1;for example&#x1F4A1;:</p>
+<p>Let $a$ and $b$ be positive numbers. Find the area of the region $E$ bounded by the ellipse whose equation is</p>
+<p>$$<br>\frac{x_1^2}{a^2} + \frac{x_2^2}{b^2} = 1<br>$$<br>We claim that $E$ is the image of the unit disk $D$ under the linear transformation $T$ determined by the matrix $A = \begin{bmatrix}a &amp; 0\\ 0 &amp; b\end{bmatrix}$, because if $\vec{u} =\begin{bmatrix}u_1\\u_2\end{bmatrix}$ ,$\vec{x} = \begin{bmatrix}x_1\\x_2\end{bmatrix}$,and $\vec{x} = A\vec{u}$, then</p>
+<p>$$<br>u_1 = \frac{x_1}{a}, u_2 = \frac{x_2}{b}<br>$$</p>
+<p>it follows that $\vec{u}$ is in the unit disk, with $u_1^2 + u_2^2 \leqslant 1$, if and only if $\vec{x}$ is in E, with $(x_1/a)^2 + (x_2/b)^2 \leqslant 1$, so the  area of ellipse is :<br>$$<br>\begin{aligned}<br>area \space of \space ellipse &amp;= area \space of \space T(D)\\<br>&amp;= \left|detA\right| \cdot area \space of \space D\\<br>&amp;= ab \cdot \pi (1)^2 \\<br>&amp;= \pi ab<br>\end{aligned}<br>$$<br><img src="/images/LinearAlgebra/c3/eclipse.png" alt="eclipse"></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Linear-Algebra/" rel="tag">Linear Algebra</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Math/Linear-Algebra/C4-Vector-Spaces/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">C4-Vector-Spaces</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Math/Geometry/3DMath-Transformation/">
+                <span class="level-item">3DMath-Transformation</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '0988e1340a847dd147237ba71e3974cc',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Introduction-to-Determinants">
+        <span class="has-mr-6">1</span>
+        <span>Introduction to Determinants</span>
+        </a></li><li>
+        <a class="is-flex" href="#Properties-of-Deternimants">
+        <span class="has-mr-6">2</span>
+        <span>Properties of Deternimants</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Column-Operations">
+        <span class="has-mr-6">2.1</span>
+        <span>Column Operations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Determinants-and-Matrix-Products">
+        <span class="has-mr-6">2.2</span>
+        <span>Determinants and Matrix Products</span>
+        </a></li><li>
+        <a class="is-flex" href="#A-Linearity-Property-of-the-Determinant-Function">
+        <span class="has-mr-6">2.3</span>
+        <span>A Linearity Property of the Determinant Function</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Cramer’s-Rule-Volume-Linear-Transformation">
+        <span class="has-mr-6">3</span>
+        <span>Cramer’s Rule, Volume, Linear Transformation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Cramer’s-Rule（克拉默法则）">
+        <span class="has-mr-6">3.1</span>
+        <span>Cramer’s Rule（克拉默法则）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Application-to-Engineering">
+        <span class="has-mr-6">3.2</span>
+        <span>Application to Engineering</span>
+        </a></li><li>
+        <a class="is-flex" href="#A-Formula-for-A-–1">
+        <span class="has-mr-6">3.3</span>
+        <span>A Formula for $A^{–1}$</span>
+        </a></li><li>
+        <a class="is-flex" href="#Determinants-as-Area-or-Volume">
+        <span class="has-mr-6">3.4</span>
+        <span>Determinants as Area or Volume</span>
+        </a></li><li>
+        <a class="is-flex" href="#Linear-Transformations">
+        <span class="has-mr-6">3.5</span>
+        <span>Linear Transformations</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/DeepLearning/">
+            <span class="level-start">
+                <span class="level-item">DeepLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C4-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C4-Vector-Spaces</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T01:32:07.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C3-Determinants/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C3-Determinants</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T10:30:13.000Z">2023-09-24</time></div>
+                    <a href="/Math/Geometry/3DMath-Transformation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3DMath-Transformation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T05:47:37.000Z">2023-09-24</time></div>
+                    <a href="/Math/Linear-Algebra/C2-Matrix-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C2-Matrix-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-06T07:30:00.000Z">2023-04-06</time></div>
+                    <a href="/Math/Linear-Algebra/C1-Linear-Equation-in-Linear-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1-Linear-Equation-in-Linear-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DeepLearning/">
+                        <span class="tag">DeepLearning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="C3-Determinants" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

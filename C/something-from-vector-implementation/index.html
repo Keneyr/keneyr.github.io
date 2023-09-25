@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>something-from-vector-implementation - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="This article is for the readers who have a basic background of math, graphics, c++. Although I have written the code about Vector2,Vector3 by c++, but as time goes by, all the principles were forgotte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="something-from-vector-implementation">
+<meta property="og:url" content="https://keneyr.com/C/something-from-vector-implementation/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="This article is for the readers who have a basic background of math, graphics, c++. Although I have written the code about Vector2,Vector3 by c++, but as time goes by, all the principles were forgotte">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2020-03-29T04:06:41.000Z">
+<meta property="article:modified_time" content="2023-09-17T08:58:12.644Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="something-from-vector-implementation" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/reading">Reading</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-29T04:06:41.000Z">2020-03-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    18 minutes read (About 2688 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                something-from-vector-implementation
+            
+        </h1>
+        <div class="content">
+            <p>This article is for the readers who have a basic background of <strong><em>math, graphics, c++</em></strong>. Although I have written the code about <em>Vector2,Vector3</em> by c++, but as time goes by, all the principles were forgotten. So I decided to write something about the simple program to get much more strong memory.<br>If you search the implementation of vector in github, you can find lots examples. Here’s an example <a href="https://github.com/lnishan/vector/blob/master/vector.hpp">vector.hpp</a>, actually it’s too hard for me to read. Today’s <em>vector.hpp</em> is about the <strong>really basic syntax</strong> in c++ such as <strong><em>operator overloading, friends, inline</em></strong> etc.</p>
+<a id="more"></a>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector3f</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Vector3f()</span><br><span class="line">        : x(<span class="number">0</span>)</span><br><span class="line">        , y(<span class="number">0</span>)</span><br><span class="line">        , z(<span class="number">0</span>)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector3f(<span class="keyword">float</span> xx)</span><br><span class="line">        : x(xx)</span><br><span class="line">        , y(xx)</span><br><span class="line">        , z(xx)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector3f(<span class="keyword">float</span> xx, <span class="keyword">float</span> yy, <span class="keyword">float</span> zz)</span><br><span class="line">        : x(xx)</span><br><span class="line">        , y(yy)</span><br><span class="line">        , z(zz)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">float</span>&amp; r) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x * r, y * r, z * r);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>/(<span class="keyword">const</span> <span class="keyword">float</span>&amp; r) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x / r, y / r, z / r);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Vector3f <span class="keyword">operator</span>*(<span class="keyword">const</span> Vector3f&amp; v) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x * v.x, y * v.y, z * v.z);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>-(<span class="keyword">const</span> Vector3f&amp; v) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x - v.x, y - v.y, z - v.z);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>+(<span class="keyword">const</span> Vector3f&amp; v) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(x + v.x, y + v.y, z + v.z);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f <span class="keyword">operator</span>-() <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(-x, -y, -z);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3f&amp; <span class="keyword">operator</span>+=(<span class="keyword">const</span> Vector3f&amp; v)</span><br><span class="line">    &#123;</span><br><span class="line">        x += v.x, y += v.y, z += v.z;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> Vector3f <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">float</span>&amp; r, <span class="keyword">const</span> Vector3f&amp; v)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector3f(v.x * r, v.y * r, v.z * r);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">friend</span> <span class="built_in">std</span>::ostream&amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream&amp; os, <span class="keyword">const</span> Vector3f&amp; v)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> os &lt;&lt; v.x &lt;&lt; <span class="string">", "</span> &lt;&lt; v.y &lt;&lt; <span class="string">", "</span> &lt;&lt; v.z;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">float</span> x, y, z;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector2f</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Vector2f()</span><br><span class="line">        : x(<span class="number">0</span>)</span><br><span class="line">        , y(<span class="number">0</span>)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector2f(<span class="keyword">float</span> xx)</span><br><span class="line">        : x(xx)</span><br><span class="line">        , y(xx)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector2f(<span class="keyword">float</span> xx, <span class="keyword">float</span> yy)</span><br><span class="line">        : x(xx)</span><br><span class="line">        , y(yy)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">    Vector2f <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">float</span>&amp; r) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector2f(x * r, y * r);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector2f <span class="keyword">operator</span>+(<span class="keyword">const</span> Vector2f&amp; v) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector2f(x + v.x, y + v.y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">float</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> Vector3f <span class="title">lerp</span><span class="params">(<span class="keyword">const</span> Vector3f&amp; a, <span class="keyword">const</span> Vector3f&amp; b, <span class="keyword">const</span> <span class="keyword">float</span>&amp; t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a * (<span class="number">1</span> - t) + b * t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> Vector3f <span class="title">normalize</span><span class="params">(<span class="keyword">const</span> Vector3f&amp; v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> mag2 = v.x * v.x + v.y * v.y + v.z * v.z;</span><br><span class="line">    <span class="keyword">if</span> (mag2 &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">float</span> invMag = <span class="number">1</span> / sqrtf(mag2);</span><br><span class="line">        <span class="keyword">return</span> Vector3f(v.x * invMag, v.y * invMag, v.z * invMag);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">float</span> <span class="title">dotProduct</span><span class="params">(<span class="keyword">const</span> Vector3f&amp; a, <span class="keyword">const</span> Vector3f&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.x * b.x + a.y * b.y + a.z * b.z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> Vector3f <span class="title">crossProduct</span><span class="params">(<span class="keyword">const</span> Vector3f&amp; a, <span class="keyword">const</span> Vector3f&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Vector3f(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Scan the program above, here’s some tips:</p>
+<ul>
+<li><p>Inline Functions</p>
+</li>
+<li><p>Reference Variables</p>
+</li>
+<li><p>Operator Overloading</p>
+</li>
+<li><p>Friends</p>
+</li>
+</ul>
+<h2 id="Inline-Functions"><a href="#Inline-Functions" class="headerlink" title="Inline Functions"></a>Inline Functions</h2><blockquote>
+<p><em>Inline functions</em> are a C++ enhancement designed to speed up programs.</p>
+</blockquote>
+<p>The primary distinction between normal functions and inline functions is not in how you code them but in how the C++ compiler incorporates them into a program.To understand the distinction between inline functions and normal functions,you need to peer more deeply into a program’s innards.Let’s do that now.</p>
+<h3 id="How-do-normal-function-calls-work"><a href="#How-do-normal-function-calls-work" class="headerlink" title="How do normal function calls work?"></a>How do normal function calls work?</h3><p>The final product of the <strong><em>compilation process</em></strong> is an executable program,which consists of a set of <strong><em>machine language instructions</em></strong>.When you start a program,the <strong><em>operating system</em></strong> loads these instructions into the computer’s memory so that each instruction has a particular <strong><em>memory address</em></strong>.The computer then goes through these instructions step-by-step.Sometimes,as when you have a loop or a branching statement,program execution skips over instructions,jumping backward or forward to a particular address. Normal function calls also involve having a program jump to another address (the function’s address) and then jump back when the function terminates.<br>Let’s look at a typical implementation of that process in a little more detail.When a program reaches the function call instruction, the program stores the memory address of the instruction immediately following the function call,copies function arguments to the <strong><em>stack</em></strong> (a block of memory reserved for that purpose),jumps to the memory location that marks the beginning of the function,executes the function code (perhaps placing a return value in a register),and then jumps back to the instruction whose address it saved. Jumping back and forth and keeping track of where to jump means that there is an overhead in elapsed time to using functions.</p>
+<h3 id="How-do-inline-functions-work"><a href="#How-do-inline-functions-work" class="headerlink" title="How do inline functions work?"></a>How do inline functions work?</h3><p>C++ <em>inline functions</em> provide an alternative.In an inline function,the compiled code is “in line” with the other code in the program.That is,the compiler replaces the function call with the corresponding function code.With inline code,the program doesn’t have to jump to another location to execute the code and then jump back.</p>
+<blockquote>
+<p>Inline functions thus run a little faster than regular functions,but they come with a memory penalty.If a program calls an inline function at ten separate locations,then the program winds up with ten copies of the function inserted into the code.</p>
+</blockquote>
+<p><img src="/images/inline-functions-versus-regular-functions.png" alt="inline-functions-versus-regular-functions(from[1])"></p>
+<h3 id="When-use-inline"><a href="#When-use-inline" class="headerlink" title="When use inline?"></a>When use inline?</h3><p>You should be selective about using inline functions.If the time needed to execute the function code is long compared to the time needed to handle the function call mechanism,then the time saved is a relatively small portion of the entire process.If the code execution time is short,then an inline call can save a large portion of the time used by the non-inline call.On the other hand,you are now saving a large portion of a relatively quick process,so the absolute time savings may not be that great unless the function is called frequently.</p>
+<h3 id="Inline-versus-Macros"><a href="#Inline-versus-Macros" class="headerlink" title="Inline versus Macros"></a>Inline versus Macros</h3><p>The inline facility is an addition to C++. C uses the preprocessor <em>#define</em> statement to provide macros, which are crude implementations of inline code. For example, here’s a macro for squaring a number:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SQUARE(X) X*X</span></span><br></pre></td></tr></table></figure>
+
+<p>This works not by passing arguments but through text substitution, with the X acting as a symbolic label for the “argument”:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = SQUARE(<span class="number">5.0</span>); is replaced by a = <span class="number">5.0</span>*<span class="number">5.0</span>;</span><br><span class="line">b = SQUARE(<span class="number">4.5</span> + <span class="number">7.5</span>); is replaced by b = <span class="number">4.5</span> + <span class="number">7.5</span> * <span class="number">4.5</span> + <span class="number">7.5</span>;</span><br><span class="line">d = SQUARE(c++); is replaced by d = c++*c++;</span><br></pre></td></tr></table></figure>
+
+<p>Only the first example here works properly. You can improve matters with a liberal application of parentheses:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SQUARE(X) ((X)*(X))</span></span><br></pre></td></tr></table></figure>
+
+<p>Still, the problem remains that macros don’t pass by value. Even with this new definition, SQUARE(c++) increments c twice, but the inline  square() function evaluates c , passes that value to be squared, and then increments  c once. The intent here is not to show you how to write C macros.</p>
+<blockquote>
+<p>Rather, it is to suggest that if you have been using C macros to perform function-like services, you should consider converting them to C++ inline functions.</p>
+</blockquote>
+<h2 id="Reference-Variables"><a href="#Reference-Variables" class="headerlink" title="Reference Variables"></a>Reference Variables</h2><p>The main use for a reference variable is as a formal argument to a function.If you use a reference as an argument,the function works with the original data instead of with a copy.References provide a convenient alternative to pointers for processing large structures with a function,and they are essential for designing classes.</p>
+<h3 id="Creating-a-reference-variable"><a href="#Creating-a-reference-variable" class="headerlink" title="Creating a reference variable"></a>Creating a reference variable</h3><p>‘&amp;’ in c++ has two functions:</p>
+<ul>
+<li><p>to indicate the address of a variable</p>
+</li>
+<li><p>to declare references</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rats;</span><br><span class="line"><span class="keyword">int</span> &amp; rodents = rats; <span class="comment">// makes rodents an alias for rats</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>In this context, &amp; is not the <strong>address operator</strong>.Instead,it serves as part of the <strong>type identifier</strong>.</p>
+</blockquote>
+<p>Just as char * in a declaration means pointer-to-char , int &amp; means reference-to-int .The reference declaration allows you to use rats and rodents interchangeably;both refer to the same value and the same memory location.</p>
+<h3 id="Difference-between-pointer-and-reference"><a href="#Difference-between-pointer-and-reference" class="headerlink" title="Difference between pointer and reference?"></a>Difference between pointer and reference?</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rats = <span class="number">101</span>;</span><br><span class="line"><span class="keyword">int</span> &amp; rodents = rats; <span class="comment">// rodents a reference</span></span><br><span class="line"><span class="keyword">int</span> * prats = &amp;rats; <span class="comment">// prats a pointer</span></span><br></pre></td></tr></table></figure>
+
+<p>Then you could use the expressions rodents and *prats interchangeably with  rats and use the expressions &amp;rodents and prats interchangeably with &amp;rats .From this standpoint,a reference looks a lot like a pointer in disguised notation in which the * dereferencing operator is understood implicitly.And,in fact,that’s more or less what a reference is.But there are differences besides those of notation.For one,it is necessary to initialize the reference when you declare it;you can’t declare the reference and then assign it a value later the way you can with a pointer:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rat;</span><br><span class="line"><span class="keyword">int</span> &amp; rodent;</span><br><span class="line">rodent = rat; <span class="comment">// No, you can't do this.</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>You should initialize a reference variable when you declare it.</strong></p>
+</blockquote>
+<p>A reference is rather like a  const pointer;you have to initialize it when you create it, and when a reference pledges its allegiance to a particular variable,it sticks to its pledge. That is,</p>
+<blockquote>
+<p><strong>int &amp; rodents = rats; (equals to)  int * const pr = &amp; rats;</strong></p>
+</blockquote>
+<h3 id="References-as-Function-Parameters"><a href="#References-as-Function-Parameters" class="headerlink" title="References as Function Parameters"></a>References as Function Parameters</h3><p>code from[1]</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swapr</span><span class="params">(<span class="keyword">int</span> &amp; a, <span class="keyword">int</span> &amp; b)</span></span>; <span class="comment">// a, b are aliases for ints</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swapp</span><span class="params">(<span class="keyword">int</span> * p, <span class="keyword">int</span> * q)</span></span>; <span class="comment">// p, q are addresses of ints</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swapv</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>; <span class="comment">// a, b are new variables</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> wallet1 = <span class="number">300</span>;</span><br><span class="line">    <span class="keyword">int</span> wallet2 = <span class="number">350</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"wallet1 = $"</span> &lt;&lt; wallet1;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">" wallet2 = $"</span> &lt;&lt; wallet2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Using references to swap contents:\n"</span>;</span><br><span class="line">    swapr(wallet1, wallet2); <span class="comment">// pass variables</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"wallet1 = $"</span> &lt;&lt; wallet1;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">" wallet2 = $"</span> &lt;&lt; wallet2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Using pointers to swap contents again:\n"</span>;</span><br><span class="line">    swapp(&amp;wallet1, &amp;wallet2); <span class="comment">// pass addresses of variables</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"wallet1 = $"</span> &lt;&lt; wallet1;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">" wallet2 = $"</span> &lt;&lt; wallet2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Trying to use passing by value:\n"</span>;</span><br><span class="line">    swapv(wallet1, wallet2); <span class="comment">// pass values of variables</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"wallet1 = $"</span> &lt;&lt; wallet1;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">" wallet2 = $"</span> &lt;&lt; wallet2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swapr</span><span class="params">(<span class="keyword">int</span> &amp; a, <span class="keyword">int</span> &amp; b)</span> <span class="comment">// use references</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    temp = a; <span class="comment">// use a, b for values of variables</span></span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swapp</span><span class="params">(<span class="keyword">int</span> * p, <span class="keyword">int</span> * q)</span> <span class="comment">// use pointers</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    temp = *p; <span class="comment">// use *p, *q for values of variables</span></span><br><span class="line">    *p = *q;</span><br><span class="line">    *q = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swapv</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> <span class="comment">// try using values</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    temp = a; <span class="comment">// use a, b for values of variables</span></span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The result is :</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wallet1 = $<span class="number">300</span> wallet2 = $<span class="number">350</span></span><br><span class="line">Using references to swap contents:</span><br><span class="line">wallet1 = $<span class="number">350</span> wallet2 = $<span class="number">300</span></span><br><span class="line">Using pointers to swap contents again:</span><br><span class="line">wallet1 = $<span class="number">300</span> wallet2 = $<span class="number">350</span></span><br><span class="line">Trying to use passing by value:</span><br><span class="line">wallet1 = $<span class="number">300</span> wallet2 = $<span class="number">350</span></span><br></pre></td></tr></table></figure>
+
+<p>The reference and pointer methods both successfully swap the contents of the two wallets,whereas the passing by value method fails.</p>
+<h2 id="Operator-Overloading"><a href="#Operator-Overloading" class="headerlink" title="Operator Overloading"></a>Operator Overloading</h2><p>Operator overloading is a technique for giving object operations a prettier look.</p>
+<blockquote>
+<p><strong>Operator overloading is an example of C++ polymorphism.</strong></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Vector3f <span class="title">v</span> <span class="params">(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span></span>;</span><br><span class="line">    <span class="function">Vector3f <span class="title">w</span> <span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; v + w &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Friends"><a href="#Friends" class="headerlink" title="Friends"></a>Friends</h2><p>As you’ve seen,C++ controls access to the private portions of a class object.Usually,public class methods serve as the only access,but sometimes this restriction is too rigid to fit particular programming problems.In such cases,C++ provides another form of access:the friend.Friends come in three varieties:</p>
+<ul>
+<li><p>Friend functions</p>
+</li>
+<li><p>Friend classes</p>
+</li>
+<li><p>Friend member functions</p>
+</li>
+</ul>
+<h3 id="Why-we-need-friends"><a href="#Why-we-need-friends" class="headerlink" title="Why we need friends?"></a>Why we need friends?</h3><p>Often,overloading a <strong><em>binary operator</em></strong> (that is,an operator with two arguments) for a class generates a need for friends Multiplying a Time object by a real number provides just such a situation,so let’s study that case.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A = B * <span class="number">2.75</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Remember,the left operand is the invoking object.</strong></p>
+</blockquote>
+<p>Translates to the following member function call:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A = B.<span class="keyword">operator</span>*(<span class="number">2.75</span>);</span><br></pre></td></tr></table></figure>
+
+<p>But what about the following statement?</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A = <span class="number">2.75</span> * B; <span class="comment">// cannot correspond to a member function</span></span><br></pre></td></tr></table></figure>
+
+<p>Conceptually, 2.75 * B should be the same as  B * 2.75 ,but the first expression cannot correspond to a member function because  2.75 is not a type  Time object.Remember, the left operand is the invoking object,but  2.75 is not an object.So the compiler cannot replace the expression with a member function call.</p>
+<p>One way around this difficulty is to tell everyone (and to remember yourself) that you can only write  B * 2.75 but never write  2.75 * B .This is a server-friendly,client-beware solution,and <strong><em>that’s not what OOP is about</em></strong>.</p>
+<p>However,there is another possibility—<strong>using a nonmember function</strong>.(Remember,most operators can be overloaded using either member or nonmember functions.) A nonmember function is not invoked by an object;instead,any values it uses,including objects,are explicit arguments.Thus,the compiler could match the expression</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Time <span class="keyword">operator</span>*(<span class="keyword">double</span> m, <span class="keyword">const</span> Time &amp; t);</span><br></pre></td></tr></table></figure>
+
+<p>Using a nonmember function solves the problem of getting the operands in the desired order (first  double and then  Time ),but it raises a new problem:<strong>Nonmember functions can’t directly access private data in a class</strong>.Well,at least ordinary nonmember functions lack access.But there is a special category of nonmember functions,<strong>called friends,that can access private members of a class.</strong></p>
+<h3 id="Creating-friends"><a href="#Creating-friends" class="headerlink" title="Creating friends"></a>Creating friends</h3><p>The first step toward creating a friend function is to place a prototype in the class declaration and prefix the declaration with the keyword  friend . Like the code we showed in the beginning.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">friend</span> Vector3f <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">float</span>&amp; r, <span class="keyword">const</span> Vector3f&amp; v)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> Vector3f(v.x * r, v.y * r, v.z * r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This prototype has two implications:</p>
+<ul>
+<li><p>Although the  operator*() function is declared in the class declaration,it is not a member function.So it isn’t invoked by using the membership operator.</p>
+</li>
+<li><p>Although the  operator*() function is not a member function,it has the same access rights as a member function.</p>
+</li>
+</ul>
+<h3 id="Are-friends-unfaithful-to-OOP"><a href="#Are-friends-unfaithful-to-OOP" class="headerlink" title="Are friends unfaithful to OOP?"></a>Are friends unfaithful to OOP?</h3><p>At first glance, it might seem that friends violate the OOP principle of data hiding because the friend mechanism allows nonmember functions to access private data. However, that’s an overly narrow view. Instead, you should think of friend functions as part of an extended interface for a class. For example, from a conceptual point of view, multiplying a  double by a Time value is pretty much the same as multiplying a  Time value by a  double . That the first requires a friend function whereas the second can be done with a member function is the result of C++ syntax, not of a deep conceptual difference. By using both a friend function and a class method, you can express either operation with the same user interface. Also keep in mind that only a class declaration can decide which functions are friends, so the class declaration still controls which functions access private data. In short, class methods and friends are simply two different mechanisms for expressing a class interface.</p>
+<h3 id="A-common-kind-of-friend-Overloading-the-lt-lt-Operator"><a href="#A-common-kind-of-friend-Overloading-the-lt-lt-Operator" class="headerlink" title="A common kind of friend: Overloading the &lt;&lt; Operator"></a>A common kind of friend: Overloading the &lt;&lt; Operator</h3><p>From the code in the begining,we see that :</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">friend</span> <span class="built_in">std</span>::ostream&amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream&amp; os, <span class="keyword">const</span> Vector3f&amp; v)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> os &lt;&lt; v.x &lt;&lt; <span class="string">", "</span> &lt;&lt; v.y &lt;&lt; <span class="string">", "</span> &lt;&lt; v.z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In its most basic incarnation,the  <strong>&lt;&lt; operator</strong> is one of C and C++’s bit manipulation operators;it shifts bits left in a value.But the <strong><em>ostream class</em></strong> overloads the operator,converting it into an output tool.Recall that cout is an  ostream object and that it is smart enough to recognize all the basic C++ types.That’s because the  ostream class declaration includes an overloaded  operator&lt;&lt;() definition for each of the basic types.That is,one definition uses an  int argument,one uses a  double argument,and so on.So one way to teach  cout to recognize a  <em>Vector3f</em> object is to add a new function operator definition to the  ostream class declaration.<strong><em>But it’s a dangerous idea to alter the  iostream file and mess around with a standard interface. Instead,use the Vector3f class declaration to teach the Vector3f class how to use cout.</em></strong></p>
+<hr>
+<p>So this is the basic syntax, anyway, there’s still lots deeper knowledge there… if I have met much more advanced code, I will write this article again.</p>
+<hr>
+<p>References:<br>[1]C++ Primer Plus.</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/C/" rel="tag">C++</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Graphics/Rendering/First-Met-With-RayTracing/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">First-Met-With-RayTracing</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/C/address-opereator/">
+                <span class="level-item">address-opereator</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '568afa30e599d064f2bd7a11d9e3cc8b',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Inline-Functions">
+        <span class="has-mr-6">1</span>
+        <span>Inline Functions</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#How-do-normal-function-calls-work">
+        <span class="has-mr-6">1.1</span>
+        <span>How do normal function calls work?</span>
+        </a></li><li>
+        <a class="is-flex" href="#How-do-inline-functions-work">
+        <span class="has-mr-6">1.2</span>
+        <span>How do inline functions work?</span>
+        </a></li><li>
+        <a class="is-flex" href="#When-use-inline">
+        <span class="has-mr-6">1.3</span>
+        <span>When use inline?</span>
+        </a></li><li>
+        <a class="is-flex" href="#Inline-versus-Macros">
+        <span class="has-mr-6">1.4</span>
+        <span>Inline versus Macros</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Reference-Variables">
+        <span class="has-mr-6">2</span>
+        <span>Reference Variables</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Creating-a-reference-variable">
+        <span class="has-mr-6">2.1</span>
+        <span>Creating a reference variable</span>
+        </a></li><li>
+        <a class="is-flex" href="#Difference-between-pointer-and-reference">
+        <span class="has-mr-6">2.2</span>
+        <span>Difference between pointer and reference?</span>
+        </a></li><li>
+        <a class="is-flex" href="#References-as-Function-Parameters">
+        <span class="has-mr-6">2.3</span>
+        <span>References as Function Parameters</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Operator-Overloading">
+        <span class="has-mr-6">3</span>
+        <span>Operator Overloading</span>
+        </a></li><li>
+        <a class="is-flex" href="#Friends">
+        <span class="has-mr-6">4</span>
+        <span>Friends</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Why-we-need-friends">
+        <span class="has-mr-6">4.1</span>
+        <span>Why we need friends?</span>
+        </a></li><li>
+        <a class="is-flex" href="#Creating-friends">
+        <span class="has-mr-6">4.2</span>
+        <span>Creating friends</span>
+        </a></li><li>
+        <a class="is-flex" href="#Are-friends-unfaithful-to-OOP">
+        <span class="has-mr-6">4.3</span>
+        <span>Are friends unfaithful to OOP?</span>
+        </a></li><li>
+        <a class="is-flex" href="#A-common-kind-of-friend-Overloading-the-lt-lt-Operator">
+        <span class="has-mr-6">4.4</span>
+        <span>A common kind of friend: Overloading the << Operator</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/DeepLearning/">
+            <span class="level-start">
+                <span class="level-item">DeepLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C4-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C4-Vector-Spaces</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T01:32:07.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C3-Determinants/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C3-Determinants</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T10:30:13.000Z">2023-09-24</time></div>
+                    <a href="/Math/Geometry/3DMath-Transformation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3DMath-Transformation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T05:47:37.000Z">2023-09-24</time></div>
+                    <a href="/Math/Linear-Algebra/C2-Matrix-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C2-Matrix-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-06T07:30:00.000Z">2023-04-06</time></div>
+                    <a href="/Math/Linear-Algebra/C1-Linear-Equation-in-Linear-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1-Linear-Equation-in-Linear-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DeepLearning/">
+                        <span class="tag">DeepLearning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="something-from-vector-implementation" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

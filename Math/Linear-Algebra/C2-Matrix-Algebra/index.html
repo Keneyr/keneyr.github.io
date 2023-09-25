@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>C2-Matrix-Algebra - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: Inverse, LU Factorization, Homogeneous Coordinates, Perspective Projections, Rank">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C2-Matrix-Algebra">
+<meta property="og:url" content="https://keneyr.com/Math/Linear-Algebra/C2-Matrix-Algebra/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: Inverse, LU Factorization, Homogeneous Coordinates, Perspective Projections, Rank">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-09-24T05:47:37.000Z">
+<meta property="article:modified_time" content="2023-09-25T01:40:26.294Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Linear Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="C2-Matrix-Algebra" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/reading">Reading</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-09-24T05:47:37.000Z">2023-09-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Math/">Math</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 minutes read (About 2559 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                C2-Matrix-Algebra
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: Inverse, LU Factorization, Homogeneous Coordinates, Perspective Projections, Rank</p>
+<a id="more"></a>
+
+<h2 id="Matrix-Operation"><a href="#Matrix-Operation" class="headerlink" title="Matrix Operation"></a>Matrix Operation</h2><p>$$<br>\begin{aligned}<br>&amp;AB \neq BA<br>\\<br>&amp;AB = AC,it’s \space not \space true \space B = C<br>\\<br>&amp;AB = 0, it’s \space not \space true \space A = 0 \space or \space B = 0<br>\\<br>&amp;(A^T)^T = A<br>\\<br>&amp;(A+B)^T = A^T+B^T<br>\\<br>&amp;(AB)^T = B^TA^T<br>\\<br>&amp;A(BC) = (AB)C<br>\end{aligned}<br>$$</p>
+<blockquote>
+<ol>
+<li>The fastest way to obtain $AB$ on a computer depends on the way in which<br>the computer stores matrices in its memory. The standard high-performance<br>algorithms, such as in LAPACK, calculate $AB$ by columns, as in our definition<br>of the product. (A version of LAPACK written in C++ calculates $AB$ by rows.)</li>
+<li>The definition of $AB$ lends itself well to parallel processing on a computer. The<br>columns of $B$ are assigned individually or in groups to different processors,<br>which independently and hence simultaneously compute the corresponding<br>columns of $AB$.</li>
+</ol>
+</blockquote>
+<h2 id="The-Inverse-of-Matrix"><a href="#The-Inverse-of-Matrix" class="headerlink" title="The Inverse of Matrix"></a>The Inverse of Matrix</h2><p>An $n \times n$ matrix $A$ is said to be <strong><em>invertible</em></strong> if there is an $n \times n$ matrix $C$ such that</p>
+<p>$$<br>CA = I \space and \space AC = I<br>$$</p>
+<p>A matrix that is not invertible is sometimes called a <strong><em>singular matrix</em></strong>, and an invertible matrix is called a <strong><em>nonsingular matrix</em></strong>.<br>一个不可逆的矩阵有时被称为奇异矩阵，一个可逆的矩阵被称为非奇异矩阵</p>
+<p>$$<br>\begin{aligned}<br>&amp; A = \begin{bmatrix}a &amp; b \\ c &amp; d\end{bmatrix}. \space<br>if \space ad - bc \neq 0, A \space is\space invertible<br>\\<br>&amp; A^{-1} = \frac{1}{ad-bc}\begin{bmatrix}d &amp; -b \\ -c &amp; a\end{bmatrix}<br>\\<br>a&amp; d - bc = 0 , A\space is \space not \space invertible<br>\\<br>&amp; det A = ad - bc(行列式)<br>\end{aligned}<br>$$</p>
+<p>If $A$ is an invertible $n \times n$ matrix, then for each $\vec{b}$ in $R^n$, the equation $A\vec{x} = \vec{b}$ has the unique solution $\vec{x} = A^{-1}\vec{b}$.</p>
+<p>$$<br>(A^{-1})^{-1} = A<br>\\<br>(AB)^{-1} = B^{-1}A^{-1}<br>\\<br>(A^T)^{-1} = (A^{-1})^T<br>\\<br>$$</p>
+<p>An $n \times n$ matrix $A$ is invertible if and only if $A$ is row equivalent to $I_n$, and in this case, any sequence of elementary row operations that reduces A to $I_n$ also transforms $I_n$ into $A^{-1}$.</p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>$$<br>E_1 = \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -4 &amp; 0 &amp; 1\end{bmatrix}<br>\\<br>transform \space E_1 \space to \space I, get \space I \space to \space E_1^{-1}:<br>\\<br>E_1^{-1} = \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 4 &amp; 0 &amp; 1\end{bmatrix}<br>$$</p>
+<h3 id="An-algorithm-for-Finding-A-1"><a href="#An-algorithm-for-Finding-A-1" class="headerlink" title="An algorithm for Finding $A^{-1}$"></a>An algorithm for Finding $A^{-1}$</h3><p>Row reduce the augmented matrix $\begin{bmatrix}A &amp; I\end{bmatrix}$. If $A$ is row equivalent to $I$, then $\begin{bmatrix}A &amp; I\end{bmatrix}$ is row equivalent to $\begin{bmatrix}I &amp; A^{-1}\end{bmatrix}$. Other wise, A does not have an inverse.</p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Find the Inverse of the matrix A = $\begin{bmatrix}0 &amp; 1 &amp; 2\\1 &amp; 0 &amp; 3\\4 &amp; -3 &amp; 8\end{bmatrix}$, if it exists.</p>
+<p>$$<br>\begin{bmatrix}A &amp; I\end{bmatrix} =<br>\begin{bmatrix}0 &amp; 1 &amp; 2 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 3 &amp; 0 &amp; 1 &amp; 0\\4 &amp; -3 &amp; 8 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}<br>\sim<br>\begin{bmatrix}1 &amp; 0 &amp; 0 &amp; \frac{-9}{2} &amp; 7 &amp; \frac{-3}{2}\\0 &amp; 1 &amp; 0 &amp; -2 &amp; 4 &amp; -1\\0 &amp; 0 &amp; 1 &amp; \frac{3}{2} &amp; -2 &amp; \frac{1}{2}\end{bmatrix}<br>\longrightarrow<br>A^{-1} = \begin{bmatrix}\frac{-9}{2} &amp; 7 &amp; \frac{-3}{2}\\ -2 &amp; 4 &amp; -1\\ \frac{3}{2} &amp; -2 &amp; \frac{1}{2}\end{bmatrix}<br>$$</p>
+<h2 id="Characterizations-of-Inversible-Matrix"><a href="#Characterizations-of-Inversible-Matrix" class="headerlink" title="Characterizations of  Inversible Matrix"></a>Characterizations of  Inversible Matrix</h2><p><mark>注意，这些性质的应用必须是n x n的矩阵</mark></p>
+<blockquote>
+<p>Let $A$ be a square $n \times n$ matrix. Then the following statements are equivalent. That is, for a given $A$, the statements are either all true or all false.<br>a. $A$ is an invertible matrix.<br>b. $A$ is row equivalent to the $n \times n$ identity matrix.<br>c. $A$ has $n$ pivot positions.<br>d. The equation $Ax = 0$ has only the trivial solution.<br>e. The columns of $A$ form a linearly independent set.<br>f. The linear transformation $x \rightarrow Ax$ is one-to-one.<br>g. The equation $Ax = b$ has at least one solution for each $b$ in $R^n$.<br>h. The columns of $A$ span $R^n$.<br>i. The linear transformation $x \rightarrow Ax$ maps $R^n$ onto $R^n$.<br>j. There is an $n \times n$ matrix $C$ such that $CA = I$.<br>k. There is an $n \times n$ matrix $D$ such that $AD = I$.<br>l. $A^T$ is an invertible matrix.</p>
+</blockquote>
+<h3 id="Invertible-Linear-Transformations"><a href="#Invertible-Linear-Transformations" class="headerlink" title="Invertible Linear Transformations"></a>Invertible Linear Transformations</h3><p>Let  $T :R^n\rightarrow R^n$ be a linear transformation and let $A$ be the standard matrix for $T$. Then $T$ is invertible if and only if $A$ is an invertible matrix. In that case, the linear transformation $S$ given by $S(x) = A^{-1}x $ is the unique function satisfying equations (1) and (2)</p>
+<p>$$<br>S(T(x)) = x, x \in R^n\tag{1}<br>$$<br>$$<br>T(S(x)) = x, x \in R^n\tag{2}<br>$$</p>
+<blockquote>
+<p>由于计算机的精度问题，you might occasionally encounter a “nearly singular” or illconditioned matrix—an invertible matrix, that can become singular if some of its entries are changed ever so slightly.<br>In this case, row reduction may produce fewer than $n$ pivot positions, as a result of roundoff error.<br>Also, roundoff error can sometimes make a singular matrix appear to be invertible.</p>
+</blockquote>
+<h2 id="Partitioned-Matrices"><a href="#Partitioned-Matrices" class="headerlink" title="Partitioned Matrices"></a>Partitioned Matrices</h2><p>$$<br>A =<br>\left[<br>    \begin{array}{ccc|cc|c}<br>      3 &amp; 0 &amp; -1 &amp; 5 &amp; 9 &amp; -2 \\<br>      -5 &amp; 2 &amp; 4 &amp; 0 &amp; -3 &amp; 1 \\<br>      \hline<br>      -8 &amp; -6 &amp; 3 &amp; 1 &amp; 7 &amp; -4<br>    \end{array}<br>\right]<br>$$<br>can also be written as the $2 \times 3$ partitioned (or block) matrix</p>
+<p>$$<br>A = \begin{bmatrix}A_{11} &amp; A_{12} &amp; A_{13} \\<br>A_{21} &amp; A_{22} &amp; A_{23}\end{bmatrix}<br>$$</p>
+<h3 id="Multiplication-of-Partitioned-Matrices"><a href="#Multiplication-of-Partitioned-Matrices" class="headerlink" title="Multiplication of Partitioned Matrices"></a>Multiplication of Partitioned Matrices</h3><p>$$<br>A : m \times n, B : n \times p<br>\\<br>AB = \begin{bmatrix}col_1(A) &amp; col_2(A) &amp; \cdots &amp; col_n(A)\end{bmatrix}<br>\begin{bmatrix}row_1(B) \\ row_1(B) \\ \cdots \\ row_n(B)\end{bmatrix}\tag{1}<br>$$</p>
+<h3 id="Inverse-of-Partitioned-Matrices"><a href="#Inverse-of-Partitioned-Matrices" class="headerlink" title="Inverse of Partitioned Matrices"></a>Inverse of Partitioned Matrices</h3><p>$$<br>assume\space A_{11}: p\times p, A_{22}: q\times q, A \space invertible.<br>A = \begin{bmatrix}A_{11} &amp; A_{12}\\<br>0 &amp; A_{22}\end{bmatrix}\tag{bolck upper triangular}<br>$$</p>
+<p>$$<br>求逆过程如下：<br>\\<br>A_{11}B_{11} + A_{12}B_{21} = I_p\tag{1}<br>$$<br>$$<br>A_{11}B_{12} + A_{12}B_{22} = 0\tag{2}<br>$$<br>$$<br>A_{22}B_{21} = 0\tag{3}<br>$$<br>$$<br>A_{22}B_{22} = I_{q}\tag{4}<br>$$<br>$$<br>(1)(2)(3)(4)\rightarrow<br>A^{-1} = \begin{bmatrix}A_{11} &amp; A_{12}\\<br>0 &amp; A_{22}\end{bmatrix} ^ {-1}<br>=\begin{bmatrix}A_{11}^{-1} &amp;-A_{11}^{-1}A_{12}A_{22}^{-1}\\<br>0 &amp; A_{22}^{-1}\end{bmatrix}<br>$$</p>
+<blockquote>
+<p>分块矩阵提高计算机计算效率 When matrices are too large to fit in a computer’s high-speed memory, partitioning permits the computer to work with only two or three submatrices at a time. </p>
+</blockquote>
+<h2 id="Matrix-Factorizations-矩阵分解"><a href="#Matrix-Factorizations-矩阵分解" class="headerlink" title="Matrix Factorizations 矩阵分解"></a>Matrix Factorizations 矩阵分解</h2><h3 id="The-LU-Factorization"><a href="#The-LU-Factorization" class="headerlink" title="The LU Factorization"></a>The LU Factorization</h3><p>ssume that $A$ is an $m \times n$ matrix that can be row reduced to echelon form, <u>without row interchanges</u>. Then $A$ can be written in the form $A = LU$ , where $L$ is an $m \times m$ lower triangular matrix with $1’s$ on the diagonal and $U$ is an $m \times n$ echelon form of $A$.</p>
+<p>The matrix $L$ is invertible and is called <strong><em>a unit lower triangular matrix</em></strong>. 单位下三角矩阵<br>$$<br>A = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0\\ * &amp; 1 &amp; 0 &amp; 0\\ * &amp; * &amp; 1 &amp; 0\\ * &amp; * &amp; * &amp; 1\end{bmatrix}<br>\begin{bmatrix}<br>\blacksquare &amp; * &amp; * &amp; * &amp; *\\<br>0 &amp; \blacksquare &amp; * &amp; * &amp; *\\<br>0 &amp; 0 &amp; 0 &amp; \blacksquare &amp; *\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>$$</p>
+<blockquote>
+<p>思考，这样分解有什么好处？</p>
+</blockquote>
+<p>$$<br>A\vec{x} = \vec{b}<br>\longrightarrow<br>L(U\vec{x}) = \vec{b},<br>\\<br>let\space \vec{y} = U\vec{x}<br>\Rightarrow<br>\\<br>\begin{cases}<br>L\vec{y} = \vec{b}\\<br>U\vec{x} = \vec{y}\tag{2}<br>\end{cases}<br>$$</p>
+<blockquote>
+<p>分解后好求解，因为LU都是三角矩阵</p>
+</blockquote>
+<p>&#x1F4A1;For example&#x1F4A1;：</p>
+<p>$$<br>A =<br>\begin{bmatrix}<br>3 &amp; -7 &amp; -2 &amp; 2\\<br>-3 &amp; 5 &amp; 1 &amp; 0\\<br>6 &amp; -4 &amp; 0 &amp; -5\\<br>-9 &amp; 5 &amp; -5 &amp; 12<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 &amp; 0\\<br>-1 &amp; 1 &amp; 0 &amp; 0\\<br>2 &amp; -5 &amp; 1 &amp; 0\\<br>-3 &amp; 8 &amp; 3 &amp; 1<br>\end{bmatrix}<br>\begin{bmatrix}<br>3 &amp; -7 &amp; -2 &amp; 2\\<br>0 &amp; -2 &amp; -1 &amp; 2\\<br>0 &amp; 0 &amp; -1 &amp; 1\\<br>0 &amp; 0 &amp; 0 &amp; -1<br>\end{bmatrix}<br>= LU<br>,<br>Solve A\vec{x} = \vec{b}, where\space<br>b =<br>\begin{bmatrix}<br>-9 \\5 \\7 \\11<br>\end{bmatrix}<br>$$<br>Solution：<br>$$<br>\begin{bmatrix}L &amp; \vec{b}\end{bmatrix} =<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 &amp; 0 &amp; -9\\<br>-1 &amp; 1 &amp; 0 &amp; 0 &amp; 5\\<br>2 &amp; -5 &amp; 1 &amp; 0 &amp; 7\\<br>-3 &amp; 8 &amp; 3 &amp; 1 &amp; 11<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 &amp; 0 &amp; -9\\<br>0 &amp; 1 &amp; 0 &amp; 0 &amp; -4\\<br>0 &amp; 0 &amp; 1 &amp; 0 &amp; 5\\<br>0 &amp; 0 &amp; 0 &amp; 1 &amp; 1<br>\end{bmatrix} =<br>\begin{bmatrix}I &amp; \vec{y}\end{bmatrix}<br>\\<br>\begin{bmatrix}U &amp; \vec{y}\end{bmatrix} =<br>\begin{bmatrix}<br>3 &amp; -7 &amp; -2 &amp; 2 &amp; -9\\<br>0 &amp; -2 &amp; -1 &amp; 2 &amp; -4\\<br>0 &amp; 0 &amp; -1 &amp; 1 &amp; 5\\<br>0 &amp; 0 &amp; 0 &amp; -1 &amp; 1<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 &amp; 0 &amp; 3\\<br>0 &amp; 1 &amp; 0 &amp; 0 &amp; 4\\<br>0 &amp; 0 &amp; 1 &amp; 0 &amp; -6\\<br>0 &amp; 0 &amp; 0 &amp; 1 &amp; -1<br>\end{bmatrix} =<br>\begin{bmatrix}I &amp; \vec{x}\end{bmatrix}<br>$$</p>
+<h3 id="The-LU-Factorization-Algorithm"><a href="#The-LU-Factorization-Algorithm" class="headerlink" title="The LU Factorization Algorithm"></a>The LU Factorization Algorithm</h3><p>Suppose $A$ can be reduced to an echelon form $U$ <u>using <strong>only row replacements that add a multiple of one row to another row below it.</strong></u> In this case, there exist unit lower triangular elementary matrices $E_1,\cdots,E_p$ such that:</p>
+<p>$$<br>E_p\cdots E_1A = U\tag{3}<br>$$<br>Then<br>$$<br>A = (E_p\cdots E_1)^{-1}U = LU<br>$$<br>where<br>$$<br>L = (E_p\cdots E_1)^{-1}\tag{4}<br>$$</p>
+<blockquote>
+<p>从推导过程可以看出，$A$经历了哪些初等行变换，$L$也同时经历，最终$A$变成了$U$，$L$变成了$I$</p>
+</blockquote>
+<p>It can be shown that products and inverses of unit lower triangular matrices are also unit lower triangular.Thus $L$ is unit lower triangular.</p>
+<p>&#x1F4A1;For example&#x1F4A1;:<br>Find the $LU$ factorization of $A$.<br>$$<br>A =<br>\begin{bmatrix}<br>2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>-4 &amp; -5 &amp; 3 &amp; -8 &amp; 1\\<br>2 &amp; -5 &amp; -4 &amp; 1 &amp; 8\\<br>-6 &amp; 0 &amp; 7 &amp; -3 &amp; 1<br>\end{bmatrix}<br>$$</p>
+<p>Solution：<br>$$<br>A = \begin{bmatrix}<br>\bbox[border:2px solid red]2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>\bbox[border:2px solid red]{-4} &amp; -5 &amp; 3 &amp; -8 &amp; 1\\<br>\bbox[border:2px solid red]2 &amp; -5 &amp; -4 &amp; 1 &amp; 8\\<br>\bbox[border:2px solid red]{-6} &amp; 0 &amp; 7 &amp; -3 &amp; 1<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>0 &amp; \bbox[border:2px solid red]3 &amp; 1 &amp; 2 &amp; -3\\<br>0 &amp; \bbox[border:2px solid red]{-9} &amp; -3 &amp; -4 &amp; 10\\<br>0 &amp; \bbox[border:2px solid red]{12} &amp; 4 &amp; 12 &amp; -5<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>0 &amp; 3 &amp; 1 &amp; 2 &amp; -3\\<br>0 &amp; 0 &amp; 0 &amp; \bbox[border:2px solid red]2 &amp; 1\\<br>0 &amp; 0 &amp; 0 &amp; \bbox[border:2px solid red]4 &amp; 7<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>0 &amp; 3 &amp; 1 &amp; 2 &amp; -3\\<br>0 &amp; 0 &amp; 0 &amp; 2 &amp; 1\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp;\bbox[border:2px solid red]5<br>\end{bmatrix} = U<br>$$<br>$$<br>\begin{bmatrix}<br>2\\-4\\2\\6<br>\end{bmatrix}<br>\begin{bmatrix}<br>\\3\\-9\\12<br>\end{bmatrix}<br>\begin{bmatrix}<br>\\\\2\\4<br>\end{bmatrix}<br>\begin{bmatrix}<br>\\\\\\5<br>\end{bmatrix}<br>\\<br>\div 2<br>\downarrow<br>\div 3<br>\downarrow<br>\div 2<br>\downarrow<br>\div 5<br>\downarrow<br>\\<br>\begin{bmatrix}<br>1 &amp; &amp;  &amp;  \\<br>-2 &amp; 1 &amp;  &amp;  \\<br>1 &amp; -3 &amp; 1 &amp;  \\<br>3 &amp; 4 &amp; 2 &amp; 1<br>\end{bmatrix} = L<br>$$</p>
+<h3 id="The-Leontief-Input–Output-Model-Omit"><a href="#The-Leontief-Input–Output-Model-Omit" class="headerlink" title="The Leontief Input–Output Model(Omit)"></a>The Leontief Input–Output Model(Omit)</h3><h2 id="Applications-to-Computer-Graphics"><a href="#Applications-to-Computer-Graphics" class="headerlink" title="Applications to Computer Graphics"></a><font style="background: red">Applications to Computer Graphics</font></h2><h3 id="Homogeneous-Coordinates"><a href="#Homogeneous-Coordinates" class="headerlink" title="Homogeneous Coordinates"></a>Homogeneous Coordinates</h3><p>The mathematics of computer graphics is intimately connected with matrix multiplication. Unfortunately, <mark>translating an object on a screen does not correspond directly to matrix multiplication because translation is not a linear transformation</mark>. The standard way to avoid this difficulty is to introduce what are called <u>homogeneous coordinates</u>.</p>
+<p>$$<br>translation : (x,y)\mapsto(x + h, y + k)\\<br>homogeneous-translation: (x,y,1)\mapsto(x + h, y + k, 1)<br>\\<br>matrix-multiplication:<br>\begin{bmatrix}<br>1 &amp; 0 &amp; h\\<br>0 &amp; 1 &amp; k\\<br>0 &amp; 0 &amp; 1<br>\end{bmatrix}<br>\begin{bmatrix}<br> x\\y\\1<br>\end{bmatrix}=<br>\begin{bmatrix}<br>x + h\\y+k\\1<br>\end{bmatrix}<br>$$</p>
+<p>Any linear transformation on $R^2$ is represented with respect to homogeneous coordinates by a partitioned matrix of the form $\begin{bmatrix}A &amp; 0 \\ 0 &amp; 1\end{bmatrix}$, where $A$ is a $2 \times 2$ matrix. Typical examples are:</p>
+<p>$$<br>\begin{bmatrix}<br>\cos\psi &amp; -\sin\psi &amp; 0\\<br>\sin\psi &amp; \cos\psi &amp; 0\\<br>0 &amp; 0 &amp; 1<br>\end{bmatrix},<br>\begin{bmatrix}<br>0 &amp; 1 &amp; 0\\<br>1 &amp; 0 &amp; 0\\<br>0 &amp; 0 &amp; 1<br>\end{bmatrix},<br>\begin{bmatrix}<br>s &amp; 0 &amp; 0\\<br>0 &amp; t &amp; 0\\<br>0 &amp; 0 &amp; 1<br>\end{bmatrix}<br>$$</p>
+<h3 id="Homogeneous-3D-Coordinates"><a href="#Homogeneous-3D-Coordinates" class="headerlink" title="Homogeneous 3D Coordinates"></a>Homogeneous 3D Coordinates</h3><p>$(x,y,z,1)$ are homogeneous coordinates for the point $(x,y,z)$ in $R^3$. In general, $(X,Y,Z,H)$ are homogeneous coordinates for $(x,y,z)$ if $H \neq 0$</p>
+<p>$$<br>x = \frac{X}{H}, y = \frac{Y}{H}, z = \frac{Z}{H}<br>$$</p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<blockquote>
+<p>Rotation about the y-axis through an angle of 30&deg;</p>
+</blockquote>
+<p>Solution:</p>
+<p>First, construct the $3\times 3$ matrix for the rotation. </p>
+<p>The vector $\vec{e_1}$ rotates down toward the negative $z-axis$, stopping at $(\cos 30, 0, -\sin 30) = (\frac{\sqrt{3}}{2}, 0 , -0.5)$. </p>
+<p>The vector $\vec{e_2}$ on the y-axis does not move. </p>
+<p>The vector $\vec{e_3}$ on the $z-axis$ rotates down toward the positive $x-axis$, stopping at $(\sin 30, 0, \cos 30) = (0.5, 0, \frac{\sqrt{3}}{2})$. So the rotation matrix is<br>$$<br>\begin{bmatrix}<br>\frac{\sqrt{3}}{2} &amp; 0 &amp; 0.5\\<br>0 &amp; 1 &amp; 0\\<br>-0.5 &amp; 0 &amp; \frac{\sqrt{3}}{2}<br>\end{bmatrix}<br>$$</p>
+<p><img src="/images/LinearAlgebra/c2/rotation.png" alt="rotation"></p>
+<h3 id="Perspective-Projections"><a href="#Perspective-Projections" class="headerlink" title="Perspective Projections"></a>Perspective Projections</h3><p>&#x1F4A1;For example&#x1F4A1;:</p>
+<blockquote>
+<p>let $xy-plane$ represent the computer screen, and imagine that the eye of a viewer is along the positive $z-axis$, at point $(0,0,d)$.A perspective projection maps each point $(x,y,z)$  onto an image point $(x^{\ast}, y^{\ast}, 0)$.</p>
+</blockquote>
+<p>Solution:</p>
+<p>induce projection-matrix as follows：</p>
+<p>$$<br>\frac{x^{\ast}}{d} = \frac{x}{d-z}<br>\rightarrow<br>x^{\ast} = \frac{dx}{d-z} = \frac{x}{1-\frac{z}{d}}<br>$$<br>$$<br>Similarly\rightarrow y^{\ast} = \frac{y}{1-\frac{z}{d}}<br>$$<br>$$<br>(x,y,z,1)\xrightarrow{projection} (\frac{x}{1-\frac{z}{d}}, \frac{y}{1-\frac{z}{d}}, 0 ,1)\sim(x,y,0,1-\frac{z}{d})<br>$$<br>$$<br>p\begin{bmatrix}x\\y\\z\\1\end{bmatrix}<br>=<br>\begin{bmatrix}1 &amp; 0 &amp; 0 &amp; 0\\<br>0 &amp; 1 &amp; 0 &amp; 0\\<br>0 &amp; 0 &amp; 0 &amp; 0\\<br>0 &amp; 0 &amp; -1/d &amp; 1\end{bmatrix}\begin{bmatrix}x \\ y \\ z \\ 1 \end{bmatrix}<br>=<br>\begin{bmatrix}x \\ y \\ 0 \\ 1-\frac{z}{d}\end{bmatrix}<br>$$</p>
+<p><img src="/images/LinearAlgebra/c2/projection.png" alt="projection"></p>
+<p>&#x1F449;<a href="/Math/Geometry/3DMath-Transformation/index.html#deducematrix">More about Rotation matrix &amp; Perspective projection &gt;&gt;</a></p>
+<h2 id="SubSpace-of-R-n"><a href="#SubSpace-of-R-n" class="headerlink" title="SubSpace of $R^n$"></a>SubSpace of $R^n$</h2><blockquote>
+<p>A subspace of $R^n$ is any set $H$ in $R^n$ that has three properties:</p>
+<ol>
+<li>The Zero Vector is in $H$.</li>
+<li>For each $\vec{u}$ and $\vec{v}$ in $H$, the sum $\vec{u} + \vec{v}$ is in $H$.</li>
+<li>For each $\vec{u}$ in $H$ and each scalar $c$, the vector $c\vec{u}$ is in $H$.</li>
+</ol>
+</blockquote>
+<h3 id="Column-Space-and-Null-Space-of-a-Matrix"><a href="#Column-Space-and-Null-Space-of-a-Matrix" class="headerlink" title="Column Space and Null Space of a Matrix"></a>Column Space and Null Space of a Matrix</h3><p>The column space of a matrix $A$ is the set $ColA$ of all linear combinations of the columns of $A$.</p>
+<p>if $A = \begin{bmatrix}\vec{a_1} &amp; \cdots &amp; \vec{a_n}\end{bmatrix}$, with the columns in $R^m$, then $Col A$ is the same as $Span(\vec{a_1} \cdots \vec{a_n})$.</p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Let A = $\begin{bmatrix}<br>1 &amp; -3 &amp; -4 \\<br>-4 &amp; 6 &amp; -2 \\<br>-3 &amp; 7 &amp; 6<br>\end{bmatrix}$ and b = $\begin{bmatrix}<br>3 \\<br>3 \\<br>-4<br>\end{bmatrix}$. Determine whether $\vec{b}$ is in the column space of $A$.</p>
+<p>Solution:</p>
+<p>$$<br>\begin{bmatrix}<br>1 &amp; -3 &amp; -4 &amp; 3\\<br>-4 &amp; 6 &amp; -2 &amp; 3\\<br>-3 &amp; 7 &amp; 6 &amp; -4<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; -3 &amp; -4 &amp; 3\\<br>0 &amp; -6 &amp; -18 &amp; 15\\<br>0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>\\<br>有解，意味着b是A列向量的线性组合<br>\therefore<br>b \subseteq Col A<br>$$</p>
+<h3 id="Basis-for-a-Subspace"><a href="#Basis-for-a-Subspace" class="headerlink" title="Basis for a Subspace"></a>Basis for a Subspace</h3><blockquote>
+<p>A basis for a subspace $H$ of $R^n$ is a linearly independent set in $H$ that spans $H$.</p>
+</blockquote>
+<p>$$<br>\vec{e_1} = \begin{bmatrix}<br>1 \\ 0 \\ \cdots \\ 0<br>\end{bmatrix},<br>\vec{e_2} = \begin{bmatrix}<br>0 \\ 1 \\ \cdots \\ 0<br>\end{bmatrix},<br>\cdots,<br>\vec{e_n} = \begin{bmatrix}<br>0 \\ 0 \\ \cdots \\ 1<br>\end{bmatrix}<br>$$</p>
+<p>the set {$\vec{e_1}, \cdots, \vec{e_n}$} is called the standard basis for $R^n$.</p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Find a basis for the null space of the matrix.</p>
+<p>$$<br>A = \begin{bmatrix}<br>-3 &amp; 6 &amp; -1 &amp; 1 &amp; -7\\<br>1 &amp; -2 &amp; 2 &amp; 3 &amp; -1\\<br>2 &amp; -4 &amp; 5 &amp; 8 &amp; -4<br>\end{bmatrix}<br>$$</p>
+<p>找到矩阵零空间的一组基如下：<br>$$<br>\begin{bmatrix}A &amp; \vec{0}\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; -2 &amp; 0 &amp; -1 &amp; 3 &amp; 0\\<br>0 &amp; 0 &amp; 1 &amp; 2 &amp; -2 &amp; 0\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix},<br>\begin{bmatrix}<br>x_1\\<br>x_2\\<br>x_3\\<br>x_4\\<br>x_5<br>\end{bmatrix}=<br>\begin{bmatrix}<br>2x_2 + x_4 - 3x_5\\<br>x_2\\<br>-2x_4 + 2x_5\\<br>x_4\\<br>x_5<br>\end{bmatrix}=<br>x_2\begin{bmatrix}<br>2\\<br>1\\<br>0\\<br>0\\<br>0\\<br>\end{bmatrix} + x4\begin{bmatrix}<br>1\\<br>0\\<br>-2\\<br>1\\<br>0<br>\end{bmatrix} + x_5\begin{bmatrix}<br>-3\\<br>0\\<br>2\\<br>0\\<br>1<br>\end{bmatrix}<br>= x_2\vec{u} + x_4\vec{v} + x_5\vec{w}<br>\\<br>{\vec{u}, \vec{v}, \vec{w}} 是基向量<br>$$</p>
+<h2 id="Dimension-and-Rank"><a href="#Dimension-and-Rank" class="headerlink" title="Dimension and Rank"></a>Dimension and Rank</h2><p>&#x1F449;<a href="/Math/Linear-Algebra/C4-Vector-Spaces/index.html#Dimension">More About Dimension and Rank is in C4 &gt;&gt;</a></p>
+<h3 id="Coordinate-Systems"><a href="#Coordinate-Systems" class="headerlink" title="Coordinate Systems"></a>Coordinate Systems</h3><p>Suppose the set $\beta = (\vec{b_1},\cdots\cdots, \vec{b_p})$ is a basis for a SubSpace $H$. For each $\vec{x}$ in $H$, the coordinates of $\vec{x}$ relative to the basis $\beta$ are the weights $c_1, \cdots, c_p$ such that $\vec{x} = c_1\vec{b_1} + \cdots + c_p\vec{b_p}$, and the vector in $R^p$<br>$$<br>[\vec{x}]_\beta =<br>\begin{bmatrix}<br>c_1\\\cdots\\c_p<br>\end{bmatrix}<br>$$<br>is called the coordinate vector of $\vec{x}$(relative to $\beta$) or the $\beta-$ coordinate vector of $\vec{x}$</p>
+<h3 id="The-Dimension-of-a-Subspace"><a href="#The-Dimension-of-a-Subspace" class="headerlink" title="The Dimension of a Subspace"></a>The Dimension of a Subspace</h3><blockquote>
+<p>The <strong><em>rank</em></strong> of a matrix $A$, denoted by $rank A$, is the <u>dimension of the column space of $A$</u></p>
+</blockquote>
+<p>Determin the rank of the matrix<br>$$<br>A\sim<br>\begin{bmatrix}<br>2 &amp; 5 &amp; -3 &amp; -4 &amp; 8\\<br>0 &amp; -3 &amp; 2 &amp; 5 &amp; -7\\<br>0 &amp; 0 &amp; 0 &amp; 4 &amp; -6\\<br>\end{bmatrix}<br>矩阵有3个pivot-columns，所以rankA = 3<br>$$</p>
+<blockquote>
+<p>If a matrix $A$ has $n$ columns, then $rank A + dim Nul A = n$.</p>
+</blockquote>
+<h3 id="Rank-and-the-Invertible-Matrix-Theorem"><a href="#Rank-and-the-Invertible-Matrix-Theorem" class="headerlink" title="Rank and the Invertible Matrix Theorem"></a>Rank and the Invertible Matrix Theorem</h3><blockquote>
+<p>Let $A$ be an $n \times n$ matrix. Then the following statements are each equivalent to the statement that $A$ is an invertible matrix.<br>m. The columns of $A$ form a basis of $R^n$:<br>n. $Col A = R^n$<br>o. $dim Col A = n$<br>p. $rank A = n$<br>q. $Nul A = {0}$<br>r. $dim Nul A = 0$</p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Linear-Algebra/" rel="tag">Linear Algebra</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Math/Geometry/3DMath-Transformation/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">3DMath-Transformation</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Math/Linear-Algebra/C1-Linear-Equation-in-Linear-Algebra/">
+                <span class="level-item">C1-Linear-Equation-in-Linear-Algebra</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: 'def9328d562c368659ea5210ddb50293',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Matrix-Operation">
+        <span class="has-mr-6">1</span>
+        <span>Matrix Operation</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Inverse-of-Matrix">
+        <span class="has-mr-6">2</span>
+        <span>The Inverse of Matrix</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#An-algorithm-for-Finding-A-1">
+        <span class="has-mr-6">2.1</span>
+        <span>An algorithm for Finding $A^{-1}$</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Characterizations-of-Inversible-Matrix">
+        <span class="has-mr-6">3</span>
+        <span>Characterizations of  Inversible Matrix</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Invertible-Linear-Transformations">
+        <span class="has-mr-6">3.1</span>
+        <span>Invertible Linear Transformations</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Partitioned-Matrices">
+        <span class="has-mr-6">4</span>
+        <span>Partitioned Matrices</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Multiplication-of-Partitioned-Matrices">
+        <span class="has-mr-6">4.1</span>
+        <span>Multiplication of Partitioned Matrices</span>
+        </a></li><li>
+        <a class="is-flex" href="#Inverse-of-Partitioned-Matrices">
+        <span class="has-mr-6">4.2</span>
+        <span>Inverse of Partitioned Matrices</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Matrix-Factorizations-矩阵分解">
+        <span class="has-mr-6">5</span>
+        <span>Matrix Factorizations 矩阵分解</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-LU-Factorization">
+        <span class="has-mr-6">5.1</span>
+        <span>The LU Factorization</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-LU-Factorization-Algorithm">
+        <span class="has-mr-6">5.2</span>
+        <span>The LU Factorization Algorithm</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Leontief-Input–Output-Model-Omit">
+        <span class="has-mr-6">5.3</span>
+        <span>The Leontief Input–Output Model(Omit)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Applications-to-Computer-Graphics">
+        <span class="has-mr-6">6</span>
+        <span>Applications to Computer Graphics</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Homogeneous-Coordinates">
+        <span class="has-mr-6">6.1</span>
+        <span>Homogeneous Coordinates</span>
+        </a></li><li>
+        <a class="is-flex" href="#Homogeneous-3D-Coordinates">
+        <span class="has-mr-6">6.2</span>
+        <span>Homogeneous 3D Coordinates</span>
+        </a></li><li>
+        <a class="is-flex" href="#Perspective-Projections">
+        <span class="has-mr-6">6.3</span>
+        <span>Perspective Projections</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#SubSpace-of-R-n">
+        <span class="has-mr-6">7</span>
+        <span>SubSpace of $R^n$</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Column-Space-and-Null-Space-of-a-Matrix">
+        <span class="has-mr-6">7.1</span>
+        <span>Column Space and Null Space of a Matrix</span>
+        </a></li><li>
+        <a class="is-flex" href="#Basis-for-a-Subspace">
+        <span class="has-mr-6">7.2</span>
+        <span>Basis for a Subspace</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Dimension-and-Rank">
+        <span class="has-mr-6">8</span>
+        <span>Dimension and Rank</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Coordinate-Systems">
+        <span class="has-mr-6">8.1</span>
+        <span>Coordinate Systems</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Dimension-of-a-Subspace">
+        <span class="has-mr-6">8.2</span>
+        <span>The Dimension of a Subspace</span>
+        </a></li><li>
+        <a class="is-flex" href="#Rank-and-the-Invertible-Matrix-Theorem">
+        <span class="has-mr-6">8.3</span>
+        <span>Rank and the Invertible Matrix Theorem</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/DeepLearning/">
+            <span class="level-start">
+                <span class="level-item">DeepLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C4-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C4-Vector-Spaces</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T01:32:07.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C3-Determinants/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C3-Determinants</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T10:30:13.000Z">2023-09-24</time></div>
+                    <a href="/Math/Geometry/3DMath-Transformation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3DMath-Transformation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T05:47:37.000Z">2023-09-24</time></div>
+                    <a href="/Math/Linear-Algebra/C2-Matrix-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C2-Matrix-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-06T07:30:00.000Z">2023-04-06</time></div>
+                    <a href="/Math/Linear-Algebra/C1-Linear-Equation-in-Linear-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1-Linear-Equation-in-Linear-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DeepLearning/">
+                        <span class="tag">DeepLearning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="C2-Matrix-Algebra" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

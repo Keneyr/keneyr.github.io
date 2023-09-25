@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>C1-Linear-Equation-in-Linear-Algebra - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: Aumented matrix, Linear Independence, Linear Transformation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C1-Linear-Equation-in-Linear-Algebra">
+<meta property="og:url" content="https://keneyr.com/Math/Linear-Algebra/C1-Linear-Equation-in-Linear-Algebra/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: Aumented matrix, Linear Independence, Linear Transformation">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-04-06T07:30:00.000Z">
+<meta property="article:modified_time" content="2023-09-24T05:44:18.738Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Linear Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="C1-Linear-Equation-in-Linear-Algebra" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/reading">Reading</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-06T07:30:00.000Z">2023-04-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Math/">Math</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    20 minutes read (About 2998 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                C1-Linear-Equation-in-Linear-Algebra
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: Aumented matrix, Linear Independence, Linear Transformation</p>
+<a id="more"></a>
+
+<h2 id="System-of-Linear-Equations"><a href="#System-of-Linear-Equations" class="headerlink" title="System of Linear Equations"></a>System of Linear Equations</h2><h3 id="Linear-Equation"><a href="#Linear-Equation" class="headerlink" title="Linear Equation:"></a>Linear Equation:</h3><p>$$<br>a_1 x_1 + a_2 x_2 + … + a_n x_n = b<br>$$</p>
+<h3 id="NonLinear-Equation"><a href="#NonLinear-Equation" class="headerlink" title="NonLinear Equation:"></a>NonLinear Equation:</h3><p>$$<br>4 x_1 - 5 x_2 = x_1x_2<br>$$</p>
+<h3 id="Linear-System"><a href="#Linear-System" class="headerlink" title="Linear System"></a>Linear System</h3><p>$$<br>\begin{cases}<br>&amp;2 x_1 - x_2 + 1.5 x_3  = 8 \\<br>&amp;x_1 - 4 x_3 = -7<br>\end{cases}<br>\tag{2}<br>$$</p>
+<h3 id="Solution-set"><a href="#Solution-set" class="headerlink" title="Solution set"></a>Solution set</h3><p>The set of all possible solutions is called the solution set of the linear system. </p>
+<p>e.g. (5, 6.5, 3) is a solution of system(2)</p>
+<blockquote>
+<p>Two linear systems are called equivalent if they have the same solution set.<br>A system of linear equations has</p>
+<ol>
+<li>no solution, or</li>
+<li>exactly one solution, or</li>
+<li>infinitely many solutions</li>
+</ol>
+</blockquote>
+<h3 id="Augmented-Matrix"><a href="#Augmented-Matrix" class="headerlink" title="Augmented Matrix"></a>Augmented Matrix</h3><p>$$<br>\begin{cases}<br>x_1 - 2 x_2 + x_3 = 0\\<br>2x_2 - 8x_3 =  8 \\<br>5x_1 - 5x_3 = 10<br>\end{cases}<br>\rightarrow<br>\begin{bmatrix}<br>1 &amp; -2 &amp; 1 &amp; 0 \\<br>0 &amp; 2 &amp; -8 &amp; 8\\<br>5 &amp; 0 &amp; -5 &amp; 10<br>\end{bmatrix}<br>$$</p>
+<h3 id="Solving-a-Linear-System"><a href="#Solving-a-Linear-System" class="headerlink" title="Solving a Linear System"></a>Solving a Linear System</h3><p>The procedure can also be called simplify the augmented matrix<br>(化简增广矩阵的过程就是在求线性方程组的解)</p>
+<p>$$<br>\begin{cases}<br>x_1 = 1, \\x_2 = 0, \\x_3 = -1<br>\end{cases}<br>\rightarrow<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 &amp; 1 \\<br>0 &amp; 1 &amp; 0 &amp; 0\\<br>0 &amp; 0 &amp; 1 &amp; -1<br>\end{bmatrix}<br>$$</p>
+<blockquote>
+<p>ELEMENTARY ROW OPERATIONS</p>
+<ol>
+<li>(Replacement) Replace one row by the sum of itself and a multiple of another row</li>
+<li>(Interchange) Interchange two rows.</li>
+<li>(Scaling) Multiply all entries in a row by a nonzero constant</li>
+</ol>
+</blockquote>
+<h3 id="Existence-and-Uniqueness-Questions"><a href="#Existence-and-Uniqueness-Questions" class="headerlink" title="Existence and Uniqueness Questions"></a>Existence and Uniqueness Questions</h3><p>this system solution is unique, this system is consistent:<br>$$<br>\begin{cases}<br>x_1 - 2 x_ 2 + x_3 = 0\\<br>x_2 - 4x_3 = 4\\<br>x_3 = -1<br>\end{cases}<br>\rightarrow<br>\begin{bmatrix}<br>1 &amp; -2 &amp; 1 &amp; 0 \\<br>0 &amp; 1 &amp; -4 &amp; 4\\<br>0 &amp; 0 &amp; 1 &amp; -1<br>\end{bmatrix}<br>$$</p>
+<h2 id="Row-Reduction-and-Echelon-Forms"><a href="#Row-Reduction-and-Echelon-Forms" class="headerlink" title="Row Reduction and Echelon Forms"></a>Row Reduction and Echelon Forms</h2><h3 id="a-nonzero-row-or-column"><a href="#a-nonzero-row-or-column" class="headerlink" title="a nonzero row or column"></a>a nonzero row or column</h3><p>a row or column that contains at least one nonzero entry</p>
+<h3 id="leading-entry"><a href="#leading-entry" class="headerlink" title="leading entry"></a>leading entry</h3><p>a leading entry of a row refers to the leftmost nonzero entry (in a nonzero row)</p>
+<blockquote>
+<p>A rectangular matrix is in echelon form (or row echelon form) if it has the following three properties:</p>
+<ol>
+<li>All nonzero rows are above any rows of all zeros.</li>
+<li>Each leading entry of a row is in a column to the right of the leading entry of the row above it.</li>
+<li>All entries in a column below a leading entry are zeros.<br>If a matrix in echelon form satisfies the following additional conditions, then it is in reduced echelon form (or reduced row echelon form):</li>
+<li>The leading entry in each nonzero row is 1.</li>
+<li>Each leading 1 is the only nonzero entry in its column.</li>
+</ol>
+</blockquote>
+<p>行阶梯矩阵 row echelon form<br>$$<br>\begin{bmatrix}<br>2 &amp; -3 &amp; 2 &amp; 1 \\<br>0 &amp; 1 &amp; -4 &amp; 8\\<br>0 &amp; 0 &amp; 0 &amp; 5/2<br>\end{bmatrix}<br>$$</p>
+<p>最简阶梯矩阵 reduced echelon form<br>$$<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 &amp; 29 \\<br>0 &amp; 1 &amp; 0 &amp; 16\\<br>0 &amp; 0 &amp; 1 &amp; 3<br>\end{bmatrix}<br>$$</p>
+<h3 id="Pivot-Positons"><a href="#Pivot-Positons" class="headerlink" title="Pivot Positons"></a>Pivot Positons</h3><p>A pivot position in a matrix A is a location in A that corresponds to a leading 1<br>in the reduced echelon form of A. A pivot column is a column of A that contains<br>a pivot position</p>
+<blockquote>
+<p>I think the leading entry is pivot postion.<br>只是pivot postions是在最简阶梯矩阵的语境下的</p>
+</blockquote>
+<h3 id="Solutions-of-Linear-Systems"><a href="#Solutions-of-Linear-Systems" class="headerlink" title="Solutions of Linear Systems"></a>Solutions of Linear Systems</h3><p>The variables $x_1$ and $x_2$ corresponding to pivot columns in the matrix are called <strong>basic variables</strong>.<br>The other variable, $x_3$, is called a <strong>free variable</strong>.</p>
+<p>$$<br>\begin{cases}<br>x_1 - 5 x_ 3 = 1 \\<br>x_2 + x_3 = 4\\<br>0 = 0<br>\end{cases}<br>\rightarrow<br>\begin{bmatrix}<br>1 &amp; 0 &amp; -5 &amp; 1 \\<br>0 &amp; 1 &amp; 1 &amp; 4\\<br>0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>$$</p>
+<h3 id="Augumented-matrix-has-solution"><a href="#Augumented-matrix-has-solution" class="headerlink" title="Augumented matrix has solution"></a>Augumented matrix has solution</h3><blockquote>
+<p><strong>Existence and Uniqueness Theorem</strong><br>A linear system is consistent if and only if the rightmost column of the augmented matrix is not a pivot column—that is, if and only if an echelon form of the augmented matrix has no row of the form<br>$$<br>\begin{bmatrix}0 &amp; \cdots &amp;0 &amp; b\end{bmatrix} with \space b\space nonzero<br>$$<br>If a linear system is consistent, then the solution set contains either (i) a unique solution, when there are no free variables, or (ii) infinitely many solutions, when there is at least one free variable.</p>
+</blockquote>
+<h2 id="Vector-Equations"><a href="#Vector-Equations" class="headerlink" title="Vector Equations"></a>Vector Equations</h2><h3 id="Vector-in-R-n"><a href="#Vector-in-R-n" class="headerlink" title="Vector in $R^n$"></a>Vector in $R^n$</h3><p>if $n$ is a positive integer, $R^n$ denotes the collection of all lists (or ordered n-tuples) of $n$ real numbers, usually written as $n \times 1$ <strong>column matrics</strong>, such as</p>
+<p>$$<br>\vec{a} = \begin{bmatrix} u_1\\u_2\\\cdots\\u_3\end{bmatrix}<br>$$</p>
+<h3 id="Linear-Combinations"><a href="#Linear-Combinations" class="headerlink" title="Linear Combinations"></a>Linear Combinations</h3><p>Given vectors $\vec{v_1}, \vec{v_2}, \cdots, \vec{v_p}$ in $R^n$ and given scalars $c_1, c_2, \cdots, c_p$, the vector $\vec{y}$ defined by</p>
+<p>$$<br>\vec{y} = c_1\vec{v_1} + \cdots + c_p\vec{v_p}<br>$$</p>
+<p>is called a linear combination of $\vec{v_1}, \cdots, \vec{v_p}$ with weights $c_1, \cdots, c_p$</p>
+<h3 id="Linear-Combinations-amp-Matrics"><a href="#Linear-Combinations-amp-Matrics" class="headerlink" title="Linear Combinations &amp; Matrics"></a>Linear Combinations &amp; Matrics</h3><p>A vector equation</p>
+<p>$$<br>x_1\vec{a_1} + x_2\vec{a_2} + \cdots + x_n\vec{a_n} = \vec{b}<br>$$</p>
+<p>has the same solution set as the linear system whose augmented matrix is</p>
+<p>$$<br>\begin{bmatrix}\vec{a_1} &amp; \vec{a_2} &amp; \cdots &amp; \vec{a_n} &amp; \vec{b}\end{bmatrix}<br>\tag{5}<br>$$</p>
+<p>In particular, $\vec{b}$ can be generated by a linear combination of $\vec{a_1}\cdots\vec{a_n}$ if and only if there exists a solution to the linear system corresponding to the matrix(5)</p>
+<h3 id="Span-vec-v-1-cdots-vec-v-p"><a href="#Span-vec-v-1-cdots-vec-v-p" class="headerlink" title="Span{$\vec{v_1}, \cdots, \vec{v_p}$}"></a>Span{$\vec{v_1}, \cdots, \vec{v_p}$}</h3><p>Asking whether a vector $\vec{b}$ is in Span{$\vec{v_1}, \cdots, \vec{v_p}$} amounts to asking whether the vector equation</p>
+<p>$$<br>x_1\vec{v_1} + \cdots + x_p\vec{v_p} = \vec{b}<br>$$</p>
+<p>has a solution, or, equivalently, asking whether the linear system with augmented matrix</p>
+<p>$$<br>\begin{bmatrix}\vec{v_1} &amp; \cdots &amp; \vec{v_p} &amp; \vec{b}\end{bmatrix}<br>$$</p>
+<p>has a solution</p>
+<h3 id="A-Geometric-Description-of-Span-vec-v-and-Span-vec-u-vec-v"><a href="#A-Geometric-Description-of-Span-vec-v-and-Span-vec-u-vec-v" class="headerlink" title="A Geometric Description of Span{$\vec{v}$} and Span{$\vec{u}, \vec{v}$}"></a>A Geometric Description of Span{$\vec{v}$} and Span{$\vec{u}, \vec{v}$}</h3><p>Let $\vec{v}$ be a nonzero vector in $R^3$. Then Span{$\vec{v}$} is the set of all scalar multiples of $\vec{v}$, which is the <strong><em>set of points</em></strong> on the line in $R^3$ through $\vec{v}$ and $\vec{0}$. See Figure 10.</p>
+<p>If $\vec{u}$ and $\vec{v}$ are nonzero vectors in $R^3$, with $\vec{v}$ not a multiple of $\vec{u}$, then Span{$\vec{u},\vec{v}$}is the plane in $R^3$ that contains $\vec{u}$, $\vec{v}$, and $\vec{0}$. In particular, Span{$\vec{u},\vec{v}$} contains the <strong><em>line</em></strong> in $R^3$ through $\vec{u}$ and $\vec{0}$ and the <strong><em>line</em></strong> through $\vec{v}$ and $\vec{0}$. See Figure 11.</p>
+<p><img src="/images/LinearAlgebra/c1/span.png" alt="Figure10,11. Span{$\vec{v}$}, Span{$\vec{u}, \vec{v}$}"></p>
+<h3 id="The-Matrix-Equation-Ax-b"><a href="#The-Matrix-Equation-Ax-b" class="headerlink" title="The Matrix Equation $Ax = b$"></a>The Matrix Equation $Ax = b$</h3><p>if $A$ is an $m \times n$ matrix, with columns $\vec{a_1}, \cdots, \vec{a_n}$, and if $\vec{x}$ is in $R^n$, then the product of $A$ and $\vec{x}$, denoted by $A\vec{x}$, is the linear combination of the columns of $A$ using the corresponding entries in $\vec{x}$ as weights; that is,</p>
+<p>$$<br>A\vec{x} =<br>\begin{bmatrix}\vec{a_1} &amp; \vec{a_2} &amp; \cdots \vec{a_n}\end{bmatrix}<br>\begin{bmatrix}x_1\\ \cdots \\ x_n\end{bmatrix}<br>=x_1\vec{a_1}+x_2\vec{a_2}+\cdots+x_n\vec{a_n}<br>$$</p>
+<p><mark>以下四种写法是等价的，全部转化为求增广矩阵的Solution<mark>：</p>
+<p>$$<br>\begin{cases}<br>x_1 + 2x_2 - x_3 = 4\\<br>-5x_2 + 3x_3 = 1 \tag{1}<br>\end{cases}<br>$$</p>
+<p>$$<br>x_1<br>\begin{bmatrix}<br>1\\0<br>\end{bmatrix} +<br>x_2<br>\begin{bmatrix}<br>2\\-5<br>\end{bmatrix} +<br>x_3<br>\begin{bmatrix}<br>-1\\3<br>\end{bmatrix} =<br>\begin{bmatrix}<br>4\\1<br>\end{bmatrix} \tag{2}<br>$$</p>
+<p>$$<br>\begin{bmatrix}<br>1 &amp; 2 &amp; -1\\<br>0 &amp; -5 &amp; 3<br>\end{bmatrix}<br>\begin{bmatrix}<br>x_1\\x_2\\x_3<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>4 \\ 1<br>\end{bmatrix} \tag{3}<br>$$</p>
+<p>$$<br>\begin{bmatrix}<br>1 &amp; 2 &amp; -1 &amp; 4\\<br>0 &amp; -5 &amp; 3 &amp; 1<br>\end{bmatrix} \tag{4}<br>$$</p>
+<blockquote>
+<p>计算机存储矩阵，用连续的空间存储提高效率<br>To optimize a computer algorithm to compute $Ax$, the sequence of calculations<br>should involve data stored in contiguous memory locations. The most widely<br>used professional algorithms for matrix computations are written in Fortran, a<br>language that stores a matrix as a set of columns. Such algorithms compute $Ax$ as<br>a linear combination of the columns of $A$. In contrast, if a program is written in<br>the popular language C, which stores matrices by rows, Ax should be computed<br>via the alternative rule that uses the rows of $A$</p>
+</blockquote>
+<h2 id="Solution-sets-of-linear-systems"><a href="#Solution-sets-of-linear-systems" class="headerlink" title="Solution sets of linear systems"></a>Solution sets of linear systems</h2><h3 id="Homogeneous-Linear-Systems"><a href="#Homogeneous-Linear-Systems" class="headerlink" title="Homogeneous Linear Systems"></a>Homogeneous Linear Systems</h3><p>A system of linear equations is said to be <strong><em>homogeneous</em></strong> if it can be written in the form $A\vec{x} = 0 $, where A is an $m \times n$ matrix and $\vec{0}$ is the zero vector in $R^m$.</p>
+<p>$\vec{x} = \vec{0}$ is a <strong><em>trivial solution</em></strong>.</p>
+<blockquote>
+<p>The homogeneous equation $A\vec{x} = 0 $ has a <strong><em>nontrivial solution</em></strong> if and only if the equation has at least one free variable.</p>
+</blockquote>
+<p>&#x1F4A1;For Example&#x1F4A1;:<br>$$<br>\begin{cases}<br>3x_1 + 5x_2 - 4x_3 = 0\\<br>-3x_1 - 2x_2 + 4x_3 = 0\\<br>6x_1 + x_2 - 8x_3 = 0 \tag{1}<br>\end{cases}<br>$$<br>Solution:<br>$$<br>\begin{bmatrix}<br>3 &amp; 5 &amp; -4 &amp; 0\\<br>-3 &amp; 2 &amp; 4 &amp; 0\\<br>6 &amp; 1 &amp; -8 &amp; 0<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>3 &amp; 5 &amp; -4 &amp; 0\\<br>0 &amp; 3 &amp; 0 &amp; 0\\<br>0 &amp; -9 &amp; 0 &amp; 0<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>3 &amp; 5 &amp; -4 &amp; 0\\<br>0 &amp; 3 &amp; 0 &amp; 0\\<br>0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>$$</p>
+<p>Since $x_3$ is a free variable, $A\vec{x} = \vec{0}$ has nontrivial solutions, continue the row reduction of $\begin{bmatrix}A &amp; \vec{0}\end{bmatrix}$ to reduced echelon form:</p>
+<p>$$<br>\begin{bmatrix}<br>1 &amp; 0 &amp; -4/3 &amp; 0\\<br>0 &amp; 3 &amp; 0 &amp; 0\\<br>0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>\rightarrow<br>\begin{matrix}x_1-\frac{4}{3}x_3 = 0\\<br>x_2 = 0\\<br>0 = 0\end{matrix}<br>$$</p>
+<p>the general solution of $A\vec{x} = \vec{0}$ has the form:</p>
+<p>$$<br>\vec{x} = \begin{bmatrix}<br>x_1\\x_2\\x_3<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>\frac{4}{3}x_3\\0\\x_3<br>\end{bmatrix}<br>=<br>x_3\begin{bmatrix}<br>\frac{4}{3}\\0\\1<br>\end{bmatrix}<br>=<br>x_3\vec{v},<br>where\space \vec{v} = \begin{bmatrix}\frac{4}{3}\\0\\1\end{bmatrix}<br>$$</p>
+<p>Geometrically, the solution set is a <strong>line</strong> through $\vec{0}$ in $R^3$. See Figure1.</p>
+<p><img src="/images/LinearAlgebra/c1/homogeneous.png" alt="Figure1. solution set"></p>
+<p>Also, form as $\vec{x} = x_3\vec{v}$, we say that the solution is in <strong><em>parametric vector form</em></strong>.</p>
+<h3 id="Solutions-of-Nonhomogeneous-Linear-Systems"><a href="#Solutions-of-Nonhomogeneous-Linear-Systems" class="headerlink" title="Solutions of Nonhomogeneous Linear Systems"></a>Solutions of Nonhomogeneous Linear Systems</h3><p>&#x1F4A1;For example&#x1F4A1;:<br>$$<br>\begin{bmatrix}<br>3 &amp; 5 &amp; -4 &amp; 7\\<br>-3 &amp; -2 &amp; 4 &amp; -1\\<br>6 &amp; 1 &amp; -8 &amp; -4<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; 0 &amp; -4/3 &amp; -1\\<br>0 &amp; 1 &amp; 0 &amp; 2\\<br>0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}\tag{2}<br>$$<br>the general solution has the form:<br>$$<br>\vec{x} = \begin{bmatrix}<br>x_1\\x_2\\x_3<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>-1+\frac{4}{3}x_3\\2\\x_3<br>\end{bmatrix}<br>=\begin{bmatrix}<br>-1\\2\\0<br>\end{bmatrix} + x_3\begin{bmatrix}\frac{4}{3}\\0\\1\end{bmatrix}<br>=\vec{p} + x_3\vec{v},<br>where\space \vec{v} = \begin{bmatrix}\frac{4}{3}\\0\\1\end{bmatrix},<br>\vec{p} = \begin{bmatrix}-1\\2\\0\end{bmatrix}<br>$$</p>
+<p>Summary：</p>
+<p>$$<br>Homogeneous: \vec{x} = t\vec{v}\\<br>Nonhomogeneous: \vec{x} = \vec{p} + t\vec{v}\\<br>From \space Geometry：translation<br>$$</p>
+<p>the solution set of $A\vec{x} = \vec{b}$ is a line through $\vec{p}$ parallel to the solution set of $A\vec{x} = \vec{0}$.</p>
+<p><img src="/images/LinearAlgebra/c1/homosolution.png" alt="homo and nonhomo relation"></p>
+<p>Figure 6 illustrates the case in which there are two free variables, the solution set is a plane, not a line.</p>
+<p><img src="/images/LinearAlgebra/c1/homosolution-plane.png" alt="Figure6. homosolution-plane"></p>
+<h2 id="Application-of-linear-systems"><a href="#Application-of-linear-systems" class="headerlink" title="Application of linear systems"></a>Application of linear systems</h2><h3 id="Network-Flow"><a href="#Network-Flow" class="headerlink" title="Network Flow"></a>Network Flow</h3><p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>The network in Figure 2 shows the traffic flow (in vehicles per hour) over several one-way streets in downtown Baltimore during a typical early afternoon.<br>Determine the general flow pattern for the network.</p>
+<p><img src="/images/LinearAlgebra/c1/eg1.png" alt="Figure2. traffic"></p>
+<p><em>Solution</em>:</p>
+<table>
+<thead>
+<tr>
+<th>Intersection</th>
+<th>Flow in</th>
+<th>Flow out</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>300+500</td>
+<td>= $x_1 + x2$</td>
+</tr>
+<tr>
+<td>B</td>
+<td>$x_2 + x4$</td>
+<td>= 300 + $x_3$</td>
+</tr>
+<tr>
+<td>C</td>
+<td>100 + 400</td>
+<td>= $x_4 + x5$</td>
+</tr>
+<tr>
+<td>D</td>
+<td>$x_1 + x5$</td>
+<td>= 600</td>
+</tr>
+</tbody></table>
+<p>$$<br>列方程，解方程如下：<br>\begin{matrix}<br>x_1 + x_2 = 800\\<br>x_2 - x_3 + x4 = 300\\<br>x_4 + x_5 = 500\\<br>x1 + x5 = 600\\<br>x_3 = 400<br>\end{matrix}<br>\sim<br>\begin{cases}<br>x_1 = 600 - x_5 \\<br>x_2 = 200 + x_5 \\<br>x_3 = 400 \\<br>x_4 = 500 - x_5\\<br>x_5 is free<br>\end{cases}<br>$$</p>
+<h2 id="Linear-independence"><a href="#Linear-independence" class="headerlink" title="Linear independence"></a>Linear independence</h2><p>线性相关（有非零解）和线性无关（只有零解）</p>
+<p>An indexed set of vectors {${\vec{v_1}, \cdots, \vec{v_p}}$} in $R^n$ is said to be <strong><em>linearly independent</em></strong> if the vector equation<br>$$<br>x_1\vec{v_1} + x_2\vec{v_2} + \cdots + x_p\vec{v_p} = \vec{0}<br>$$<br>has only the trivial solution. The set {${\vec{v_1}, \cdots, \vec{v_p}}$} is said to be <strong><em>linealy dependent</em></strong> if there exist weights $c_1, \cdots, c_p$, not all zeros, such that<br>$$<br>c_1\vec{v_1} + c_2\vec{v_2} + \cdots + c_p\vec{v_p} = \vec{0}<br>$$</p>
+<blockquote>
+<p>The columns of a matrix $A$ are linearly independent if and only if the equation $A\vec{x} = \vec{0}$has only the trivial solution,</p>
+</blockquote>
+<p>当然可以通过观察发现两组向量是否线性相关,比如:<br>$$<br>\vec{v_1} = \begin{bmatrix}3\\1\end{bmatrix},\space<br>\vec{v_2} = \begin{bmatrix}6\\2\end{bmatrix}<br>\rightarrow<br>\vec{v_2} = 2\vec{v_1},<br>linear\space dependent<br>$$</p>
+<blockquote>
+<p>A set of two vectors {$\vec{v_1},\vec{v_2}$} is linearly dependent if at least one of the vectors is a multiple of the other. The set is linearly independent if and only if neither of the vectors is a multiple of the other.</p>
+</blockquote>
+<h3 id="Sets-of-Two-or-More-Vectors"><a href="#Sets-of-Two-or-More-Vectors" class="headerlink" title="Sets of Two or More Vectors"></a>Sets of Two or More Vectors</h3><blockquote>
+<p>如果至少能找到一个向量是其他向量的线性组合，那么这个向量集就是线性相关的</p>
+</blockquote>
+<blockquote>
+<p>If a set contains more vectors than there are entries in each vector, then the set is linearly dependent. That is, any set {$\vec{v_1}, \cdots, \vec{v_p}$} in $R^n$ is linearly dependent if p &gt; n</p>
+</blockquote>
+<p>$$<br>n= 3, p = 5,<br>\overbrace{<br>\begin{bmatrix}* &amp; * &amp; * &amp; * &amp; * \\* &amp; * &amp; * &amp; * &amp; * \\* &amp; * &amp; * &amp; * &amp; * \\<br>\end{bmatrix}}^{p}<br>$$</p>
+<p>$$<br>\begin{bmatrix}2\\1\end{bmatrix},\begin{bmatrix}4\\-1\end{bmatrix},\begin{bmatrix}-2\\2\end{bmatrix}<br>linearly-dependent, cause\space three\space vectors,<br>but\space two\space entries\space in \space each \space vector<br>$$</p>
+<h2 id="Introduction-to-Linear-Transformation"><a href="#Introduction-to-Linear-Transformation" class="headerlink" title="Introduction to Linear Transformation"></a>Introduction to Linear Transformation</h2><p><strong><em>In Computer Graphics</em></strong>, $A\vec{x}$ is not related to linear combination.</p>
+<p>We think the matrix $A$ as an object that “acts” on a vector $\vec{v}$ by multiplication to produce a new vector called $A\vec{x}$.</p>
+<h3 id="Matrix-Transformation"><a href="#Matrix-Transformation" class="headerlink" title="Matrix Transformation"></a>Matrix Transformation</h3><p>$$<br>\vec{x}\mapsto A\vec{x}<br>$$</p>
+<p><mark>A projection transformation<mark></p>
+<p>if $A = \begin{bmatrix}<br>1 &amp; 0 &amp; 0\\<br>0 &amp; 1 &amp; 0 \\<br>0 &amp; 0 &amp; 0<br>\end{bmatrix}$, then the transformation $\vec{x}\mapsto A\vec{x}$ projects points in $R^3$ onto the $x_1x_2-plane$, because<br>$$<br>\begin{bmatrix}<br>x_1\\<br>x_2\\<br>x_3<br>\end{bmatrix}<br>\mapsto<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0\\<br>0 &amp; 1 &amp; 0 \\<br>0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>\begin{bmatrix}<br>x_1\\<br>x_2\\<br>x_3<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>x_1\\<br>x_2\\<br>0<br>\end{bmatrix}<br>$$</p>
+<p><img src="/images/LinearAlgebra/c1/projection.png" alt="projection transformation"></p>
+<p><mark>A shear transformation<mark></p>
+<p>if $A = \begin{bmatrix}<br>1 &amp; 3 \\<br>0 &amp; 1 \\<br>\end{bmatrix}$, the transformation $T:R^2\rightarrow R^2$ defined by $T(\vec{x}) = A\vec{x}$ is called shear transformation, because</p>
+<p>$$<br>\begin{bmatrix}<br>0\\<br>2\\<br>\end{bmatrix}<br>\mapsto<br>\begin{bmatrix}<br>1 &amp; 3 \\<br>0 &amp; 1 \\<br>\end{bmatrix}<br>\begin{bmatrix}<br>0\\<br>2\\<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>6\\<br>2<br>\end{bmatrix}<br>\begin{bmatrix}<br>2\\<br>2<br>\end{bmatrix}<br>\mapsto<br>\begin{bmatrix}<br>1 &amp; 3 \\<br>0 &amp; 1<br>\end{bmatrix}<br>\begin{bmatrix}<br>2\\<br>2<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>8\\<br>2<br>\end{bmatrix}<br>$$</p>
+<p><img src="/images/LinearAlgebra/c1/shear.png" alt="shear transformation"></p>
+<h3 id="The-Matrix-of-Linear-Transformation"><a href="#The-Matrix-of-Linear-Transformation" class="headerlink" title="The Matrix of Linear Transformation"></a>The Matrix of Linear Transformation</h3><p>Let $T: R^n \rightarrow R^m$ be a linear transformation. Then there exists a unique matrix $A$ such that</p>
+<p>$$<br>T(\vec{x}) = A\vec{x},for\space all\space x \space in R^n<br>$$</p>
+<p>In fact, $A$ is the $m \times n$ matrix whose $j-th$ column is the vector $T(\vec{e_j})$, where $\vec{e_j}$ is the $j-th$ column of the identity matrix in $R^n$:</p>
+<p>$$<br>A = \begin{bmatrix} T(\vec{e_1}) \cdots T(\vec{e_n})\end{bmatrix}\tag{3}<br>$$</p>
+<p>the matrxi in (3) is called the <strong><em>standard matrix for the linear transformation T</em></strong>.</p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>The columns of $I_2 = \begin{bmatrix}1 &amp; 0 \\ 0 &amp; 1\end{bmatrix}$ are $\vec{e_1} = \begin{bmatrix}1 \\ 0\end{bmatrix}$ and $\vec{e_2} = \begin{bmatrix}0 \\ 1\end{bmatrix}$. Suppose T is a linear transformation from $R^2$ into $R^3$ such that</p>
+<p>$$<br>T(\vec{e_1}) = \begin{bmatrix}5 \\ -7 \\ 2\end{bmatrix}<br>and \space<br>T(\vec{e_2}) = \begin{bmatrix}-3 \\ 8 \\ 0\end{bmatrix}<br>$$</p>
+<p>with no additional information, find a formula for the image of an arbitrary $\vec{x}$ in $R^2$</p>
+<p>Solution：<br>$$<br>\vec{x} = \begin{bmatrix}x_1 \\ x_2 \end{bmatrix}<br>= x_1\begin{bmatrix}1 \\ 0\end{bmatrix} + x_2\begin{bmatrix}0 \\ 1\end{bmatrix}<br>= x_1\vec{e_1} + x_2\vec{e_2}<br>\\<br>T(\vec{x}) = x_1T(\vec{e_1}) + x_2T(\vec{e_2})<br>= \begin{bmatrix}5x_1 - 3x_2 \\ -7x_1+8x_2 \\ 2x_1+0\end{bmatrix}<br>\\<br>T(\vec{x}) = \begin{bmatrix}T(\vec{e_1}) &amp; T(\vec{e_2})\end{bmatrix}\begin{bmatrix}x_1 \\ x_2\end{bmatrix}<br>= A\vec{x}<br>$$</p>
+<p><mark>A Rotation transformation<mark></p>
+<blockquote>
+<p>根据上文公式可以快速推导出2D旋转矩阵</p>
+</blockquote>
+<p>$\begin{bmatrix}1 \\ 0\end{bmatrix}$ rotates into $\begin{bmatrix}\cos\psi \\ \sin\psi\end{bmatrix}$, and $\begin{bmatrix}0 \\ 1\end{bmatrix}$ rotates into $\begin{bmatrix}-\sin\psi \ \cos\psi\end{bmatrix}$</p>
+<p>so the rotation matrix is $\begin{bmatrix}\cos\psi &amp; -\sin\psi\\ \sin\psi &amp; \cos\psi\end{bmatrix}$</p>
+<p><img src="/images/LinearAlgebra/c1/rotation.png" alt="rotation"></p>
+<blockquote>
+<p>同理，其他如Reflection， expansion…变换都可以根据基向量进行推导</p>
+</blockquote>
+<p>Let $T: R^n \rightarrow R^m$ be a linear transformation. Then $T$ is one-to-one if and only if the equation $T(\vec{x}) = \vec{0}$ has only the trivial solution.</p>
+<h2 id="Linear-models-in-business-science-and-engineering"><a href="#Linear-models-in-business-science-and-engineering" class="headerlink" title="Linear models in business,science, and engineering"></a>Linear models in business,science, and engineering</h2><h3 id="Difference-Equations-差分方程"><a href="#Difference-Equations-差分方程" class="headerlink" title="Difference Equations(差分方程)"></a>Difference Equations(差分方程)</h3><p>Several features of the system are each measured at discrete time intervals, producing a sequence of vectors $\vec{x_0},\vec{x_1},\vec{x_2},\cdots,\vec{x_k}$ The entries in $\vec{x_k}$ provide information about the state of the system at the time of the $k-th$ measurement.</p>
+<p>If there is a matrix A such that $\vec{x_1} = A\vec{x_0}, \vec{x_2} = A\vec{x_1}$ and, in general,</p>
+<p>$$<br>\vec{x_{k+1}} = A\vec{x_k}, k = 0,1,2,…\tag{5}<br>$$</p>
+<p>then (5) is called a <strong><em>linear difference equation</em></strong> (or recurrence relation).</p>
+<p>比如, 一个地区的人口增长可以用这种模型简单的表示</p>
+<blockquote>
+<p>思考：矩阵快速幂怎么求？首先考虑普通的快速幂:</p>
+</blockquote>
+<p>$$<br>\begin{aligned}<br>4 ^ {11} &amp;= 4^{(1011)_2}\\<br>&amp;= 4^{2^0}\cdot4^{2^1}\cdot4^{2^3}\\<br>4^{2^1} &amp;=  4^{2^0} \cdot 4^{2^0}\\<br>4^{2^2} &amp;=  4^{2^1} \cdot 4^{2^1}\\<br>4^{2^3} &amp;=  4^{2^2} \cdot 4^{2^2}<br>\end{aligned}<br>$$</p>
+<p>the c++ code is:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get a^k mod p</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qmi</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> k, <span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span> % p;</span><br><span class="line">    <span class="keyword">int</span> t = a; <span class="comment">//此时相当于a^(2^0)</span></span><br><span class="line">    <span class="keyword">while</span>(k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res = (LL)res * t % p;</span><br><span class="line">        t = (LL)t * t % p;</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>接下来考虑矩阵快速幂：</p>
+</blockquote>
+<p>&#x1F4A1;for example&#x1F4A1;: 如何快速计算Fibonacci的f(1000)？</p>
+<p>$$<br>Fibonacci\\<br>f(0) = 0, f(1) = 1\\<br>f(n) = f(n-1) + f(n-2), n &gt; 1<br>\\<br>建立矩阵方程如下：<br>let \space F(n) = \begin{bmatrix}f(n)\\f(n+1)\end{bmatrix}\\<br>AF(n) = F(n+1)\rightarrow<br>A\begin{bmatrix}f(n)\\ f(n+1)\end{bmatrix} =<br>\begin{bmatrix}f(n+1)\\ f(n+2)\end{bmatrix}<br>\rightarrow<br>A = \begin{bmatrix}0 &amp; 1\\1 &amp; 1\end{bmatrix}<br>\Rightarrow<br>F(n) = A^nF(0), F(0) = \begin{bmatrix}0\\1\end{bmatrix}<br>$$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get A^k * F_0 % p</span></span><br><span class="line"><span class="comment">//示例使用左乘</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qmi</span><span class="params">(Matrix A, <span class="keyword">int</span> k, <span class="keyword">int</span> p, Vector F_0)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Vector res = F_0 % p;</span><br><span class="line">    Matrix t = A; <span class="comment">//A^(2^0)</span></span><br><span class="line">    <span class="keyword">while</span>(k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res = t * res % p;</span><br><span class="line">        t = t * t % p;</span><br><span class="line">        k &gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Linear-Algebra/" rel="tag">Linear Algebra</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Math/Linear-Algebra/C2-Matrix-Algebra/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">C2-Matrix-Algebra</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/C/const&constexpr/">
+                <span class="level-item">const&amp;constexpr</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: 'a75ae535f8acab287788d9a03847ecbb',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#System-of-Linear-Equations">
+        <span class="has-mr-6">1</span>
+        <span>System of Linear Equations</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Linear-Equation">
+        <span class="has-mr-6">1.1</span>
+        <span>Linear Equation:</span>
+        </a></li><li>
+        <a class="is-flex" href="#NonLinear-Equation">
+        <span class="has-mr-6">1.2</span>
+        <span>NonLinear Equation:</span>
+        </a></li><li>
+        <a class="is-flex" href="#Linear-System">
+        <span class="has-mr-6">1.3</span>
+        <span>Linear System</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-set">
+        <span class="has-mr-6">1.4</span>
+        <span>Solution set</span>
+        </a></li><li>
+        <a class="is-flex" href="#Augmented-Matrix">
+        <span class="has-mr-6">1.5</span>
+        <span>Augmented Matrix</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solving-a-Linear-System">
+        <span class="has-mr-6">1.6</span>
+        <span>Solving a Linear System</span>
+        </a></li><li>
+        <a class="is-flex" href="#Existence-and-Uniqueness-Questions">
+        <span class="has-mr-6">1.7</span>
+        <span>Existence and Uniqueness Questions</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Row-Reduction-and-Echelon-Forms">
+        <span class="has-mr-6">2</span>
+        <span>Row Reduction and Echelon Forms</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#a-nonzero-row-or-column">
+        <span class="has-mr-6">2.1</span>
+        <span>a nonzero row or column</span>
+        </a></li><li>
+        <a class="is-flex" href="#leading-entry">
+        <span class="has-mr-6">2.2</span>
+        <span>leading entry</span>
+        </a></li><li>
+        <a class="is-flex" href="#Pivot-Positons">
+        <span class="has-mr-6">2.3</span>
+        <span>Pivot Positons</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solutions-of-Linear-Systems">
+        <span class="has-mr-6">2.4</span>
+        <span>Solutions of Linear Systems</span>
+        </a></li><li>
+        <a class="is-flex" href="#Augumented-matrix-has-solution">
+        <span class="has-mr-6">2.5</span>
+        <span>Augumented matrix has solution</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Vector-Equations">
+        <span class="has-mr-6">3</span>
+        <span>Vector Equations</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Vector-in-R-n">
+        <span class="has-mr-6">3.1</span>
+        <span>Vector in $R^n$</span>
+        </a></li><li>
+        <a class="is-flex" href="#Linear-Combinations">
+        <span class="has-mr-6">3.2</span>
+        <span>Linear Combinations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Linear-Combinations-amp-Matrics">
+        <span class="has-mr-6">3.3</span>
+        <span>Linear Combinations & Matrics</span>
+        </a></li><li>
+        <a class="is-flex" href="#Span-vec-v-1-cdots-vec-v-p">
+        <span class="has-mr-6">3.4</span>
+        <span>Span{$\vec{v_1}, \cdots, \vec{v_p}$}</span>
+        </a></li><li>
+        <a class="is-flex" href="#A-Geometric-Description-of-Span-vec-v-and-Span-vec-u-vec-v">
+        <span class="has-mr-6">3.5</span>
+        <span>A Geometric Description of Span{$\vec{v}$} and Span{$\vec{u}, \vec{v}$}</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Matrix-Equation-Ax-b">
+        <span class="has-mr-6">3.6</span>
+        <span>The Matrix Equation $Ax = b$</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Solution-sets-of-linear-systems">
+        <span class="has-mr-6">4</span>
+        <span>Solution sets of linear systems</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Homogeneous-Linear-Systems">
+        <span class="has-mr-6">4.1</span>
+        <span>Homogeneous Linear Systems</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solutions-of-Nonhomogeneous-Linear-Systems">
+        <span class="has-mr-6">4.2</span>
+        <span>Solutions of Nonhomogeneous Linear Systems</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Application-of-linear-systems">
+        <span class="has-mr-6">5</span>
+        <span>Application of linear systems</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Network-Flow">
+        <span class="has-mr-6">5.1</span>
+        <span>Network Flow</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Linear-independence">
+        <span class="has-mr-6">6</span>
+        <span>Linear independence</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Sets-of-Two-or-More-Vectors">
+        <span class="has-mr-6">6.1</span>
+        <span>Sets of Two or More Vectors</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Introduction-to-Linear-Transformation">
+        <span class="has-mr-6">7</span>
+        <span>Introduction to Linear Transformation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Matrix-Transformation">
+        <span class="has-mr-6">7.1</span>
+        <span>Matrix Transformation</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Matrix-of-Linear-Transformation">
+        <span class="has-mr-6">7.2</span>
+        <span>The Matrix of Linear Transformation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Linear-models-in-business-science-and-engineering">
+        <span class="has-mr-6">8</span>
+        <span>Linear models in business,science, and engineering</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Difference-Equations-差分方程">
+        <span class="has-mr-6">8.1</span>
+        <span>Difference Equations(差分方程)</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/DeepLearning/">
+            <span class="level-start">
+                <span class="level-item">DeepLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C4-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C4-Vector-Spaces</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T01:32:07.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C3-Determinants/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C3-Determinants</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T10:30:13.000Z">2023-09-24</time></div>
+                    <a href="/Math/Geometry/3DMath-Transformation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3DMath-Transformation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T05:47:37.000Z">2023-09-24</time></div>
+                    <a href="/Math/Linear-Algebra/C2-Matrix-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C2-Matrix-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-06T07:30:00.000Z">2023-04-06</time></div>
+                    <a href="/Math/Linear-Algebra/C1-Linear-Equation-in-Linear-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1-Linear-Equation-in-Linear-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DeepLearning/">
+                        <span class="tag">DeepLearning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="C1-Linear-Equation-in-Linear-Algebra" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

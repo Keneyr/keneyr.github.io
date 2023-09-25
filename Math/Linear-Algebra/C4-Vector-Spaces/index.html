@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>C4-Vector-Spaces - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: SubSpaces, NullSpace and ColSpace, Coordinates Mapping, Dimension, Rank, Difference Equation, Markov Chains">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C4-Vector-Spaces">
+<meta property="og:url" content="https://keneyr.com/Math/Linear-Algebra/C4-Vector-Spaces/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: SubSpaces, NullSpace and ColSpace, Coordinates Mapping, Dimension, Rank, Difference Equation, Markov Chains">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-09-25T02:43:35.000Z">
+<meta property="article:modified_time" content="2023-09-25T08:40:18.611Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Linear Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="C4-Vector-Spaces" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/reading">Reading</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Math/">Math</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    39 minutes read (About 5854 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                C4-Vector-Spaces
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: SubSpaces, NullSpace and ColSpace, Coordinates Mapping, Dimension, Rank, Difference Equation, Markov Chains</p>
+<a id="more"></a>
+
+<h2 id="Vector-Spaces-and-SubSpaces"><a href="#Vector-Spaces-and-SubSpaces" class="headerlink" title="Vector Spaces and SubSpaces"></a>Vector Spaces and SubSpaces</h2><blockquote>
+<p>A subspace of a vector space $V$ is a subset $H$ of $V$ that has three properties:<br>a. The zero vector of $V$ is in $H$.<br>b. $H$ is closed under vector addition. That is, for each $\vec{u}$ and $\vec{v}$ in $H$, the sum $\vec{u} + \vec{v}$ is in $H$.<br>c. $H$ is closed under multiplication by scalars.  That is, for each $\vec{u}$ in $H$ and each scalar $c$, the vector $c\vec{u}$ is in $H$.</p>
+</blockquote>
+<blockquote>
+<p>if $\vec{v_1} \cdots \vec{v_p}$ are in a vector space $V$, then Span{$\vec{v_1} \cdots \vec{v_p}$} is a subspace of $V$.</p>
+</blockquote>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Let $H$ be the set of all vectors of the form $(a - 3b, b - a, a, b)$, where $a$ and $b$ are arbitrary scalars. That is, let $H = \lbrace a - 3b, b - a, a, b \rbrace$, $a$ and $b$ in $R$. Show that $H$ is a subspace of $R^4$.</p>
+<p>Proof：</p>
+<p>Write the vectors in $H$ as column vectors. Then the arbitrary vector in $H$ has the form</p>
+<p>$$<br>\begin{bmatrix}<br>a-3b \\ b-a \\ a \\ b<br>\end{bmatrix}<br>=<br>a\begin{bmatrix}<br>1 \\ -1 \\ 1 \\ 0<br>\end{bmatrix} +<br>b\begin{bmatrix}<br>-3 \\ 1 \\ 0 \\ 1<br>\end{bmatrix}<br>$$</p>
+<p>This calculation shows that H = Span{$\vec{v_1}, \vec{v_2}$}, where $\vec{v_1}$ and $\vec{v_2}$ are the vectors indicated above. Thus $H$ is a subspace of $R^4$.</p>
+<h2 id="Null-Spaces-Column-Spaces-And-Linear-Transformations"><a href="#Null-Spaces-Column-Spaces-And-Linear-Transformations" class="headerlink" title="Null Spaces, Column Spaces, And Linear Transformations"></a>Null Spaces, Column Spaces, And Linear Transformations</h2><h3 id="The-Null-Space-of-a-Matrix"><a href="#The-Null-Space-of-a-Matrix" class="headerlink" title="The Null Space of a Matrix"></a>The Null Space of a Matrix</h3><p>The null space of an $m \times n$ matrix $A$, written as $Nul A$, is the set of all solutions of the homogeneous equation $A\vec{x} = \vec{0}$. In set notation,<br>$$<br>Nul A = \lbrace\vec{x} : \vec{x} \space in\space R^n and A\vec{x} = 0\rbrace<br>$$</p>
+<blockquote>
+<p>The null space of an $m \times n$ matrix $A$ is a subspace of $R^n$.</p>
+</blockquote>
+<h3 id="An-Explicit-Description-of-Nul-A"><a href="#An-Explicit-Description-of-Nul-A" class="headerlink" title="An Explicit Description of Nul A"></a>An Explicit Description of Nul A</h3><p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Find a spanning set for the null space of the matrix<br>$$<br>A =<br>\begin{bmatrix}<br>-3 &amp; 6 &amp; -1 &amp; 1 &amp; -7\\<br>1 &amp; -2 &amp; 2 &amp; 3 &amp; -1\\<br>2 &amp; -4 &amp; 5 &amp; 8 &amp; -4<br>\end{bmatrix}<br>$$</p>
+<p>Solution:</p>
+<p>$$<br>\begin{bmatrix}<br>-3 &amp; 6 &amp; -1 &amp; 1 &amp; -7 &amp; 0\\<br>1 &amp; -2 &amp; 2 &amp; 3 &amp; -1 &amp; 0\\<br>2 &amp; -4 &amp; 5 &amp; 8 &amp; -4 &amp; 0<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; -2 &amp; 0 &amp; -1 &amp; 3 &amp; 0\\<br>0 &amp; 0 &amp; 1 &amp; 2 &amp; -2 &amp; 0\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>\begin{bmatrix}<br>x_1 \\ x_2 \\ x_3 \\x_4 \\x_5<br>\end{bmatrix} =<br>\begin{bmatrix}<br>2x_2+x_4-3x_5 \\ x_2 \\ -2x_4+2x_5 \\x_4 \\x_5<br>\end{bmatrix} =<br>x_2\begin{bmatrix}<br>2 \\ 1 \\ 0 \\ 0 \\ 0<br>\end{bmatrix} +<br>x_4\begin{bmatrix}<br>1 \\ 0 \\ -2 \\ 1 \\ 0<br>\end{bmatrix} +<br>x_5\begin{bmatrix}<br>-3 \\ 0 \\ 2 \\ 0 \\ 1<br>\end{bmatrix}<br>= x_2\vec{u} + x_4\vec{v} + x_5\vec{w}<br>$$</p>
+<p>Every linear combination of $\vec{u},\vec{v},\vec{w}$ is an element of $Nul A$ and vice versa. Thus $\lbrace\vec{u},\vec{v},\vec{w}\rbrace$ is a spanning set for $Nul A$.</p>
+<h3 id="The-Column-Space-of-a-Matrix"><a href="#The-Column-Space-of-a-Matrix" class="headerlink" title="The Column Space of a Matrix"></a>The Column Space of a Matrix</h3><p>The column space of an $m \times n$ matrix A, written as $Col A$, is the set of all linear combinations of the columns of A. If $A = \left[\vec{a_1}, \cdots, \vec{a_n}\right]$, then<br>$$<br>ColA = Span\lbrace\vec{a_1}, \cdots, \vec{a_n}\rbrace<br>$$</p>
+<blockquote>
+<p>The column space of an $m \times n$ matrix A is a subspace of $R^m$.</p>
+</blockquote>
+<p>Note that a typical vector in $Col A$ can be written as $A\vec{x}$ for some $\vec{x}$ because the notation $A\vec{x}$ stands for a linear combination of the columns of $A$. That is,</p>
+<p>$$<br>Col A = \lbrace \vec{b} : \vec{b} = A \vec{x} for \space some\space x \space in \space R^n\rbrace<br>$$</p>
+<h3 id="The-Contrast-Between-Nul-A-and-Col-A"><a href="#The-Contrast-Between-Nul-A-and-Col-A" class="headerlink" title="The Contrast Between Nul A and Col A"></a>The Contrast Between Nul A and Col A</h3><p><strong>Contrast Between $NulA$ and $ColA$ for an $m \times n$ Matrix $A$</strong></p>
+<table>
+<thead>
+<tr>
+<th>$NulA$</th>
+<th>$ColA$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. $NulA$ is a subspace of $R^n$.</td>
+<td>1.$ColA$ is a subspace of $R^m$.</td>
+</tr>
+<tr>
+<td>2.$NulA$ is implicitly defined; that is, you are given only a condition $A\vec{x}=\vec{0}$that vectors in $NulA$ must satisfy.</td>
+<td>2.$ColA$ is explicitly defined; that is, you are told how to build vectors in $ColA$.</td>
+</tr>
+<tr>
+<td>3. it takes time to find vectors in $NulA$. Row operations on $\begin{bmatrix}A &amp; \vec{0} \end{bmatrix}$ are required.</td>
+<td>3. It is easy to find vectors in $ColA$. The columns of $A$ are displayed; others are formed from them</td>
+</tr>
+<tr>
+<td>4. There is no obvious relation between $NulA$ and the entries in $A$.</td>
+<td>4. There is an obvious relation between $ColA$ and the entries in $A$, since each column of $A$ is in $ColA$.</td>
+</tr>
+<tr>
+<td>5. A typical vector $\vec{v}$ in $NulA$ has the property that $A\vec{v} = \vec{0}$.</td>
+<td>5. A typical vector $\vec{v}$ in$ColA$has the property that the equation $A\vec{x} = \vec{v}$ is consistent.</td>
+</tr>
+<tr>
+<td>6. Given a specific vector $\vec{v}$, it is easy to tell if $\vec{v}$ is in $NulA$. Just compute $A\vec{v}$.</td>
+<td>6. Given a specific vector $\vec{v}$, it may take time to tell if $\vec{v}$ is in $ColA$. Row operations on are required.</td>
+</tr>
+<tr>
+<td>7. $NulA = \lbrace\vec{0}\rbrace$ if and only if the equation $A\vec{x} = \vec{0}$ has only the trivial solution.</td>
+<td>7. $ColA = R^m$ if and only if the equation $A\vec{x} = \vec{b}$ has a solution for every $\vec{b}$ in $R^m$.</td>
+</tr>
+<tr>
+<td>8. $NulA = \lbrace\vec{0}\rbrace$ if and only if the linear transformation $\vec{x} \mapsto A\vec{x}$ is one-to-one.</td>
+<td>8.$ColA = R^m$ if and only if the linear transformation $\vec{x} \mapsto A\vec{x}$  maps $R^n$ onto $R^m$.</td>
+</tr>
+</tbody></table>
+<h2 id="Linearly-Independent-Sets-Bases"><a href="#Linearly-Independent-Sets-Bases" class="headerlink" title="Linearly Independent Sets; Bases"></a>Linearly Independent Sets; Bases</h2><blockquote>
+<p>An indexed set $\lbrace \vec{v_1}, \cdots, \vec{v_p} \rbrace$ of two or more vectors, with $\vec{v_1} \neq \vec{0}$, is linearly depentdent if and only if some $\vec{v_j}$(with $j &gt; 1$) is a linear combination if the preceding vectors $\vec{v_1}, \cdots, \vec{v_{j-1}}$.</p>
+</blockquote>
+<blockquote>
+<p>Let $H$ be a subspace of a vector space $V$. An indexed set of vectors $\beta = \lbrace \vec{b_1}, \cdots, \vec{b_p}\rbrace$ in $V$ is a basis for $H$ if<br>(i) $\beta$ is a linearly independent set, and<br>(ii) the subspace spanned by $\beta$ coincides with $H$; that is $$H = Span \lbrace \vec{b_1}, \cdots, \vec{b_p} \rbrace$$</p>
+</blockquote>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Let $S = \lbrace 1, t, t^2, \cdots, t^n \rbrace$. Verify that $S$ is a basis for $P_n$. This basis is called the standard basis for $P_n$.</p>
+<p>Solution:</p>
+<p>Certainly $S$ spans $P_n$. To show that S is linearly independent, suppose that $c_0, \cdots, c_n$ satisfy</p>
+<p>$$<br>c_0 \cdot 1 + c_1 \cdot t + c_2 \cdot t^2 + \cdots + c_n \cdot t^n = \vec{0_t}\tag{2}<br>$$</p>
+<p>This equality means that the polynomial on the left has the same values as the zero polynomial on the right. A fundamental theorem in algebra says that the only polynomial in $P_n$ with more than $n$ zeros is the zero polynomial. That is, equation (2) holds for all $t$ only if $c_0 = \cdots = c_n = 0$. This proves that $S$ is linearly independent and hence is a basis for $P_n$.</p>
+<h3 id="The-Spanning-Set-Theorem"><a href="#The-Spanning-Set-Theorem" class="headerlink" title="The Spanning Set Theorem"></a>The Spanning Set Theorem</h3><blockquote>
+<p>Let $S = \lbrace \vec{v_1}, \cdots, \vec{v_p} \rbrace$ be a set in $V$, and let $H = \lbrace \vec{v_1}, \cdots, \vec{v_p} \rbrace$.<br>a. If one of the vectors in $S$-say, $\vec{v_k}$- is a linear combination of the remaining vectors in $S$, then the set formed from $S$ by removing $\vec{v_k}$ still spans $H$.<br>b. If $H \neq \lbrace \vec{0}\rbrace$, some subset of $S$ is a basis for $H$.</p>
+</blockquote>
+<h3 id="Bases-for-Nul-A-and-Col-A"><a href="#Bases-for-Nul-A-and-Col-A" class="headerlink" title="Bases for Nul A and Col A"></a>Bases for Nul A and Col A</h3><blockquote>
+<p>The pivot columns of a matrix A form a basis for Col A.</p>
+</blockquote>
+<h3 id="Two-Views-of-a-Basis"><a href="#Two-Views-of-a-Basis" class="headerlink" title="Two Views of a Basis"></a>Two Views of a Basis</h3><p>&#x1F4A1;For Example&#x1F4A1;: </p>
+<p>The following three sets in $R^3$ show how a linearly independent set can be enlarged to a basis and how further enlargement destroys the linear independence of the set. Also, a spanning set can be shrunk to a basis, but further shrinking destroys the spanning property.</p>
+<p>Linearly independent,but does not span $R^3$:<br>$$<br>\lbrace<br>\begin{bmatrix}<br>1\\0\\0<br>\end{bmatrix},<br>\begin{bmatrix}<br>2\\3\\0<br>\end{bmatrix}<br>\rbrace<br>$$<br>A basis for $R^3$:<br>$$<br>\lbrace<br>\begin{bmatrix}<br>1\\0\\0<br>\end{bmatrix},<br>\begin{bmatrix}<br>2\\3\\0<br>\end{bmatrix},<br>\begin{bmatrix}<br>4\\5\\6<br>\end{bmatrix}<br>\rbrace<br>$$<br>Spans $R^3$ but is linearly dependent:<br>$$<br>\lbrace<br>\begin{bmatrix}<br>1\\0\\0<br>\end{bmatrix},<br>\begin{bmatrix}<br>2\\3\\0<br>\end{bmatrix},<br>\begin{bmatrix}<br>4\\5\\6<br>\end{bmatrix},<br>\begin{bmatrix}<br>7\\8\\9<br>\end{bmatrix}<br>\rbrace<br>$$</p>
+<h2 id="Coordinate-Systems"><a href="#Coordinate-Systems" class="headerlink" title="Coordinate Systems"></a><font style="background: red">Coordinate Systems</font></h2><p>Let $\beta = \lbrace \vec{b_1}, \cdots, \vec{b_n}\rbrace$ be a basis for a vector space $V$. Then for each $\vec{x}$ in $V$, there exists a unique set of scalars $c_1, \cdots, c_n$ such that<br>$$<br>\vec{x} = c_1\vec{b_1} + \cdots + c_n \vec{b_n}<br>$$</p>
+<p>Suppose $\beta = \lbrace \vec{b_1}, \cdots, \vec{b_n}\rbrace$ is a basis for $V$ and $\vec{x}$ is in $V$. The <strong>coordinates of x relative to the basis $\beta$</strong> (or the <strong>$\beta $-coordinates of x</strong>) are the weights $c_1, \cdots, c_n$ such that<br>$$<br>\vec{x} = c_1\vec{b_1} + \cdots + c_n\vec{b_n}<br>$$<br>If $c_1, \cdots, c_n$ are the $\beta$-coordinates of $\vec{x}$, then the vector in $R^n$<br>$$<br>[\vec{x}]_\beta =<br>\begin{bmatrix}<br>c_1 \\ \cdots \\c_n<br>\end{bmatrix}<br>$$<br>is the <strong>coordinate vector of $\vec{x}$</strong> (<strong>relative to $\beta$</strong>), the mapping $\vec{x} \mapsto [\vec{x}]_\beta$ is the coordinate mapping (determined by $\beta$).</p>
+<h3 id="A-Graphical-Interpretation-of-Coordinates"><a href="#A-Graphical-Interpretation-of-Coordinates" class="headerlink" title="A Graphical Interpretation of Coordinates"></a>A Graphical Interpretation of Coordinates</h3><p>1 unit in the $\vec{e_1}$ direction, 6 units in the $\vec{e_2}$ direction:<br>$$<br>\vec{x} =<br>\begin{bmatrix}<br>1 \\ 6<br>\end{bmatrix}<br>$$<br>2 units in the $\vec{b_1}$ direction, 3 units in the $\vec{b_2}$ direction:<br>$$<br>[\vec{x}]_\beta =<br>\begin{bmatrix}<br>-2 \\ 3<br>\end{bmatrix}<br>$$</p>
+<p><img src="/images/LinearAlgebra/c4/coordinate.png" alt="coordinate"></p>
+<h3 id="Coordinates-in-R-n"><a href="#Coordinates-in-R-n" class="headerlink" title="Coordinates in $R^n$"></a>Coordinates in $R^n$</h3><p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Let $\vec{b_1} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$,$\vec{b_2} = \begin{bmatrix} -1 \\ 1 \end{bmatrix}$,$\vec{x} = \begin{bmatrix} 4 \\ 5 \end{bmatrix}$, and $\beta = \lbrace \vec{b_1}, \vec{b_2}\rbrace$. Find the coordinate vector $[\vec{x}]_\beta$ of $\vec{x}$ relative to $\beta$.</p>
+<p>Solution:</p>
+<p>The $\beta$-coordinates $c_1, c_2$ of $\vec{x}$ satisfy</p>
+<p>$$<br>c_1\begin{bmatrix}2 \\ 1\end{bmatrix} + c_2\begin{bmatrix}-1 \\ 1\end{bmatrix}<br>= \begin{bmatrix}4 \\ 5\end{bmatrix},<br>\begin{bmatrix}2 &amp; -1 \\ 1 &amp; 1\end{bmatrix} \begin{bmatrix}c_1 \\ c_2\end{bmatrix}<br>= \begin{bmatrix}4 \\ 5\end{bmatrix}<br>\tag{3}<br>$$</p>
+<p>This equation can be solved by row operations on an augmented matrix or by using the inverse of the matrix on the left. In any case, the solution is<br>$$<br>c_1 = 3, c_2 = 2 \\<br>\vec{x} = 3\vec{b_1} + 2\vec{b_2}, and \space<br>[\vec{x}]_\beta = \begin{bmatrix}c_1 \\ c_2\end{bmatrix}<br>=\begin{bmatrix}3 \\ 2\end{bmatrix}<br>$$</p>
+<p><img src="/images/LinearAlgebra/c4/x.png" alt="x"></p>
+<p><mark>The matrix in (3) changes the $\beta$ -coordinates of a vector $\vec{x}$ into the standard coordinates for $\vec{x}$.</mark> An analogous change of coordinates can be carried out in $R^n$ for a basis $\beta = \lbrace \vec{b_1}, \cdots, \vec{b_n} \rbrace$. Let </p>
+<p>$$<br>P_\beta =<br>\begin{bmatrix}<br>\vec{b_1} &amp; \vec{b_2} &amp; \cdots &amp; \vec{b_n}<br>\end{bmatrix}<br>$$<br>Then the vector equation</p>
+<p>$$<br>\vec{x} = c_1\vec{b_1} + c_2\vec{b_2} + \cdots + c_n\vec{b_n}<br>$$<br>is equivalent to<br>$$<br>\vec{x} = P_\beta[\vec{x}]_\beta<br>$$</p>
+<p><mark>We call $P_\beta$ the <strong>change-of-coordinates matrix</strong> from $\beta$ to the standard basis in $R^n$.</mark> Left-multiplication by $P_\beta$ transforms the coordinate vector $[\vec{x}]_\beta$ into $\vec{x}$.</p>
+<p>Since the columns of $P_\beta$ form a basis for $R^n$, $P_\beta$ is invertible. <mark>Left-multiplication by $P_\beta^{-1}$converts $\vec{x}$ into its $\beta$-coordinate vector<mark>:</p>
+<p>$$<br>P_\beta^{-1}\vec{x} = [\vec{x}]_\beta<br>$$</p>
+<h3 id="The-Coordinate-Mapping"><a href="#The-Coordinate-Mapping" class="headerlink" title="The Coordinate Mapping"></a>The Coordinate Mapping</h3><p>Choosing a basis $\beta = \lbrace \vec{b_1}, \cdots, \vec{b_n} \rbrace$ for a vector space $V$ introduces a coordinate system in $V$. The coordinate mapping $\vec{x} \mapsto [\vec{x}]_\beta$ connects the possibly unfamiliar space $V$ to the familiar space $R^n$: </p>
+<p><img src="/images/LinearAlgebra/c4/mapping.png" alt="mapping"></p>
+<blockquote>
+<p>Let $\beta = \lbrace \vec{b_1}, \cdots, \vec{b_n} \rbrace$ be a basis for a vector space $V$. Then the coordinate mapping $\vec{x} \mapsto [\vec{x}]_\beta$ is a one-to-one linear transformation from $V$ onto $R^n$.<br>这里一定要注意，beta是向量空间V的基向量，x也是属于V空间的向量</p>
+</blockquote>
+<p><em>Proof:</em></p>
+<p>two typical vectors in $V$:<br>$$<br>\vec{u} = c_1\vec{b_1} + \cdots + c_n\vec{b_n},<br>\vec{w} = d_1\vec{b_1} + \cdots + d_n\vec{b_n}<br>\stackrel{addition-operation}\longrightarrow<br>\vec{u} + \vec{w} = (c_1 + d_1)\vec{b_1} + \cdots + (c_n + d_n)\vec{b_n}<br>\longrightarrow<br>\\<br>[\vec{u} + \vec{w}]_\beta =<br>\begin{bmatrix}<br>c_1 + d_1 \\<br>\cdots \\<br>c_n + d_n<br>\end{bmatrix} =<br>\begin{bmatrix}<br>c_1 \\<br>\cdots \\<br>c_n<br>\end{bmatrix} +<br>\begin{bmatrix}<br>d_1 \\<br>\cdots \\<br>d_n<br>\end{bmatrix} =<br>[\vec{u}]_\beta + [\vec{w}]_\beta<br>\\<br>常量乘法也一样性质，略过<br>$$</p>
+<p><mark>Thus the coordinate mapping also preserves scalar multiplication and hence is a linear transformation.</mark></p>
+<blockquote>
+<p>In general, a one-to-one linear transformation from a vector space $V$ onto a vector space$W$ is called an <strong><em>isomorphism from $V$ onto $W$</em></strong>.</p>
+</blockquote>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Let $\beta$ be the standard basis of the space $P_3$ of polynomials; that is, let $\beta = \lbrace \vec{1}, \vec{t}, \vec{t^2}, \vec{t^3}\rbrace$. A typical element $p$ of $P_3$ has the form:</p>
+<p>$$<br>\vec{p(t)} = a_0 + a_1\vec{t} + a_2\vec{t^2} + a_3\vec{t^3}<br>$$<br>Since $\vec{p}$is already displayed as a linear combination of the standard basis vectors, we<br>conclude that:<br>$$<br>[\vec{p}]_\beta =<br>\begin{bmatrix}<br>a_0\\a_1\\a_2\\a_3<br>\end{bmatrix}<br>$$</p>
+<p>Thus the coordinate mapping $\vec{p} \mapsto [\vec{p}]_\beta$is an isomorphism from$P_3$ onto $R_4$.</p>
+<h2 id="The-Dimension-of-A-Vector-Space"><a href="#The-Dimension-of-A-Vector-Space" class="headerlink" title="The Dimension of A Vector Space"></a>The Dimension of A Vector Space</h2><blockquote>
+<p>If a vector space $V$ has a basis $\beta = \lbrace \vec{b_1}, \cdots, \vec{b_n}\rbrace$, then any set in $V$ containing more than $n$ vectors must be linearly dependent.</p>
+</blockquote>
+<blockquote>
+<p>If a vector space $V$ has a basis of $n$ vectors, then every basis of $V$ must consist of exactly $n$ vectors.</p>
+</blockquote>
+<p>If $V$ is spanned by a finite set, then $V$ is said to be <strong>finite-dimensional</strong>, and <strong>the dimension of $V$</strong> , written as $dim V$ , is the number of vectors in a basis for $V$ . The dimension of the zero vector space ${\vec{0}}$ is defined to be zero. If $V$ is not spanned by a finite set, then V is said to be infinite-dimensional.</p>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Find the dimension of the subspace:<br>$H = \lbrace \begin{bmatrix} a - 3b + 6c\\5a + 4d\\ b - 2c - d\\5d\end{bmatrix} a,b,c,d \space in R \rbrace$</p>
+<p>Solution:</p>
+<p>$H$ is the set of all linear combinations of the vectors:<br>$$<br>\vec{v_1} =<br>\begin{bmatrix}<br>1\\5\\0\\0<br>\end{bmatrix},<br>\vec{v_2} =<br>\begin{bmatrix}<br>-3\\0\\1\\0<br>\end{bmatrix},<br>\vec{v_3} =<br>\begin{bmatrix}<br>6\\0\\-2\\0<br>\end{bmatrix},<br>\vec{v_4} =<br>\begin{bmatrix}<br>0\\4\\-1\\5<br>\end{bmatrix}<br>$$</p>
+<p>$\lbrace \vec{v_1}, \vec{v_2}, \vec{v_4}\rbrace$ is linearly independent and hence is a basis for $H$. Thus $dim H = 3$. </p>
+<h3 id="Subspaces-of-a-Finite-Dimensional-Space"><a href="#Subspaces-of-a-Finite-Dimensional-Space" class="headerlink" title="Subspaces of a Finite-Dimensional Space"></a>Subspaces of a Finite-Dimensional Space</h3><p>Let $H$ be a subspace of a finite-dimensional vector space $V$ . Any linearly independent set in $H$ can be expanded, if necessary, to a basis for $H$ . Also, $H$ is finite-dimensional and</p>
+<p>$$<br>dim H \leqslant dim V<br>$$</p>
+<h3 id="The-Dimensions-of-Nul-A-and-Col-A"><a href="#The-Dimensions-of-Nul-A-and-Col-A" class="headerlink" title="The Dimensions of $Nul A$ and $Col A$"></a>The Dimensions of $Nul A$ and $Col A$</h3><blockquote>
+<p>The dimension of $Nul A$ is the number of free variables in the equation $A\vec{x} = \vec{0}$, and the dimension of $Col A$ is the number of pivot columns in $A$.</p>
+</blockquote>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Find the dimensions of the null space and the column space of $A = \begin{bmatrix}-3 &amp; 6 &amp; -1 &amp; 1 &amp; -7\\1 &amp; -2 &amp; 2 &amp; 3 &amp; -1\\2 &amp; -4 &amp; 5 &amp; 8 &amp; -4\end{bmatrix}$</p>
+<p>$$<br>\begin{bmatrix}<br>1 &amp; -2 &amp; 2 &amp; 3 &amp; -1 &amp; 0\\<br>0 &amp; 0 &amp; 1 &amp; 2 &amp; -2 &amp; 0\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>\<br>x_2, x_4, x_5: free\space variables\\<br>\longrightarrow dimNulA = 3, dimColA = 2.<br>$$</p>
+<h2 id="Rank"><a href="#Rank" class="headerlink" title="Rank"></a>Rank</h2><h3 id="The-Row-Space"><a href="#The-Row-Space" class="headerlink" title="The Row Space"></a>The Row Space</h3><blockquote>
+<p>If two matrices $A$ and $B$ are row equivalent, then their row spaces are the same. If $B$ is in echelon form, the nonzero rows of $B$ form a basis for the row space of $A$ as well as for that of $B$.</p>
+</blockquote>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Find bases for the row space, the column space, and the null space of the matrix $\begin{bmatrix}-2 &amp; -5 &amp; 8 &amp; 0 &amp; -17\\1 &amp; 3 &amp; -5 &amp; 1 &amp; 5\\3 &amp; 11 &amp; -19 &amp; 7 &amp; 1\\1 &amp; 7 &amp; -13 &amp; 5 &amp; -3\end{bmatrix}$.</p>
+<p>$$<br>A \sim B =<br>\begin{bmatrix}<br>1 &amp; 3 &amp; -5 &amp; 1 &amp; 5\\<br>0 &amp; 1 &amp; -2 &amp; 2 &amp; -7\\<br>0 &amp; 0 &amp; 0 &amp; -4 &amp; 20\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>\sim C =<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\<br>0 &amp; 1 &amp; -2 &amp; 0 &amp; 3\\<br>0 &amp; 0 &amp; 0 &amp; 1 &amp; -5\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>\\<br>（只需看前几行非零）<br>Basis-for-RowA:\lbrace(1, 3, 5, 1, 5),(0, 1, 2, 2, 7),(0, 0, 0, 4, 20)\rbrace<br>\\<br>（要看pivot \space columns）<br>Basis-for-ColA:\lbrace<br>\begin{bmatrix}-2\\ 1\\ 3\\ 1\end{bmatrix},<br>\begin{bmatrix}-5\\ 3\\ 11\\ 7\end{bmatrix},<br>\begin{bmatrix}0\\ 1\\ 7\\ 5\end{bmatrix}\rbrace<br>\\<br>（求解，有两个自由变量）<br>Basis-for-NullA:\lbrace<br>\begin{bmatrix}-1\\ 2\\ 1\\ 0\\ 0\end{bmatrix},<br>\begin{bmatrix}-1\\ -3\\ 0\\ 5\\ 1\end{bmatrix}\rbrace<br>$$</p>
+<h3 id="The-Rank-Theorem"><a href="#The-Rank-Theorem" class="headerlink" title="The Rank Theorem"></a>The Rank Theorem</h3><blockquote>
+<p>The rank of $A$ is the dimension of the column space of $A$.</p>
+</blockquote>
+<p>The dimensions of the column space and the row space of an $m \times n$ matrix $A$ are equal. This common dimension, the rank of $A$, also equals the number of pivot positions in $A$ and satisfies the equation</p>
+<p>$$<br>rank A + dim NullA = n<br>\\<br>其实就是：<br>\\<br>\lbrace number-of-pivot-columns\rbrace +<br>\lbrace number-of-nonpivot-columns\rbrace =<br>\lbrace number-of-columns\rbrace<br>$$</p>
+<h3 id="Applications-to-Systems-of-Equations"><a href="#Applications-to-Systems-of-Equations" class="headerlink" title="Applications to Systems of Equations"></a>Applications to Systems of Equations</h3><p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>A scientist has found two solutions to a homogeneous system of 40 equations in 42 variables. The two solutions are not multiples, and all other solutions can be constructed by adding together appropriate multiples of these two solutions. Can the scientist be certain that an associated nonhomogeneous system (with the same coefficients) has a solution?</p>
+<p>Solution:</p>
+<p>Yes. Let $A$ be the $40 \times 42$ coefficient matrix of the system. The given information implies that the two solutions are linearly independent and span $Nul A$.<br>So $dim Nul A = 2$. By the Rank Theorem, $dim Col A = 42 - 2 = 40$. Since $R^{40}$ is the only subspace of $R^{40}$ whose dimension is $40$, $Col A$ must be all of $R^{40}$. This means that every nonhomogeneous equation $Ax = b$ has a solution.</p>
+<h3 id="Rank-and-the-Invertible-Matrix-Theorem"><a href="#Rank-and-the-Invertible-Matrix-Theorem" class="headerlink" title="Rank and the Invertible Matrix Theorem"></a>Rank and the Invertible Matrix Theorem</h3><blockquote>
+<p>The Invertible Matrix Theorem<br>Let $A$ be an $n \times n$ matrix. Then the following statements are each equivalent to the statement that $A$ is an invertible matrix.<br>m.The columns of $A$ form a basis of $R^n$.<br>n. $Col A = R^n$<br>o. $dim Col A = n$<br>p. $rank A = n$<br>q. $Nul A = \lbrace 0 \rbrace $<br>r. $dim Nul A = 0$</p>
+</blockquote>
+<h2 id="Change-of-Basis"><a href="#Change-of-Basis" class="headerlink" title="Change of Basis"></a><font style="background: red">Change of Basis</font></h2><p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p><img src="/images/LinearAlgebra/c4/bases.png" alt="bases"></p>
+<p>Consider two bases $\beta = \lbrace \vec{b_1}, \vec{b_2}\rbrace$ and $\gamma = \lbrace \vec{c_1}, \vec{c_2}\rbrace$ for a vector space $V$, such that</p>
+<p>$$<br>\vec{b_1} = 4 \vec{c_1} + \vec{c_2} \space and \space \vec{b_2} = -6 \vec{c_1} + \vec{c_2}\tag{1}<br>$$</p>
+<p>Suppose</p>
+<p>$$<br>\vec{x} = 3\vec{b_1} + \vec{b_2}<br>\tag{2}<br>$$</p>
+<p>That is, suppose $[\vec{x}]_\beta = \begin{bmatrix}3\\1\end{bmatrix}$. Find $[\vec{x}]_\gamma$.</p>
+<p>Solution:</p>
+<p>Apply the coordinate mapping determined by $\gamma$ to $\vec{x}$ in (2). Since the coordinate mapping is a linear transformation.</p>
+<p>$$<br>[\vec{x}]_\gamma = [3\vec{b_1}+\vec{b_2}]_\gamma<br>= 3[\vec{b_1}]_\gamma+[\vec{b_2}]_\gamma<br>$$</p>
+<p>We can write this vector equation as a matrix equation, using the vectors in the linear combination as the columns of a matrix:</p>
+<p>$$<br>[\vec{x}]_\gamma =<br>\begin{bmatrix}<br>[\vec{b_1}]_\gamma &amp; [\vec{b_2}]_\gamma<br>\end{bmatrix}<br>\begin{bmatrix}<br>3\\ 1<br>\end{bmatrix}<br>$$</p>
+<p>From (1),</p>
+<p>$$<br>[\vec{b_1}]_\gamma =<br>\begin{bmatrix}<br>4\\ 1<br>\end{bmatrix},<br>[\vec{b_2}]_\gamma =<br>\begin{bmatrix}<br>-6\\ 1<br>\end{bmatrix}<br>$$</p>
+<p>Thus,</p>
+<p>$$<br>[\vec{x}]_\gamma =<br>\begin{bmatrix}<br>4 &amp; -6\\<br>1 &amp; 1<br>\end{bmatrix}<br>\begin{bmatrix}<br>3\\ 1<br>\end{bmatrix}=<br>\begin{bmatrix}<br>6\\ 4<br>\end{bmatrix}<br>$$</p>
+<p>Let $\beta = \lbrace \vec{b_1}, \cdots, \vec{b_n}\rbrace$ and $\gamma = \lbrace \vec{c_1}, \cdots, \vec{c_n}\rbrace$ be bases of a vector space $V$. Then there is a unique $n \times n$ matrix $\gamma \stackrel{P}\leftarrow \beta$ such that</p>
+<p>$$<br>[\vec{x}]_\gamma =\gamma \stackrel{P}\leftarrow \beta [\vec{x}]_\beta<br>$$</p>
+<p>The columns of $\gamma \stackrel{P}\leftarrow \beta$ are the $\gamma$-coordinate vectors of the vectors in the basis $\beta$. That is,</p>
+<p>$$<br>\gamma \stackrel{P}\leftarrow \beta =<br>\begin{bmatrix}<br>[\vec{b_1}]\gamma &amp; [\vec{b_2}]\gamma \cdots [\vec{b_n}]\gamma<br>\end{bmatrix}<br>$$</p>
+<p>$\gamma \stackrel{P}\leftarrow \beta$ is called the change-of-coordinates matrix from $\beta$ to $\gamma$.<br>Multiplication by $\gamma \stackrel{P}\leftarrow \beta$ converts $\beta$-coordinates into $\gamma$-coordinates.</p>
+<p><img src="/images/LinearAlgebra/c4/convert.png" alt="convert"></p>
+<h3 id="Change-of-Basis-in-R-n"><a href="#Change-of-Basis-in-R-n" class="headerlink" title="Change of Basis in $R^n$"></a>Change of Basis in $R^n$</h3><p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Let $\vec{b_1} = \begin{bmatrix}-9\\1\end{bmatrix}$,$\vec{b_2} = \begin{bmatrix}-5\\-1\end{bmatrix}$,$\vec{c_1} = \begin{bmatrix}1\\-4\end{bmatrix}$,$\vec{c_2} = \begin{bmatrix}3\\-5\end{bmatrix}$, and consider the bases for $R^2$ given by $\beta = \lbrace \vec{b_1}, \vec{b_2}\rbrace$ and $\gamma = \lbrace \vec{c_1}, \vec{c_2}\rbrace$. Find the change-of-coordinates matrix from $\beta$ to $\gamma$.</p>
+<p>Solution:</p>
+<p>The matrix $\gamma \stackrel{P}\leftarrow \beta$ involves the $\gamma$-coordinate vectors of $\vec{b_1}$ and $\vec{b_2}$. Let $[\vec{b_1}_\gamma] = \begin{bmatrix}x_1\\x_2\end{bmatrix}$ and $[\vec{b_2}_\gamma] = \begin{bmatrix}y_1\\y_2\end{bmatrix}$. Then, by definition,</p>
+<p>$$<br>\begin{bmatrix}\vec{c_1} &amp; \vec{c_2}\end{bmatrix}<br>\begin{bmatrix}\vec{x_1} \\ \vec{x_2}\end{bmatrix}<br>=\vec{b_1} \space and \space<br>\begin{bmatrix}\vec{c_1} &amp; \vec{c_2}\end{bmatrix}<br>\begin{bmatrix}\vec{y_1} \\ \vec{y_2}\end{bmatrix}<br>=\vec{b_2}<br>$$</p>
+<p>To solve both systems simultaneously, augment the coefficient matrix with $\vec{b1}$ and $\vec{b2}$, and row reduce:</p>
+<p>$$<br>\left[<br>    \begin{array}{cc|c}<br>    \vec{c_1} &amp; \vec{c_2} &amp;  \vec{b_1} &amp; \vec{b_2}\end{array}<br>\right] =<br>\left[<br>    \begin{array}{cc|cc}<br>    -1 &amp; 3 &amp; -9 &amp; -5 \\<br>    -4 &amp; -5 &amp; 1 &amp; -1\end{array}<br>\right]<br>\sim<br>\left[<br>    \begin{array}{cc|cc}<br>    1 &amp; 0 &amp; 6 &amp; 4 \\<br>    0 &amp; 1 &amp; -5 &amp; -3\end{array}<br>\right]<br>$$</p>
+<p>Thus</p>
+<p>$$<br>[\vec{b_1}]_\gamma =<br>\begin{bmatrix}<br>6 \\ -5<br>\end{bmatrix}<br>\space and \space<br>[\vec{b_2}]_\gamma =<br>\begin{bmatrix}<br>4 \\ -3<br>\end{bmatrix}<br>$$</p>
+<p>The desired change-of-coordinates matrix is therefore</p>
+<p>$$<br>\gamma \stackrel{P}\leftarrow \beta<br>=<br>\begin{bmatrix}<br>[\vec{b_1}]_\gamma &amp; [\vec{b_2}]_\gamma<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>6 &amp; 4 \\ -5 &amp; -3<br>\end{bmatrix}<br>$$</p>
+<p>An analogous procedure works for finding the change-of-coordinates matrix between any two bases in $R^n$:</p>
+<p>$$<br>\left[<br>    \begin{array}{cc|c}<br>    \vec{c_1} &amp; \vec{c_2} &amp;  \vec{b_1} &amp; \vec{b_2}\end{array}<br>\right]<br>\sim<br>\left[<br>    \begin{array}{c|c}<br>    I &amp; \gamma \stackrel{P}\leftarrow \beta<br>    \end{array}<br>\right]<br>$$</p>
+<p>the change-ofcoordinate matrices $P_\beta$ and $P_\gamma$ that convert $\beta$-coordinates and $\gamma$-coordinates, respectively, into standard coordinates.</p>
+<p>$$<br>P_\beta[\vec{x}]_\beta = \vec{x}, \space<br>P_\gamma[\vec{x}]_\gamma = \vec{x}, \space and \space<br>[\vec{x}]_\gamma = P_\gamma^{-1}\vec{x}<br>$$</p>
+<p>Thus,</p>
+<p>$$<br>[\vec{x}]_\gamma = P_\gamma^{-1}\vec{x} = P_\gamma^{-1}P_\beta[\vec{x}]_\beta<br>\\<br>\Rightarrow<br>\\<br>\gamma \stackrel{P}\leftarrow \beta = P_\gamma^{-1}P_\beta<br>$$</p>
+<p>&#x1F449;<a href="/Math/Geometry/3DMath-Transformation/#more">More about Coordinates Space and Transformations in Graphics &gt;&gt;</a></p>
+<h2 id="Applications-to-Difference-Equation差分方程"><a href="#Applications-to-Difference-Equation差分方程" class="headerlink" title="Applications to Difference Equation差分方程"></a>Applications to Difference Equation差分方程</h2><h3 id="Linear-Independence-in-the-Space-S-of-Signals"><a href="#Linear-Independence-in-the-Space-S-of-Signals" class="headerlink" title="Linear Independence in the Space $S$ of Signals"></a>Linear Independence in the Space $S$ of Signals</h3><p>we consider a set of only three signals in $S$, say, $\lbrace u_k \rbrace,\lbrace v_k \rbrace,\lbrace w_k \rbrace$.They are linearly independent precisely when the equation</p>
+<p>$$<br>c_1 u_k + c_2 v_k + c_3 w_k = 0 for\space all \space k\tag{1}<br>$$</p>
+<p>implies that $c1 = 0, c2 = 0, c3 = 0$.Then equation (1) holds for any three consecutive values of $k$, say, $k, k + 1, \space and \space k + 2$.<br>Hence $c1, c2, c3$ satisfy</p>
+<p>$$<br>\begin{bmatrix}<br>u_k &amp; v_k &amp; w_k\\<br>u_{k+1} &amp; v_{k+1} &amp; w_{k+1}\\<br>u_{k+2} &amp; v_{k+2} &amp; w_{k+2}<br>\end{bmatrix}<br>\begin{bmatrix}<br>c_1\\c_2\\c_3\\<br>\end{bmatrix}=<br>\begin{bmatrix}<br>0\\0\\0<br>\end{bmatrix}\tag{2}<br>$$</p>
+<p>The coefficient matrix in this system is called the <strong>Casorati matrix</strong> of the signals, and the determinant of the matrix is called the <strong>Casoratian</strong> of $u_k, v_k, w_k$. If the <strong>Casorati matrix</strong> is invertible for at least one value of k, then (2) will imply that $c1 = c2 = c3 = 0$, which will prove that the three signals are linearly independent.</p>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<blockquote>
+<p>Verify that $1^k, (-2)^k, and \space 3^k$ are linearly independent signals.</p>
+</blockquote>
+<p><img src="/images/LinearAlgebra/c4/signal.png" alt="signal"></p>
+<p>Solution:</p>
+<p>The Casorati matrix is:</p>
+<p>$$<br>\begin{bmatrix}<br>1^k &amp; (-2)^k &amp; 3^k\\<br>1^{k+1} &amp; (-2){k+1} &amp; 3^{k+1}\\<br>1^{k+2} &amp; (-2)^{k+2} &amp; 3^{k+2}<br>\end{bmatrix}<br>$$</p>
+<p>The Casorati matrix is invertible for $k = 0$. So $1^k, (-2)^k, 3^k$ are linearly independent.</p>
+<h3 id="Linear-Difference-Equations（线性差分方程）"><a href="#Linear-Difference-Equations（线性差分方程）" class="headerlink" title="Linear Difference Equations（线性差分方程）"></a>Linear Difference Equations（线性差分方程）</h3><p>Given scalars $a_0,\cdots, a_n$, with $a_0$ and $a_n$ nonzero, and given a signal $\lbrace z_k \rbrace$, the equation</p>
+<p>$$<br>a_0y_{k+n} + a_1y_{k+n-1} + \cdots + a_ny_k = z_k for\space all\space k \tag{3}<br>$$</p>
+<p><u>is called a linear difference equation (or linear recurrence relation) of order $n$</u>. For simplicity, $a_0$ is often taken equal to 1. <strong>If $\lbrace z_k \rbrace$ is the zero sequence, the equation is homogeneous; otherwise, the equation is nonhomogeneous.</strong></p>
+<blockquote>
+<p>在第一章节的笔记中，有提一嘴Fibonacci数列是差分方程，具体形式如下,<br>为什么看起来是差分方程的定义不太一样？（接着看下面的内容）</p>
+</blockquote>
+<p>$$<br>\vec{x_{k+1}} = A\vec{x_k}, k = 0,1,2,…\tag{5}<br>$$</p>
+<p>$$<br>Fibonacci\\<br>f(0) = 0, f(1) = 1\\<br>f(n) = f(n-1) + f(n-2), n &gt; 1<br>$$<br>建立矩阵方程如下：<br>$$<br>let \space F(n) = \begin{bmatrix}f(n) \\ f(n+1)\end{bmatrix}\\<br>AF(n) = F(n+1)\rightarrow<br>A\begin{bmatrix}f(n) \\ f(n+1)\end{bmatrix} =<br>\begin{bmatrix}f(n+1) \\ f(n+2)\end{bmatrix}<br>\\<br>\rightarrow<br>A = \begin{bmatrix}0 &amp; 1 \\ 1 &amp; 1\end{bmatrix}<br>\\<br>\Rightarrow<br>F(n) = A^nF(0), F(0) = \begin{bmatrix}0 \\ 1\end{bmatrix}<br>$$</p>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>In digital signal processing, a difference equation such as (3) describes a <mark>linear filter</mark>, and $a_0,\cdots, a_n$ are called the <mark>filter coefficients</mark>. If $\lbrace y_k \rbrace$ is treated as the input and $\lbrace z_k \rbrace$ as the output, then the solutions of the associated homogeneous equation are the signals that are filtered out and transformed into the zero signal. Let us feed two different signals into the filter</p>
+<p>$$<br>0.35y_{k+2} + 0.5y_{k+1} + 0.35y_k = z_k<br>$$</p>
+<p>Here $0.35$ is an abbreviation for $\sqrt2/4$. The first signal is created by sampling the continuous signal $y = \cos(\pi t / 4)$at integer values of $t$, as in Figure3(a). The discrete signal is</p>
+<p>$$<br>\lbrace y_k\rbrace = \lbrace \cdots, \cos(0), \cos(\pi/4), cos(2\pi/4), cos(3\pi/4), \cdots\rbrace<br>$$</p>
+<p>For simplicity, write $\pm0.7$ in place of $\pm\sqrt2/2$, so that</p>
+<p>$$<br>\lbrace y_k\rbrace = \lbrace \cdots, 1, 0.7, 0, -0.7,-1,-0.7,0,0.7,1,0.7,0 \cdots\rbrace<br>$$</p>
+<p><img src="/images/LinearAlgebra/c4/filter.png" alt="filter"><br>Table 1 shows a calculation of the output sequence $\lbrace z_k \rbrace$, where $0.35\cdot0.7$ is an abbreviation for $(\sqrt2/4)(\sqrt2/2)=0.25$. The output is $\lbrace y_k\rbrace$, shifted by one term.</p>
+<p><img src="/images/LinearAlgebra/c4/table.png" alt="table"></p>
+<p>A different input signal is produced from the higher frequency signal $y = \cos(3\pi/4)$, shown in Figure 3(b). Sampling at the same rate as before produces a new input sequence:</p>
+<p>$$<br>\lbrace y_k\rbrace = \lbrace \cdots, 1, -0.7, 0, 0.7, -1, 0.7, 0 \cdots\rbrace<br>$$</p>
+<p>When $\lbrace w_k\rbrace$ is fed into the filter, the output is the zero sequence. <mark>The filter, called a low-pass filter（低通滤波器）</mark>, lets $\lbrace y_k \rbrace$ pass through, but stops the higher frequency $\lbrace w_k \rbrace$.</p>
+<p>In many applications, a sequence $\lbrace z_k \rbrace$ is specified for the right side of a difference equation (3), and a $\lbrace y_k \rbrace$ that satisfies (3) is called a <strong>solution</strong> of the equation. The next example shows how to find solutions for a homogeneous equation. （比如机器学习就类似于如此，给定输入和输出，学习最优权重）</p>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Solutions of a homogeneous difference equation often have the form $y_k = r^k$ for some $r$. Find some solutions of the equation</p>
+<p>$$<br>y_{k+3} - 2y_{k+2} - 5y_{k+1} + 6y_k = 0 , for\space all\space k<br>$$</p>
+<p>Solution:</p>
+<p>Substitute $r^k$ for $y_k$ in the equation and factor the left side:</p>
+<p>$$<br>r^{k+3} - 2r^{k+2} - 5r^{k+1} + 6r^{k} = 0<br>\rightarrow<br>r^k(r-1)(r+2)(r-3) = 0<br>$$</p>
+<p>Thus, $(1)^k, (-2)^k, (3)^k$ are all solutions.</p>
+<p>In general, a nonzero signal $r^k$ satisfies the homogeneous difference equation</p>
+<p>$$<br>y_{k+n} + a_1y_{k+n-1} + \cdots + a_ny_k = 0 for\space all\space k <br>$$</p>
+<p>if and only if $r$ is a root of the <mark>auxiliary equation（辅助方程）</mark></p>
+<p>$$<br>r^n + a_1r^{n-1} + \cdots + a_{n-1}r + a_n = 0<br>$$</p>
+<h3 id="Solution-Sets-of-Linear-Difference-Equations"><a href="#Solution-Sets-of-Linear-Difference-Equations" class="headerlink" title="Solution Sets of Linear Difference Equations"></a>Solution Sets of Linear Difference Equations</h3><p>if $a_n \neq 0$ and if $\lbrace z_k \rbrace$ is given, the equation</p>
+<p>$$<br>y_{k+n} + a_1y_{k+n-1} + \cdots + a_{n-1}y_{k+1} + a_ny_k = z_k, for\space all\space k<br>$$</p>
+<p>has a unique solution whenever $y_0, \cdots, y_{n-1}$ are specified.</p>
+<p>The set $H$ of all solutions of the <mark>nth-order homogeneous linear difference equation</mark></p>
+<p>$$<br>y_{k+n} + a_1y_{k+n-1} + \cdots + a_{n-1}y_{k+1} + a_ny_k = 0, for\space all\space k<br>$$</p>
+<p>is an $n$-dimensional vector space.</p>
+<h3 id="Nonhomogeneous-Equations（非齐次差分方程）"><a href="#Nonhomogeneous-Equations（非齐次差分方程）" class="headerlink" title="Nonhomogeneous Equations（非齐次差分方程）"></a>Nonhomogeneous Equations（非齐次差分方程）</h3><p>The general solution of the nonhomogeneous difference equation</p>
+<p>$$<br>y_{k+n} + a_1y_{k+n-1} + \cdots + a_{n-1}y_{k+1} + a_ny_k = z_k, for\space all\space k<br>$$</p>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Verify that the signal $y_k = k^2$ satisfies the difference equation</p>
+<p>$$<br>y_{k+2} - 4y_{k+1} + 3y_k = -4k, for\space all\space k<br>\tag{12}<br>$$</p>
+<p>Then find a description of all solutions of this equation.</p>
+<p>Solution:</p>
+<p>Substitute $k^2$ for $y_k$ on the left side of (12):</p>
+<p>$$<br>(k+2)^2-4(k+1)^2+3k^2 = -4k<br>$$</p>
+<p>so $k^2$is indeed a solution of (12). The next step is to solve the homogeneous equation</p>
+<p>$$<br>y_{k+2} - 4y_{k+1} + 3y_k = 0, for\space all\space k<br>\tag{13}<br>$$</p>
+<p>The <strong><em>auxiliary equation</em></strong> is</p>
+<p>$$<br>r^2 -4r + 3 = (r-1)(r+3) = 0<br>$$</p>
+<p>The roots are $r = 1,3$.So two solutions of the homogeneous difference equation are $1^k$ and $3^k$. They are obviously not multiples of each other, so they are linearly independent signals. the solution space is two-dimensional, so 3k and 1k form a basis for the set of solutions of equation (13).Translating that set by a particular solution of the nonhomogeneous equation (12), we obtain the general solution of (12):</p>
+<p>$$<br>k^2 + c_1 1^k + c_2 3^k,  or \space k^2 + c_1 + c_23^k<br>$$</p>
+<p>Figure 4 gives a geometric visualization of the two solution sets. Each point in the figure corresponds to one signal in S.</p>
+<p><img src="/images/LinearAlgebra/c4/solution.png" alt="solution"></p>
+<h3 id="Reduction-to-Systems-of-First-Order-Equations（约简到一阶方程组）"><a href="#Reduction-to-Systems-of-First-Order-Equations（约简到一阶方程组）" class="headerlink" title="Reduction to Systems of First-Order Equations（约简到一阶方程组）"></a>Reduction to Systems of First-Order Equations（约简到一阶方程组）</h3><blockquote>
+<p>接下来可以解释Fibonacci数列是差分方程</p>
+</blockquote>
+<p>$$<br>AF(n) = F(n+1)\rightarrow<br>A\begin{bmatrix}f(n)\\f(n+1)\end{bmatrix} =<br>\begin{bmatrix}f(n+1)\\f(n+2)\end{bmatrix}<br>\<br>$$</p>
+<p><u>A modern way to study a homogeneous $nth$-order linear difference equation is to replace it by an equivalent system of first-order difference equations, written in the form</u></p>
+<p>$$<br>\vec{x_{k+1}} = A\vec{x_{k}}, for \space all\space k<br>$$</p>
+<p>where the vectors $\vec{x_{k}}$ are in $R^n$ and $A$ is an $n \times n$ matrix.</p>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Write the following difference equation as a first-order system:</p>
+<p>$$<br>y_{k+3} - 2y_{k+2} - 5y_{k+1} + 6y_k = 0, for \space all\space k<br>$$</p>
+<p>Solution:</p>
+<p>for each k, set</p>
+<p>$$<br>\vec{x_k} =<br>\begin{bmatrix}<br>y_k\\y_{k+1}\\y_{k+2}<br>\end{bmatrix}<br>$$</p>
+<p>The difference equation says that $y_{k+3} - 2y_{k+2} - 5y_{k+1} + 6y_k = 0$, so</p>
+<p>$$<br>\vec{x_{k+1}} =<br>\begin{bmatrix}<br>y_{k+1} \\ y_{k+2} \\ y_{k+3}<br>\end{bmatrix} =<br>\begin{bmatrix}<br>0 + y_{k+1} + 0\\<br>0 + 0 + y_{k+2}\\<br>-6y_k + 5y_{k+1} + 2y_{k+2}<br>\end{bmatrix} =<br>\begin{bmatrix}<br>0 &amp; 1 &amp; 0\\<br>0 &amp; 0 &amp; 1\\<br>-6 &amp; 5 &amp; 2<br>\end{bmatrix}<br>\begin{bmatrix}<br>y_{k}\\y_{k+1}\\y_{k+2}<br>\end{bmatrix}<br>$$</p>
+<p>That is,</p>
+<p>$$<br>\vec{x_{k+1}} = A\vec{x_{k}}, for \space all\space k , where<br>A =<br>\begin{bmatrix}<br>0 &amp; 1 &amp; 0\\<br>0 &amp; 0 &amp; 1\\<br>-6 &amp; 5 &amp; 2<br>\end{bmatrix}<br>$$</p>
+<p>In general, the equation</p>
+<p>$$<br>y_{k+n} + a_1y_{k+n-1} + \cdots + a_{n-1}y_{k+1} + a_ny_k = 0, for\space all\space k<br>$$</p>
+<p>can be written as $\vec{x_{k+1}} = A\vec{x_{k}}, for \space all\space k$, where</p>
+<p>$$<br>\vec{x_{k}} =  \begin{bmatrix}<br>y_{k}\\ y_{k+1} \\ \cdots \\ y_{k+n-1} \end{bmatrix},<br>A = \begin{bmatrix}<br>0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0\\<br>0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0\\<br>\cdots\\<br>0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1\\<br>-a_n &amp; -a_{n-1} &amp; -a_{n-2} &amp; \cdots &amp; -a_1<br>\end{bmatrix}<br>$$</p>
+<h2 id="Applications-to-Markov-Chains"><a href="#Applications-to-Markov-Chains" class="headerlink" title="Applications to Markov Chains"></a><font style="background: red">Applications to Markov Chains</font></h2><p>For example, if the population of a city and its suburbs were measured each year, then a vector such as</p>
+<p>$$<br>\vec{x_0} =<br>\begin{bmatrix}<br>0.60\\0.40<br>\end{bmatrix}<br>\tag{1}<br>$$</p>
+<p>could indicate that 60% of the population lives in the city and 40% in the suburbs. The decimals in $\vec{x_0}$ add up to 1 because they account for the entire population of the region.Percentages are more convenient for our purposes here than population totals.</p>
+<p>A vector with nonnegative entries that add up to 1 is called a <u>probability vector（概率向量）</u>. A <u>stochastic matrix（随机矩阵）</u> is a square matrix whose columns are probability vectors. A <u>Markov chain（马尔科夫链）</u> is a sequence of probability vectors $\vec{x_0}, \vec{x_1}, \vec{x_2}$ together with a stochastic matrix $P$ , such that</p>
+<p>$$<br>\vec{x_1} = P\vec{x_0}, \vec{x_2} = P\vec{x_1}, \vec{x_3} = P\vec{x_2}, \cdots<br>\\<br>\longrightarrow<br>\vec{x_{k+1}} = P\vec{x_k}<br>$$</p>
+<p>$\vec{x_k}$ is often called a <u>state vector（状态向量</u>.</p>
+<h3 id="Predicting-the-Distant-Future"><a href="#Predicting-the-Distant-Future" class="headerlink" title="Predicting the Distant Future"></a>Predicting the Distant Future</h3><p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Let $P = \begin{bmatrix}0.5 &amp; 0.2 &amp; 0.3\\0.3 &amp; 0.8 &amp; 0.3\\0.2 &amp; 0 &amp; 0.4\end{bmatrix}$ and $\vec{x_0} = \begin{bmatrix}1\\0\\0\end{bmatrix}$. Consider a system whose state is described by the Markov chain $\vec{x_{k+1}} = P\vec{x_{k}}, for k = 0,1,\cdots$ What happens to the system as time passes? Compute the state vectors $\vec{x_1},\cdots, \vec{x_{15}}$to find out.</p>
+<p>Solution:<br>$$<br>\vec{x_1} = P\vec{x_0} = \begin{bmatrix}0.5\\0.3\\0.2\end{bmatrix},\\<br>\\<br>\cdots<br>\\<br>\vec{x_{14}} = P\vec{x_{13}} = \begin{bmatrix}0.3001\\0.59996\\0.10002\end{bmatrix},\\<br>\vec{x_{15}} = P\vec{x_{14}} = \begin{bmatrix}0.3001\\0.59998\\0.10001\end{bmatrix}<br>$$<br>These vectors seem to be approaching $\vec{q} = \begin{bmatrix}0.3\\0.6\\0.1\end{bmatrix}$The probabilities are hardly changing from one value of $k$ to the next.</p>
+<p>$$<br>P\vec{q} = \begin{bmatrix}0.5 &amp; 0.2 &amp; 0.3\\0.3 &amp; 0.8 &amp; 0.3\\0.2 &amp; 0 &amp; 0.4\end{bmatrix}<br>\begin{bmatrix}0.3\\0.6\\0.1\end{bmatrix}<br>=\begin{bmatrix}0.3\\0.6\\0.1\end{bmatrix}=\vec{q}<br>$$<br>When the system is in state $q$, there is no change in the system from one measurement to the next.</p>
+<h3 id="Steady-State-Vectors"><a href="#Steady-State-Vectors" class="headerlink" title="Steady-State Vectors"></a>Steady-State Vectors</h3><p>If $P$ is a stochastic matrix, then a <strong>steady-state vector</strong> (or equilibrium vector（平衡向量）) for $P$ is a probability vector $\vec{q}$ such that</p>
+<p>$$<br>P\vec{q} = \vec{q}<br>$$</p>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Let $P = \begin{bmatrix} 0.6 &amp; 0.3 \ 0.4 &amp; 0.7\end{bmatrix}$. Find a steady-state vector for $P$.</p>
+<p>Solution:<br>$$<br>P\vec{x} = \vec{x}\rightarrow (P-I)\vec{x} = \vec{0}\<br>\longrightarrow<br>\begin{bmatrix}<br>-0.4 &amp; 0.3 &amp; 0 \\<br>0.4 &amp; -0.3 &amp; 0<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; -3/4 &amp; 0 \\<br>0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>$$<br>$$<br>\vec{x} = x_2\begin{bmatrix}3/4 \\ 1\end{bmatrix}<br>$$</p>
+<p>Obviously, One obvious choice is $\begin{bmatrix}3/4 \\ 1\end{bmatrix}$,but a better choice with no fractions is $\vec{w} = \begin{bmatrix}3 \\ 4\end{bmatrix}, (x_2 = 4)$, since every solution is a multiple of the solution$\vec{w}$ above. Divide $\vec{w}$ by the sum of its entries and obtain</p>
+<p>$$<br>\vec{q} = \begin{bmatrix}3/7 \\ 4/7\end{bmatrix}<br>$$</p>
+<p>if $P$ is an $n\times n$ regular stochastic matrix, then $P$ has a unique steady-state vector $\vec{q}$. Further, if $\vec{x_0}$ is any initial state and $\vec{x_{k+1}} = P \vec{x_k}$, then the Markov chain $\vec{x_k}$ converges to $\vec{q}$ as $k \rightarrow \infty$.</p>
+<p>Also, $\vec{q}$ is the eigenvector of $P$. See C5 ReadingNotes.</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Linear-Algebra/" rel="tag">Linear Algebra</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Math/Linear-Algebra/C3-Determinants/">
+                <span class="level-item">C3-Determinants</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '2ecdd2803a439039170415e018fed9a4',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Vector-Spaces-and-SubSpaces">
+        <span class="has-mr-6">1</span>
+        <span>Vector Spaces and SubSpaces</span>
+        </a></li><li>
+        <a class="is-flex" href="#Null-Spaces-Column-Spaces-And-Linear-Transformations">
+        <span class="has-mr-6">2</span>
+        <span>Null Spaces, Column Spaces, And Linear Transformations</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-Null-Space-of-a-Matrix">
+        <span class="has-mr-6">2.1</span>
+        <span>The Null Space of a Matrix</span>
+        </a></li><li>
+        <a class="is-flex" href="#An-Explicit-Description-of-Nul-A">
+        <span class="has-mr-6">2.2</span>
+        <span>An Explicit Description of Nul A</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Column-Space-of-a-Matrix">
+        <span class="has-mr-6">2.3</span>
+        <span>The Column Space of a Matrix</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Contrast-Between-Nul-A-and-Col-A">
+        <span class="has-mr-6">2.4</span>
+        <span>The Contrast Between Nul A and Col A</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Linearly-Independent-Sets-Bases">
+        <span class="has-mr-6">3</span>
+        <span>Linearly Independent Sets; Bases</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-Spanning-Set-Theorem">
+        <span class="has-mr-6">3.1</span>
+        <span>The Spanning Set Theorem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Bases-for-Nul-A-and-Col-A">
+        <span class="has-mr-6">3.2</span>
+        <span>Bases for Nul A and Col A</span>
+        </a></li><li>
+        <a class="is-flex" href="#Two-Views-of-a-Basis">
+        <span class="has-mr-6">3.3</span>
+        <span>Two Views of a Basis</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Coordinate-Systems">
+        <span class="has-mr-6">4</span>
+        <span>Coordinate Systems</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#A-Graphical-Interpretation-of-Coordinates">
+        <span class="has-mr-6">4.1</span>
+        <span>A Graphical Interpretation of Coordinates</span>
+        </a></li><li>
+        <a class="is-flex" href="#Coordinates-in-R-n">
+        <span class="has-mr-6">4.2</span>
+        <span>Coordinates in $R^n$</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Coordinate-Mapping">
+        <span class="has-mr-6">4.3</span>
+        <span>The Coordinate Mapping</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#The-Dimension-of-A-Vector-Space">
+        <span class="has-mr-6">5</span>
+        <span>The Dimension of A Vector Space</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Subspaces-of-a-Finite-Dimensional-Space">
+        <span class="has-mr-6">5.1</span>
+        <span>Subspaces of a Finite-Dimensional Space</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Dimensions-of-Nul-A-and-Col-A">
+        <span class="has-mr-6">5.2</span>
+        <span>The Dimensions of $Nul A$ and $Col A$</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Rank">
+        <span class="has-mr-6">6</span>
+        <span>Rank</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-Row-Space">
+        <span class="has-mr-6">6.1</span>
+        <span>The Row Space</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Rank-Theorem">
+        <span class="has-mr-6">6.2</span>
+        <span>The Rank Theorem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Applications-to-Systems-of-Equations">
+        <span class="has-mr-6">6.3</span>
+        <span>Applications to Systems of Equations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Rank-and-the-Invertible-Matrix-Theorem">
+        <span class="has-mr-6">6.4</span>
+        <span>Rank and the Invertible Matrix Theorem</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Change-of-Basis">
+        <span class="has-mr-6">7</span>
+        <span>Change of Basis</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Change-of-Basis-in-R-n">
+        <span class="has-mr-6">7.1</span>
+        <span>Change of Basis in $R^n$</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Applications-to-Difference-Equation差分方程">
+        <span class="has-mr-6">8</span>
+        <span>Applications to Difference Equation差分方程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Linear-Independence-in-the-Space-S-of-Signals">
+        <span class="has-mr-6">8.1</span>
+        <span>Linear Independence in the Space $S$ of Signals</span>
+        </a></li><li>
+        <a class="is-flex" href="#Linear-Difference-Equations（线性差分方程）">
+        <span class="has-mr-6">8.2</span>
+        <span>Linear Difference Equations（线性差分方程）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution-Sets-of-Linear-Difference-Equations">
+        <span class="has-mr-6">8.3</span>
+        <span>Solution Sets of Linear Difference Equations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Nonhomogeneous-Equations（非齐次差分方程）">
+        <span class="has-mr-6">8.4</span>
+        <span>Nonhomogeneous Equations（非齐次差分方程）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Reduction-to-Systems-of-First-Order-Equations（约简到一阶方程组）">
+        <span class="has-mr-6">8.5</span>
+        <span>Reduction to Systems of First-Order Equations（约简到一阶方程组）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Applications-to-Markov-Chains">
+        <span class="has-mr-6">9</span>
+        <span>Applications to Markov Chains</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Predicting-the-Distant-Future">
+        <span class="has-mr-6">9.1</span>
+        <span>Predicting the Distant Future</span>
+        </a></li><li>
+        <a class="is-flex" href="#Steady-State-Vectors">
+        <span class="has-mr-6">9.2</span>
+        <span>Steady-State Vectors</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/DeepLearning/">
+            <span class="level-start">
+                <span class="level-item">DeepLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C4-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C4-Vector-Spaces</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T01:32:07.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C3-Determinants/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C3-Determinants</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T10:30:13.000Z">2023-09-24</time></div>
+                    <a href="/Math/Geometry/3DMath-Transformation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3DMath-Transformation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T05:47:37.000Z">2023-09-24</time></div>
+                    <a href="/Math/Linear-Algebra/C2-Matrix-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C2-Matrix-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-06T07:30:00.000Z">2023-04-06</time></div>
+                    <a href="/Math/Linear-Algebra/C1-Linear-Equation-in-Linear-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1-Linear-Equation-in-Linear-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DeepLearning/">
+                        <span class="tag">DeepLearning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="C4-Vector-Spaces" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>First-Met-With-RayTracing - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Hey guys,speaking of RayTracing,I have to tell u that I’m really confused at the first time–What the hell is RayTracing?! Well u know I’m not the kind of person who is addicted to games, all I know ab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="First-Met-With-RayTracing">
+<meta property="og:url" content="https://keneyr.com/Graphics/Rendering/First-Met-With-RayTracing/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Hey guys,speaking of RayTracing,I have to tell u that I’m really confused at the first time–What the hell is RayTracing?! Well u know I’m not the kind of person who is addicted to games, all I know ab">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2020-04-06T07:30:00.000Z">
+<meta property="article:modified_time" content="2023-09-23T04:00:03.939Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Rendering">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="First-Met-With-RayTracing" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/reading">Reading</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-06T07:30:00.000Z">2020-04-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Graphics/Rendering/">Rendering</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 minutes read (About 2187 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                First-Met-With-RayTracing
+            
+        </h1>
+        <div class="content">
+            <p>Hey guys,speaking of <strong>RayTracing</strong>,I have to tell u that I’m really confused at the first time–What the hell is RayTracing?! Well u know I’m not the kind of person who is addicted to games, all I know about <strong>Graphics</strong> begins with the course <em>UnityGame</em> in my first year of Graduate,before that I am the one who doesn’t even know what pixel is! So not to mention those much more advanced technologies such as <strong><em>RayTracing</em></strong>!</p>
+<p>I assume readers are the same with me! You just learned the really really basic graphics—！ <strong>coordinates transformation</strong>,！ <strong>uv mapping</strong>,！ <strong>something about graphicspipeline</strong>,！ <strong>unity games</strong>,(ok I admit that I’m a little irritable at present, cuz a bug cannot be fixed for a few days)suddenly a voice told you time to learn RayTracing, and it seems a mess with the existing knowledges in your head. Don’t worry, learn with me.</p>
+<p>This article is going to be very very long, it’s about <strong>RayTracing</strong>,<strong>Acceleration</strong>,<strong>BRDF</strong>,<strong>PathTracing</strong>,<strong>Calculus</strong>,<strong>Global illumination</strong>,<strong>Unity</strong>,<strong>VScode</strong> etc, there will be lots pics and formulas. If you are patient enough to read through it, I promise you can learn something, but before this article, please scan the two articles:<a href="https://keneyr.github.io/Graphics/Lighting-Shading-Texture/#more">Lighting-Shading-Texture</a>,<a href="https://keneyr.github.io/Graphics/Graphicspipeline/#more">Graphicspipeline</a>,cuz we have lots things to link up.</p>
+<a id="more"></a>
+
+<h2 id="RAY-TRACING"><a href="#RAY-TRACING" class="headerlink" title="RAY-TRACING"></a>RAY-TRACING</h2><h3 id="Why-RayTracing"><a href="#Why-RayTracing" class="headerlink" title="Why RayTracing?"></a>Why RayTracing?</h3><h3 id="Acceleration"><a href="#Acceleration" class="headerlink" title="Acceleration"></a>Acceleration</h3><h2 id="RADIOMETRY"><a href="#RADIOMETRY" class="headerlink" title="RADIOMETRY"></a>RADIOMETRY</h2><p>Radiometry is closely related to calculus. If you know nothing about <strong>Calculus</strong>, please go to learn it and later come back, at least have the conception in your head. Though I’ll begin with mathematics first.</p>
+<h3 id="Spherical-Coordinates"><a href="#Spherical-Coordinates" class="headerlink" title="Spherical Coordinates"></a>Spherical Coordinates</h3><p>We all know <strong>Cartesian coordinates</strong>, cuz we define the points and vectors in Cartesian coordinate system since high school. Actually,we can also use <strong>Spherical coordinates</strong> to define them. In spherical coordinate system,the position of a point or direction and length of a vector are defined by two angles(denoted $\theta$ and $\phi$) and a radial distance($r$). The angle $\theta$ is called <strong>polar angle</strong> and is measured from the fixed zenith direction.The zenith direction in relation to which this polar angle will be measured is the y-axis.</p>
+<p><img src="/images/spherical-coordinate.png" alt="Fig1. spherical-coordinates(from[1])"></p>
+<p>To go from spherical coordinates to cartesian coordinates,we can use the following equation:</p>
+<p>$$<br>x = r sin(\theta)cos(\phi)<br>$$<br>$$<br>y = r cos(\theta)<br>$$<br>$$<br>z = r sin(\theta)sin(\phi)<br>\tag{spherical2cartesian}<br>$$</p>
+<p>Also to go from cartesian coordinates to spherical coordinates,we can use the following equation:</p>
+<p>$$<br>r = \sqrt{x^2+y^2+z^2}<br>$$<br>$$<br>\theta = cos^{-1}(\frac{y}{r})<br>$$<br>$$<br>\phi = tan^{-1}(\frac{z}{x})<br>\tag{catesian2spherical}<br>$$</p>
+<h3 id="Differential-and-Integral-Calculus"><a href="#Differential-and-Integral-Calculus" class="headerlink" title="Differential and Integral Calculus"></a>Differential and Integral Calculus</h3><p>Calculus includes differential and integral. Since this is really basic math,I’ll just make a rough review. </p>
+<blockquote>
+<p><strong>The first fundamental theorem of calculus:</strong></p>
+</blockquote>
+<p>$$<br>F = \int f(x)dx<br>\tag{1}<br>$$</p>
+<blockquote>
+<p><strong>The second fundamental theorem of calculus:</strong></p>
+</blockquote>
+<p>$$<br>\int_{a}^{b}f(x)dx = F(b)-F(a)<br>\tag{2}<br>$$</p>
+<p>The above is about functions defined in one dimension($f(x)$ takes one variable only, $x$). How about the functions in two dimension,even three dimension?</p>
+<p><img src="/images/two-dimensional-integral.png" alt="Fig. two-dimensional-integral(from[2])"></p>
+<p>So the integral of the function in the above pic is :<br>$$<br>\int_{ax}^{bx}\int_{ay}^{by}f(x,y)dxdy<br>\tag{2d integral}<br>$$</p>
+<p><img src="/images/three-dimensional-integral.png" alt="Fig. three-dimensional-integral(from[2])"><br>So the integral of the function in the above pic is :<br>$$<br>\rho = \int_{ax}^{bx}\int_{ay}^{by}\int_{az}^{bz}f(x,y,z)dxdydz<br>\tag{3d integral}<br>$$<br>$\rho$ means the density of the volume.</p>
+<h3 id="Radiometry"><a href="#Radiometry" class="headerlink" title="Radiometry"></a>Radiometry</h3><p>Previously on the RayTracing part, the <strong>Whitted style ray tracing</strong> cannot give us correct results. That’s because the shading part only used empirical model.</p>
+<p><img src="/images/whitted-style-raytracing.png" alt="Fig. whitted-style-raytracing(from[1])"></p>
+<blockquote>
+<p><strong>Blinn-phong Model</strong> cannot give us correct resutls, it’s only an empirical model, not based on physics, there’s lots materials blinn-phong cannot present.  We want to simulate much more materials in our real life on computer, which means we need the PBS(physically based shading),and <strong>Radiometry</strong> is the basic concept of <strong>PBS</strong>.</p>
+</blockquote>
+<p>To begin with radiometry, we have new terms to remember:</p>
+<ul>
+<li><p>Radiant flux</p>
+</li>
+<li><p>intensity</p>
+</li>
+<li><p>irradiance</p>
+</li>
+<li><p>radiance</p>
+</li>
+</ul>
+<h4 id="Radiant-Energy-and-Flux-Power"><a href="#Radiant-Energy-and-Flux-Power" class="headerlink" title="Radiant Energy and Flux(Power)"></a>Radiant Energy and Flux(Power)</h4><p>We all know what Energy and Power mean in physics. They are almost the same in CG.</p>
+<p><strong>Radiant energy</strong> is the energy of electromagnetic radiation. It is measured in units of joules, and denoted by the symbol:</p>
+<p>$$<br>Q[J = Joule]<br>$$</p>
+<p><strong>Radiant flux(power)</strong> is the energy emitted,reflected,transmitted or received, per unit time.</p>
+<p>$$<br>\Phi = \frac{dQ}{dt} [W = Watt][lm = lumen]<br>\tag{flux}<br>$$</p>
+<p>Before go to intensity,irradiance,radiance,here’s a pic.</p>
+<p><img src="/images/intensity-irradiance-radiance.png" alt="Fig. intensity-irradiance-radiance(from[1])"></p>
+<h4 id="Radiant-Intensity"><a href="#Radiant-Intensity" class="headerlink" title="Radiant Intensity"></a>Radiant Intensity</h4><p><strong>Radiant intensity</strong> is the power per unit <strong>solid angle</strong> emitted by a point light source.</p>
+<p>$$<br>I(\omega) = \frac{d\Phi}{d\omega} [\frac{W}{sr}][\frac{lm}{sr}=cd=candela]<br>\tag{intensity}<br>$$</p>
+<p><img src="/images/angles-and-solid-angles.png" alt="Fig. angles-and-solid-angles(from[1])"></p>
+<ul>
+<li><p>Angle:ration of subtended arc length on circle to radius</p>
+<ul>
+<li>$\theta = \frac{l}{r}$</li>
+<li>Circle has $2\pi$ <strong>radians</strong></li>
+</ul>
+</li>
+<li><p>Solid angle:ration of subtended area on sphere to radius squared</p>
+<ul>
+<li>$\Omega = \frac{A}{r^2}$</li>
+<li>Sphere has $4\pi$ <strong>steradians</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/spherical-coordinate.png" alt="Fig. differential-solid-angles(from[1])"></p>
+<p>$$<br>dA = (rd\theta)(rsin\theta d\phi)<br>   = r^2 sin\theta d\theta d\phi<br>$$<br>$$<br>d\omega = \frac{dA}{r^2}<br>        = sin\theta d\theta d\phi<br>        \tag{solid angles}<br>$$</p>
+<h4 id="Irradiance"><a href="#Irradiance" class="headerlink" title="Irradiance"></a>Irradiance</h4><p><strong>Irradiance</strong> is the power per(perpendicular/projected)unit area incident on a surface point.</p>
+<p>$$<br>E(x) = \frac{d\Phi(x)}{dA} [\frac{W}{m^2}][\frac{lm}{m^2} = lux]<br>\tag{irradiance}<br>$$</p>
+<p>Do you still rememeber that in the <a href="https://keneyr.github.io/Graphics/Lighting-Shading-Texture/#more">Lighting-Shading-Texture</a> article, we mentioned the empirical model <strong>Blinn phong model</strong>, and there’s <strong>diffuse component</strong>, when we calculate the diffuse component, we just assume the point’s worldposition,the point’s worldnormal etc.</p>
+<p>Actually,we assume this point is not really a point but a very small <strong>surface</strong> which we call <strong>differential area</strong>, denoted as $dA$.Now,what we actually consider as well is the amount of light falling on the surface of this very small area around P.Light that falls at P is not reduced to a single light ray since we are not interested in singular point but the small region $dA$ around that point. Light that falls on this region is contained within a small volume perpendicular to P.<br><img src="/images/differential-area.png" alt="Fig. differential-area(from[2])"></p>
+<p>In the empirical model, the diffuse component is calculated like this:<br>$$<br>c_{diff} = c_{light} \cdot m_{diff} \cdot max(0,n \cdot l)<br>\tag{blinn-phong-diffuse}<br>$$<br>as before, <strong>n</strong> is the surface normal and <strong>l</strong> is a unit vector that points towards the light source. The factor $m_{diff}$ is the material’s diffuse color, which is the value that most people think of when they think of the “color” of an object. The diffuse material color often comes from a texture map. The diffuse color of the light source is $c_{light}$.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * <span class="built_in">max</span>(<span class="number">0</span>, dot(worldNormal, worldLightDir));</span><br></pre></td></tr></table></figure>
+
+<p>The diffuse component obeys <strong>Lambert’s Cosine Law</strong>,here the Irradiance also obeys <strong>Lambert’s Cosine Law</strong>:<br><img src="/images/irradiance-lambert-law.png" alt="Fig. irradiance-lambert-law(from[1])"></p>
+<h4 id="Radiance"><a href="#Radiance" class="headerlink" title="Radiance"></a>Radiance</h4><p><strong>Radiance(luminance)</strong> is the power emitted,reflected, transmitted or received by a surface, per unit solid angle, per projected unit area.Radiance is the fundamental field quantity that describes the distribution of light in an environment</p>
+<ul>
+<li><p>Radiance is the quantity associated with a ray</p>
+</li>
+<li><p>Rendering is all about computing radiance</p>
+</li>
+</ul>
+<p><img src="/images/radiance.png" alt="Fig. radiance(from[1])"></p>
+<p>$$<br>L(p,\omega) = \frac{d^2\Phi(p,\omega)}{d\omega dAcos\theta} [\frac{W}{sr m^2}][\frac{cd}{m^2} = \frac{lm}{sr m^2} = nit]<br>\tag{radiance}<br>$$</p>
+<ul>
+<li><strong>Incident Radiance</strong><ul>
+<li>Incident radiance is the irradiance per unit solid angle arriving at the surface</li>
+</ul>
+</li>
+<li><strong>Exiting Radiance</strong><ul>
+<li>Exiting surface radiance is the intensity per unit projected area leaving the surface.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/incident-exiting-radiance.png" alt="Fig. incident-exiting-radiance(from[1])"></p>
+<p>Those concepts are really hard to remember, but don’t feel frustrated. Keep going. Read more. If you cannot recall the concepts, turn back, read again.</p>
+<h3 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h3><p>Finally BRDF. Actualy the Radiometry step is for BRDF.<br>As mentioned above what Phong essentially used to simulate the appearance of shiny materials is a function. This function (which includes a specular and a diffuse compute). This function contains a certain number of parameters such as n that can be tweaked to change the appearance of the material, but more importantly, it actually depends on two variables, the incident light direction (which is used to compute both the diffuse and specular component) and the view direction (which is used to compute the specular component only). We could essential write this function as:</p>
+<p>$$<br>f_R(\omega_o,\omega_i)<br>$$<br>Where $\omega_o$ and $\omega_i$ are the angle between the surface normal (N) and the view direction (V) and the surface normal and the light direction (I) respectively.The subscript o stands for outgoing.<br><img src="/images/incoming-I-and-outgoing-V-direction.png" alt="Fig. incoming-I-and-outgoing-V-direction(from[2])"></p>
+<blockquote>
+<p>In computer graphics, this function is given the fancy name of <strong>Bidirectional Reflectance Distribution Function</strong> or in short BRDF. A BRDF is nothing else than a function that <strong>returns the amount of light reflected in the view direction for a given incident light direction</strong>:</p>
+</blockquote>
+<p>$$<br>BRDF(\omega_o,\omega_i)<br>$$</p>
+<p>In the following pic,BRDF represents how much light is reflected into each outgoing direction $\omega_r$ from each incoming direction:</p>
+<p><img src="/images/BRDF.png" alt="Fig. BRDF(from[1])"></p>
+<p>$$<br>f_r(\omega_i \rightarrow \omega_r) = \frac{dL_r(\omega_r)}{dE_i(\omega_i)} = \frac{dL_r(\omega_r)}{L_i(\omega_i)cos\theta_i d\omega_i}<br>\tag{BRDF}<br>$$</p>
+<p>One thing that I want to mention, why camera can see the objects? It’s because when one light beam hits the surface, it will reflect in all directions among the half hemisphere, but only the reflected light enter the viewer’s eye make sense. So we need to calculate the output reflected light.</p>
+<blockquote>
+<p>So here come’s <strong>The Reflection Equation</strong>.</p>
+</blockquote>
+<p><img src="/images/the-reflection-equation.png" alt="Fig. the-reflection-equation(from[1])"></p>
+<p>$$<br>L_r(p,\omega_r) = \int_{H^2}f_r(p,\omega_i \rightarrow \omega_r)L_i(p,\omega_i)cos\theta_i d\omega_i<br>\tag{The-Reflection-Equation}<br>$$</p>
+<p>Please make sure you understand the meaning of each symbol in the above formulas.</p>
+<blockquote>
+<p>Here come’s <strong>The Rendering Equation</strong>.</p>
+</blockquote>
+<p>$$<br>L_o(p,\omega_o) = L_e(p,\omega_o) + \int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n\cdot\omega_i)d\omega_i<br>\tag{The-Rendering-Equation}<br>$$</p>
+<p>$L_e(p,\omega_o)$ means the object’point p emit the emissive light to the $\omega_o$ direction(remeber the $\omega_o$ direction should be the view direction), and $\int_{\Omega^+}L_i(p,\omega_i)f_r(p,\omega_i,\omega_o)(n\cdot\omega_i)d\omega_i$ means the reflected light from $L_i(p,\omega_i)$.</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p><img src="/images/term-concept-contrast.png" alt="Fig. term-concept-contrast(from[9])"></p>
+<h3 id="global-illumination"><a href="#global-illumination" class="headerlink" title="global illumination"></a>global illumination</h3><h2 id="PATH-TRACING"><a href="#PATH-TRACING" class="headerlink" title="PATH TRACING"></a>PATH TRACING</h2><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="Monte-Carlo-Methods"><a href="#Monte-Carlo-Methods" class="headerlink" title="Monte Carlo Methods"></a>Monte Carlo Methods</h2><p>Before we start, one question, do u have the background in <strong>Probability and Statistics Theory</strong>? If the answer is no, please go to learn something and later come back.</p>
+<h3 id="What-is-Monte-Carlo"><a href="#What-is-Monte-Carlo" class="headerlink" title="What is Monte Carlo?"></a>What is Monte Carlo?</h3><p>Assume that we want to know the average height of all adults in one city, the most common method is to sample some adults and calculate the average height of them to approximate the true result. Here’s the formula:</p>
+<p>$$<br>Approximation(Average(X)) = \frac{1}{N}\sum_{n=1}^{N}x_{n}<br>$$</p>
+<p>We generally denote random variables with upper case letters,the height of a population would be called a <strong>random variable</strong>,so the letter X is used.The formula can be read as,the approximation of the average value of the random variable X(the height of the adult population of the given country),is equal to sum of the height of N adults randomly chosen from that population(the samples),divided by the number N(the sample size). This in essence, is called a <strong>Monte Carlo approximation</strong>. In statistics,the average of the random variable X is called an <strong>expectation</strong> and is written <strong>E(X)</strong>.</p>
+<blockquote>
+<p><strong>So To summarize, Monte Carlo approximation (which is one of the MC methods) is a technique to approximate the expectation of random variables, using samples.</strong></p>
+</blockquote>
+<h3 id="Monte-Carlo-raytracing"><a href="#Monte-Carlo-raytracing" class="headerlink" title="Monte Carlo raytracing"></a>Monte Carlo raytracing</h3><hr>
+<p>References:</p>
+<p>[1]<a href="http://games-cn.org/graphics-intro-ppt-video/">GAMES</a></p>
+<p>[2]<a href="https://www.scratchapixel.com/">scratchapixel</a></p>
+<p>[3]3D Math Primer for Graphics and Game Development 2nd Edition.</p>
+<p>[4]Fundamentals of Computer Graphics and 3rd Edition.</p>
+<p>[5]Unity+Shader入门精要</p>
+<p>[6]<a href="https://docs.unity3d.com/Manual/index.html">Unity3d Mannual</a></p>
+<p>[7]<a href="https://code.visualstudio.com/docs">VSCode Document</a></p>
+<p>[8]<a href="https://zhuanlan.zhihu.com/p/21376124">基于物理着色：BRDF</a></p>
+<p>[9]<a href="https://www.zhihu.com/question/20286038/answer/64282761">如何正确理解 BRDF</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Rendering/" rel="tag">Rendering</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/DeepLearning/OpenPose-Practice/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">OpenPose-Practice</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/C/something-from-vector-implementation/">
+                <span class="level-item">something-from-vector-implementation</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: 'e2b6fd05b679d32b557698bfffd5fc4e',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#RAY-TRACING">
+        <span class="has-mr-6">1.1</span>
+        <span>RAY-TRACING</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Why-RayTracing">
+        <span class="has-mr-6">1.1.1</span>
+        <span>Why RayTracing?</span>
+        </a></li><li>
+        <a class="is-flex" href="#Acceleration">
+        <span class="has-mr-6">1.1.2</span>
+        <span>Acceleration</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#RADIOMETRY">
+        <span class="has-mr-6">1.2</span>
+        <span>RADIOMETRY</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Spherical-Coordinates">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Spherical Coordinates</span>
+        </a></li><li>
+        <a class="is-flex" href="#Differential-and-Integral-Calculus">
+        <span class="has-mr-6">1.2.2</span>
+        <span>Differential and Integral Calculus</span>
+        </a></li><li>
+        <a class="is-flex" href="#Radiometry">
+        <span class="has-mr-6">1.2.3</span>
+        <span>Radiometry</span>
+        </a></li><li>
+        <a class="is-flex" href="#BRDF">
+        <span class="has-mr-6">1.2.4</span>
+        <span>BRDF</span>
+        </a></li><li>
+        <a class="is-flex" href="#Summary">
+        <span class="has-mr-6">1.2.5</span>
+        <span>Summary</span>
+        </a></li><li>
+        <a class="is-flex" href="#global-illumination">
+        <span class="has-mr-6">1.2.6</span>
+        <span>global illumination</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#PATH-TRACING">
+        <span class="has-mr-6">1.3</span>
+        <span>PATH TRACING</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#Appendix">
+        <span class="has-mr-6">2</span>
+        <span>Appendix</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Monte-Carlo-Methods">
+        <span class="has-mr-6">2.1</span>
+        <span>Monte Carlo Methods</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#What-is-Monte-Carlo">
+        <span class="has-mr-6">2.1.1</span>
+        <span>What is Monte Carlo?</span>
+        </a></li><li>
+        <a class="is-flex" href="#Monte-Carlo-raytracing">
+        <span class="has-mr-6">2.1.2</span>
+        <span>Monte Carlo raytracing</span>
+        </a></li></ul></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/DeepLearning/">
+            <span class="level-start">
+                <span class="level-item">DeepLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C4-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C4-Vector-Spaces</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T01:32:07.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C3-Determinants/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C3-Determinants</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T10:30:13.000Z">2023-09-24</time></div>
+                    <a href="/Math/Geometry/3DMath-Transformation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3DMath-Transformation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T05:47:37.000Z">2023-09-24</time></div>
+                    <a href="/Math/Linear-Algebra/C2-Matrix-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C2-Matrix-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-06T07:30:00.000Z">2023-04-06</time></div>
+                    <a href="/Math/Linear-Algebra/C1-Linear-Equation-in-Linear-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1-Linear-Equation-in-Linear-Algebra</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DeepLearning/">
+                        <span class="tag">DeepLearning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="First-Met-With-RayTracing" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>
