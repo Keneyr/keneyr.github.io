@@ -13,13 +13,13 @@
     <meta name="description" content="Keywords: Surface Shading, Texture mapping">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lighting-Shading-Texture">
-<meta property="og:url" content="https://keneyr.com/Graphics/Lighting-Shading-Texture/index.html">
+<meta property="og:url" content="https://keneyr.com/Graphics/Rendering-Lighting-Shading-Texture/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
 <meta property="og:description" content="Keywords: Surface Shading, Texture mapping">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2020-03-25T03:35:00.000Z">
-<meta property="article:modified_time" content="2023-09-24T09:17:13.401Z">
+<meta property="article:modified_time" content="2023-09-28T04:32:29.990Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Rendering">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    44 minutes read (About 6650 words)
+                    44 minutes read (About 6667 words)
                 </span>
                 
                 
@@ -205,19 +205,19 @@
 <li><p><strong>Ambient</strong> contribution,denoted as <strong>$c_{amb}$</strong>. It is a fudge factor to account for all indirect light.</p>
 </li>
 </ul>
-<p><img src="/images/lighting-component-overview.png" alt="Fig1. lighting-component-overview(from[5])"></p>
+<p><img src="/images/Rendering/lighting-component-overview.png" alt="Fig1. lighting-component-overview(from[5])"></p>
 <h3 id="The-Ambient-and-Emmisive-Components"><a href="#The-Ambient-and-Emmisive-Components" class="headerlink" title="The Ambient and Emmisive Components"></a>The Ambient and Emmisive Components</h3><p>To model light that is reflected more than one time before it enters the eye,we can use a very crude approximation known as “ambient light”. The ambient portion of the lighting equation depends only on the properties of materials and an ambient lighting value,which is often a global value used for the entire scene.<br>$$<br>c_{amb} = g_{amb} \cdot m_{amb}<br>\tag{1}<br>$$<br>The factor $m_{amb}$ is the material’s “ambient color”. This is almost always the same as the diffuse color (which is often defined using texture map). The other factor,$g_{amb}$,is the ambient light value.</p>
 <p>Somtimes a ray of light travels directly from the light source to the eye,without striking any surface in between. The standard lighting equation accounts for such rays by assigning a material an <em>emissive</em> color. For example,when we render the surface of the light bulb,this surface will probably appear very bright,even if there’s no other light in the scene,because the light bulb is emitting light.</p>
 <p>In many situations,the emissive contribution doesn’t depend on environmental factor; it is simply the emissive color of the material.<br>$$<br>c_{emis} = m_{emis}<br>\tag{2}<br>$$</p>
 <h3 id="The-Diffuse-Component"><a href="#The-Diffuse-Component" class="headerlink" title="The Diffuse Component"></a>The Diffuse Component</h3><p>For diffuse lighting, the location of the viewer is not relevant,since the reflections are scattered randomly, and no matter where we position the camera,it is equally likely that a ray will be sent our way.</p>
-<p><img src="/images/diffuse-component.png" alt="Fig2. diffuse-component(From[1]))"></p>
+<p><img src="/images/Rendering/diffuse-component.png" alt="Fig2. diffuse-component(From[1]))"></p>
 <p>But the direction if incidence <strong>l</strong>,which is dictated by the position of the light source relative to the surface, is important. Diffuse lighting obeys <strong>Lambert’s law</strong>: the intensity of the reflected light is proportional to the cosine of the angle between the surface normal and the rays of light.</p>
-<p><img src="/images/lambert-law.png" alt="Fig3. lambert-law(from[5])"></p>
+<p><img src="/images/Rendering/lambert-law.png" alt="Fig3. lambert-law(from[5])"></p>
 <p>We calculate the diffuse component according to Lambert’s Law:<br>$$<br>c_{diff} = c_{light} \cdot m_{diff} \cdot max(0,n \cdot l)<br>\tag{3}<br>$$<br>as before, <strong>n</strong> is the surface normal and <strong>l</strong> is a unit vector that points towards the light source. The factor $m_{diff}$ is the material’s diffuse color, which is the value that most people think of when they think of the “color” of an object. The diffuse material color often comes from a texture map. The diffuse color of the light source is $c_{light}$.</p>
 <p>On thing needs attention, that is the max(), because we need to prevent the dot result of normal and light negative, we use $max(0,n \cdot l)$, so the object won’t be lighted by the rays from it’s back.</p>
 <h3 id="The-Specular-Component"><a href="#The-Specular-Component" class="headerlink" title="The Specular Component"></a>The Specular Component</h3><p>The specular component is what gives surfaces a “shiny” appearance. If you don’t understand what a specular is, think about the professional term in animes:</p>
-<p><img src="/images/specular-sister.png" alt="Fig4. specular-in-eyes)"></p>
-<p>Now let’s see how the standard model calculates the specular contribution. For convenience,we assume that all of these vectors are unit vectors.<br><img src="/images/specular-component.png" alt="Fig5. specular-component(from[1]))"></p>
+<p><img src="/images/Rendering/specular-sister.png" alt="Fig4. specular-in-eyes)"></p>
+<p>Now let’s see how the standard model calculates the specular contribution. For convenience,we assume that all of these vectors are unit vectors.<br><img src="/images/Rendering/specular-component.png" alt="Fig5. specular-component(from[1]))"></p>
 <ul>
 <li><p><strong>n</strong> is the local outward-pointing surface normal</p>
 </li>
@@ -231,24 +231,24 @@
 </li>
 </ul>
 <p>Of the four vectors, you can see the reflection vector can be computed by</p>
-<p><img src="/images/reflection-vector.png" alt="Fig6. reflection-vector(from[1]))"></p>
+<p><img src="/images/Rendering/reflection-vector.png" alt="Fig6. reflection-vector(from[1]))"></p>
 <p>The <strong>Phong Model</strong> for specular reflection is :<br>$$<br>c_{spec} = c_{light} \cdot m_{spec} \cdot max(0,v \cdot r)^{m_{gls}}<br>\tag{4}<br>$$<br>$$<br>r = 2(n \cdot l)n-l<br>$$</p>
 <p>$m_{gls}$ means the glossiness of the material,also known as the <em>Phong exponent, specular exponent</em>, or just as the material <em>shininess</em>. This controls how wide the “hotspot” is - a smaller $m_{gls}$ produces a larger, more gradual falloff from the hotspot,and a larger $m_{gls}$ produces a tight hotspot with sharp falloff. $m_{spec}$ is related to “shininess”, it represents the material’s <em>specular color</em>. While $m_{gls}$ controls the size of the hotspot, $m_{spec}$ controls its intensity and color. $c_{light}$ is essentially the “color” of the light, which contains both its color and intensity.</p>
 <p>But!!We usually use <strong>Blinn Phong Model</strong> instead of <strong>Phong Model</strong>.</p>
-<p><img src="/images/blinn-phong-model.png" alt="Fig7. blinn-phong-model(from[1])"></p>
+<p><img src="/images/Rendering/blinn-phong-model.png" alt="Fig7. blinn-phong-model(from[1])"></p>
 <p>The Blinn phong model can be faster to implement in hardware than the Phong model, if the viewer and light source are far enough away from the object to be considered a constant,since then <strong>h</strong> is a constant and only needs to be computed once. But when <strong>v</strong> or <strong>l</strong> may not be considered constant, the Phong model calculation might be faster.<br>The <strong>Blinn Phong Model</strong> for specualr reflection is :<br>$$<br>c_{spec} = c_{light} \cdot m_{spec} \cdot max(0,n \cdot h)^{m_{gls}}<br>\tag{4}<br>$$<br>$$<br>h = \frac{v + l}{|v + l|}<br>$$</p>
 <blockquote>
 <p><strong>In real coding, vector in the above (1)(2)(3)(4) should be unit vector</strong></p>
 </blockquote>
 <h3 id="Limitations-of-the-Standard-Model"><a href="#Limitations-of-the-Standard-Model" class="headerlink" title="Limitations of the Standard Model"></a>Limitations of the Standard Model</h3><p>Why learn about this ancient history? First, it isn’t exactly ancient history, it’s alive and well. Second,the current local lighting model is one that content creators can understand and use. A final reason to learn the standard lighting model is because<br>many newer models bear similarities to the standard model, and you cannot<br>know when to use more advanced lighting models without understanding<br>the old standard.</p>
-<p><img src="/images/all-lighting-equation.png" alt="Fig8. all-lighting-equation(from[1])"></p>
+<p><img src="/images/Rendering/all-lighting-equation.png" alt="Fig8. all-lighting-equation(from[1])"></p>
 <p>Since Blinn Phong Model contains all the components above,so we call the it Blinn-Phong. Actually, there are several important physical phenomena not properly  captured by the Blinn-Phong model. Such as <em>Fresnel reflectance</em>. (:) We’ll discuss this <strong>PBS</strong> part in the <strong>Appendix</strong>).</p>
 <h3 id="Flat-amp-Gouraud-Shading"><a href="#Flat-amp-Gouraud-Shading" class="headerlink" title="Flat &amp; Gouraud Shading"></a>Flat &amp; Gouraud Shading</h3><p>This part is about the Shading Frequencies. Are you confused? If not, it’s impossible. Because I’m confused at the first time learning and the second time learning. But now, I got it. So come with me.</p>
 <p>On modern shader-based hardware, lighting calculations are usually done on a per-pixel basis. By this we mean that for each pixel, we determine a surface normal (whether by interpolating the vertex normal across the face or by fetching it from a bump map), and then we perform the full lighting equation using this surface normal. This is per-pixel lighting, and the technique of interpolating vertex normals across the face is sometimes called <strong>Phong shading</strong>, not to be confused with the Phong calculation for specular reflection. The alternative to Phong shading is to perform the lighting equation less frequently (per face, or per vertex). These two techniques are known as <strong>flat shading</strong> and <strong>Gouraud shading</strong>, respectively. Flat shading is almost never used in practice except in software rendering. This is because most modern methods of sending geometry efficiently to the hardware do not provide any face-level data whatsoever. Gouraud shading, in contrast, still has some limited use on some platforms. Some important general principles can be gleaned from studying these methods, so let’s examine their results.</p>
 <blockquote>
 <p><strong>Phong shading ≠ Phong Reflection Model ≠ Blinn Phong Reflection Model</strong></p>
 </blockquote>
-<p><img src="/images/shading-frequency.png" alt="Fig9. shading-frequency(from[5])"></p>
+<p><img src="/images/Rendering/shading-frequency.png" alt="Fig9. shading-frequency(from[5])"></p>
 <p>The table below can list differences among them.</p>
 <table>
 <thead>
@@ -274,14 +274,14 @@
 <td align="center">Not good for smooth surfaces</td>
 </tr>
 <tr>
-<td align="center"><img src="/images/per-pixel-normal-vectors.png" alt="per-pixel-normal-vectors"></td>
-<td align="center"><img src="/images/per-vertex-normals.png" alt="per-vertex-normals"></td>
+<td align="center"><img src="/images/Rendering/per-pixel-normal-vectors.png" alt="per-pixel-normal-vectors"></td>
+<td align="center"><img src="/images/Rendering/per-vertex-normals.png" alt="per-vertex-normals"></td>
 <td align="center">#</td>
 </tr>
 <tr>
-<td align="center"><img src="/images/phong-shaded.png" alt="phong-shaded"></td>
-<td align="center"><img src="/images/gouraud-shaded.png" alt="gouraud-shaded"></td>
-<td align="center"><img src="/images/flat-shaded.png" alt="flat-shaded"></td>
+<td align="center"><img src="/images/Rendering/phong-shaded.png" alt="phong-shaded"></td>
+<td align="center"><img src="/images/Rendering/gouraud-shaded.png" alt="gouraud-shaded"></td>
+<td align="center"><img src="/images/Rendering/flat-shaded.png" alt="flat-shaded"></td>
 </tr>
 </tbody></table>
 <blockquote>
@@ -291,16 +291,16 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//per-pixel lighting</span></span><br><span class="line">Shader <span class="string">"Unity Shaders Book/Chapter 6/Blinn-Phong Use Built-in Functions"</span> &#123;</span><br><span class="line">    Properties &#123;</span><br><span class="line">        _Diffuse (<span class="string">"Diffuse"</span>, Color) = (<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">        _Specular (<span class="string">"Specular"</span>, Color) = (<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">        _Gloss (<span class="string">"Gloss"</span>, Range(<span class="number">1.0</span>, <span class="number">500</span>)) = <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">    SubShader &#123;</span><br><span class="line">        Pass &#123;</span><br><span class="line">            Tags &#123; <span class="string">"LightMode"</span>=<span class="string">"ForwardBase"</span> &#125;</span><br><span class="line">            CGPROGRAM</span><br><span class="line">            #pragma vertex vert</span><br><span class="line">            #pragma fragment frag</span><br><span class="line"></span><br><span class="line">            #include <span class="string">"Lighting.cginc"</span></span><br><span class="line"></span><br><span class="line">            fixed4 _Diffuse;</span><br><span class="line">            fixed4 _Specular;</span><br><span class="line">            <span class="keyword">float</span> _Gloss;</span><br><span class="line"></span><br><span class="line">            <span class="class"><span class="keyword">struct</span> <span class="title">a2v</span> &#123;</span></span><br><span class="line">                float4 vertex : POSITION;</span><br><span class="line">                float3 normal : NORMAL;</span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="class"><span class="keyword">struct</span> <span class="title">v2f</span> &#123;</span></span><br><span class="line">                float4 pos : SV_POSITION;</span><br><span class="line">                float3 worldNormal : TEXCOORD0;</span><br><span class="line">                float4 worldPos : TEXCOORD1;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="function">v2f <span class="title">vert</span><span class="params">(a2v v)</span> </span>&#123;</span><br><span class="line">                v2f o;</span><br><span class="line">                o.pos = UnityObjectToClipPos(v.vertex);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Use the build-in funtion to compute the normal in world space</span></span><br><span class="line">                o.worldNormal = UnityObjectToWorldNormal(v.normal);</span><br><span class="line"></span><br><span class="line">                o.worldPos = mul(unity_ObjectToWorld, v.vertex);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> o;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function">fixed4 <span class="title">frag</span><span class="params">(v2f i)</span> : SV_Target </span>&#123;</span><br><span class="line">                fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;</span><br><span class="line"></span><br><span class="line">                fixed3 worldNormal = normalize(i.worldNormal);</span><br><span class="line">                <span class="comment">//  Use the build-in funtion to compute the light direction in world space</span></span><br><span class="line">                <span class="comment">// Remember to normalize the result</span></span><br><span class="line">                fixed3 worldLightDir = normalize(UnityWorldSpaceLightDir(i.worldPos));</span><br><span class="line"></span><br><span class="line">                fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * <span class="built_in">max</span>(<span class="number">0</span>, dot(worldNormal, worldLightDir));</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Use the build-in funtion to compute the view direction in world space</span></span><br><span class="line">                <span class="comment">// Remember to normalize the result</span></span><br><span class="line">                fixed3 viewDir = normalize(UnityWorldSpaceViewDir(i.worldPos));</span><br><span class="line"></span><br><span class="line">                fixed3 halfDir = normalize(worldLightDir + viewDir);</span><br><span class="line">                fixed3 specular = _LightColor0.rgb * _Specular.rgb * <span class="built_in">pow</span>(<span class="built_in">max</span>(<span class="number">0</span>, dot(worldNormal, halfDir)), _Gloss);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> fixed4(ambient + diffuse + specular, <span class="number">1.0</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            ENDCG</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    FallBack <span class="string">"Specular"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>The result is :</p>
-<p><img src="/images/phong-shading.png" alt="Fig9. phong-shading(from[5])"></p>
+<p><img src="/images/Rendering/phong-shading.png" alt="Fig9. phong-shading(from[5])"></p>
 <h2 id="Light-Sources"><a href="#Light-Sources" class="headerlink" title="Light Sources"></a>Light Sources</h2><p>If you have used <strong><em>Unity</em></strong>, you won’t forget different kinds of lights.</p>
-<p><img src="/images/unity-lights.png" alt="Fig10. unity-lights"></p>
+<p><img src="/images/Rendering/unity-lights.png" alt="Fig10. unity-lights"></p>
 <h3 id="Standard-Abstract-Light-Types"><a href="#Standard-Abstract-Light-Types" class="headerlink" title="Standard Abstract Light Types"></a>Standard Abstract Light Types</h3><ul>
 <li><strong>A point light</strong> source represents light that emanates from a single point outward in all directions. Point lights are also called omni lights (short for “omnidirectional”) or spherical lights.A point light has a position and color, which controls not only the hue of the light, but also its intensity. Point lights can be used to represent many common light sources, such as light bulbs, lamps, fires, and so forth.</li>
 </ul>
 <blockquote>
 <p><strong>point light = omni light = spherical light</strong></p>
 </blockquote>
-<p><img src="/images/spot-light.png" alt="Fig10. spot-light(from[1])"></p>
+<p><img src="/images/Rendering/spot-light.png" alt="Fig10. spot-light(from[1])"></p>
 <ul>
 <li><strong>A spot light</strong> is used to represent light from a specific location in a specific direction. These are used for lights such as flashlights, headlights, and of course, spot lights~ As for <strong>A conical spot light</strong>, it has a circular “bottom”, the width of the cone is defined by a falloff angle(not to be confused with the falloff distance). Also, there is an inner angle that measures the size of the hotspot.</li>
 </ul>
@@ -482,7 +482,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/C/address-opereator/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/C/STL-Address-Opereator/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">address-opereator</span>
             </a>
@@ -490,7 +490,7 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/C/function-template/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/C/STL-FunctionTemplate/">
                 <span class="level-item">Function-Template</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -512,7 +512,7 @@
     var gitalk = new Gitalk({
         clientID: 'f7d6d05297c7a1b94ee1',
         clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
-        id: '8e90b7a1416b896ae70d3d57b4f21ef2',
+        id: '257f3515db06ae5192079175cb6bb365',
         repo: 'keneyr.github.io',
         owner: 'Keneyr',
         admin: "Keneyr",
@@ -569,7 +569,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            18
+                            15
                         </p>
                     </a>
                 </div>
@@ -581,7 +581,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            7
+                            6
                         </p>
                     </a>
                 </div>
@@ -593,7 +593,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            6
+                            4
                         </p>
                     </a>
                 </div>
@@ -770,15 +770,7 @@
                 <span class="level-item">C++</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/DeepLearning/">
-            <span class="level-start">
-                <span class="level-item">DeepLearning</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Graphics/">
@@ -831,7 +823,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 16.67px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a>
+        <a href="/tags/C/" style="font-size: 15px;">C++</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
     </div>
 </div>
     
@@ -940,39 +932,6 @@
         </li>
         
         <li>
-            <a class="level is-marginless" href="/archives/2020/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">April 2020</span>
@@ -1008,23 +967,9 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Animation/">
-                        <span class="tag">Animation</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/C/">
                         <span class="tag">C++</span>
-                        <span class="tag is-grey">4</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/DeepLearning/">
-                        <span class="tag">DeepLearning</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 

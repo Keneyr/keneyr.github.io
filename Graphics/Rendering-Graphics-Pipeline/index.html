@@ -13,13 +13,13 @@
     <meta name="description" content="Keywords: Rendering Pipeline, Deduce Projection Matrix, Rotation Matrix">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Graphics Pipeline Overview">
-<meta property="og:url" content="https://keneyr.com/Graphics/Graphicspipeline/index.html">
+<meta property="og:url" content="https://keneyr.com/Graphics/Rendering-Graphics-Pipeline/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
 <meta property="og:description" content="Keywords: Rendering Pipeline, Deduce Projection Matrix, Rotation Matrix">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2020-03-10T03:29:26.000Z">
-<meta property="article:modified_time" content="2023-09-24T10:35:08.519Z">
+<meta property="article:modified_time" content="2023-09-28T04:30:13.634Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Rendering">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 minutes read (About 2018 words)
+                    14 minutes read (About 2025 words)
                 </span>
                 
                 
@@ -191,13 +191,13 @@
             <p><strong><em>Keywords</em></strong>: Rendering Pipeline, Deduce Projection Matrix, Rotation Matrix</p>
 <a id="more"></a>
 
-<p><img src="/images/graphics-pipeline-overview.png" alt="Fig1. graphics-pipeline-overview (pictures from[1]/[2])"></p>
+<p><img src="/images/Rendering/graphics-pipeline-overview.png" alt="Fig1. graphics-pipeline-overview (pictures from[1]/[2])"></p>
 <p>Just look at the middle part of Fig1,the working flow is followed. </p>
 <h2 id="Step1-Setting-up-the-scene"><a href="#Step1-Setting-up-the-scene" class="headerlink" title="Step1.Setting up the scene"></a>Step1.Setting up the scene</h2><p>Before we begin rendering,we must set several options that apply to the entire scene. For example,we need to set up the camera, to be more specifically,that means,pick a point of view in the scene from which to render it, and choose where on the screen to render it. We also need to select lighting and fog options, and prepare the depth buffer.</p>
-<p>If you have used Unity,then it is easy to understand, you put the camera in the proper place and set the lighting properties,also change the aspect ratio.<br><img src="/images/unity-initial-interface.png" alt="Fig2. unity initial interface (from [3])"></p>
-<h2 id="Step2-Visibility-determination"><a href="#Step2-Visibility-determination" class="headerlink" title="Step2.Visibility determination"></a>Step2.Visibility determination</h2><p>Once we have a camera in place,we must then decide which objects in the scene are visible. In unity this means that you can tick the box on the Inspector panel to determine the object visible or not.<br><img src="/images/unity-inspector.png" alt="Fig3. unity inspector"></p>
+<p>If you have used Unity,then it is easy to understand, you put the camera in the proper place and set the lighting properties,also change the aspect ratio.<br><img src="/images/Rendering/unity-initial-interface.png" alt="Fig2. unity initial interface (from [3])"></p>
+<h2 id="Step2-Visibility-determination"><a href="#Step2-Visibility-determination" class="headerlink" title="Step2.Visibility determination"></a>Step2.Visibility determination</h2><p>Once we have a camera in place,we must then decide which objects in the scene are visible. In unity this means that you can tick the box on the Inspector panel to determine the object visible or not.<br><img src="/images/Rendering/unity-inspector.png" alt="Fig3. unity inspector"></p>
 <h2 id="Step3-Setting-object-level-rendering-states"><a href="#Step3-Setting-object-level-rendering-states" class="headerlink" title="Step3.Setting object-level rendering states"></a>Step3.Setting object-level rendering states</h2><p>Each object may have its own rendering options. We must install these options into the rendering context before rendering any primitives associated with the object. The most basic property associated with an object is material that describes the surface propertis of the object.</p>
-<p>In unity,the material defines how the surface should be rendered,by including referencse to the texutres it uses,tiling information,color tints and so on. The avaliable options for a material depend on which shader the material is using.<br><img src="/images/unity-material.png" alt="Fig4. unity material"></p>
+<p>In unity,the material defines how the surface should be rendered,by including referencse to the texutres it uses,tiling information,color tints and so on. The avaliable options for a material depend on which shader the material is using.<br><img src="/images/Rendering/unity-material.png" alt="Fig4. unity material"></p>
 <h2 id="Step4-Geometry-generation-delivery"><a href="#Step4-Geometry-generation-delivery" class="headerlink" title="Step4.Geometry generation/delivery"></a>Step4.Geometry generation/delivery</h2><p>The geometry is actually submitted to the rendering API.Typically,the data is delivered in the form of triangles;either as individual triangles,or an indexed triangle mesh,triangle strip,or some other form.</p>
 <p>If you have heard about 3D Max or Maya,then you can get it.The artists create the model in the form of .obj file, we programmers load the model to the RAM, then we got the triangles data. You can achieve the <a href="https://github.com/Bly7/OBJ-Loader/blob/master/Source/OBJ_Loader.h">obj_loader.h</a>. Then you can get the triangles data like this:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Triangle*&gt; TriangleList;</span><br><span class="line">objl::Loader Loader;</span><br><span class="line"><span class="keyword">bool</span> loadout = Loader.LoadFile(obj_path);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> mesh:Loader.LoadedMeshes)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;mesh.Vertices.<span class="built_in">size</span>();i+=<span class="number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Triangle* t = <span class="keyword">new</span> Triangle();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            t-&gt;setVertex(j,Vector4f(mesh.Vertices[i+j].Position.X,mesh.Vertices[i+j].Position.Y,mesh.Vertices[i+j].Position.Z,<span class="number">1.0</span>));</span><br><span class="line">            t-&gt;setNormal(j,Vector3f(mesh.Vertices[i+j].Normal.X,mesh.Vertices[i+j].Normal.Y,mesh.Vertices[i+j].Normal.Z));</span><br><span class="line">            t-&gt;setTexCoord(j,Vector2f(mesh.Vertices[i+j].TextureCoordinate.X, mesh.Vertices[i+j].TextureCoordinate.Y));</span><br><span class="line">        &#125;</span><br><span class="line">        TriangleList.push_back(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">draw(TriangleList);</span><br></pre></td></tr></table></figure>
@@ -224,11 +224,11 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// First , figure how to view the scene</span></span><br><span class="line">setupTheCamera ( ) ;</span><br><span class="line"><span class="comment">// Clear the zbuffer</span></span><br><span class="line">clearZBuffer ( ) ;</span><br><span class="line"><span class="comment">// Setup environmental lighting and fog</span></span><br><span class="line">setGlobalLightingAndFog ( ) ;</span><br><span class="line"><span class="comment">// get a l i s t of objects that are potentially visible</span></span><br><span class="line">potentiallyVisibleObjectList = highLevelVisibilityDetermination ( scene ) ;</span><br><span class="line"><span class="comment">// Render everything we found to be potentially visible</span></span><br><span class="line"><span class="keyword">for</span> ( all objects in potentiallyVisibleObjectList ) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Perform lower−level VSD using bounding volume test</span></span><br><span class="line">    <span class="function">i <span class="title">f</span> <span class="params">(! object . isBoundingVolumeVisible ( ) )</span> <span class="keyword">continue</span> </span>;</span><br><span class="line">    <span class="comment">// Fetch or procedurally generate the geometry</span></span><br><span class="line">    triMesh = object . getGeometry ( )</span><br><span class="line">    <span class="comment">// Clip and render the faces</span></span><br><span class="line">    <span class="keyword">for</span> ( each triangle in the geometry ) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Transform the vertices to clip space , and perform</span></span><br><span class="line">        <span class="comment">// vertex−level calculations (run the vertex shader )</span></span><br><span class="line">        clipSpaceTriangle = transformAndLighting ( triangle ) ;</span><br><span class="line">        <span class="comment">// Clip the triangle to the view volume</span></span><br><span class="line">        clippedTriangle = clipToViewVolume ( clipSpaceTriangle ) ;</span><br><span class="line">        <span class="function">i <span class="title">f</span> <span class="params">( clippedTriangle . isEmpty ( ) )</span> <span class="keyword">continue</span> </span>;</span><br><span class="line">        <span class="comment">// Project the triangle onto screen space</span></span><br><span class="line">        screenSpaceTriangle = clippedTriangle . projectToScreenSpace ( ) ;</span><br><span class="line">        <span class="comment">// Is the triangle backfacing ?</span></span><br><span class="line">        <span class="function">i <span class="title">f</span> <span class="params">( screenSpaceTriangle . isBackFacing ( ) )</span> <span class="keyword">continue</span> </span>;</span><br><span class="line">        <span class="comment">// Rasterize the triangle</span></span><br><span class="line">        <span class="keyword">for</span> ( each pixel in the triangle ) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Scissor the pixel here ( i f triangle was</span></span><br><span class="line">            <span class="comment">// not completely clipped to the frustum )</span></span><br><span class="line">            <span class="function">i <span class="title">f</span> <span class="params">( pixel is off−screen )</span> <span class="keyword">continue</span> </span>;</span><br><span class="line">            <span class="comment">// Interpolate color , zbuffer value ,</span></span><br><span class="line">            <span class="comment">// and texture mapping coords</span></span><br><span class="line">            <span class="comment">// The pixel shader takes interpolated values</span></span><br><span class="line">            <span class="comment">// and computes a color and alpha value</span></span><br><span class="line">            color = shadePixel ( ) ;</span><br><span class="line">            <span class="comment">// Perform zbuffering</span></span><br><span class="line">            <span class="function">i <span class="title">f</span> <span class="params">(! zbufferTest ( ) )</span> <span class="keyword">continue</span> </span>;</span><br><span class="line">            <span class="comment">// Alpha test to ignore pixels that are ”too</span></span><br><span class="line">            <span class="comment">// transparent”</span></span><br><span class="line">            <span class="function">i <span class="title">f</span> <span class="params">(! alphaTest ( ) )</span> <span class="keyword">continue</span> </span>;</span><br><span class="line">            <span class="comment">// Write to the frame buffer and zbuffer</span></span><br><span class="line">            writePixel ( color , interpolatedZ ) ;</span><br><span class="line">            <span class="comment">// Move on to the next pixel in this triangle</span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">// Move on to the next triangle in this object</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// Move on to the next potentially visible object</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><p>Since we referred to Coordinates Transformation in <a href="#Step5">Step5</a>. I guess you may not very clear about the internal matrixs and the workflow. Come on baby! Time to overcome the difficulties!<br><img src="/images/coordinate-convertion.png" alt="Fig1. coordinate convertion (from [1])"></p>
+<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><p>Since we referred to Coordinates Transformation in <a href="#Step5">Step5</a>. I guess you may not very clear about the internal matrixs and the workflow. Come on baby! Time to overcome the difficulties!<br><img src="/images/Rendering/coordinate-convertion.png" alt="Fig1. coordinate convertion (from [1])"></p>
 <h3 id="Model-World-Camera-Space-Clip-Space"><a href="#Model-World-Camera-Space-Clip-Space" class="headerlink" title="Model,World,Camera Space,Clip Space"></a>Model,World,Camera Space,Clip Space</h3><p>The geometry of an object is initially described in object space,which is a coordinate space local to the object. The information described usually consisits of vertex positions and surface normals. </p>
 <h4 id="Object-space-Model-space-Local-space"><a href="#Object-space-Model-space-Local-space" class="headerlink" title="Object space = Model space = Local space"></a>Object space = Model space = Local space</h4><p>Form the model space,the vertices are transformed into world space. <u>The transformation from modeling space to world space is often called model transform</u>. Typically,lighting for the scene is specified in world space,but it doesn’t matter what coordinate space is used to perform the lighting calculations provided that the geometry and the lights can be expressed in the same space. So it is not weird that you see lighting calculations in the world space,or view space,or tangent space,or clip space in unity shader file.</p>
 <p>From world space,vertices are transformed into camera sapce. Camera space is a 3D coordinate space in which the origin is at the center of projection,one is axis parallel to the direction the camera is facing(perpendicullar to the projection plane),one axis is the intersection of the top and bottom clip planes,and the other axis is the intersection of the left and right clip planes.</p>
-<h4 id="Camera-space-View-space-Eye-space"><a href="#Camera-space-View-space-Eye-space" class="headerlink" title="Camera space = View space = Eye space"></a>Camera space = View space = Eye space</h4><p>Here we should be alert to the difference between left-handed world and right-handed world,as shown in Fig2.<br><img src="/images/coordinate-comparision.png" alt="Fig2. coordinate comparision between unity &amp; OpenGL &amp; Dx"><br>In the left-handed world,the most common convention is to point +z in the direction that the camera is facing,with +x and +y pointing “right” and “up”.This is fairly intuitive,as shown in Fig3.The typical right-handed convention is to have -z point in the direction that the camera is facing.<br><img src="/images/camera-space-left-handed.png" alt="Fig3. camera space in left-handed world"></p>
+<h4 id="Camera-space-View-space-Eye-space"><a href="#Camera-space-View-space-Eye-space" class="headerlink" title="Camera space = View space = Eye space"></a>Camera space = View space = Eye space</h4><p>Here we should be alert to the difference between left-handed world and right-handed world,as shown in Fig2.<br><img src="/images/Rendering/coordinate-comparision.png" alt="Fig2. coordinate comparision between unity &amp; OpenGL &amp; Dx"><br>In the left-handed world,the most common convention is to point +z in the direction that the camera is facing,with +x and +y pointing “right” and “up”.This is fairly intuitive,as shown in Fig3.The typical right-handed convention is to have -z point in the direction that the camera is facing.<br><img src="/images/Rendering/camera-space-left-handed.png" alt="Fig3. camera space in left-handed world"></p>
 <p>From camera space,vertices are transformed once again into clip space. <u>The matrix that transforms vertices from camera space into clip space is called the clip matrix</u>.</p>
 <p>clip space = canonical view volume space</p>
 <h4 id="clip-matrix-projection-matrix"><a href="#clip-matrix-projection-matrix" class="headerlink" title="clip matrix = projection matrix"></a>clip matrix = projection matrix</h4><p>&#x1F449;<a href="/Math/Geometry/3DMath-Transformation/index.html">More Learning on Transformation and Matrix &gt;&gt;</a></p>
@@ -293,7 +293,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/C/function-template/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/C/STL-FunctionTemplate/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">Function-Template</span>
             </a>
@@ -316,7 +316,7 @@
     var gitalk = new Gitalk({
         clientID: 'f7d6d05297c7a1b94ee1',
         clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
-        id: 'c24a34aa0f1baa5e95c1385508e0e430',
+        id: '4c178e39fab0e5f9cc33611d3bddff61',
         repo: 'keneyr.github.io',
         owner: 'Keneyr',
         admin: "Keneyr",
@@ -373,7 +373,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            18
+                            15
                         </p>
                     </a>
                 </div>
@@ -385,7 +385,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            7
+                            6
                         </p>
                     </a>
                 </div>
@@ -397,7 +397,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            6
+                            4
                         </p>
                     </a>
                 </div>
@@ -534,15 +534,7 @@
                 <span class="level-item">C++</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/DeepLearning/">
-            <span class="level-start">
-                <span class="level-item">DeepLearning</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Graphics/">
@@ -595,7 +587,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 16.67px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a>
+        <a href="/tags/C/" style="font-size: 15px;">C++</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
     </div>
 </div>
     
@@ -704,39 +696,6 @@
         </li>
         
         <li>
-            <a class="level is-marginless" href="/archives/2020/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">April 2020</span>
@@ -772,23 +731,9 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Animation/">
-                        <span class="tag">Animation</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/C/">
                         <span class="tag">C++</span>
-                        <span class="tag is-grey">4</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/DeepLearning/">
-                        <span class="tag">DeepLearning</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
