@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>C8-The-Geometry-of-Vector-Spaces - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: Affine Combinations, Barycentric Coordinates,Bézier Curves">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C8-The-Geometry-of-Vector-Spaces">
+<meta property="og:url" content="https://keneyr.com/Math/Linear-Algebra/C8-The-Geometry-of-Vector-Spaces/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: Affine Combinations, Barycentric Coordinates,Bézier Curves">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-09-25T10:31:48.000Z">
+<meta property="article:modified_time" content="2023-09-28T04:21:18.074Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Linear Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="C8-The-Geometry-of-Vector-Spaces" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/reading">Reading</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-09-25T10:31:48.000Z">2023-09-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Math/">Math</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1475 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                C8-The-Geometry-of-Vector-Spaces
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: Affine Combinations, Barycentric Coordinates,Bézier Curves</p>
+<a id="more"></a>
+
+<h2 id="Affine-Combinations"><a href="#Affine-Combinations" class="headerlink" title="Affine Combinations"></a>Affine Combinations</h2><p>An affine combination of vectors is a special kind of linear combination.Given vectors (or “points”) $v_1, v_2, \cdots, v_p$ in $R^n$ and scalars $c_1, \cdots, c_p$, an affine combination of $v_1, v_2, \cdots, v_p$ is a linear combination</p>
+<p>$$<br>c_1v_1 + \cdots + c_pv_p,\\ c_1 + \cdots + c_p = 1<br>$$</p>
+<h2 id="Affine-Independence"><a href="#Affine-Independence" class="headerlink" title="Affine Independence"></a>Affine Independence</h2><h3 id="Barycentric-Coordinates"><a href="#Barycentric-Coordinates" class="headerlink" title="Barycentric Coordinates"></a>Barycentric Coordinates</h3><blockquote>
+<p>let $S = \lbrace \vec{v_1},\cdots, \vec{v_k}\rbrace$ be an affinely independent set in $R^n$. Then each $\vec{p}$ in aff S has a unique representation as an affine combination of $\vec{v_1},\cdots,\vec{v_k}$. That is, for each $\vec{p}$ there exists a unique set of scalars $c_1, \cdots, c_k$ such that<br>$$<br>\vec{p} = c_1\vec{v_1} + \cdots + c_k\vec{v_k}, and \space c_1 + \cdots + c_k = 1 \tag{7}<br>$$<br>the coefficients $c_1 \cdots c_k$ in the unique representation (7) of $\vec{p}$ are called the <u>barycentric (or, sometimes, affine) coordinates</u> of $\vec{p}$</p>
+</blockquote>
+<p>Observe that (7) is equivalent to the single equation</p>
+<p>$$<br>\begin{bmatrix}<br>\vec{p}\\1<br>\end{bmatrix} = c_1\begin{bmatrix} \vec{v_1}\\1 \end{bmatrix} + \cdots + c_k\begin{bmatrix} \vec{v_k }\\1<br>\end{bmatrix}<br>\tag{8}<br>$$</p>
+<p>involving the homogeneous forms of the points. Row reduction of the augmented matrix $\begin{bmatrix} \widetilde{\vec{v_1}} &amp; \cdots \widetilde{\vec{v_k}} &amp; \widetilde{\vec{p}}\end{bmatrix}$ for (8) produces the barycentric coordinates of $\vec{p}$.</p>
+<p>&#x1F4A1;For Example&#x1F4A1;:</p>
+<p>Let $\vec{a} = \begin{bmatrix} 1 \\ 7\end{bmatrix}, \vec{b} = \begin{bmatrix} 3 \\ 0\end{bmatrix}, \vec{c} = \begin{bmatrix} 9 \\ 3\end{bmatrix}, and \space \vec{p} = \begin{bmatrix} 5 \\ 3\end{bmatrix}$ Find the barycentric coordinates of $\vec{p}$ determined by the affinely independent set $\lbrace \vec{a}, \vec{b}, \vec{c}\rbrace$.</p>
+<p>&#x1F449;Solution:</p>
+<p>$$<br>\begin{bmatrix}<br>\widetilde{\vec{a}} &amp; \widetilde{\vec{b}} &amp; \widetilde{\vec{c}} &amp; \widetilde{\vec{p}}<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>1 &amp; 3 &amp; 9 &amp; 5\\<br>7 &amp; 0 &amp; 3 &amp; 3\\<br>1 &amp; 1 &amp; 1 &amp; 1<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; 0 &amp; 0 &amp; \frac{1}{4}\\<br>7 &amp; 0 &amp; 3 &amp; \frac{1}{3}\\<br>1 &amp; 1 &amp; 1 &amp; \frac{5}{12}<br>\end{bmatrix}<br>$$<br>so, $\vec{p} = \frac{1}{4}\vec{a} + \frac{1}{3}\vec{b} + \frac{5}{12}\vec{c}$</p>
+<p><img src="/images/LinearAlgebra/c8/barycentric-coordinateds.png" alt="barycentric-coordinateds"></p>
+<h3 id="Barycentric-Coordinates-in-Computer-Graphics"><a href="#Barycentric-Coordinates-in-Computer-Graphics" class="headerlink" title="Barycentric Coordinates in Computer Graphics"></a>Barycentric Coordinates in Computer Graphics</h3><p>Barycentric coordinates provide the tool for smoothly interpolating the vertex information over the interior of a triangle.</p>
+<p><img src="/images/LinearAlgebra/c8/interpolation.png" alt="color-interpolation"></p>
+<p>The color and other information displayed in the pixel on the screen should come from the object that the ray first intersects. See Figure 7. When the objects in the graphics scene are approximated by wire frames with triangular patches, the hidden surface problem can be solved using barycentric coordinates.</p>
+<p><img src="/images/LinearAlgebra/c8/cutting.png" alt="hidden-surface-problem"></p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Let<br>$$<br>\vec{v_1} =<br>\begin{bmatrix}<br>1\\<br>1\\<br>-6<br>\end{bmatrix},<br>\vec{v_2} =<br>\begin{bmatrix}<br>8\\<br>1\\<br>-4<br>\end{bmatrix},<br>\vec{v_3} =<br>\begin{bmatrix}<br>5\\<br>11\\<br>-2<br>\end{bmatrix},<br>\vec{a} =<br>\begin{bmatrix}<br>0\\<br>0\\<br>10<br>\end{bmatrix},<br>\vec{b} =<br>\begin{bmatrix}<br>0.7\\<br>0.4\\<br>-3<br>\end{bmatrix}<br>$$<br>and $x(t) = a + tb$ for $t \geq 0$. Find the point where the ray $x(t)$ intersects the plane that contains the triangle with vertices $v_1, v_2, and v_3$. Is this point inside the triangle?</p>
+<p>Solution:</p>
+<p>The plane is $aff \lbrace \vec{v_1}, \vec{v_2}, \vec{v_3} \rbrace$. The ray $x(t)$ intersects the plane when $c_2, c_3$, and $t$ satisfy</p>
+<p>$$<br>(1-c_2-c_3)\vec{v_1} + c_2\vec{v_2} + c_3\vec{v_3} = \vec{a} + t\vec{b} \mapsto\\<br>\begin{bmatrix}<br>\vec{v_2} - \vec{v_1} &amp; \vec{v_3} - \vec{v_1} &amp; -\vec{b}<br>\end{bmatrix}<br>\begin{bmatrix}<br>c_2 \\ c_3 \\ t<br>\end{bmatrix}<br>=<br>\vec{a} - \vec{v_1}<br>$$</p>
+<p>thus, get the solution and the intersection point is</p>
+<p>$$<br>\vec{x(5)} = \vec{a} + 5\vec{b} = \begin{bmatrix} 3.5 \\ 2.0 \\ -5.0\end{bmatrix}<br>$$</p>
+<p>The intersection point is inside the triangle because the barycentric weights for $\vec{x(5)}$ are all positive.</p>
+<h2 id="Convex-Combinations"><a href="#Convex-Combinations" class="headerlink" title="Convex Combinations"></a>Convex Combinations</h2><blockquote>
+<p>A <strong><em>convex combination</em></strong> of points $\vec{v_1}, \vec{v_2},\cdots, \vec{v_k}$ in $R^n$ is a linear combination of the form<br>$$<br>c_1\vec{v_1} + c_2\vec{v_2} + \cdots + c_k\vec{v_k}<br>$$<br>such that $c_1 + c_2 + \cdots + c_k = 1$ and $c_i \geq 0$ for all $i$. The set of all convex combinations of points in a set $S$ is called the <strong><em>convex hull</em></strong> of $S$, denoted by $conv S$.</p>
+</blockquote>
+<h2 id="Hyperplanes"><a href="#Hyperplanes" class="headerlink" title="Hyperplanes"></a>Hyperplanes</h2><h2 id="Polytopes"><a href="#Polytopes" class="headerlink" title="Polytopes"></a>Polytopes</h2><h2 id="Curves-and-Surfaces"><a href="#Curves-and-Surfaces" class="headerlink" title="Curves and Surfaces"></a>Curves and Surfaces</h2><h3 id="Bezier-Curves"><a href="#Bezier-Curves" class="headerlink" title="Bézier Curves"></a>Bézier Curves</h3><p><img src="/images/LinearAlgebra/c8/bezier.png" alt="bezier"></p>
+<p>quadratic and cubic Bézier curves:<br>$$<br>\begin{aligned}<br>&amp;\vec{w(t)} = (1-t^2)\vec{p_0} + 2t(1-t)\vec{p_1} + t^2\vec{p_2}\\<br>&amp;\vec{x(t)} = (1-t^3)\vec{p_0} + 3t(1-t)^2\vec{p_1} + 3t^2(1-t)\vec{p_2} + t^3\vec{p_3}\\<br>\end{aligned}<br>$$<br><u>Bézier curves are useful in computer graphics because their essential properties are preserved under the action of linear transformations and translations.</u></p>
+<p>$$<br>\begin{aligned}<br>A\vec{x(t)} &amp;= A[(1-t^3)\vec{p_0} + 3t(1-t)^2\vec{p_1} + 3t^2(1-t)\vec{p_2} + t^3\vec{p_3}]\\<br>&amp;= (1-t^3)A\vec{p_0} + 3t(1-t)^2A\vec{p_1} + 3t^2(1-t)A\vec{p_2} + t^3A\vec{p_3}<br>\end{aligned}<br>$$<br>the new control points are $A\vec{p_0}, \cdots, A\vec{p_3}$.</p>
+<h3 id="Connecting-Two-Bezier-Curves"><a href="#Connecting-Two-Bezier-Curves" class="headerlink" title="Connecting Two Bézier Curves"></a>Connecting Two Bézier Curves</h3><p>The combined curve is said to have <u>$G^0$ geometric continuity (at $p_2$)</u> because the two segments join at $p_2$.</p>
+<p><img src="/images/LinearAlgebra/c8/g0.png" alt="G0"></p>
+<p>To avoid a sharp bend, it usually suffices to adjust the curves to have what is called <u>$G^1$ geometric continuity</u>, where both <u>tangent vectors at $p_2$ point in the same direction</u>.</p>
+<p>When the tangent vectors are actually equal at $p_2$, the tangent vector is continuous at $p_2$, and the combined curve is said to have $C^1$ continuity, or <u>$C^1$ parametric continuity</u>. </p>
+<p><img src="/images/LinearAlgebra/c8/g1c1.png" alt="G1-C1"></p>
+<p>Figure 4 shows $C^1$ continuity for two cubic Bézier curves. Notice how the point joining the two segments lies <u>in the middle</u> of the line segment between the adjacent control points.</p>
+<p><img src="/images/LinearAlgebra/c8/c1.png" alt="C1"></p>
+<p>Two curves have $C^2$ (parametric) continuity when they have $C^1$ continuity and the second derivatives are equal. Another class of cubic curves, called <u>B-splines</u>, always have $C^2$ continuity because each pair of curves share three control points rather than one. </p>
+<h3 id="Matrix-Equations-for-Bezier-Curves"><a href="#Matrix-Equations-for-Bezier-Curves" class="headerlink" title="Matrix Equations for Bézier Curves"></a>Matrix Equations for Bézier Curves</h3><p>Since a Bézier curve is a linear combination of control points using polynomials as weights, the formula for $\vec{x(t)}$ may be written as</p>
+<p>$$<br>\begin{aligned}<br>\vec{x(t)} &amp;= \begin{bmatrix}\vec{p_0} &amp; \vec{p_1} &amp; \vec{p_2} &amp; \vec{p_3}\end{bmatrix}\begin{bmatrix}(1-t)^3 \\ 3t(1-t)^2 \\ 3t^2(1-t) \\ t^3\end{bmatrix}<br>\\<br>&amp;=\underbrace{\begin{bmatrix}\vec{p_0} &amp; \vec{p_1} &amp; \vec{p_2} &amp; \vec{p_3}\end{bmatrix}}_{Geometry-matrix: G}<br>\begin{bmatrix}1 &amp; -3 &amp; 3 &amp; -1\\0 &amp; 3 &amp; -6 &amp; 3\\0 &amp; 0 &amp; 3 &amp; -3\\0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}<br>\begin{bmatrix}1 \\ t \\ t^2 \\ t^3\end{bmatrix}\\<br>\end{aligned}<br>$$</p>
+<p>$$<br>\Longrightarrow<br>\vec{x(t)} = GM_B\vec{u(t)},M_B : Bezier-basis-matrix<br>\tag{4}<br>$$<br>A <u>Hermite cubic curve</u> arises when the matrix $M_B$ is replaced by a <u>Hermite basis matrix</u>.</p>
+<h3 id="Bezier-Surfaces"><a href="#Bezier-Surfaces" class="headerlink" title="Bézier Surfaces"></a>Bézier Surfaces</h3><p>The Bézier curve in equation (4) can also be “factored” in another way, to be used in the discussion of Bézier surfaces.<br>$$<br>\begin{aligned}<br>\vec{x(s)} &amp;= \vec{u(s)}^TM_B^T\begin{bmatrix}\vec{p_0} \\ \vec{p_1} \\ \vec{p_2} \\ \vec{p_3}\end{bmatrix}\\<br>&amp;=\begin{bmatrix}1 &amp; s &amp; s^2 &amp; s^3\end{bmatrix}<br>\begin{bmatrix}1 &amp; 0 &amp; 0 &amp; 0\\-3 &amp; 3 &amp; 0 &amp; 0\\3 &amp; -6 &amp; 3 &amp; 0\\-1 &amp; 3 &amp; -3 &amp; 1\end{bmatrix}<br>\begin{bmatrix}\vec{p_0} \\ \vec{p_1} \\ \vec{p_2} \\ \vec{p_3}\end{bmatrix}\\<br>&amp;=\begin{bmatrix} (1-s)^3 &amp; 3s(1-s)^2 &amp; 3s^2(1-s) &amp; s^3\end{bmatrix}<br>\underbrace{\begin{bmatrix}\vec{p_0} \\ \vec{p_1} \\ \vec{p_2} \\ \vec{p_3}\end{bmatrix}}_{Geometry-vector}<br>\end{aligned}<br>$$</p>
+<p><img src="/images/LinearAlgebra/c8/surface.png" alt="surface"></p>
+<h3 id="Approximations-to-Curves-and-Surfaces"><a href="#Approximations-to-Curves-and-Surfaces" class="headerlink" title="Approximations to Curves and Surfaces"></a>Approximations to Curves and Surfaces</h3><p>The basic idea for approximating a Bézier curve or surface is to divide the curve or surface into smaller pieces, with more and more control points.</p>
+<h3 id="Recursive-Subdivision-of-Bezier-Curves-and-Surfaces"><a href="#Recursive-Subdivision-of-Bezier-Curves-and-Surfaces" class="headerlink" title="Recursive Subdivision of Bézier Curves and Surfaces"></a>Recursive Subdivision of Bézier Curves and Surfaces</h3><p><img src="/images/LinearAlgebra/c8/division.png" alt="division"></p>
+<p>$$<br>x(t) = (1-3t+3t^2-t^3)p_0 + (3t-6t^2+3t^3)p_1 + (3t^2-3t^3)p_2 + t^3p_3, 0 \leq t \leq 1<br>$$<br>Thus, the new control points $q_3$ and $r_0$ are given by<br>$$<br>q_3 = r_0 = x(0.5) = \frac{1}{8}(p_0 + 3p_1 + 3p_2 + p_3)<br>$$<br>the tangent vector to a parameterized curve $x(t)$ is the derivative $x(t)’$.<br>$$<br>x(t)’ = (-3 + 6t -3t^2)p_0 + (3 - 12t + 9t^2)p_1 + (6t-9t^2)p_2 + 3t^2p_3, 0 \leq t \leq 1<br>$$<br>In particular,<br>$$<br>x’(0) = 3(p_1 - p_0)\\<br>x’(1) = 3(p_3 - p_2)\\<br>x’(0.5) = \frac{3}{4}(-p_0 - p_1 + p_2 + p_3)<br>$$</p>
+<p>Let $y(t)$ be the Bézier curve determined by $q_0, \cdots, q_3$, and let $z(t)$ be the Bézier curve determined by $r_0, \cdots, r_3$.</p>
+<p>Since $y(t)$ traverses the same path as $x(t)$ but only gets to $x(0.5)$ as $t$ goes from $0$ to $1$,<br>$$<br>y(t) = x(0.5t), 0 \leq t \leq 1<br>$$ </p>
+<p>Similarly<br>$$<br>z(t) = x(0.5 + 0.5t), 0 \leq t \leq 1<br>$$</p>
+<p>By chain rule:</p>
+<p>$$<br>y’(t) = 0.5x’(0.5t),\\<br>z’(t) = 0.5x’(0.5 + 0.5t)<br>$$</p>
+<p>the control points for $y(t)$ satisfy</p>
+<p>$$<br>3(q_1-q_0) = y’(0) = 0.5x’(0) = \frac{3}{2}(p_1-p_0)\\<br>3(q_3-q_2) = y’(1) = 0.5x’(0.5) = \frac{3}{8}(-p_0-p_1+p_2+p_3)<br>$$</p>
+<p>Once the subdivision completely stops, the endpoints of each curve are joined by line segments, and the scene is ready for the next step in the final image preparation.</p>
+<p>&#x1F449;<a href="">More about Geometry in Graphics&gt;&gt;</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Linear-Algebra/" rel="tag">Linear Algebra</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Math/Linear-Algebra/C7-Symmetric-Matrices-And-Quadratic-Forms/">
+                <span class="level-item">C7-Symmetric-Matrices-And-Quadratic-Forms</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '14eaeeca5e8fe82b4364c54e748a2ea6',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            18
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Affine-Combinations">
+        <span class="has-mr-6">1</span>
+        <span>Affine Combinations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Affine-Independence">
+        <span class="has-mr-6">2</span>
+        <span>Affine Independence</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Barycentric-Coordinates">
+        <span class="has-mr-6">2.1</span>
+        <span>Barycentric Coordinates</span>
+        </a></li><li>
+        <a class="is-flex" href="#Barycentric-Coordinates-in-Computer-Graphics">
+        <span class="has-mr-6">2.2</span>
+        <span>Barycentric Coordinates in Computer Graphics</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Convex-Combinations">
+        <span class="has-mr-6">3</span>
+        <span>Convex Combinations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Hyperplanes">
+        <span class="has-mr-6">4</span>
+        <span>Hyperplanes</span>
+        </a></li><li>
+        <a class="is-flex" href="#Polytopes">
+        <span class="has-mr-6">5</span>
+        <span>Polytopes</span>
+        </a></li><li>
+        <a class="is-flex" href="#Curves-and-Surfaces">
+        <span class="has-mr-6">6</span>
+        <span>Curves and Surfaces</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Bezier-Curves">
+        <span class="has-mr-6">6.1</span>
+        <span>Bézier Curves</span>
+        </a></li><li>
+        <a class="is-flex" href="#Connecting-Two-Bezier-Curves">
+        <span class="has-mr-6">6.2</span>
+        <span>Connecting Two Bézier Curves</span>
+        </a></li><li>
+        <a class="is-flex" href="#Matrix-Equations-for-Bezier-Curves">
+        <span class="has-mr-6">6.3</span>
+        <span>Matrix Equations for Bézier Curves</span>
+        </a></li><li>
+        <a class="is-flex" href="#Bezier-Surfaces">
+        <span class="has-mr-6">6.4</span>
+        <span>Bézier Surfaces</span>
+        </a></li><li>
+        <a class="is-flex" href="#Approximations-to-Curves-and-Surfaces">
+        <span class="has-mr-6">6.5</span>
+        <span>Approximations to Curves and Surfaces</span>
+        </a></li><li>
+        <a class="is-flex" href="#Recursive-Subdivision-of-Bezier-Curves-and-Surfaces">
+        <span class="has-mr-6">6.6</span>
+        <span>Recursive Subdivision of Bézier Curves and Surfaces</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.3dgep.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">3dgep</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.3dgep.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/keneyr" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/DeepLearning/">
+            <span class="level-start">
+                <span class="level-item">DeepLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 16.67px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T10:31:48.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C8-The-Geometry-of-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C8-The-Geometry-of-Vector-Spaces</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T10:31:12.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C7-Symmetric-Matrices-And-Quadratic-Forms/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C7-Symmetric-Matrices-And-Quadratic-Forms</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T10:27:47.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C6-Orthogonality-And-Least-Squares/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C6-Orthogonality-And-Least-Squares</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T09:29:48.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C5-EigenValues-And-EigenVectors/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C5-EigenValues-And-EigenVectors</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C4-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C4-Vector-Spaces</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DeepLearning/">
+                        <span class="tag">DeepLearning</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="C8-The-Geometry-of-Vector-Spaces" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

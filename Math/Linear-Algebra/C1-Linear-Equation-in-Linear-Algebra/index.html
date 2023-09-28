@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-04-06T07:30:00.000Z">
-<meta property="article:modified_time" content="2023-09-24T05:44:18.738Z">
+<meta property="article:modified_time" content="2023-09-28T00:30:07.859Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 minutes read (About 2998 words)
+                    20 minutes read (About 3061 words)
                 </span>
                 
                 
@@ -348,7 +348,11 @@
 <p>if $A = \begin{bmatrix}<br>1 &amp; 3 \\<br>0 &amp; 1 \\<br>\end{bmatrix}$, the transformation $T:R^2\rightarrow R^2$ defined by $T(\vec{x}) = A\vec{x}$ is called shear transformation, because</p>
 <p>$$<br>\begin{bmatrix}<br>0\\<br>2\\<br>\end{bmatrix}<br>\mapsto<br>\begin{bmatrix}<br>1 &amp; 3 \\<br>0 &amp; 1 \\<br>\end{bmatrix}<br>\begin{bmatrix}<br>0\\<br>2\\<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>6\\<br>2<br>\end{bmatrix}<br>\begin{bmatrix}<br>2\\<br>2<br>\end{bmatrix}<br>\mapsto<br>\begin{bmatrix}<br>1 &amp; 3 \\<br>0 &amp; 1<br>\end{bmatrix}<br>\begin{bmatrix}<br>2\\<br>2<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>8\\<br>2<br>\end{bmatrix}<br>$$</p>
 <p><img src="/images/LinearAlgebra/c1/shear.png" alt="shear transformation"></p>
-<h3 id="The-Matrix-of-Linear-Transformation"><a href="#The-Matrix-of-Linear-Transformation" class="headerlink" title="The Matrix of Linear Transformation"></a>The Matrix of Linear Transformation</h3><p>Let $T: R^n \rightarrow R^m$ be a linear transformation. Then there exists a unique matrix $A$ such that</p>
+<blockquote>
+<p>A transformation (or mapping) $T$ is linear if:<br>(i) $T(\vec{u} + \vec{v}) = T(\vec{u}) + T(\vec{v})$ for all $\vec{u},\vec{v}$ in the domain of $T$.<br>(ii) $T(c\vec{u}) = cT(\vec{u})$ for all scalars $c$ and all $\vec{u}$ in the domain of $T$.</p>
+</blockquote>
+<p><mark>Linear transformations</mark> preserve the operations of <mark>vector addition and scalar multiplication</mark>. </p>
+<h2 id="The-Matrix-of-Linear-Transformation"><a href="#The-Matrix-of-Linear-Transformation" class="headerlink" title="The Matrix of Linear Transformation"></a>The Matrix of Linear Transformation</h2><p>Let $T: R^n \rightarrow R^m$ be a linear transformation. Then there exists a unique matrix $A$ such that</p>
 <p>$$<br>T(\vec{x}) = A\vec{x},for\space all\space x \space in R^n<br>$$</p>
 <p>In fact, $A$ is the $m \times n$ matrix whose $j-th$ column is the vector $T(\vec{e_j})$, where $\vec{e_j}$ is the $j-th$ column of the identity matrix in $R^n$:</p>
 <p>$$<br>A = \begin{bmatrix} T(\vec{e_1}) \cdots T(\vec{e_n})\end{bmatrix}\tag{3}<br>$$</p>
@@ -534,7 +538,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            14
+                            18
                         </p>
                     </a>
                 </div>
@@ -703,17 +707,17 @@
         <a class="is-flex" href="#Matrix-Transformation">
         <span class="has-mr-6">7.1</span>
         <span>Matrix Transformation</span>
-        </a></li><li>
-        <a class="is-flex" href="#The-Matrix-of-Linear-Transformation">
-        <span class="has-mr-6">7.2</span>
-        <span>The Matrix of Linear Transformation</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#Linear-models-in-business-science-and-engineering">
+        <a class="is-flex" href="#The-Matrix-of-Linear-Transformation">
         <span class="has-mr-6">8</span>
+        <span>The Matrix of Linear Transformation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Linear-models-in-business-science-and-engineering">
+        <span class="has-mr-6">9</span>
         <span>Linear models in business,science, and engineering</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#Difference-Equations-差分方程">
-        <span class="has-mr-6">8.1</span>
+        <span class="has-mr-6">9.1</span>
         <span>Difference Equations(差分方程)</span>
         </a></li></ul></li></ul>
             </div>
@@ -730,12 +734,12 @@
         <ul class="menu-list">
         
             <li>
-                <a class="level is-mobile" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                <a class="level is-mobile" href="https://www.3dgep.com/" target="_blank" rel="noopener">
                     <span class="level-left">
-                        <span class="level-item">Github</span>
+                        <span class="level-item">3dgep</span>
                     </span>
                     <span class="level-right">
-                        <span class="level-item tag">github.com</span>
+                        <span class="level-item tag">www.3dgep.com</span>
                     </span>
                 </a>
             </li>
@@ -803,7 +807,7 @@
                 <span class="level-item">Math</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Math/Geometry/">
@@ -819,7 +823,7 @@
                 <span class="level-item">Linear Algebra</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">8</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -832,7 +836,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
+        <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/C/" style="font-size: 16.67px;">C++</a> <a href="/tags/DeepLearning/" style="font-size: 10px;">DeepLearning</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a>
     </div>
 </div>
     
@@ -846,60 +850,60 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T10:31:48.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C8-The-Geometry-of-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C8-The-Geometry-of-Vector-Spaces</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T10:31:12.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C7-Symmetric-Matrices-And-Quadratic-Forms/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C7-Symmetric-Matrices-And-Quadratic-Forms</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T10:27:47.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C6-Orthogonality-And-Least-Squares/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C6-Orthogonality-And-Least-Squares</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T09:29:48.000Z">2023-09-25</time></div>
+                    <a href="/Math/Linear-Algebra/C5-EigenValues-And-EigenVectors/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C5-EigenValues-And-EigenVectors</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time></div>
                     <a href="/Math/Linear-Algebra/C4-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C4-Vector-Spaces</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T01:32:07.000Z">2023-09-25</time></div>
-                    <a href="/Math/Linear-Algebra/C3-Determinants/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C3-Determinants</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T10:30:13.000Z">2023-09-24</time></div>
-                    <a href="/Math/Geometry/3DMath-Transformation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">3DMath-Transformation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-24T05:47:37.000Z">2023-09-24</time></div>
-                    <a href="/Math/Linear-Algebra/C2-Matrix-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C2-Matrix-Algebra</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-04-06T07:30:00.000Z">2023-04-06</time></div>
-                    <a href="/Math/Linear-Algebra/C1-Linear-Equation-in-Linear-Algebra/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1-Linear-Equation-in-Linear-Algebra</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
                     </p>
@@ -924,7 +928,7 @@
                     <span class="level-item">September 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -1039,7 +1043,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Linear-Algebra/">
                         <span class="tag">Linear Algebra</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
