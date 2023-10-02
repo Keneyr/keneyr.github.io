@@ -10,16 +10,16 @@
 <title>Function-Template - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="This is for the readers who have basic c++ background. If you want to get the rough sketch of funtion template of c++, then there it is. I suggest an online c++ compiler : http:&#x2F;&#x2F;coliru.stacked-crooke">
+    <meta name="description" content="Keywords: FunctionTemplate">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Function-Template">
 <meta property="og:url" content="https://keneyr.com/C/STL-FunctionTemplate/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="This is for the readers who have basic c++ background. If you want to get the rough sketch of funtion template of c++, then there it is. I suggest an online c++ compiler : http:&#x2F;&#x2F;coliru.stacked-crooke">
+<meta property="og:description" content="Keywords: FunctionTemplate">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2020-03-12T04:58:36.000Z">
-<meta property="article:modified_time" content="2023-09-17T08:58:19.360Z">
+<meta property="article:modified_time" content="2023-09-29T00:24:08.072Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 246 words)
+                    2 minutes read (About 249 words)
                 </span>
                 
                 
@@ -188,9 +188,13 @@
             
         </h1>
         <div class="content">
-            <p>This is for the readers who have basic c++ background. If you want to get the <strong>rough sketch</strong> of <strong>funtion template</strong> of c++, then there it is.</p>
-<p>I suggest an <strong>online c++ compiler</strong> : <a href="http://coliru.stacked-crooked.com/">http://coliru.stacked-crooked.com/</a> (You can test your simple programs on it.)</p>
+            <p><strong><em>Keywords</em></strong>: FunctionTemplate</p>
 <a id="more"></a>
+
+
+<p>This is for the readers who have basic c++ background. If you want to get the <strong>rough sketch</strong> of <strong>funtion template</strong> of c++, then there it is.</p>
+<p>I suggest an <strong>online c++ compiler</strong> : <a href="http://coliru.stacked-crooked.com/">http://coliru.stacked-crooked.com/</a> (You can test your simple programs on it.)</p>
+<!-- more -->
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;array&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::function&lt;<span class="keyword">int</span>(<span class="keyword">int</span>)&gt; Functional;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">TestFunc</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123; <span class="keyword">return</span> a;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> lambdaFn = [](<span class="keyword">float</span> a)-&gt;<span class="keyword">float</span>&#123; <span class="keyword">return</span> a; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Functor</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;<span class="keyword">return</span> a;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span>&#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ClassMember</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123; <span class="keyword">return</span> a; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">StaticMember</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123; <span class="keyword">return</span> a; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">    Functional = TestFunc;</span><br><span class="line">    <span class="keyword">int</span> result = Functional(<span class="number">10</span>); <span class="comment">//10</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"TestFunc："</span>&lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    Functional = lambdaFn;</span><br><span class="line">    result = Functional(<span class="number">22.00</span>); <span class="comment">//22</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Lambda："</span>&lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    Functor testFunctor;</span><br><span class="line">    Functional = testFunctor;</span><br><span class="line">    result = Functional(<span class="number">30</span>); <span class="comment">//30</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Functor："</span>&lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    TestClass testObj;</span><br><span class="line">    Functional = <span class="built_in">std</span>::bind(&amp;TestClass::ClassMember, testObj, <span class="built_in">std</span>::placeholders::_1);</span><br><span class="line">    result = Functional(<span class="number">40</span>); <span class="comment">//40</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"TestClass："</span>&lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    Functional = TestClass::StaticMember;</span><br><span class="line">    result = Functional(<span class="number">50</span>); <span class="comment">//50</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"TestClass(static)："</span>&lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><em>function</em> is a kind of wrapper,which provides a way to handle several funtion-like forms uniformly. If you know polymorphism, then this is easy to understand.</p>
@@ -257,7 +261,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/Graphics/Rendering-Lighting-Shading-Texture/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Graphics/Rendering/Rendering-Lighting-Shading-Texture/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">Lighting-Shading-Texture</span>
             </a>
@@ -265,7 +269,7 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/Graphics/Rendering-Graphics-Pipeline/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Graphics/Rendering/Rendering-Graphics-Pipeline/">
                 <span class="level-item">Graphics Pipeline Overview</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
@@ -344,7 +348,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            15
+                            22
                         </p>
                     </a>
                 </div>
@@ -356,7 +360,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            6
+                            8
                         </p>
                     </a>
                 </div>
@@ -368,7 +372,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            4
+                            5
                         </p>
                     </a>
                 </div>
@@ -408,12 +412,12 @@
             </li>
         
             <li>
-                <a class="level is-mobile" href="https://blog.csdn.net/keneyr" target="_blank" rel="noopener">
+                <a class="level is-mobile" href="https://www.esports.net/" target="_blank" rel="noopener">
                     <span class="level-left">
-                        <span class="level-item">CSDN</span>
+                        <span class="level-item">Esports</span>
                     </span>
                     <span class="level-right">
-                        <span class="level-item tag">blog.csdn.net</span>
+                        <span class="level-item tag">www.esports.net</span>
                     </span>
                 </a>
             </li>
@@ -441,6 +445,22 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/GameProgramming/">
+            <span class="level-start">
+                <span class="level-item">GameProgramming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/GameProgramming/System/">
+            <span class="level-start">
+                <span class="level-item">System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Graphics/">
             <span class="level-start">
                 <span class="level-item">Graphics</span>
@@ -454,7 +474,7 @@
                 <span class="level-item">Rendering</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -462,7 +482,7 @@
                 <span class="level-item">Math</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">11</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Math/Geometry/">
@@ -470,7 +490,7 @@
                 <span class="level-item">Geometry</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
@@ -491,7 +511,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/C/" style="font-size: 15px;">C++</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 15px;">Rendering</a>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 15px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 10px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/Rendering/" style="font-size: 10px;">Rendering</a>
     </div>
 </div>
     
@@ -505,10 +525,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T10:31:48.000Z">2023-09-25</time></div>
-                    <a href="/Math/Linear-Algebra/C8-The-Geometry-of-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C8-The-Geometry-of-Vector-Spaces</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T02:45:10.000Z">2023-10-02</time></div>
+                    <a href="/Math/Geometry/Geometry-Curves/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Geometry-Curves</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
                     </p>
                 </div>
             </div>
@@ -518,10 +538,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T10:31:12.000Z">2023-09-25</time></div>
-                    <a href="/Math/Linear-Algebra/C7-Symmetric-Matrices-And-Quadratic-Forms/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C7-Symmetric-Matrices-And-Quadratic-Forms</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T02:38:40.000Z">2023-10-02</time></div>
+                    <a href="/Math/Geometry/Geometry-ConvexHull/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Geometry-ConvexHull</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
                     </p>
                 </div>
             </div>
@@ -531,10 +551,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T10:27:47.000Z">2023-09-25</time></div>
-                    <a href="/Math/Linear-Algebra/C6-Orthogonality-And-Least-Squares/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C6-Orthogonality-And-Least-Squares</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-30T10:02:55.000Z">2023-09-30</time></div>
+                    <a href="/GameProgramming/System/GameProgramming-System-CSV/" class="title has-link-black-ter is-size-6 has-text-weight-normal">GameProgramming-CSVFile</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                        <a class="has-link-grey -link" href="/categories/GameProgramming/">GameProgramming</a> / <a class="has-link-grey -link" href="/categories/GameProgramming/System/">System</a>
                     </p>
                 </div>
             </div>
@@ -544,10 +564,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T09:29:48.000Z">2023-09-25</time></div>
-                    <a href="/Math/Linear-Algebra/C5-EigenValues-And-EigenVectors/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C5-EigenValues-And-EigenVectors</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-30T10:02:16.000Z">2023-09-30</time></div>
+                    <a href="/GameProgramming/System/GameProgramming-System-MVC/" class="title has-link-black-ter is-size-6 has-text-weight-normal">GameProgramming-MVCFramework</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                        <a class="has-link-grey -link" href="/categories/GameProgramming/">GameProgramming</a> / <a class="has-link-grey -link" href="/categories/GameProgramming/System/">System</a>
                     </p>
                 </div>
             </div>
@@ -557,10 +577,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-25T02:43:35.000Z">2023-09-25</time></div>
-                    <a href="/Math/Linear-Algebra/C4-Vector-Spaces/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C4-Vector-Spaces</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-09-30T09:39:54.000Z">2023-09-30</time></div>
+                    <a href="/GameProgramming/System/GameProgramming-System-NGUI/" class="title has-link-black-ter is-size-6 has-text-weight-normal">GameProgramming-NGUI</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                        <a class="has-link-grey -link" href="/categories/GameProgramming/">GameProgramming</a> / <a class="has-link-grey -link" href="/categories/GameProgramming/System/">System</a>
                     </p>
                 </div>
             </div>
@@ -578,12 +598,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2023/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2023/09/">
                 <span class="level-start">
                     <span class="level-item">September 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -642,9 +673,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/GameProgramming/">
+                        <span class="tag">GameProgramming</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Geometry/">
                         <span class="tag">Geometry</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
