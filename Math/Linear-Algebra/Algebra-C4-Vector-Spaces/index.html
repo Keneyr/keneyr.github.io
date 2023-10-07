@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-09-25T02:43:35.000Z">
-<meta property="article:modified_time" content="2023-10-03T13:08:40.983Z">
+<meta property="article:modified_time" content="2023-10-05T10:33:31.086Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    39 minutes read (About 5854 words)
+                    39 minutes read (About 5866 words)
                 </span>
                 
                 
@@ -191,6 +191,7 @@
             <p><strong><em>Keywords</em></strong>: SubSpaces, NullSpace and ColSpace, Coordinates Mapping, Dimension, Rank, Difference Equation, Markov Chains</p>
 <a id="more"></a>
 
+<p>This is the Chapter4 ReadingNotes from book <em>Linear Algebra and its Application</em>.</p>
 <h2 id="Vector-Spaces-and-SubSpaces"><a href="#Vector-Spaces-and-SubSpaces" class="headerlink" title="Vector Spaces and SubSpaces"></a>Vector Spaces and SubSpaces</h2><blockquote>
 <p>A subspace of a vector space $V$ is a subset $H$ of $V$ that has three properties:<br>a. The zero vector of $V$ is in $H$.<br>b. $H$ is closed under vector addition. That is, for each $\vec{u}$ and $\vec{v}$ in $H$, the sum $\vec{u} + \vec{v}$ is in $H$.<br>c. $H$ is closed under multiplication by scalars.  That is, for each $\vec{u}$ in $H$ and each scalar $c$, the vector $c\vec{u}$ is in $H$.</p>
 </blockquote>
@@ -198,14 +199,14 @@
 <p>if $\vec{v_1} \cdots \vec{v_p}$ are in a vector space $V$, then Span{$\vec{v_1} \cdots \vec{v_p}$} is a subspace of $V$.</p>
 </blockquote>
 <p>&#x1F4A1;For Example&#x1F4A1;:</p>
-<p>Let $H$ be the set of all vectors of the form $(a - 3b, b - a, a, b)$, where $a$ and $b$ are arbitrary scalars. That is, let $H = \lbrace a - 3b, b - a, a, b \rbrace$, $a$ and $b$ in $R$. Show that $H$ is a subspace of $R^4$.</p>
+<p>Let $H$ be the set of all vectors of the form $(a - 3b, b - a, a, b)$, where $a$ and $b$ are arbitrary scalars. That is, let $H = \lbrace a - 3b, b - a, a, b \rbrace$, $a$ and $b$ in $R$. Show that <u>$H$ is a subspace of $R^4$</u>.</p>
 <p>Proof：</p>
 <p>Write the vectors in $H$ as column vectors. Then the arbitrary vector in $H$ has the form</p>
 <p>$$<br>\begin{bmatrix}<br>a-3b \\ b-a \\ a \\ b<br>\end{bmatrix}<br>=<br>a\begin{bmatrix}<br>1 \\ -1 \\ 1 \\ 0<br>\end{bmatrix} +<br>b\begin{bmatrix}<br>-3 \\ 1 \\ 0 \\ 1<br>\end{bmatrix}<br>$$</p>
 <p>This calculation shows that H = Span{$\vec{v_1}, \vec{v_2}$}, where $\vec{v_1}$ and $\vec{v_2}$ are the vectors indicated above. Thus $H$ is a subspace of $R^4$.</p>
 <h2 id="Null-Spaces-Column-Spaces-And-Linear-Transformations"><a href="#Null-Spaces-Column-Spaces-And-Linear-Transformations" class="headerlink" title="Null Spaces, Column Spaces, And Linear Transformations"></a>Null Spaces, Column Spaces, And Linear Transformations</h2><h3 id="The-Null-Space-of-a-Matrix"><a href="#The-Null-Space-of-a-Matrix" class="headerlink" title="The Null Space of a Matrix"></a>The Null Space of a Matrix</h3><p>The null space of an $m \times n$ matrix $A$, written as $Nul A$, is the set of all solutions of the homogeneous equation $A\vec{x} = \vec{0}$. In set notation,<br>$$<br>Nul A = \lbrace\vec{x} : \vec{x} \space in\space R^n and A\vec{x} = 0\rbrace<br>$$</p>
 <blockquote>
-<p>The null space of an $m \times n$ matrix $A$ is a subspace of $R^n$.</p>
+<p><u>The null space of an $m \times n$ matrix $A$ is a subspace of $R^n$</u>.</p>
 </blockquote>
 <h3 id="An-Explicit-Description-of-Nul-A"><a href="#An-Explicit-Description-of-Nul-A" class="headerlink" title="An Explicit Description of Nul A"></a>An Explicit Description of Nul A</h3><p>&#x1F4A1;For Example&#x1F4A1;:</p>
 <p>Find a spanning set for the null space of the matrix<br>$$<br>A =<br>\begin{bmatrix}<br>-3 &amp; 6 &amp; -1 &amp; 1 &amp; -7\\<br>1 &amp; -2 &amp; 2 &amp; 3 &amp; -1\\<br>2 &amp; -4 &amp; 5 &amp; 8 &amp; -4<br>\end{bmatrix}<br>$$</p>
@@ -214,7 +215,7 @@
 <p>Every linear combination of $\vec{u},\vec{v},\vec{w}$ is an element of $Nul A$ and vice versa. Thus $\lbrace\vec{u},\vec{v},\vec{w}\rbrace$ is a spanning set for $Nul A$.</p>
 <h3 id="The-Column-Space-of-a-Matrix"><a href="#The-Column-Space-of-a-Matrix" class="headerlink" title="The Column Space of a Matrix"></a>The Column Space of a Matrix</h3><p>The column space of an $m \times n$ matrix A, written as $Col A$, is the set of all linear combinations of the columns of A. If $A = \left[\vec{a_1}, \cdots, \vec{a_n}\right]$, then<br>$$<br>ColA = Span\lbrace\vec{a_1}, \cdots, \vec{a_n}\rbrace<br>$$</p>
 <blockquote>
-<p>The column space of an $m \times n$ matrix A is a subspace of $R^m$.</p>
+<p><u>The column space of an $m \times n$ matrix A is a subspace of $R^m$</u>.</p>
 </blockquote>
 <p>Note that a typical vector in $Col A$ can be written as $A\vec{x}$ for some $\vec{x}$ because the notation $A\vec{x}$ stands for a linear combination of the columns of $A$. That is,</p>
 <p>$$<br>Col A = \lbrace \vec{b} : \vec{b} = A \vec{x} for \space some\space x \space in \space R^n\rbrace<br>$$</p>
@@ -318,7 +319,7 @@
 <blockquote>
 <p>If a vector space $V$ has a basis of $n$ vectors, then every basis of $V$ must consist of exactly $n$ vectors.</p>
 </blockquote>
-<p>If $V$ is spanned by a finite set, then $V$ is said to be <strong>finite-dimensional</strong>, and <strong>the dimension of $V$</strong> , written as $dim V$ , is the number of vectors in a basis for $V$ . The dimension of the zero vector space ${\vec{0}}$ is defined to be zero. If $V$ is not spanned by a finite set, then V is said to be infinite-dimensional.</p>
+<p>If $V$ is spanned by a finite set, then $V$ is said to be <strong>finite-dimensional</strong>, and <strong>the dimension of $V$</strong> , written as $dim V$ , <u>is the number of vectors in a basis for $V$</u>. The dimension of the zero vector space ${\vec{0}}$ is defined to be zero. If $V$ is not spanned by a finite set, then V is said to be infinite-dimensional.</p>
 <p>&#x1F4A1;For Example&#x1F4A1;:</p>
 <p>Find the dimension of the subspace:<br>$H = \lbrace \begin{bmatrix} a - 3b + 6c\\5a + 4d\\ b - 2c - d\\5d\end{bmatrix} a,b,c,d \space in R \rbrace$</p>
 <p>Solution:</p>
@@ -422,7 +423,7 @@
 <p><img src="/images/LinearAlgebra/c4/filter.png" alt="filter"><br>Table 1 shows a calculation of the output sequence $\lbrace z_k \rbrace$, where $0.35\cdot0.7$ is an abbreviation for $(\sqrt2/4)(\sqrt2/2)=0.25$. The output is $\lbrace y_k\rbrace$, shifted by one term.</p>
 <p><img src="/images/LinearAlgebra/c4/table.png" alt="table"></p>
 <p>A different input signal is produced from the higher frequency signal $y = \cos(3\pi/4)$, shown in Figure 3(b). Sampling at the same rate as before produces a new input sequence:</p>
-<p>$$<br>\lbrace y_k\rbrace = \lbrace \cdots, 1, -0.7, 0, 0.7, -1, 0.7, 0 \cdots\rbrace<br>$$</p>
+<p>$$<br>\lbrace w_k\rbrace = \lbrace \cdots, 1, -0.7, 0, 0.7, -1, 0.7, 0 \cdots\rbrace<br>$$</p>
 <p>When $\lbrace w_k\rbrace$ is fed into the filter, the output is the zero sequence. <mark>The filter, called a low-pass filter（低通滤波器）</mark>, lets $\lbrace y_k \rbrace$ pass through, but stops the higher frequency $\lbrace w_k \rbrace$.</p>
 <p>In many applications, a sequence $\lbrace z_k \rbrace$ is specified for the right side of a difference equation (3), and a $\lbrace y_k \rbrace$ that satisfies (3) is called a <strong>solution</strong> of the equation. The next example shows how to find solutions for a homogeneous equation. （比如机器学习就类似于如此，给定输入和输出，学习最优权重）</p>
 <p>&#x1F4A1;For Example&#x1F4A1;:</p>
@@ -485,7 +486,7 @@
 <p>could indicate that 60% of the population lives in the city and 40% in the suburbs. The decimals in $\vec{x_0}$ add up to 1 because they account for the entire population of the region.Percentages are more convenient for our purposes here than population totals.</p>
 <p>A vector with nonnegative entries that add up to 1 is called a <u>probability vector（概率向量）</u>. A <u>stochastic matrix（随机矩阵）</u> is a square matrix whose columns are probability vectors. A <u>Markov chain（马尔科夫链）</u> is a sequence of probability vectors $\vec{x_0}, \vec{x_1}, \vec{x_2}$ together with a stochastic matrix $P$ , such that</p>
 <p>$$<br>\vec{x_1} = P\vec{x_0}, \vec{x_2} = P\vec{x_1}, \vec{x_3} = P\vec{x_2}, \cdots<br>\\<br>\longrightarrow<br>\vec{x_{k+1}} = P\vec{x_k}<br>$$</p>
-<p>$\vec{x_k}$ is often called a <u>state vector（状态向量</u>.</p>
+<p>$\vec{x_k}$ is often called a <u>state vector（状态向量)</u>.</p>
 <h3 id="Predicting-the-Distant-Future"><a href="#Predicting-the-Distant-Future" class="headerlink" title="Predicting the Distant Future"></a>Predicting the Distant Future</h3><p>&#x1F4A1;For Example&#x1F4A1;:</p>
 <p>Let $P = \begin{bmatrix}0.5 &amp; 0.2 &amp; 0.3\\0.3 &amp; 0.8 &amp; 0.3\\0.2 &amp; 0 &amp; 0.4\end{bmatrix}$ and $\vec{x_0} = \begin{bmatrix}1\\0\\0\end{bmatrix}$. Consider a system whose state is described by the Markov chain $\vec{x_{k+1}} = P\vec{x_{k}}, for k = 0,1,\cdots$ What happens to the system as time passes? Compute the state vectors $\vec{x_1},\cdots, \vec{x_{15}}$to find out.</p>
 <p>Solution:<br>$$<br>\vec{x_1} = P\vec{x_0} = \begin{bmatrix}0.5\\0.3\\0.2\end{bmatrix},\\<br>\\<br>\cdots<br>\\<br>\vec{x_{14}} = P\vec{x_{13}} = \begin{bmatrix}0.3001\\0.59996\\0.10002\end{bmatrix},\\<br>\vec{x_{15}} = P\vec{x_{14}} = \begin{bmatrix}0.3001\\0.59998\\0.10001\end{bmatrix}<br>$$<br>These vectors seem to be approaching $\vec{q} = \begin{bmatrix}0.3\\0.6\\0.1\end{bmatrix}$The probabilities are hardly changing from one value of $k$ to the next.</p>
@@ -493,7 +494,7 @@
 <h3 id="Steady-State-Vectors"><a href="#Steady-State-Vectors" class="headerlink" title="Steady-State Vectors"></a>Steady-State Vectors</h3><p>If $P$ is a stochastic matrix, then a <strong>steady-state vector</strong> (or equilibrium vector（平衡向量）) for $P$ is a probability vector $\vec{q}$ such that</p>
 <p>$$<br>P\vec{q} = \vec{q}<br>$$</p>
 <p>&#x1F4A1;For Example&#x1F4A1;:</p>
-<p>Let $P = \begin{bmatrix} 0.6 &amp; 0.3 \ 0.4 &amp; 0.7\end{bmatrix}$. Find a steady-state vector for $P$.</p>
+<p>Let $P = \begin{bmatrix} 0.6 &amp; 0.3 \\ 0.4 &amp; 0.7\end{bmatrix}$. Find a steady-state vector for $P$.</p>
 <p>Solution:<br>$$<br>P\vec{x} = \vec{x}\rightarrow (P-I)\vec{x} = \vec{0}\<br>\longrightarrow<br>\begin{bmatrix}<br>-0.4 &amp; 0.3 &amp; 0 \\<br>0.4 &amp; -0.3 &amp; 0<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; -3/4 &amp; 0 \\<br>0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>$$<br>$$<br>\vec{x} = x_2\begin{bmatrix}3/4 \\ 1\end{bmatrix}<br>$$</p>
 <p>Obviously, One obvious choice is $\begin{bmatrix}3/4 \\ 1\end{bmatrix}$,but a better choice with no fractions is $\vec{w} = \begin{bmatrix}3 \\ 4\end{bmatrix}, (x_2 = 4)$, since every solution is a multiple of the solution$\vec{w}$ above. Divide $\vec{w}$ by the sum of its entries and obtain</p>
 <p>$$<br>\vec{q} = \begin{bmatrix}3/7 \\ 4/7\end{bmatrix}<br>$$</p>
@@ -645,7 +646,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            26
+                            28
                         </p>
                     </a>
                 </div>
@@ -657,7 +658,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            14
+                            15
                         </p>
                     </a>
                 </div>
@@ -669,7 +670,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            9
+                            11
                         </p>
                     </a>
                 </div>
@@ -862,6 +863,39 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="https://www.blender.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">blender</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.blender.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://dl.acm.org/topic/ccs2012/10010147.10010371.10010352" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">acmLibrary</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dl.acm.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.physicsbasedanimation.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">physicalAnimation</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.physicsbasedanimation.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -930,15 +964,15 @@
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/MachineLearning/Regression/">
+        <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
             <span class="level-start">
-                <span class="level-item">Regression</span>
+                <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -946,7 +980,7 @@
                 <span class="level-item">Math</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Math/Geometry/">
@@ -963,6 +997,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
+            <span class="level-start">
+                <span class="level-item">Numerical Analysis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Probability/">
@@ -999,7 +1041,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 16.67px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a>
+        <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 16.67px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 10px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a>
     </div>
 </div>
     
@@ -1013,10 +1055,36 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-03T12:59:15.000Z">2023-10-03</time></div>
-                    <a href="/MachineLearning/Regression/PatterRecognition-RandomForest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-RandomForest</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T04:27:00.000Z">2023-10-06</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C3-LinearModels-for-Regression</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/Regression/">Regression</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T00:21:14.000Z">2023-10-06</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C12-Eigenvalues-and-Singular-Values</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-03T12:59:15.000Z">2023-10-03</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-RandomForest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-RandomForest</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -1048,32 +1116,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T10:59:25.000Z">2023-10-02</time></div>
-                    <a href="/Paper/Sketch/Paper-StripMaker-Sketch-Consolidation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-StripMaker-Sketch-Consolidation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch/">Sketch</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T02:45:10.000Z">2023-10-02</time></div>
-                    <a href="/Math/Geometry/Geometry-Curves/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Geometry-Curves</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1091,7 +1133,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -1189,6 +1231,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Numerical-Analysis/">
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Probability/">
                         <span class="tag">Probability</span>
                         <span class="tag is-grey">1</span>
@@ -1198,6 +1247,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/RandomForest/">
                         <span class="tag">RandomForest</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Regression/">
+                        <span class="tag">Regression</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

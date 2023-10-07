@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-09-25T10:31:12.000Z">
-<meta property="article:modified_time" content="2023-10-03T13:08:56.767Z">
+<meta property="article:modified_time" content="2023-10-07T04:21:49.691Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    17 minutes read (About 2507 words)
+                    25 minutes read (About 3817 words)
                 </span>
                 
                 
@@ -191,6 +191,7 @@
             <p><strong><em>Keywords</em></strong>: Symmetric Matrix, Quadratic Forms, Constrained Optimization, Singular Value Decomposition, ImageProcessing, Statistics</p>
 <a id="more"></a>
 
+<p>This is the Chapter7 ReadingNotes from book <em>Linear Algebra and its Application</em>.</p>
 <h2 id="Diagonalization-of-Symmetric-Matrices（对称矩阵的对角化）"><a href="#Diagonalization-of-Symmetric-Matrices（对称矩阵的对角化）" class="headerlink" title="Diagonalization of Symmetric Matrices（对称矩阵的对角化）"></a>Diagonalization of Symmetric Matrices（对称矩阵的对角化）</h2><blockquote>
 <p>If $A$ is symmetric, then any two eigenvectors from different eigenspaces are orthogonal.</p>
 </blockquote>
@@ -202,20 +203,20 @@
 <p>$$<br>0 = -\lambda^3 + 12\lambda^2 -21\lambda - 98 = -(\lambda - 7)^2(\lambda + 2)<br>$$</p>
 <p>Solution:</p>
 <p>$$<br>\lambda = 7, \vec{v_1} = \begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix},<br>\vec{v_2} = \begin{bmatrix}-1/2 \\ 1 \\ 0\end{bmatrix};\\<br>\lambda = -2,\vec{v_3} = \begin{bmatrix}-1 \\ -1/2 \\ 1\end{bmatrix}<br>$$<br>Although $\vec{v_1}$ and $\vec{v_2}$ are linearly independent, they are not orthogonal. the component of $\vec{v_2}$ orthogonal to $\vec{v_1}$ is</p>
-<p>$$<br>\vec{z_2} = \vec{v_2} - \frac{\vec{v_2} \cdot \vec{v_1}}{\vec{v_1} \cdot \vec{v_1}}\vec{v_1}<br>= \begin{bmatrix}<br>-1/4 \\ 1 \\ 1/4<br>\end{bmatrix}<br>$$<br>Then $\lbrace \vec{v_1}, \vec{z_2}\rbrace$ is an orthogonal set in the eigenspace for $\lambda = 7$. Normalize $\vec{v_1}$ and $\vec{z_2}$ to obtain the following orthonormal basis for the eigenspace for$\lambda = 7$:</p>
+<p>$$<br>\vec{z_2} = \vec{v_2} - \frac{\vec{v_2} \cdot \vec{v_1}}{\vec{v_1} \cdot \vec{v_1}}\vec{v_1}<br>= \begin{bmatrix}<br>-1/4 \\ 1 \\ 1/4<br>\end{bmatrix}<br>$$<br>Then $\lbrace \vec{v_1}, \vec{z_2}\rbrace$ is an orthogonal set in the eigenspace for $\lambda = 7$. Normalize $\vec{v_1}$ and $\vec{z_2}$ to obtain the following <u>orthonormal basis</u> for the eigenspace for$\lambda = 7$:</p>
 <p>$$<br>\vec{u_1} = \begin{bmatrix} 1/\sqrt{2} \\ 0 \\ 1/\sqrt{2}\end{bmatrix},<br>\vec{u_2} = \begin{bmatrix} -1/\sqrt{18} \\ 4/\sqrt{18} \\ 1/\sqrt{18}\end{bmatrix},<br>also, \vec{u_3} = \begin{bmatrix} -2/3 \\ -1/3 \\ 2/3\end{bmatrix}<br>$$<br>Hence $\vec{u_1},\vec{u_2},\vec{u_3}$ is an orthonormal set. Let</p>
 <p>$$<br>P = \begin{bmatrix}\vec{u_1} &amp; \vec{u_2} &amp; \vec{u_3}\end{bmatrix}=<br>\begin{bmatrix}<br>1/\sqrt{2} &amp; -1/\sqrt{18} &amp; -2/3 \\ 0 &amp; 4/\sqrt{18} &amp; -1/3 \\ 1/\sqrt{2} &amp; 1/\sqrt{18} &amp; 2/3<br>\end{bmatrix},<br>D =<br>\begin{bmatrix}<br>7 &amp; 0 &amp; 0 \\ 0 &amp; 7 &amp; 0 \\ 0 &amp; 0 &amp; -2<br>\end{bmatrix}<br>$$<br>Then $P$ orthogonally diagonalizes $A$, and $A = PDP^{-1}$.</p>
-<h3 id="Spectral-Decomposition"><a href="#Spectral-Decomposition" class="headerlink" title="Spectral Decomposition"></a>Spectral Decomposition</h3><p>Since$P$ is <mark>orthogonal matrix（正交矩阵）, $P^{-1} = P^T$</mark>. So</p>
+<h3 id="Spectral-Decomposition"><a href="#Spectral-Decomposition" class="headerlink" title="Spectral Decomposition"></a>Spectral Decomposition</h3><p>Since $P$ is <mark>orthogonal matrix（正交矩阵, orthonormal columns）, $P^{-1} = P^T$</mark>. So</p>
 <p>$$<br>A = PDP^T =<br>\begin{bmatrix}<br>\vec{u_1} &amp; \cdots &amp; \vec{u_n}<br>\end{bmatrix}<br>\begin{bmatrix}<br>\lambda_1 &amp; &amp;  0\\<br>&amp;\ddots\\<br>0 &amp; &amp; \lambda_n<br>\end{bmatrix}<br>\begin{bmatrix}<br>\vec{u_1}^T \\ \cdots \\ \vec{u_n}^T<br>\end{bmatrix}\\<br>\Rightarrow<br>A = \lambda_1\vec{u_1}\vec{u_1}^T + \lambda_2\vec{u_2}\vec{u_2}^T +<br>\cdots + \lambda_n\vec{u_n}\vec{u_n}^T<br>$$</p>
 <h2 id="Quadratic-Forms（二次型）"><a href="#Quadratic-Forms（二次型）" class="headerlink" title="Quadratic Forms（二次型）"></a>Quadratic Forms（二次型）</h2><p>A quadratic form on $R^n$ is a function $Q$ defined on $R^n$ whose value at a vector $\vec{x}$ in $R^n$ can be computed by an expression of the form $Q(\vec{x}) =  \vec{x}^TA\vec{x}$, where $A$ is an $n \times n$ symmetric matrix. The matrix $A$ is called the matrix of the quadratic form.</p>
 <p>&#x1F4A1;For Example&#x1F4A1;:</p>
-<p>For $\vec{x}$ in $R^3$, let $Q(\vec{x}) = 5x_1^2 + 3x_2^2 + 2x_3^2 - x_1x_2 + 8x_2x_3$.Write this quadratic form as $\vec{x}^TA\vec{x}$.</p>
+<p>For $\vec{x}$ in $R^3$, let $Q(\vec{x}) = 5x_1^2 + 3x_2^2 + 2x_3^2 - x_1x_2 + 8x_2x_3$. Write this quadratic form as $\vec{x}^TA\vec{x}$.</p>
 <p>Solution:</p>
 <p>$$<br>Q(\vec{x}) = \vec{x}^TA\vec{x} =<br>\begin{bmatrix}<br>x_1 &amp; x_2 &amp; x_3<br>\end{bmatrix}<br>\begin{bmatrix}<br>5 &amp; -1/2 &amp; 0\\<br>-1/2 &amp; 3 &amp; 4\\<br>0 &amp; 4 &amp; 2<br>\end{bmatrix}<br>\begin{bmatrix}<br>x_1 \\ x_2 \\ x_3<br>\end{bmatrix}<br>$$</p>
 <h3 id="Change-of-Variable-in-a-Quadratic-Form"><a href="#Change-of-Variable-in-a-Quadratic-Form" class="headerlink" title="Change of Variable in a Quadratic Form"></a>Change of Variable in a Quadratic Form</h3><p>Let A be an $n \times n$ symmetric matrix. Then there is an orthogonal change of variable, $\vec{x} = P\vec{y}$, that transforms the quadratic form $\vec{x}^TA\vec{x}$ into a quadratic form $\vec{y}^TD\vec{y}$ with no cross-product term.</p>
 <p><u>The columns of $P$ in the theorem are called the <strong>principal axes of the quadratic form（二次型的主轴）</strong> $\vec{x}^TA\vec{x}$. The vector $\vec{y}$ is the coordinate vector of $\vec{x}$ relative to the orthonormal basis of $R^n$ given by these principal axes</u>.</p>
 <p>&#x1F4A1;For Example &#x1F4A1;:</p>
-<p>Make a change of variable that transforms the quadratic form $Q(\vec{x}) = x_1^2 - 8x_1x_2 - 5x_2^2$into a quadratic form with no cross-product term.</p>
+<p>Make a change of variable that transforms the quadratic form $Q(\vec{x}) = x_1^2 - 8x_1x_2 - 5x_2^2$ into a quadratic form with no cross-product term.</p>
 <p>Solution:</p>
 <p>The matrix of the quadratic form is<br>$$<br>A =<br>\begin{bmatrix}<br>1 &amp; -4\\<br>-4 &amp; -5<br>\end{bmatrix}<br>$$<br>The first step is to orthogonally diagonalize $A$.</p>
 <p>$$<br>\lambda = 3 :<br>\begin{bmatrix}<br>2/\sqrt{5}\\<br>-1/\sqrt{5}<br>\end{bmatrix};<br>$$<br>$$<br>\lambda = -7 :<br>\begin{bmatrix}<br>1/\sqrt{5}\\<br>2/\sqrt{5}<br>\end{bmatrix}<br>$$<br>Let<br>$$<br>P = \begin{bmatrix}<br>2/\sqrt{5} &amp; 1/\sqrt{5}\\<br>-1/\sqrt{5} &amp; 2/\sqrt{5}<br>\end{bmatrix},<br>D = \begin{bmatrix}<br>3 &amp; 0\\<br>0 &amp; -7<br>\end{bmatrix}<br>$$<br>Then $A = PDP^{-1}$ and $D = P^{-1}AP = P^TAP$, as pointed out earlier. A suitable change of variable is</p>
@@ -277,14 +278,16 @@
 </blockquote>
 <h3 id="The-Singular-Value-Decomposition（奇异值分解）"><a href="#The-Singular-Value-Decomposition（奇异值分解）" class="headerlink" title="The Singular Value Decomposition（奇异值分解）"></a>The Singular Value Decomposition（奇异值分解）</h3><p>The decomposition of $A$ involves an $m \times n$ “diagonal” matrix $\Sigma$ of the form<br>$$<br>\Sigma = \begin{bmatrix}<br>D &amp; 0\\<br>0 &amp; 0<br>\end{bmatrix}<br>\tag{3}<br>$$<br>where $D$ is an $r \times r$ diagonal matrix.</p>
 <blockquote>
-<p>Let $A$ be an $m \times n$ matrix with rank $r$. Then there exists an $m \times n$ matrix $\Sigma$ as in (3) for which the diagonal entries in $D$ are the first $r$ singular values of $A$, $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r &gt; 0$, and there exist an $m \times m$ orthogonal matrix $U$ and an<br>$n \times n$ orthogonal matrix $V$ such that<br>$$<br>A = U \Sigma V^T<br>$$</p>
+<p>Let $A$ be an $m \times n$ matrix with rank $r$. Then there exists an $m \times n$ matrix $\Sigma$ as in (3) for which the diagonal entries in $D$ are the first $r$ singular values of $A$, $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r &gt; 0$, and there exist an $m \times m$ orthogonal matrix（正交矩阵） $U$ and an<br>$n \times n$ orthogonal matrix（正交矩阵） $V$ such that<br>$$<br>A = U \Sigma V^T<br>$$</p>
 </blockquote>
+<p>but the diagonal entries of $\Sigma$ are necessarily the <u>singular values</u> of $A$.<br>The columns of $U$ in such a decomposition are called <u>left singular vectors</u> of $A$, and the columns of $V$ are called <u>right singular vectors</u> of <u>A</u>.</p>
 <p>&#x1F4A1;For example&#x1F4A1;:</p>
 <p>Construct a singular value decomposition of $A = \begin{bmatrix}4 &amp; 11 &amp; 14\\8 &amp; 7 &amp; -2\end{bmatrix}$</p>
 <p>Solution:</p>
-<p><strong><em>Step1. Find an orthogonal diagonalization of $A^TA$.</em></strong></p>
-<p><strong><em>Step2. Set up $V$ and $\Sigma$.</em></strong></p>
-<p>$$<br>V = \begin{bmatrix}<br>\vec{v_1} &amp; \vec{v_2} &amp; \vec{v_3}<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>1/3 &amp; -2/3 &amp; 2/3\\<br>2/3 &amp; -1/3 &amp; -2/3\\<br>2/3 &amp; 2/3 &amp; 1/3<br>\end{bmatrix}<br>$$</p>
+<p><strong><em>Step1. Find an orthogonal diagonalization of $A^TA$.</em></strong>（find the eigenvalues of $A^TA$ and a corresponding orthonormal set of eigenvectors.）</p>
+<p><strong><em>Step2. Set up $V$ and $\Sigma$.</em></strong> Arrange the eigenvalues of $A^TA$ in decreasing order. The corresponding unit eigenvectors, $\vec{v_1}, \vec{v_2}, \vec{v_3}$, are the right singular vectors of $A$.</p>
+<p>$$<br>V = \begin{bmatrix}<br>\vec{v_1} &amp; \vec{v_2} &amp; \vec{v_3}<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>1/3 &amp; -2/3 &amp; 2/3\\<br>2/3 &amp; -1/3 &amp; -2/3\\<br>2/3 &amp; 2/3 &amp; 1/3<br>\end{bmatrix}<br>$$<br>The square roots of the eigenvalues are the singular values. </p>
+<p>$$<br>\sigma_1 = 6\sqrt{10},<br>\sigma_2 =  3\sqrt{10},<br>\sigma_3 = 0<br>$$</p>
 <p>The nonzero singular values are the diagonal entries of $D$.</p>
 <p>$$<br>D = \begin{bmatrix}<br>6\sqrt 10 &amp; 0\\<br>0 &amp; 3\sqrt 10<br>\end{bmatrix}<br>\longrightarrow<br>\Sigma = \begin{bmatrix} D &amp; 0\end{bmatrix}<br>= \begin{bmatrix}<br>6\sqrt 10 &amp; 0 &amp; 0\\<br>0 &amp; 3\sqrt 10 &amp; 0<br>\end{bmatrix}<br>$$</p>
 <p><strong><em>Step3. Construct $U$.</em></strong></p>
@@ -293,7 +296,57 @@
 <p>$$<br>\vec{u_1} = \frac{1}{\sigma_1}A\vec{v_1} =<br>\begin{bmatrix}<br>3/\sqrt 10\\1/\sqrt10<br>\end{bmatrix},<br>\vec{u_2} = \frac{1}{\sigma_2}A\vec{v_2} =<br>\begin{bmatrix}<br>1/\sqrt 10\\-3/\sqrt 10<br>\end{bmatrix}<br>$$</p>
 <p>Thus,</p>
 <p>$$<br>A =<br>\begin{bmatrix}<br>3/\sqrt 10 &amp; 1/\sqrt 10\\ 1/\sqrt10 &amp; -3/\sqrt 10<br>\end{bmatrix}<br>\begin{bmatrix}<br>6\sqrt 10 &amp; 0 &amp; 0\\<br>0 &amp; 3\sqrt 10 &amp; 0<br>\end{bmatrix}<br>\begin{bmatrix}<br>1/3 &amp; -2/3 &amp; 2/3\\<br>2/3 &amp; -1/3 &amp; -2/3\\<br>2/3 &amp; 2/3 &amp; 1/3<br>\end{bmatrix}<br>$$</p>
-<h3 id="Applications-of-the-Singular-Value-Decomposition-Omitted"><a href="#Applications-of-the-Singular-Value-Decomposition-Omitted" class="headerlink" title="Applications of the Singular Value Decomposition(Omitted)"></a>Applications of the Singular Value Decomposition(Omitted)</h3><h2 id="Applications-to-Image-Processing-and-Statistics"><a href="#Applications-to-Image-Processing-and-Statistics" class="headerlink" title="Applications to Image Processing and Statistics"></a>Applications to Image Processing and Statistics</h2><h3 id="Mean-and-Covariance"><a href="#Mean-and-Covariance" class="headerlink" title="Mean and Covariance"></a>Mean and Covariance</h3><h3 id="Principal-Component-Analysis（主成分分析）"><a href="#Principal-Component-Analysis（主成分分析）" class="headerlink" title="Principal Component Analysis（主成分分析）"></a>Principal Component Analysis（主成分分析）</h3><h3 id="Reducing-the-Dimension-of-Multivariate-Data"><a href="#Reducing-the-Dimension-of-Multivariate-Data" class="headerlink" title="Reducing the Dimension of Multivariate Data"></a>Reducing the Dimension of Multivariate Data</h3><h3 id="Characterizations-of-Principal-Component-Variables"><a href="#Characterizations-of-Principal-Component-Variables" class="headerlink" title="Characterizations of Principal Component Variables"></a>Characterizations of Principal Component Variables</h3>
+<h3 id="Applications-of-the-Singular-Value-Decomposition"><a href="#Applications-of-the-Singular-Value-Decomposition" class="headerlink" title="Applications of the Singular Value Decomposition"></a>Applications of the Singular Value Decomposition</h3><blockquote>
+<p>The Invertible Matrix Theorem (concluded)<br>Let $A$ be an $n \times n$ matrix. Then the following statements are each equivalent to the statement that $A$ is an invertible matrix.<br>u. $(Col A)^\perp = {0}$.<br>v. $(Null A)^\perp = R^n$.<br>w. $RowA = R^n$.<br>x. $A$ has $n$ nonzero singular values.</p>
+</blockquote>
+<p>&#x1F449;<a href="/Math/NumericalAnalysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/index.html#Power-Iteration-Methods">More about SVD Decomposition by Numerical Analysis &gt;&gt;</a></p>
+<h2 id="Applications-to-Image-Processing-and-Statistics"><a href="#Applications-to-Image-Processing-and-Statistics" class="headerlink" title="Applications to Image Processing and Statistics"></a>Applications to Image Processing and Statistics</h2><p>&#x1F4A1;for example&#x1F4A1;:</p>
+<p>An example of two-dimensional data is given by a set of weights and heights of $N$ college students. Let $X_j$ denote the observation vector in $R^2$ that lists the weight and height of the $j th$ student. If $w$ denotes weight and $h$ height, then the matrix of observations has the form</p>
+<p>$$<br>\begin{matrix}<br>w_1 &amp; w_2 &amp; \cdots &amp; w_N\\<br>h_1 &amp; h_2 &amp; \cdots &amp; h_N\\<br>\uparrow &amp; \uparrow &amp; &amp;\uparrow\\<br>X_1 &amp; X_2 &amp; &amp; X_N<br>\end{matrix}<br>$$<br>The set of observation vectors can be visualized as a two-dimensional scatter plot. See Figure 1.<br><img src="/images/LinearAlgebra/c7/weight-height.png" alt="transformation"></p>
+<h3 id="Mean-and-Covariance（均值和协方差）"><a href="#Mean-and-Covariance（均值和协方差）" class="headerlink" title="Mean and Covariance（均值和协方差）"></a>Mean and Covariance（均值和协方差）</h3><p>let $\begin{bmatrix} X_1 \cdots X_N\end{bmatrix}$ be a $p \times N$ matrix of observations, such as described above. The <u>sample mean</u>, $M$, of the observation vectors $X_1 \cdots X_N$ is given by</p>
+<p>$$<br>M = \frac{1}{N}(X_1 + \cdots + X_n)<br>$$</p>
+<p>for $k = 1, \cdots, N$, let<br>$$<br>\hat{X_k} = X_k - M<br>$$</p>
+<p>The columns of the $p \times N$  matrix<br>$$<br>B =<br>\begin{bmatrix}<br>\hat{X_1} \hat{X_2} \cdots \hat{X_N}<br>\end{bmatrix}<br>$$<br>have a zero sample mean, and B is said to be in <u>mean-deviation form</u>.</p>
+<p>The (sample) <u>covariance matrix</u> is the $p \times p$ matrix $S$ defined by<br>$$<br>S = \frac{1}{N-1}BB^T<br>$$<br>Since any matrix of the form $BB^T$ is positive semidefinite, so is $S$.</p>
+<p><img src="/images/LinearAlgebra/c7/mean-deviation.png" alt="mean-deviation"></p>
+<p>&#x1F4A1;For example&#x1F4A1;:<br>Three measurements are made on each of four individuals in a random sample from a population. The observation vectors are<br>$$<br>X_1 = \begin{bmatrix} 1 \\ 2 \\ 1\end{bmatrix},<br>X_2 = \begin{bmatrix} 4 \\ 2 \\ 13\end{bmatrix},<br>X_3 = \begin{bmatrix} 7 \\ 8 \\ 1\end{bmatrix},<br>X_4 = \begin{bmatrix} 8 \\ 4 \\ 5\end{bmatrix}<br>$$<br>Compute the sample mean and the covariance matrix.</p>
+<p>Solution:<br>$$<br>M = \begin{bmatrix}5 \\ 4 \\ 5\end{bmatrix},<br>B = \begin{bmatrix}4 &amp; -1 &amp; 2 &amp; 3 \\ -2 &amp; -2 &amp; 4 &amp; 0 \\ -4 &amp; 8 &amp; -4 &amp; 0\end{bmatrix},<br>S = \begin{bmatrix}10 &amp; 6 &amp; 0 \\ 6 &amp; 8 &amp; -8 \\ 0 &amp; -8 &amp; 32\end{bmatrix}<br>$$<br>To discuss the entries in $S = [S_{ij}]$, denote the coordinates of $X$ by $x_1, \cdots, x_p$. For each $j = 1, \cdots, p$, the diagonal entry $s_{jj}$ in $S$ is called the <u>variance of $x_j$</u>. The variance of $x_j$ <u>measures the spread of the values of $x_j$</u> .</p>
+<p>The <u>total variance</u> of the data is the sum of the variances on the diagonal of $S$.<br>$$<br>\lbrace{total \space variance\rbrace} = tr(S)<br>$$</p>
+<p>The entry $s_{ij}$ in $S$ for $i \neq j$ is called the covariance of $x_i$ and $x_j$.</p>
+<p>(1,3)-entry in $S$ is $0$. Statisticians say that <u>$x_1$ and $x_3$ are uncorrelated</u>.</p>
+<h3 id="Principal-Component-Analysis（主成分分析）"><a href="#Principal-Component-Analysis（主成分分析）" class="headerlink" title="Principal Component Analysis（主成分分析）"></a>Principal Component Analysis（主成分分析）</h3><p>Suppose the matrix $[X_1, \cdots, X_N]$ is already in mean-deviation form. <mark>The goal of principal component analysis</mark> is to find an <u>orthogonal $p \times p$ matrix(正交矩阵)</u> $P = [u_1 \cdots u_p]$ that determines a change of variable, $X = PY$, or</p>
+<p>$$<br>\begin{bmatrix}<br>x_1 \\<br>x_2\\<br>\cdots \\<br>x_p<br>\end{bmatrix} =<br>\begin{bmatrix}<br>u_1 &amp; u_2 &amp; \cdots &amp; u_p<br>\end{bmatrix}<br>\begin{bmatrix}<br>y_1 \\ y_2 \\ \cdots \\ y_p<br>\end{bmatrix}<br>$$<br>with the property that <mark>the new variables $y_1, \cdots, y_p$ are uncorrelated and are arranged in order of decreasing variance.</mark></p>
+<blockquote>
+<p>Recall the Quadratic form we learned above, $\vec{x} = P\vec{y}$, the columns of $P$ means the correspongding unit eigen vectors to eigen values(decreased) of $A$, so that, $Q = x^TAx = y^TDy, A = PDP^{-1} = PDP^T$, similar, Right?</p>
+</blockquote>
+<p>Notice that $Y_k$ is the coordinate vector of $X_k$ with respect to the columns of $P$, and $Y_k = P^{-1}X_k = P^T X_k$ for $k = 1, \cdots, N$.</p>
+<p>Thus, the covariance matrix of $Y_1, \cdots, Y_N$ is $D = P^TSP$. $D$ is a diagonal matrix.</p>
+<p>The unit eigenvectors $u_1, \cdots, u_p$ of the covariance matrix $S$ are called the <u>principal components of the data (in the matrix of observations)</u>. The <u>first principal component</u> is the eigenvector corresponding to the <u>largest eigenvalue of $S$</u>.</p>
+<p>Thus $y_1$ is a linear combination of the original variables $x_1, \cdots, x_p$, using the entries in the eigenvector $u_1$ as weights.</p>
+<p>$$<br>y_1 = u_1^TX = c_1x_1 + c_2x_2 + \cdots + c_px_p<br>$$</p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>The initial data for the multispectral image of Railroad Valley consisted of 4 million vectors in $R^3$. The associated covariance matrix is</p>
+<p>$$<br>S = \begin{bmatrix}<br>2382.78 &amp; 2611.84 &amp; 2136.20\\<br>2611.84 &amp; 3106.47 &amp; 2553.90\\<br>2136.20 &amp; 2553.90 &amp; 2650.71<br>\end{bmatrix}<br>$$<br>Find the principal components of the data, and list the new variable determined by the first principal component.</p>
+<p>Solution:</p>
+<p>$$<br>\lambda_1 = 7614.23, \lambda_1 = 427.63, \lambda_1 = 98.10, \\<br>$$<br>$$<br>\vec{u_1} = \begin{bmatrix} 0.5417 \\ 0.6295 \\ 0.5570\end{bmatrix},<br>\vec{u_2} = \begin{bmatrix} -0.4894 \\ -0.3026\\ 0.8179\end{bmatrix},<br>\vec{u_3} = \begin{bmatrix} 0.6834 \\ -0.7157 \\ 0.1441\end{bmatrix}<br>$$<br>the variable for the first principal component is</p>
+<p>$$<br>y_1 = 0.54x_1 + 0.63x_2 + 0.56x_3<br>$$</p>
+<p>This equation was used to create photograph (d) as follows. The variables $x_1, x_2, and x_3$ are the signal intensities in the three spectral bands.</p>
+<p>At each pixel in photograph (d), the gray scale value is computed from $y_1$, a weighted linear combination of  $x_1, x_2, and x_3$. In this sense, photograph (d) “displays” the first principal component of the data.</p>
+<p>(Sensors aboard the satellite acquire seven simultaneous images of any region on earth to be studied. The sensors record energy from separate wavelength bands— three in the visible light spectrum and four in infrared and thermal bands.)</p>
+<p><img src="/images/LinearAlgebra/c7/pca.png" alt="Railroad Valley"></p>
+<p>As we shall see, this fact will permit us to view the data as essentially one-dimensional rather than three-dimensional.</p>
+<h3 id="Reducing-the-Dimension-of-Multivariate-Data"><a href="#Reducing-the-Dimension-of-Multivariate-Data" class="headerlink" title="Reducing the Dimension of Multivariate Data"></a>Reducing the Dimension of Multivariate Data</h3><p>It can be shown that an orthogonal change of variables, $X = PY$, does not change the total variance of the data. (Roughly speaking, this is true because left-multiplication by $P$ does not change the lengths of vectors or the angles between them.)(正交矩阵的性质)</p>
+<p>$$<br>\lbrace total \space variance \space of \space x_1, \cdots, x_p\rbrace<br>=<br>\lbrace total \space variance \space of \space y_1, \cdots, y_p\rbrace<br>=<br>\lambda_1 + \lambda_2 + \cdots + \lambda_p<br>$$</p>
+<p>In a sense, 93.5%(7614.23/(7614.23+427.63+98.10)) of the information collected by Landsat for the Railroad Valley region is displayed in photograph (d), with 5.3% in (e) and only 1.2% remaining for (f). which means that the points lie approximately along a line, and the data are essentially one-dimensional.</p>
+<p><img src="/images/LinearAlgebra/c7/pca-1dim.png" alt="pca-1dim"></p>
+<h3 id="Characterizations-of-Principal-Component-Variables"><a href="#Characterizations-of-Principal-Component-Variables" class="headerlink" title="Characterizations of Principal Component Variables"></a>Characterizations of Principal Component Variables</h3><p>The singular value decomposition is the main tool for performing principal component analysis in practical applications.</p>
+<p>if $B$ is a $p \times N$ matrix of observations in mean-deviation form, and if $A = (1/\sqrt{N-1})B^T$, then $A^TA$ is the covariance matrix $S$.</p>
+<p>The squares of the singular values of $A$ are the $p$ eigenvalues of $S$. </p>
+<p>The right singular vectors of $A$ are the principal components of the data.</p>
+<blockquote>
+<p>Iterative calculation of the $SVD$ of $A$ is faster and more accurate than an eigenvalue decomposition of $S$.</p>
+</blockquote>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -439,7 +492,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            26
+                            28
                         </p>
                     </a>
                 </div>
@@ -451,7 +504,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            14
+                            15
                         </p>
                     </a>
                 </div>
@@ -463,7 +516,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            9
+                            11
                         </p>
                     </a>
                 </div>
@@ -537,17 +590,17 @@
         <span class="has-mr-6">4.2</span>
         <span>The Singular Value Decomposition（奇异值分解）</span>
         </a></li><li>
-        <a class="is-flex" href="#Applications-of-the-Singular-Value-Decomposition-Omitted">
+        <a class="is-flex" href="#Applications-of-the-Singular-Value-Decomposition">
         <span class="has-mr-6">4.3</span>
-        <span>Applications of the Singular Value Decomposition(Omitted)</span>
+        <span>Applications of the Singular Value Decomposition</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#Applications-to-Image-Processing-and-Statistics">
         <span class="has-mr-6">5</span>
         <span>Applications to Image Processing and Statistics</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Mean-and-Covariance">
+        <a class="is-flex" href="#Mean-and-Covariance（均值和协方差）">
         <span class="has-mr-6">5.1</span>
-        <span>Mean and Covariance</span>
+        <span>Mean and Covariance（均值和协方差）</span>
         </a></li><li>
         <a class="is-flex" href="#Principal-Component-Analysis（主成分分析）">
         <span class="has-mr-6">5.2</span>
@@ -592,6 +645,39 @@
                     </span>
                     <span class="level-right">
                         <span class="level-item tag">www.esports.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.blender.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">blender</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.blender.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://dl.acm.org/topic/ccs2012/10010147.10010371.10010352" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">acmLibrary</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dl.acm.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.physicsbasedanimation.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">physicalAnimation</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.physicsbasedanimation.com</span>
                     </span>
                 </a>
             </li>
@@ -664,15 +750,15 @@
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/MachineLearning/Regression/">
+        <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
             <span class="level-start">
-                <span class="level-item">Regression</span>
+                <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -680,7 +766,7 @@
                 <span class="level-item">Math</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Math/Geometry/">
@@ -697,6 +783,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
+            <span class="level-start">
+                <span class="level-item">Numerical Analysis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Probability/">
@@ -733,7 +827,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 16.67px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a>
+        <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 16.67px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 10px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a>
     </div>
 </div>
     
@@ -747,10 +841,36 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-03T12:59:15.000Z">2023-10-03</time></div>
-                    <a href="/MachineLearning/Regression/PatterRecognition-RandomForest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-RandomForest</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T04:27:00.000Z">2023-10-06</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C3-LinearModels-for-Regression</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/Regression/">Regression</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T00:21:14.000Z">2023-10-06</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C12-Eigenvalues-and-Singular-Values</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-03T12:59:15.000Z">2023-10-03</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-RandomForest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-RandomForest</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -782,32 +902,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T10:59:25.000Z">2023-10-02</time></div>
-                    <a href="/Paper/Sketch/Paper-StripMaker-Sketch-Consolidation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-StripMaker-Sketch-Consolidation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch/">Sketch</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T02:45:10.000Z">2023-10-02</time></div>
-                    <a href="/Math/Geometry/Geometry-Curves/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Geometry-Curves</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -825,7 +919,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -923,6 +1017,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Numerical-Analysis/">
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Probability/">
                         <span class="tag">Probability</span>
                         <span class="tag is-grey">1</span>
@@ -932,6 +1033,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/RandomForest/">
                         <span class="tag">RandomForest</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Regression/">
+                        <span class="tag">Regression</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

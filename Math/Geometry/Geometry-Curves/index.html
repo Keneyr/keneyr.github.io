@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-02T02:45:10.000Z">
-<meta property="article:modified_time" content="2023-10-02T02:51:54.849Z">
+<meta property="article:modified_time" content="2023-10-07T08:58:34.728Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Geometry">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 18 words)
+                    11 minutes read (About 1608 words)
                 </span>
                 
                 
@@ -191,7 +191,79 @@
             <p><strong><em>Keywords</em></strong>: Parametic Polynomial Curves, Bezier Curves, Spline Curves, Subdivision, C++</p>
 <a id="more"></a>
 
-<h2 id="Parametic-Polynomial-Curves"><a href="#Parametic-Polynomial-Curves" class="headerlink" title="Parametic Polynomial Curves"></a>Parametic Polynomial Curves</h2><h2 id="Bezier-Curves"><a href="#Bezier-Curves" class="headerlink" title="Bezier Curves"></a>Bezier Curves</h2><h2 id="Subdivision"><a href="#Subdivision" class="headerlink" title="Subdivision"></a>Subdivision</h2><h2 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h2>
+<p>This is the Chapter13 ReadingNotes from book <em>3D Math Primer for Graphics and Game Development 2nd Edition</em>.</p>
+<h2 id="Parametic-Polynomial-Curves"><a href="#Parametic-Polynomial-Curves" class="headerlink" title="Parametic Polynomial Curves"></a>Parametic Polynomial Curves</h2><h3 id="Parametric-Curves"><a href="#Parametric-Curves" class="headerlink" title="Parametric Curves"></a>Parametric Curves</h3><p>The word <mark>parametric</mark> in the phrase “parametric polynomial curve” means that <mark>the curve can be described by a function of an independent parameter<mark>, which is often assigned the symbol $t$.</p>
+<p>This curve function is of the form $p(t)$, taking <u>a scalar input</u> (the parameter $t$) and returning the point on the curve corresponding to that parameter value as <u>a vector output</u>. The function $p(t)$ traces out the shape of the curve as $t$ varies.</p>
+<p>$$<br>x^2 + y^2 = 1 \tag{implicit}<br>$$<br>$$<br>y = \sqrt{1-x^2}\tag{explicit}<br>$$<br>$$<br>\vec{p(t)} = (x(t), y(t))\\<br>\begin{cases}<br>x(t) = \cos(2\pi t)\\<br>y(t) = sin(2\pi t)<br>\end{cases}<br>\tag{parametric}<br>$$</p>
+<h3 id="Polynomial-Curves（多项式曲线）"><a href="#Polynomial-Curves（多项式曲线）" class="headerlink" title="Polynomial Curves（多项式曲线）"></a>Polynomial Curves（多项式曲线）</h3><p>$$<br>\vec{p(t)} = \vec{c_0} + \vec{c_1}t + \vec{c_2}t^2 + \cdots + \vec{c_{n-1}}t^{n-1} + \vec{c_n}t^n<br>$$</p>
+<p>The number $n$ is called the <u>degree of the polynomial</u>.</p>
+<blockquote>
+<p>Cubic Curve in Monomial Form<br>$$<br>\vec{p(t)} = \vec{c_0} + \vec{c_1}t + \vec{c_2}t^2 + \vec{c_3}t^3<br>\tag{13.2}<br>$$</p>
+</blockquote>
+<h3 id="Matrix-Notation"><a href="#Matrix-Notation" class="headerlink" title="Matrix Notation"></a>Matrix Notation</h3><p>2D cubic curve in expanded monomial form:<br>$$<br>x(t) = c_{1,0} + c_{1,1}t + c_{1,2}t^2 + c_{1,3}t^3\\<br>y(t) = c_{2,0} + c_{2,1}t + c_{2,2}t^2 + c_{2,3}t^3<br>$$<br>thus,<br>$$<br>\begin{aligned}<br>\vec{p(t)} = C\vec{t} &amp;=<br>\begin{bmatrix}<br>c_{1,0} &amp; c_{1,1} &amp; c_{1,2}t^2 &amp; c_{1,3}t^3\\<br> c_{2,0} &amp; c_{2,1} &amp; c_{2,2} &amp; c_{2,3}<br>\end{bmatrix}<br>\begin{bmatrix}<br>1 \\ t \\ t^2 \\ t^3<br>\end{bmatrix}\\<br>&amp;=<br>\begin{bmatrix}<br>\vec{c_0} &amp;\vec{c_1} &amp; \vec{c_2} &amp; \vec{c_3}<br>\end{bmatrix}<br>\begin{bmatrix}<br>1 \\ t \\ t^2 \\ t^3<br>\end{bmatrix}<br>\end{aligned}<br>$$</p>
+<h3 id="Two-Trivial-Types-of-Curves"><a href="#Two-Trivial-Types-of-Curves" class="headerlink" title="Two Trivial Types of Curves"></a>Two Trivial Types of Curves</h3><p>Consider a ray from the point $p_0$ to the point $p_1$. If we let $\vec{d}$ be the delta vector $\vec{p_1} − \vec{p_0}$, then the ray is expressed parametrically as</p>
+<p>$$<br>\vec{p(t)} = \vec{p_0} + \vec{d}t<br>\tag{13.3}<br>$$</p>
+<p>let $\vec{c_0} = \vec{p_0}$, $\vec{c1} = \vec{d}$,this linear curve is a polynomial curve of degree 1.</p>
+<h3 id="Endpoints-in-Monomial-Form"><a href="#Endpoints-in-Monomial-Form" class="headerlink" title="Endpoints in Monomial Form"></a>Endpoints in Monomial Form</h3><p>Suppose, $0 \leq t \leq 1$, start and end points are $\vec{p(0)}$ and $\vec{p(1)}$.</p>
+<p>$c_0$ specifies the start point; The endpoint is the sum of the coefficients.<br>$$<br>\vec{p_0} = \vec{c_0}\\<br>\vec{p_1} = \vec{c_0} + \vec{c_1} + \vec{c_2} + \vec{c_3}<br>$$</p>
+<h3 id="Velocities-and-Tangents"><a href="#Velocities-and-Tangents" class="headerlink" title="Velocities and Tangents"></a>Velocities and Tangents</h3><p>the velocity function $v(t)$ is the first derivative of the position function $p(t)$ because velocity measures the rate of change in position over time.</p>
+<p>Likewise, the acceleration function $a(t)$ is the derivative of the velocity function $v(t)$ because acceleration measures the rate of change of velocity over time.</p>
+<blockquote>
+<p>Velocity and Acceleration of Cubic Monomial Curve<br>$$<br>\vec{p(t)} = \vec{c_0} + \vec{c_1}t + \vec{c_2}t^2 + \vec{c_3}t^3<br>\tag{13.4}<br>$$<br>$$<br>\vec{v(t)} = \dot{\vec{p(t)}} =  \vec{c_1} + 2\vec{c_2}t + 3\vec{c_3}t^2<br>\tag{13.5}<br>$$<br>$$<br>\vec{a(t)} = \ddot{\vec{p(t)}} =  2\vec{c_2} + 6\vec{c_3}t<br>\tag{13.6}<br>$$</p>
+</blockquote>
+<p>Two curves that define the same “shape,” but not the same “path”:</p>
+<p>$$<br>p(t) = p_0 + dt<br>$$<br>$$<br>Let s(t) = t^2 \mapsto p(s(t)) = p_0 + dt^2<br>$$<br><img src="/images/3DMath/path.png" alt="path-shape"></p>
+<p>The <mark>tangent</mark> at a point is the direction the curve is moving at that point, the line that just touches the curve. The tangent is basically the normalized velocity of the curve.</p>
+<p>$$<br>\vec{t(t)} = \widehat{\vec{v(t)}} = \frac{\vec{v(t)}}{||\vec{v(t)}||}<br>$$</p>
+<p>The second derivative is related to <mark>curvature</mark>, which is sometimes denoted $\kappa$,</p>
+<p>$$<br>\vec{\kappa(t)} = \frac{||\vec{v(t)} \times \vec{a(t)}||}{||\vec{v(t)}||^3}<br>$$</p>
+<h2 id="Polynomial-Interpolation"><a href="#Polynomial-Interpolation" class="headerlink" title="Polynomial Interpolation"></a>Polynomial Interpolation</h2><p><u><em>linear interpolation</em></u>: Given two “endpoint” values, create a function that transitions at a constant rate (spatially, in a straight line) from one to the other (<u>is simply first-degree polynomial interpolation</u>).</p>
+<p><u><em>Polynomial interpolation</em></u>: Given a series of control points, our goal is to construct a polynomial that interpolates them.</p>
+<blockquote>
+<p>A polynomial of degree $n$ can be made to interpolate $n + 1$ control points.</p>
+</blockquote>
+<p>We use the word <u>“knot”</u> to refer to control points that are interpolated, invoking the metaphor of a rope with knots in it.</p>
+<h3 id="Aitken’s-Algorithm-Geometry-View"><a href="#Aitken’s-Algorithm-Geometry-View" class="headerlink" title="Aitken’s Algorithm(Geometry View)"></a>Aitken’s Algorithm(Geometry View)</h3><p><em>recursive algorithms, divide and conquer.</em></p>
+<p>To solve a difficult problem, we first divide it into two (or more) easier problems, solve the easier problems independently, and then combine the results to get the solution to the harder problem.</p>
+<p>We split this curve into two “easier” curves: (1) one that interpolates only the <u>first $n − 1$ points</u>, disregarding the last point; and (2) another that interpolates the <u>last $n − 1$</u> points without worrying about the first point. Then, we blend these two curves together.</p>
+<p>We let $y_i^1(t)$ denote the linear curve between $y_i$ and $y_{i+1}$, the notation $y_i^2(t)$ denote the quadratic curve between $y_i$ and $y_{i+2}$, and so on</p>
+<p><img src="/images/3DMath/quadraticcurve.png" alt="Creating a quadratic curve as a blend of two linear segments according to Aitken’s algorithm"></p>
+<p>Linear interpolation between two control points:<br>$$<br>y_1^1(t) = \frac{(t_2 - t)y_1 + (t - t_1)y_2}{t_2 - t_1}<br>$$<br>$$<br>y_2^1(t) = \frac{(t_3 - t)y_2 + (t - t_2)y_3}{t_3 - t_2}<br>$$<br>Linear interpolation of lines yields a quadratic curve</p>
+<p>$$<br>y_1^2(t) = \frac{(t_3 - t)[y_1^1(t)] + (t - t_1)[y_2^1(t)]}{t_3 - t_1}<br>$$<br><img src="/images/3DMath/aitkenprocess.png" alt="process of cubic curve"></p>
+<h3 id="Lagrange-Basis-Polynomials-Math-View"><a href="#Lagrange-Basis-Polynomials-Math-View" class="headerlink" title="Lagrange Basis Polynomials(Math View)"></a>Lagrange Basis Polynomials(Math View)</h3><p>Each control point gives us one equation, and each coefficient gives us one unknown. This system of equations can be put into an $n \times n$ matrix, which can be solved by standard techniques such as <u>Gaussian elimination</u> or &#x1F449;<a href="/Math/Linear-Algebra/Algebra-C2-Matrix-Algebra/index.html#The-LU-Factorization"><u>$LU$ decomposition</u></a>.</p>
+<p>we could create a polynomial for each knot $t_i$ such that the polynomial evaluates to unity at that knot, but for all the other knots it evaluates to zero.</p>
+<p>$$<br>\zeta_1(t_1) = 1, \zeta_2(t_1) = 1, \zeta_3(t_1) = 1, \zeta_4(t_1) = 1\\<br>\cdots \\<br>\zeta_1(t_4) = 0, \zeta_2(t_4) = 0, \zeta_3(t_4) = 0, \zeta_4(t_4) = 1\\<br>$$</p>
+<blockquote>
+<p>Interpolating polynomial in Lagrange basis form<br>$$<br>p(t) = \sum_{i=1}^n y_i\zeta_i(t) =<br>y_1\zeta_1(t) + y_2\zeta_2(t) + \cdots + y_3\zeta_3(t)<br>\tag{13.7}<br>$$</p>
+</blockquote>
+<blockquote>
+<p>Lagrange Basis Polynomial<br>$$<br>\zeta_i(t) = \prod_{1 \leq j \leq n, j \neq i} \frac{t - t_i}{t_i - t_j}<br>$$</p>
+</blockquote>
+<p>Thus, we could calculate:</p>
+<p>$$<br>\zeta_1(t) = -(\frac{9}{2})t^3 + 9t^2 - (\frac{11}{2})t + 1<br>$$</p>
+<p><img src="/images/3DMath/lagbasis.png" alt="Cubic Lagrange basis polynomials for uniform knot vector"></p>
+<p>we scale each basis polynomial by the corresponding coordinate value, adding the scaled basis vectors together yields the interpolating polynomial $P$.</p>
+<p>$$<br>\begin{aligned}<br>P(t) &amp;=  y_1\zeta_1(t) + y_2\zeta_2(t) + \cdots + y_3\zeta_3(t)\\<br>&amp;= 18t^3 − 27t^2 + 10^t + 2.<br>\end{aligned}<br>$$</p>
+<p><img src="/images/3DMath/scalelag.png" alt="scale the basis by y"><br><img src="/images/3DMath/interpolag.png" alt="final result"></p>
+<blockquote>
+<p>We can think of basis polynomials as functions yielding <u>barycentric coordinates</u> (blending weights).</p>
+</blockquote>
+<p><em>view1</em>: the control points are the building blocks and the basis polynomials provide the scale factors, although we prefer to be more specific and call these scale factors barycentric coordinates.</p>
+<p><em>view2</em>: any arbitrary vector can be described as a linear combination of the basis vectors. In our case, the space being spanned by the basis is not a geometric 3D space, but the vector space of all possible polynomials of a certain degree, and the scale values for each curve are the known values of the polynomial at the knots.</p>
+<p>&#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/index.html">More about Curve Fitting in PatternRecognition&gt;&gt;</a></p>
+<h2 id="Hermite-Curves"><a href="#Hermite-Curves" class="headerlink" title="Hermite Curves"></a>Hermite Curves</h2><p>Polynomial interpolation doesn’t work as well as we would like, because of the tendency to <u>oscillate and overshoot</u>, so let’s try a different approach.</p>
+<p>Instead of specifying the interior positions to interpolate, let’s control the shape of the curve through the <u>tangents at the endpoints</u>.</p>
+<p><img src="/images/3DMath/cubicHermite.png" alt="Some cubic Hermite curves"></p>
+<p>System of equations for Hermite conditions (cubic curve)</p>
+<p>$$<br>p(0) = p_0 \Longrightarrow c_0 = p_0<br>\tag{13.9}<br>$$<br>$$<br>v(0) = v_0 \Longrightarrow c_1 = v_0<br>\tag{13.10}<br>$$<br>$$<br>v(1) = v_1 \Longrightarrow c_1 + 2c_2 + 3c_3 = v_1<br>\tag{13.11}<br>$$<br>$$<br>p(1) = p_1 \Longrightarrow c_0 + c_1 + c_2 + c_3 = p_1<br>\tag{13.12}<br>$$<br>Converting Hermite form to monomial form:<br>$$<br>c_0 = p_0<br>\tag{13.13}<br>$$<br>$$<br>c_1 = v_0<br>\tag{13.14}<br>$$<br>$$<br>c_2 = -3p_0 - 2v_0 - v_1 +3p_1<br>\tag{13.15}<br>$$<br>$$<br>c_3 = 2p_0 +v_0 +v_1 -2p_1<br>\tag{13.16}<br>$$<br>Thus,<br>$$<br>\begin{aligned}<br>\vec{p(t)} &amp;= C\vec{t}\\<br>&amp;= \begin{bmatrix}<br>\vec{c_0} &amp;\vec{c_1} &amp; \vec{c_2} &amp; \vec{c_3}<br>\end{bmatrix}<br>\begin{bmatrix}<br>1 \\ t \\ t^2 \\ t^3<br>\end{bmatrix}\\<br>&amp;= PH\vec{t}\\<br>&amp;=<br>\begin{bmatrix}<br>\vec{p_0} &amp;\vec{v_0} &amp; \vec{v_1} &amp; \vec{p_1}<br>\end{bmatrix}<br>\begin{bmatrix}<br>1 &amp; 0 &amp; -3 &amp; 2\\<br>0 &amp; 1 &amp; -2 &amp; 1\\<br>0 &amp; 0 &amp; -1 &amp; 1\\<br>0 &amp; 0 &amp; 3 &amp; -2<br>\end{bmatrix}<br>\begin{bmatrix}<br>1 \\ t \\ t^2 \\ t^3<br>\end{bmatrix}<br>\end{aligned}<br>$$<br>$C = PH$, in which case, multiplication by $H$ can be considered a conversion from the Hermite basis to the monomial basis,（this book right multiply）</p>
+<p>We convert a curve from Hermite form to monomial form by using Equations (13.13)–(13.16), and from monomial form to Hermite form with Equations (13.9)–(13.12).</p>
+<p>$$<br>\vec{p(t)} = \begin{bmatrix}<br>\vec{p_0} &amp;\vec{v_0} &amp; \vec{v_1} &amp; \vec{p_1}<br>\end{bmatrix}<br>\begin{bmatrix}<br>1-3t^2+2t^3 \\ t-2t^2+t^3 \\ -t^2+t^3 \\ 3t^3-2t^3<br>\end{bmatrix}<br>$$</p>
+<p><img src="/images/3DMath/hermite-basis.png" alt="The Hermite basis functions"></p>
+<p>The curve $H_3(t)$ deserves special attention. It is also is known as the <mark>smoothstep function</mark> and is truly a gem that every <u>game programmer should know</u>. To <mark>remove the rigid, robotic feeling from any linear interpolation (especially camera transitions)</mark>, simply compute the normalized interpolation fraction $t$ as usual (in the range $0 ≤ t ≤ 1$), and then replace $t with $3t^2 − 2t^3$.</p>
+<blockquote>
+<p>The reason for this is that the smoothstep function eliminates the sudden jump in velocity at the endpoints: $H_3’(0) = H_3’(1) = 0$.</p>
+</blockquote>
+<h2 id="Bezier-Curves"><a href="#Bezier-Curves" class="headerlink" title="Bezier Curves"></a>Bezier Curves</h2><h2 id="Subdivision"><a href="#Subdivision" class="headerlink" title="Subdivision"></a>Subdivision</h2><h2 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h2><h2 id="Continuity"><a href="#Continuity" class="headerlink" title="Continuity"></a>Continuity</h2><h2 id="Automatic-Tagent-Control"><a href="#Automatic-Tagent-Control" class="headerlink" title="Automatic Tagent Control"></a>Automatic Tagent Control</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -337,7 +409,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            26
+                            28
                         </p>
                     </a>
                 </div>
@@ -349,7 +421,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            14
+                            15
                         </p>
                     </a>
                 </div>
@@ -361,7 +433,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            9
+                            11
                         </p>
                     </a>
                 </div>
@@ -390,18 +462,66 @@
         <a class="is-flex" href="#Parametic-Polynomial-Curves">
         <span class="has-mr-6">1</span>
         <span>Parametic Polynomial Curves</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Parametric-Curves">
+        <span class="has-mr-6">1.1</span>
+        <span>Parametric Curves</span>
+        </a></li><li>
+        <a class="is-flex" href="#Polynomial-Curves（多项式曲线）">
+        <span class="has-mr-6">1.2</span>
+        <span>Polynomial Curves（多项式曲线）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Matrix-Notation">
+        <span class="has-mr-6">1.3</span>
+        <span>Matrix Notation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Two-Trivial-Types-of-Curves">
+        <span class="has-mr-6">1.4</span>
+        <span>Two Trivial Types of Curves</span>
+        </a></li><li>
+        <a class="is-flex" href="#Endpoints-in-Monomial-Form">
+        <span class="has-mr-6">1.5</span>
+        <span>Endpoints in Monomial Form</span>
+        </a></li><li>
+        <a class="is-flex" href="#Velocities-and-Tangents">
+        <span class="has-mr-6">1.6</span>
+        <span>Velocities and Tangents</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Polynomial-Interpolation">
+        <span class="has-mr-6">2</span>
+        <span>Polynomial Interpolation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Aitken’s-Algorithm-Geometry-View">
+        <span class="has-mr-6">2.1</span>
+        <span>Aitken’s Algorithm(Geometry View)</span>
+        </a></li><li>
+        <a class="is-flex" href="#Lagrange-Basis-Polynomials-Math-View">
+        <span class="has-mr-6">2.2</span>
+        <span>Lagrange Basis Polynomials(Math View)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Hermite-Curves">
+        <span class="has-mr-6">3</span>
+        <span>Hermite Curves</span>
         </a></li><li>
         <a class="is-flex" href="#Bezier-Curves">
-        <span class="has-mr-6">2</span>
+        <span class="has-mr-6">4</span>
         <span>Bezier Curves</span>
         </a></li><li>
         <a class="is-flex" href="#Subdivision">
-        <span class="has-mr-6">3</span>
+        <span class="has-mr-6">5</span>
         <span>Subdivision</span>
         </a></li><li>
         <a class="is-flex" href="#Spline">
-        <span class="has-mr-6">4</span>
+        <span class="has-mr-6">6</span>
         <span>Spline</span>
+        </a></li><li>
+        <a class="is-flex" href="#Continuity">
+        <span class="has-mr-6">7</span>
+        <span>Continuity</span>
+        </a></li><li>
+        <a class="is-flex" href="#Automatic-Tagent-Control">
+        <span class="has-mr-6">8</span>
+        <span>Automatic Tagent Control</span>
         </a></li></ul>
             </div>
         </div>
@@ -434,6 +554,39 @@
                     </span>
                     <span class="level-right">
                         <span class="level-item tag">www.esports.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.blender.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">blender</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.blender.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://dl.acm.org/topic/ccs2012/10010147.10010371.10010352" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">acmLibrary</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dl.acm.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.physicsbasedanimation.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">physicalAnimation</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.physicsbasedanimation.com</span>
                     </span>
                 </a>
             </li>
@@ -506,15 +659,15 @@
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/MachineLearning/Regression/">
+        <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
             <span class="level-start">
-                <span class="level-item">Regression</span>
+                <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -522,7 +675,7 @@
                 <span class="level-item">Math</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Math/Geometry/">
@@ -539,6 +692,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
+            <span class="level-start">
+                <span class="level-item">Numerical Analysis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Probability/">
@@ -575,7 +736,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 16.67px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a>
+        <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 16.67px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 10px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a>
     </div>
 </div>
     
@@ -589,10 +750,36 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-03T12:59:15.000Z">2023-10-03</time></div>
-                    <a href="/MachineLearning/Regression/PatterRecognition-RandomForest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-RandomForest</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T04:27:00.000Z">2023-10-06</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C3-LinearModels-for-Regression</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/Regression/">Regression</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T00:21:14.000Z">2023-10-06</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C12-Eigenvalues-and-Singular-Values</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-03T12:59:15.000Z">2023-10-03</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-RandomForest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-RandomForest</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -624,32 +811,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T10:59:25.000Z">2023-10-02</time></div>
-                    <a href="/Paper/Sketch/Paper-StripMaker-Sketch-Consolidation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-StripMaker-Sketch-Consolidation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch/">Sketch</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T02:45:10.000Z">2023-10-02</time></div>
-                    <a href="/Math/Geometry/Geometry-Curves/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Geometry-Curves</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -667,7 +828,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -765,6 +926,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Numerical-Analysis/">
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Probability/">
                         <span class="tag">Probability</span>
                         <span class="tag is-grey">1</span>
@@ -774,6 +942,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/RandomForest/">
                         <span class="tag">RandomForest</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Regression/">
+                        <span class="tag">Regression</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

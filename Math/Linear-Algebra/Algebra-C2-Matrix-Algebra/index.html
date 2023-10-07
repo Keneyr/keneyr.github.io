@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-09-24T05:47:37.000Z">
-<meta property="article:modified_time" content="2023-10-03T13:08:30.637Z">
+<meta property="article:modified_time" content="2023-10-07T07:58:06.176Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    17 minutes read (About 2559 words)
+                    17 minutes read (About 2588 words)
                 </span>
                 
                 
@@ -191,11 +191,12 @@
             <p><strong><em>Keywords</em></strong>: Inverse, LU Factorization, Homogeneous Coordinates, Perspective Projections, Rank</p>
 <a id="more"></a>
 
+<p>This is the Chapter2 ReadingNotes from book <em>Linear Algebra and its Application</em>.</p>
 <h2 id="Matrix-Operation"><a href="#Matrix-Operation" class="headerlink" title="Matrix Operation"></a>Matrix Operation</h2><p>$$<br>\begin{aligned}<br>&amp;AB \neq BA<br>\\<br>&amp;AB = AC,it’s \space not \space true \space B = C<br>\\<br>&amp;AB = 0, it’s \space not \space true \space A = 0 \space or \space B = 0<br>\\<br>&amp;(A^T)^T = A<br>\\<br>&amp;(A+B)^T = A^T+B^T<br>\\<br>&amp;(AB)^T = B^TA^T<br>\\<br>&amp;A(BC) = (AB)C<br>\end{aligned}<br>$$</p>
 <blockquote>
 <ol>
-<li>The fastest way to obtain $AB$ on a computer depends on the way in which<br>the computer stores matrices in its memory. The standard high-performance<br>algorithms, such as in LAPACK, calculate $AB$ by columns, as in our definition<br>of the product. (A version of LAPACK written in C++ calculates $AB$ by rows.)</li>
-<li>The definition of $AB$ lends itself well to parallel processing on a computer. The<br>columns of $B$ are assigned individually or in groups to different processors,<br>which independently and hence simultaneously compute the corresponding<br>columns of $AB$.</li>
+<li>The fastest way to obtain $AB$ on a computer depends on the way in which the computer stores matrices in its memory. The standard high-performance algorithms, such as in LAPACK, calculate $AB$ by columns, as in our definition of the product. (A version of LAPACK written in C++ calculates $AB$ by rows.)</li>
+<li>The definition of $AB$ lends itself well to parallel processing on a computer. The columns of $B$ are assigned individually or in groups to different processors, which independently and hence simultaneously compute the corresponding columns of $AB$.</li>
 </ol>
 </blockquote>
 <h2 id="The-Inverse-of-Matrix"><a href="#The-Inverse-of-Matrix" class="headerlink" title="The Inverse of Matrix"></a>The Inverse of Matrix</h2><p>An $n \times n$ matrix $A$ is said to be <strong><em>invertible</em></strong> if there is an $n \times n$ matrix $C$ such that</p>
@@ -206,12 +207,12 @@
 <p>$$<br>(A^{-1})^{-1} = A<br>\\<br>(AB)^{-1} = B^{-1}A^{-1}<br>\\<br>(A^T)^{-1} = (A^{-1})^T<br>\\<br>$$</p>
 <p>An $n \times n$ matrix $A$ is invertible if and only if $A$ is row equivalent to $I_n$, and in this case, any sequence of elementary row operations that reduces A to $I_n$ also transforms $I_n$ into $A^{-1}$.</p>
 <p>&#x1F4A1;For example&#x1F4A1;:</p>
-<p>$$<br>E_1 = \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -4 &amp; 0 &amp; 1\end{bmatrix}<br>\\<br>transform \space E_1 \space to \space I, get \space I \space to \space E_1^{-1}:<br>\\<br>E_1^{-1} = \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 4 &amp; 0 &amp; 1\end{bmatrix}<br>$$</p>
+<p>transform $E_1$ to $I$, get $I$ to $E_1^{-1}$:<br>$$<br>E_1 = \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -4 &amp; 0 &amp; 1\end{bmatrix},<br>E_1^{-1} = \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 4 &amp; 0 &amp; 1\end{bmatrix}<br>$$</p>
 <h3 id="An-algorithm-for-Finding-A-1"><a href="#An-algorithm-for-Finding-A-1" class="headerlink" title="An algorithm for Finding $A^{-1}$"></a>An algorithm for Finding $A^{-1}$</h3><p>Row reduce the augmented matrix $\begin{bmatrix}A &amp; I\end{bmatrix}$. If $A$ is row equivalent to $I$, then $\begin{bmatrix}A &amp; I\end{bmatrix}$ is row equivalent to $\begin{bmatrix}I &amp; A^{-1}\end{bmatrix}$. Other wise, A does not have an inverse.</p>
 <p>&#x1F4A1;For example&#x1F4A1;:</p>
 <p>Find the Inverse of the matrix A = $\begin{bmatrix}0 &amp; 1 &amp; 2\\1 &amp; 0 &amp; 3\\4 &amp; -3 &amp; 8\end{bmatrix}$, if it exists.</p>
 <p>$$<br>\begin{bmatrix}A &amp; I\end{bmatrix} =<br>\begin{bmatrix}0 &amp; 1 &amp; 2 &amp; 1 &amp; 0 &amp; 0\\1 &amp; 0 &amp; 3 &amp; 0 &amp; 1 &amp; 0\\4 &amp; -3 &amp; 8 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}<br>\sim<br>\begin{bmatrix}1 &amp; 0 &amp; 0 &amp; \frac{-9}{2} &amp; 7 &amp; \frac{-3}{2}\\0 &amp; 1 &amp; 0 &amp; -2 &amp; 4 &amp; -1\\0 &amp; 0 &amp; 1 &amp; \frac{3}{2} &amp; -2 &amp; \frac{1}{2}\end{bmatrix}<br>\longrightarrow<br>A^{-1} = \begin{bmatrix}\frac{-9}{2} &amp; 7 &amp; \frac{-3}{2}\\ -2 &amp; 4 &amp; -1\\ \frac{3}{2} &amp; -2 &amp; \frac{1}{2}\end{bmatrix}<br>$$</p>
-<h2 id="Characterizations-of-Inversible-Matrix"><a href="#Characterizations-of-Inversible-Matrix" class="headerlink" title="Characterizations of  Inversible Matrix"></a>Characterizations of  Inversible Matrix</h2><p><mark>注意，这些性质的应用必须是n x n的矩阵</mark></p>
+<h2 id="Characterizations-of-Inversible-Matrix"><a href="#Characterizations-of-Inversible-Matrix" class="headerlink" title="Characterizations of  Inversible Matrix"></a>Characterizations of  Inversible Matrix</h2><p><mark>注意，这些性质的应用必须是n $\times$ n的矩阵</mark></p>
 <blockquote>
 <p>Let $A$ be a square $n \times n$ matrix. Then the following statements are equivalent. That is, for a given $A$, the statements are either all true or all false.<br>a. $A$ is an invertible matrix.<br>b. $A$ is row equivalent to the $n \times n$ identity matrix.<br>c. $A$ has $n$ pivot positions.<br>d. The equation $Ax = 0$ has only the trivial solution.<br>e. The columns of $A$ form a linearly independent set.<br>f. The linear transformation $x \rightarrow Ax$ is one-to-one.<br>g. The equation $Ax = b$ has at least one solution for each $b$ in $R^n$.<br>h. The columns of $A$ span $R^n$.<br>i. The linear transformation $x \rightarrow Ax$ maps $R^n$ onto $R^n$.<br>j. There is an $n \times n$ matrix $C$ such that $CA = I$.<br>k. There is an $n \times n$ matrix $D$ such that $AD = I$.<br>l. $A^T$ is an invertible matrix.</p>
 </blockquote>
@@ -228,7 +229,7 @@
 <blockquote>
 <p>分块矩阵提高计算机计算效率 When matrices are too large to fit in a computer’s high-speed memory, partitioning permits the computer to work with only two or three submatrices at a time. </p>
 </blockquote>
-<h2 id="Matrix-Factorizations-矩阵分解"><a href="#Matrix-Factorizations-矩阵分解" class="headerlink" title="Matrix Factorizations 矩阵分解"></a>Matrix Factorizations 矩阵分解</h2><h3 id="The-LU-Factorization"><a href="#The-LU-Factorization" class="headerlink" title="The LU Factorization"></a>The LU Factorization</h3><p>ssume that $A$ is an $m \times n$ matrix that can be row reduced to echelon form, <u>without row interchanges</u>. Then $A$ can be written in the form $A = LU$ , where $L$ is an $m \times m$ lower triangular matrix with $1’s$ on the diagonal and $U$ is an $m \times n$ echelon form of $A$.</p>
+<h2 id="Matrix-Factorizations-矩阵分解"><a href="#Matrix-Factorizations-矩阵分解" class="headerlink" title="Matrix Factorizations 矩阵分解"></a>Matrix Factorizations 矩阵分解</h2><h3 id="The-LU-Factorization"><a href="#The-LU-Factorization" class="headerlink" title="The LU Factorization"></a>The LU Factorization</h3><p>Asume that $A$ is an $m \times n$ matrix that can be row reduced to echelon form, <u>without row interchanges</u>. Then $A$ can be written in the form $A = LU$ , where $L$ is an $m \times m$ lower triangular matrix with $1’s$ on the diagonal and $U$ is an $m \times n$ echelon form of $A$.</p>
 <p>The matrix $L$ is invertible and is called <strong><em>a unit lower triangular matrix</em></strong>. 单位下三角矩阵<br>$$<br>A = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0\\ * &amp; 1 &amp; 0 &amp; 0\\ * &amp; * &amp; 1 &amp; 0\\ * &amp; * &amp; * &amp; 1\end{bmatrix}<br>\begin{bmatrix}<br>\blacksquare &amp; * &amp; * &amp; * &amp; *\\<br>0 &amp; \blacksquare &amp; * &amp; * &amp; *\\<br>0 &amp; 0 &amp; 0 &amp; \blacksquare &amp; *\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix}<br>$$</p>
 <blockquote>
 <p>思考，这样分解有什么好处？</p>
@@ -247,6 +248,7 @@
 <p>It can be shown that products and inverses of unit lower triangular matrices are also unit lower triangular.Thus $L$ is unit lower triangular.</p>
 <p>&#x1F4A1;For example&#x1F4A1;:<br>Find the $LU$ factorization of $A$.<br>$$<br>A =<br>\begin{bmatrix}<br>2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>-4 &amp; -5 &amp; 3 &amp; -8 &amp; 1\\<br>2 &amp; -5 &amp; -4 &amp; 1 &amp; 8\\<br>-6 &amp; 0 &amp; 7 &amp; -3 &amp; 1<br>\end{bmatrix}<br>$$</p>
 <p>Solution：<br>$$<br>A = \begin{bmatrix}<br>\bbox[border:2px solid red]2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>\bbox[border:2px solid red]{-4} &amp; -5 &amp; 3 &amp; -8 &amp; 1\\<br>\bbox[border:2px solid red]2 &amp; -5 &amp; -4 &amp; 1 &amp; 8\\<br>\bbox[border:2px solid red]{-6} &amp; 0 &amp; 7 &amp; -3 &amp; 1<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>0 &amp; \bbox[border:2px solid red]3 &amp; 1 &amp; 2 &amp; -3\\<br>0 &amp; \bbox[border:2px solid red]{-9} &amp; -3 &amp; -4 &amp; 10\\<br>0 &amp; \bbox[border:2px solid red]{12} &amp; 4 &amp; 12 &amp; -5<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>0 &amp; 3 &amp; 1 &amp; 2 &amp; -3\\<br>0 &amp; 0 &amp; 0 &amp; \bbox[border:2px solid red]2 &amp; 1\\<br>0 &amp; 0 &amp; 0 &amp; \bbox[border:2px solid red]4 &amp; 7<br>\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>2 &amp; 4 &amp; -1 &amp; 5 &amp; -2\\<br>0 &amp; 3 &amp; 1 &amp; 2 &amp; -3\\<br>0 &amp; 0 &amp; 0 &amp; 2 &amp; 1\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp;\bbox[border:2px solid red]5<br>\end{bmatrix} = U<br>$$<br>$$<br>\begin{bmatrix}<br>2\\-4\\2\\6<br>\end{bmatrix}<br>\begin{bmatrix}<br>\\3\\-9\\12<br>\end{bmatrix}<br>\begin{bmatrix}<br>\\\\2\\4<br>\end{bmatrix}<br>\begin{bmatrix}<br>\\\\\\5<br>\end{bmatrix}<br>\\<br>\div 2<br>\downarrow<br>\div 3<br>\downarrow<br>\div 2<br>\downarrow<br>\div 5<br>\downarrow<br>\\<br>\begin{bmatrix}<br>1 &amp; &amp;  &amp;  \\<br>-2 &amp; 1 &amp;  &amp;  \\<br>1 &amp; -3 &amp; 1 &amp;  \\<br>3 &amp; 4 &amp; 2 &amp; 1<br>\end{bmatrix} = L<br>$$</p>
+<p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C6-Orthogonality-And-Least-Squares/index.html#QR-Factorization-of-Matrices">More About QR Factorization &gt;&gt; </a></p>
 <h3 id="The-Leontief-Input–Output-Model-Omit"><a href="#The-Leontief-Input–Output-Model-Omit" class="headerlink" title="The Leontief Input–Output Model(Omit)"></a>The Leontief Input–Output Model(Omit)</h3><h2 id="Applications-to-Computer-Graphics"><a href="#Applications-to-Computer-Graphics" class="headerlink" title="Applications to Computer Graphics"></a><font style="background: red">Applications to Computer Graphics</font></h2><h3 id="Homogeneous-Coordinates"><a href="#Homogeneous-Coordinates" class="headerlink" title="Homogeneous Coordinates"></a>Homogeneous Coordinates</h3><p>The mathematics of computer graphics is intimately connected with matrix multiplication. Unfortunately, <mark>translating an object on a screen does not correspond directly to matrix multiplication because translation is not a linear transformation</mark>. The standard way to avoid this difficulty is to introduce what are called <u>homogeneous coordinates</u>.</p>
 <p>$$<br>translation : (x,y)\mapsto(x + h, y + k)\\<br>homogeneous-translation: (x,y,1)\mapsto(x + h, y + k, 1)<br>\\<br>matrix-multiplication:<br>\begin{bmatrix}<br>1 &amp; 0 &amp; h\\<br>0 &amp; 1 &amp; k\\<br>0 &amp; 0 &amp; 1<br>\end{bmatrix}<br>\begin{bmatrix}<br> x\\y\\1<br>\end{bmatrix}=<br>\begin{bmatrix}<br>x + h\\y+k\\1<br>\end{bmatrix}<br>$$</p>
 <p>Any linear transformation on $R^2$ is represented with respect to homogeneous coordinates by a partitioned matrix of the form $\begin{bmatrix}A &amp; 0 \\ 0 &amp; 1\end{bmatrix}$, where $A$ is a $2 \times 2$ matrix. Typical examples are:</p>
@@ -281,7 +283,7 @@
 </ol>
 </blockquote>
 <h3 id="Column-Space-and-Null-Space-of-a-Matrix"><a href="#Column-Space-and-Null-Space-of-a-Matrix" class="headerlink" title="Column Space and Null Space of a Matrix"></a>Column Space and Null Space of a Matrix</h3><p>The column space of a matrix $A$ is the set $ColA$ of all linear combinations of the columns of $A$.</p>
-<p>if $A = \begin{bmatrix}\vec{a_1} &amp; \cdots &amp; \vec{a_n}\end{bmatrix}$, with the columns in $R^m$, then $Col A$ is the same as $Span(\vec{a_1} \cdots \vec{a_n})$.</p>
+<p>if $A = \begin{bmatrix}\vec{a_1} &amp; \cdots &amp; \vec{a_n}\end{bmatrix}$, with the columns in $R^m$, then $Col A$ is the same as $Span \set{\vec{a_1} \cdots \vec{a_n}}$.</p>
 <p>&#x1F4A1;For example&#x1F4A1;:</p>
 <p>Let A = $\begin{bmatrix}<br>1 &amp; -3 &amp; -4 \\<br>-4 &amp; 6 &amp; -2 \\<br>-3 &amp; 7 &amp; 6<br>\end{bmatrix}$ and b = $\begin{bmatrix}<br>3 \\<br>3 \\<br>-4<br>\end{bmatrix}$. Determine whether $\vec{b}$ is in the column space of $A$.</p>
 <p>Solution:</p>
@@ -290,13 +292,13 @@
 <p>A basis for a subspace $H$ of $R^n$ is a linearly independent set in $H$ that spans $H$.</p>
 </blockquote>
 <p>$$<br>\vec{e_1} = \begin{bmatrix}<br>1 \\ 0 \\ \cdots \\ 0<br>\end{bmatrix},<br>\vec{e_2} = \begin{bmatrix}<br>0 \\ 1 \\ \cdots \\ 0<br>\end{bmatrix},<br>\cdots,<br>\vec{e_n} = \begin{bmatrix}<br>0 \\ 0 \\ \cdots \\ 1<br>\end{bmatrix}<br>$$</p>
-<p>the set {$\vec{e_1}, \cdots, \vec{e_n}$} is called the standard basis for $R^n$.</p>
+<p>the set {$\vec{e_1}, \cdots, \vec{e_n}$} is called the <u>standard basis</u> for $R^n$.</p>
 <p>&#x1F4A1;For example&#x1F4A1;:</p>
 <p>Find a basis for the null space of the matrix.</p>
 <p>$$<br>A = \begin{bmatrix}<br>-3 &amp; 6 &amp; -1 &amp; 1 &amp; -7\\<br>1 &amp; -2 &amp; 2 &amp; 3 &amp; -1\\<br>2 &amp; -4 &amp; 5 &amp; 8 &amp; -4<br>\end{bmatrix}<br>$$</p>
 <p>找到矩阵零空间的一组基如下：<br>$$<br>\begin{bmatrix}A &amp; \vec{0}\end{bmatrix}<br>\sim<br>\begin{bmatrix}<br>1 &amp; -2 &amp; 0 &amp; -1 &amp; 3 &amp; 0\\<br>0 &amp; 0 &amp; 1 &amp; 2 &amp; -2 &amp; 0\\<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0<br>\end{bmatrix},<br>\begin{bmatrix}<br>x_1\\<br>x_2\\<br>x_3\\<br>x_4\\<br>x_5<br>\end{bmatrix}=<br>\begin{bmatrix}<br>2x_2 + x_4 - 3x_5\\<br>x_2\\<br>-2x_4 + 2x_5\\<br>x_4\\<br>x_5<br>\end{bmatrix}=<br>x_2\begin{bmatrix}<br>2\\<br>1\\<br>0\\<br>0\\<br>0\\<br>\end{bmatrix} + x4\begin{bmatrix}<br>1\\<br>0\\<br>-2\\<br>1\\<br>0<br>\end{bmatrix} + x_5\begin{bmatrix}<br>-3\\<br>0\\<br>2\\<br>0\\<br>1<br>\end{bmatrix}<br>= x_2\vec{u} + x_4\vec{v} + x_5\vec{w}<br>\\<br>{\vec{u}, \vec{v}, \vec{w}} 是基向量<br>$$</p>
 <h2 id="Dimension-and-Rank"><a href="#Dimension-and-Rank" class="headerlink" title="Dimension and Rank"></a>Dimension and Rank</h2><p>&#x1F449;<a href="/Math/Linear-Algebra/C4-Vector-Spaces/index.html#Dimension">More About Dimension and Rank is in C4 &gt;&gt;</a></p>
-<h3 id="Coordinate-Systems"><a href="#Coordinate-Systems" class="headerlink" title="Coordinate Systems"></a>Coordinate Systems</h3><p>Suppose the set $\beta = (\vec{b_1},\cdots\cdots, \vec{b_p})$ is a basis for a SubSpace $H$. For each $\vec{x}$ in $H$, the coordinates of $\vec{x}$ relative to the basis $\beta$ are the weights $c_1, \cdots, c_p$ such that $\vec{x} = c_1\vec{b_1} + \cdots + c_p\vec{b_p}$, and the vector in $R^p$<br>$$<br>[\vec{x}]_\beta =<br>\begin{bmatrix}<br>c_1\\\cdots\\c_p<br>\end{bmatrix}<br>$$<br>is called the coordinate vector of $\vec{x}$(relative to $\beta$) or the $\beta-$ coordinate vector of $\vec{x}$</p>
+<h3 id="Coordinate-Systems"><a href="#Coordinate-Systems" class="headerlink" title="Coordinate Systems"></a><font style="background: red">Coordinate Systems</font></h3><p>Suppose the set $\beta = \set{\vec{b_1},\cdots\cdots, \vec{b_p}}$ is a basis for a SubSpace $H$. For each $\vec{x}$ in $H$, the coordinates of $\vec{x}$ relative to the basis $\beta$ are the weights $c_1, \cdots, c_p$ such that $\vec{x} = c_1\vec{b_1} + \cdots + c_p\vec{b_p}$, and the vector in $R^p$<br>$$<br>[\vec{x}]_\beta =<br>\begin{bmatrix}<br>c_1\\\cdots\\c_p<br>\end{bmatrix}<br>$$<br>is called the coordinate vector of $\vec{x}$(relative to $\beta$) or the $\beta-$ coordinate vector of $\vec{x}$</p>
 <h3 id="The-Dimension-of-a-Subspace"><a href="#The-Dimension-of-a-Subspace" class="headerlink" title="The Dimension of a Subspace"></a>The Dimension of a Subspace</h3><blockquote>
 <p>The <strong><em>rank</em></strong> of a matrix $A$, denoted by $rank A$, is the <u>dimension of the column space of $A$</u></p>
 </blockquote>
@@ -453,7 +455,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            26
+                            28
                         </p>
                     </a>
                 </div>
@@ -465,7 +467,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            14
+                            15
                         </p>
                     </a>
                 </div>
@@ -477,7 +479,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            9
+                            11
                         </p>
                     </a>
                 </div>
@@ -630,6 +632,39 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="https://www.blender.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">blender</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.blender.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://dl.acm.org/topic/ccs2012/10010147.10010371.10010352" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">acmLibrary</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dl.acm.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.physicsbasedanimation.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">physicalAnimation</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.physicsbasedanimation.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -698,15 +733,15 @@
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/MachineLearning/Regression/">
+        <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
             <span class="level-start">
-                <span class="level-item">Regression</span>
+                <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -714,7 +749,7 @@
                 <span class="level-item">Math</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Math/Geometry/">
@@ -731,6 +766,14 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
+            <span class="level-start">
+                <span class="level-item">Numerical Analysis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Probability/">
@@ -767,7 +810,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 16.67px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a>
+        <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 16.67px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 10px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a>
     </div>
 </div>
     
@@ -781,10 +824,36 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-03T12:59:15.000Z">2023-10-03</time></div>
-                    <a href="/MachineLearning/Regression/PatterRecognition-RandomForest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-RandomForest</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T04:27:00.000Z">2023-10-06</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C3-LinearModels-for-Regression</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/Regression/">Regression</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T00:21:14.000Z">2023-10-06</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C12-Eigenvalues-and-Singular-Values</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-03T12:59:15.000Z">2023-10-03</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-RandomForest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-RandomForest</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -816,32 +885,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T10:59:25.000Z">2023-10-02</time></div>
-                    <a href="/Paper/Sketch/Paper-StripMaker-Sketch-Consolidation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-StripMaker-Sketch-Consolidation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch/">Sketch</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T02:45:10.000Z">2023-10-02</time></div>
-                    <a href="/Math/Geometry/Geometry-Curves/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Geometry-Curves</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Geometry/">Geometry</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -859,7 +902,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -957,6 +1000,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Numerical-Analysis/">
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Probability/">
                         <span class="tag">Probability</span>
                         <span class="tag is-grey">1</span>
@@ -966,6 +1016,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/RandomForest/">
                         <span class="tag">RandomForest</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Regression/">
+                        <span class="tag">Regression</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
