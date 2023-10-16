@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-02T02:45:10.000Z">
-<meta property="article:modified_time" content="2023-10-07T08:58:34.728Z">
+<meta property="article:modified_time" content="2023-10-09T01:13:05.374Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Geometry">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 minutes read (About 1608 words)
+                    20 minutes read (About 2945 words)
                 </span>
                 
                 
@@ -212,8 +212,8 @@
 <p>Velocity and Acceleration of Cubic Monomial Curve<br>$$<br>\vec{p(t)} = \vec{c_0} + \vec{c_1}t + \vec{c_2}t^2 + \vec{c_3}t^3<br>\tag{13.4}<br>$$<br>$$<br>\vec{v(t)} = \dot{\vec{p(t)}} =  \vec{c_1} + 2\vec{c_2}t + 3\vec{c_3}t^2<br>\tag{13.5}<br>$$<br>$$<br>\vec{a(t)} = \ddot{\vec{p(t)}} =  2\vec{c_2} + 6\vec{c_3}t<br>\tag{13.6}<br>$$</p>
 </blockquote>
 <p>Two curves that define the same “shape,” but not the same “path”:</p>
-<p>$$<br>p(t) = p_0 + dt<br>$$<br>$$<br>Let s(t) = t^2 \mapsto p(s(t)) = p_0 + dt^2<br>$$<br><img src="/images/3DMath/path.png" alt="path-shape"></p>
-<p>The <mark>tangent</mark> at a point is the direction the curve is moving at that point, the line that just touches the curve. The tangent is basically the normalized velocity of the curve.</p>
+<p>$$<br>p(t) = p_0 + dt<br>$$<br>$$<br>Let \space s(t) = t^2 \mapsto p(s(t)) = p_0 + dt^2<br>$$<br><img src="/images/3DMath/path.png" alt="path-shape"></p>
+<p>The <mark>tangent</mark> at a point is the direction the curve is moving at that point, the line that just touches the curve. The tangent is basically the <u>normalized velocity of the curve</u>.</p>
 <p>$$<br>\vec{t(t)} = \widehat{\vec{v(t)}} = \frac{\vec{v(t)}}{||\vec{v(t)}||}<br>$$</p>
 <p>The second derivative is related to <mark>curvature</mark>, which is sometimes denoted $\kappa$,</p>
 <p>$$<br>\vec{\kappa(t)} = \frac{||\vec{v(t)} \times \vec{a(t)}||}{||\vec{v(t)}||^3}<br>$$</p>
@@ -263,7 +263,84 @@
 <blockquote>
 <p>The reason for this is that the smoothstep function eliminates the sudden jump in velocity at the endpoints: $H_3’(0) = H_3’(1) = 0$.</p>
 </blockquote>
-<h2 id="Bezier-Curves"><a href="#Bezier-Curves" class="headerlink" title="Bezier Curves"></a>Bezier Curves</h2><h2 id="Subdivision"><a href="#Subdivision" class="headerlink" title="Subdivision"></a>Subdivision</h2><h2 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h2><h2 id="Continuity"><a href="#Continuity" class="headerlink" title="Continuity"></a>Continuity</h2><h2 id="Automatic-Tagent-Control"><a href="#Automatic-Tagent-Control" class="headerlink" title="Automatic Tagent Control"></a>Automatic Tagent Control</h2>
+<h2 id="Bezier-Curves"><a href="#Bezier-Curves" class="headerlink" title="Bezier Curves"></a>Bezier Curves</h2><p>Importantly, B´ezier curves approximate rather than interpolate.</p>
+<h3 id="The-de-Casteljau-Algorithm"><a href="#The-de-Casteljau-Algorithm" class="headerlink" title="The de Casteljau Algorithm"></a>The de Casteljau Algorithm</h3><p>The de Casteljau algorithm defines a method for constructing B´ezier curves <u>through repeated linear interpolation</u>.</p>
+<p><img src="/images/3DMath/bezier-caste.png" alt="The de Casteljau algorithm applied to a cubic curve"></p>
+<blockquote>
+<p>De Casteljau Recurrence Relation<br>$$<br>b_i^0(t) = b_i\\<br>b_i^n(t) = (1-t)[b_i^{n-1}(t)] + t[b_{i+1}^{n-1}(t)]<br>$$</p>
+</blockquote>
+<p>The cubic equation for a specific point on the curve $p(t)$ is written in matrix notation as</p>
+<p>$$<br>\begin{aligned}<br>\vec{p(t)} &amp;= C\vec{t}\\<br>&amp;= \begin{bmatrix}<br>\vec{c_0} &amp;\vec{c_1} &amp; \vec{c_2} &amp; \vec{c_3}<br>\end{bmatrix}<br>\begin{bmatrix}<br>1 \\ t \\ t^2 \\ t^3<br>\end{bmatrix}\\<br>&amp;= BM\vec{t}\\<br>&amp;=<br>\begin{bmatrix}<br>\vec{b_0} &amp;\vec{b_1} &amp; \vec{b_2} &amp; \vec{b_3}<br>\end{bmatrix}<br>\begin{bmatrix}<br>1 &amp; -3 &amp; 3 &amp; 1\\<br>0 &amp; 3 &amp; -6 &amp; 3\\<br>0 &amp; 0 &amp; -3 &amp; -3\\<br>0 &amp; 0 &amp; 0 &amp; 1<br>\end{bmatrix}<br>\begin{bmatrix}<br>1 \\ t \\ t^2 \\ t^3<br>\end{bmatrix}<br>\end{aligned}<br>$$</p>
+<h3 id="The-Bernstein-Basis"><a href="#The-Bernstein-Basis" class="headerlink" title="The Bernstein Basis"></a>The Bernstein Basis</h3><p>We can also write the polynomial in B´ezier form by collecting the terms on the control points rather than the powers of $t$. When written this way, each control point has a coefficient that represents the <u>barycentric weight</u> as a function of $t$ that the control point contributes to the curve.</p>
+<p>Now that we get:</p>
+<p>$$<br>\begin{aligned}<br>b_0^1(t) &amp;= (1-t)b_0 + tb_1\\<br>b_0^2(t) &amp;= (1-t)^2b_0 + 2t(1-t)b_1 + t^2b_2\\<br>b_0^3(t) &amp;= (1-t)^3b_0 + 3t(1-t)^2b_1 + 3t^2(1-t)b_2 + t^3b_3\\<br>\cdots<br>\end{aligned}<br>$$</p>
+<p>Thus, we can see the pattern:</p>
+<blockquote>
+<p>$$<br>\begin{aligned}<br>b_0^n(t) &amp;= \sum_{i=0}^n[B_i^n(t)]b_i\\<br>B_i^n(t) &amp;= \begin{pmatrix}n \\ i\end{pmatrix}t^i(1-t)^{n-i}, 0 \leq i \leq n\\<br>\begin{pmatrix}n \\ i\end{pmatrix} &amp;= \frac{n!}{k!(n-k)!}<br>\end{aligned}<br>$$</p>
+</blockquote>
+<p>The properties of the Bernstein polynomials tell us a lot about how B´ezier curves behave.</p>
+<ul>
+<li><p>Sum to one. </p>
+<p>The Bernstein polynomials sum to unity for all values of $t$, which is nice because if they didn’t, then they wouldn’t define proper <u>barycentric coordinates</u>.</p>
+</li>
+<li><p>Convex hull property.<br>The range of the Bernstein polynomials is $0 \cdots 1$ for the entire length of the curve, $0 ≤ t ≤ 1$. <u>The curve is bounded to stay within the convex hull of the control points.</u></p>
+</li>
+<li><p>Endpoints interpolated.</p>
+</li>
+<li><p>Global support.<br>The practical result is that when any one control point is moved, the entire curve is affected. <u>This is not a desirable property for curve design</u>.</p>
+</li>
+<li><p>One local maximum.<br>Each Bernstein polynomial $B_i^n(t)$, which serves as the blend weight for the control point $b_i$, has one maximum at the auspicious time $t = i/n$.</p>
+</li>
+</ul>
+<p><img src="/images/3DMath/bernstein-polynomials.png" alt="Bernstein polynomials of degrees 1–4"></p>
+<h3 id="B´ezier-Derivatives-and-Their-Relationship-to-the-Hermite-Form"><a href="#B´ezier-Derivatives-and-Their-Relationship-to-the-Hermite-Form" class="headerlink" title="B´ezier Derivatives and Their Relationship to the Hermite Form"></a>B´ezier Derivatives and Their Relationship to the Hermite Form</h3><p><img src="/images/3DMath/relation.png" alt="BRelationship between B´ezier and Hermite forms"></p>
+<p>The $nth$ derivative at either endpoint is completely determined by the nearest $n + 1$ control points.</p>
+<p>The second derivative (acceleration) at the end of the curve is determined by the closest three control points.</p>
+<h2 id="Subdivision"><a href="#Subdivision" class="headerlink" title="Subdivision"></a>Subdivision</h2><p>Why need subdivision?</p>
+<ul>
+<li>Curve refinement.</li>
+<li>Approximation techniques.</li>
+</ul>
+<h3 id="Subdividing-Curves-in-Monomial-Form"><a href="#Subdividing-Curves-in-Monomial-Form" class="headerlink" title="Subdividing Curves in Monomial Form"></a>Subdividing Curves in Monomial Form</h3><p>the problem of subdivision can easily be viewed as a simple problem of <u>reparameterization</u>.</p>
+<p><img src="/images/3DMath/reparamize.png" alt="Extracting a segment of a curve by using subdivision"></p>
+<p>$$<br>t = F(s)\\<br>q(s) = p(t) = p(F(s))<br>$$<br>$$<br>\begin{cases}<br>F(0) = a\\<br>F(1) = b<br>\end{cases}<br>\longmapsto<br>t = F(s) = a + s(b-a), s \in [0,1]<br>$$</p>
+<h3 id="Subdividing-Curves-in-B´ezier-Form"><a href="#Subdividing-Curves-in-B´ezier-Form" class="headerlink" title="Subdividing Curves in B´ezier Form"></a>Subdividing Curves in B´ezier Form</h3><p>As it turns out, each round of de Casteljau interpolation produces one of our B´ezier control points.</p>
+<p><img src="/images/3DMath/subdivision.png" alt="The de Casteljau algorithm gives us all the B´ezier control points of the extracted curve segment"></p>
+<p>Thus，</p>
+<p>To extract the left half of a curve, $0 ≤ t ≤ b$, we perform de Casteljau subdivision as if we were trying to locate the endpoint at $t = b$. The first control point from each round of interpolation gives us another control point for our subdivided curve.</p>
+<h2 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h2><h3 id="Rules-of-the-Game"><a href="#Rules-of-the-Game" class="headerlink" title="Rules of the Game"></a>Rules of the Game</h3><p>the function $q(s)$ refers to the entire spline, and the parameter $s$ (without subscript) is a global parameter. As $s$ varies from $0$ to $n$, the function $q(s)$ traces out the entire spline.</p>
+<p>In general, we can define $p(t)$ in terms of $q(s)$ by creating a function that maps a time value $t$ to a parameter value $s$.</p>
+<p>If you’re a computer programmer, you can think of $p(t)$ as the public interface, and $q(s)$ as an internal implementation detail.</p>
+<ol>
+<li><p>Map the time value $t$ into a value of $s$ by evaluating the time-toparameter function $s(t)$.</p>
+</li>
+<li><p>Extract the integer portion of $s$ as $i$, and the fractional portion as $s_i$.</p>
+</li>
+<li><p>Evaluate the curve segment $q_i(s_i)$.</p>
+</li>
+</ol>
+<h3 id="Knots"><a href="#Knots" class="headerlink" title="Knots"></a>Knots</h3><p>For the curve to be continuous, clearly the ending point of one segment must be coincident with the starting point of the next segment. These shared control points that are interpolated by the spline are called the <u>knots</u> of the spline.</p>
+<p><img src="/images/3DMath/spline.png" alt="A spline with $n$ segments has $n + 1$ knots, named $k_0 . . . k_n$"></p>
+<p><u>In animation contexts</u>, the knots are sometimes called keys. In computer animation, a key can be any position, orientation, or other piece of data whose value at a particular time is specified by a human animator (or any other source). The role of the apprentice to “fill in the missing frames” is played by the animation program, using interpolation methods such as the ones being discussed in this chapter.</p>
+<h2 id="Hermite-and-B´ezier-Splines"><a href="#Hermite-and-B´ezier-Splines" class="headerlink" title="Hermite and B´ezier Splines"></a>Hermite and B´ezier Splines</h2><p>When we were focused on a single segment, we denoted the positions by $p_0$ and $p_1$, and the velocities(tangents) by $v_0$ and $v_1$.</p>
+<p>the knot $k_i$, which is the starting position of the segment $q_i(0)$, also serves as the ending position of the previous segment at $q_{i−1}(1)$. For velocities, the notation $v^{out}_i$ refers to the outgoing velocity at knot $i$ and defines the starting velocity for the segment $q_i$.</p>
+<p><img src="/images/3DMath/hermit-spline.png" alt="Our notation for splines with segments in Hermite form"></p>
+<blockquote>
+<p>(Photoshop calls the knots the “anchor points” and refers to the interior B´ezier control points that are not interpolated as “control points.”)</p>
+</blockquote>
+<p>When we were dealing with only a single B´ezier segment, we referred to the $ith$ control point on that segment as $b_i$. Here we use the notation $f_i$ to refer to the control point “in front” of the ith knot, and $a_i$ for the control point “after” it.</p>
+<p><img src="/images/3DMath/bezier-spline.png" alt="A spline with its B´ezier control polygon and the notation we use for B´ezier splines"></p>
+<p>Converting between B´ezier and Hermite forms:<br>$$<br>v_i^{in} = 3(k_i - f_i), f_i = k_i - v_i^{in}/3<br>$$<br>$$<br>v_i^{out} = 3(a_i - k_i), a_i = k_i + v_i^{out}/3<br>$$</p>
+<h2 id="Continuity"><a href="#Continuity" class="headerlink" title="Continuity"></a>Continuity</h2><h3 id="Parametric-Continuity"><a href="#Parametric-Continuity" class="headerlink" title="Parametric Continuity"></a>Parametric Continuity</h3><p>A curve is said to have $C^n$ continuity if its first $n$ derivatives are continuous.</p>
+<p>$C^1$ continuity condition for Hermite splines:<br>$$<br>v_i^{in} = v_i^{out}<br>$$</p>
+<p>$C^1$ continuity condition for cubic B´ezier splines</p>
+<p>$$<br>k_i - f_i = a_i - k_i<br>$$</p>
+<p>$C^2$ continuity condition for cubic B´ezier splines<br>$$<br>f_i + (f_i - a_{i-1}) = a_i + (a_i - f_{i+1})<br>$$<br><img src="/images/3DMath/c2-bezier.png" alt="Continuity conditions for cubic B´ezier splines."></p>
+<h3 id="Geometric-Continuity"><a href="#Geometric-Continuity" class="headerlink" title="Geometric Continuity"></a>Geometric Continuity</h3><p>$G^1$: the tangents are parallel at the knot. if the tangents are parallel, then the discontinuity is purely a change in speed, not a change in direction. </p>
+<p>We say that a curve is $G^2$ continuous if its curvature changes continuously.</p>
+<h2 id="Automatic-Tagent-Control"><a href="#Automatic-Tagent-Control" class="headerlink" title="Automatic Tagent Control"></a>Automatic Tagent Control</h2><p>We want to get the smooth curve only by several knots, without the need for the user to specify any additional criteria(like the $C^1$ continuity).</p>
+<h3 id="CatmullRom-Splines"><a href="#CatmullRom-Splines" class="headerlink" title="CatmullRom Splines"></a>CatmullRom Splines</h3><p>the formular of Catmull-Rom Spline<br>$$<br>\begin{aligned}<br>v_i^{in} &amp;= v_i^{out} = \frac{k_{i+1} - k_{i-1}}{2}\\<br>&amp;=\frac{(k_{i+1} - k_i) + (k_i - k_{i-1})}{2}<br>\end{aligned}<br>$$<br><img src="/images/3DMath/catmull-spline.png" alt="A CatmullRom spline"></p>
+<h3 id="TCB-Splines"><a href="#TCB-Splines" class="headerlink" title="TCB Splines"></a>TCB Splines</h3><h3 id="Endpoint-Conditions"><a href="#Endpoint-Conditions" class="headerlink" title="Endpoint Conditions"></a>Endpoint Conditions</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -322,7 +399,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/Paper/Sketch/Paper-StripMaker-Sketch-Consolidation/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Paper/Sketch-Consolidation/Paper-StripMaker-Sketch-Consolidation/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">Paper-StripMaker-Sketch-Consolidation</span>
             </a>
@@ -409,7 +486,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            28
+                            61
                         </p>
                     </a>
                 </div>
@@ -421,7 +498,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            15
+                            19
                         </p>
                     </a>
                 </div>
@@ -433,7 +510,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            11
+                            15
                         </p>
                     </a>
                 </div>
@@ -506,23 +583,75 @@
         <a class="is-flex" href="#Bezier-Curves">
         <span class="has-mr-6">4</span>
         <span>Bezier Curves</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-de-Casteljau-Algorithm">
+        <span class="has-mr-6">4.1</span>
+        <span>The de Casteljau Algorithm</span>
         </a></li><li>
+        <a class="is-flex" href="#The-Bernstein-Basis">
+        <span class="has-mr-6">4.2</span>
+        <span>The Bernstein Basis</span>
+        </a></li><li>
+        <a class="is-flex" href="#B´ezier-Derivatives-and-Their-Relationship-to-the-Hermite-Form">
+        <span class="has-mr-6">4.3</span>
+        <span>B´ezier Derivatives and Their Relationship to the Hermite Form</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Subdivision">
         <span class="has-mr-6">5</span>
         <span>Subdivision</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Subdividing-Curves-in-Monomial-Form">
+        <span class="has-mr-6">5.1</span>
+        <span>Subdividing Curves in Monomial Form</span>
         </a></li><li>
+        <a class="is-flex" href="#Subdividing-Curves-in-B´ezier-Form">
+        <span class="has-mr-6">5.2</span>
+        <span>Subdividing Curves in B´ezier Form</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Spline">
         <span class="has-mr-6">6</span>
         <span>Spline</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Rules-of-the-Game">
+        <span class="has-mr-6">6.1</span>
+        <span>Rules of the Game</span>
+        </a></li><li>
+        <a class="is-flex" href="#Knots">
+        <span class="has-mr-6">6.2</span>
+        <span>Knots</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Hermite-and-B´ezier-Splines">
+        <span class="has-mr-6">7</span>
+        <span>Hermite and B´ezier Splines</span>
         </a></li><li>
         <a class="is-flex" href="#Continuity">
-        <span class="has-mr-6">7</span>
-        <span>Continuity</span>
-        </a></li><li>
-        <a class="is-flex" href="#Automatic-Tagent-Control">
         <span class="has-mr-6">8</span>
+        <span>Continuity</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Parametric-Continuity">
+        <span class="has-mr-6">8.1</span>
+        <span>Parametric Continuity</span>
+        </a></li><li>
+        <a class="is-flex" href="#Geometric-Continuity">
+        <span class="has-mr-6">8.2</span>
+        <span>Geometric Continuity</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Automatic-Tagent-Control">
+        <span class="has-mr-6">9</span>
         <span>Automatic Tagent Control</span>
-        </a></li></ul>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#CatmullRom-Splines">
+        <span class="has-mr-6">9.1</span>
+        <span>CatmullRom Splines</span>
+        </a></li><li>
+        <a class="is-flex" href="#TCB-Splines">
+        <span class="has-mr-6">9.2</span>
+        <span>TCB Splines</span>
+        </a></li><li>
+        <a class="is-flex" href="#Endpoint-Conditions">
+        <span class="has-mr-6">9.3</span>
+        <span>Endpoint Conditions</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
@@ -591,6 +720,17 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -606,14 +746,6 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/C/">
-            <span class="level-start">
-                <span class="level-item">C++</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/GameProgramming/">
             <span class="level-start">
                 <span class="level-item">GameProgramming</span>
@@ -654,6 +786,22 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Language/">
+            <span class="level-start">
+                <span class="level-item">Language</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/MachineLearning/">
             <span class="level-start">
                 <span class="level-item">MachineLearning</span>
@@ -675,9 +823,17 @@
                 <span class="level-item">Math</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">44</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Calculus/">
+            <span class="level-start">
+                <span class="level-item">Calculus</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Geometry/">
             <span class="level-start">
                 <span class="level-item">Geometry</span>
@@ -699,12 +855,20 @@
                 <span class="level-item">Numerical Analysis</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Probability/">
             <span class="level-start">
                 <span class="level-item">Probability</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Variation/">
+            <span class="level-start">
+                <span class="level-item">Variation</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -715,12 +879,20 @@
                 <span class="level-item">Paper</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">3</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/Paper/Sketch/">
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Consolidation/">
             <span class="level-start">
-                <span class="level-item">Sketch</span>
+                <span class="level-item">Sketch Consolidation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Generation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Generation</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -736,7 +908,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/GameProgramming/" style="font-size: 16.67px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 20px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 10px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a>
+        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -750,10 +922,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T04:27:00.000Z">2023-10-06</time></div>
-                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C3-LinearModels-for-Regression</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-11T03:45:00.000Z">2023-10-11</time></div>
+                    <a href="/Paper/Sketch-Generation/Paper-Sketch-based-Facial-Generation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Sketch-based-Facial-Generation</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
+                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch-Generation/">Sketch Generation</a>
                     </p>
                 </div>
             </div>
@@ -763,7 +935,33 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-06T00:21:14.000Z">2023-10-06</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T09:29:54.000Z">2023-10-09</time></div>
+                    <a href="/Math/Variation/Variation-First-Understanding-of-Variation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Variation-First-Understanding-of-Variation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Variation/">Variation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:33.000Z">2023-10-09</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C13-Optimization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C13-Optimization</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:14.000Z">2023-10-09</time></div>
                     <a href="/Math/Numerical-Analysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C12-Eigenvalues-and-Singular-Values</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
@@ -776,36 +974,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-03T12:59:15.000Z">2023-10-03</time></div>
-                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-RandomForest/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-RandomForest</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:12.000Z">2023-10-09</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C11-Compression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C11-Compression</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T13:55:44.000Z">2023-10-02</time></div>
-                    <a href="/Math/Probability/Probability-Bayes-Formula/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Probability-Bayes-Formula</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Probability/">Probability</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-02T13:49:49.000Z">2023-10-02</time></div>
-                    <a href="/Graphics/Animation/Animation-C6-Motion-Capture/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C6-Motion-Capture</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
                     </p>
                 </div>
             </div>
@@ -828,7 +1000,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">41</span>
                 </span>
             </a>
         </li>
@@ -891,9 +1063,23 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/C/">
-                        <span class="tag">C++</span>
+                    <a class="tags has-addons" href="/tags/CPP/">
+                        <span class="tag">CPP</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Calculus/">
+                        <span class="tag">Calculus</span>
+                        <span class="tag is-grey">17</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CurveFitting-of-Sketches/">
+                        <span class="tag">CurveFitting of Sketches</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -928,7 +1114,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Numerical-Analysis/">
                         <span class="tag">Numerical Analysis</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
@@ -963,6 +1149,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Sketh-Consolidatoin/">
                         <span class="tag">Sketh Consolidatoin</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Facical-Generation/">
+                        <span class="tag">Sketh Facical Generation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Variation/">
+                        <span class="tag">Variation</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

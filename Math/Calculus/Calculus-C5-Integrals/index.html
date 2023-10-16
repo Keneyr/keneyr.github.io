@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Calculus-C5-Integrals - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: Riemann Sums, Mean Value Theorem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Calculus-C5-Integrals">
+<meta property="og:url" content="https://keneyr.com/Math/Calculus/Calculus-C5-Integrals/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: Riemann Sums, Mean Value Theorem">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-10-09T01:20:40.000Z">
+<meta property="article:modified_time" content="2023-10-11T06:53:48.264Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Calculus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="Calculus-C5-Integrals" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/reading">Reading</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-10-09T01:20:40.000Z">2023-10-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Math/">Math</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Math/Calculus/">Calculus</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1002 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Calculus-C5-Integrals
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: Riemann Sums, Mean Value Theorem</p>
+<a id="more"></a>
+
+<p>This is the Chapter5 ReadingNotes from book <em>Thomas Calculus 14th</em>.</p>
+<h2 id="Sigma-Notation-and-Limits-of-Finite-Sums"><a href="#Sigma-Notation-and-Limits-of-Finite-Sums" class="headerlink" title="Sigma Notation and Limits of Finite Sums"></a>Sigma Notation and Limits of Finite Sums</h2><h3 id="Riemann-Sums"><a href="#Riemann-Sums" class="headerlink" title="Riemann Sums"></a>Riemann Sums</h3><p><img src="/images/Calculus/c5/RiemannSum.png" alt="RiemannSum"></p>
+<p>The set of all of these points,<br>$$<br>P = \lbrace x_0, x_1, \cdots, x_n \rbrace<br>$$<br>is called a <u>partition</u> $P$ of $[a,b]$.<br>$$<br>S_p = \sum_{k=1}^n f(c_k)\Delta x_k<br>$$<br>The sum $S_P$ is called a Riemann sum for $ƒ$ on the interval $[a,b]$.</p>
+<p>we could choose $n$ subintervals all having equal width $\Delta x = (b-a) / n$ to partition $[a,b]$, This choice leads to the Riemann sum formula<br>$$<br>S_n = \sum_{k=1}^n f(a + k\frac{(b-a)}{n}) \cdot (\frac{b-a}{n})<br>$$</p>
+<p>We define the <u>norm（范数）</u> of a partition $P$, written $||P||$, <u>to be the largest of all the subinterval widths</u>. If $||P||$ is a small number, then all of the subintervals in the partition $P$ have a small width.</p>
+<blockquote>
+<p>范数(norm)是数学中的一种基本概念。在泛函分析中，它定义在赋范线性空间中，并满足一定的条件，即①非负性；②齐次性；③三角不等式。它常常被用来度量某个向量空间（或矩阵）中的每个向量的长度或大小。</p>
+</blockquote>
+<h2 id="The-Fundamental-Theorem-of-Calculus"><a href="#The-Fundamental-Theorem-of-Calculus" class="headerlink" title="The Fundamental Theorem of Calculus"></a>The Fundamental Theorem of Calculus</h2><p>Fundamental Theorem of Calculus, which is the central theorem of integral calculus. <u>It connects integration and differentiation, enabling us to compute integrals by using an antiderivative of the integrand function</u> rather than by taking limits of Riemann sums.</p>
+<h3 id="Mean-Value-Theorem-for-Definite-Integrals-定积分的中值定理"><a href="#Mean-Value-Theorem-for-Definite-Integrals-定积分的中值定理" class="headerlink" title="Mean Value Theorem for Definite Integrals(定积分的中值定理)"></a>Mean Value Theorem for Definite Integrals(定积分的中值定理)</h3><blockquote>
+<p>THEOREM 3—The Mean Value Theorem for Definite Integrals<br>If $ƒ$ is continuous on $[a,b]$, then at some point $c$ in [a,b],<br>$$<br>f(c) = \frac{1}{b-a}\int_a^b f(x) dx<br>$$</p>
+</blockquote>
+<p><img src="/images/Calculus/c5/meanvalue.png" alt="mean value theorem"></p>
+<h3 id="Fundamental-Theorem-Part-1"><a href="#Fundamental-Theorem-Part-1" class="headerlink" title="Fundamental Theorem, Part 1"></a>Fundamental Theorem, Part 1</h3><p>If $ƒ(t)$ is an integrable function over a finite interval $I$, then the integral from any fixed number $a \in I$ to another number $x \in I$ defines a new function $F$ whose value at $x$ is<br>$$<br>F(x) = \int_a^xf(t)dt<br>\tag{1}<br>$$<br><img src="/images/Calculus/c5/F-f.png" alt="F-f"></p>
+<p>It is reasonable to expect that $F’(x)$, which is the limit of this difference quotient as $h\rightarrow 0$, equals ƒ(x), so that</p>
+<p>$$<br>F’(x) = \lim_{h\rightarrow 0} \frac{F(x+h) - F(x)}{h} = f(x)<br>$$</p>
+<p><img src="/images/Calculus/c5/fundamental-1.png" alt="fundamental-1"></p>
+<blockquote>
+<p>THEOREM 4—The Fundamental Theorem of Calculus, Part 1<br>If $ƒ$ is continuous on [a,b], then $F(x) = \int_a^x ƒ(t) dt$ is continuous on $[a,b]$ and differentiable on $(a,b)$ and its derivative is $ƒ(x)$:<br>$$<br>F’(x) = \frac{d}{dx}\int_a^xf(t)dt = f(x)<br>\tag{2}<br>$$</p>
+</blockquote>
+<h3 id="Fundamental-Theorem-Part-2-The-Evaluation-Theorem"><a href="#Fundamental-Theorem-Part-2-The-Evaluation-Theorem" class="headerlink" title="Fundamental Theorem, Part 2 (The Evaluation Theorem)"></a>Fundamental Theorem, Part 2 (The Evaluation Theorem)</h3><blockquote>
+<p>THEOREM 4 (Continued)—The Fundamental Theorem of Calculus, Part 2<br>If $ƒ$ is continuous over [a,b], and $F$ is any antiderivative of $ƒ$ on [a,b], then<br>$$<br>\int_a^b f(x)dx = F(b) - F(a)<br>$$</p>
+</blockquote>
+<h3 id="The-Integral-of-a-Rate"><a href="#The-Integral-of-a-Rate" class="headerlink" title="The Integral of a Rate"></a>The Integral of a Rate</h3><blockquote>
+<p>THEOREM 5—The Net Change Theorem<br>The net change in a differentiable function $F(x)$ over an interval $a \leq x \leq b$ is the integral of its rate of change:<br>$$<br>F(b) - F(a) = \int_a^bF’(x)dx<br>\tag{6}<br>$$</p>
+</blockquote>
+<h3 id="The-Relationship-Between-Integration-and-Differentiation"><a href="#The-Relationship-Between-Integration-and-Differentiation" class="headerlink" title="The Relationship Between Integration and Differentiation"></a>The Relationship Between Integration and Differentiation</h3><p>The conclusions of the Fundamental Theorem tell us several things. Equation (2) can be rewritten as</p>
+<p>$$<br>\frac{d}{dx}\int_a^xf(t)dt = f(x)<br>$$</p>
+<p>which says that if you first integrate the function $ƒ$ and then differentiate the result, you get the function $ƒ$ back again.</p>
+<p>Likewise, replacing $b$ by $x$ and $x$ by $t$ in Equation (6) gives<br>$$<br>\int_a^x F’(t)dt = F(x)-F(a)<br>$$<br>so that if you first differentiate the function $F$ and then integrate the result, you get the function $F$ back (adjusted by an integration constant).</p>
+<p>In a sense, the processes of integration and differentiation are “inverses” of each other.</p>
+<h2 id="Indefinite-Integrals-and-the-Substitution-Method"><a href="#Indefinite-Integrals-and-the-Substitution-Method" class="headerlink" title="Indefinite Integrals and the Substitution Method"></a>Indefinite Integrals and the Substitution Method</h2><p>The connection between antiderivatives and the definite integral stated in the Fundamental Theorem now explains this notation:</p>
+<p>$$<br>\begin{aligned}<br>\int_a^b f(x)dx &amp;= F(b) - F(a) \\<br>&amp;= \left[F(b) + C\right] - \left[F(a) + C\right] \\<br>&amp;= \left[F(x) + C\right]_a^b \\<br>&amp;= \left[\int f(x) dx\right]_a^b<br>\end{aligned}<br>$$</p>
+<h3 id="Substitution-Running-the-Chain-Rule-Backwards"><a href="#Substitution-Running-the-Chain-Rule-Backwards" class="headerlink" title="Substitution: Running the Chain Rule Backwards"></a>Substitution: Running the Chain Rule Backwards</h3><p>If $u$ is a differentiable function of $x$, then<br>$$<br>du = \frac{du}{dx} dx<br>$$</p>
+<blockquote>
+<p>THEOREM 6—The Substitution Rule<br>If $u = g(x)$ is a differentiable function whose range is an interval $I$, and $ƒ$ is continuous on $I$, then<br>$$<br>\int f(g(x)) \cdot g’(x)dx = \int f(u) du<br>$$</p>
+</blockquote>
+<h2 id="Definite-Integral-Substitutions-and-the-Area-Between-Curves"><a href="#Definite-Integral-Substitutions-and-the-Area-Between-Curves" class="headerlink" title="Definite Integral Substitutions and the Area Between Curves"></a>Definite Integral Substitutions and the Area Between Curves</h2><h3 id="The-Substitution-Formula"><a href="#The-Substitution-Formula" class="headerlink" title="The Substitution Formula"></a>The Substitution Formula</h3><blockquote>
+<p>THEOREM 7—Substitution in Definite Integrals<br>If $g’$ is continuous on the interval $[a,b]$ and $ƒ$ is continuous on the range of $g(x) = u$, then<br>$$<br>\int_a^b f(g(x))g’(x)dx = \int_{g(a)}^{g(b)} f(u) du<br>$$</p>
+</blockquote>
+<h3 id="Definite-Integrals-of-Symmetric-Functions"><a href="#Definite-Integrals-of-Symmetric-Functions" class="headerlink" title="Definite Integrals of Symmetric Functions"></a>Definite Integrals of Symmetric Functions</h3><blockquote>
+<p>THEOREM 8 Let $ƒ$ be continuous on the symmetric interval $[-a,a]$.<br>a. If $f$ is even, then $\int_{-a}^a f(x) dx = 2\int_0^a f(x)dx$<br>b. If $f$ is odd, then, $\int_{-a}^a f(x) dx = 0$</p>
+</blockquote>
+<h3 id="Areas-Between-Curves"><a href="#Areas-Between-Curves" class="headerlink" title="Areas Between Curves"></a>Areas Between Curves</h3><blockquote>
+<p>DEFINITION<br>If $ƒ$ and $g$ are continuous with $ƒ(x) \geq g(x)$ throughout $[a,b]$, then the area of the region between the curves $y = f (x)$ and $y = g(x)$ from $a$ to $b$ is the integral of $(ƒ - g)$ from $a$ to $b$:<br>$$<br>A = \int_a^b \left[ f(x) - g(x) \right] dx<br>$$</p>
+</blockquote>
+<p>To be added…</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Calculus/" rel="tag">Calculus</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Math/Calculus/Calculus-C6-Applications-of-Definite-Integrals/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Calculus-C6-Applications-of-Definite-Integrals</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Math/Calculus/Calculus-C4-Applications-of-Derivatives/">
+                <span class="level-item">Calculus-C4-Applications-of-Derivatives</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '2cbf7ff7e31f7c2adb0695a09616a7eb',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            61
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            19
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Sigma-Notation-and-Limits-of-Finite-Sums">
+        <span class="has-mr-6">1</span>
+        <span>Sigma Notation and Limits of Finite Sums</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Riemann-Sums">
+        <span class="has-mr-6">1.1</span>
+        <span>Riemann Sums</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#The-Fundamental-Theorem-of-Calculus">
+        <span class="has-mr-6">2</span>
+        <span>The Fundamental Theorem of Calculus</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Mean-Value-Theorem-for-Definite-Integrals-定积分的中值定理">
+        <span class="has-mr-6">2.1</span>
+        <span>Mean Value Theorem for Definite Integrals(定积分的中值定理)</span>
+        </a></li><li>
+        <a class="is-flex" href="#Fundamental-Theorem-Part-1">
+        <span class="has-mr-6">2.2</span>
+        <span>Fundamental Theorem, Part 1</span>
+        </a></li><li>
+        <a class="is-flex" href="#Fundamental-Theorem-Part-2-The-Evaluation-Theorem">
+        <span class="has-mr-6">2.3</span>
+        <span>Fundamental Theorem, Part 2 (The Evaluation Theorem)</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Integral-of-a-Rate">
+        <span class="has-mr-6">2.4</span>
+        <span>The Integral of a Rate</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Relationship-Between-Integration-and-Differentiation">
+        <span class="has-mr-6">2.5</span>
+        <span>The Relationship Between Integration and Differentiation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Indefinite-Integrals-and-the-Substitution-Method">
+        <span class="has-mr-6">3</span>
+        <span>Indefinite Integrals and the Substitution Method</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Substitution-Running-the-Chain-Rule-Backwards">
+        <span class="has-mr-6">3.1</span>
+        <span>Substitution: Running the Chain Rule Backwards</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Definite-Integral-Substitutions-and-the-Area-Between-Curves">
+        <span class="has-mr-6">4</span>
+        <span>Definite Integral Substitutions and the Area Between Curves</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-Substitution-Formula">
+        <span class="has-mr-6">4.1</span>
+        <span>The Substitution Formula</span>
+        </a></li><li>
+        <a class="is-flex" href="#Definite-Integrals-of-Symmetric-Functions">
+        <span class="has-mr-6">4.2</span>
+        <span>Definite Integrals of Symmetric Functions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Areas-Between-Curves">
+        <span class="has-mr-6">4.3</span>
+        <span>Areas Between Curves</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.3dgep.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">3dgep</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.3dgep.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.esports.net/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Esports</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.esports.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.blender.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">blender</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.blender.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://dl.acm.org/topic/ccs2012/10010147.10010371.10010352" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">acmLibrary</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dl.acm.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.physicsbasedanimation.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">physicalAnimation</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.physicsbasedanimation.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/GameProgramming/">
+            <span class="level-start">
+                <span class="level-item">GameProgramming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/GameProgramming/System/">
+            <span class="level-start">
+                <span class="level-item">System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Animation/">
+            <span class="level-start">
+                <span class="level-item">Animation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Language/">
+            <span class="level-start">
+                <span class="level-item">Language</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/">
+            <span class="level-start">
+                <span class="level-item">MachineLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
+            <span class="level-start">
+                <span class="level-item">PatternRecognition</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">44</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Calculus/">
+            <span class="level-start">
+                <span class="level-item">Calculus</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
+            <span class="level-start">
+                <span class="level-item">Numerical Analysis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Probability/">
+            <span class="level-start">
+                <span class="level-item">Probability</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Variation/">
+            <span class="level-start">
+                <span class="level-item">Variation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Paper/">
+            <span class="level-start">
+                <span class="level-item">Paper</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Consolidation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Consolidation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Generation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Generation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-11T03:45:00.000Z">2023-10-11</time></div>
+                    <a href="/Paper/Sketch-Generation/Paper-Sketch-based-Facial-Generation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Sketch-based-Facial-Generation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch-Generation/">Sketch Generation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T09:29:54.000Z">2023-10-09</time></div>
+                    <a href="/Math/Variation/Variation-First-Understanding-of-Variation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Variation-First-Understanding-of-Variation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Variation/">Variation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:33.000Z">2023-10-09</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C13-Optimization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C13-Optimization</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:14.000Z">2023-10-09</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C12-Eigenvalues-and-Singular-Values</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:12.000Z">2023-10-09</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C11-Compression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C11-Compression</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">41</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPP/">
+                        <span class="tag">CPP</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Calculus/">
+                        <span class="tag">Calculus</span>
+                        <span class="tag is-grey">17</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CurveFitting-of-Sketches/">
+                        <span class="tag">CurveFitting of Sketches</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GameProgramming/">
+                        <span class="tag">GameProgramming</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MotionCaptureAnimation/">
+                        <span class="tag">MotionCaptureAnimation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Numerical-Analysis/">
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Probability/">
+                        <span class="tag">Probability</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RandomForest/">
+                        <span class="tag">RandomForest</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Regression/">
+                        <span class="tag">Regression</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Consolidatoin/">
+                        <span class="tag">Sketh Consolidatoin</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Facical-Generation/">
+                        <span class="tag">Sketh Facical Generation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Variation/">
+                        <span class="tag">Variation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="Calculus-C5-Integrals" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Paper-StripMaker-Sketch-Consolidation - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: ClusterStrokes, Random Forest, Vector Sketch Consolidation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper-StripMaker-Sketch-Consolidation">
+<meta property="og:url" content="https://keneyr.com/Paper/Sketch-Consolidation/Paper-StripMaker-Sketch-Consolidation/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: ClusterStrokes, Random Forest, Vector Sketch Consolidation">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-10-02T10:59:25.000Z">
+<meta property="article:modified_time" content="2023-10-10T10:33:00.771Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Sketh Consolidatoin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="Paper-StripMaker-Sketch-Consolidation" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/reading">Reading</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-10-02T10:59:25.000Z">2023-10-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Paper/">Paper</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Paper/Sketch-Consolidation/">Sketch Consolidation</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes read (About 1157 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Paper-StripMaker-Sketch-Consolidation
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: ClusterStrokes, Random Forest, Vector Sketch Consolidation</p>
+<a id="more"></a>
+
+<p><strong><em>StripMaker: Perception-driven Learned Vector Sketch Consolidation</em></strong></p>
+<p>CHENXI LIU, University of British Columbia, Canada<br>TOSHIKI AOKI, University of Tokyo, Japan<br>MIKHAIL BESSMELTSEV, Université de Montréal, Canada<br>ALLA SHEFFER, University of British Columbia, Canada</p>
+<p><a href="https://www.cs.ubc.ca/labs/imager/tr/2023/stripmaker/">https://www.cs.ubc.ca/labs/imager/tr/2023/stripmaker/</a></p>
+<p><img src="/images/ReadingPaper/ubc_sheffa/StripMakerOverview.png" alt="overview"></p>
+<h2 id="WorkFlow"><a href="#WorkFlow" class="headerlink" title="WorkFlow"></a>WorkFlow</h2><h3 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h3><h3 id="The-Main-Process"><a href="#The-Main-Process" class="headerlink" title="The Main Process"></a>The Main Process</h3><p><img src="/images/ReadingPaper/ubc_sheffa/SketchConsolidationWorkflow.png" alt="StripMakerWorkflow"></p>
+<p><img src="/images/ReadingPaper/ubc_sheffa/Sketch-Consolidation.png" alt="Sketch-Consolidation-Process"></p>
+<p><img src="/images/ReadingPaper/ubc_sheffa/RandomForest-Classifier.png" alt="RandomForest-Classifier"></p>
+<h3 id="Innovation"><a href="#Innovation" class="headerlink" title="Innovation"></a>Innovation</h3><ul>
+<li><p>avoid the need for an unsustainably large manually annotated learning corpus by leveraging observations about artist workflow and perceptual cues viewers employ when mentally consolidating sketches. </p>
+</li>
+<li><p>Our method is the first to use a principled classification-based approach to vector sketch consolidation.</p>
+</li>
+</ul>
+<h3 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h3><p>Our performance is constrained by data scarcity which prevents greater reliance on context, due to overfitting concerns.</p>
+<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><h3 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h3><p>&#x1F449;<a href="/MachineLearning/Regression/PatterRecognition-RandomForest/index.html">More about Random Forest in PatternRecognition&gt;&gt;</a></p>
+<h3 id="StrongRelatedPaper"><a href="#StrongRelatedPaper" class="headerlink" title="StrongRelatedPaper"></a>StrongRelatedPaper</h3><p>Dave Pagurek van Mossel, Chenxi Liu, Nicholas Vining, Mikhail Bessmeltsev, and Alla Sheffer. 2021. StrokeStrip: Joint Parameterization and Fitting of Stroke Clusters. ACM Trans. Graph. 40, 4 (July 2021), 50:1–50:18</p>
+<p>Peng Xu, Timothy M Hospedales, Qiyue Yin, Yi-Zhe Song, Tao Xiang, and Liang Wang. 2022. Deep learning for free-hand sketch: A survey. IEEE Transactions on Pattern Analysis and Machine Intelligence (2022)</p>
+<p>Jerry Yin, Chenxi Liu, Rebecca Lin, Nicholas Vining, Helge Rhodin, and Alla Sheffer. 2022. Detecting Viewer-Perceived Intended Vector Sketch Connectivity. ACM Transactions on Graphics 41 (2022). Issue 4.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><p>Since the author doesn’t upload codes, so I just guess the rough code framwork as follows:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.h</span></span><br><span class="line"><span class="comment">//used to get the likelyhood between different strips, so as to merge or split</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomForestClassfier</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="comment">//StrokeStrip parameterization[van Mossel et al. 2021].</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    RandomForestClassfier();</span><br><span class="line">    <span class="keyword">virtual</span> ~RandomForestClassfier();</span><br><span class="line">    <span class="comment">//stroke and stroke</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">float</span> <span class="title">getLikelihoodSS</span><span class="params">(Stroke&amp; a, Stroke&amp; b)</span></span>;</span><br><span class="line">    <span class="comment">//stroke and strip</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">float</span> <span class="title">getLikelihoodSP</span><span class="params">(Stroke&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span>;</span><br><span class="line">    <span class="comment">//strip and strip</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">float</span> <span class="title">getLikelihoodPP</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocalClassifier</span> :</span> <span class="keyword">public</span> RandomForestClassfier</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    LocalClassifier();</span><br><span class="line">    ~LocalClassifier();</span><br><span class="line">    <span class="comment">//stroke and stroke</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">float</span> <span class="title">getLikelihoodSS</span><span class="params">(Stroke&amp; a, Stroke&amp; b)</span></span>;</span><br><span class="line">    <span class="comment">//stroke and strip</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">float</span> <span class="title">getLikelihoodSP</span><span class="params">(Stroke&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span>;</span><br><span class="line">    <span class="comment">//strip and strip</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">float</span> <span class="title">getLikelihoodPP</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GlobalClassifier</span> :</span> <span class="keyword">public</span> RandomForestClassfier</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//stroke and stroke</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">float</span> <span class="title">getLikelihoodSS</span><span class="params">(Stroke&amp; a, Stroke&amp; b)</span></span>;</span><br><span class="line">    <span class="comment">//stroke and strip</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">float</span> <span class="title">getLikelihoodSP</span><span class="params">(Stroke&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span>;</span><br><span class="line">    <span class="comment">//strip and strip</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">float</span> <span class="title">getLikelihoodPP</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stroke</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;Point&gt; controlPoints; <span class="comment">//each stroke is denoted by controlpoints, sorted by time</span></span><br><span class="line">    <span class="comment">//Time t; //the time this stroke is drawed by user</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Point&gt; samplePoints;</span><br><span class="line">    <span class="keyword">int</span> stripIndx; <span class="comment">//which strip this stroke belongs to</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">getSamplePoints</span><span class="params">(<span class="keyword">float</span> sampleRate)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">setStripIndx</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getStripIndx</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VectorSketch</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;Stroke&gt; Strokes; <span class="comment">//the vector Sketch consists of raw strokes</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;Stroke&gt;&gt; Strips; <span class="comment">//group the strokes to different strips</span></span><br><span class="line">    <span class="keyword">int</span> strokeWidth;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Sample</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">LocalConsolidation</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">GlobalConsolidation</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">IsCompatible</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Merge</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">IsFormjectionByYin2022</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FittingCurvesByVanMossel2021</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//main.cpp</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//Input, get the information of strokes</span></span><br><span class="line">    VectorSketch vectorSketch;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Preprocess</span></span><br><span class="line">    vectorSketch.Sample();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//Step1. temporal consolidation</span></span><br><span class="line">    vectorSketch.LocalConsolidation();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Step2. refinement</span></span><br><span class="line">    vectorSketch.GlobalConsolidation();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Compare Results Experiments..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Sample, LocalConsolidation and GlobalConsolidation funtions can be implemented as follows:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Stroke.cpp</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Stroke::getSamplePoints</span><span class="params">(<span class="keyword">float</span> sampleRate)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">float</span> t = <span class="number">0</span>; t &lt; <span class="number">155</span>; t += sampleRate)</span><br><span class="line">    &#123;</span><br><span class="line">        Point p = Point(<span class="number">3</span> * t * t + <span class="number">4</span> * (<span class="number">1</span> - t), <span class="number">4</span> * t); <span class="comment">//suppose the stroke function is like this</span></span><br><span class="line">        samplePoints.emplace_back(p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Stroke::setStripIndx</span><span class="params">(<span class="keyword">int</span> idx)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    stripIndx = idx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Stroke::getStripIndx</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> stripIndx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//VectorSketch.cpp</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">VectorSketch::Sample</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> sampleRate = <span class="number">1.2</span> * strokeWidth;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> <span class="built_in">stroke</span> : Strokes)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">stroke</span>.getSamplePoints(sampleRate);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//remove hook artifacts</span></span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsCompatible</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//merge strip b to strip a</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Merge</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> stripIdxOfa = a[<span class="number">0</span>].getStripIndx();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> bb : b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//update the information of strokes of strip b, and update the elements of strip a</span></span><br><span class="line">        bb.setStripIndx(stripIdxOfa);</span><br><span class="line">        a.emplace_back(bb);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsFormjectionByYin2022</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//2022 Yin Algorithms</span></span><br><span class="line">    <span class="comment">//..</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FittingCurvesByVanMossel2021</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//2021 Van Mossel Algorithms</span></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">VectorSketch::LocalConsolidation</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> Classfier = <span class="built_in">std</span>::make_unique&lt;LocalClassifier&gt;();</span><br><span class="line">    <span class="keyword">int</span> stripIdx = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Strokes.<span class="built_in">size</span>(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Stroke curStroke = Strokes[i];</span><br><span class="line">        Stroke previousStroke = Strokes[i - <span class="number">1</span>];</span><br><span class="line">        <span class="built_in">vector</span>&lt;Stroke&gt; previousStrip = Strips[previousStroke.getStripIndx()];</span><br><span class="line">        <span class="keyword">float</span> probability = Classfier-&gt;getLikelihoodSP(curStroke, previousStrip);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//curStroke belongs to the sub-strip the previousStroke belongs to</span></span><br><span class="line">        <span class="keyword">if</span> (probability &gt; <span class="number">0.5</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//update curstroke information</span></span><br><span class="line">            Strokes[i].setStripIndx(stripIdx);</span><br><span class="line">            <span class="comment">//update the previous strip</span></span><br><span class="line">            previousStrip.emplace_back(curStroke);</span><br><span class="line">            <span class="comment">//proceed to the next stroke</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//save curStroke as a new sub-strip</span></span><br><span class="line">            Strokes[i].setStripIndx(++stripIdx);</span><br><span class="line">            Strips[stripIdx].emplace_back(curStroke);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//previousStrip has more than one stroke, decide if it can be merged with other strips.</span></span><br><span class="line">            <span class="keyword">if</span> (previousStrip.<span class="built_in">size</span>() &gt; <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> p_max = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">int</span> idx_max = <span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j  = <span class="number">0</span>; j &lt; Strips.<span class="built_in">size</span>(); j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment">//only call the classifier if two sub-strips are deemed compatible</span></span><br><span class="line">                    <span class="keyword">if</span> (IsCompatible(Strips[j], previousStrip))</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">float</span> p = Classfier-&gt;getLikelihoodPP(Strips[j], previousStrip);</span><br><span class="line">                        <span class="keyword">if</span> (p &gt; p_max)</span><br><span class="line">                        &#123;</span><br><span class="line">                            p_max = p;</span><br><span class="line">                            idx_max = j;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//merge the most similar two strips to one strip</span></span><br><span class="line">                Merge(Strips[idx_max], previousStrip);</span><br><span class="line">                Strips[stripIdx].<span class="built_in">clear</span>();</span><br><span class="line">                --stripIdx;</span><br><span class="line">                previousStrip.<span class="built_in">clear</span>();</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//after the iteration above, the whole strokes are grouped into different strips, as the differnt-color curves in the figure.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//fitting curves to these strips</span></span><br><span class="line">    FittingCurvesByVanMossel2021();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">VectorSketch::GlobalConsolidation</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> Classfier = <span class="built_in">std</span>::make_unique&lt;GlobalClassifier&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//strip reevaluation</span></span><br><span class="line">    <span class="keyword">int</span> n = Strips.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">int</span> StripIdx = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;Stroke&gt; strip = Strips[i];</span><br><span class="line">        <span class="comment">//find the least likelihood two seed strokes in this strip</span></span><br><span class="line">        <span class="keyword">int</span> min_likelihood = INT_MAX;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;Stroke&gt; <span class="title">seedStrokes</span><span class="params">(<span class="number">5</span>)</span></span>; <span class="comment">//Stroke seed_s1, seed_s2;</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; strip.<span class="built_in">size</span>(); k++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> l = k + <span class="number">1</span>; l &lt; strip.<span class="built_in">size</span>(); l++)</span><br><span class="line">            &#123;</span><br><span class="line">                Stroke s1 = strip[k];</span><br><span class="line">                Stroke s2 = strip[l];</span><br><span class="line">                <span class="keyword">float</span> p = Classfier-&gt;getLikelihoodSS(s1, s2);</span><br><span class="line">                <span class="keyword">if</span> (p &lt; min_likelihood)</span><br><span class="line">                &#123;</span><br><span class="line">                    min_likelihood = p;</span><br><span class="line">                    seedStrokes[<span class="number">0</span>] = s1;</span><br><span class="line">                    seedStrokes[<span class="number">1</span>] = s2;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//thie likelihood is high enougth, don't change this strip </span></span><br><span class="line">        <span class="keyword">if</span> (min_likelihood &gt; <span class="number">0.6</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//Reassign other strokes to sub-strip formed by seed_s1 or sub-strip formed by seed_s2</span></span><br><span class="line">            <span class="keyword">int</span> newStripIdx = StripIdx;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//seedStips..</span></span><br><span class="line">            <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;Stroke&gt;&gt; <span class="title">seedStrips</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">            seedStrokes[<span class="number">1</span>].setStripIndx(newStripIdx);</span><br><span class="line">            seedStrips[<span class="number">0</span>].emplace_back(seedStrokes[<span class="number">0</span>]); <span class="comment">//seed_s1_strip</span></span><br><span class="line">            seedStrips[<span class="number">1</span>].emplace_back(seedStrokes[<span class="number">1</span>]); <span class="comment">//seed_s2_strip</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> <span class="built_in">stroke</span> : strip)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">float</span> p_max = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">auto</span> sub_strip : seedStrips)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">float</span> pi = Classfier-&gt;getLikelihoodSP(<span class="built_in">stroke</span>, sub_strip);</span><br><span class="line">                    p_max = <span class="built_in">max</span>(p_max, pi);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//this stroke doesn't belong to any seedStrip, so make this stroke as a new seed stroke</span></span><br><span class="line">                <span class="keyword">if</span> (p_max &lt; <span class="number">0.5</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    seedStrokes.emplace_back(<span class="built_in">stroke</span>);</span><br><span class="line">                    <span class="built_in">stroke</span>.setStripIndx(++newStripIdx);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//assign this stroke to seed_s1_strip or seed_s2_strip or ..., according to the likelihood</span></span><br><span class="line">                    <span class="comment">//...</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//merge this seedStrips according the likelihood</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">//update Strips, cause may produce new strips in step above</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Connectivity Preservation classifier in Yin et al.[2022]</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> strip : Strips)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> stripb : Strips)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (IsFormjectionByYin2022(strip, strip))</span><br><span class="line">            &#123;</span><br><span class="line">                Merge(strip, strip);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//fitting curves to these strips</span></span><br><span class="line">    FittingCurvesByVanMossel2021();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The classifier can be implemented as follow:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//RandomForestClassfier.cpp</span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">RandomForestClassfier::getLikelihoodPP</span><span class="params">(<span class="built_in">vector</span>&lt;Stroke&gt;&amp; a, <span class="built_in">vector</span>&lt;Stroke&gt;&amp; b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//call the python module, the trained model..</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    the classifier extract the features as follows:</span></span><br><span class="line"><span class="comment">    //Angles and Distance</span></span><br><span class="line"><span class="comment">    //Density</span></span><br><span class="line"><span class="comment">    //Narrows and Side-by-Side Extent</span></span><br><span class="line"><span class="comment">    //Evenness</span></span><br><span class="line"><span class="comment">    //1d Parameterization Distortion</span></span><br><span class="line"><span class="comment">    //Relative Precision</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Sketh-Consolidatoin/" rel="tag">Sketh Consolidatoin</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Graphics/Animation/Animation-C6-Motion-Capture/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Animation-C6-Motion-Capture</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Math/Geometry/Geometry-Curves/">
+                <span class="level-item">Geometry-Curves</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '8e9b89e55db3b1da238e2ab3558ff11f',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            61
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            19
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#WorkFlow">
+        <span class="has-mr-6">1</span>
+        <span>WorkFlow</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Inspiration">
+        <span class="has-mr-6">1.1</span>
+        <span>Inspiration</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Main-Process">
+        <span class="has-mr-6">1.2</span>
+        <span>The Main Process</span>
+        </a></li><li>
+        <a class="is-flex" href="#Innovation">
+        <span class="has-mr-6">1.3</span>
+        <span>Innovation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Limitation">
+        <span class="has-mr-6">1.4</span>
+        <span>Limitation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#More">
+        <span class="has-mr-6">2</span>
+        <span>More</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Random-Forest">
+        <span class="has-mr-6">2.1</span>
+        <span>Random Forest</span>
+        </a></li><li>
+        <a class="is-flex" href="#StrongRelatedPaper">
+        <span class="has-mr-6">2.2</span>
+        <span>StrongRelatedPaper</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">2.3</span>
+        <span>Code</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.3dgep.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">3dgep</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.3dgep.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.esports.net/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Esports</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.esports.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.blender.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">blender</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.blender.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://dl.acm.org/topic/ccs2012/10010147.10010371.10010352" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">acmLibrary</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dl.acm.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.physicsbasedanimation.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">physicalAnimation</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.physicsbasedanimation.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/GameProgramming/">
+            <span class="level-start">
+                <span class="level-item">GameProgramming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/GameProgramming/System/">
+            <span class="level-start">
+                <span class="level-item">System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Animation/">
+            <span class="level-start">
+                <span class="level-item">Animation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Language/">
+            <span class="level-start">
+                <span class="level-item">Language</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/">
+            <span class="level-start">
+                <span class="level-item">MachineLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
+            <span class="level-start">
+                <span class="level-item">PatternRecognition</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">44</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Calculus/">
+            <span class="level-start">
+                <span class="level-item">Calculus</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
+            <span class="level-start">
+                <span class="level-item">Numerical Analysis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Probability/">
+            <span class="level-start">
+                <span class="level-item">Probability</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Variation/">
+            <span class="level-start">
+                <span class="level-item">Variation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Paper/">
+            <span class="level-start">
+                <span class="level-item">Paper</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Consolidation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Consolidation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Generation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Generation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-11T03:45:00.000Z">2023-10-11</time></div>
+                    <a href="/Paper/Sketch-Generation/Paper-Sketch-based-Facial-Generation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Sketch-based-Facial-Generation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch-Generation/">Sketch Generation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T09:29:54.000Z">2023-10-09</time></div>
+                    <a href="/Math/Variation/Variation-First-Understanding-of-Variation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Variation-First-Understanding-of-Variation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Variation/">Variation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:33.000Z">2023-10-09</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C13-Optimization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C13-Optimization</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:14.000Z">2023-10-09</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C12-Eigenvalues-and-Singular-Values</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:12.000Z">2023-10-09</time></div>
+                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C11-Compression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C11-Compression</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">41</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPP/">
+                        <span class="tag">CPP</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Calculus/">
+                        <span class="tag">Calculus</span>
+                        <span class="tag is-grey">17</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CurveFitting-of-Sketches/">
+                        <span class="tag">CurveFitting of Sketches</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GameProgramming/">
+                        <span class="tag">GameProgramming</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MotionCaptureAnimation/">
+                        <span class="tag">MotionCaptureAnimation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Numerical-Analysis/">
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Probability/">
+                        <span class="tag">Probability</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RandomForest/">
+                        <span class="tag">RandomForest</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Regression/">
+                        <span class="tag">Regression</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Consolidatoin/">
+                        <span class="tag">Sketh Consolidatoin</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Facical-Generation/">
+                        <span class="tag">Sketh Facical Generation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Variation/">
+                        <span class="tag">Variation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="Paper-StripMaker-Sketch-Consolidation" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>
