@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-09T02:16:47.000Z">
-<meta property="article:modified_time" content="2023-10-16T07:58:23.163Z">
+<meta property="article:modified_time" content="2023-10-16T13:32:37.819Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Numerical Analysis">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 82 words)
+                    13 minutes read (About 1938 words)
                 </span>
                 
                 
@@ -191,7 +191,116 @@
             <p><strong><em>Keywords</em></strong>: Lagrange interpolation, Chebyshev Interpolation, Cubic Splines, Bézier Curves, Mathlab</p>
 <a id="more"></a>
 
-<h2 id="Data-and-Interpolating-Functions"><a href="#Data-and-Interpolating-Functions" class="headerlink" title="Data and Interpolating Functions"></a>Data and Interpolating Functions</h2><h3 id="Lagrange-interpolation"><a href="#Lagrange-interpolation" class="headerlink" title="Lagrange interpolation"></a>Lagrange interpolation</h3><h3 id="Newton’s-divided-differences"><a href="#Newton’s-divided-differences" class="headerlink" title="Newton’s divided differences"></a>Newton’s divided differences</h3><h3 id="How-many-degree-d-polynomials-pass-through-n-points"><a href="#How-many-degree-d-polynomials-pass-through-n-points" class="headerlink" title="How many degree d polynomials pass through n points?"></a>How many degree d polynomials pass through n points?</h3><h3 id="Code-for-interpolation"><a href="#Code-for-interpolation" class="headerlink" title="Code for interpolation"></a>Code for interpolation</h3><h3 id="Representing-functions-by-approximating-polynomials"><a href="#Representing-functions-by-approximating-polynomials" class="headerlink" title="Representing functions by approximating polynomials"></a>Representing functions by approximating polynomials</h3><h2 id="Interpolation-Error"><a href="#Interpolation-Error" class="headerlink" title="Interpolation Error"></a>Interpolation Error</h2><h3 id="Interpolation-error-formula"><a href="#Interpolation-error-formula" class="headerlink" title="Interpolation error formula"></a>Interpolation error formula</h3><h3 id="Proof-of-Newton-form-and-error-formula"><a href="#Proof-of-Newton-form-and-error-formula" class="headerlink" title="Proof of Newton form and error formula"></a>Proof of Newton form and error formula</h3><h3 id="Runge-phenomenon"><a href="#Runge-phenomenon" class="headerlink" title="Runge phenomenon"></a>Runge phenomenon</h3><h2 id="Chebyshev-Interpolation"><a href="#Chebyshev-Interpolation" class="headerlink" title="Chebyshev Interpolation"></a>Chebyshev Interpolation</h2><h3 id="Chebyshev’s-theorem"><a href="#Chebyshev’s-theorem" class="headerlink" title="Chebyshev’s theorem"></a>Chebyshev’s theorem</h3><h3 id="Chebyshev-polynomials"><a href="#Chebyshev-polynomials" class="headerlink" title="Chebyshev polynomials"></a>Chebyshev polynomials</h3><h3 id="Change-of-interval"><a href="#Change-of-interval" class="headerlink" title="Change of interval"></a>Change of interval</h3><h2 id="Cubic-Splines"><a href="#Cubic-Splines" class="headerlink" title="Cubic Splines"></a>Cubic Splines</h2><h3 id="Properties-of-splines"><a href="#Properties-of-splines" class="headerlink" title="Properties of splines"></a>Properties of splines</h3><h3 id="Endpoint-conditions"><a href="#Endpoint-conditions" class="headerlink" title="Endpoint conditions"></a>Endpoint conditions</h3><h2 id="Bezier-Curves"><a href="#Bezier-Curves" class="headerlink" title="Bézier Curves"></a>Bézier Curves</h2><h2 id="Reality-Check-3-Fonts-from-Bezier-curves"><a href="#Reality-Check-3-Fonts-from-Bezier-curves" class="headerlink" title="Reality Check 3: Fonts from Bézier curves"></a>Reality Check 3: Fonts from Bézier curves</h2>
+<p>This is the Chapter3 ReadingNotes from book <em>Numerical Analysis by Timothy</em>.</p>
+<p>&#x1F449;<a href="/Math/Geometry/Geometry-Curves/">First Understanding about Interpolation and Curves&gt;&gt;</a></p>
+<h2 id="Data-and-Interpolating-Functions"><a href="#Data-and-Interpolating-Functions" class="headerlink" title="Data and Interpolating Functions"></a>Data and Interpolating Functions</h2><blockquote>
+<p>DEFINITION 3.1<br>The function $y = P(x)$ interpolates the data points $(x_1,y_1), \cdots , (x_n,y_n)$ if $P(x_i) = y_i$ for each $1 \leq i \leq n$.</p>
+</blockquote>
+<p>No matter how many points are given, there is some polynomial $y = P(x)$ that runs through all the points.</p>
+<h3 id="Lagrange-interpolation"><a href="#Lagrange-interpolation" class="headerlink" title="Lagrange interpolation"></a>Lagrange interpolation</h3><blockquote>
+<p>THEOREM 3.2<br><strong>Main Theorem of Polynomial Interpolation</strong>. Let $(x_1,y_1), . . . , (x_n,y_n)$ be $n$ points in the plane with distinct $x_i$. Then there exists <strong>one and only one polynomial</strong> $P$ of degree $n − 1$ or less that satisfies $P(x_i) = y_i$ for $i = 1,…,n$.</p>
+</blockquote>
+<h3 id="Newton’s-divided-differences（牛顿分差法）"><a href="#Newton’s-divided-differences（牛顿分差法）" class="headerlink" title="Newton’s divided differences（牛顿分差法）"></a>Newton’s divided differences（牛顿分差法）</h3><blockquote>
+<p>DEFINITION 3.3<br>Denote by $f[x_1 . . . x_n]$ the coefficient of the $x^{n−1}$ term in the (unique) polynomial that interpolates $(x_1,f(x_1)), . . . , (x_n,f(x_n))$.</p>
+</blockquote>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Find an interpolating polynomial for the data points $(0,1), (2,2)$, and $(3,4)$ in Figure 3.1.</p>
+<p>Solution:</p>
+<p>By Lagrange’s formula:</p>
+<p>$$<br>P_2(x) = \frac{1}{2}x^2 - \frac{1}{2}x + 1<br>$$</p>
+<p>Check that $P_2(0) = 1,P_2(2) = 2$, and $P_2(3) = 4$.</p>
+<p><img src="/images/NumericalAnalysis/c3/3.1.png" alt="3.1"></p>
+<p>Thus, by definition 3.3<br>$$<br>f[0 \space 2 \space3] = \frac{1}{2}<br>$$</p>
+<p>Using this definition, the following somewhat remarkable alternative formula for the interpolating polynomial holds, called the <strong>Newton’s divided difference formula</strong></p>
+<p>$$<br>\begin{aligned}<br>P(x) = f[x_1] &amp;+ f[x_1 x_2](x - x_1) \\<br>&amp;+ f[x_1 x_2 x_3](x - x_1)(x - x_2)\\<br>&amp;+ \cdots \\<br>&amp;+ f[x_1 x_2 \cdots x_n](x - x_1)(x-x_2)\cdots(x - x_{n-1})<br>\end{aligned}<br>\tag{3.2}<br>$$<br>and it’s easy to calculate<br>$$<br>\begin{aligned}<br>&amp;f[x_k] = f(x_k)\\<br>&amp;f[x_k x_{k+1}] = \frac{f[x_{k+1}]-f[x_k]}{x_{k+1} - x_{k}}\\<br>&amp;f[x_k x_{k+1} x_{k+2}] = \frac{f[x_{k+1} x_{k+2}] - f[x_k x_{k+1}]}{x_{k+2} - x_{k}}\\<br>&amp;f[x_k x_{k+1} x_{k+2} x_{k+3}] = \frac{f[x_{k+1} x_{k+2} x_{k+3}] - f[x_k x_{k+1} x_{k+2}]}{x_{k+3} - x_{k}}\\<br>\end{aligned}<br>\tag{3.3}<br>$$</p>
+<p><img src="/images/NumericalAnalysis/c3/newton-differences.png" alt="Newton’s divided differences"></p>
+<p>For three points the table has the form(convenient to understand)</p>
+<p><img src="/images/NumericalAnalysis/c3/table.png" alt="table"></p>
+<p>The divided difference approach has a “real-time updating’’ property that the Lagrange form lacks: The Lagrange polynomial must be restarted from the beginning when a new point is added; none of the previous calculation can be used; in divided difference form, we keep the earlier work and add one new term to the polynomial.</p>
+<h3 id="How-many-degree-d-polynomials-pass-through-n-points"><a href="#How-many-degree-d-polynomials-pass-through-n-points" class="headerlink" title="How many degree d polynomials pass through n points?"></a>How many degree d polynomials pass through n points?</h3><h3 id="Code-for-interpolation"><a href="#Code-for-interpolation" class="headerlink" title="Code for interpolation"></a>Code for interpolation</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%newtdd.m</span></span><br><span class="line"><span class="comment">%Program 3.1 Newton Divided Difference Interpolation Method</span></span><br><span class="line"><span class="comment">%Computes coefficients of interpolating polynomial</span></span><br><span class="line"><span class="comment">%Input: x and y are vectors containing the x and y coordinates</span></span><br><span class="line"><span class="comment">% of the n data points</span></span><br><span class="line"><span class="comment">%Output: coefficients c of interpolating polynomial in nested form</span></span><br><span class="line"><span class="comment">%Use with nest.m to evaluate interpolating polynomial</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>=<span class="title">newtdd</span><span class="params">(x,y,n)</span></span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:n</span><br><span class="line">    v(<span class="built_in">j</span>,<span class="number">1</span>)=y(<span class="built_in">j</span>); <span class="comment">% Fill in y column of Newton triangle</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">2</span>:n <span class="comment">% For column i,</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:n+<span class="number">1</span>-<span class="built_in">i</span> <span class="comment">% fill in column from top to bottom</span></span><br><span class="line">        v(<span class="built_in">j</span>,<span class="built_in">i</span>)=(v(<span class="built_in">j</span>+<span class="number">1</span>,<span class="built_in">i</span><span class="number">-1</span>)-v(<span class="built_in">j</span>,<span class="built_in">i</span><span class="number">-1</span>))/(x(<span class="built_in">j</span>+<span class="built_in">i</span><span class="number">-1</span>)-x(<span class="built_in">j</span>));</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">    c(<span class="built_in">i</span>)=v(<span class="number">1</span>,<span class="built_in">i</span>); <span class="comment">% Read along top of triangle</span></span><br><span class="line"><span class="keyword">end</span> <span class="comment">% for output coefficients</span></span><br></pre></td></tr></table></figure>
+<p>Note that nest.m is in Chapter0, so you can add this file to search path, the program will run successfully.</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%clickinterp.m</span></span><br><span class="line"><span class="comment">%Program 3.2. Polynomial Interpolation Program</span></span><br><span class="line"><span class="comment">%Click in MATLAB figure window to locate data point.</span></span><br><span class="line"><span class="comment">% Continue, to add more points.</span></span><br><span class="line"><span class="comment">% Press return to terminate program.</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clickinterp</span></span></span><br><span class="line">xl=<span class="number">-3</span>;xr=<span class="number">3</span>;yb=<span class="number">-3</span>;yt=<span class="number">3</span>;</span><br><span class="line"><span class="built_in">plot</span>([xl xr],[<span class="number">0</span> <span class="number">0</span>],<span class="string">'k'</span>,[<span class="number">0</span> <span class="number">0</span>],[yb yt],<span class="string">'k'</span>);grid on;</span><br><span class="line">xlist=[];ylist=[];</span><br><span class="line">k=<span class="number">0</span>; <span class="comment">% initialize counter k</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">0</span>==<span class="number">0</span>)</span><br><span class="line">    [xnew,ynew] = ginput(<span class="number">1</span>); <span class="comment">% get mouse click</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">length</span> (xnew) &lt;<span class="number">1</span></span><br><span class="line">        <span class="keyword">break</span> <span class="comment">% if return pressed, terminate</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    k=k+<span class="number">1</span>; <span class="comment">% k counts clicks</span></span><br><span class="line">    xlist(k)=xnew; ylist(k)=ynew; <span class="comment">% add new point to the list</span></span><br><span class="line">    c=newtdd(xlist,ylist,k); <span class="comment">% get interpolation coeffs</span></span><br><span class="line">    x=xl:<span class="number">.01</span>:xr; <span class="comment">% define x coordinates of curve</span></span><br><span class="line">    y=nest(k<span class="number">-1</span>,c,x,xlist); <span class="comment">% get y coordinates of curve</span></span><br><span class="line">    <span class="built_in">plot</span>(xlist,ylist,<span class="string">'o'</span>,x,y,[xl xr],[<span class="number">0</span>,<span class="number">0</span>],<span class="string">'k'</span>,[<span class="number">0</span> <span class="number">0</span>],[yb yt],<span class="string">'k'</span>);</span><br><span class="line">    axis([xl xr yb yt]);grid on;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/NumericalAnalysis/c3/coderesult.png" alt="code result"></p>
+<h3 id="Representing-functions-by-approximating-polynomials"><a href="#Representing-functions-by-approximating-polynomials" class="headerlink" title="Representing functions by approximating polynomials"></a>Representing functions by approximating polynomials</h3><p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Interpolate the function $f(x) = \sin x$ at $4$ equally spaced points on $[0,\pi/2]$.</p>
+<p>Solution:</p>
+<p>The interval $[0,\pi/2]$ is a so-called <strong>fundamental domain</strong> for sine, meaning that an input from any other interval can be referred back to it.</p>
+<p><img src="/images/NumericalAnalysis/c3/sin.png" alt="4 control points"></p>
+<p>The degree 3 interpolating polynomial is therefore</p>
+<p>$$<br>P_3(x) = 0 + x(0.9549 + (x − \pi/6)(−0.2443 + (x − \pi/3)(−0.1139)))<br>$$</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%sin1.m</span></span><br><span class="line"><span class="comment">%Program 3.3 Building a sin calculator key, attempt #1</span></span><br><span class="line"><span class="comment">%Approximates sin curve with degree 3 polynomial</span></span><br><span class="line"><span class="comment">% (Caution: do not use to build bridges,</span></span><br><span class="line"><span class="comment">% at least until we have discussed accuracy.)</span></span><br><span class="line"><span class="comment">%Input: x</span></span><br><span class="line"><span class="comment">%Output: approximation for sin(x)</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">y</span>=<span class="title">sin1</span><span class="params">(x)</span></span></span><br><span class="line"><span class="comment">%First calculate the interpolating polynomial and</span></span><br><span class="line"><span class="comment">% store coefficients</span></span><br><span class="line">b=<span class="built_in">pi</span>*(<span class="number">0</span>:<span class="number">3</span>)/<span class="number">6</span>;yb=<span class="built_in">sin</span>(b); <span class="comment">% b holds base points</span></span><br><span class="line">c=newtdd(b,yb,<span class="number">4</span>);</span><br><span class="line"><span class="comment">%For each input x, move x to the fundamental domain and evaluate</span></span><br><span class="line"><span class="comment">% the interpolating polynomial</span></span><br><span class="line">s=<span class="number">1</span>; <span class="comment">% Correct the sign of sin</span></span><br><span class="line">x1=<span class="built_in">mod</span>(x,<span class="number">2</span>*<span class="built_in">pi</span>);</span><br><span class="line"><span class="keyword">if</span> x1&gt;<span class="built_in">pi</span></span><br><span class="line">    x1 = <span class="number">2</span>*<span class="built_in">pi</span>-x1;</span><br><span class="line">    s = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">if</span> x1 &gt; <span class="built_in">pi</span>/<span class="number">2</span></span><br><span class="line">    x1 = <span class="built_in">pi</span>-x1;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">y = s*nest(<span class="number">3</span>,c,x1,b);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/NumericalAnalysis/c3/3sin.png" alt="approximation"></p>
+<h2 id="Interpolation-Error"><a href="#Interpolation-Error" class="headerlink" title="Interpolation Error"></a>Interpolation Error</h2><h3 id="Interpolation-error-formula"><a href="#Interpolation-error-formula" class="headerlink" title="Interpolation error formula"></a>Interpolation error formula</h3><blockquote>
+<p>THEOREM 3.4<br>Assume that $P(x)$ is the (degree $n − 1$ or less) interpolating polynomial fitting the $n$ points $(x_1,y_1), . . . , (x_n,y_n)$. The interpolation error is<br>$$<br>f(x) - P(x) = \frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{n!}f^{(n)}(c)<br>\tag{3.6}<br>$$<br>where $c$ lies between the smallest and largest of the numbers $x,x_1, . . . , x_n$.</p>
+</blockquote>
+<p>&#x1F4A1;For example&#x1F4A1;:<br>Still $f(x) = \sin x, x \in [0, \pi/2]$. Cal the 4 points interpolation error.</p>
+<p>By (3.6), we get,<br>$$<br>\sin x - P(x) = \frac{(x-0)(x-\frac{\pi}{6})(x-\frac{\pi}{3})(x-\frac{\pi}{2})}{4!} f’’’’(c),<br>0 &lt; c &lt; \pi/2<br>$$</p>
+<p>The fourth derivative $f’’’’(c) = \sin c$. At worst, $|\sin c|$ is no more than 1, so we can be assured of an <strong>upper bound</strong> on interpolation error:<br>$$<br>|\sin x - P(x)| \leq \frac{(x-0)(x-\frac{\pi}{6})(x-\frac{\pi}{3})(x-\frac{\pi}{2})}{24} |1|<br>$$</p>
+<blockquote>
+<p>Note that the interpolation error will tend to be smaller close to the center of the interpolation interval.</p>
+</blockquote>
+<h3 id="Proof-of-Newton-form-and-error-formula"><a href="#Proof-of-Newton-form-and-error-formula" class="headerlink" title="Proof of Newton form and error formula"></a>Proof of Newton form and error formula</h3><p>to be added…</p>
+<h3 id="Runge-phenomenon（龙格现象）"><a href="#Runge-phenomenon（龙格现象）" class="headerlink" title="Runge phenomenon（龙格现象）"></a>Runge phenomenon（龙格现象）</h3><p>For example:</p>
+<p>Interpolate $f(x) = 1/(1 + 12x^2)$ at evenly spaced points in $[−1,1]$.</p>
+<p><strong>Runge phenomenon</strong>: polynomial wiggle near the ends of the interpolation interval.</p>
+<p><img src="/images/NumericalAnalysis/c3/runge.png" alt="Runge phenomenon"></p>
+<p>The cure for this problem is intuitive: Move some of the interpolation points toward the outside of the interval, where the function producing the data can be better fit.</p>
+<h2 id="Chebyshev-Interpolation"><a href="#Chebyshev-Interpolation" class="headerlink" title="Chebyshev Interpolation"></a>Chebyshev Interpolation</h2><p>It turns out that the choice of <strong>base point spacing</strong> can have a significant effect on the interpolation error. Chebyshev interpolation refers to a particular optimal way of spacing the points.</p>
+<h3 id="Chebyshev’s-theorem"><a href="#Chebyshev’s-theorem" class="headerlink" title="Chebyshev’s theorem"></a>Chebyshev’s theorem</h3><p>The interpolation error is<br>$$<br>\frac{(x-x_1)(x-x_2)\cdots(x-x_n)}{n!}f^{(n)}(c)<br>$$<br>Let’s fix the interval to be $[−1,1]$ for now.</p>
+<p>The numerator of the interpolation error formula is itself a degree $n$ polynomial in $x$ and has some maximum value on $[−1,1]$.</p>
+<p>$$<br>(x-x_1)(x-x_2)\cdots(x-x_n)<br>\tag{3.9}<br>$$</p>
+<p>We need to minimum it. So this is called the <strong>minimax problem of interpolation</strong>.</p>
+<blockquote>
+<p>THEOREM 3.6<br>The choice of real numbers $−1 \leq x_1, . . . , x_n \leq 1$ that makes the value of<br>$$<br>\underbrace{max}_{-1 \leq x \leq 1} |(x-x_1)(x-x_2)\cdots(x-x_n)|<br>$$<br>as small as possible is<br>$$<br>x_i = \cos\frac{(2i-1)\pi}{2n}, for, i = 1, \cdots, n<br>$$<br>and the minimum value is $\frac{1}{2^{n-1}}$. In fact, the minimum is achieved by<br>$$<br>(x-x_1)(x-x_2)\cdots(x-x_n) = \frac{1}{2^{n-1}}T_n(x)<br>$$<br>where $T_n(x)$ denotes the degree $n$ <strong>Chebyshev polynomial</strong>（$n$阶切比雪夫多项式）.</p>
+</blockquote>
+<p>We conclude from the theorem that interpolation error can be minimized if the $n$ interpolation base points in $[−1,1]$ are chosen to be the <u>roots</u> of the degree $n$ Chebyshev polynomial $T_n(x)$.</p>
+<p>We will call the interpolating polynomial that uses the Chebyshev roots as base points the <strong>Chebyshev interpolating polynomial</strong>（$n-1$阶切比雪夫插值多项式）.</p>
+<p><img src="/images/NumericalAnalysis/c3/chebyshev.png" alt="Runge phenomenon solved"></p>
+<h3 id="Chebyshev-polynomials"><a href="#Chebyshev-polynomials" class="headerlink" title="Chebyshev polynomials"></a>Chebyshev polynomials</h3><p>The $n$th Chebyshev polynomial is<br>$$<br>T_n(x) = \cos(n \arccos x)<br>$$<br>Set $y = \arccos x$, so that $\cos y = x$.</p>
+<p>$$<br>T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x)<br>\tag{3.13}<br>$$<br>is called the <strong>recursion relation</strong> for the Chebyshev polynomials. Several facts follow<br>from (3.13):</p>
+<blockquote>
+<p>FACT 1<br>The $T_n$’s are polynomials. We showed this explicitly for $T_0,T_1, and T_2$. Since $T_3$ is a polynomial combination of $T_1$ and $T_2$, $T_3$ is also a polynomial. The same argument goes for all $T_n$. The first few Chebyshev polynomials (see Figure 3.9) are<br>$$<br>T_0(x) = 1\\<br>T_1(x) = x\\<br>T_2(x) = 2x^2-1\\<br>T_3(x) = 4x^3 - 3x\\<br>$$</p>
+</blockquote>
+<blockquote>
+<p>FACT 2<br>$deg(T_n) = n$, and the leading coefficient is $2n−1$. This is clear for $n = 1$ and $2$, and the recursion relation extends the fact to all $n$.</p>
+</blockquote>
+<p><img src="/images/NumericalAnalysis/c3/chebyshev-polynomials.png" alt="chebyshev-polynomials"></p>
+<blockquote>
+<p>FACT 3<br>$T_n(1) = 1$ and $T_n(−1) = (−1)^n$.</p>
+</blockquote>
+<blockquote>
+<p>FACT 4<br>The maximum absolute value of $T_n(x)$ for $−1 \leq x \leq 1$ is $1$. This follows immediately from the fact that $T_n(x) = \cos y$ for some $y$.</p>
+</blockquote>
+<blockquote>
+<p>FACT 5<br>All zeros of $T_n(x)$ are located between $−1$ and $1$. See Figure 3.10. In fact, the zeros are the solution of $0 = cos(n \arccos x)$. Since $cosy = 0$ if and only if $y = odd-integer \cdot (\pi/2)$, we find that<br>$$<br>n\arccos x = odd \cdot \pi/2\\<br>x = \cos \frac{odd \cdot \pi}{2n}<br>$$</p>
+</blockquote>
+<p><img src="/images/NumericalAnalysis/c3/chebyshev-root.png" alt="chebyshev-root"></p>
+<h3 id="Change-of-interval"><a href="#Change-of-interval" class="headerlink" title="Change of interval"></a>Change of interval</h3><p><img src="/images/NumericalAnalysis/c3/chebyshev-interval.png" alt="change interval method"></p>
+<h2 id="Cubic-Splines"><a href="#Cubic-Splines" class="headerlink" title="Cubic Splines"></a>Cubic Splines</h2><h3 id="Properties-of-splines"><a href="#Properties-of-splines" class="headerlink" title="Properties of splines"></a>Properties of splines</h3><p>A cubic spline $S(x)$ through the data points $(x_1,y_1), . . . , (x_n,y_n)$ is a set of cubic polynomials</p>
+<p>$$<br>S_1(x) = y_1 + b_1(x-x_1) + c_1(x-x_1)^2 + d_1(x - x_1)^3, on [x_1,x_2]\\<br>S_2(x) = y_2 + b_2(x-x_2) + c_2(x-x_2)^2 + d_2(x - x_2)^3, on [x_2,x_3]\\<br>\cdots\\<br>S_{n-1}(x) = y_{n-1} + b_{n-1}(x-x_{n-1}) + c_{n-1}(x-x_{n-1})^2 + d_{n-1}(x - x_{n-1})^3, on [x_{n-1},x_n]<br>\tag{3.17}<br>$$</p>
+<p>with the following properties:</p>
+<blockquote>
+<p>Property 1<br>$$<br>S_i(x_i) = y_i\\<br>S_i(x_{i+1}) = y_{i+1}, i = 1, \cdots, n-1<br>$$</p>
+</blockquote>
+<blockquote>
+<p>Property 2<br>$$<br>S’_{i-1}(x_i) = S’_i(x_i), i = 2, \cdots, n-1, slope<br>$$</p>
+</blockquote>
+<blockquote>
+<p>Property 3<br>$$<br>S’’_{i-1}(x_i) = S’’_i(x_i), i = 2, \cdots, n-1, curvature<br>$$</p>
+</blockquote>
+<blockquote>
+<p>Property 4a <strong>Natural spline.</strong><br>$$<br>S_1’’(x_1) = 0, S’’_{n-1}(x_n) = 0<br>$$</p>
+</blockquote>
+<p>Constructing a spline from a set of data points means finding the coefficients $b_i,c_i,d_i$ that make Properties 1–3 hold.</p>
+<blockquote>
+<p>THEOREM 3.7<br>Let $n \neq 2$. For a set of data points $(x_1,y_1), . . . , (x_n,y_n)$ with distinct $x_i$, there is a unique natural cubic spline fitting the points.</p>
+</blockquote>
+<p><img src="/images/NumericalAnalysis/c3/cubic-spline.png" alt="cubic-spline"></p>
+<h3 id="Endpoint-conditions"><a href="#Endpoint-conditions" class="headerlink" title="Endpoint conditions"></a>Endpoint conditions</h3><h2 id="Bezier-Curves"><a href="#Bezier-Curves" class="headerlink" title="Bézier Curves"></a>Bézier Curves</h2><p><img src="/images/NumericalAnalysis/c3/bezier.png" alt="cubic-spline"></p>
+<h2 id="Reality-Check-3-Fonts-from-Bezier-curves"><a href="#Reality-Check-3-Fonts-from-Bezier-curves" class="headerlink" title="Reality Check 3: Fonts from Bézier curves"></a>Reality Check 3: Fonts from Bézier curves</h2><p><img src="/images/NumericalAnalysis/c3/font.png" alt="fonts by bezier spline"></p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -337,7 +446,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            61
+                            74
                         </p>
                     </a>
                 </div>
@@ -395,9 +504,9 @@
         <span class="has-mr-6">1.1</span>
         <span>Lagrange interpolation</span>
         </a></li><li>
-        <a class="is-flex" href="#Newton’s-divided-differences">
+        <a class="is-flex" href="#Newton’s-divided-differences（牛顿分差法）">
         <span class="has-mr-6">1.2</span>
-        <span>Newton’s divided differences</span>
+        <span>Newton’s divided differences（牛顿分差法）</span>
         </a></li><li>
         <a class="is-flex" href="#How-many-degree-d-polynomials-pass-through-n-points">
         <span class="has-mr-6">1.3</span>
@@ -423,9 +532,9 @@
         <span class="has-mr-6">2.2</span>
         <span>Proof of Newton form and error formula</span>
         </a></li><li>
-        <a class="is-flex" href="#Runge-phenomenon">
+        <a class="is-flex" href="#Runge-phenomenon（龙格现象）">
         <span class="has-mr-6">2.3</span>
-        <span>Runge phenomenon</span>
+        <span>Runge phenomenon（龙格现象）</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#Chebyshev-Interpolation">
         <span class="has-mr-6">3</span>
@@ -618,7 +727,7 @@
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">15</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
@@ -626,7 +735,7 @@
                 <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">15</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -719,7 +828,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 18px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -733,10 +842,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-11T03:45:00.000Z">2023-10-11</time></div>
-                    <a href="/Paper/Sketch-Generation/Paper-Sketch-based-Facial-Generation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Sketch-based-Facial-Generation</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:51:25.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C14-Combining-Models/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C14-Combining-Models</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch-Generation/">Sketch Generation</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -746,10 +855,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T09:29:54.000Z">2023-10-09</time></div>
-                    <a href="/Math/Variation/Variation-First-Understanding-of-Variation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Variation-First-Understanding-of-Variation</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:51:12.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C13-Sequential-Data/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C13-Sequential-Data</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Variation/">Variation</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -759,10 +868,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:33.000Z">2023-10-09</time></div>
-                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C13-Optimization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C13-Optimization</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:51:02.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C12-Continuous-Latent-Variables/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C12-Continuous-Latent-Variables</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -772,10 +881,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:14.000Z">2023-10-09</time></div>
-                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C12-Eigenvalues-and-Singular-Values</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:50:45.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C11-Sampling-Methods/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C11-Sampling-Methods</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -785,10 +894,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:12.000Z">2023-10-09</time></div>
-                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C11-Compression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C11-Compression</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:50:34.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C10-Approximate-Inference/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C10-Approximate-Inference</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -811,7 +920,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">41</span>
+                    <span class="level-item tag">54</span>
                 </span>
             </a>
         </li>
@@ -946,7 +1055,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Regression/">
                         <span class="tag">Regression</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 

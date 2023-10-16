@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-09T02:16:35.000Z">
-<meta property="article:modified_time" content="2023-10-16T07:53:01.538Z">
+<meta property="article:modified_time" content="2023-10-16T09:02:00.274Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Numerical Analysis">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    29 minutes read (About 4356 words)
+                    29 minutes read (About 4367 words)
                 </span>
                 
                 
@@ -191,6 +191,7 @@
             <p><strong><em>Keywords</em></strong>: Gaussian Elimination, LU Factorization, Jacobi Matrix, Jacobi Iterative Method, Symmetric positve-definite matrice, Nonlinear Systems, Mathlab</p>
 <a id="more"></a>
 
+<p>This is the Chapter2 ReadingNotes from book <em>Numerical Analysis by Timothy</em>.</p>
 <h2 id="Gaussian-Elimination"><a href="#Gaussian-Elimination" class="headerlink" title="Gaussian Elimination"></a>Gaussian Elimination</h2><p>Consider the system<br>$$<br>\begin{cases}<br>x + y = 3\\<br>3x - 4y = 2<br>\end{cases}<br>\tag{2.1}<br>$$</p>
 <h3 id="Naive-Gaussian-Elimination"><a href="#Naive-Gaussian-Elimination" class="headerlink" title="Naive Gaussian Elimination"></a>Naive Gaussian Elimination</h3><p>The advantage of the tableau form is that the variables are hidden during elimination.（其实就是增广矩阵, 矩阵行变换，最简阶梯式求解的过程就叫消元）<br>$$<br>\begin{bmatrix}<br>1 &amp; 1 &amp; 3\\<br>3 &amp; -4 &amp; 1<br>\end{bmatrix}<br>\longrightarrow<br>\begin{bmatrix}<br>1 &amp; 1 &amp; 3\\<br>0 &amp; -7 &amp; -7<br>\end{bmatrix}<br>$$<br>the corresponding equation is:<br>$$<br>\begin{cases}<br>x + y = 3\\<br>-7y = -7<br>\end{cases}<br>$$<br>we solve y, x in order, this part is called <strong>back substitution</strong>, or <strong>backsolving</strong>.</p>
 <h3 id="Operation-counts"><a href="#Operation-counts" class="headerlink" title="Operation counts"></a>Operation counts</h3><p>The general form of the tableau for $n$ equations in $n$ unknowns is<br>$$<br>\begin{bmatrix}<br>a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} &amp; | &amp; b_1\\<br>a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} &amp; | &amp; b_2\\<br>\cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; | &amp; \cdots\\<br>a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} &amp; | &amp; b_n\\<br>\end{bmatrix}<br>$$</p>
@@ -595,7 +596,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            61
+                            74
                         </p>
                     </a>
                 </div>
@@ -912,7 +913,7 @@
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">15</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
@@ -920,7 +921,7 @@
                 <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">15</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -1013,7 +1014,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 18px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -1027,10 +1028,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-11T03:45:00.000Z">2023-10-11</time></div>
-                    <a href="/Paper/Sketch-Generation/Paper-Sketch-based-Facial-Generation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Sketch-based-Facial-Generation</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:51:25.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C14-Combining-Models/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C14-Combining-Models</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch-Generation/">Sketch Generation</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -1040,10 +1041,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T09:29:54.000Z">2023-10-09</time></div>
-                    <a href="/Math/Variation/Variation-First-Understanding-of-Variation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Variation-First-Understanding-of-Variation</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:51:12.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C13-Sequential-Data/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C13-Sequential-Data</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Variation/">Variation</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -1053,10 +1054,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:33.000Z">2023-10-09</time></div>
-                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C13-Optimization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C13-Optimization</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:51:02.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C12-Continuous-Latent-Variables/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C12-Continuous-Latent-Variables</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -1066,10 +1067,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:14.000Z">2023-10-09</time></div>
-                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C12-Eigenvalues-and-Singular-Values/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C12-Eigenvalues-and-Singular-Values</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:50:45.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C11-Sampling-Methods/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C11-Sampling-Methods</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -1079,10 +1080,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-09T02:19:12.000Z">2023-10-09</time></div>
-                    <a href="/Math/Numerical-Analysis/NumericalAnalysis-C11-Compression/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NumericalAnalysis-C11-Compression</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:50:34.000Z">2023-10-16</time></div>
+                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C10-Approximate-Inference/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C10-Approximate-Inference</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Numerical-Analysis/">Numerical Analysis</a>
+                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
                     </p>
                 </div>
             </div>
@@ -1105,7 +1106,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">41</span>
+                    <span class="level-item tag">54</span>
                 </span>
             </a>
         </li>
@@ -1240,7 +1241,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Regression/">
                         <span class="tag">Regression</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
