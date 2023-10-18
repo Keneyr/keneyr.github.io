@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-09T02:14:18.000Z">
-<meta property="article:modified_time" content="2023-10-10T10:20:45.464Z">
+<meta property="article:modified_time" content="2023-10-17T10:04:26.282Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Calculus">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 34 words)
+                    3 minutes read (About 451 words)
                 </span>
                 
                 
@@ -192,7 +192,28 @@
 <a id="more"></a>
 
 <p>This is the Chapter17 ReadingNotes from book <em>Thomas Calculus 14th</em>.</p>
-<h2 id="Second-Order-Linear-Equations"><a href="#Second-Order-Linear-Equations" class="headerlink" title="Second-Order Linear Equations"></a>Second-Order Linear Equations</h2><h2 id="Nonhomogeneous-Linear-Equations"><a href="#Nonhomogeneous-Linear-Equations" class="headerlink" title="Nonhomogeneous Linear Equations"></a>Nonhomogeneous Linear Equations</h2><h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><h2 id="Euler-Equations"><a href="#Euler-Equations" class="headerlink" title="Euler Equations"></a>Euler Equations</h2><h2 id="Power-Series-Solutions"><a href="#Power-Series-Solutions" class="headerlink" title="Power-Series Solutions"></a>Power-Series Solutions</h2>
+<h2 id="Second-Order-Linear-Equations"><a href="#Second-Order-Linear-Equations" class="headerlink" title="Second-Order Linear Equations"></a>Second-Order Linear Equations</h2><p>An equation of the form<br>$$<br>P(x)y’’(x) + Q(x)y’(x) + R(x)y(x) = G(x)<br>\tag{1}<br>$$<br>which is <u>linear in $y$ and its derivatives</u>, is called a <strong>second-order linear differential equation</strong>.</p>
+<p>If $G(x)$ is identically zero on $I$, the equation is said to be <strong>homogeneous</strong>; otherwise it is called <strong>nonhomogeneous</strong>.</p>
+<p>Thus, the form of a second-order linear homogeneous differential equation is<br>$$<br>P(x)y’’ + Q(x)y’ + R(x)y = 0<br>\tag{2}<br>$$<br>We assume that the functions $P, Q, R$, and $G$ are <strong>continuous</strong> throughout some open<br>interval $I$. We also assume that $P(x)$ is never zero for any $x \in I$.</p>
+<blockquote>
+<p>THEOREM 1—The Superposition Principle<br>If $y_1(x)$ and $y_2(x)$ are two solutions to the linear homogeneous equation (2), then for any constants $c_1$ and $c_2$, the function<br>$$<br>y(x) = c_1y_1(x) + c_2y_2(x)<br>$$<br>is also a solution to Equation (2).</p>
+</blockquote>
+<blockquote>
+<p>THEOREM 2<br>If $P, Q$, and $R$ are continuous over the open interval $I$ and $P(x)$ is never zero on $I$, then the linear homogeneous equation (2) has two linearly independent solutions $y_1$ and $y_2$ on $I$. Moreover, if $y_1$ and $y_2$ are any two linearly independent solutions of Equation (2), then the general solution is given by<br>$$<br>y(x) = c_1y_1(x) + c_2y_2(x)<br>$$<br>where $c_1$ and $c_2$ are arbitrary constants.</p>
+</blockquote>
+<h3 id="Constant-Coefficient-Homogeneous-Equations"><a href="#Constant-Coefficient-Homogeneous-Equations" class="headerlink" title="Constant-Coefficient Homogeneous Equations"></a>Constant-Coefficient Homogeneous Equations</h3><blockquote>
+<p>THEOREM 3<br>If $r_1$ and $r_2$ are two real and unequal roots to the auxiliary equation(辅助方程) $ar^2 + br + c = 0$, then<br>$$<br>y = c_1 e^{r_1 x} + c_2 e^{r_2 x}<br>$$<br>is the general solution to $ay’’ + by’ + cy = 0$.</p>
+</blockquote>
+<blockquote>
+<p>THEOREM 4<br>If $r$ is the only(repeated) root to the auxiliary equation(辅助方程) $ar^2 + br + c = 0$, then<br>$$<br>y = c_1 e^{r x} + c_2 x e^{rx}<br>$$<br>is the general solution to $ay’’ + by’ + cy = 0$.</p>
+</blockquote>
+<blockquote>
+<p>THEOREM 5<br>If $r_1 = \alpha + i\beta$ and $r_2 = \alpha - i\beta$ are two complex roots to the auxiliary equation $ar^2 + br + c = 0$, then<br>$$<br>y = e^{\alpha x}(c_1\cos\beta x + c_2 \sin \beta x)<br>$$<br>is the general solution to $ay’’ + by’ + cy = 0$.</p>
+</blockquote>
+<h3 id="Initial-Value-and-Boundary-Value-Problems"><a href="#Initial-Value-and-Boundary-Value-Problems" class="headerlink" title="Initial Value and Boundary Value Problems"></a>Initial Value and Boundary Value Problems</h3><blockquote>
+<p>THEOREM 6<br>If $P, Q, R$, and $G$ are continuous throughout an open interval $I$, then there exists one and only one function $y(x)$ satisfying both the differential equation<br>$$<br>P(x)y’’(x) + Q(x)y’(x) + R(x)y(x) = G(x)<br>$$<br>on the interval $I$, and the initial conditions<br>$$<br>y(x_0) = y_0, and, y’(x_0) = y_1<br>$$<br>at the specified point $x \in I$.</p>
+</blockquote>
+<h2 id="Nonhomogeneous-Linear-Equations"><a href="#Nonhomogeneous-Linear-Equations" class="headerlink" title="Nonhomogeneous Linear Equations"></a>Nonhomogeneous Linear Equations</h2><h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><h2 id="Euler-Equations"><a href="#Euler-Equations" class="headerlink" title="Euler Equations"></a>Euler Equations</h2><h2 id="Power-Series-Solutions"><a href="#Power-Series-Solutions" class="headerlink" title="Power-Series Solutions"></a>Power-Series Solutions</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -391,7 +412,15 @@
         <a class="is-flex" href="#Second-Order-Linear-Equations">
         <span class="has-mr-6">1</span>
         <span>Second-Order Linear Equations</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Constant-Coefficient-Homogeneous-Equations">
+        <span class="has-mr-6">1.1</span>
+        <span>Constant-Coefficient Homogeneous Equations</span>
         </a></li><li>
+        <a class="is-flex" href="#Initial-Value-and-Boundary-Value-Problems">
+        <span class="has-mr-6">1.2</span>
+        <span>Initial Value and Boundary Value Problems</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Nonhomogeneous-Linear-Equations">
         <span class="has-mr-6">2</span>
         <span>Nonhomogeneous Linear Equations</span>
