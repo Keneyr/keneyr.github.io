@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-09T01:20:40.000Z">
-<meta property="article:modified_time" content="2023-10-11T06:53:48.264Z">
+<meta property="article:modified_time" content="2023-10-19T02:16:23.823Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Calculus">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1002 words)
+                    9 minutes read (About 1358 words)
                 </span>
                 
                 
@@ -194,20 +194,36 @@
 <p>This is the Chapter5 ReadingNotes from book <em>Thomas Calculus 14th</em>.</p>
 <h2 id="Sigma-Notation-and-Limits-of-Finite-Sums"><a href="#Sigma-Notation-and-Limits-of-Finite-Sums" class="headerlink" title="Sigma Notation and Limits of Finite Sums"></a>Sigma Notation and Limits of Finite Sums</h2><h3 id="Riemann-Sums"><a href="#Riemann-Sums" class="headerlink" title="Riemann Sums"></a>Riemann Sums</h3><p><img src="/images/Calculus/c5/RiemannSum.png" alt="RiemannSum"></p>
 <p>The set of all of these points,<br>$$<br>P = \lbrace x_0, x_1, \cdots, x_n \rbrace<br>$$<br>is called a <u>partition</u> $P$ of $[a,b]$.<br>$$<br>S_p = \sum_{k=1}^n f(c_k)\Delta x_k<br>$$<br>The sum $S_P$ is called a Riemann sum for $ƒ$ on the interval $[a,b]$.</p>
-<p>we could choose $n$ subintervals all having equal width $\Delta x = (b-a) / n$ to partition $[a,b]$, This choice leads to the Riemann sum formula<br>$$<br>S_n = \sum_{k=1}^n f(a + k\frac{(b-a)}{n}) \cdot (\frac{b-a}{n})<br>$$</p>
+<p>we could choose $n$ subintervals all having equal width $\Delta x = (b-a) / n$ to partition $[a,b]$, and then choose the point $c_k$ to be the right-hand endpoint of each subinterval when forming the Riemann sum. This choice leads to the Riemann sum formula<br>$$<br>S_n = \sum_{k=1}^n f(a + k\frac{(b-a)}{n}) \cdot (\frac{b-a}{n})<br>$$</p>
 <p>We define the <u>norm（范数）</u> of a partition $P$, written $||P||$, <u>to be the largest of all the subinterval widths</u>. If $||P||$ is a small number, then all of the subintervals in the partition $P$ have a small width.</p>
 <blockquote>
 <p>范数(norm)是数学中的一种基本概念。在泛函分析中，它定义在赋范线性空间中，并满足一定的条件，即①非负性；②齐次性；③三角不等式。它常常被用来度量某个向量空间（或矩阵）中的每个向量的长度或大小。</p>
+</blockquote>
+<h2 id="The-Definite-Integral"><a href="#The-Definite-Integral" class="headerlink" title="The Definite Integral"></a>The Definite Integral</h2><h3 id="Definition-of-the-Definite-Integral"><a href="#Definition-of-the-Definite-Integral" class="headerlink" title="Definition of the Definite Integral"></a>Definition of the Definite Integral</h3><blockquote>
+<p>DEFINITION<br>Let $ƒ(x)$ be a function defined on a closed interval [a,b]. We say that a number $J$ is the definite integral of $ƒ$ over $[a,b]$ and that $J$ is the limit of the Riemann sums $\sum_{k=1}^n f(c_k)\Delta x_k$ if the following condition is satisfied:<br>Given any number $\epsilon &lt; 0$ there is a corresponding number $\delta &gt; 0$ such that for every partition $P = \lbrace x_0, x_1, \cdots, x_n\rbrace$ of $[a,b]$ with $||P|| &lt; \delta$ and any choice of $c_k$ in $[x_{k-1},x_k]$, we have<br>$$<br>|\sum_{k=1}^{n}f(c_k)\Delta x_k - J| &lt; \epsilon<br>$$<br>where, $J = \lim_{||P||-&gt;0} \sum_{k=1}^{n}f(c_k)\Delta x_k$ </p>
+</blockquote>
+<blockquote>
+<p>A Formula for the Riemann Sum with Equal-Width Subintervals<br>$$<br>\int_a^b f(x) dx = \lim_{n-&gt;\infty} \sum_{k=1}^n f(a + k \frac{b-a}{n})(\frac{b-a}{n})<br>\tag{1}<br>$$</p>
+</blockquote>
+<h3 id="Integrable-and-Nonintegrable-Functions"><a href="#Integrable-and-Nonintegrable-Functions" class="headerlink" title="Integrable and Nonintegrable Functions"></a>Integrable and Nonintegrable Functions</h3><blockquote>
+<p>THEOREM 1—Integrability of Continuous Functions<br>If a function $ƒ$ is continuous over the interval $[a,b]$, or if $ƒ$ has at most finitely many jump discontinuities there, then the definite integral $\int_a^b f(x)dx$ exists and $ƒ$ is integrable over $[a,b]$.</p>
+</blockquote>
+<h3 id="Properties-of-Definite-Integrals"><a href="#Properties-of-Definite-Integrals" class="headerlink" title="Properties of Definite Integrals"></a>Properties of Definite Integrals</h3><p><img src="/images/Calculus/c5/property.png" alt="property"></p>
+<h3 id="Area-Under-the-Graph-of-a-Nonnegative-Function"><a href="#Area-Under-the-Graph-of-a-Nonnegative-Function" class="headerlink" title="Area Under the Graph of a Nonnegative Function"></a>Area Under the Graph of a Nonnegative Function</h3><p>Theorem 1 guarantees that all of these Riemann sums <strong>converge</strong> to a single definite integral as the norm of the partitions approaches zero and the number of subintervals goes to infinity.</p>
+<blockquote>
+<p>DEFINITION<br>If $y = ƒ(x)$ is nonnegative and integrable over a closed interval $[a, b]$, then the area under the curve $y = ƒ(x)$ over $[a,b]$ is the integral of $ƒ$ from $a$ to $b$,<br>$$<br>A = \int_a^b f(x)dx<br>$$</p>
+</blockquote>
+<h3 id="Average-Value-of-a-Continuous-Function-Revisited"><a href="#Average-Value-of-a-Continuous-Function-Revisited" class="headerlink" title="Average Value of a Continuous Function Revisited"></a>Average Value of a Continuous Function Revisited</h3><blockquote>
+<p>DEFINITION<br>If ƒ is integrable on $[a,b]$, then its average value on $[a,b]$, which is also called its <strong>mean</strong>, is<br>$$<br>av(f) = \frac{1}{b-a}\int_a^b f(x)dx<br>$$</p>
 </blockquote>
 <h2 id="The-Fundamental-Theorem-of-Calculus"><a href="#The-Fundamental-Theorem-of-Calculus" class="headerlink" title="The Fundamental Theorem of Calculus"></a>The Fundamental Theorem of Calculus</h2><p>Fundamental Theorem of Calculus, which is the central theorem of integral calculus. <u>It connects integration and differentiation, enabling us to compute integrals by using an antiderivative of the integrand function</u> rather than by taking limits of Riemann sums.</p>
 <h3 id="Mean-Value-Theorem-for-Definite-Integrals-定积分的中值定理"><a href="#Mean-Value-Theorem-for-Definite-Integrals-定积分的中值定理" class="headerlink" title="Mean Value Theorem for Definite Integrals(定积分的中值定理)"></a>Mean Value Theorem for Definite Integrals(定积分的中值定理)</h3><blockquote>
 <p>THEOREM 3—The Mean Value Theorem for Definite Integrals<br>If $ƒ$ is continuous on $[a,b]$, then at some point $c$ in [a,b],<br>$$<br>f(c) = \frac{1}{b-a}\int_a^b f(x) dx<br>$$</p>
 </blockquote>
 <p><img src="/images/Calculus/c5/meanvalue.png" alt="mean value theorem"></p>
-<h3 id="Fundamental-Theorem-Part-1"><a href="#Fundamental-Theorem-Part-1" class="headerlink" title="Fundamental Theorem, Part 1"></a>Fundamental Theorem, Part 1</h3><p>If $ƒ(t)$ is an integrable function over a finite interval $I$, then the integral from any fixed number $a \in I$ to another number $x \in I$ defines a new function $F$ whose value at $x$ is<br>$$<br>F(x) = \int_a^xf(t)dt<br>\tag{1}<br>$$<br><img src="/images/Calculus/c5/F-f.png" alt="F-f"></p>
+<h3 id="Fundamental-Theorem-Part-1"><a href="#Fundamental-Theorem-Part-1" class="headerlink" title="Fundamental Theorem, Part 1"></a>Fundamental Theorem, Part 1</h3><p>If $ƒ(t)$ is an integrable function over a finite interval $I$, then the integral from any fixed number $a \in I$ to another number $x \in I$ defines a new function $F$ whose value at $x$ is<br>$$<br>F(x) = \int_a^xf(t)dt<br>\tag{1}<br>$$<br><img src="/images/Calculus/c5/fundamental-1.png" alt="fundamental-1"></p>
 <p>It is reasonable to expect that $F’(x)$, which is the limit of this difference quotient as $h\rightarrow 0$, equals ƒ(x), so that</p>
 <p>$$<br>F’(x) = \lim_{h\rightarrow 0} \frac{F(x+h) - F(x)}{h} = f(x)<br>$$</p>
-<p><img src="/images/Calculus/c5/fundamental-1.png" alt="fundamental-1"></p>
 <blockquote>
 <p>THEOREM 4—The Fundamental Theorem of Calculus, Part 1<br>If $ƒ$ is continuous on [a,b], then $F(x) = \int_a^x ƒ(t) dt$ is continuous on $[a,b]$ and differentiable on $(a,b)$ and its derivative is $ƒ(x)$:<br>$$<br>F’(x) = \frac{d}{dx}\int_a^xf(t)dt = f(x)<br>\tag{2}<br>$$</p>
 </blockquote>
@@ -442,52 +458,76 @@
         <span class="has-mr-6">1.1</span>
         <span>Riemann Sums</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#The-Fundamental-Theorem-of-Calculus">
+        <a class="is-flex" href="#The-Definite-Integral">
         <span class="has-mr-6">2</span>
+        <span>The Definite Integral</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Definition-of-the-Definite-Integral">
+        <span class="has-mr-6">2.1</span>
+        <span>Definition of the Definite Integral</span>
+        </a></li><li>
+        <a class="is-flex" href="#Integrable-and-Nonintegrable-Functions">
+        <span class="has-mr-6">2.2</span>
+        <span>Integrable and Nonintegrable Functions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Properties-of-Definite-Integrals">
+        <span class="has-mr-6">2.3</span>
+        <span>Properties of Definite Integrals</span>
+        </a></li><li>
+        <a class="is-flex" href="#Area-Under-the-Graph-of-a-Nonnegative-Function">
+        <span class="has-mr-6">2.4</span>
+        <span>Area Under the Graph of a Nonnegative Function</span>
+        </a></li><li>
+        <a class="is-flex" href="#Average-Value-of-a-Continuous-Function-Revisited">
+        <span class="has-mr-6">2.5</span>
+        <span>Average Value of a Continuous Function Revisited</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#The-Fundamental-Theorem-of-Calculus">
+        <span class="has-mr-6">3</span>
         <span>The Fundamental Theorem of Calculus</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#Mean-Value-Theorem-for-Definite-Integrals-定积分的中值定理">
-        <span class="has-mr-6">2.1</span>
+        <span class="has-mr-6">3.1</span>
         <span>Mean Value Theorem for Definite Integrals(定积分的中值定理)</span>
         </a></li><li>
         <a class="is-flex" href="#Fundamental-Theorem-Part-1">
-        <span class="has-mr-6">2.2</span>
+        <span class="has-mr-6">3.2</span>
         <span>Fundamental Theorem, Part 1</span>
         </a></li><li>
         <a class="is-flex" href="#Fundamental-Theorem-Part-2-The-Evaluation-Theorem">
-        <span class="has-mr-6">2.3</span>
+        <span class="has-mr-6">3.3</span>
         <span>Fundamental Theorem, Part 2 (The Evaluation Theorem)</span>
         </a></li><li>
         <a class="is-flex" href="#The-Integral-of-a-Rate">
-        <span class="has-mr-6">2.4</span>
+        <span class="has-mr-6">3.4</span>
         <span>The Integral of a Rate</span>
         </a></li><li>
         <a class="is-flex" href="#The-Relationship-Between-Integration-and-Differentiation">
-        <span class="has-mr-6">2.5</span>
+        <span class="has-mr-6">3.5</span>
         <span>The Relationship Between Integration and Differentiation</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#Indefinite-Integrals-and-the-Substitution-Method">
-        <span class="has-mr-6">3</span>
+        <span class="has-mr-6">4</span>
         <span>Indefinite Integrals and the Substitution Method</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#Substitution-Running-the-Chain-Rule-Backwards">
-        <span class="has-mr-6">3.1</span>
+        <span class="has-mr-6">4.1</span>
         <span>Substitution: Running the Chain Rule Backwards</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#Definite-Integral-Substitutions-and-the-Area-Between-Curves">
-        <span class="has-mr-6">4</span>
+        <span class="has-mr-6">5</span>
         <span>Definite Integral Substitutions and the Area Between Curves</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#The-Substitution-Formula">
-        <span class="has-mr-6">4.1</span>
+        <span class="has-mr-6">5.1</span>
         <span>The Substitution Formula</span>
         </a></li><li>
         <a class="is-flex" href="#Definite-Integrals-of-Symmetric-Functions">
-        <span class="has-mr-6">4.2</span>
+        <span class="has-mr-6">5.2</span>
         <span>Definite Integrals of Symmetric Functions</span>
         </a></li><li>
         <a class="is-flex" href="#Areas-Between-Curves">
-        <span class="has-mr-6">4.3</span>
+        <span class="has-mr-6">5.3</span>
         <span>Areas Between Curves</span>
         </a></li></ul></li></ul>
             </div>

@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-09T02:11:41.000Z">
-<meta property="article:modified_time" content="2023-10-17T09:43:34.708Z">
+<meta property="article:modified_time" content="2023-10-18T09:24:59.328Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Calculus">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 864 words)
+                    7 minutes read (About 1063 words)
                 </span>
                 
                 
@@ -203,7 +203,7 @@
 <p><em>On the Right side of the equation</em>:<br>$$<br>y-x = 1 - \frac{1}{3}e^x<br>$$</p>
 <p>The function satisfies the initial condition because<br>$$<br>y(0) = [(x+1)-\frac{1}{3}e^x]_{x=0} = \frac{2}{3}<br>$$<br>The graph of the function is shown in Figure 9.1.</p>
 <p><img src="/images/Calculus/c9/solution.png" alt="solution"></p>
-<h3 id="Slope-Fields-Viewing-Solution-Curves"><a href="#Slope-Fields-Viewing-Solution-Curves" class="headerlink" title="Slope Fields: Viewing Solution Curves"></a>Slope Fields: Viewing Solution Curves</h3><p>Each time we specify an initial condition $y(x_0) = y_0$ for the solution of a differential equation $y’ = ƒ(x, y)$, the solution curve (graph of the solution) is required to pass through the point $(x_0, y_0)$ and to have slope $ƒ(x_0, y_0)$ there. We can picture these slopes graphically by drawing short line segments of slope $ƒ(x, y)$ at selected points $(x, y)$ in the region of the $xy$plane that constitutes the domain of $ƒ$. Each segment has the same slope as the solution curve through $(x, y)$ and so is tangent to the curve there. The resulting picture is called a <u>slope field (or direction field)</u> and gives <u>a visualization of the general shape of the solution curves</u>. Figure 9.2a shows a slope field, with a particular solution sketched into it in Figure 9.2b. We see how these line segments indicate the direction the solution curve takes at each point it passes through.</p>
+<h3 id="Slope-Fields-Viewing-Solution-Curves"><a href="#Slope-Fields-Viewing-Solution-Curves" class="headerlink" title="Slope Fields: Viewing Solution Curves"></a>Slope Fields: Viewing Solution Curves</h3><p>Each time we specify an initial condition $y(x_0) = y_0$ for the solution of a differential equation $y’ = ƒ(x, y)$, the solution curve (graph of the solution) is required to pass through the point $(x_0, y_0)$ and to have slope $ƒ(x_0, y_0)$ there. We can picture these slopes graphically by drawing short line segments of slope $ƒ(x, y)$ at selected points $(x, y)$ in the region of the $xy$ plane that constitutes the domain of $ƒ$. Each segment has the same slope as the solution curve through $(x, y)$ and so is tangent to the curve there. The resulting picture is called a <u>slope field (or direction field)</u> and gives <u>a visualization of the general shape of the solution curves</u>. Figure 9.2a shows a slope field, with a <u>particular solution</u> sketched into it in Figure 9.2b. We see how these line segments indicate the direction the solution curve takes at each point it passes through.</p>
 <p><img src="/images/Calculus/c9/slopefield.png" alt="slopefield"></p>
 <p><u>Slope fields are useful because they display the overall behavior of the family of solution curves for a given differential equation.</u></p>
 <p><img src="/images/Calculus/c9/solutions-slope-fields.png" alt="solution curves and slopefields"></p>
@@ -219,12 +219,22 @@
 <p><img src="/images/Calculus/c9/eular-example.png" alt="table"></p>
 <p>First:<br>$$<br>\begin{aligned}<br>y_1 &amp;= y_0 + f(x_0,y_0)dx \\<br>&amp;= y_0 + (1+y_0)dx\\<br>&amp;= 1 + (1+1)(0.1)\\<br>&amp;= 1.2<br>\end{aligned}<br>$$</p>
 <p>Second:<br>$$<br>\begin{aligned}<br>y_2 &amp;= y_1 + f(x_1,y_1)dx \\<br>&amp;= y_1 + (1+y_1)dx\\<br>&amp;= 1.2 + (1+1.2)(0.1)\\<br>&amp;= 1.42<br>\end{aligned}<br>$$</p>
-<h2 id="First-Order-Linear-Equations"><a href="#First-Order-Linear-Equations" class="headerlink" title="First-Order Linear Equations"></a>First-Order Linear Equations</h2><p>A first-order <strong><em>linear</em></strong> differential equation is one that can be written in the form<br>$$<br>\frac{dy}{dx} + P(x)y = Q(x)<br>$$<br>where $P$ and $Q$ are continuous functions of $x$. Equation (1) is the linear equation’s standard form</p>
+<h2 id="First-Order-Linear-Equations"><a href="#First-Order-Linear-Equations" class="headerlink" title="First-Order Linear Equations"></a>First-Order Linear Equations</h2><p>A first-order <strong><em>linear</em></strong> differential equation is one that can be written in the form<br>$$<br>\frac{dy}{dx} + P(x)y = Q(x)<br>$$<br>where $P$ and $Q$ are continuous functions of $x$. Equation (1) is the <u>linear equation’s standard form</u></p>
 <h3 id="Solving-Linear-Equations"><a href="#Solving-Linear-Equations" class="headerlink" title="Solving Linear Equations"></a>Solving Linear Equations</h3><p>$v(x)$ is choosen to make $v\frac{dy}{dx} + Pvy = \frac{d}{dx}(v \cdot y)$:</p>
 <p>$$<br>\begin{aligned}<br>&amp;\frac{dy}{dx} + P(x)y = Q(x)\\<br>&amp;v(x)\frac{dy}{dx} + P(x)v(x)y = v(x)Q(x)\\<br>&amp;\frac{d}{dx}(v(x) \cdot y) = v(x)Q(x)\\<br>&amp;v(x) \cdot y = \int v(x)Q(x)dx\\<br>&amp;y = \frac{1}{v(x)} \int v(x)Q(x)dx<br>\end{aligned}<br>$$</p>
 <p>about $v(x)$:</p>
 <p>$$<br>\begin{aligned}<br>&amp;\frac{d}{dx}(vy) = v\frac{dy}{dx} + yPv\\<br>&amp;v\frac{dy}{dx} + y\frac{dv}{dx} = v\frac{dy}{dx} + yPv\\<br>&amp;y\frac{dv}{dx} = yPv\\<br>&amp;\frac{dv}{dx} = Pv\\<br>&amp;\frac{dv}{v} = Pdx\\<br>&amp;\int\frac{dv}{v} = \int Pdx\\<br>&amp;\ln v = \int Pdx\\<br>&amp;e^{\ln v} = e^{\int Pdx}\\<br>&amp;v = e^{\int Pdx}<br>\end{aligned}<br>$$</p>
-<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><h3 id="Motion-with-Resistance-Proportional-to-Velocity"><a href="#Motion-with-Resistance-Proportional-to-Velocity" class="headerlink" title="Motion with Resistance Proportional to Velocity"></a>Motion with Resistance Proportional to Velocity</h3><h3 id="Inaccuracy-of-the-Exponential-Population-Growth-Model"><a href="#Inaccuracy-of-the-Exponential-Population-Growth-Model" class="headerlink" title="Inaccuracy of the Exponential Population Growth Model"></a>Inaccuracy of the Exponential Population Growth Model</h3><h3 id="Orthogonal-Trajectories"><a href="#Orthogonal-Trajectories" class="headerlink" title="Orthogonal Trajectories"></a>Orthogonal Trajectories</h3><h2 id="Graphical-Solutions-of-Autonomous-Equations"><a href="#Graphical-Solutions-of-Autonomous-Equations" class="headerlink" title="Graphical Solutions of Autonomous Equations"></a>Graphical Solutions of Autonomous Equations</h2><h2 id="Systems-of-Equations-and-Phase-Planes"><a href="#Systems-of-Equations-and-Phase-Planes" class="headerlink" title="Systems of Equations and Phase Planes"></a>Systems of Equations and Phase Planes</h2><p>To be added…</p>
+<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><h3 id="Motion-with-Resistance-Proportional-to-Velocity"><a href="#Motion-with-Resistance-Proportional-to-Velocity" class="headerlink" title="Motion with Resistance Proportional to Velocity"></a>Motion with Resistance Proportional to Velocity</h3><h3 id="Inaccuracy-of-the-Exponential-Population-Growth-Model"><a href="#Inaccuracy-of-the-Exponential-Population-Growth-Model" class="headerlink" title="Inaccuracy of the Exponential Population Growth Model"></a>Inaccuracy of the Exponential Population Growth Model</h3><p>We model the population growth with the Law of Exponential Change:<br>$$<br>\frac{dP}{dt} = kP, P(0) = P_0<br>$$<br>where $P$ is the population at time $t$, $k &gt; 0$ is a constant growth rate, and $P_0$ is the size of the population at time $t = 0$.</p>
+<p><img src="/images/Calculus/c9/population.png" alt="population"></p>
+<p>The solution is $P = P_0 e^{kt}$, the initial value is<br>$$<br>\frac{dP}{dt} = 0.017P, P(0) = 4454<br>$$</p>
+<h3 id="Orthogonal-Trajectories"><a href="#Orthogonal-Trajectories" class="headerlink" title="Orthogonal Trajectories"></a>Orthogonal Trajectories</h3><h2 id="Graphical-Solutions-of-Autonomous-Equations-自控-自治-微分方程"><a href="#Graphical-Solutions-of-Autonomous-Equations-自控-自治-微分方程" class="headerlink" title="Graphical Solutions of Autonomous Equations(自控(自治)微分方程)"></a>Graphical Solutions of Autonomous Equations(自控(自治)微分方程)</h2><p>A differential equation for which $dy / dx$ is a function of $y$ only is called an <strong>autonomous differential equation</strong>.</p>
+<h3 id="Logistic-Population-Growth"><a href="#Logistic-Population-Growth" class="headerlink" title="Logistic Population Growth"></a>Logistic Population Growth</h3><p>Without considering the <strong>carrying capacity</strong> of environment, the population growth can be modeled as<br>$$<br>\frac{dP}{dt} = kP, k-constant<br>\tag{5}<br>$$</p>
+<p>Considering the environment factors, it should be</p>
+<p>$$<br>k = r(M-P), r-constant<br>$$<br>where, $M$ is the maximum population it can carry.</p>
+<p>thus,<br>$$<br>\frac{dP}{dt} = r(M-P)P = rMP-rP^2<br>\tag{6}<br>$$</p>
+<p>The model given by Equation (6) is referred to as <strong>logistic growth</strong>(对数增长).</p>
+<p>$$<br>\begin{aligned}<br>\frac{d^2P}{d^2t} &amp;= \frac{d}{dt}(rMP-rP^2)\\<br>&amp;= rM\frac{dP}{dt} - 2rP\frac{dP}{dt}\\<br>&amp;= r(M-2P)\frac{dP}{dt}<br>\end{aligned}<br>$$<br><img src="/images/Calculus/c9/log-population.png" alt="log-population"></p>
+<h2 id="Systems-of-Equations-and-Phase-Planes"><a href="#Systems-of-Equations-and-Phase-Planes" class="headerlink" title="Systems of Equations and Phase Planes"></a>Systems of Equations and Phase Planes</h2><p>To be added…</p>
 
         </div>
         
@@ -461,10 +471,14 @@
         <span class="has-mr-6">3.3</span>
         <span>Orthogonal Trajectories</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#Graphical-Solutions-of-Autonomous-Equations">
+        <a class="is-flex" href="#Graphical-Solutions-of-Autonomous-Equations-自控-自治-微分方程">
         <span class="has-mr-6">4</span>
-        <span>Graphical Solutions of Autonomous Equations</span>
-        </a></li><li>
+        <span>Graphical Solutions of Autonomous Equations(自控(自治)微分方程)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Logistic-Population-Growth">
+        <span class="has-mr-6">4.1</span>
+        <span>Logistic Population Growth</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Systems-of-Equations-and-Phase-Planes">
         <span class="has-mr-6">5</span>
         <span>Systems of Equations and Phase Planes</span>

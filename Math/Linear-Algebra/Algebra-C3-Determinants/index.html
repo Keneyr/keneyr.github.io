@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-09-25T01:32:07.000Z">
-<meta property="article:modified_time" content="2023-10-05T09:19:53.846Z">
+<meta property="article:modified_time" content="2023-10-18T03:02:41.752Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Linear Algebra">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
 <h3 id="A-Linearity-Property-of-the-Determinant-Function"><a href="#A-Linearity-Property-of-the-Determinant-Function" class="headerlink" title="A Linearity Property of the Determinant Function"></a>A Linearity Property of the Determinant Function</h3><p>$$<br>A  = \begin{bmatrix}<br>\vec{a_1} &amp; \cdots &amp; \vec{a_{j-1}} &amp; \vec{x}&amp; \vec{a_{j+1}} &amp; \cdots &amp; \vec{a_n}<br>\end{bmatrix}<br>\\<br>T(\vec{x}) = det \begin{bmatrix}<br>\vec{a_1} &amp; \cdots &amp; \vec{a_{j-1}} &amp; \vec{x}&amp; \vec{a_{j+1}} &amp; \cdots &amp; \vec{a_n}<br>\end{bmatrix}<br>\\<br>T(c\vec{x}) = cT(\vec{x})\\<br>T(\vec{u}+\vec{v}) = T(\vec{u}) + T(\vec{v})<br>$$</p>
 <h2 id="Cramer’s-Rule-Volume-Linear-Transformation"><a href="#Cramer’s-Rule-Volume-Linear-Transformation" class="headerlink" title="Cramer’s Rule, Volume, Linear Transformation"></a>Cramer’s Rule, Volume, Linear Transformation</h2><h3 id="Cramer’s-Rule（克拉默法则）"><a href="#Cramer’s-Rule（克拉默法则）" class="headerlink" title="Cramer’s Rule（克拉默法则）"></a>Cramer’s Rule（克拉默法则）</h3><p>Let A be an invertible $n \times n$ matrix. For any $\vec{b}$ in $R^n$, the unique solution $\vec{x}$ of $A\vec{x} = \vec{b}$ has entries given by</p>
 <p>$$<br>\vec{x_i} = \frac{det A_i(\vec{b})}{det A}, i = 1, 2, \cdots, n<br>$$<br>$$<br>det A_i(\vec{b}) =<br>\begin{bmatrix}<br>\vec{a_1} &amp; \cdots &amp; \vec{b} &amp; \cdots &amp; \vec{a_n}<br>\end{bmatrix}<br>第i列的向量改成了\vec{b}向量<br>$$</p>
-<h3 id="Application-to-Engineering"><a href="#Application-to-Engineering" class="headerlink" title="Application to Engineering"></a>Application to Engineering</h3><p><u>Laplace transforms</u>: This approach converts an appropriate system of linear differential equations into a system of linear algebraic equations whose coefficients involve a parameter.（只是提一嘴拉普拉斯变换）</p>
+<h3 id="Application-to-Engineering"><a href="#Application-to-Engineering" class="headerlink" title="Application to Engineering"></a>Application to Engineering</h3><p><u>Laplace transforms</u>: This approach converts an appropriate system of <u>linear differential equations</u> into a system of <u>linear algebraic equations</u> whose coefficients involve a parameter.（只是提一嘴拉普拉斯变换）</p>
 <p>&#x1F4A1;For example&#x1F4A1;: </p>
 <p>Consider the following system in which $s$ is an unspecified parameter. Determine the values of $s$ for which the system has a unique solution, and use Cramer’s rule to describe the solution.</p>
 <p>$$<br>\begin{cases}<br>3s x_1 - 2x_1 = 4\\<br>-6x_1 + sx_2 = 1<br>\end{cases}<br>$$</p>

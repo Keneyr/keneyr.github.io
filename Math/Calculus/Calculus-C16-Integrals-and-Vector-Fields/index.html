@@ -10,16 +10,16 @@
 <title>Calculus-C16-Integrals-and-Vector-Fields - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Vector Fields and Line Integrals, Green’s Theorem, Stokes’ Theorem, Divergence">
+    <meta name="description" content="Keywords: Vector Fields and Line Integrals, Green’s Theorem, Stokes’ Theorem, Divergence， Vector Calculus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Calculus-C16-Integrals-and-Vector-Fields">
 <meta property="og:url" content="https://keneyr.com/Math/Calculus/Calculus-C16-Integrals-and-Vector-Fields/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Vector Fields and Line Integrals, Green’s Theorem, Stokes’ Theorem, Divergence">
+<meta property="og:description" content="Keywords: Vector Fields and Line Integrals, Green’s Theorem, Stokes’ Theorem, Divergence， Vector Calculus">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-09T02:13:57.000Z">
-<meta property="article:modified_time" content="2023-10-12T09:40:38.645Z">
+<meta property="article:modified_time" content="2023-10-19T10:55:24.567Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Calculus">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 214 words)
+                    21 minutes read (About 3186 words)
                 </span>
                 
                 
@@ -188,14 +188,152 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Vector Fields and Line Integrals, Green’s Theorem, Stokes’ Theorem, Divergence</p>
+            <p><strong><em>Keywords</em></strong>: Vector Fields and Line Integrals, Green’s Theorem, Stokes’ Theorem, Divergence， Vector Calculus</p>
 <a id="more"></a>
 
 <p>This is the Chapter16 ReadingNotes from book <em>Thomas Calculus 14th</em>.</p>
-<h2 id="Line-Integrals-of-Scalar-Functions"><a href="#Line-Integrals-of-Scalar-Functions" class="headerlink" title="Line Integrals of Scalar Functions"></a>Line Integrals of Scalar Functions</h2><p><img src="/images/Calculus/c16/integral-curve.png" alt="line integral"></p>
+<h2 id="Line-Integrals-of-Scalar-Functions-标量函数的曲线积分"><a href="#Line-Integrals-of-Scalar-Functions-标量函数的曲线积分" class="headerlink" title="Line Integrals of Scalar Functions(标量函数的曲线积分)"></a>Line Integrals of Scalar Functions(标量函数的曲线积分)</h2><p><img src="/images/Calculus/c16/integral-curve.png" alt="line integral"></p>
 <p>Suppose that $ƒ(x, y, z)$ is a real-valued function we wish to integrate over the curve $C$ lying within the domain of $ƒ$ and parametrized by $r(t) = g(t)i + h(t)j + k(t)k$, $a \leq t \leq b$. The values of $ƒ$ along the curve are given by the composite function $ƒ(g(t), h(t), k(t))$. We are going to integrate this composition with respect to arc length from $t = a$ to $t = b$. To begin, we first partition the curve $C$ into a finite number $n$ of subarcs (Figure 16.1). The typical subarc has length $\Delta s_k$. In each subarc we choose a point $(x_k, y_k, z_k)$ and form the sum</p>
 <p>$$<br>S_n = \sum_{k=1}^n f(x_k, y_k, z_k) \Delta s_k<br>$$</p>
-<h2 id="Vector-Fields-and-Line-Integrals-Work-Circulation-and-Flux"><a href="#Vector-Fields-and-Line-Integrals-Work-Circulation-and-Flux" class="headerlink" title="Vector Fields and Line Integrals: Work, Circulation, and Flux"></a>Vector Fields and Line Integrals: Work, Circulation, and Flux</h2><h2 id="Path-Independence-Conservative-Fields-and-Potential-Functions"><a href="#Path-Independence-Conservative-Fields-and-Potential-Functions" class="headerlink" title="Path Independence, Conservative Fields, and Potential Functions"></a>Path Independence, Conservative Fields, and Potential Functions</h2><h2 id="Green’s-Theorem-in-the-Plane"><a href="#Green’s-Theorem-in-the-Plane" class="headerlink" title="Green’s Theorem in the Plane"></a>Green’s Theorem in the Plane</h2><h2 id="Surfaces-and-Area"><a href="#Surfaces-and-Area" class="headerlink" title="Surfaces and Area"></a>Surfaces and Area</h2><h2 id="Surface-Integrals"><a href="#Surface-Integrals" class="headerlink" title="Surface Integrals"></a>Surface Integrals</h2><h2 id="Stokes’-Theorem"><a href="#Stokes’-Theorem" class="headerlink" title="Stokes’ Theorem"></a>Stokes’ Theorem</h2><h2 id="The-Divergence-Theorem-and-a-Unified-Theory"><a href="#The-Divergence-Theorem-and-a-Unified-Theory" class="headerlink" title="The Divergence Theorem and a Unified Theory"></a>The Divergence Theorem and a Unified Theory</h2>
+<p>which is similar to a &#x1F449;<a href="/Math/Calculus/Calculus-C5-Integrals/#Riemann-Sums">Riemann sum</a>.</p>
+<blockquote>
+<p>DEFINITION<br>If $ƒ$ is defined on a curve $C$ given parametrically by $r(t) = g(t)i + h(t)j + k(t)k$, $a \leq t \leq b$, then the <strong>line integral</strong> of $ƒ$ over $C$ is<br>$$<br>\int_{C}f(x,y,z)ds = \lim_{n-&gt;\infty} \sum_{k=1}^{n} f(x_k, y_k, z_k)\Delta s_k<br>\tag{1}<br>$$<br>provided this limit exists.</p>
+</blockquote>
+<p>If the curve $C$ is smooth for $a \leq t \leq b$ (so $v = dr/$ is continuous and never 0) and<br>the function $ƒ$ is continuous on $C$, then the limit in Equation (1) can be shown to exist.</p>
+<p>We can then apply the &#x1F449;<a href="/Math/Calculus/Calculus-C5-Integrals/#The-Fundamental-Theorem-of-Calculus">Fundamental Theorem of Calculus &gt;&gt;</a> to differentiate the &#x1F449;<a href="/Math/Calculus/Calculus-C13-Vector-Valued-Fuctions-and-Motion-in-Space/#Arc-Length-in-Space">arc length equation &gt;&gt;</a>,<br>$$<br>s(t) = \int_a^t |v(\tau)| d\tau<br>$$<br>to express $ds$ in Equation (1) as $ds = |v(t)|dt$ and evaluate the integral over $C$ as<br>$$<br>\int_C f(x,y,z) ds = \int_a^b f(g(t), h(t), k(t)) |v(t)| dt<br>\tag{2}<br>$$</p>
+<blockquote>
+<p>How to Evaluate a Line Integral<br>To integrate a continuous function $ƒ(x, y, z)$ over a curve $C$:<br>1.Find a smooth parametrization of $C$,<br>$$<br>r(t) = g(t)i + h(t)j + k(t)k, a \leq t \leq b<br>$$<br>2.Evaluate the integral as<br>$$<br>\int_C f(x,y,z)ds = \int_a^b f(g(t), h(t), k(t)) |v(t)| dt<br>$$</p>
+</blockquote>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Integrate $ƒ(x, y, z) = x - 3y^2 + z$ over the line segment $C$ joining the origin to the point $(1, 1, 1)$ (Figure 16.2).</p>
+<p><img src="/images/Calculus/c16/f162.png" alt="plot"></p>
+<p>Solution:</p>
+<p>Since any choice of parametrization will give the same answer, we choose the simplest parametrization we can think of:</p>
+<p>$$<br>r(t) = ti + tj + tk, 0 \leq t \leq 1<br>$$</p>
+<p>The components have continuous first derivatives and</p>
+<p>$$<br>|v(t)| = |i + j + k| = \sqrt{1^2 + 1^2 + 1^2} = \sqrt{3}<br>$$ </p>
+<p>is never 0, so the parametrization is <strong>smooth</strong>. The integral of ƒ over $C$ is</p>
+<p>$$<br>\int_C f(x,y,z)ds = \int_0^1 f(t,t,t)\sqrt{3}dt = 0<br>$$</p>
+<h3 id="Additivity"><a href="#Additivity" class="headerlink" title="Additivity"></a>Additivity</h3><p>$$<br>\int_C f ds = \int_{C_{1}} f ds + \cdots + \int_{C_{n}} f ds<br>\tag{3}<br>$$</p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Figure 16.3 shows another path from the origin to $(1, 1, 1)$, formed from two line segments $C_1 and C_2$. Integrate $ƒ(x, y, z) = x - 3y2 + z$ over $C_1 \cup C_2$.</p>
+<p>Solution:<br>$$<br>C_1 : r(t) = ti + tj, 0 \leq t \leq 1; |v| = \sqrt{1^2 + 1^2} = \sqrt{2}<br>$$<br>$$<br>C_1 : r(t) = i + j + tk, 0 \leq t \leq 1; |v| = \sqrt{0^2 + 0^2 + 1^2} = 1<br>$$<br>With these parametrizations we find that<br>$$<br>\begin{aligned}<br>\int_{C_1 \cup C_2} f(x,y,z) ds &amp;= \int_{C_1} f(x,y,z) ds + \int_{C_2} f(x,y,z) ds \\<br>&amp;= \int_0^1f(t,t,0) \sqrt{2}dt + \int_0^1f(1,1,t)1dt\\<br>&amp;= -\frac{\sqrt{2}}{2} - \frac{3}{2}<br>\end{aligned}<br>$$</p>
+<blockquote>
+<p>The value of the line integral along a path joining two points can change if you change the path between them.</p>
+</blockquote>
+<h3 id="Mass-and-Moment-Calculations"><a href="#Mass-and-Moment-Calculations" class="headerlink" title="Mass and Moment Calculations"></a>Mass and Moment Calculations</h3><p>We treat coil springs and wires as masses distributed along smooth curves in space. The distribution is described by a <strong>continuous density function</strong> $d(x, y, z)$ representing mass per unit length.</p>
+<p><img src="/images/Calculus/c16/mass-moment.png" alt="mass and moment"></p>
+<blockquote>
+<p><u>Moment</u> has different meanings in &#x1F449;<a href="https://en.wikipedia.org/wiki/Moment_(mathematics)">Math</a> and &#x1F449;<a href="https://en.wikipedia.org/wiki/Torque">Physics</a>.</p>
+</blockquote>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>A slender metal arch, denser at the bottom than top, lies along the semicircle $y^2 + z^2 = 1, z \geq 0$, in the $yz$-plane (Figure 16.5). Find the center of the arch’s mass if the density at the point $(x, y, z)$ on the arch is $d(x, y, z) = 2 - z$.</p>
+<p>Solution:</p>
+<p><img src="/images/Calculus/c16/mass.png" alt="slender metal arch"></p>
+<p>We know that $\bar{x} = 0$ and $\bar{y} = 0$ because the arch lies in the $yz$-plane with its mass distributed symmetrically about the $z$-axis. To find $\bar{z}$, we parametrize the circle as<br>$$<br>r(t) = (\cos t)j + (\sin t)k, 0 \leq t \leq \pi<br>$$<br>For this parametrization,<br>$$<br>|v(t)| = \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2 + (\frac{dz}{dt})^2} = 1<br>$$<br>so $ds = |v|dt = dt$.</p>
+<p>Thus,<br>$$<br>M = \int_C \delta ds = \int_C (2-z) ds = \int_0^\pi (2-\sin t) dt = 2\pi-2<br>$$<br>$$<br>M_{xy} = \int_C z\delta ds = \frac{8-\pi}{2}<br>$$<br>$$<br>\bar{z} = \frac{M_{xy}}{M} \approx 0.57<br>$$</p>
+<h3 id="Line-Integrals-in-the-Plane"><a href="#Line-Integrals-in-the-Plane" class="headerlink" title="Line Integrals in the Plane"></a>Line Integrals in the Plane</h3><p><img src="/images/Calculus/c16/area.png" alt="area"></p>
+<p>$$<br>\int_C f ds = \lim_{n-&gt;\infty} \sum_{k=1}^nf(x_k,y_k)\Delta s_k<br>$$</p>
+<h2 id="Vector-Fields-and-Line-Integrals-Work-Circulation-and-Flux"><a href="#Vector-Fields-and-Line-Integrals-Work-Circulation-and-Flux" class="headerlink" title="Vector Fields and Line Integrals: Work, Circulation, and Flux"></a>Vector Fields and Line Integrals: Work, Circulation, and Flux</h2><p>Just too lazy to add vector symbols while writing fomulas…</p>
+<p>Make sure you know which is a scalar function and which is a vector function..</p>
+<h3 id="Vector-Fields-向量场"><a href="#Vector-Fields-向量场" class="headerlink" title="Vector Fields(向量场)"></a>Vector Fields(向量场)</h3><p><img src="/images/Calculus/c16/vector-field.png" alt="vector-field"></p>
+<p>a <strong>vector field</strong> is a <u>function</u> that <u>assigns a vector to each point</u> in its domain. A vector field on a <u>three-dimensional domain</u> in space might have a formula like<br>$$<br>\vec{F}(x,y,z) = M(x,y,z)i + N(x,y,z)j+P(x,y,z)k<br>$$<br>The vector field is continuous if the component functions $M, N$, and $P$ are continuous; it is differentiable if each of the component functions is differentiable.</p>
+<p>The formula for a field of <u>two-dimensional</u> vectors could look like</p>
+<p>$$<br>\vec{F}(x,y) = M(x,y)i + N(x,y)j<br>$$</p>
+<p>Recall what we leanred in Chapter13? The tangent vectors $T$ and normal vectors $N$ for a curve in space both form vector fields along the curve. Along a curve $r(t)$ they might have a component formula similar to the velocity field expression<br>$$<br>v(t) = f(t)i+g(t)j+h(t)k<br>$$<br>&#x1F449;<a href="/Math/Calculus/Calculus-C13-Vector-Valued-Fuctions-and-Motion-in-Space/">Vector Functions Tangents, Normals in Curve &gt;&gt;</a></p>
+<h3 id="Gradient-Fields-梯度场"><a href="#Gradient-Fields-梯度场" class="headerlink" title="Gradient Fields(梯度场)"></a>Gradient Fields(梯度场)</h3><p>&#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/">More about Gradient Vectors and Several-Variables Functions &gt;&gt;</a></p>
+<p>The gradient vector of a differentiable scalar-valued function at a point gives the direction of greatest increase of the function.</p>
+<p>We define the gradient field of a differentiable function $ƒ(x, y, z)$ to be the field of gradient vectors</p>
+<p>$$<br>\nabla f = \frac{\partial f}{\partial x} i + \frac{\partial f}{\partial y} i + \frac{\partial f}{\partial z} i<br>$$</p>
+<p>At each point $(x, y, z)$, the gradient field gives a vector pointing in the direction of greatest increase of $ƒ$, with magnitude being the value of the <u>directional derivative</u> in that direction.(注意，梯度是向量，方向导数是标量)</p>
+<blockquote>
+<p>In many physical applications, $ƒ$ represents a potential energy, and the gradient vector field indicates the corresponding force. In such situations, $ƒ$ is often taken to be negative, so that the force gives the direction of decreasing potential energy.</p>
+</blockquote>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Suppose that a material is heated, that the resulting temperature $T$ at each point $(x, y, z)$ in a region of space is given by</p>
+<p>$$<br>T = 100 - x^2 - y^2 - z^2,<br>$$<br>and that $\vec{F}(x, y, z)$ is defined to be the gradient of $T$. Find the vector field $\vec{F}$.</p>
+<p><img src="/images/Calculus/c16/gradient-field.png" alt="gradient-field"></p>
+<p>Solution:</p>
+<p>The gradient field $F$ is the field $F = \nabla T = -2x i - 2y j - 2z k$.</p>
+<h3 id="Line-Integrals-of-Vector-Fields-向量场-函数-的曲线积分"><a href="#Line-Integrals-of-Vector-Fields-向量场-函数-的曲线积分" class="headerlink" title="Line Integrals of Vector Fields(向量场(函数)的曲线积分)"></a>Line Integrals of Vector Fields(向量场(函数)的曲线积分)</h3><p>The line integral of the vector field is the line integral of the scalar tangential component of $\vec{F}$ along $C$. This tangential component is given by the dot product<br>$$<br>\vec{F} \cdot \vec{T} = \vec{F} \cdot \frac{d\vec{r}}{ds}<br>$$<br>where,<br>$$<br>\vec{T} = \frac{d\vec{r}}{ds} = \frac{\vec{v}}{|\vec{v}|}, \vec{v} = \frac{d\vec{r}}{dt}<br>$$</p>
+<blockquote>
+<p>DEFINITION<br>Let $\vec{F}$ be a vector field with continuous components defined along a smooth curve $C$ parametrized by $\vec{r}(t)$, $a \leq t \leq b$. Then the line integral of $\vec{F}$ along $C$ is<br>$$<br>\begin{aligned}<br>   \int_C \vec{F} \cdot \vec{T} ds &amp;= \int_C(\vec{F} \cdot \frac{d\vec{r}}{ds}) ds\\<br>   &amp;=  \int_C \vec{F}\cdot d\vec{r}<br>\end{aligned}<br>\tag{1}<br>$$</p>
+</blockquote>
+<blockquote>
+<p>Evaluating the Line Integral of $\vec{F} = M i + N j + Pk$ Along $C: \vec{r}(t) = g(t)i + h(t) j + k(t)k$ </p>
+<ol>
+<li>Express the vector field $F$ along the parametrized curve $C$ as $F(r(t))$ by substituting the components $x = g(t), y = h(t), z = k(t)$ of r into the scalar components $M(x,y,z), N(x,y,z), P(x,y,z)$ of F.</li>
+<li>Find the derivative (velocity) vector $dr/dt$.</li>
+<li>Evaluate the line integral with respect to the parameter $t$, $a \leq t \leq b$, to obtain<br>$$<br>\int_C \vec{F} \cdot d\vec{r} = \int_a^b F(r(t)) \cdot \frac{dr}{dt}dt<br>$$</li>
+</ol>
+</blockquote>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Evaluate $\int_C \vec{F} \cdot d\vec{r}$, where $F(x, y, z) = z i + xy j - y^2 k$ along the curve $C$ given by $r(t) = t^2 i + t j + \sqrt{t} k$, $0 \leq t \leq 1$ and shown in Figure 16.18.</p>
+<p><img src="/images/Calculus/c16/vectorfunctionintegral.png" alt="Fig16.18"></p>
+<p>Solution:</p>
+<p>$$<br>F(r(t)) = \sqrt{t}i + t^3j-t^2k<br>$$</p>
+<p>$$<br>\frac{dr}{dt} = 2ti + j + \frac{1}{2\sqrt{t}}k<br>$$</p>
+<p>Thus,</p>
+<p>$$<br>\int_C F \cdot dr = \int_0^1 (2t^{3/2} + t^3 - \frac{1}{2}t^{3/2})dt = \frac{17}{20}<br>$$</p>
+<h3 id="Line-Integrals-with-Respect-to-dx-dy-or-dz"><a href="#Line-Integrals-with-Respect-to-dx-dy-or-dz" class="headerlink" title="Line Integrals with Respect to $dx, dy$, or $dz$"></a>Line Integrals with Respect to $dx, dy$, or $dz$</h3><p>$$<br>\int_C M(x,y,z)dx = \int_C \vec{F} \cdot d\vec{r}, where, \vec{F} = M(x,y,z)i.<br>$$</p>
+<blockquote>
+<p>$$<br>\int_C M(x,y,z)dx = \int_a^b M(g(t),h(t),k(t))g’(t)dt\tag{3}<br>$$<br>$$<br>\int_C N(x,y,z)dy = \int_a^b N(g(t),h(t),k(t))h’(t)dt\tag{4}<br>$$<br>$$<br>\int_C P(x,y,z)dz = \int_a^b P(g(t),h(t),k(t))k’(t)dt\tag{5}<br>$$</p>
+</blockquote>
+<h3 id="Work-Done-by-a-Force-over-a-Curve-in-Space"><a href="#Work-Done-by-a-Force-over-a-Curve-in-Space" class="headerlink" title="Work Done by a Force over a Curve in Space"></a>Work Done by a Force over a Curve in Space</h3><p><img src="/images/Calculus/c16/work.png" alt="work"></p>
+<p>We can approximate the work as<br>$$<br>W \approx \sum_{k=1}^n W_k \approx \sum_{k=1}^n F(x_k, y_k, z_k) \cdot T(x_k, y_k, z_k) \Delta s_k<br>$$<br>as $n\rightarrow \infty$ and $\Delta s_k \rightarrow 0$, these sums approach the line integral<br>$$<br>\int_C F\cdot T ds<br>$$</p>
+<blockquote>
+<p>DEFINITION<br>Let $C$ be a smooth curve parametrized by $r(t)$, $a \leq t \leq b$, and let $F$ be a continuous force field over a region containing $C$. Then the <strong>work</strong> done in moving an object from the point $A = r(a)$ to the point $B = r(b)$ along $C$ is<br>$$<br>W = \int_C F \cdot T ds = \int_a^b F(r(t)) \cdot \frac{dr}{dt}dt<br>\tag{6}<br>$$</p>
+</blockquote>
+<p><img src="/images/Calculus/c16/force-work.png" alt="work in differnt forms"></p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Find the work done by the force field $F = (y - x^2)i + (z - y^2)j + (x - z^2)k$ in moving an object along the curve $r(t) = t i + t^2j + t^3k$, $0 \leq t \leq 1$, from $(0, 0, 0)$ to $(1, 1, 1)$ (Figure 16.21).</p>
+<p>Solution:</p>
+<p>$$<br>F = (t^3 - t^4) j + (t - t^6)k<br>$$</p>
+<p>$$<br>\frac{dr}{dt} = i + 2t j + 3t^2 k<br>$$</p>
+<p>$$<br>work = \int_a^b F \cdot \frac{dr}{dt} dt = \frac{29}{60}<br>$$</p>
+<h3 id="Flow-Integrals-and-Circulation-for-Velocity-Fields-速度场的流量积分和循环"><a href="#Flow-Integrals-and-Circulation-for-Velocity-Fields-速度场的流量积分和循环" class="headerlink" title="Flow Integrals and Circulation for Velocity Fields(速度场的流量积分和循环)"></a>Flow Integrals and Circulation for Velocity Fields(速度场的流量积分和循环)</h3><blockquote>
+<p>DEFINITION<br>If $r(t)$ parametrizes a smooth curve $C$ in the domain of a continuous velocity field $F$, the <strong>flow</strong> along the curve from $A = r(a)$ to $B = r(b)$ is<br>$$<br>Flow = \int_C F \cdot T ds<br>\tag{7}<br>$$<br>The integral is called a <strong>flow integral</strong>. If the curve starts and ends at the same point, so that $A = B$, the flow is called the <strong>circulation</strong> around the curve.</p>
+</blockquote>
+<h3 id="Flux-Across-a-Simple-Closed-Plane-Curve-简单封闭平面曲线上的通量"><a href="#Flux-Across-a-Simple-Closed-Plane-Curve-简单封闭平面曲线上的通量" class="headerlink" title="Flux Across a Simple Closed Plane Curve(简单封闭平面曲线上的通量)"></a>Flux Across a Simple Closed Plane Curve(简单封闭平面曲线上的通量)</h3><p>When a curve starts and ends at the same point, it is a <strong>closed curve or loop</strong>.</p>
+<blockquote>
+<p>DEFINITION<br>If $C$ is a smooth simple closed curve in the domain of a continuous vector field $F = M(x, y)i + N(x, y)j$ in the plane, and if $n$ is the outwardpointing unit normal vector on $C$, the flux of $F$ across $C$ is<br>$$<br>Flux-of-F-across-C = \int_C F \cdot n ds<br>\tag{8}<br>$$</p>
+</blockquote>
+<blockquote>
+<p>Notice the difference between flux and circulation.</p>
+</blockquote>
+<p>$$<br>n = T \times k = (\frac{dx}{ds}i + \frac{dy}{ds}j) \times k = \frac{dy}{ds}i-\frac{dx}{ds}j<br>$$<br>$$<br>F \cdot n = M(x,y)\frac{dy}{ds} - N(x,y)\frac{dx}{ds}<br>$$<br>Hence,<br>$$<br>\int_C F \cdot n ds = \int_C (M(x,y)\frac{dy}{ds} - N(x,y)\frac{dx}{ds}) ds = \oint_C Mdy - Ndx<br>$$<br>We put a directed circle $\oint$ on the last integral as a reminder that the integration around the closed curve $C$ is to be in the counterclockwise direction.</p>
+<p><img src="/images/Calculus/c16/flux.png" alt="flow-flux"></p>
+<blockquote>
+<p>Calculating Flux Across a Smooth Closed Plane Curve<br>$$<br>Flux-of-F = Mi + Nj \space across \space C =\oint Mdy - Ndx<br>\tag{9}<br>$$<br>The integral can be evaluated from any smooth parametrization $x = g(t), y = h(t), a \leq t \leq b$, that traces $C$ counterclockwise exactly once.</p>
+</blockquote>
+<h2 id="Path-Independence-Conservative-Fields-and-Potential-Functions"><a href="#Path-Independence-Conservative-Fields-and-Potential-Functions" class="headerlink" title="Path Independence, Conservative Fields, and Potential Functions"></a>Path Independence, Conservative Fields, and Potential Functions</h2><h3 id="Path-Independence"><a href="#Path-Independence" class="headerlink" title="Path Independence"></a>Path Independence</h3><blockquote>
+<p>DEFINITIONS<br>Let $F$ be a vector field defined on an open region $D$ in space, and suppose that for any two points $A$ and $B$ in $D$ the line integral $\int_C F \cdot dr$ along a path $C$ from $A$ to $B$ in $D$ is the same over all paths from $A$ to $B$. Then the integral $\int_C F \cdot dr$ is <strong>path independent</strong> in $D$ and the field $F$ is <strong>conservative</strong> on $D$.<br>Sometimes we write $\int_C$ as $\int_A^B$ if it’s conservative.</p>
+</blockquote>
+<blockquote>
+<p>DEFINITION<br>If $F$ is a vector field defined on $D$ and $F = \nabla ƒ$ for some scalar function $ƒ$ on $D$, then $ƒ$ is called a potential function(势函数) for $F$.</p>
+</blockquote>
+<p>A gravitational potential is a scalar function whose <strong>gradient field</strong> is a gravitational field, an electric potential is a scalar function whose <strong>gradient field</strong> is an electric field, and<br>so on.</p>
+<p>we can evaluate all the line integrals in the domain of $F$ over any path between $A$ and $B$ by<br>$$<br>\int_A^B F \cdot dr = \int_A^B \nabla f \cdot dr = f(B) - f(A)<br>\tag{1}<br>$$</p>
+<p><u>If you think of $\nabla f$ for functions of several variables as analogous to the derivative ƒ’ for functions of a single variable</u></p>
+<p>Similar to $\int_a^b f’(x) dx = f(b) - f(a)$ right?</p>
+<h3 id="Assumptions-on-Curves-Vector-Fields-and-Domains"><a href="#Assumptions-on-Curves-Vector-Fields-and-Domains" class="headerlink" title="Assumptions on Curves, Vector Fields, and Domains"></a>Assumptions on Curves, Vector Fields, and Domains</h3><p><img src="/images/Calculus/c16/connected-area.png" alt="Assumptions"></p>
+<p>The domains $D$ we consider are <strong>connected</strong>. For an open region, this means that any two points in $D$ can be joined by a <strong>smooth curve</strong> that lies in the region. Some results require $D$ to be <strong>simply connected</strong>, which means that every <strong>loop</strong> in $D$ can be contracted to a point in $D$ without ever leaving $D$.</p>
+<h3 id="Line-Integrals-in-Conservative-Fields"><a href="#Line-Integrals-in-Conservative-Fields" class="headerlink" title="Line Integrals in Conservative Fields"></a>Line Integrals in Conservative Fields</h3><blockquote>
+<p>THEOREM 1—Fundamental Theorem of Line Integrals<br>Let $C$ be a smooth curve joining the point $A$ to the point $B$ in the plane or in space and parametrized by $r(t)$. Let $ƒ$ be a differentiable function with a continuous vector $F = \nablaƒ$ on a domain $D$ containing $C$. Then<br>$$<br>\int_C F \cdot dr = f(B) - f(A)<br>$$</p>
+</blockquote>
+<blockquote>
+<p>THEOREM 2—Conservative Fields are Gradient Fields<br>$F = Mi + Nj + Pk$ be a vector field whose components are continuous throughout an open connected region $D$ in space. Then $F$ is conservative if and only if $F$ is a gradient field $\nabla ƒ$ for a differentiable function $ƒ$.</p>
+</blockquote>
+<p>THEOREM 3—Loop Property of Conservative Fields<br>The following statements are equivalent.</p>
+<ol>
+<li>$\oint_C F \cdot dr = 0$ around every loop (that is, closed curve $C$ ) in $D$.</li>
+<li>The field $F$ is conservative on $D$.</li>
+</ol>
+<p><img src="/images/Calculus/c16/loop.png" alt="loop"></p>
+<h3 id="Finding-Potentials-for-Conservative-Fields"><a href="#Finding-Potentials-for-Conservative-Fields" class="headerlink" title="Finding Potentials for Conservative Fields"></a>Finding Potentials for Conservative Fields</h3><blockquote>
+<p>Component Test for Conservative Fields<br>Let $F = M(x, y, z)i + N(x, y, z)j + P(x, y, z)k$ be a field on an open simply connected domain whose component functions have continuous first partial derivatives. Then, $F$ is conservative if and only if<br>$$<br>\frac{\partial P}{\partial y} = \frac{\partial N}{\partial z},\\<br>\frac{\partial M}{\partial z} = \frac{\partial P}{\partial x},\\<br>\frac{\partial N}{\partial x} = \frac{\partial M}{\partial y},<br>\tag{2}<br>$$</p>
+</blockquote>
+<h3 id="Exact-Differential-Forms"><a href="#Exact-Differential-Forms" class="headerlink" title="Exact Differential Forms"></a>Exact Differential Forms</h3><h2 id="Green’s-Theorem-in-the-Plane"><a href="#Green’s-Theorem-in-the-Plane" class="headerlink" title="Green’s Theorem in the Plane"></a>Green’s Theorem in the Plane</h2><h3 id="Spin-Around-an-Axis-The-k-Component-of-Curl"><a href="#Spin-Around-an-Axis-The-k-Component-of-Curl" class="headerlink" title="Spin Around an Axis: The k-Component of Curl"></a>Spin Around an Axis: The k-Component of Curl</h3><h3 id="Divergence"><a href="#Divergence" class="headerlink" title="Divergence"></a>Divergence</h3><h3 id="Two-Forms-for-Green’s-Theorem"><a href="#Two-Forms-for-Green’s-Theorem" class="headerlink" title="Two Forms for Green’s Theorem"></a>Two Forms for Green’s Theorem</h3><h3 id="Using-Green’s-Theorem-to-Evaluate-Line-Integrals"><a href="#Using-Green’s-Theorem-to-Evaluate-Line-Integrals" class="headerlink" title="Using Green’s Theorem to Evaluate Line Integrals"></a>Using Green’s Theorem to Evaluate Line Integrals</h3><h3 id="Proof-of-Green’s-Theorem-for-Special-Regions"><a href="#Proof-of-Green’s-Theorem-for-Special-Regions" class="headerlink" title="Proof of Green’s Theorem for Special Regions"></a>Proof of Green’s Theorem for Special Regions</h3><h2 id="Surfaces-and-Area"><a href="#Surfaces-and-Area" class="headerlink" title="Surfaces and Area"></a>Surfaces and Area</h2><h3 id="Parametrizations-of-Surfaces"><a href="#Parametrizations-of-Surfaces" class="headerlink" title="Parametrizations of Surfaces"></a>Parametrizations of Surfaces</h3><h3 id="Surface-Area"><a href="#Surface-Area" class="headerlink" title="Surface Area"></a>Surface Area</h3><h3 id="Implicit-Surfaces"><a href="#Implicit-Surfaces" class="headerlink" title="Implicit Surfaces"></a>Implicit Surfaces</h3><h2 id="Surface-Integrals"><a href="#Surface-Integrals" class="headerlink" title="Surface Integrals"></a>Surface Integrals</h2><h3 id="Surface-Integrals-1"><a href="#Surface-Integrals-1" class="headerlink" title="Surface Integrals"></a>Surface Integrals</h3><h3 id="Orientation-of-a"><a href="#Orientation-of-a" class="headerlink" title="Orientation of a"></a>Orientation of a</h3><h3 id="Surface-Integrals-of-Vector-Fields"><a href="#Surface-Integrals-of-Vector-Fields" class="headerlink" title="Surface Integrals of Vector Fields"></a>Surface Integrals of Vector Fields</h3><h3 id="Computing-a-Surface-Integral-for-a-Parametrized-Surface"><a href="#Computing-a-Surface-Integral-for-a-Parametrized-Surface" class="headerlink" title="Computing a Surface Integral for a Parametrized Surface"></a>Computing a Surface Integral for a Parametrized Surface</h3><h3 id="Computing-a-Surface-Integral-for-a-Level-Surface"><a href="#Computing-a-Surface-Integral-for-a-Level-Surface" class="headerlink" title="Computing a Surface Integral for a Level Surface"></a>Computing a Surface Integral for a Level Surface</h3><h3 id="Moments-and-Masses-of-Thin-Shells"><a href="#Moments-and-Masses-of-Thin-Shells" class="headerlink" title="Moments and Masses of Thin Shells"></a>Moments and Masses of Thin Shells</h3><h2 id="Stokes’-Theorem-斯托克斯定理"><a href="#Stokes’-Theorem-斯托克斯定理" class="headerlink" title="Stokes’ Theorem(斯托克斯定理)"></a>Stokes’ Theorem(斯托克斯定理)</h2><h3 id="The-Curl-Vector-Field"><a href="#The-Curl-Vector-Field" class="headerlink" title="The Curl Vector Field"></a>The Curl Vector Field</h3><h3 id="Stokes’-Theorem"><a href="#Stokes’-Theorem" class="headerlink" title="Stokes’ Theorem"></a>Stokes’ Theorem</h3><h3 id="Paddle-Wheel-Interpretation-of-Delta-times-F"><a href="#Paddle-Wheel-Interpretation-of-Delta-times-F" class="headerlink" title="Paddle Wheel Interpretation of $\Delta \times F$"></a>Paddle Wheel Interpretation of $\Delta \times F$</h3><h3 id="Proof-Outline-of-Stokes’-Theorem-for-Polyhedral-Surfaces"><a href="#Proof-Outline-of-Stokes’-Theorem-for-Polyhedral-Surfaces" class="headerlink" title="Proof Outline of Stokes’ Theorem for Polyhedral Surfaces"></a>Proof Outline of Stokes’ Theorem for Polyhedral Surfaces</h3><h3 id="Stokes’-Theorem-for-Surfaces-with-Holes"><a href="#Stokes’-Theorem-for-Surfaces-with-Holes" class="headerlink" title="Stokes’ Theorem for Surfaces with Holes"></a>Stokes’ Theorem for Surfaces with Holes</h3><h3 id="An-Important-Identity"><a href="#An-Important-Identity" class="headerlink" title="An Important Identity"></a>An Important Identity</h3><h3 id="Conservative-Fields-and-Stokes’-Theorem"><a href="#Conservative-Fields-and-Stokes’-Theorem" class="headerlink" title="Conservative Fields and Stokes’ Theorem"></a>Conservative Fields and Stokes’ Theorem</h3><h2 id="The-Divergence-Theorem-and-a-Unified-Theory"><a href="#The-Divergence-Theorem-and-a-Unified-Theory" class="headerlink" title="The Divergence Theorem and a Unified Theory"></a>The Divergence Theorem and a Unified Theory</h2><h3 id="Divergence-in-Three-Dimensions"><a href="#Divergence-in-Three-Dimensions" class="headerlink" title="Divergence in Three Dimensions"></a>Divergence in Three Dimensions</h3><h3 id="Divergence-Theorem"><a href="#Divergence-Theorem" class="headerlink" title="Divergence Theorem"></a>Divergence Theorem</h3><h3 id="Divergence-and-the-Curl"><a href="#Divergence-and-the-Curl" class="headerlink" title="Divergence and the Curl"></a>Divergence and the Curl</h3><h3 id="Proof-of-the-Divergence-Theorem-for-Special-Regions"><a href="#Proof-of-the-Divergence-Theorem-for-Special-Regions" class="headerlink" title="Proof of the Divergence Theorem for Special Regions"></a>Proof of the Divergence Theorem for Special Regions</h3><h3 id="Divergence-Theorem-for-Other-Regions"><a href="#Divergence-Theorem-for-Other-Regions" class="headerlink" title="Divergence Theorem for Other Regions"></a>Divergence Theorem for Other Regions</h3><h3 id="Gauss’s-Law-One-of-the-Four-Great-Laws-of-Electromagnetic-Theory"><a href="#Gauss’s-Law-One-of-the-Four-Great-Laws-of-Electromagnetic-Theory" class="headerlink" title="Gauss’s Law: One of the Four Great Laws of Electromagnetic Theory"></a>Gauss’s Law: One of the Four Great Laws of Electromagnetic Theory</h3><h3 id="Continuity-Equation-of-Hydrodynamics"><a href="#Continuity-Equation-of-Hydrodynamics" class="headerlink" title="Continuity Equation of Hydrodynamics"></a>Continuity Equation of Hydrodynamics</h3><h3 id="Unifying-the-Integral-Theorems"><a href="#Unifying-the-Integral-Theorems" class="headerlink" title="Unifying the Integral Theorems"></a>Unifying the Integral Theorems</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -391,38 +529,214 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Line-Integrals-of-Scalar-Functions">
+        <a class="is-flex" href="#Line-Integrals-of-Scalar-Functions-标量函数的曲线积分">
         <span class="has-mr-6">1</span>
-        <span>Line Integrals of Scalar Functions</span>
+        <span>Line Integrals of Scalar Functions(标量函数的曲线积分)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Additivity">
+        <span class="has-mr-6">1.1</span>
+        <span>Additivity</span>
         </a></li><li>
+        <a class="is-flex" href="#Mass-and-Moment-Calculations">
+        <span class="has-mr-6">1.2</span>
+        <span>Mass and Moment Calculations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Line-Integrals-in-the-Plane">
+        <span class="has-mr-6">1.3</span>
+        <span>Line Integrals in the Plane</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Vector-Fields-and-Line-Integrals-Work-Circulation-and-Flux">
         <span class="has-mr-6">2</span>
         <span>Vector Fields and Line Integrals: Work, Circulation, and Flux</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Vector-Fields-向量场">
+        <span class="has-mr-6">2.1</span>
+        <span>Vector Fields(向量场)</span>
         </a></li><li>
+        <a class="is-flex" href="#Gradient-Fields-梯度场">
+        <span class="has-mr-6">2.2</span>
+        <span>Gradient Fields(梯度场)</span>
+        </a></li><li>
+        <a class="is-flex" href="#Line-Integrals-of-Vector-Fields-向量场-函数-的曲线积分">
+        <span class="has-mr-6">2.3</span>
+        <span>Line Integrals of Vector Fields(向量场(函数)的曲线积分)</span>
+        </a></li><li>
+        <a class="is-flex" href="#Line-Integrals-with-Respect-to-dx-dy-or-dz">
+        <span class="has-mr-6">2.4</span>
+        <span>Line Integrals with Respect to $dx, dy$, or $dz$</span>
+        </a></li><li>
+        <a class="is-flex" href="#Work-Done-by-a-Force-over-a-Curve-in-Space">
+        <span class="has-mr-6">2.5</span>
+        <span>Work Done by a Force over a Curve in Space</span>
+        </a></li><li>
+        <a class="is-flex" href="#Flow-Integrals-and-Circulation-for-Velocity-Fields-速度场的流量积分和循环">
+        <span class="has-mr-6">2.6</span>
+        <span>Flow Integrals and Circulation for Velocity Fields(速度场的流量积分和循环)</span>
+        </a></li><li>
+        <a class="is-flex" href="#Flux-Across-a-Simple-Closed-Plane-Curve-简单封闭平面曲线上的通量">
+        <span class="has-mr-6">2.7</span>
+        <span>Flux Across a Simple Closed Plane Curve(简单封闭平面曲线上的通量)</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Path-Independence-Conservative-Fields-and-Potential-Functions">
         <span class="has-mr-6">3</span>
         <span>Path Independence, Conservative Fields, and Potential Functions</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Path-Independence">
+        <span class="has-mr-6">3.1</span>
+        <span>Path Independence</span>
         </a></li><li>
+        <a class="is-flex" href="#Assumptions-on-Curves-Vector-Fields-and-Domains">
+        <span class="has-mr-6">3.2</span>
+        <span>Assumptions on Curves, Vector Fields, and Domains</span>
+        </a></li><li>
+        <a class="is-flex" href="#Line-Integrals-in-Conservative-Fields">
+        <span class="has-mr-6">3.3</span>
+        <span>Line Integrals in Conservative Fields</span>
+        </a></li><li>
+        <a class="is-flex" href="#Finding-Potentials-for-Conservative-Fields">
+        <span class="has-mr-6">3.4</span>
+        <span>Finding Potentials for Conservative Fields</span>
+        </a></li><li>
+        <a class="is-flex" href="#Exact-Differential-Forms">
+        <span class="has-mr-6">3.5</span>
+        <span>Exact Differential Forms</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Green’s-Theorem-in-the-Plane">
         <span class="has-mr-6">4</span>
         <span>Green’s Theorem in the Plane</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Spin-Around-an-Axis-The-k-Component-of-Curl">
+        <span class="has-mr-6">4.1</span>
+        <span>Spin Around an Axis: The k-Component of Curl</span>
         </a></li><li>
+        <a class="is-flex" href="#Divergence">
+        <span class="has-mr-6">4.2</span>
+        <span>Divergence</span>
+        </a></li><li>
+        <a class="is-flex" href="#Two-Forms-for-Green’s-Theorem">
+        <span class="has-mr-6">4.3</span>
+        <span>Two Forms for Green’s Theorem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Using-Green’s-Theorem-to-Evaluate-Line-Integrals">
+        <span class="has-mr-6">4.4</span>
+        <span>Using Green’s Theorem to Evaluate Line Integrals</span>
+        </a></li><li>
+        <a class="is-flex" href="#Proof-of-Green’s-Theorem-for-Special-Regions">
+        <span class="has-mr-6">4.5</span>
+        <span>Proof of Green’s Theorem for Special Regions</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Surfaces-and-Area">
         <span class="has-mr-6">5</span>
         <span>Surfaces and Area</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Parametrizations-of-Surfaces">
+        <span class="has-mr-6">5.1</span>
+        <span>Parametrizations of Surfaces</span>
         </a></li><li>
+        <a class="is-flex" href="#Surface-Area">
+        <span class="has-mr-6">5.2</span>
+        <span>Surface Area</span>
+        </a></li><li>
+        <a class="is-flex" href="#Implicit-Surfaces">
+        <span class="has-mr-6">5.3</span>
+        <span>Implicit Surfaces</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Surface-Integrals">
         <span class="has-mr-6">6</span>
         <span>Surface Integrals</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Surface-Integrals-1">
+        <span class="has-mr-6">6.1</span>
+        <span>Surface Integrals</span>
+        </a></li><li>
+        <a class="is-flex" href="#Orientation-of-a">
+        <span class="has-mr-6">6.2</span>
+        <span>Orientation of a</span>
+        </a></li><li>
+        <a class="is-flex" href="#Surface-Integrals-of-Vector-Fields">
+        <span class="has-mr-6">6.3</span>
+        <span>Surface Integrals of Vector Fields</span>
+        </a></li><li>
+        <a class="is-flex" href="#Computing-a-Surface-Integral-for-a-Parametrized-Surface">
+        <span class="has-mr-6">6.4</span>
+        <span>Computing a Surface Integral for a Parametrized Surface</span>
+        </a></li><li>
+        <a class="is-flex" href="#Computing-a-Surface-Integral-for-a-Level-Surface">
+        <span class="has-mr-6">6.5</span>
+        <span>Computing a Surface Integral for a Level Surface</span>
+        </a></li><li>
+        <a class="is-flex" href="#Moments-and-Masses-of-Thin-Shells">
+        <span class="has-mr-6">6.6</span>
+        <span>Moments and Masses of Thin Shells</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Stokes’-Theorem-斯托克斯定理">
+        <span class="has-mr-6">7</span>
+        <span>Stokes’ Theorem(斯托克斯定理)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-Curl-Vector-Field">
+        <span class="has-mr-6">7.1</span>
+        <span>The Curl Vector Field</span>
         </a></li><li>
         <a class="is-flex" href="#Stokes’-Theorem">
-        <span class="has-mr-6">7</span>
+        <span class="has-mr-6">7.2</span>
         <span>Stokes’ Theorem</span>
         </a></li><li>
+        <a class="is-flex" href="#Paddle-Wheel-Interpretation-of-Delta-times-F">
+        <span class="has-mr-6">7.3</span>
+        <span>Paddle Wheel Interpretation of $\Delta \times F$</span>
+        </a></li><li>
+        <a class="is-flex" href="#Proof-Outline-of-Stokes’-Theorem-for-Polyhedral-Surfaces">
+        <span class="has-mr-6">7.4</span>
+        <span>Proof Outline of Stokes’ Theorem for Polyhedral Surfaces</span>
+        </a></li><li>
+        <a class="is-flex" href="#Stokes’-Theorem-for-Surfaces-with-Holes">
+        <span class="has-mr-6">7.5</span>
+        <span>Stokes’ Theorem for Surfaces with Holes</span>
+        </a></li><li>
+        <a class="is-flex" href="#An-Important-Identity">
+        <span class="has-mr-6">7.6</span>
+        <span>An Important Identity</span>
+        </a></li><li>
+        <a class="is-flex" href="#Conservative-Fields-and-Stokes’-Theorem">
+        <span class="has-mr-6">7.7</span>
+        <span>Conservative Fields and Stokes’ Theorem</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#The-Divergence-Theorem-and-a-Unified-Theory">
         <span class="has-mr-6">8</span>
         <span>The Divergence Theorem and a Unified Theory</span>
-        </a></li></ul>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Divergence-in-Three-Dimensions">
+        <span class="has-mr-6">8.1</span>
+        <span>Divergence in Three Dimensions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Divergence-Theorem">
+        <span class="has-mr-6">8.2</span>
+        <span>Divergence Theorem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Divergence-and-the-Curl">
+        <span class="has-mr-6">8.3</span>
+        <span>Divergence and the Curl</span>
+        </a></li><li>
+        <a class="is-flex" href="#Proof-of-the-Divergence-Theorem-for-Special-Regions">
+        <span class="has-mr-6">8.4</span>
+        <span>Proof of the Divergence Theorem for Special Regions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Divergence-Theorem-for-Other-Regions">
+        <span class="has-mr-6">8.5</span>
+        <span>Divergence Theorem for Other Regions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Gauss’s-Law-One-of-the-Four-Great-Laws-of-Electromagnetic-Theory">
+        <span class="has-mr-6">8.6</span>
+        <span>Gauss’s Law: One of the Four Great Laws of Electromagnetic Theory</span>
+        </a></li><li>
+        <a class="is-flex" href="#Continuity-Equation-of-Hydrodynamics">
+        <span class="has-mr-6">8.7</span>
+        <span>Continuity Equation of Hydrodynamics</span>
+        </a></li><li>
+        <a class="is-flex" href="#Unifying-the-Integral-Theorems">
+        <span class="has-mr-6">8.8</span>
+        <span>Unifying the Integral Theorems</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
