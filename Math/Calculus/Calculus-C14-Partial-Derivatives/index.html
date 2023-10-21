@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-09T02:13:24.000Z">
-<meta property="article:modified_time" content="2023-10-12T09:16:32.942Z">
+<meta property="article:modified_time" content="2023-10-20T11:07:05.620Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Calculus">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    23 minutes read (About 3441 words)
+                    35 minutes read (About 5188 words)
                 </span>
                 
                 
@@ -208,9 +208,9 @@
 </blockquote>
 <p><img src="/images/Calculus/c14/surface-curve.png" alt="level curve and contour curve and surface"></p>
 <h3 id="Functions-of-Three-Variables"><a href="#Functions-of-Three-Variables" class="headerlink" title="Functions of Three Variables"></a>Functions of Three Variables</h3><blockquote>
-<p>DEFINITION<br>The set of points $(x, y, z)$ in space where a function of three independent variables has a constant value $ƒ(x, y, z) = c$ is called a level surface of $ƒ$.</p>
+<p>DEFINITION<br>The set of points $(x, y, z)$ in space where a function of three independent variables has a constant value $ƒ(x, y, z) = c$ is called a <u>level surface</u> of $ƒ$.</p>
 </blockquote>
-<p>Since the graphs of functions of three variables consist of points $(x, y, z, ƒ(x, y, z))$ lying in a four-dimensional space, we cannot sketch them effectively in our three-dimensional frame of reference. We can see how the function behaves, however, by looking at its three-dimensional level surfaces.</p>
+<p>Since the graphs of functions of three variables consist of points $(x, y, z, ƒ(x, y, z))$ lying in a four-dimensional space, we cannot sketch them effectively in our three-dimensional frame of reference. <u>We can see how the function behaves, however, by looking at its three-dimensional level surfaces</u>.</p>
 <blockquote>
 <p>DEFINITIONS<br>A point $(x_0, y_0, z_0)$ in a region $R$ in space is an <strong>interior point</strong> of $R$ if it is the center of a solid ball that lies entirely in $R$ (Figure 14.9a). A point $(x_0, y_0, z_0)$ is a <strong>boundary point</strong> of $R$ if every solid ball centered at $(x_0, y_0, z_0)$ contains points that lie outside of $R$ as well as points that lie inside R (Figure 14.9b). The <strong>interior</strong> of $R$ is the set of interior points of $R$. The <strong>boundary</strong> of $R$ is the set of boundary points of $R$.<br>A region is <strong>open</strong> if it consists entirely of interior points. A region is closed if it contains its entire boundary.</p>
 </blockquote>
@@ -230,14 +230,14 @@
 </ol>
 </blockquote>
 <blockquote>
-<p>Continuity of Compositions<br>If $ƒ$ is continuous at $(x_0 , y_0)$ and $g$ is a single-variable function continuous at $ƒ(x0 , y0)$, then the composition $h = g \circ f$ defined by $h(x, y) = g(ƒ(x, y))$ is continuous at $(x_0, y_0)$.</p>
+<p>Continuity of Compositions<br>If $ƒ$ is continuous at $(x_0 , y_0)$ and $g$ is a single-variable function continuous at $ƒ(x_0 , y_0)$, then the composition $h = g \circ f$ defined by $h(x, y) = g(ƒ(x, y))$ is continuous at $(x_0, y_0)$.</p>
 </blockquote>
 <h2 id="Partial-Derivatives"><a href="#Partial-Derivatives" class="headerlink" title="Partial Derivatives"></a>Partial Derivatives</h2><h3 id="Partial-Derivatives-of-a-Function-of-Two-Variables"><a href="#Partial-Derivatives-of-a-Function-of-Two-Variables" class="headerlink" title="Partial Derivatives of a Function of Two Variables"></a>Partial Derivatives of a Function of Two Variables</h3><blockquote>
 <p>DEFINITION<br>The partial derivative of $ƒ(x, y)$ with respect to $x$ at the point $(x_0 , y_0)$ is<br>$$<br>\left. \frac{\partial f}{\partial x} \right|_{x_0, y_0} = \lim_{h\rightarrow 0} \frac{f(x_0+h,y_0) - f(x_0,y_0)}{h}<br>$$<br>The partial derivative of $ƒ(x, y)$ with respect to $y$ at the point $(x_0 , y_0)$ is<br>$$<br>\left. \frac{\partial f}{\partial y} \right|_{x_0, y_0} = \lim_{h\rightarrow 0} \frac{f(x_0,y_0 + h) - f(x_0,y_0)}{h}<br>$$</p>
 </blockquote>
 <p><img src="/images/Calculus/c14/partial.png" alt="partial"></p>
 <h3 id="Calculations"><a href="#Calculations" class="headerlink" title="Calculations"></a>Calculations</h3><p>&#x1F4A1;For example&#x1F4A1;:</p>
-<p>The plane $x = 1$ intersects the paraboloid（抛物面） $z = x_2 + y_2$ in a parabola（抛物线）. Find the slope of the tangent to the parabola at $(1, 2, 5)$ (Figure 14.19).</p>
+<p>The plane $x = 1$ intersects the paraboloid（抛物面） $z = x^2 + y^2$ in a parabola（抛物线）. Find the slope of the tangent to the parabola at $(1, 2, 5)$ (Figure 14.19).</p>
 <p><img src="/images/Calculus/c14/calculus.png" alt="paraboloid"></p>
 <p>Solution:</p>
 <p>The parabola lies in a plane parallel to the $yz$-plane, and the slope is the value of the partial derivative $\frac{\partial z}{\partial y}$ at $(1, 2)$:</p>
@@ -245,7 +245,6 @@
 <h3 id="Functions-of-More-Than-Two-Variables"><a href="#Functions-of-More-Than-Two-Variables" class="headerlink" title="Functions of More Than Two Variables"></a>Functions of More Than Two Variables</h3><h3 id="Partial-Derivatives-and-Continuity"><a href="#Partial-Derivatives-and-Continuity" class="headerlink" title="Partial Derivatives and Continuity"></a>Partial Derivatives and Continuity</h3><p>A function $ƒ(x, y)$ can have partial derivatives with respect to both $x$ and $y$ at a point without the function being continuous there.（对于多变量（元）函数，偏导存在(可导)不一定连续）</p>
 <p>&#x1F4A1;For example&#x1F4A1;:</p>
 <p>Let<br>$$<br>f(x,y) =<br>\begin{cases}<br>0, xy \neq 0\\<br>1, xy = 0<br>\end{cases}<br>$$<br>(Figure 14.21).<br>(a) Find the limit of $ƒ$ as $(x, y)$ approaches $(0, 0)$ along the line $y = x$.<br>(b) Prove that $ƒ$ is not continuous at the origin.<br>(c) Show that both partial derivatives $\partial ƒ /\partial x$ and $\partial ƒ /\partial y$ exist at the origin.</p>
-<p><img src="/images/Calculus/c14/partial-continunity.png" alt="paraboloid"></p>
 <p>Solution:</p>
 <p>(a). Since $ƒ(x, y)$ is constantly zero along the line $y = x$ (except at the origin), we have</p>
 <p>$$<br>\left. \lim_{(x,y) \rightarrow (0,0)} f(x,y) \right|_{y=x} = \lim_{(x,y) \rightarrow (0,0)} 0 = 0<br>$$</p>
@@ -274,26 +273,27 @@
 <h3 id="Implicit-Differentiation-Revisited"><a href="#Implicit-Differentiation-Revisited" class="headerlink" title="Implicit Differentiation Revisited"></a>Implicit Differentiation Revisited</h3><p>Suppose that</p>
 <ol>
 <li>The function $F(x, y)$ is differentiable and</li>
-<li>The equation $F(x, y) = 0$ defines $y$ implicitly as a differentiable function of $x$, say<br>$y = h(x)$.</li>
+<li>The equation $F(x, y) = 0$ defines $y$ implicitly as a differentiable function of $x$, say $y = h(x)$.</li>
 </ol>
 <p>Since $w = F(x, y) = 0$, the derivative $dw/ dx$ must be zero.</p>
 <p>$$<br>0 = \frac{dw}{dx} = F_x\frac{dx}{dx} + F_y\frac{dy}{dx}<br>= F_x \cdot 1 + F_y \cdot \frac{dy}{dx}<br>$$</p>
 <p>If $F_y = \frac{\partial w}{\partial y} \neq 0$, then</p>
 <p>$$<br>\frac{dy}{dx} = -\frac{F_x}{F_y}<br>$$</p>
 <p><img src="/images/Calculus/c14/chainrule.png" alt="implicit-differentiation"></p>
-<h3 id="Functions-of-Many-Variables"><a href="#Functions-of-Many-Variables" class="headerlink" title="Functions of Many Variables"></a>Functions of Many Variables</h3><h2 id="Directional-Derivatives-and-Gradient-Vectors"><a href="#Directional-Derivatives-and-Gradient-Vectors" class="headerlink" title="Directional Derivatives and Gradient Vectors"></a>Directional Derivatives and Gradient Vectors</h2><h3 id="Directional-Derivatives-in-the-Plane"><a href="#Directional-Derivatives-in-the-Plane" class="headerlink" title="Directional Derivatives in the Plane"></a>Directional Derivatives in the Plane</h3><p>Suppose that the function $ƒ(x, y)$ is defined throughout a region $R$ in the $xy$-plane, that $P_0(x_0, y_0)$ is a point in $R$, and that $\vec{u} = u_1\vec{i} + u_2\vec{j}$ is a unit vector. Then the equations<br>$$<br>x = x_0 + s\vec{u_1}, y = y_0 + s\vec{u_2}<br>$$<br>parametrize the line through $P_0$ parallel to $\vec{u}$.<br>If the parameter $s$ measures arc length from $P_0$ in the direction of $\vec{u}$, we find the rate of change of $ƒ$ at $P_0$ in the direction of $\vec{u}$ by calculating $dƒ / ds$ at $P_0$.</p>
+<h3 id="Functions-of-Many-Variables"><a href="#Functions-of-Many-Variables" class="headerlink" title="Functions of Many Variables"></a>Functions of Many Variables</h3><h2 id="Directional-Derivatives-and-Gradient-Vectors"><a href="#Directional-Derivatives-and-Gradient-Vectors" class="headerlink" title="Directional Derivatives and Gradient Vectors"></a>Directional Derivatives and Gradient Vectors</h2><h3 id="Directional-Derivatives-in-the-Plane"><a href="#Directional-Derivatives-in-the-Plane" class="headerlink" title="Directional Derivatives in the Plane"></a>Directional Derivatives in the Plane</h3><p><img src="/images/Calculus/c14/directional-derivative.png" alt="directional-derivative"></p>
+<p>Suppose that the function $ƒ(x, y)$ is defined throughout a region $R$ in the $xy$-plane, that $P_0(x_0, y_0)$ is a point in $R$, and that $\vec{u} = u_1\vec{i} + u_2\vec{j}$ is a unit vector. Then the equations<br>$$<br>x = x_0 + s\vec{u_1}, y = y_0 + s\vec{u_2}<br>$$<br>parametrize the line through $P_0$ parallel to $\vec{u}$.</p>
+<p>If the parameter $s$ measures <u>arc length</u> from $P_0$ in the direction of $\vec{u}$, we find the <u>rate of change</u> of $ƒ$ at $P_0$ in the direction of $\vec{u}$ by calculating $dƒ / ds$ at $P_0$.</p>
 <blockquote>
 <p>DEFINITION<br>The derivative of $f$ at $P_0(x_0, y_0)$ in the direction of the unit vector $\vec{u} = u_1\vec{i} + u_2\vec{j}$ is the number<br>$$<br>\left( \frac{df}{ds} \right)_{\vec{u}, P_0} = \lim_{s \rightarrow 0} \frac{f(x_0 + su_1, y_0 + su_2) - f(x_0,y_0)}{s}<br>\tag{1}<br>$$<br>The <strong>directional derivative</strong> defined by Equation (1) is also denoted by<br>$$<br>D_{\vec{u}} f(P_0)\\<br>or\\<br>\left. D_{\vec{u}} f \right|_{P_0}<br>$$</p>
 </blockquote>
-<h3 id="Interpretation-of-the-Directional-Derivative"><a href="#Interpretation-of-the-Directional-Derivative" class="headerlink" title="Interpretation of the Directional Derivative"></a>Interpretation of the Directional Derivative</h3><p><img src="/images/Calculus/c14/directional-derivative.png" alt="directional-derivative"></p>
-<p>The equation $z = ƒ(x, y)$ represents a surface $S$ in space. If $z_0 = ƒ(x_0 , y_0)$, then the point $P(x_0 , y_0 , z_0)$ lies on $S$. The vertical plane that passes through $P$ and $P_0(x_0 , y_0)$ parallel to $\vec{u}$ intersects $S$ in a curve $C$ (Figure 14.28). The rate of change of $ƒ$ in the direction of $\vec{u}$ is the slope of the tangent to $C$ at $P$ in the right-handed system formed by the vectors $\vec{u}$ and $\vec{k}$.</p>
+<h3 id="Interpretation-of-the-Directional-Derivative"><a href="#Interpretation-of-the-Directional-Derivative" class="headerlink" title="Interpretation of the Directional Derivative"></a>Interpretation of the Directional Derivative</h3><p>The equation $z = ƒ(x, y)$ represents a surface $S$ in space. If $z_0 = ƒ(x_0 , y_0)$, then the point $P(x_0 , y_0 , z_0)$ lies on $S$. The vertical plane that passes through $P$ and $P_0(x_0 , y_0)$ parallel to $\vec{u}$ intersects $S$ in a curve $C$ (Figure 14.28). The rate of change of $ƒ$ in the direction of $\vec{u}$ is the slope of the tangent to $C$ at $P$ in the right-handed system formed by the vectors $\vec{u}$ and $\vec{k}$.</p>
 <h3 id="Calculation-and-Gradients"><a href="#Calculation-and-Gradients" class="headerlink" title="Calculation and Gradients"></a>Calculation and Gradients</h3><p>By Chain Rule:</p>
 <p>$$<br>\begin{aligned}<br>\left( \frac{df}{ds}\right)_{\vec{u},P_0} &amp;= \left. \frac{\partial f}{\partial x} \right|_{P_0} \frac{dx}{ds} + \left. \frac{\partial f}{\partial y} \right|_{P_0} \frac{dy}{ds}\\<br>&amp;= \left. \frac{\partial f}{\partial x} \right|_{P_0} u_1 + \left. \frac{\partial f}{\partial x} \right|_{P_0} u_2 \\<br>&amp;= \underbrace{\left[ \left. \frac{\partial f}{\partial x} \right|_{P_0} \vec{i} + \left. \frac{\partial f}{\partial y} \right|_{P_0} \vec{j} \right]}_{Gradient-of-f-at-P_0} \cdot \underbrace{\left[ u_1\vec{i} + u_2\vec{j} \right]}_{Direction-of-\vec{u}}<br>\end{aligned}<br>\tag{3}<br>$$</p>
 <blockquote>
 <p>Definition<br>The gradient vector (or gradient) of $ƒ(x, y)$ is the vector<br>$$<br>\nabla f = \frac{\partial f}{\partial x} \vec{i} + \frac{\partial f}{\partial y} \vec{j}<br>$$<br>The value of the gradient vector obtained by evaluating the partial derivatives at a point $P_0(x_0, y_0)$ is written<br>$$<br>\left. \nabla f \right|_{P_0}\\<br>or\\<br>\nabla f(x_0,y_0)<br>$$</p>
 </blockquote>
 <blockquote>
-<p>theorem 9—The Directional Derivative Is a Dot Product<br>If $ƒ(x, y)$ is differentiable in an open region containing $P_0(x_0, y_0)$, then<br>$$<br>\left( \frac{df}{ds} \right)_{\vec{u}, P_0} = \left. \nabla f \right|_{P_0} \cdot \vec{u}<br>$$</p>
+<p>theorem 9—The Directional Derivative Is a Dot Product<br>If $ƒ(x, y)$ is differentiable in an open region containing $P_0(x_0, y_0)$, then<br>$$<br>\left( \frac{df}{ds} \right)_{\vec{u}, P_0} = \left. \nabla f \right|_{P_0} \cdot \vec{u}<br>\tag{4}<br>$$</p>
 </blockquote>
 <p>&#x1F4A1;For example&#x1F4A1;:</p>
 <p>Find the derivative of $ƒ(x, y) = xe^y + cos (xy)$ at the point $(2, 0)$ in the direction of $\vec{v} = 3\vec{i} - 4\vec{j}$.（directional derivative）</p>
@@ -308,37 +308,140 @@
 <p>The derivative of $f$ at $(2, 0)$ in the direction of $\vec{v}$ is therefore</p>
 <p>$$<br>D_{\vec{u}} f |_{(2,0)} = \nabla f_{(2,0)} \cdot \vec{u}<br>= -1<br>$$</p>
 <p>Evaluating the dot product in the brief version of Equation (4) gives<br>$$<br>D_{\vec{u}} f = \nabla f \cdot \vec{u} = |\nabla f| |\vec{u}| \cos \theta = |\nabla f| \cos \theta<br>$$</p>
+<p><img src="/images/Calculus/c14/gradient-property.png" alt="gradient-property"></p>
 <blockquote>
 <p>Properties of the Directional Derivative $D_{\vec{u}} f = \nabla f \cdot \vec{u} = |\nabla f| \cos \theta$</p>
 <ol>
-<li>The function $ƒ$ increases most rapidly when $\cos\theta = 1$, which means that $\theta = 0$ and $\vec{u}$ is the direction of $\nabla f$. That is, at each point $P$ in its domain, $ƒ$ increases most rapidly in the direction of the gradient vector $\nabla f$ at $P$. The derivative in this direction is<br>$$<br>D_{\vec{u}} f = |\nabla f| \cos(0) = |\nabla f|<br>$$</li>
+<li>The function $ƒ$ increases most rapidly when $\cos\theta = 1$, which means that $\theta = 0$ and $\vec{u}$ is the direction of $\nabla f$. <u>That is, at each point $P$ in its domain, $ƒ$ increases most rapidly in the direction of the gradient vector $\nabla f$ at $P$.</u> The derivative in this direction is<br>$$<br>D_{\vec{u}} f = |\nabla f| \cos(0) = |\nabla f|<br>$$</li>
 <li>Similarly, $ƒ$ decreases most rapidly in the direction of $-\nabla f$. The derivative in this direction is $D_{\vec{u}} f = |\nabla f| \cos(\pi) = -|\nabla f|$.</li>
 <li>Any direction $\vec{u}$ orthogonal to a gradient $\nabla f \neq 0$ is a direction of zero change in $ƒ$ because $\theta$ then equals $\pi / 2$ and<br>$$<br>D_{\vec{u}} f = |\nabla f| \cos(\pi/2) = 0<br>$$</li>
 </ol>
 </blockquote>
-<p><img src="/images/Calculus/c14/gradient-property.png" alt="gradient-property"></p>
-<h3 id="Gradients-and-Tangents-to-Level-Curves"><a href="#Gradients-and-Tangents-to-Level-Curves" class="headerlink" title="Gradients and Tangents to Level Curves"></a>Gradients and Tangents to Level Curves</h3><p>If a differentiable function $ƒ(x, y)$ has a constant value $c$ along a smooth curve $r = g(t)i + h(t)j$, then<br>$$<br>\frac{d}{dt}f(g(t), h(t)) = \frac{d}{dt} c<br>$$<br>$$<br>\frac{\partial f}{\partial x}\frac{dg}{dt} + \frac{\partial f}{\partial y}\frac{dh}{dt} = 0<br>$$</p>
+<h3 id="Gradients-and-Tangents-to-Level-Curves"><a href="#Gradients-and-Tangents-to-Level-Curves" class="headerlink" title="Gradients and Tangents to Level Curves"></a>Gradients and Tangents to Level Curves</h3><p>If a differentiable function $ƒ(x, y)$ has a constant value $c$ along a smooth curve $r = g(t)i + h(t)j$, then<br>$$<br>\frac{d}{dt}f(g(t), h(t)) = \frac{d}{dt} c<br>$$</p>
+<p>$$<br>\frac{\partial f}{\partial x}\frac{dg}{dt} + \frac{\partial f}{\partial y}\frac{dh}{dt} = 0<br>$$</p>
 <p>$$<br>\underbrace{\left( \frac{\partial f}{\partial x} \vec{i} + \frac{\partial f}{\partial y} \vec{j}\right)}_{\nabla f} \cdot<br>\underbrace{\left( \frac{dg}{dt} \vec{i} + \frac{dh}{dt} \vec{j}\right)}_{\frac{dr}{dt}} = 0<br>\tag{5}<br>$$<br>Equation (5) says that $\nabla ƒ$ is normal to the tangent vector $dr / dt$, so it is normal to the curve.</p>
 <p><img src="/images/Calculus/c14/level-curve-gradient.png" alt="gradient-property"></p>
 <p>Tangent Line to a Level Curve<br>$$<br>f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0) = 0<br>$$</p>
-<h3 id="Functions-of-Three-Variables-2"><a href="#Functions-of-Three-Variables-2" class="headerlink" title="Functions of Three Variables"></a>Functions of Three Variables</h3><h3 id="The-Chain-Rule-for-Paths"><a href="#The-Chain-Rule-for-Paths" class="headerlink" title="The Chain Rule for Paths"></a>The Chain Rule for Paths</h3><p>If $r(t) = x(t) i + y(t) j + z(t)k$ is a smooth path $C$, and $w = ƒ(r(t))$ is a scalar function<br>evaluated along $C$, then according to the Chain Rule,<br>$$<br>\frac{dw}{dt} = \frac{\partial w}{\partial x} \frac{dx}{dt} + \frac{\partial w}{\partial y} \frac{dy}{dt} + \frac{\partial w}{\partial z} \frac{dz}{dt}<br>$$</p>
+<blockquote>
+<p><u>Attention：gradient is perpendicular to the <strong>level curve</strong>, not the <strong>surface</strong>. Gradient in multi-variable function is like <strong>derivative</strong> in sigle-variable function.</u></p>
+</blockquote>
+<h3 id="Functions-of-Three-Variables-2"><a href="#Functions-of-Three-Variables-2" class="headerlink" title="Functions of Three Variables"></a>Functions of Three Variables</h3><h3 id="The-Chain-Rule-for-Paths"><a href="#The-Chain-Rule-for-Paths" class="headerlink" title="The Chain Rule for Paths"></a>The Chain Rule for Paths</h3><p>If $r(t) = x(t) i + y(t) j + z(t)k$ is a smooth path $C$, and $w = ƒ(r(t))$ is a scalar function evaluated along $C$, then according to the Chain Rule,<br>$$<br>\frac{dw}{dt} = \frac{\partial w}{\partial x} \frac{dx}{dt} + \frac{\partial w}{\partial y} \frac{dy}{dt} + \frac{\partial w}{\partial z} \frac{dz}{dt}<br>$$</p>
 <blockquote>
 <p>The Derivative Along a Path<br>$$<br>\frac{d}{dt}f(r(t)) = \nabla f(r(t)) \cdot r’(t)<br>\tag{7}<br>$$<br>What Equation (7) says is that the derivative of the composite function $ƒ(r(t))$ is the “derivative” (gradient) of the outside function $ƒ$ “times” (dot product) the derivative of the inside function $r$.</p>
 </blockquote>
 <h2 id="Tangent-Planes-and-Differentials"><a href="#Tangent-Planes-and-Differentials" class="headerlink" title="Tangent Planes and Differentials"></a>Tangent Planes and Differentials</h2><p>Recall how the derivative defined the tangent line to the graph of a differentiable function at a point on the graph. The tangent line then provided for a linearization of the function at the point. &#x1F449;<a href="/Math/Calculus/Calculus-C3-Derivatives/#Lenses-Tangent-Lines-and-Normal-Lines">More about Tangent Line in Singule Variable Function &gt;&gt;</a></p>
-<p>how the gradient defines the tangent plane to the level surface of a function $w = ƒ(x, y, z)$ at a point on the surface. The tangent plane then provides for a linearization of $ƒ$ at the point and defines the total differential of the function.</p>
+<p>how the gradient defines the tangent plane to the <strong>level surface</strong> of a function $w = ƒ(x, y, z)$ at a point on the surface. The tangent plane then provides for a linearization of $ƒ$ at the point and defines the total differential of the function.</p>
 <h3 id="Tangent-Planes-and-Normal-Lines"><a href="#Tangent-Planes-and-Normal-Lines" class="headerlink" title="Tangent Planes and Normal Lines"></a>Tangent Planes and Normal Lines</h3><blockquote>
-<p>DEFINITIONS<br>The tangent plane to the level surface $ƒ(x, y, z) = c$ of a differentiable function $ƒ$ at a point $P_0$ where the gradient is not zero is the plane through $P_0$ normal to $\nabla f|_{P_0}$.</p>
+<p>DEFINITIONS<br>The <strong>tangent plane</strong> to the <strong>level surface</strong> $ƒ(x, y, z) = c$ of a differentiable function $ƒ$ at a point $P_0$ where the gradient is not zero is the plane through $P_0$ <u>normal</u> to $\nabla f|_{P_0}$.<br>The <strong>normal line</strong> of the surface at $P_0$ is the line through $P_0$ <u>parallel</u> to $\nabla f |_{P_0}$.</p>
 </blockquote>
 <p>&#x1F4A1;For example&#x1F4A1;:</p>
 <p>Find the tangent plane and normal line of the level surface<br>$$<br>f(x,y,z) = x^2 + y^2 + z - 9 = 0<br>$$<br>at the point $P_0 (1, 2, 4)$.</p>
-<p><img src="/images/Calculus/c14/tangent-plane.png" alt="tangent-plane"></p>
 <p>Solution:</p>
-<p>The tangent plane is the plane through $P_0$ perpendicular to the gradient of $ƒ$ at $P_0$. The gradient is<br>$$<br>\nabla f |_{P_0} = (2xi + 2yj + k)|_{(1,2,4)} = 2i + j + k<br>$$<br>The tangent plane is therefore the plane<br>$$<br>2(x-1) + 4(y-2) + (z-4) = 0<br>$$<br>The line normal to the surface at $P_0$ is<br>$$<br>x = 1 + 2t, y = 2 + 4t, z = 4 + t<br>$$</p>
+<p>The tangent plane is the plane through $P_0$ perpendicular to the gradient of $ƒ$ at $P_0$. The gradient is<br>$$<br>\nabla f |_{P_0} = (2xi + 2yj + k)|_{(1,2,4)} = 2i + j + k<br>$$<br>The tangent plane is therefore the plane<br>$$<br>2(x-1) + 4(y-2) + (z-4) = 0<br>$$<br>or<br>$$<br>2x + 4y + z = 14<br>$$<br>The line normal to the surface at $P_0$ is<br>$$<br>x = 1 + 2t, y = 2 + 4t, z = 4 + t<br>$$</p>
 <blockquote>
 <p>Plane Tangent to a Surface $z = ƒ(x, y)$ at $(x_0 , y_0 , ƒ(x_0 , y_0))$<br>The plane tangent to the surface $z = ƒ(x, y)$ of a differentiable function $ƒ$ at the point $P_0(x_0 , y_0 , z_0) = (x_0 , y_0 , ƒ(x_0 , y_0))$ is<br>$$<br>f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)-(z-z_0) = 0<br>$$</p>
 </blockquote>
-<h3 id="Estimating-Change-in-a-Specific-Direction"><a href="#Estimating-Change-in-a-Specific-Direction" class="headerlink" title="Estimating Change in a Specific Direction"></a>Estimating Change in a Specific Direction</h3><h3 id="How-to-Linearize-a-Function-of-Two-Variables"><a href="#How-to-Linearize-a-Function-of-Two-Variables" class="headerlink" title="How to Linearize a Function of Two Variables"></a>How to Linearize a Function of Two Variables</h3><h3 id="Differentials"><a href="#Differentials" class="headerlink" title="Differentials"></a>Differentials</h3><h3 id="Functions-of-More-Than-Two-Variables-1"><a href="#Functions-of-More-Than-Two-Variables-1" class="headerlink" title="Functions of More Than Two Variables"></a>Functions of More Than Two Variables</h3><h2 id="Extreme-Values-and-Saddle-Points"><a href="#Extreme-Values-and-Saddle-Points" class="headerlink" title="Extreme Values and Saddle Points"></a>Extreme Values and Saddle Points</h2><h3 id="Derivative-Tests-for-Local-Extreme-Values"><a href="#Derivative-Tests-for-Local-Extreme-Values" class="headerlink" title="Derivative Tests for Local Extreme Values"></a>Derivative Tests for Local Extreme Values</h3><h3 id="Absolute-Maxima-and-Minima-on-Closed-Bounded-Regions"><a href="#Absolute-Maxima-and-Minima-on-Closed-Bounded-Regions" class="headerlink" title="Absolute Maxima and Minima on Closed Bounded Regions"></a>Absolute Maxima and Minima on Closed Bounded Regions</h3><h2 id="Lagrange-Multipliers"><a href="#Lagrange-Multipliers" class="headerlink" title="Lagrange Multipliers"></a>Lagrange Multipliers</h2><h3 id="Constrained-Maxima-and-Minima"><a href="#Constrained-Maxima-and-Minima" class="headerlink" title="Constrained Maxima and Minima"></a>Constrained Maxima and Minima</h3><h3 id="The-Method-of-Lagrange-Multipliers"><a href="#The-Method-of-Lagrange-Multipliers" class="headerlink" title="The Method of Lagrange Multipliers"></a>The Method of Lagrange Multipliers</h3><h3 id="Lagrange-Multipliers-with-Two-Constraints"><a href="#Lagrange-Multipliers-with-Two-Constraints" class="headerlink" title="Lagrange Multipliers with Two Constraints"></a>Lagrange Multipliers with Two Constraints</h3><h2 id="Taylor’s-Formula-for-Two-Variables"><a href="#Taylor’s-Formula-for-Two-Variables" class="headerlink" title="Taylor’s Formula for Two Variables"></a>Taylor’s Formula for Two Variables</h2><h3 id="Derivation-of-the-Second-Derivative-Test"><a href="#Derivation-of-the-Second-Derivative-Test" class="headerlink" title="Derivation of the Second Derivative Test"></a>Derivation of the Second Derivative Test</h3><h3 id="The-Error-Formula-for-Linear-Approximations"><a href="#The-Error-Formula-for-Linear-Approximations" class="headerlink" title="The Error Formula for Linear Approximations"></a>The Error Formula for Linear Approximations</h3><h3 id="Taylor’s-Formula-for-Functions-of-Two-Variables"><a href="#Taylor’s-Formula-for-Functions-of-Two-Variables" class="headerlink" title="Taylor’s Formula for Functions of Two Variables"></a>Taylor’s Formula for Functions of Two Variables</h3><h2 id="Partial-Derivatives-with-Constrained-Variables"><a href="#Partial-Derivatives-with-Constrained-Variables" class="headerlink" title="Partial Derivatives with Constrained Variables"></a>Partial Derivatives with Constrained Variables</h2><h3 id="Decide-Which-Variables-Are-Dependent-and-Which-Are-Independent"><a href="#Decide-Which-Variables-Are-Dependent-and-Which-Are-Independent" class="headerlink" title="Decide Which Variables Are Dependent and Which Are Independent"></a>Decide Which Variables Are Dependent and Which Are Independent</h3><h3 id="How-to-Find-ew-ex-When-the-Variables-in-w-f-x-y-z-Are-Constrained-by-Another-Equation"><a href="#How-to-Find-ew-ex-When-the-Variables-in-w-f-x-y-z-Are-Constrained-by-Another-Equation" class="headerlink" title="How to Find ew,ex When the Variables in w  ƒ(x, y, z) Are Constrained by Another Equation"></a>How to Find ew,ex When the Variables in w  ƒ(x, y, z) Are Constrained by Another Equation</h3><h3 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h3><h3 id="Arrow-Diagrams"><a href="#Arrow-Diagrams" class="headerlink" title="Arrow Diagrams"></a>Arrow Diagrams</h3>
+<p><img src="/images/Calculus/c14/tangent-plane.png" alt="tangent-plane"></p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>The surfaces</p>
+<p>$$<br>f(x,y,z) = x^2 + y^2 -2 = 0<br>$$<br>and </p>
+<p>$$<br>g(x,y,z) = x + z - 4 = 0<br>$$</p>
+<p>meet in an ellipse $E$ (Figure 14.35). Find parametric equations for the line tangent to $E$ at the point $P_0(1, 1, 3)$.</p>
+<p>Solution:</p>
+<p>The tangent line is orthogonal to both $\nabla f$ and $\nabla g$ at $P_0$, and therefore parallel to $v = \nabla f \times \nabla g$. The components of $v$ and the coordinates of $P_0$ give us equations for the line. We have</p>
+<p>$$<br>\nabla f |_{(1,1,3)} = 2i + 2j<br>$$</p>
+<p>$$<br>\nabla g |_{(1,1,3)} = i + k<br>$$</p>
+<p>$$<br>\begin{aligned}<br>v &amp;= (2i + 2j) \times (i + k)\\<br>&amp;=<br>\begin{vmatrix}<br>i &amp; j &amp; k \\<br>2 &amp; 2 &amp; 0\\<br>1 &amp; 0 &amp; 1<br>\end{vmatrix}\\<br>&amp;=2i - 2j - 2k<br>\end{aligned}<br>$$</p>
+<p>The tangent line to the ellipse of intersection is<br>$$<br>x = 1 + 2t, y = 1 - 2t, z = 3 - 2t<br>$$</p>
+<h3 id="Estimating-Change-in-a-Specific-Direction"><a href="#Estimating-Change-in-a-Specific-Direction" class="headerlink" title="Estimating Change in a Specific Direction"></a>Estimating Change in a Specific Direction</h3><blockquote>
+<p>Estimating the Change in $ƒ$ in a Direction $u$<br>To estimate the change in the value of a differentiable function $ƒ$ when we move a small distance $ds$ from a point $P_0$ in a particular direction $u$, use the formula<br>$$<br>df = \underbrace{(\nabla f |_{P_0} \cdot u)}_{Directional-derivative} \underbrace{ds}_{Distance-increment}<br>$$</p>
+</blockquote>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Estimate how much the value of</p>
+<p>$$<br>f(x,y,z) = y\sin x + 2yz<br>$$<br>will change if the point $P(x, y, z)$ moves $0.1$ unit from $P_0(0, 1, 0)$ straight toward $P_1(2, 2, -2)$.</p>
+<p>Solution:</p>
+<p>We first find the derivative of $ƒ$ at $P_0$ in the direction of the vector $\vec{P_0P_1} = 2i + j - 2k$. The direction of this vector is<br>$$<br>u = \frac{\vec{P_0P_1}}{|\vec{P_0P_1}|} = \frac{2}{3}i + \frac{1}{3}j - \frac{2}{3}k<br>$$<br>The gradient of $ƒ$ at $P_0$ is<br>$$<br>\nabla f|_{(0,1,0)} = i + 2k<br>$$<br>Therefore,<br>$$<br>\nabla f|_{P_0} \cdot u = -\frac{2}{3}<br>$$<br>The change $dƒ$ in $ƒ$ that results from moving $ds = 0.1$ unit away from $P_0$ in the direction of $u$ is approximately<br>$$<br>df = (\nabla f|_{P_0}  \cdot u)(ds) \approx -0.047unit.<br>$$</p>
+<p><img src="/images/Calculus/c14/change.png" alt="change"></p>
+<h3 id="How-to-Linearize-a-Function-of-Two-Variables"><a href="#How-to-Linearize-a-Function-of-Two-Variables" class="headerlink" title="How to Linearize a Function of Two Variables"></a>How to Linearize a Function of Two Variables</h3><blockquote>
+<p>DEFINITIONS<br>The linearization of a function $ƒ(x, y)$ at a point $(x_0 , y_0)$ where $ƒ$ is differentiable is the function<br>$$<br>L(x,y) = f(x_0,y_0) + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)<br>$$<br>The approximation<br>$$<br>f(x,y) \approx L(x,y)<br>$$<br>is the standard linear approximation of $ƒ$ at $(x_0 , y_0)$.</p>
+</blockquote>
+<p><img src="/images/Calculus/c14/linerization.png" alt="linerization"></p>
+<blockquote>
+<p>Thus, the linearization of a function of two variables is a tangent-plane approximation in the same way that the linearization of a function of a single variable is a tangent-line approximation.</p>
+</blockquote>
+<blockquote>
+<p>The Error in the Standard Linear Approximation<br>If $ƒ$ has continuous first and second partial derivatives throughout an open set containing a rectangle $R$ centered at $(x_0, y_0)$ and if $M$ is any upper bound for the values of $|f_{xx}|,|f_{yy}|$, and $|f_{xy}|$ on $R$, then the error $E(x, y)$ incurred in replacing $ƒ(x, y)$ on $R$ by its linearization<br>$$<br>L(x,y) = f(x_0, y_0) + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)<br>$$<br>satisfies the inequality<br>$$<br>|E(x,y)| \leq \frac{1}{2}M(|x-x_0| + |y-y_0|)^2<br>$$</p>
+</blockquote>
+<h3 id="Differentials"><a href="#Differentials" class="headerlink" title="Differentials"></a>Differentials</h3><blockquote>
+<p>Definition<br>If we move from $(x_0, y_0)$ to a point $(x_0 + dx, y_0 + dy)$ nearby, the resulting change<br>$$<br>df = f_x(x_0,y_0)dx + f_y(x_0,y_0)dy<br>$$<br>in the linearization of $ƒ$ is called the <strong>total differential</strong> of $ƒ$.</p>
+</blockquote>
+<h3 id="Functions-of-More-Than-Two-Variables-1"><a href="#Functions-of-More-Than-Two-Variables-1" class="headerlink" title="Functions of More Than Two Variables"></a>Functions of More Than Two Variables</h3><p>The linearization of $ƒ(x, y, z)$ at a point $P_0(x_0, y_0, z_0)$ is<br>$$<br>L(x,y,z) = f(P_0) + f_x(P_0)(x-x_0) + f_y(P_0)(y-y_0) + f_z(P_0)(z-z_0)<br>$$</p>
+<h2 id="Extreme-Values-and-Saddle-Points"><a href="#Extreme-Values-and-Saddle-Points" class="headerlink" title="Extreme Values and Saddle Points"></a>Extreme Values and Saddle Points</h2><p>&#x1F449;<a href="/Math/Calculus/Calculus-C4-Applications-of-Derivatives/">Similar Meanings in Single-Variable Functions</a></p>
+<h3 id="Derivative-Tests-for-Local-Extreme-Values"><a href="#Derivative-Tests-for-Local-Extreme-Values" class="headerlink" title="Derivative Tests for Local Extreme Values"></a>Derivative Tests for Local Extreme Values</h3><p><img src="/images/Calculus/c14/extrema.png" alt="extrema"></p>
+<blockquote>
+<p>DEFINITIONS<br>Let $ƒ(x, y)$ be defined on a region $R$ containing the point $(a, b)$. Then</p>
+<ol>
+<li>$ƒ(a, b)$ is a local maximum value of $ƒ$ if $ƒ(a, b) \geq ƒ(x, y)$ for all domain points $(x, y)$ in an open disk centered at $(a, b)$.</li>
+<li>$ƒ(a, b)$ is a local minimum value of $ƒ$ if $ƒ(a, b) \leq ƒ(x, y)$ for all domain points $(x, y)$ in an open disk centered at $(a, b)$.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>theorem 10—First Derivative Test for Local Extreme Values<br>If $ƒ(x, y)$ has a local maximum or minimum value at an interior point $(a, b)$ of its domain and if the first partial derivatives exist there, then $ƒ_x(a, b) = 0$ and $ƒ_y(a, b) = 0$.</p>
+</blockquote>
+<blockquote>
+<p>Definition<br>An interior point of the domain of a function $ƒ(x, y)$ where both $ƒ_x$ and $ƒ_y$ are zero or where one or both of $ƒ_x$ and $ƒ_y$ do not exist is a <strong>critical point</strong> of $ƒ$.</p>
+</blockquote>
+<blockquote>
+<p>Definition<br>A differentiable function $ƒ(x, y)$ has a saddle point at a critical point $(a, b)$ if in every open disk centered at $(a, b)$ there are domain points $(x, y)$ where $ƒ(x, y) &lt; ƒ(a, b)$ and domain points $(x, y)$ where $ƒ(x, y) &gt; ƒ(a, b)$. The corresponding point $(a, b, ƒ(a, b))$ on the surface $z = ƒ(x, y)$ is called a <strong>saddle point</strong> of the surface (Figure 14.45).</p>
+</blockquote>
+<p><img src="/images/Calculus/c14/saddle.png" alt="saddle"></p>
+<blockquote>
+<p>theorem 11—Second Derivative Test for Local Extreme Values<br>Suppose that $ƒ(x, y)$ and its first and second partial derivatives are continuous throughout a disk centered at $(a, b)$ and that $f_x(a, b) = f_y(a, b) = 0$. Then<br>i) $f$ has a <strong>local maximum</strong> at $(a, b)$ if $f_{xx} &lt; 0$ and $f_{xx} f_{yy} - f_{xy}^2 &gt; 0$ at $(a, b)$.<br>ii) $f$ has a <strong>local minimum</strong> at $(a, b)$ if $f_{xx} &gt; 0$ and $f_{xx} f_{yy} - f_{xy}^2 &gt; 0$ at $(a, b)$.<br>iii)  $f$ has a <strong>saddle point</strong> at $(a, b)$ if $f_{xx} f_{yy} - f_{xy}^2 &lt; 0$ at $(a, b)$.<br>iv) <strong>the test is inconclusive</strong> at $(a, b)$ if $f_{xx} f_{yy} - f_{xy}^2 = 0$ at $(a, b)$. In this case, we must find some other way to determine the behavior of $f$ at $(a, b)$.</p>
+</blockquote>
+<p>The expression $f_{xx} f_{yy} - f_{xy}^2$ is called the <strong>discriminant(判别式)</strong> or <strong>Hessian</strong> of $f$. It is sometimes easier to remember it in determinant form,<br>$$<br>f_{xx} f_{yy} - f_{xy}^2 =<br>\begin{vmatrix}<br>f_{xx} &amp; f_{xy} \\<br>f_{xy} &amp; f_{yy}<br>\end{vmatrix}<br>$$</p>
+<p><img src="/images/Calculus/c14/saddle-ex.png" alt="saddle localextremas"></p>
+<h3 id="Absolute-Maxima-and-Minima-on-Closed-Bounded-Regions"><a href="#Absolute-Maxima-and-Minima-on-Closed-Bounded-Regions" class="headerlink" title="Absolute Maxima and Minima on Closed Bounded Regions"></a>Absolute Maxima and Minima on Closed Bounded Regions</h3><p>We organize the search for the absolute extrema of a continuous function $ƒ(x, y)$ on a closed and bounded region $R$ into three steps.</p>
+<ol>
+<li>List the <strong>interior points</strong> of $R$ where $ƒ$ may have local maxima and minima and evaluate $ƒ$ at these points. These are the critical points of $ƒ$.</li>
+<li>List the <strong>boundary points</strong> of $R$ where $ƒ$ has local maxima and minima and evaluate $ƒ$ at these points. We show how to do this in the next example.</li>
+<li>Look through the lists for the maximum and minimum values of $ƒ$. These will be the absolute maximum and minimum values of $ƒ$ on $R$.</li>
+</ol>
+<p><img src="/images/Calculus/c14/absolute-extrema.png" alt="absolute-extrema"></p>
+<h2 id="Lagrange-Multipliers-拉格朗日乘子"><a href="#Lagrange-Multipliers-拉格朗日乘子" class="headerlink" title="Lagrange Multipliers(拉格朗日乘子)"></a>Lagrange Multipliers(拉格朗日乘子)</h2><p>Here we explore a powerful method for <strong>finding extreme values of constrained functions</strong>: the method of Lagrange multipliers.</p>
+<h3 id="Constrained-Maxima-and-Minima"><a href="#Constrained-Maxima-and-Minima" class="headerlink" title="Constrained Maxima and Minima"></a>Constrained Maxima and Minima</h3><p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>Find the points on the hyperbolic cylinder(双曲柱面) $x^2 - z^2 - 1 = 0$ that are closest to the origin.</p>
+<p><img src="/images/Calculus/c14/hyperbolic-cylinder.png" alt="hyperbolic-cylinder"></p>
+<p>Solution:</p>
+<ul>
+<li><strong>Substitution.</strong></li>
+</ul>
+<p><u>This problems means, we are seeking the points whose coordinates minimize the value of the function $f(x,y,z) = x^2 + y^2 + z^2$ subject to the constraint that $x^2 - z^2 - 1 = 0$.</u></p>
+<p>First, we try to regard $x$ and $y$ as independent variables, then $z^2 = x^2 - 1$.</p>
+<p>So, the problem becomes we look for the points in the $xy$-plane whose coordinates minimize $h$.<br>$$<br>f(x,y,z) = x^2 + y^2 + z^2 \longmapsto \\<br>h(x,y) = x^2 + y^2 + (x^2-1) \\<br>= 2x^2 + y^2 -1<br>$$</p>
+<p>By First Derivative Test<br>$$<br>h_x = 4x = 0, h_y = 2y = 0<br>$$<br>The point should be $(0,0)$.But there are no points on the cylinder where both $x$ and $y$ are zero. Why?</p>
+<blockquote>
+<p>Although the domain of $h$ is the entire $xy$-plane, the domain from which we can select the first two coordinates of the points $(x, y, z)$ on the cylinder is restricted to the “shadow” of the cylinder on the $xy$-plane; it does not include the band between the lines $x = -1$ and $x = 1$ (Figure 14.53).</p>
+</blockquote>
+<p>If we eliminate the one variable by</p>
+<p>$$<br>x^2 = z^2 + 1\\<br>k(y,z) = 1 + y^2 + 2z^2<br>$$<br>we can get the right answer.</p>
+<ul>
+<li><strong>Tangent plane and Normal line.</strong></li>
+</ul>
+<p>At each point of contact, the cylinder and sphere have the <u>same tangent plane and normal line</u>.</p>
+<p>Therefore, if the sphere and cylinder are represented as the <u><strong>level surfaces</strong></u> obtained by setting</p>
+<p>$$<br>f(x,y,z) = x^2 + y^2 + z^2 - a^2\\<br>g(x,y,z) = x^2 -z^2 - 1<br>$$<br>equal to 0.</p>
+<p>Then the gradients $\nabla ƒ$ and $\nabla g$ will be <strong>parallel</strong> where the surfaces touch.<br>$$<br>\nabla f = \lambda \nabla g<br>$$<br>which is<br>$$<br>2x i + 2y j + 2z k = \lambda (2x i - 2zk)<br>$$<br>the solution point should satisfy<br>$$<br>\begin{cases}<br>    2x = 2\lambda x\\<br>    2y = 0\\<br>    2z = -2\lambda z<br>\end{cases}</p>
+<p>$$</p>
+<h3 id="The-Method-of-Lagrange-Multipliers"><a href="#The-Method-of-Lagrange-Multipliers" class="headerlink" title="The Method of Lagrange Multipliers"></a>The Method of Lagrange Multipliers</h3><blockquote>
+<p>THEOREM 12—The Orthogonal Gradient Theorem<br>Suppose that $ƒ(x, y, z)$ is differentiable in a region whose interior contains a smooth curve<br>$$<br>C: r(t) = x(t) i + y(t) j + z(t) k<br>$$<br>If $P_0$ is a point on $C$ where $ƒ$ has a local maximum or minimum relative to its values on $C$, then $\nabla f$ is orthogonal to $C$ at $P_0$.</p>
+</blockquote>
+<blockquote>
+<p>COROLLARY<br>At the points on a smooth curve $r(t) = x(t)i + y(t)j$ where a differentiable function $ƒ(x, y)$ takes on its local maxima and minima relative to its values on the curve, $\nabla f \cdot r’ = 0$.</p>
+</blockquote>
+<blockquote>
+<p>The Method of Lagrange Multipliers<br>Suppose that $ƒ(x, y, z)$ and $g(x, y, z)$ are differentiable and $\nabla g \neq 0$ when $g(x, y, z) = 0$. To find the local maximum and minimum values of $ƒ$ subject to the constraint $g(x, y, z) = 0$ (if these exist), find the values of $x, y, z$, and $l$ that simultaneously satisfy the equations<br>$$<br>\nabla f = \lambda \nabla g, and, g(x,y,z) = 0\tag{1}<br>$$<br>For functions of two independent variables, the condition is similar, but without the variable $z$.</p>
+</blockquote>
+<h3 id="Lagrange-Multipliers-with-Two-Constraints"><a href="#Lagrange-Multipliers-with-Two-Constraints" class="headerlink" title="Lagrange Multipliers with Two Constraints"></a>Lagrange Multipliers with Two Constraints</h3><h2 id="Taylor’s-Formula-for-Two-Variables"><a href="#Taylor’s-Formula-for-Two-Variables" class="headerlink" title="Taylor’s Formula for Two Variables"></a>Taylor’s Formula for Two Variables</h2><h3 id="Derivation-of-the-Second-Derivative-Test"><a href="#Derivation-of-the-Second-Derivative-Test" class="headerlink" title="Derivation of the Second Derivative Test"></a>Derivation of the Second Derivative Test</h3><h3 id="The-Error-Formula-for-Linear-Approximations"><a href="#The-Error-Formula-for-Linear-Approximations" class="headerlink" title="The Error Formula for Linear Approximations"></a>The Error Formula for Linear Approximations</h3><h3 id="Taylor’s-Formula-for-Functions-of-Two-Variables"><a href="#Taylor’s-Formula-for-Functions-of-Two-Variables" class="headerlink" title="Taylor’s Formula for Functions of Two Variables"></a>Taylor’s Formula for Functions of Two Variables</h3><h2 id="Partial-Derivatives-with-Constrained-Variables"><a href="#Partial-Derivatives-with-Constrained-Variables" class="headerlink" title="Partial Derivatives with Constrained Variables"></a>Partial Derivatives with Constrained Variables</h2><h3 id="Decide-Which-Variables-Are-Dependent-and-Which-Are-Independent"><a href="#Decide-Which-Variables-Are-Dependent-and-Which-Are-Independent" class="headerlink" title="Decide Which Variables Are Dependent and Which Are Independent"></a>Decide Which Variables Are Dependent and Which Are Independent</h3><h3 id="How-to-Find-ew-ex-When-the-Variables-in-w-f-x-y-z-Are-Constrained-by-Another-Equation"><a href="#How-to-Find-ew-ex-When-the-Variables-in-w-f-x-y-z-Are-Constrained-by-Another-Equation" class="headerlink" title="How to Find ew,ex When the Variables in w  ƒ(x, y, z) Are Constrained by Another Equation"></a>How to Find ew,ex When the Variables in w  ƒ(x, y, z) Are Constrained by Another Equation</h3><h3 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h3><h3 id="Arrow-Diagrams"><a href="#Arrow-Diagrams" class="headerlink" title="Arrow Diagrams"></a>Arrow Diagrams</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -694,9 +797,9 @@
         <span class="has-mr-6">7.2</span>
         <span>Absolute Maxima and Minima on Closed Bounded Regions</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#Lagrange-Multipliers">
+        <a class="is-flex" href="#Lagrange-Multipliers-拉格朗日乘子">
         <span class="has-mr-6">8</span>
-        <span>Lagrange Multipliers</span>
+        <span>Lagrange Multipliers(拉格朗日乘子)</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#Constrained-Maxima-and-Minima">
         <span class="has-mr-6">8.1</span>
