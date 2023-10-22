@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:48:33.000Z">
-<meta property="article:modified_time" content="2023-10-16T08:55:58.659Z">
+<meta property="article:modified_time" content="2023-10-21T12:11:49.986Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 24 words)
+                    9 minutes read (About 1393 words)
                 </span>
                 
                 
@@ -191,8 +191,65 @@
             <p><strong><em>Keywords</em></strong>: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition</p>
 <a id="more"></a>
 
-<p>This is the Chapter3 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-
+<p>This is the Chapter1 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
+<p>Cases such as the digit recognition example, in which the aim is to assign each input vector to one of a finite number of discrete categories, are called <strong><em>classification</em></strong> problems. </p>
+<p>If the desired output consists of one or more continuous variables, then the task is called <strong><em>regression</em></strong>.  </p>
+<h2 id="Example-Polynomial-Curve-Fitting"><a href="#Example-Polynomial-Curve-Fitting" class="headerlink" title="Example: Polynomial Curve Fitting"></a>Example: Polynomial Curve Fitting</h2><p>&#x1F449;<a href="/Math/Numerical-Analysis/NumericalAnalysis-C3-Interpolation/">More about Polynomial Curve Fitting in Numerical Analysis &gt;&gt;</a></p>
+<p><img src="/images/PatternRecognition/c1/curve-fitting-oscillation.png" alt="curve fitting and oscillation"></p>
+<p>$$<br>y(x,\pmb{w}) = w_0 + w_1 x + \cdots + w_Mx^M = \sum_{j=0}^{M}w_jx^j<br>\tag{1.1}<br>$$<br>Note that, although the polynomial function $y(x,\pmb{w})$ is a nonlinear function of $x$, it is a linear function of the coefficients $\pmb{w}$. Functions, such as the polynomial, which are linear in the unknown parameters have important properties and are called <strong><em>linear models</em></strong> and will be discussed extensively in Chapters 3 and 4.</p>
+<p>$$<br>E(\pmb{w}) = \frac{1}{2}\sum_{n=1}^{N}\lbrace y(x_n, \pmb{w}) - t_n\rbrace ^ 2<br>\tag{1.2}<br>$$</p>
+<p>Because the error function is a <u>quadratic function</u> of the coefficients $\pmb{w}$, its derivatives with respect to the coefficients will be linear in the elements of $\pmb{w}$, and so the minimization of the error function has a unique solution, denoted by $\pmb{w}^{\ast}$, which can be found in closed form.</p>
+<p>$$<br>E_{RMS} = \sqrt{2E(\pmb{w^{\ast}})/N}<br>\tag{1.3}<br>$$</p>
+<p>the fitted curve oscillates wildly and gives a very poor representation of the function sin(2πx). This latter behaviour is known as <strong><em>over-fitting</em></strong>.</p>
+<blockquote>
+<p>We shall see that the least squares approach to finding the model parameters represents a specific case of maximum likelihood (discussed in Section 1.2.5), and that the over-fitting problem can be understood as Section 3.4 a general property of maximum likelihood. By adopting a Bayesian approach, the over-fitting problem can be avoided.</p>
+</blockquote>
+<p><img src="/images/PatternRecognition/c1/tackle-over-fitting.png" alt="tackle over fitting"></p>
+<p>One technique that is often used to control the over-fitting phenomenon in such cases is that of <strong><em>regularization</em></strong>, which involves adding a <strong><em>penalty term</em></strong> to the error function (1.2) in order to discourage the coefficients from reaching large values.<br>$$<br>\tilde{E}{(\pmb{w})} = \frac{1}{2}\sum_{n=1}^{N}\lbrace y(x_n, \pmb{w}) - t_n\rbrace ^ 2 + \frac{\lambda}{2}||\pmb{w}||^2<br>\tag{1.4}<br>$$</p>
+<p>by taking the available data and partitioning it into a training set, used to determine the coefficients $\pmb{w}$, and a separate <strong><em>validation set</em></strong>, also called a hold-out set, used to optimize the model complexity (either $M$ or $\lambda$).</p>
+<h2 id="Probability-Theory"><a href="#Probability-Theory" class="headerlink" title="Probability Theory"></a>Probability Theory</h2><p>the identity of the box that will be chosen is a random variable, which we shall denote by $B$. This random variable can take one of two possible values, namely $r$ (corresponding to the red box) or $b$ (corresponding to the blue box).</p>
+<p>the identity of the fruit is also a random variable and will be denoted by $F$. It can take either of the values $a$ (for apple) or $o$ (for orange).</p>
+<p><img src="/images/PatternRecognition/c1/probablity-rule.png" alt="probablity rule"></p>
+<p>See Figure 1.10, two random variables $X$ and $Y$ (which could for instance be the Box and Fruit variables considered above).A total of N trials in which we sample both of the variables $X$ and $Y$.</p>
+<p>the <strong><em>joint probability</em></strong> of $X = x_i$ and $Y = y_j$ is<br>$$<br>p(X=x_i, Y = y_j) = \frac{n_{ij}}{N}<br>\tag{1.5}<br>$$<br>Here we are implicitly considering the $limit N \rightarrow \infty$.</p>
+<p>the <strong><em>marginal probability</em></strong> is,<br>$$<br>\begin{aligned}<br>    p(X = x_i) &amp;= \frac{c_i}{N}\\ &amp;= \sum_{j=1}^Lp(X=x_i,Y=y_j)<br>\end{aligned}<br>\tag{1.7}<br>$$</p>
+<p>the <strong><em>conditional probability</em></strong> is,<br>$$<br>p(Y=y_j | X= x_i) = \frac{n_{ij}}{c_i}<br>\tag{1.8}<br>$$</p>
+<p>thus,</p>
+<p>$$<br>\begin{aligned}<br>p(X = x_i, Y = y_j) &amp;= \frac{n_{ij}}{N}\\<br> &amp;= \frac{n_{ij}}{c_i} \cdot \frac{c_i}{N} \\<br> &amp;= p(Y=y_j | X= x_i) p(X = x_i)<br>\end{aligned}<br>\tag{1.9}<br>$$</p>
+<p>From the <u>product rule</u>, together with the symmetry property $p(X, Y) = p(Y,X)$, we immediately obtain the following relationship between conditional probabilities, which is called <mark>Bayes’theorem</mark><br>$$<br>p(Y|X) = \frac{p(X|Y)p(Y)}{p(X)}<br>\tag{1.12}<br>$$</p>
+<p>Using the <u>sum rule</u>, the denominator in Bayes’ theorem can be expressed in terms of the quantities appearing in the numerator<br>$$<br>p(X) = \sum_{Y}p(X|Y)p(Y)<br>\tag{1.13}<br>$$</p>
+<p>Now back to box and fruit, </p>
+<p>$$<br>p(B=r) = \frac{4}{10}, p(B=b) = \frac{6}{10}<br>$$<br>$$<br>p(F = a | B = r) = \frac{1}{4}\\<br>p(F = o | B = r) = \frac{3}{4}\\<br>p(F = a | B = b) = \frac{3}{4}\\<br>p(F = o | B = b) = \frac{1}{4}<br>$$</p>
+<p>note that these probabilities are normalized so that<br>$$<br>p(F=a|B=r) + p(F=o|B=r) = 1\\<br>p(F=a|B=b) + p(F=o|B=b) = 1<br>$$</p>
+<p>We can now use the sum and product rules of probability to evaluate the overall probability of choosing an apple<br>$$<br>\begin{aligned}<br>    p(F = a) &amp;= p(F=a|B=r)p(B=r) + p(F=a|B=b)p(B=b)\\<br>    &amp;= \frac{1}{4} \times \frac{4}{10} + \frac{3}{4} \times \frac{6}{10}\\<br>    &amp;=\frac{11}{20}\\<br>p(F=o) &amp;=1-\frac{11}{20} = \frac{9}{20}<br>\end{aligned}<br>\tag{1.22}<br>$$</p>
+<p>We can solve the problem of reversing the conditional probability by using Bayes’ theorem to give</p>
+<p>$$<br>\begin{aligned}<br>p(B=r|F=o) &amp;= \frac{p(F=o|B=r)p(B=r)}{p(F=o)}\\<br>&amp;= \frac{3}{4}\times \frac{4}{10} \times \frac{20}{9}\\<br>&amp;=\frac{2}{3}<br>\end{aligned}<br>\tag{1.23}<br>$$</p>
+<blockquote>
+<ol>
+<li>If we had been asked which box had been chosen <u>before</u> being told the identity of the selected item of fruit, then the most complete information we have available is provided by the probability $p(B)$. We call this the <mark>prior probability</mark> because it is the probability available before we observe the identity of the fruit. </li>
+<li>Once we are told that the fruit is an orange, we can then use <u>Bayes’ theorem</u> to compute the probability $p(B|F)$, which we shall call the <mark>posterior probability</mark> because it is the probability obtained <u>after</u> we have observed $F$.</li>
+<li>Bayes’ theorem was used to convert a prior probability into a posterior probability by incorporating the evidence provided by the observed data.</li>
+</ol>
+</blockquote>
+<h3 id="Probability-densities"><a href="#Probability-densities" class="headerlink" title="Probability densities"></a>Probability densities</h3><p>$$<br>p(x\in(a,b)) = \int_a^b p(x) dx<br>\tag{1.24}<br>$$<br>$$<br>p(x) \geq 0 \tag{1.25}<br>$$<br>$$<br>\int_{-\infty}^{\infty} p(x)dx = 1 \tag{1.26}<br>$$<br>$$<br>P(z) = \int_{-\infty}^{z} p(x) dx\tag{1.28}<br>$$</p>
+<h3 id="Expectations-and-covariances"><a href="#Expectations-and-covariances" class="headerlink" title="Expectations and covariances"></a>Expectations and covariances</h3><p>The average value of some function $f(x)$ under a probability distribution $p(x)$ is called the <strong><em>expectation</em></strong> of $f(x)$ and will be denoted by $E[f]$.</p>
+<p>$$<br>E[f] = \sum_{x} p(x) f(x)<br>\tag{1.33}<br>$$</p>
+<p>$$<br>E[f] = \int p(x)f(x) dx<br>\tag{1.34}<br>$$</p>
+<p>The <strong><em>variance</em></strong> of $f(x)$ is<br>$$<br>\begin{aligned}<br>    var[f] &amp;= E[(f(x) - E[f(x)])^2]\\<br>    &amp;= E[f(x)^2] - E[f(x)]^2<br>\end{aligned}<br>\tag{1.38}<br>$$<br>and provides a measure of how much variability there is in $f(x)$ around its mean value $E[f(x)]$.</p>
+<p><strong><em>conditional expectation</em></strong> for two-variable function $f(x,y)$:</p>
+<p>$$<br>E_x[f|y] = \sum_x p(x|y)f(x)<br>\tag{1.37}<br>$$</p>
+<p>For two random variables $x$ and $y$, the <strong><em>covariance</em></strong> is defined by </p>
+<p>$$<br>\begin{aligned}<br>    cov[x,y]&amp;= E_{x,y}[\lbrace x - E(x)\rbrace \lbrace y - E(y)\rbrace] \\<br>    &amp;= E_{x,y}[xy] - E[x]E[y]<br>\end{aligned}<br>\tag{1.41}<br>$$<br>expresses the extent to which $x$ and $y$ vary together. If $x$ and $y$ are independent, then their covariance vanishes.</p>
+<p>In the case of two vectors of random variables $\pmb{x}$ and $\pmb{y}$, the <strong><em>covariance is a matrix</em></strong>(默认是列向量)</p>
+<p>$$<br>\begin{aligned}<br>    cov[\pmb{x},\pmb{y}]&amp;= E_{\pmb{x,y}}[\lbrace \pmb{x} - E(\pmb{x})\rbrace \lbrace \pmb{y^T} - E(\pmb{y^T})\rbrace] \\<br>    &amp;= E_{\pmb{x,y}}[\pmb{xy^T}] - E[\pmb{x}]E[\pmb{y^T}]<br>\end{aligned}<br>\tag{1.42}<br>$$</p>
+<h3 id="Bayesian-probabilities"><a href="#Bayesian-probabilities" class="headerlink" title="Bayesian probabilities"></a>Bayesian probabilities</h3><p>Two ways to see probability:</p>
+<ul>
+<li><p><strong>frequentist interpretation</strong>. view probabilities in terms of the frequencies of random, repeatable events.</p>
+</li>
+<li><p><strong>Bayesian view</strong>. probabilities provide a quantification of uncertainty.(不确定性的量化)</p>
+</li>
+</ul>
+<h3 id="The-Gaussian-distribution"><a href="#The-Gaussian-distribution" class="headerlink" title="The Gaussian distribution"></a>The Gaussian distribution</h3><h3 id="Curve-fitting-re-visited"><a href="#Curve-fitting-re-visited" class="headerlink" title="Curve fitting re-visited"></a>Curve fitting re-visited</h3><h3 id="Bayesian-curve-fitting"><a href="#Bayesian-curve-fitting" class="headerlink" title="Bayesian curve fitting"></a>Bayesian curve fitting</h3><h2 id="Model-Selection"><a href="#Model-Selection" class="headerlink" title="Model Selection"></a>Model Selection</h2><h2 id="The-Curse-of-Dimensionality"><a href="#The-Curse-of-Dimensionality" class="headerlink" title="The Curse of Dimensionality"></a>The Curse of Dimensionality</h2><h2 id="Decision-Theory"><a href="#Decision-Theory" class="headerlink" title="Decision Theory"></a>Decision Theory</h2><h3 id="Minimizing-the-misclassification-rate"><a href="#Minimizing-the-misclassification-rate" class="headerlink" title="Minimizing the misclassification rate"></a>Minimizing the misclassification rate</h3><h3 id="Minimizing-the-expected-loss"><a href="#Minimizing-the-expected-loss" class="headerlink" title="Minimizing the expected loss"></a>Minimizing the expected loss</h3><h3 id="The-reject-option"><a href="#The-reject-option" class="headerlink" title="The reject option"></a>The reject option</h3><h3 id="Inference-and-decision"><a href="#Inference-and-decision" class="headerlink" title="Inference and decision"></a>Inference and decision</h3><h3 id="Loss-functions-for-regression"><a href="#Loss-functions-for-regression" class="headerlink" title="Loss functions for regression"></a>Loss functions for regression</h3><h2 id="Information-Theory"><a href="#Information-Theory" class="headerlink" title="Information Theory"></a>Information Theory</h2><h3 id="Relative-entropy-and-mutual-information"><a href="#Relative-entropy-and-mutual-information" class="headerlink" title="Relative entropy and mutual information"></a>Relative entropy and mutual information</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -380,6 +437,89 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Example-Polynomial-Curve-Fitting">
+        <span class="has-mr-6">1</span>
+        <span>Example: Polynomial Curve Fitting</span>
+        </a></li><li>
+        <a class="is-flex" href="#Probability-Theory">
+        <span class="has-mr-6">2</span>
+        <span>Probability Theory</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Probability-densities">
+        <span class="has-mr-6">2.1</span>
+        <span>Probability densities</span>
+        </a></li><li>
+        <a class="is-flex" href="#Expectations-and-covariances">
+        <span class="has-mr-6">2.2</span>
+        <span>Expectations and covariances</span>
+        </a></li><li>
+        <a class="is-flex" href="#Bayesian-probabilities">
+        <span class="has-mr-6">2.3</span>
+        <span>Bayesian probabilities</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Gaussian-distribution">
+        <span class="has-mr-6">2.4</span>
+        <span>The Gaussian distribution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Curve-fitting-re-visited">
+        <span class="has-mr-6">2.5</span>
+        <span>Curve fitting re-visited</span>
+        </a></li><li>
+        <a class="is-flex" href="#Bayesian-curve-fitting">
+        <span class="has-mr-6">2.6</span>
+        <span>Bayesian curve fitting</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Model-Selection">
+        <span class="has-mr-6">3</span>
+        <span>Model Selection</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Curse-of-Dimensionality">
+        <span class="has-mr-6">4</span>
+        <span>The Curse of Dimensionality</span>
+        </a></li><li>
+        <a class="is-flex" href="#Decision-Theory">
+        <span class="has-mr-6">5</span>
+        <span>Decision Theory</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Minimizing-the-misclassification-rate">
+        <span class="has-mr-6">5.1</span>
+        <span>Minimizing the misclassification rate</span>
+        </a></li><li>
+        <a class="is-flex" href="#Minimizing-the-expected-loss">
+        <span class="has-mr-6">5.2</span>
+        <span>Minimizing the expected loss</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-reject-option">
+        <span class="has-mr-6">5.3</span>
+        <span>The reject option</span>
+        </a></li><li>
+        <a class="is-flex" href="#Inference-and-decision">
+        <span class="has-mr-6">5.4</span>
+        <span>Inference and decision</span>
+        </a></li><li>
+        <a class="is-flex" href="#Loss-functions-for-regression">
+        <span class="has-mr-6">5.5</span>
+        <span>Loss functions for regression</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Information-Theory">
+        <span class="has-mr-6">6</span>
+        <span>Information Theory</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Relative-entropy-and-mutual-information">
+        <span class="has-mr-6">6.1</span>
+        <span>Relative entropy and mutual information</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
 
     
         <div class="card widget">
