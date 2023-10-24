@@ -10,16 +10,16 @@
 <title>PatterRecognition-C1-Introduction - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+    <meta name="description" content="Keywords: Bayes’Theorem, Polynomial Curve Fitting, Posterior Probability">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PatterRecognition-C1-Introduction">
 <meta property="og:url" content="https://keneyr.com/MachineLearning/PatternRecognition/PatterRecognition-C1-Introduction/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+<meta property="og:description" content="Keywords: Bayes’Theorem, Polynomial Curve Fitting, Posterior Probability">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:48:33.000Z">
-<meta property="article:modified_time" content="2023-10-21T12:11:49.986Z">
+<meta property="article:modified_time" content="2023-10-23T04:15:03.206Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes read (About 1393 words)
+                    20 minutes read (About 2931 words)
                 </span>
                 
                 
@@ -188,13 +188,13 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition</p>
+            <p><strong><em>Keywords</em></strong>: Bayes’Theorem, Polynomial Curve Fitting, Posterior Probability</p>
 <a id="more"></a>
 
 <p>This is the Chapter1 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
 <p>Cases such as the digit recognition example, in which the aim is to assign each input vector to one of a finite number of discrete categories, are called <strong><em>classification</em></strong> problems. </p>
 <p>If the desired output consists of one or more continuous variables, then the task is called <strong><em>regression</em></strong>.  </p>
-<h2 id="Example-Polynomial-Curve-Fitting"><a href="#Example-Polynomial-Curve-Fitting" class="headerlink" title="Example: Polynomial Curve Fitting"></a>Example: Polynomial Curve Fitting</h2><p>&#x1F449;<a href="/Math/Numerical-Analysis/NumericalAnalysis-C3-Interpolation/">More about Polynomial Curve Fitting in Numerical Analysis &gt;&gt;</a></p>
+<h2 id="Example-Polynomial-Curve-Fitting-error-minimization-view"><a href="#Example-Polynomial-Curve-Fitting-error-minimization-view" class="headerlink" title="Example: Polynomial Curve Fitting(error minimization view)"></a>Example: Polynomial Curve Fitting(<strong>error minimization view</strong>)</h2><p>&#x1F449;<a href="/Math/Numerical-Analysis/NumericalAnalysis-C3-Interpolation/">More about Polynomial Curve Fitting in Numerical Analysis &gt;&gt;</a></p>
 <p><img src="/images/PatternRecognition/c1/curve-fitting-oscillation.png" alt="curve fitting and oscillation"></p>
 <p>$$<br>y(x,\pmb{w}) = w_0 + w_1 x + \cdots + w_Mx^M = \sum_{j=0}^{M}w_jx^j<br>\tag{1.1}<br>$$<br>Note that, although the polynomial function $y(x,\pmb{w})$ is a nonlinear function of $x$, it is a linear function of the coefficients $\pmb{w}$. Functions, such as the polynomial, which are linear in the unknown parameters have important properties and are called <strong><em>linear models</em></strong> and will be discussed extensively in Chapters 3 and 4.</p>
 <p>$$<br>E(\pmb{w}) = \frac{1}{2}\sum_{n=1}^{N}\lbrace y(x_n, \pmb{w}) - t_n\rbrace ^ 2<br>\tag{1.2}<br>$$</p>
@@ -231,7 +231,7 @@
 <li>Bayes’ theorem was used to convert a prior probability into a posterior probability by incorporating the evidence provided by the observed data.</li>
 </ol>
 </blockquote>
-<h3 id="Probability-densities"><a href="#Probability-densities" class="headerlink" title="Probability densities"></a>Probability densities</h3><p>$$<br>p(x\in(a,b)) = \int_a^b p(x) dx<br>\tag{1.24}<br>$$<br>$$<br>p(x) \geq 0 \tag{1.25}<br>$$<br>$$<br>\int_{-\infty}^{\infty} p(x)dx = 1 \tag{1.26}<br>$$<br>$$<br>P(z) = \int_{-\infty}^{z} p(x) dx\tag{1.28}<br>$$</p>
+<h3 id="Probability-densities"><a href="#Probability-densities" class="headerlink" title="Probability densities"></a>Probability densities</h3><p>If the probability of a real-valued variable $x$ falling in the interval $(x, x + \sigma x)$ is given by $p(x)\sigma x$ for $\sigma x \rightarrow 0$, then $p(x)$ is called the probability density over $x$.<br>$$<br>p(x\in(a,b)) = \int_a^b p(x) dx<br>\tag{1.24}<br>$$<br>$$<br>p(x) \geq 0 \tag{1.25}<br>$$<br>$$<br>\int_{-\infty}^{\infty} p(x)dx = 1 \tag{1.26}<br>$$<br>$$<br>P(z) = \int_{-\infty}^{z} p(x) dx\tag{1.28}<br>$$</p>
 <h3 id="Expectations-and-covariances"><a href="#Expectations-and-covariances" class="headerlink" title="Expectations and covariances"></a>Expectations and covariances</h3><p>The average value of some function $f(x)$ under a probability distribution $p(x)$ is called the <strong><em>expectation</em></strong> of $f(x)$ and will be denoted by $E[f]$.</p>
 <p>$$<br>E[f] = \sum_{x} p(x) f(x)<br>\tag{1.33}<br>$$</p>
 <p>$$<br>E[f] = \int p(x)f(x) dx<br>\tag{1.34}<br>$$</p>
@@ -249,7 +249,57 @@
 <li><p><strong>Bayesian view</strong>. probabilities provide a quantification of uncertainty.(不确定性的量化)</p>
 </li>
 </ul>
-<h3 id="The-Gaussian-distribution"><a href="#The-Gaussian-distribution" class="headerlink" title="The Gaussian distribution"></a>The Gaussian distribution</h3><h3 id="Curve-fitting-re-visited"><a href="#Curve-fitting-re-visited" class="headerlink" title="Curve fitting re-visited"></a>Curve fitting re-visited</h3><h3 id="Bayesian-curve-fitting"><a href="#Bayesian-curve-fitting" class="headerlink" title="Bayesian curve fitting"></a>Bayesian curve fitting</h3><h2 id="Model-Selection"><a href="#Model-Selection" class="headerlink" title="Model Selection"></a>Model Selection</h2><h2 id="The-Curse-of-Dimensionality"><a href="#The-Curse-of-Dimensionality" class="headerlink" title="The Curse of Dimensionality"></a>The Curse of Dimensionality</h2><h2 id="Decision-Theory"><a href="#Decision-Theory" class="headerlink" title="Decision Theory"></a>Decision Theory</h2><h3 id="Minimizing-the-misclassification-rate"><a href="#Minimizing-the-misclassification-rate" class="headerlink" title="Minimizing the misclassification rate"></a>Minimizing the misclassification rate</h3><h3 id="Minimizing-the-expected-loss"><a href="#Minimizing-the-expected-loss" class="headerlink" title="Minimizing the expected loss"></a>Minimizing the expected loss</h3><h3 id="The-reject-option"><a href="#The-reject-option" class="headerlink" title="The reject option"></a>The reject option</h3><h3 id="Inference-and-decision"><a href="#Inference-and-decision" class="headerlink" title="Inference and decision"></a>Inference and decision</h3><h3 id="Loss-functions-for-regression"><a href="#Loss-functions-for-regression" class="headerlink" title="Loss functions for regression"></a>Loss functions for regression</h3><h2 id="Information-Theory"><a href="#Information-Theory" class="headerlink" title="Information Theory"></a>Information Theory</h2><h3 id="Relative-entropy-and-mutual-information"><a href="#Relative-entropy-and-mutual-information" class="headerlink" title="Relative entropy and mutual information"></a>Relative entropy and mutual information</h3>
+<p>we can adopt a similar approach (fruit in boxes) when making inferences about quantities such as the parameters $\pmb{w}$ in the polynomial curve fitting example.</p>
+<ol>
+<li>We capture our assumptions about $\pmb{w}$, before observing the data, in the form of a <u>prior probability</u> distribution $p(\pmb{w})$.</li>
+<li>The effect of the observed data $D = {t_1, \cdots, t_N}$ is expressed through the <u>conditional probability</u> $p(D|\pmb{w})$</li>
+<li>Bayes’ theorem, which takes the form<br>$$<br>p(\pmb{w}|D) = \frac{p(D|\pmb{w})p(\pmb{w})}{p(D)}<br>\tag{1.43}<br>$$</li>
+<li>then allows us to evaluate the uncertainty in $\pmb{w}$ after we have observed $D$ in the form of the <u>posterior probability</u> $p(\pmb{w}|D)$.</li>
+</ol>
+<p>The quantity $p(D|\pmb{w})$ on the right-hand side of Bayes’ theorem is evaluated for the observed data set $D$ and can be viewed as a function of the parameter vector $\pmb{w}$, in which case it is called the <mark>likelihood function</mark>. It expresses how probable the observed data set is for different settings of the parameter vector $\pmb{w}$.</p>
+<p>$$<br>posterior \propto likelihood \times prior<br>\tag{1.44}<br>$$</p>
+<p>Indeed, integrating both sides of (1.43) with respect to $\pmb{w}$, we can express the denominator in Bayes’ theorem in terms of the prior distribution and the likelihood function<br>$$<br>p(D) = \int p(D|\pmb{w})p(\pmb{w}) d\pmb{w}<br>\tag{1.45}<br>$$<br>where, $\int p(\pmb{w}|D) d \pmb{w} = 1$.</p>
+<h3 id="The-Gaussian-distribution"><a href="#The-Gaussian-distribution" class="headerlink" title="The Gaussian distribution"></a>The Gaussian distribution</h3><p>For the case of a single real-valued variable $x$, the Gaussian distribution is defined by<br>$$<br> \mathcal{N}(x | \mu, \sigma^2) = \frac{1}{(2\pi \sigma^2)^{\frac{1}{2}}} exp\lbrace -\frac{1}{2\sigma^2}(x-\mu)^2\rbrace<br>\tag{1.46}<br>$$<br>which is governed by two parameters: $\mu$, called the <strong><em>mean</em></strong>, and $\sigma^2$, called the <strong><em>variance</em></strong>, the reciprocal of the variance, written as $\beta = \frac{1}{\sigma^2}$, is called the <strong><em>precision</em></strong>.</p>
+<p>$$<br>\int_{-\infty}^{\infty}  \mathcal{N}(x|\mu, \sigma^2) dx = 1<br>\tag{1.48}<br>$$</p>
+<p>We are also interested in the Gaussian distribution defined over a $D$-dimensional vector $\pmb{x}$ of continuous variables, which is given by<br>$$<br> \mathcal{N}(\pmb{x} | \pmb{\mu}, \pmb{\Sigma}) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\pmb{\Sigma}|^{1/2}} exp \lbrace -\frac{1}{2}(\pmb{x - \mu})^T \pmb{\Sigma}^{-1}(\pmb{x-\mu}) \rbrace<br>\tag{1.52}<br>$$<br>where $\pmb{\Sigma}$ is a $D \times D$ matrix, called : covariance.</p>
+<blockquote>
+<ol>
+<li>Now <u>suppose</u> that we have a <u>data set of observations</u> $X = (x_1, \cdots , x_N)^T$, representing $N$ observations of the scalar variable $x$.</li>
+<li>We shall suppose that the observations are drawn independently from a Gaussian distribution whose mean $\mu$ and variance $\sigma^2$ are unknown, and we would like to <u>determine these parameters from the data set</u>.</li>
+<li>Because our data set $X$ is <strong>i.i.d.</strong>, we can therefore write the probability of the data set, given mean $\mu$ and variance $\sigma^2$, in the form<br>$$<br>p(X|\mu, \sigma^2) = \prod_{n=1}^{N} \mathcal{N}(x_n|\mu, \sigma^2)<br>\tag{1.53}<br>$$</li>
+<li>When viewed as a function of mean $\mu$ and variance $\sigma^2$, this is the <u>likelihood function</u> for the Gaussian and is interpreted diagrammatically in Figure 1.14.</li>
+<li>We shall determine values for the unknown parameters $\mu$ and $\sigma^2$ in the Gaussian by <mark>maximizing the likelihood function</mark> (1.53). it is convenient to maximize the logarithm of the likelihood function.<br>$$<br>\ln p(X|\mu, \sigma^2) = -\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n - \mu)^2 - \frac{N}{2} \ln \sigma^2 - \frac{N}{2}\ln(2\pi)<br>\tag{1.54}<br>$$</li>
+<li>Maximizing (1.54) with respect to $\mu$, we get <strong><em>sample mean</em></strong>.<br>$$<br>\mu_{ML} = \frac{1}{N} \sum_{n=1}^N x_n<br>\tag{1.55}<br>$$</li>
+<li>Maximizing (1.54) with respect to $\sigma^2$, we get <strong><em>sample variance</em></strong>.<br>$$<br>\sigma^2_{ML} = \frac{1}{N}\sum_{n=1}^N (x_n - \mu_{ML})^2<br>\tag{1.56}<br>$$</li>
+<li>In particular, we shall show that the maximum likelihood approach systematically underestimates the variance of the distribution. The following estimate for the variance parameter is <strong><em>unbiased(无偏估计)</em></strong><br>$$<br>\widetilde{\sigma^2} = \frac{N}{N-1}\sigma_{ML}^2 = \frac{N}{N-1}\sum_{n=1}^N (x_n - \mu_{ML})^2<br>\tag{1.59}<br>$$</li>
+<li>&#x1F449;<a href="https://zhuanlan.zhihu.com/p/60230248">Why underestimates? &gt;&gt;</a> </li>
+</ol>
+</blockquote>
+<h3 id="Curve-fitting-re-visited-probabilistic-perspective"><a href="#Curve-fitting-re-visited-probabilistic-perspective" class="headerlink" title="Curve fitting re-visited(probabilistic perspective)"></a>Curve fitting re-visited(<strong>probabilistic perspective</strong>)</h3><blockquote>
+<ol>
+<li>The goal in the curve fitting problem is to be able to make predictions for the target variable $t$ given some new value of the input variable $x$ on the basis of a set of training data comprising $N$ input values $X = (x_1, \cdots , x_N)^T$ and their corresponding target values $T = (t_1, \cdots , t_N)^T$. </li>
+<li><u>We can express our uncertainty over the value of the target variable using a probability distribution</u>. </li>
+<li>For this purpose, we shall assume that, given the value of $x$, the corresponding value of $t$ has a Gaussian distribution with a mean equal to the value $y(x,\pmb{w})$ of the polynomial curve given by (1.1). Thus we have(See Figure 1.16.)<br>$$<br>p(t|x,\pmb{w}, \beta) = \mathcal{N}(t|y(x,\pmb{w}), \beta^{-1}) \tag{1.60}<br>$$</li>
+<li>We now use the training data $\lbrace X,T \rbrace$ to determine the values of the unknown parameters $\pmb{w}$ and $\pmb{β}$ by <u>maximum likelihood</u>. If the data are assumed to be drawn independently from the distribution (1.60), then the likelihood function is given by<br>$$<br>p(T|X, \pmb{w}, \beta) = \prod_{n=1}^N \mathcal{N}(t_n | y(x_n, \pmb{w}), \beta^{-1})<br>\tag{1.61}<br>$$</li>
+<li>log function is convienient.<br>$$<br>\ln p(T|X, \pmb{w}, \beta) = -\frac{\beta}{2}\sum_{n=1}^N\lbrace y(x_n, \pmb{w}) - t_n \rbrace^2 + \frac{N}{2} \ln \beta - \frac{N}{2} \ln(2\pi)<br>\tag{1.62}<br>$$</li>
+<li>maximum the (1.62) with respect to $\mu$, We therefore see that <mark>maximizing likelihood is equivalent, so far as determining $\pmb{w}$ is concerned, to minimizing the sum-of-squares error function defined by (1.2)</mark>.</li>
+<li>maximum the (1.62) with respect to $\beta$,<br>$$<br>\frac{1}{\beta_{ML}} = \frac{1}{N}\sum_{n=1}^{N} \lbrace y(x_n, \pmb{w_{ML}}) - t_n\rbrace^2<br>\tag{1.63}<br>$$</li>
+<li>Having determined the parameters $\pmb{w}$ and $\pmb{β}$, we can now make predictions for new values of $x$. Because we now have a probabilistic model, these are expressed in terms of the predictive distribution that gives the probability distribution over $t$, rather than simply a point estimate, and is obtained by substituting the maximum likelihood parameters into (1.60) to give<br>$$<br>p(t|x, \pmb{w_{ML}}, \beta_{ML}) = \mathcal{N}(t|y(x, \pmb{w_{ML}}), \beta_{ML}^{-1})<br>\tag{1.64}<br>$$</li>
+<li>Let us introduce a <u>prior distribution</u> over the polynomial coefficients $\pmb{w}$. Let us consider a Gaussian distribution of the form<br>$$<br>p(\pmb{w}|\alpha) = \mathcal{N}(\pmb{w}| \pmb{0}, \alpha^{-1} \pmb{I}) = (\frac{\alpha}{2\pi})^{(M+1)/2} exp \lbrace -\frac{\alpha}{2} \pmb{w}^T\pmb{w}\rbrace<br>\tag{1.65}<br>$$<br>where $\alpha$ is the precision of the distribution, and $M+1$ is the total number of elements in the vector $\pmb{w}$ for an $M$th order polynomial. Variables such as $\alpha$, which control the distribution of model parameters, are called <strong><em>hyperparameters</em></strong>.</li>
+<li><u>Using Bayes’ theorem</u>, the posterior distribution for $\pmb{w}$ is proportional to the product of the prior distribution and the likelihood function<br>$$<br>p(\pmb{w}|X,T,\alpha, \beta) \propto p(T|X,\pmb{w}, \beta) p(\pmb{w}|\alpha)<br>\tag{1.66}<br>$$</li>
+<li>We can now determine $\pmb{w}$ by finding the most probable value of $\pmb{w}$ given the data, in other words by maximizing the posterior distribution. This technique is called <strong><em>maximum posterior</em></strong>, or <strong><em>simply MAP</em></strong>.</li>
+<li>By(1.62), (1.65) and (1.66), we find that the maximum of the posterior is given by the minimum of<br>$$<br>\frac{\beta}{2} \sum_{n=1}^{N}\lbrace y(x_n, \pmb{w}) - t_n\rbrace^2 + \frac{\alpha}{2}\pmb{w^T}\pmb{w}<br>\tag{1.67}<br>$$</li>
+<li>Thus we see that <mark>maximizing the posterior distribution is equivalent to minimizing the regularized sum-of-squares error function encountered earlier in the form (1.4), with a regularization parameter given by $\lambda = \frac{\alpha}{\beta}$</mark>.</li>
+</ol>
+</blockquote>
+<p><img src="/images/PatternRecognition/c1/curve-fitting-bayse.png" alt="curve fitting from bayes view"></p>
+<h3 id="Bayesian-curve-fitting-using-integration"><a href="#Bayesian-curve-fitting-using-integration" class="headerlink" title="Bayesian curve fitting(using integration)"></a>Bayesian curve fitting(<strong>using integration</strong>)</h3><p>In a fully Bayesian approach, we should consistently apply the sum and product rules of probability, which requires, as we shall see shortly, that we integrate over all values of $\pmb{w}$.</p>
+<p>In the curve fitting problem, we are given the training data $X$ and $T$, along with a new test point $x$, and our goal is to predict the value of $t$. We therefore wish to evaluate the <u>predictive distribution</u> $p(t|x, X, T)$.</p>
+<p>$$<br>p(t|x,X,T) = \int \underbrace{p(t|x,\pmb{w})}_{(1.60)}<br>\underbrace{p(\pmb{w}|X,T)}_{post-distribution(1.66)}d\pmb{w}<br>\tag{1.68}<br>$$</p>
+<p>The integration in (1.68) can also be performed analytically with the result that the predictive distribution is given by a Gaussian of the form<br>$$<br>p(t|x,X,T) = \mathcal{N}(t|m(x),s^2(x))<br>\tag{1.69}<br>$$<br>where the mean and variance are given by<br>$$<br>m(x) = \beta \phi(x)^T S\sum_{n=1}^{N} \phi(x_n)t_n<br>\tag{1.70}<br>$$<br>$$<br>s^2(x) = \beta^{-1} + \phi(x)^TS\phi(x)<br>\tag{1.71}<br>$$<br>where, the matrix $S$ is given by<br>$$<br>S^{-1} = \alpha \pmb{I} + \beta \sum_{n=1}^{N} \phi(x_n)\phi(x)^T<br>\tag{1.72}<br>$$<br>where $\pmb{I}$ is the unit matrix, and we have defined the vector $\phi(x)$ with elements $\phi_i(x) = x^i, for, i = 0, \cdots , M$.</p>
+<h2 id="Model-Selection"><a href="#Model-Selection" class="headerlink" title="Model Selection"></a>Model Selection</h2><p><img src="/images/PatternRecognition/c1/cross-valiation.png" alt="cross-valiation"></p>
+<h2 id="The-Curse-of-Dimensionality"><a href="#The-Curse-of-Dimensionality" class="headerlink" title="The Curse of Dimensionality"></a>The Curse of Dimensionality</h2><p><img src="/images/PatternRecognition/c1/high-dimen.png" alt="high-dimension"></p>
+<h2 id="Decision-Theory"><a href="#Decision-Theory" class="headerlink" title="Decision Theory"></a>Decision Theory</h2><h3 id="Minimizing-the-misclassification-rate"><a href="#Minimizing-the-misclassification-rate" class="headerlink" title="Minimizing the misclassification rate"></a>Minimizing the misclassification rate</h3><h3 id="Minimizing-the-expected-loss"><a href="#Minimizing-the-expected-loss" class="headerlink" title="Minimizing the expected loss"></a>Minimizing the expected loss</h3><h3 id="The-reject-option"><a href="#The-reject-option" class="headerlink" title="The reject option"></a>The reject option</h3><h3 id="Inference-and-decision"><a href="#Inference-and-decision" class="headerlink" title="Inference and decision"></a>Inference and decision</h3><h3 id="Loss-functions-for-regression"><a href="#Loss-functions-for-regression" class="headerlink" title="Loss functions for regression"></a>Loss functions for regression</h3><h2 id="Information-Theory"><a href="#Information-Theory" class="headerlink" title="Information Theory"></a>Information Theory</h2><h3 id="Relative-entropy-and-mutual-information"><a href="#Relative-entropy-and-mutual-information" class="headerlink" title="Relative entropy and mutual information"></a>Relative entropy and mutual information</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -445,9 +495,9 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Example-Polynomial-Curve-Fitting">
+        <a class="is-flex" href="#Example-Polynomial-Curve-Fitting-error-minimization-view">
         <span class="has-mr-6">1</span>
-        <span>Example: Polynomial Curve Fitting</span>
+        <span>Example: Polynomial Curve Fitting(error minimization view)</span>
         </a></li><li>
         <a class="is-flex" href="#Probability-Theory">
         <span class="has-mr-6">2</span>
@@ -469,13 +519,13 @@
         <span class="has-mr-6">2.4</span>
         <span>The Gaussian distribution</span>
         </a></li><li>
-        <a class="is-flex" href="#Curve-fitting-re-visited">
+        <a class="is-flex" href="#Curve-fitting-re-visited-probabilistic-perspective">
         <span class="has-mr-6">2.5</span>
-        <span>Curve fitting re-visited</span>
+        <span>Curve fitting re-visited(probabilistic perspective)</span>
         </a></li><li>
-        <a class="is-flex" href="#Bayesian-curve-fitting">
+        <a class="is-flex" href="#Bayesian-curve-fitting-using-integration">
         <span class="has-mr-6">2.6</span>
-        <span>Bayesian curve fitting</span>
+        <span>Bayesian curve fitting(using integration)</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#Model-Selection">
         <span class="has-mr-6">3</span>

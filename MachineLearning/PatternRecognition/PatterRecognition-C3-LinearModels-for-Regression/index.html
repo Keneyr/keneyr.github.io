@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-06T04:27:00.000Z">
-<meta property="article:modified_time" content="2023-10-06T04:34:33.439Z">
+<meta property="article:modified_time" content="2023-10-23T11:05:36.031Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 41 words)
+                    9 minutes read (About 1278 words)
                 </span>
                 
                 
@@ -192,7 +192,41 @@
 <a id="more"></a>
 
 <p>This is the Chapter3 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-<h2 id="Linear-Basis-Function-Models"><a href="#Linear-Basis-Function-Models" class="headerlink" title="Linear Basis Function Models"></a>Linear Basis Function Models</h2><h2 id="The-Bias-Variance-Decomposition"><a href="#The-Bias-Variance-Decomposition" class="headerlink" title="The Bias-Variance Decomposition"></a>The Bias-Variance Decomposition</h2><h2 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h2><h2 id="Bayesian-Model-Comparison"><a href="#Bayesian-Model-Comparison" class="headerlink" title="Bayesian Model Comparison"></a>Bayesian Model Comparison</h2><h2 id="The-Evidence-Approximation"><a href="#The-Evidence-Approximation" class="headerlink" title="The Evidence Approximation"></a>The Evidence Approximation</h2>
+<h2 id="Linear-Basis-Function-Models"><a href="#Linear-Basis-Function-Models" class="headerlink" title="Linear Basis Function Models"></a>Linear Basis Function Models</h2><p><img src="/images/PatternRecognition/c3/basis-function.png" alt="basis-function"></p>
+<p>$$<br>y(\pmb{x}, \pmb{w}) = w_0 + w_1 x_1 + \cdots + w_Dx_D<br>\tag{3.1}<br>$$<br>where, $\pmb{x} = (x_1, \cdots, x_D)^T$.</p>
+<p>$$<br>y(\pmb{x}, \pmb{w}) = w_0 + \sum_{j=1}^{M-1}w_j\phi_j(\pmb{x})<br>\tag{3.2}<br>$$<br>where, $\phi_j(\pmb{x})$ is called <strong><em>bisis functions</em></strong>, the parameter $w_0$ is called as a <strong><em>bias</em></strong> parameter.</p>
+<p>$$<br>y(\pmb{x,w}) = \sum_{j=0}^{M-1}w_j\phi_j(\pmb{x}) = \pmb{w^T}\phi(\pmb{x})<br>\tag{3.3}<br>$$<br>where, $\phi_0{(\pmb{x})} = 1$.</p>
+<p>The <u>polynomial regression</u> considered in Chapter 1 is a particular example of this model in which there is a <u>single input variable $x$</u>, and the basis functions take the form of powers of $x$ so that $\phi_j(x) = x^j$.</p>
+<p><strong><em>‘Gaussian’ basis functions</em></strong>:<br>$$<br>\phi_j(x) = exp\lbrace -\frac{(x-\mu_j)^2}{2s^2} \rbrace<br>\tag{3.4}<br>$$<br>where the $\mu_j$ govern the locations of the basis functions in input space, and the parameter $s$ governs their spatial scale.</p>
+<p><strong><em>sigmoidal basis function</em></strong>:<br>$$<br>\phi_j(x) = \sigma(\frac{x-\mu_j}{s})<br>\tag{3.5}<br>$$<br>where, $\sigma(a)$ is the <strong><em>logistic sigmoid function</em></strong> defined by<br>$$<br>\sigma(a) = \frac{1}{1 + exp(-a)}<br>\tag{3.6}<br>$$<br>Similar function<br>$$<br>tanh(a) = 2\sigma(a)-1<br>$$</p>
+<h3 id="Maximum-likelihood-and-least-squares"><a href="#Maximum-likelihood-and-least-squares" class="headerlink" title="Maximum likelihood and least squares"></a>Maximum likelihood and least squares</h3><p>Still the polynomial curve fitting problem in Chapter 1. As before, we assume that the target variable $t$ is given by a deterministic function $y(x,\pmb{w})$ with additive Gaussian noise so that<br>$$<br>t = y(x, \pmb{w}) + \epsilon<br>\tag{3.7}<br>$$<br>where $\epsilon$ is a zero mean Gaussian random variable with precision (inverse variance) $\beta$. Thus we can write<br>$$<br>p(t|x,\pmb{w}, \beta) = \mathcal{N}(t|y(x,\pmb{w}), \beta^{-1})<br>\tag{3.8}<br>$$</p>
+<p>if we assume a squared loss function, then the optimal prediction, for a new value of $x$, will be given by the conditional mean of the target variable.<br>$$<br>E[t|x] = \int tp(t|x) dt = y(x,\pmb{w})<br>\tag{3.8}<br>$$</p>
+<p>Now consider a data set of inputs $X = \lbrace x_1, \cdots, x_N \rbrace$ with corresponding target values T = $\lbrace t_1, \cdots, t_N \rbrace$. The likelihood function</p>
+<p>$$<br>p(T|X,\pmb{w},\beta) = \prod_{n=1}^{N}\mathcal{N}(t_n|\pmb{w^T}\phi(x_n), \beta^{-1})<br>\tag{3.10}<br>$$</p>
+<p>Thus,</p>
+<p>$$<br>\begin{aligned}<br>\ln p(T|X, \pmb{w}, \beta) &amp;= \ln p(T|\pmb{w}, \beta)\\<br>&amp;=\sum_{n=1}^N\ln \mathcal{N}(t_n|\pmb{w^T}\phi(x_n),\beta^{-1})\\<br>&amp;=\frac{N}{2}\ln \beta - \frac{N}{2}\ln(2\pi) - \beta E_D(\pmb{w})<br>\end{aligned}<br>\tag{3.11}<br>$$<br>where the sum-of-squares error function is defined by<br>$$<br>E_D(\pmb{w}) = \frac{1}{2} \sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2<br>\tag{3.12}<br>$$</p>
+<p>The <mark>gradient</mark> of the log likelihood function (3.11) takes the form<br>$$<br>\nabla \ln p(T|\pmb{w},\beta) = \sum_{n=1}^N \lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace \phi(x_n)^T<br>\tag{3.13}<br>$$<br>Setting this gradient to zero gives<br>$$<br>0 = \sum_{n=1}^{N} t_n \phi(x_n)^T - \pmb{w^T}(\sum_{n=1}^{N}\phi(x_n)\phi(x_n)^T)<br>\tag{3.14}<br>$$<br>Solving for $\pmb{w}$ we obtain<br>$$<br>\pmb{w}_{ML} = (\Phi^T\Phi)^{-1}\Phi^T T<br>\tag{3.15}<br>$$<br>which are known as the <u>normal equations</u> for the least squares problem. Here $\Phi$ is an $N \times M$ matrix, called the <u>design matrix</u>, whose elements are given by $\Phi_{nj} = \phi_j(x_n)$, so that<br>$$<br>\Phi =<br>\begin{bmatrix}<br>    \phi_0(x_1) &amp; \phi_1(x_1) &amp; \cdots &amp; \phi_{M-1}(x_1) \\<br>    \phi_0(x_2) &amp; \phi_1(x_2) &amp; \cdots &amp; \phi_{M-1}(x_2) \\<br>    \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\<br>    \phi_0(x_N) &amp; \phi_1(x_N) &amp; \cdots &amp; \phi_{M-1}(x_N)<br>\end{bmatrix}<br>$$</p>
+<p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C6-Orthogonality-And-Least-Squares/#Orthogonal-Projections">Least Squares in Algebra &gt;&gt;</a></p>
+<p>&#x1F449;<a href="/Math/Numerical-Analysis/NumericalAnalysis-C4-Least-Squares/">Least Squares in Numerical Analysis &gt;&gt;</a></p>
+<p>$$<br>\Phi^\dagger = (\Phi^T\Phi)^{-1}\Phi^T<br>$$</p>
+<p>Now back to $w_0$, the bias parameter. the error function (3.12)</p>
+<p>$$<br>\begin{aligned}<br>    E_D(\pmb{w}) &amp;= \frac{1}{2} \sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2 \\<br>    &amp;= \frac{1}{2} \sum_{n=1}^{N}\lbrace t_n - w_0 -\sum_{j=1}^{M-1} w_j\phi_j(x_n)\rbrace^2<br>\end{aligned}<br>\tag{3.18}<br>$$<br>Setting the <u>derivative</u> with respect to $w_0$ equal to zero, and solving for $w_0$, we obtain<br>$$<br>w_0 = \bar{t} - \sum_{j=1}^{M-1}w_j\bar{\phi_j}<br>\tag{3.19}<br>$$<br>where,<br>$$<br>\bar{t} = \frac{1}{N}\sum_{n=1}^{N} t_n\\<br>\bar{\phi_j} = \frac{1}{N}\sum_{n=1}^{N}\phi_j(x_n)<br>\tag{3.20}<br>$$<br>Thus the bias $w_0$ compensates for the difference between the averages (over the training set) of the target values and the weighted sum of the averages of the basis function values.</p>
+<p>We can also maximize the log likelihood function (3.11) with respect to the noise precision parameter $\beta$, giving<br>$$<br>\frac{1}{\beta_{ML}} = \frac{1}{N} \sum_{n=1}^{N} \lbrace t_n - \pmb{w_{ML}^T} \phi(x_n)\rbrace^2<br>\tag{3.21}<br>$$<br>so we see that the inverse of the noise precision is given by <u>the residual variance of the target values around the regression function</u>.</p>
+<h3 id="Geometry-of-least-squares"><a href="#Geometry-of-least-squares" class="headerlink" title="Geometry of least squares"></a>Geometry of least squares</h3><p><img src="/images/PatternRecognition/c3/least-squares-geometry.png" alt="least squares in regression"></p>
+<p>Note that $\psi_j$ corresponds to the $j^{th}$ column of $\Phi$, whereas $\phi(x_n)$ corresponds to the $n^{th}$ row of $\Phi$.</p>
+<p>We define $y$ to be an $N$-dimensional vector whose $n^{th}$ element is given by $y(x_n,\pmb{w})$, where $n = 1, . . . , N$.</p>
+<h3 id="Sequential-learning"><a href="#Sequential-learning" class="headerlink" title="Sequential learning"></a>Sequential learning</h3><p><strong><em>Batch techniques</em></strong>, such as the maximum likelihood solution (3.15), which involve processing the entire training set in one go, can be computationally costly for large data sets.</p>
+<p>it may be worthwhile to use <strong><em>sequential algorithms</em></strong>, also known as <strong><em>on-line algorithms</em></strong>, in which the data points are considered one at a time, and the model parameters updated after each such presentation.</p>
+<p>We can obtain a sequential learning algorithm by applying the technique of <strong><em>stochastic gradient descent(随机梯度下降)</em></strong>, also known as sequential gradient descent, as follows.</p>
+<p>If the error function comprises a sum over data points $E = \sum_n E_n$, then after presentation of pattern $n$, the stochastic gradient descent algorithm updates the parameter vector $\pmb{w}$ using<br>$$<br>\pmb{w}^{\tau + 1} = \pmb{w}^\tau - \eta \nabla E_n<br>\tag{3.22}<br>$$<br>where, $\tau$ denotes the iteration number, and $\eta$ is a learning rate parameter.</p>
+<p>For the case of the sum-of-squares error function (3.12), this gives<br>$$<br>\pmb{w}^{\tau + 1} = \pmb{w}^\tau + \eta (t_n - \pmb{w}^{(\tau)T} \phi_n)\phi_n<br>\tag{3.23}<br>$$<br>where $\phi_n = \phi(x_n)$.</p>
+<p>This is known as <strong><em>least-mean-squares</em></strong> or the <strong><em>LMS algorithm</em></strong>.</p>
+<h3 id="Regularized-least-squares"><a href="#Regularized-least-squares" class="headerlink" title="Regularized least squares"></a>Regularized least squares</h3><p><img src="/images/PatternRecognition/c3/regularized-least-squares.png" alt="regularized least squares"></p>
+<p>To control over-fitting, we introduced a regularization term to an error function:<br>$$<br>E_D(\pmb{w}) + \lambda E_W(\pmb{w}) =<br>\frac{1}{2}\sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2 + \frac{\lambda}{2}\pmb{w^T}\pmb{w}<br>\tag{3.27}<br>$$</p>
+<p>This particular choice of regularizer is known in the machine learning literature as <strong><em>weight decay</em></strong> because in sequential learning algorithms, it encourages weight values to decay towards zero, unless supported by the data.</p>
+<p>A more general regularizer is sometimes used, for which the regularized error takes the form</p>
+<p>$$<br>\frac{1}{2}\sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2 + \frac{\lambda}{2}\sum_{j=1}^{M}|w_j|^q<br>\tag{3.27}<br>$$<br>where $q = 2$ corresponds to the <u>quadratic regularizer (3.27)</u>. Figure 3.3 shows contours of the regularization function for different values of $q$.</p>
+<h2 id="Multiple-outputs"><a href="#Multiple-outputs" class="headerlink" title="Multiple outputs"></a>Multiple outputs</h2><h2 id="The-Bias-Variance-Decomposition"><a href="#The-Bias-Variance-Decomposition" class="headerlink" title="The Bias-Variance Decomposition"></a>The Bias-Variance Decomposition</h2><h2 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h2><h2 id="Bayesian-Model-Comparison"><a href="#Bayesian-Model-Comparison" class="headerlink" title="Bayesian Model Comparison"></a>Bayesian Model Comparison</h2><h2 id="The-Evidence-Approximation"><a href="#The-Evidence-Approximation" class="headerlink" title="The Evidence Approximation"></a>The Evidence Approximation</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -391,21 +425,41 @@
         <a class="is-flex" href="#Linear-Basis-Function-Models">
         <span class="has-mr-6">1</span>
         <span>Linear Basis Function Models</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Maximum-likelihood-and-least-squares">
+        <span class="has-mr-6">1.1</span>
+        <span>Maximum likelihood and least squares</span>
+        </a></li><li>
+        <a class="is-flex" href="#Geometry-of-least-squares">
+        <span class="has-mr-6">1.2</span>
+        <span>Geometry of least squares</span>
+        </a></li><li>
+        <a class="is-flex" href="#Sequential-learning">
+        <span class="has-mr-6">1.3</span>
+        <span>Sequential learning</span>
+        </a></li><li>
+        <a class="is-flex" href="#Regularized-least-squares">
+        <span class="has-mr-6">1.4</span>
+        <span>Regularized least squares</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Multiple-outputs">
+        <span class="has-mr-6">2</span>
+        <span>Multiple outputs</span>
         </a></li><li>
         <a class="is-flex" href="#The-Bias-Variance-Decomposition">
-        <span class="has-mr-6">2</span>
+        <span class="has-mr-6">3</span>
         <span>The Bias-Variance Decomposition</span>
         </a></li><li>
         <a class="is-flex" href="#Bayesian-Linear-Regression">
-        <span class="has-mr-6">3</span>
+        <span class="has-mr-6">4</span>
         <span>Bayesian Linear Regression</span>
         </a></li><li>
         <a class="is-flex" href="#Bayesian-Model-Comparison">
-        <span class="has-mr-6">4</span>
+        <span class="has-mr-6">5</span>
         <span>Bayesian Model Comparison</span>
         </a></li><li>
         <a class="is-flex" href="#The-Evidence-Approximation">
-        <span class="has-mr-6">5</span>
+        <span class="has-mr-6">6</span>
         <span>The Evidence Approximation</span>
         </a></li></ul>
             </div>
