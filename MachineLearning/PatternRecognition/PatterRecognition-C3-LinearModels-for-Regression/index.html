@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-06T04:27:00.000Z">
-<meta property="article:modified_time" content="2023-10-23T11:05:36.031Z">
+<meta property="article:modified_time" content="2023-10-24T12:52:22.695Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes read (About 1278 words)
+                    13 minutes read (About 1908 words)
                 </span>
                 
                 
@@ -225,8 +225,24 @@
 <p>To control over-fitting, we introduced a regularization term to an error function:<br>$$<br>E_D(\pmb{w}) + \lambda E_W(\pmb{w}) =<br>\frac{1}{2}\sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2 + \frac{\lambda}{2}\pmb{w^T}\pmb{w}<br>\tag{3.27}<br>$$</p>
 <p>This particular choice of regularizer is known in the machine learning literature as <strong><em>weight decay</em></strong> because in sequential learning algorithms, it encourages weight values to decay towards zero, unless supported by the data.</p>
 <p>A more general regularizer is sometimes used, for which the regularized error takes the form</p>
-<p>$$<br>\frac{1}{2}\sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2 + \frac{\lambda}{2}\sum_{j=1}^{M}|w_j|^q<br>\tag{3.27}<br>$$<br>where $q = 2$ corresponds to the <u>quadratic regularizer (3.27)</u>. Figure 3.3 shows contours of the regularization function for different values of $q$.</p>
-<h2 id="Multiple-outputs"><a href="#Multiple-outputs" class="headerlink" title="Multiple outputs"></a>Multiple outputs</h2><h2 id="The-Bias-Variance-Decomposition"><a href="#The-Bias-Variance-Decomposition" class="headerlink" title="The Bias-Variance Decomposition"></a>The Bias-Variance Decomposition</h2><h2 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h2><h2 id="Bayesian-Model-Comparison"><a href="#Bayesian-Model-Comparison" class="headerlink" title="Bayesian Model Comparison"></a>Bayesian Model Comparison</h2><h2 id="The-Evidence-Approximation"><a href="#The-Evidence-Approximation" class="headerlink" title="The Evidence Approximation"></a>The Evidence Approximation</h2>
+<p>$$<br>\frac{1}{2}\sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2 + \frac{\lambda}{2}\sum_{j=1}^{M}|w_j|^q<br>\tag{3.29}<br>$$<br>where $q = 2$ corresponds to the <u>quadratic regularizer (3.27)</u>. Figure 3.3 shows contours of the regularization function for different values of $q$.</p>
+<p>minimizing (3.29) is equivalent to minimizing the unregularized sum-of-squares error (3.12) subject to the constraint<br>$$<br>\sum_{j=1}^{M}|w_j|^q \leq \eta<br>\tag{3.30}<br>$$<br>for an appropriate value of the parameter $\eta$, where the two approaches can be related using &#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/#Constrained-Maxima-and-Minima">Lagrange multipliers</a>.</p>
+<h2 id="Multiple-outputs"><a href="#Multiple-outputs" class="headerlink" title="Multiple outputs"></a>Multiple outputs</h2><p>$$<br>\pmb{y(x,w)} = \pmb{W^T} \phi(\pmb{x})<br>\tag{3.31}<br>$$<br>Here, $\pmb{t}$ or $\pmb{y(x,w)}$ is not a single target variable, but a $K$-dimensional vector. $\pmb{W}$ is an $M \times K$ matrix of parameters. $\phi(\pmb{x})$ is an $M$-dimensional column vector with elements $\phi_j(x)$, $\phi_0(x) = 1$ as before.</p>
+<p>Suppose we take the <u>conditional distribution of the target vector</u> to be an isotropic Gaussian of the form<br>$$<br>p(\pmb{t}|\pmb{x}, \pmb{W}, \beta) = \mathcal{N}(\pmb{t}|\pmb{W^T\phi(x)}, \beta^{-1}I)<br>\tag{3.32}<br>$$</p>
+<p>If we have a set of observations $\pmb{t_1}, \cdots, \pmb{t_N}$, we can combine these into a matrix $\pmb{T}$ of size $N \times K$ such that the $n^{th}$ row is given by $\pmb{t^T_n}$.</p>
+<h2 id="The-Bias-Variance-Decomposition"><a href="#The-Bias-Variance-Decomposition" class="headerlink" title="The Bias-Variance Decomposition"></a>The Bias-Variance Decomposition</h2><h2 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h2><p>We now turn to a <u>Bayesian treatment of linear regression</u>, which will avoid the over-fitting problem of maximum likelihood, and which will also lead to automatic methods of determining model complexity using the training data alone.</p>
+<h3 id="Parameter-distribution"><a href="#Parameter-distribution" class="headerlink" title="Parameter distribution"></a>Parameter distribution</h3><p>we shall treat the noise precision parameter $β$ as a known constant, thus, equation (3.10) becomes<br>$$<br>p(T|X,\pmb{w},\beta) \Leftrightarrow p(T|\pmb{w})\\<br>= \prod_{n=1}^{N}\mathcal{N}(t_n|\pmb{w^T}\phi(x_n), \beta^{-1})<br>$$<br>this function is a exponential of a quadratic function of $\pmb{w}$. The corresponding conjugate <u>prior</u> is therefore given by a Gaussian distribution of the form<br>$$<br>p(\pmb{w}) = \mathcal{N}(\pmb{w}|\pmb{m_0},\pmb{S_0})<br>\tag{3.48}<br>$$<br>having mean $\pmb{m_0}$ and covariance $\pmb{S_0}$.</p>
+<p>Next we compute the <u>posterior distribution</u>, which is proportional to the product of the <u>likelihood function</u> and the <u>prior</u>.<br>$$<br>p(\pmb{w}|T) \propto p(T|\pmb{w}) p(\pmb{w})<br>$$<br>thus,<br>$$<br>p(\pmb{w}|T) = \mathcal{N}(\pmb{w}|\pmb{m_N},\pmb{S_N})<br>\tag{3.49}<br>$$<br>where,<br>$$<br>\pmb{m_N }= \pmb{S_N}(\pmb{S_0^{-1}m_0} + \beta \pmb{\Phi^TT})<br>\tag{3.50}<br>$$<br>$$<br>\pmb{S_N^{-1}} = \pmb{S_0^{-1}} + \beta \pmb{\Phi^T\Phi}<br>\tag{3.51}<br>$$</p>
+<p>For simplicity, we consider a zero-mean isotropic Gaussian governed by a single precision parameter $\alpha$ so that<br>$$<br>p(\pmb{w}|\alpha) = \mathcal{N}(\pmb{w}|\pmb{0}, \alpha^{-1}\pmb{I})<br>\tag{3.52}<br>$$<br>and the corresponding posterior distribution over w is then given by (3.49) with<br>$$<br>\pmb{m_N} = \beta \pmb{S_N}\pmb{\Phi^T}T<br>\tag{3.53}<br>$$<br>$$<br>\pmb{S_N^{-1}} = \alpha \pmb{I} + \beta \pmb{\Phi^T\Phi}<br>\tag{3.54}<br>$$</p>
+<p>&#x1F4A1;For example&#x1F4A1;:</p>
+<p>We can illustrate Bayesian learning in a linear basis function model, as well as the sequential update of a posterior distribution, using a simple example involving straight-line fitting.<br>$$<br>y(x,\pmb{w}) = w_0 + w_1x<br>$$</p>
+<p>We <u><em>generate points data</em></u> by function $f(x,\pmb{a}) = a_0 + a_1 x =-0.3 + 0.5 x$, using $x_n$ from uniform distribution $\mathcal{U}(x | -1, 1)$, then evaluating $f(x_n, \pmb{a})$, and finally adding <u><em>Gaussian noise</em></u> with standard deviation of $0.2$ to obtain the target values $t_n$.</p>
+<p>Our goal is to recover the values of $a_0$ and $a_1$ from such data.</p>
+<p>Solution:</p>
+<p><img src="/images/PatternRecognition/c3/sequential-bayesian-learning.png" alt="sequential bayesian learning"></p>
+<h3 id="Predictive-distribution"><a href="#Predictive-distribution" class="headerlink" title="Predictive distribution"></a>Predictive distribution</h3><p>In practice, we are not usually interested in the value of $\pmb{w}$ itself but rather in making predictions of $t$ for new values of $x$. This requires that we evaluate the <u>predictive distribution</u> defined by</p>
+<p>$$<br>p(t|T,\alpha, \beta) = \int p(t|\pmb{w}, \beta) p(w|T,\alpha, \beta) d\pmb{w}<br>\tag{3.57}<br>$$</p>
+<h3 id="Equivalent-kernel"><a href="#Equivalent-kernel" class="headerlink" title="Equivalent kernel"></a>Equivalent kernel</h3><h2 id="Bayesian-Model-Comparison"><a href="#Bayesian-Model-Comparison" class="headerlink" title="Bayesian Model Comparison"></a>Bayesian Model Comparison</h2><h2 id="The-Evidence-Approximation"><a href="#The-Evidence-Approximation" class="headerlink" title="The Evidence Approximation"></a>The Evidence Approximation</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -453,7 +469,19 @@
         <a class="is-flex" href="#Bayesian-Linear-Regression">
         <span class="has-mr-6">4</span>
         <span>Bayesian Linear Regression</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Parameter-distribution">
+        <span class="has-mr-6">4.1</span>
+        <span>Parameter distribution</span>
         </a></li><li>
+        <a class="is-flex" href="#Predictive-distribution">
+        <span class="has-mr-6">4.2</span>
+        <span>Predictive distribution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Equivalent-kernel">
+        <span class="has-mr-6">4.3</span>
+        <span>Equivalent kernel</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Bayesian-Model-Comparison">
         <span class="has-mr-6">5</span>
         <span>Bayesian Model Comparison</span>
