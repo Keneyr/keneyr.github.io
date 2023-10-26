@@ -10,16 +10,16 @@
 <title>PatterRecognition-C3-LinearModels-for-Regression - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+    <meta name="description" content="Keywords: Least Squares, Bayesian Linear Regression, Evidence Approximation, Bias-Variance Decomposition">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PatterRecognition-C3-LinearModels-for-Regression">
 <meta property="og:url" content="https://keneyr.com/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+<meta property="og:description" content="Keywords: Least Squares, Bayesian Linear Regression, Evidence Approximation, Bias-Variance Decomposition">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-06T04:27:00.000Z">
-<meta property="article:modified_time" content="2023-10-24T12:52:22.695Z">
+<meta property="article:modified_time" content="2023-10-25T01:50:42.732Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 minutes read (About 1908 words)
+                    14 minutes read (About 2174 words)
                 </span>
                 
                 
@@ -188,7 +188,7 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition</p>
+            <p><strong><em>Keywords</em></strong>: Least Squares, Bayesian Linear Regression, Evidence Approximation, Bias-Variance Decomposition</p>
 <a id="more"></a>
 
 <p>This is the Chapter3 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
@@ -241,7 +241,12 @@
 <p>Solution:</p>
 <p><img src="/images/PatternRecognition/c3/sequential-bayesian-learning.png" alt="sequential bayesian learning"></p>
 <h3 id="Predictive-distribution"><a href="#Predictive-distribution" class="headerlink" title="Predictive distribution"></a>Predictive distribution</h3><p>In practice, we are not usually interested in the value of $\pmb{w}$ itself but rather in making predictions of $t$ for new values of $x$. This requires that we evaluate the <u>predictive distribution</u> defined by</p>
-<p>$$<br>p(t|T,\alpha, \beta) = \int p(t|\pmb{w}, \beta) p(w|T,\alpha, \beta) d\pmb{w}<br>\tag{3.57}<br>$$</p>
+<p>$$<br>p(t|T,\alpha, \beta) = \int p(t|\pmb{w}, \beta) p(w|T,\alpha, \beta) d\pmb{w}<br>\tag{3.57}<br>$$<br>The conditional distribution $p(t|x, \pmb{w}, \beta)$ of the target variable is given by (3.8), and the posterior weight distribution is given by (3.49).</p>
+<p>$$<br>p(t|x,T,\alpha, \beta) = \mathcal{N}(t|\pmb{m_N^T\phi(x)}, \sigma^2_N(x))<br>\tag{3.58}<br>$$</p>
+<p>where the variance $\sigma^2_N(x)$ of the predictive distribution is given by<br>$$<br>\sigma^2_N(x) = \frac{1}{\beta} + \phi(x)^T\pmb{S_N}\phi(x)<br>\tag{3.59}<br>$$</p>
+<p><img src="/images/PatternRecognition/c3/predictive-distribution.png" alt="predictive distribution"></p>
+<p>we fit a model comprising a linear combination of Gaussian basis functions to data sets of various sizes and then look at the corresponding posterior distributions. Here the <u>green curves</u> correspond to the function $\sin(2\pi x)$ from which the data points were generated (with the addition of Gaussian noise). Data sets of size $N = 1, N = 2, N = 4$, and $N = 25$ are shown in the four plots by the <u>blue circles</u>. For each plot, the <u>red curve</u> shows the mean of the corresponding Gaussian predictive distribution, and the <u>red shaded region</u> spans one standard deviation either side of the mean. Note that the predictive uncertainty depends on $x$ and is smallest in the neighbourhood of the data points. Also note that the level of uncertainty decreases as more data points are observed.</p>
+<p>The plots in <em>Figure 3.8</em> only show the point-wise predictive variance as a function of $x$. In order to gain insight into the <u>covariance</u> between the predictions at different values of $x$, we can <u>draw samples</u> from the posterior distribution over $\pmb{w}$, and then plot the corresponding functions $y(x,\pmb{w})$, as shown in <em>Figure 3.9</em>.</p>
 <h3 id="Equivalent-kernel"><a href="#Equivalent-kernel" class="headerlink" title="Equivalent kernel"></a>Equivalent kernel</h3><h2 id="Bayesian-Model-Comparison"><a href="#Bayesian-Model-Comparison" class="headerlink" title="Bayesian Model Comparison"></a>Bayesian Model Comparison</h2><h2 id="The-Evidence-Approximation"><a href="#The-Evidence-Approximation" class="headerlink" title="The Evidence Approximation"></a>The Evidence Approximation</h2>
         </div>
         

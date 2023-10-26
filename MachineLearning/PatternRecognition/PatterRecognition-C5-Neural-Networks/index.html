@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:49:29.000Z">
-<meta property="article:modified_time" content="2023-10-16T08:56:42.363Z">
+<meta property="article:modified_time" content="2023-10-25T14:04:03.421Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 24 words)
+                    10 minutes read (About 1478 words)
                 </span>
                 
                 
@@ -191,8 +191,46 @@
             <p><strong><em>Keywords</em></strong>: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition</p>
 <a id="more"></a>
 
-<p>This is the Chapter3 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-
+<p>In &#x1F449;<a href="">Linear Models for Regression &gt;&gt;</a> and &#x1F449;<a href="">Linear Models for Classification &gt;&gt;</a> that comprised <strong><em>linear combinations of fixed basis functions</em></strong>. We saw that such models have useful analytical and computational properties but that their practical applicability was limited by the <u>curse of dimensionality</u>.</p>
+<p>In order to apply such models to largescale problems, it is necessary to adapt the basis functions to the data.</p>
+<h2 id="Feed-forward-Network-Functions"><a href="#Feed-forward-Network-Functions" class="headerlink" title="Feed-forward Network Functions"></a>Feed-forward Network Functions</h2><p>The general form of linear combinations of fixed nonlinear basis functions $\phi_j(x)$ is<br>$$<br>y(\pmb{x,w}) = f(\sum_{j=1}^M w_j \phi_j(x))<br>\tag{5.1}<br>$$<br><strong><em>Our goal</em></strong> is to extend this model by making the basis functions $\phi_j(x)$ depend on parameters and then to allow these parameters to be adjusted, along with the coefficients $\lbrace w_j \rbrace$, during training.</p>
+<p>We can give the overall network function that, for sigmoidal output unit activation functions, takes the form<br>$$<br>y_k(x,\pmb{w}) = \sigma(\sum_{j=0}^{M} w_{kj}^{(2)}h(\sum_{i=0}^{D}w_{ji}^{(1)}x_i))<br>\tag{5.9}<br>$$<br>A key difference compared to the perceptron, however, is that the neural network uses <em>continuous sigmoidal nonlinearities</em> in the hidden units, whereas the perceptron uses <em>step-function nonlinearities</em>. This means that the neural network function is <em>differentiable</em> with respect to the network parameters, and this property will play a central role in network training.</p>
+<p><img src="/images/PatternRecognition/c5/forward-propagation.png" alt="forward propagation"></p>
+<h2 id="Network-Training"><a href="#Network-Training" class="headerlink" title="Network Training"></a>Network Training</h2><p>In summary, there is a natural choice of both output unit activation function and matching error function, according to the type of problem being solved. </p>
+<ul>
+<li><strong>For regression</strong>. we use linear outputs and a sum-of-squares error.<br>$$<br>E(\pmb{w}) = \frac{1}{2}\sum_{n=1}^{N}\lbrace y(x_n, \pmb{w}) - t_n\rbrace^2<br>\tag{5.14}<br>$$</li>
+<li><strong>for (multiple independent) binary classifications</strong>. we use logistic sigmoid outputs and a cross-entropy error function.<br>$$<br>y = \sigma(a) = \frac{1}{1 + exp(-a)}<br>\tag{5.19}<br>$$<br>$$<br>E(\pmb{w}) = -\sum_{n=1}^{N}\lbrace t_n\ln y_n + (1-t_n)\ln(1-y_n)\rbrace, t_n = 0,1<br>\tag{5.21}<br>$$<br>If we have $K$ separate binary classifications to perform, then we can use a network having $K$ outputs each of which has a logistic sigmoid activation function. Associated with each output is a binary class label $t_k \in {0, 1}$, where $k = 1, . . . , K$.<br>$$<br>E(\pmb{w}) = -\sum_{n=1}^{N}\sum_{k=1}^{K} \lbrace t_{nk}\ln y_{nk} + (1 - t_{nk})\ln (1-y_{nk})\rbrace<br>\tag{5.23}<br>$$</li>
+<li><strong>for multiclass classification</strong>. we use softmax outputs with the corresponding multiclass cross-entropy error function.<br>$$<br>y_k(x,\pmb{w}) = \frac{exp(a_k(\pmb{w, w}))}{\sum_j exp(a_j(\pmb{x,w}))}<br>\tag{5.25}<br>$$<br>$$<br>E(\pmb{w}) = -\sum_{n=1}^{N}\sum_{k=1}^{K} t_{nk} \ln y_k(x_n, \pmb{w})<br>\tag{5.24}<br>$$</li>
+<li><strong>For classification problems involving two classes</strong>. we can use a single logistic sigmoid output, or alternatively we can use a network with two outputs having a softmax output activation function.</li>
+</ul>
+<h3 id="Parameter-optimization"><a href="#Parameter-optimization" class="headerlink" title="Parameter optimization"></a>Parameter optimization</h3><p><img src="/images/PatternRecognition/c5/error-surface.png" alt="error surface"></p>
+<p>if we make a small step in weight space from $\pmb{w}$ to $\pmb{w + \sigma w}$ then the change in the error function is $\sigma E \simeq \sigma \pmb{w^T} \nabla E(\pmb{w})$, where the vector $\nabla E(\pmb{w})$ points in the direction of greatest rate of increase of the error function.</p>
+<p>However, the error function typically has a highly nonlinear dependence on the weights and bias parameters, and so there will be many points in weight space at which the gradient vanishes (or is numerically very small).<br>$$<br>\nabla E(\pmb{w}) = 0 \tag{5.26}<br>$$</p>
+<p>For a successful application of neural networks, it may not be necessary to find the global minimum (and in general it will not be known whether the global minimum has been found) but it may be necessary to compare several local minima in order to find a sufficiently good solution.</p>
+<p>Because there is clearly no hope of finding an analytical solution to the equation $\nabla E(\pmb{w}) = 0$ we resort to <strong><em>iterative numerical procedures</em></strong>.</p>
+<p>Most techniques involve choosing some initial value $\pmb{w^{(0)}}$ for the weight vector and then moving through weight space in a succession of steps of the form<br>$$<br>\pmb{w}^{(\tau + 1)} = \pmb{w}^{(\tau)} + \Delta \pmb{w^{(\tau)}}<br>\tag{5.27}<br>$$</p>
+<p>&#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/#Directional-Derivatives-and-Gradient-Vectors">More about Gradient in Calculus &gt;&gt;</a></p>
+<h3 id="Local-quadratic-approximation"><a href="#Local-quadratic-approximation" class="headerlink" title="Local quadratic approximation"></a>Local quadratic approximation</h3><p>Consider the &#x1F449;<a href="/Math/Calculus/Calculus-C10-Infinite-Sequences-and-Series/#Taylor-Polynomials">Taylor expansion &gt;&gt;</a> of $E(\pmb{w})$ around some point $\pmb{\hat{w}}$ in weight space<br>$$<br>E(\pmb{w}) \simeq E(\pmb{\hat{w}}) + (\pmb{w - \pmb{\hat{w}}})^T \pmb{b} + \frac{1}{2}(\pmb{w - \pmb{\hat{w}}})^T \pmb{H}(\pmb{w - \pmb{\hat{w}}})<br>\tag{5.28}<br>$$<br>where cubic and higher terms have been omitted. Here $\pmb{b}$ is defined to be the gradient of $E$ evaluated at $\pmb{\hat{w}}$<br>$$<br>\pmb{b} = \nabla E|_{\pmb{w} = \pmb{\hat{w}}}<br>\tag{5.29}<br>$$</p>
+<p>and the Hessian matrix $\pmb{H} = \nabla \nabla E$ has elements($\pmb{H}$ is symmetric)</p>
+<p>$$<br>(\pmb{H})_{ij} = \frac{\partial E}{\partial w_i \partial w_j} |_{\pmb{w = \hat{w}}}<br>\tag{5.30}<br>$$<br>From (5.28), the corresponding local approximation to the gradient is given by<br>$$<br>\nabla E \simeq \pmb{b} + \pmb{H}(\pmb{w - \hat{w}})<br>\tag{5.31}<br>$$</p>
+<p>Consider the particular case of a local quadratic approximation around a point $\pmb{w^{\ast}}$ that is a minimum of the error function. In this case there is no linear term, because $\nabla E = 0$ at $\pmb{w^{\ast}}$, and (5.28) becomes<br>$$<br>E(\pmb{w}) = E(\pmb{w\ast}) + \frac{1}{2}(\pmb{w-w^{\ast}})^T\pmb{H}(\pmb{w-w^{\ast}})<br>\tag{5.32}<br>$$<br>where the Hessian $\pmb{H}$ is evaluated at $\pmb{w^{\ast}}$.</p>
+<p>Consider the eigenvalue equation for Hessian Matrix:</p>
+<p>$$<br>\pmb{Hu_i} = \lambda_i \pmb{u_i}<br>\tag{5.33}<br>$$<br>where the eigenvectors $\pmb{u_i}$ form a complete orthonormal set so that<br>$$<br>\pmb{u_i^Tu_j} = \sigma_{ij}<br>\tag{5.34}<br>$$<br>We now expand $(\pmb{w − w^{\ast}})$ as a linear combination of the eigenvectors in the form<br>$$<br>\pmb{w-w^{\ast}} = \sum_i \alpha_i \pmb{u_i}<br>\tag{5.35}<br>$$<br>This can be regarded as a transformation of the coordinate system in which the origin is translated to the point $\pmb{w^{\ast}}$, and the axes are rotated to align with the eigenvectors.</p>
+<p>Substituting (5.35) into (5.32), and using (5.33) and (5.34), allows the error function to be written in the form<br>$$<br>E(\pmb{w}) = E(\pmb{w^{\ast}}) + \frac{1}{2}\sum_i \lambda_i \alpha_i^2<br>\tag{5.36}<br>$$<br>A matrix $\pmb{H}$ is said to be positive definite if, and only if,<br>$$<br>\pmb{v^THv} &gt; 0, for-all-\pmb{v}<br>\tag{5.37}<br>$$<br>Because the eigenvectors $\lbrace \pmb{u_i} \rbrace$ form a complete set, an arbitrary vector $\pmb{v}$ can be written in the form</p>
+<p>$$<br>\pmb{v} = \sum_i c_i \pmb{u_i}<br>\tag{5.38}<br>$$</p>
+<p>From (5.33) and (5.34), we then have<br>$$<br>\pmb{v^THv} = \sum_i c_i^2 \lambda_i<br>\tag{5.39}<br>$$</p>
+<blockquote>
+<p>and so $\pmb{H}$ will be positive definite if, and only if, all of its eigenvalues are positive.</p>
+</blockquote>
+<p><img src="/images/PatternRecognition/c5/quadratic-approximaton.png" alt="quadratic approximaton of the error fucntion"></p>
+<p>For a one-dimensional weight space, a stationary point $\pmb{w^{\ast}}$ will be a minimum if<br>$$<br>\frac{\partial^2 E}{\partial \pmb{w^2}}|_{\pmb{w^{\ast}}} &gt; 0<br>\tag{5.40}<br>$$<br>The corresponding result in $D$-dimensions is that the Hessian matrix, evaluated at $\pmb{w^{\ast}}$, should be positive definite.</p>
+<p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C5-EigenValues-And-EigenVectors/">More about Eigenvalues in Algebra &gt;&gt;</a></p>
+<p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C7-Symmetric-Matrices-And-Quadratic-Forms/">More about Positive Definite in Algebra &gt;&gt;</a></p>
+<h3 id="Use-of-gradient-information"><a href="#Use-of-gradient-information" class="headerlink" title="Use of gradient information"></a>Use of gradient information</h3><h3 id="Gradient-descent-optimization"><a href="#Gradient-descent-optimization" class="headerlink" title="Gradient descent optimization"></a>Gradient descent optimization</h3><p>The simplest approach to using gradient information is to choose the weight update in (5.27) to comprise a small step in the direction of the negative gradient, so that</p>
+<p>$$<br>\pmb{w}^{\tau + 1} = \pmb{w}^{(\tau)} - \eta \nabla E(\pmb{w}^{(\tau)})<br>\tag{5.41}<br>$$<br>where the parameter $\eta &gt; 0$ is known as the <strong><em>learning rate</em></strong>.</p>
+<p><strong>For batch optimization</strong>, there are more efficient methods, such as <u>conjugate gradients</u> and <u>quasi-Newton methods</u>, which are much more robust and much faster than simple gradient descent.<br>Unlike gradient descent, these algorithms have the property that the error function always decreases at each iteration unless the weight vector has arrived at a local or global minimum.</p>
+<p>There is, however, an <strong>on-line version</strong> of gradient descent that has proved useful in practice for training neural networks on large data sets</p>
+<h2 id="Error-Backpropagation"><a href="#Error-Backpropagation" class="headerlink" title="Error Backpropagation"></a>Error Backpropagation</h2><h3 id="Evaluation-of-error-function-derivatives"><a href="#Evaluation-of-error-function-derivatives" class="headerlink" title="Evaluation of error-function derivatives"></a>Evaluation of error-function derivatives</h3><h3 id="A-simple-example"><a href="#A-simple-example" class="headerlink" title="A simple example"></a>A simple example</h3><h3 id="Efficiency-of-backpropagation"><a href="#Efficiency-of-backpropagation" class="headerlink" title="Efficiency of backpropagation"></a>Efficiency of backpropagation</h3><h3 id="The-Jacobian-matrix"><a href="#The-Jacobian-matrix" class="headerlink" title="The Jacobian matrix"></a>The Jacobian matrix</h3><h2 id="The-Hessian-Matrix"><a href="#The-Hessian-Matrix" class="headerlink" title="The Hessian Matrix"></a>The Hessian Matrix</h2><h3 id="Diagonal-approximation"><a href="#Diagonal-approximation" class="headerlink" title="Diagonal approximation"></a>Diagonal approximation</h3><h3 id="Outer-product-approximation"><a href="#Outer-product-approximation" class="headerlink" title="Outer product approximation"></a>Outer product approximation</h3><h3 id="Inverse-Hessian"><a href="#Inverse-Hessian" class="headerlink" title="Inverse Hessian"></a>Inverse Hessian</h3><h3 id="Finite-differences"><a href="#Finite-differences" class="headerlink" title="Finite differences"></a>Finite differences</h3><h3 id="Exact-evaluation-of-the-Hessian"><a href="#Exact-evaluation-of-the-Hessian" class="headerlink" title="Exact evaluation of the Hessian"></a>Exact evaluation of the Hessian</h3><h3 id="Fast-multiplication-by-the-Hessian"><a href="#Fast-multiplication-by-the-Hessian" class="headerlink" title="Fast multiplication by the Hessian"></a>Fast multiplication by the Hessian</h3><h2 id="Regularization-in-Neural-Networks"><a href="#Regularization-in-Neural-Networks" class="headerlink" title="Regularization in Neural Networks"></a>Regularization in Neural Networks</h2><h3 id="Consistent-Gaussian-priors"><a href="#Consistent-Gaussian-priors" class="headerlink" title="Consistent Gaussian priors"></a>Consistent Gaussian priors</h3><h3 id="Early-stopping"><a href="#Early-stopping" class="headerlink" title="Early stopping"></a>Early stopping</h3><h3 id="Invariances"><a href="#Invariances" class="headerlink" title="Invariances"></a>Invariances</h3><h3 id="Tangent-propagation"><a href="#Tangent-propagation" class="headerlink" title="Tangent propagation"></a>Tangent propagation</h3><h3 id="Training-with-transformed-data"><a href="#Training-with-transformed-data" class="headerlink" title="Training with transformed data"></a>Training with transformed data</h3><h3 id="Convolutional-networks"><a href="#Convolutional-networks" class="headerlink" title="Convolutional networks"></a>Convolutional networks</h3><h3 id="Soft-weight-sharing"><a href="#Soft-weight-sharing" class="headerlink" title="Soft weight sharing"></a>Soft weight sharing</h3><h2 id="Mixture-Density-Networks"><a href="#Mixture-Density-Networks" class="headerlink" title="Mixture Density Networks"></a>Mixture Density Networks</h2><h2 id="Bayesian-Neural-Networks"><a href="#Bayesian-Neural-Networks" class="headerlink" title="Bayesian Neural Networks"></a>Bayesian Neural Networks</h2><h3 id="Posterior-parameter-distribution"><a href="#Posterior-parameter-distribution" class="headerlink" title="Posterior parameter distribution"></a>Posterior parameter distribution</h3><h3 id="Hyperparameter-optimization"><a href="#Hyperparameter-optimization" class="headerlink" title="Hyperparameter optimization"></a>Hyperparameter optimization</h3><h3 id="Bayesian-neural-networks-for-classification"><a href="#Bayesian-neural-networks-for-classification" class="headerlink" title="Bayesian neural networks for classification"></a>Bayesian neural networks for classification</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -380,6 +418,141 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Feed-forward-Network-Functions">
+        <span class="has-mr-6">1</span>
+        <span>Feed-forward Network Functions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Network-Training">
+        <span class="has-mr-6">2</span>
+        <span>Network Training</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Parameter-optimization">
+        <span class="has-mr-6">2.1</span>
+        <span>Parameter optimization</span>
+        </a></li><li>
+        <a class="is-flex" href="#Local-quadratic-approximation">
+        <span class="has-mr-6">2.2</span>
+        <span>Local quadratic approximation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Use-of-gradient-information">
+        <span class="has-mr-6">2.3</span>
+        <span>Use of gradient information</span>
+        </a></li><li>
+        <a class="is-flex" href="#Gradient-descent-optimization">
+        <span class="has-mr-6">2.4</span>
+        <span>Gradient descent optimization</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Error-Backpropagation">
+        <span class="has-mr-6">3</span>
+        <span>Error Backpropagation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Evaluation-of-error-function-derivatives">
+        <span class="has-mr-6">3.1</span>
+        <span>Evaluation of error-function derivatives</span>
+        </a></li><li>
+        <a class="is-flex" href="#A-simple-example">
+        <span class="has-mr-6">3.2</span>
+        <span>A simple example</span>
+        </a></li><li>
+        <a class="is-flex" href="#Efficiency-of-backpropagation">
+        <span class="has-mr-6">3.3</span>
+        <span>Efficiency of backpropagation</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Jacobian-matrix">
+        <span class="has-mr-6">3.4</span>
+        <span>The Jacobian matrix</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#The-Hessian-Matrix">
+        <span class="has-mr-6">4</span>
+        <span>The Hessian Matrix</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Diagonal-approximation">
+        <span class="has-mr-6">4.1</span>
+        <span>Diagonal approximation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Outer-product-approximation">
+        <span class="has-mr-6">4.2</span>
+        <span>Outer product approximation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Inverse-Hessian">
+        <span class="has-mr-6">4.3</span>
+        <span>Inverse Hessian</span>
+        </a></li><li>
+        <a class="is-flex" href="#Finite-differences">
+        <span class="has-mr-6">4.4</span>
+        <span>Finite differences</span>
+        </a></li><li>
+        <a class="is-flex" href="#Exact-evaluation-of-the-Hessian">
+        <span class="has-mr-6">4.5</span>
+        <span>Exact evaluation of the Hessian</span>
+        </a></li><li>
+        <a class="is-flex" href="#Fast-multiplication-by-the-Hessian">
+        <span class="has-mr-6">4.6</span>
+        <span>Fast multiplication by the Hessian</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Regularization-in-Neural-Networks">
+        <span class="has-mr-6">5</span>
+        <span>Regularization in Neural Networks</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Consistent-Gaussian-priors">
+        <span class="has-mr-6">5.1</span>
+        <span>Consistent Gaussian priors</span>
+        </a></li><li>
+        <a class="is-flex" href="#Early-stopping">
+        <span class="has-mr-6">5.2</span>
+        <span>Early stopping</span>
+        </a></li><li>
+        <a class="is-flex" href="#Invariances">
+        <span class="has-mr-6">5.3</span>
+        <span>Invariances</span>
+        </a></li><li>
+        <a class="is-flex" href="#Tangent-propagation">
+        <span class="has-mr-6">5.4</span>
+        <span>Tangent propagation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Training-with-transformed-data">
+        <span class="has-mr-6">5.5</span>
+        <span>Training with transformed data</span>
+        </a></li><li>
+        <a class="is-flex" href="#Convolutional-networks">
+        <span class="has-mr-6">5.6</span>
+        <span>Convolutional networks</span>
+        </a></li><li>
+        <a class="is-flex" href="#Soft-weight-sharing">
+        <span class="has-mr-6">5.7</span>
+        <span>Soft weight sharing</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Mixture-Density-Networks">
+        <span class="has-mr-6">6</span>
+        <span>Mixture Density Networks</span>
+        </a></li><li>
+        <a class="is-flex" href="#Bayesian-Neural-Networks">
+        <span class="has-mr-6">7</span>
+        <span>Bayesian Neural Networks</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Posterior-parameter-distribution">
+        <span class="has-mr-6">7.1</span>
+        <span>Posterior parameter distribution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Hyperparameter-optimization">
+        <span class="has-mr-6">7.2</span>
+        <span>Hyperparameter optimization</span>
+        </a></li><li>
+        <a class="is-flex" href="#Bayesian-neural-networks-for-classification">
+        <span class="has-mr-6">7.3</span>
+        <span>Bayesian neural networks for classification</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
 
     
         <div class="card widget">

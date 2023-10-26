@@ -10,16 +10,16 @@
 <title>PatterRecognition-C4-Linear-Models-For-Classification - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+    <meta name="description" content="Keywords: Discriminant Functions, Logistic Regression, Bayesian Logistic Regression">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PatterRecognition-C4-Linear-Models-For-Classification">
 <meta property="og:url" content="https://keneyr.com/MachineLearning/PatternRecognition/PatterRecognition-C4-Linear-Models-For-Classification/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+<meta property="og:description" content="Keywords: Discriminant Functions, Logistic Regression, Bayesian Logistic Regression">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:49:16.000Z">
-<meta property="article:modified_time" content="2023-10-16T08:57:41.360Z">
+<meta property="article:modified_time" content="2023-10-25T08:16:38.940Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 24 words)
+                    10 minutes read (About 1499 words)
                 </span>
                 
                 
@@ -188,11 +188,51 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition</p>
+            <p><strong><em>Keywords</em></strong>: Discriminant Functions, Logistic Regression, Bayesian Logistic Regression</p>
 <a id="more"></a>
 
-<p>This is the Chapter3 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-
+<p>This is the Chapter4 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
+<h2 id="Discriminant-Functions-判别函数"><a href="#Discriminant-Functions-判别函数" class="headerlink" title="Discriminant Functions(判别函数)"></a>Discriminant Functions(判别函数)</h2><p>A discriminant is a function that takes an input vector $\pmb{x}$ and assigns it to one of $K$ classes, denoted $\mathcal{C}_k$.</p>
+<p>Linear discriminants, namely those for which the decision surfaces are hyperplanes.</p>
+<h3 id="Two-classes"><a href="#Two-classes" class="headerlink" title="Two classes"></a>Two classes</h3><p>The simplest representation of a linear discriminant function is obtained by taking a linear function of the input vector so that<br>$$<br>y(\pmb{x}) = \pmb{w^Tx} + w_0<br>\tag{4.4}<br>$$<br>where $\pmb{w}$ is called a <strong><em>weight vector</em></strong>, and $w_0$ is a <strong><em>bias</em></strong> (not to be confused with bias in the statistical sense). The negative of the bias is sometimes called a <strong><em>threshold</em></strong>.</p>
+<p><img src="/images/PatternRecognition/c4/linear-discriminant.png" alt="linear discriminant"></p>
+<p>if $\pmb{x}$ is a point on the <strong><em>decision surface</em></strong>, then $y(\pmb{x}) = 0$, and so the normal distance from the origin to the decision surface is given by<br>$$<br>\frac{\pmb{w^T}\pmb{x}}{||\pmb{w}||} = -\frac{w_0}{||\pmb{w}||}<br>\tag{4.5}<br>$$<br>$\pmb{w}$ determines the orientation of the decision surface, bias parameter $w_0$ determines the location of the decision surface.</p>
+<blockquote>
+<p>You can understand from &#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/">surface denotation view $z = f(x,y)$ in Calculus &gt;&gt;</a></p>
+</blockquote>
+<p>the decision surfaces are $D$-dimensional hyperplanes passing through the origin of the $D + 1$-dimensional expanded input space.</p>
+<h3 id="Multiple-classes"><a href="#Multiple-classes" class="headerlink" title="Multiple classes"></a>Multiple classes</h3><p><img src="/images/PatternRecognition/c4/multi-classs.png" alt="multi-classs"></p>
+<p>From Figure 4.2, we can see the ambiguous regions, to avoid this difficulty, we consider a single $K$-class discriminant comprising $K$ linear functions of the form<br>$$<br>y_k(\pmb{x}) = \pmb{w_k^Tx} + w_{k0}<br>\tag{4.9}<br>$$<br>and then assigning a point $\pmb{x}$ to class $\mathcal{C}_k$ if $y_k(\pmb{x}) &gt; y_j(\pmb{x})$ for all $j \neq k$. </p>
+<p>The <strong><em>decision boundary</em></strong> between class $\mathcal{C}_k$ and class $\mathcal{C}_j$ is therefore given by $y_k(\pmb{x}) = y_j(\pmb{x})$ and hence corresponds to a $(D − 1)$-dimensional hyperplane defined by</p>
+<p>$$<br>(\pmb{w_k - w_j})^T\pmb{x} + (w_{k0} - w_{j0}) = 0<br>\tag{4.10}<br>$$</p>
+<blockquote>
+<p>Still imagine the surface $z = f(x,y)$, there are many surfaces in the $R^3$ space, when the two surfaces intersect with each other, means $z_k = z_j$.</p>
+</blockquote>
+<p>The <strong><em>decision regions</em></strong> of such a discriminant are always singly connected and convex.</p>
+<p>To see this, consider two points $x_A$ and $x_B$ both of which lie inside decision region $\mathcal{R}_k$, as illustrated in Figure 4.3. Any point $\hat{x}$ that lies on the line connecting $x_A$ and $x_B$ can be expressed in the form<br>$$<br>\hat{x} = \lambda x_A + (1-\lambda)x_B, 0 \leq \lambda \leq 1<br>\tag{4.11}<br>$$<br>From the linearity of the discriminant functions, it follows that<br>$$<br>y_k(\hat{x}) = \lambda y_k(x_A) + (1-\lambda)y_k(x_B)<br>\tag{4.12}<br>$$<br>Because both $x_A$ and $x_B$ lie inside $\mathcal{R}_k$, it follows that $y_k(x_A) &gt; y_j(x_A)$, and $y_k(x_B) &gt; y_j(x_B)$, for all $j \neq k$, and hence $y_k(\hat{x}) &gt; y_j(\hat{x})$, and so $\hat{x}$ also lies inside $\mathcal{R}_k$. Thus $\mathcal{R}_k$ is singly connected and convex.</p>
+<p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C8-The-Geometry-of-Vector-Spaces/#Affine-Combinations">More About Convex in Algebra&gt;&gt;</a></p>
+<h3 id="Least-squares-for-classification"><a href="#Least-squares-for-classification" class="headerlink" title="Least squares for classification"></a>Least squares for classification</h3><p>&#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/#Maximum-likelihood-and-least-squares">More about Least Squares for Linear Regression &gt;&gt;</a></p>
+<p>Each class $\mathcal{C_k}$ is described by its own linear model so that<br>$$<br>y_k(\pmb{x}) = \pmb{w^T_k x} + w_{k0}<br>\tag{4.13}<br>$$<br>where $k = 1, \cdots , K$. We can conveniently group these together using vector notation so that<br>$$<br>\pmb{y(x)} = \pmb{\widetilde{W}^T\widetilde{x}}<br>\tag{4.14}<br>$$</p>
+<p>we obtain the solution for $\widetilde{W}$ in the form<br>$$<br>\widetilde{W} = (\widetilde{X}^T\widetilde{X})^{-1}\widetilde{X}^TT<br>\tag{4.16}<br>$$</p>
+<p>The least-squares approach gives an <u>exact closed-form solution</u> for the discriminant function parameters.</p>
+<p>We have already seen that least-squares solutions lack robustness to outliers(对异常值缺乏鲁棒性), and this applies equally to the classification application, as illustrated in Figure 4.4. However, problems with least squares can be more severe than simply lack of robustness, as illustrated in Figure 4.5.</p>
+<p><img src="/images/PatternRecognition/c4/least-squares.png" alt="least square failure"></p>
+<p>The failure of least squares should not surprise us when we recall that it corresponds to maximum likelihood under the assumption of a Gaussian conditional distribution, whereas binary target vectors clearly have a distribution that is far from Gaussian.</p>
+<h3 id="Fisher’s-linear-discriminant"><a href="#Fisher’s-linear-discriminant" class="headerlink" title="Fisher’s linear discriminant"></a>Fisher’s linear discriminant</h3><p>suppose we take the $D$-dimensional input vector $\pmb{x}$ and project it down to $1$-dimension using<br>$$<br>y = \pmb{w^Tx}<br>\tag{4.20}<br>$$<br>In general, the projection onto one dimension leads to a considerable loss of information, and classes that are well separated in the original $D$-dimensional space may become strongly overlapping in $1$- dimension.</p>
+<p>consider a two-class problem in which there are $N_1$ points of class $\mathcal{C_1}$ and $N_2$ points of class $\mathcal{C_2}$, so that the mean vectors of the two classes are given by<br>$$<br>\pmb{m_1} = \frac{1}{N_1}\sum_{n\in \mathcal{C_1}} \pmb{x_n}\\<br>\pmb{m_2} = \frac{1}{N_2}\sum_{n\in \mathcal{C_2}} \pmb{x_n}<br>\tag{4.21}<br>$$<br>The simplest measure of the separation of the classes, when projected onto $\pmb{w}$, is the separation of the projected class means. This suggests that we might choose $\pmb{w}$ so as to maximize<br>$$<br>m_2 - m_1 = \pmb{w^T}(\pmb{m_2 - m_1})<br>\tag{4.22}<br>$$<br>where,<br>$$<br>m_k = \pmb{w^Tm_k}<br>\tag{4.23}<br>$$<br>is the mean of the projected data from class $\mathcal{C_k}$.</p>
+<p>Using a &#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/#Constrained-Maxima-and-Minima">Lagrange multiplier &gt;&gt;</a> to perform the constrained maximization, the constrained condition is $\sum_{i} w_i^2 = 1$, we then find that<br>$$<br>\pmb{w} \propto \pmb{(m_2 − m_1)}<br>$$</p>
+<p><img src="/images/PatternRecognition/c4/Fisher-linear-discriminant.png" alt="Fisher linear discriminant"></p>
+<p>The within-class variance of the transformed data from class $\mathcal{C_k}$ is therefore given by<br>$$<br>s_k^2 = \sum_{n \in \mathcal{C_k}} (y_n - m_k)^2, y_n = \pmb{w^Tx_n}<br>\tag{4.24}<br>$$</p>
+<p>total within-class variance for the whole data set is<br>$$<br>s_1^2 + s_2^2<br>$$</p>
+<p>The Fisher criterion is defined to be the ratio of the between-class variance to the within-class variance and is given by<br>$$<br>J(\pmb{w}) = \frac{(m_2 - m_1)^2}{s_1^2 + s_2^2}<br>\tag{4.25}<br>$$<br>By equation (4.20), (4.23), (4.24), we get<br>$$<br>J(\pmb{w}) = \frac{\pmb{w^TS_Bw}}{\pmb{w^TS_Ww}}<br>\tag{4.26}<br>$$<br>where $\pmb{S_B}$ is the between-class covariance matrix and is given by<br>$$<br>\pmb{S_B} = (\pmb{m_2 - m_1})(\pmb{m_2 - m_1})^T<br>\tag{4.27}<br>$$<br>$\pmb{S_W}$ is the total within-class covariance matrix, given by<br>$$<br>\pmb{S_W} = \sum_{n \in \mathcal{C_1}}\pmb{(x_n - m_1)(x_n - m_1)^T} + \sum_{n \in \mathcal{C_2}}\pmb{(x_n - m_2)(x_n - m_2)^T}<br>\tag{4.28}<br>$$<br>Differentiating (4.26) with respect to $\pmb{w}$, we find that $J(\pmb{w})$ is maximized when<br>$$<br>\pmb{(w^TS_Bw)S_Ww} = \pmb{(w^TS_Ww)S_Bw}<br>\tag{4.29}<br>$$<br>we get<br>$$<br>\pmb{w} \propto \pmb{S_W^{-1}(m_2-m_1)}<br>\tag{4.30}<br>$$<br>if the within-class covariance is isotropic, so that $\pmb{S_W}$ is proportional to the unit matrix, we find that $\pmb{w}$ is proportional to the difference of the class means, as discussed above.</p>
+<h3 id="Relation-to-least-squares"><a href="#Relation-to-least-squares" class="headerlink" title="Relation to least squares"></a>Relation to least squares</h3><h3 id="Fisher’s-discriminant-for-multiple-classes"><a href="#Fisher’s-discriminant-for-multiple-classes" class="headerlink" title="Fisher’s discriminant for multiple classes"></a>Fisher’s discriminant for multiple classes</h3><p>$$<br>J(\pmb{w}) = Tr \lbrace (\pmb{WS_WW^T})^{-1} (\pmb{WS_BW^T})\rbrace<br>\tag{4.51}<br>$$</p>
+<h3 id="The-perceptron-algorithm"><a href="#The-perceptron-algorithm" class="headerlink" title="The perceptron algorithm"></a>The perceptron algorithm</h3><p>The general of perceptron algorithm is</p>
+<p>$$<br>y(\pmb{x}) = f(\pmb{w^T}\phi(\pmb{x}))<br>\tag{4.52}<br>$$<br>where the nonlinear activation function $f(\cdot)$ is given by a step function of the form<br>$$<br>f(a) =<br>\begin{cases}<br>    +1, a \geq 0\\<br>    -1, a &lt; 0<br>\end{cases}<br>\tag{4.53}<br>$$<br>it is more convenient to use target values $t = +1$ for class $\mathcal{C_1}$ and $t = −1$ for class $\mathcal{C_2}$, which matches the choice of activation function.</p>
+<p>We consider an alternative error function known as the perceptron criterion:<br>$$<br>E_P(\pmb{w}) = - \sum_{n \in \mathcal{M}} \pmb{w^T}\phi_n t_n<br>\tag{4.54}<br>$$<br>where $\mathcal{M}$ denotes the set of all misclassified patterns.</p>
+<p>We now apply the stochastic gradient descent algorithm to this error function. The change in the weight vector $\pmb{w}$ is then given by<br>$$<br>\pmb{w}^{(\tau + 1)} = \pmb{w}^{(\tau)} - \eta \nabla E_p(\pmb{w}) = \pmb{w}^{(\tau)} + \eta \phi_n t_n<br>\tag{4.55}<br>$$</p>
+<p><img src="/images/PatternRecognition/c4/perceptron-algorithm.png" alt="perceptron algorithm"></p>
+<p>Furthermore, for data sets that are not linearly separable, the perceptron learning algorithm will never converge.</p>
+<h2 id="Probabilistic-Generative-Models"><a href="#Probabilistic-Generative-Models" class="headerlink" title="Probabilistic Generative Models"></a>Probabilistic Generative Models</h2><h3 id="Continuous-inputs"><a href="#Continuous-inputs" class="headerlink" title="Continuous inputs"></a>Continuous inputs</h3><h3 id="Maximum-likelihood-solution"><a href="#Maximum-likelihood-solution" class="headerlink" title="Maximum likelihood solution"></a>Maximum likelihood solution</h3><h3 id="Discrete-features"><a href="#Discrete-features" class="headerlink" title="Discrete features"></a>Discrete features</h3><h3 id="Exponential-family"><a href="#Exponential-family" class="headerlink" title="Exponential family"></a>Exponential family</h3><h2 id="Probabilistic-Discriminative-Models"><a href="#Probabilistic-Discriminative-Models" class="headerlink" title="Probabilistic Discriminative Models"></a>Probabilistic Discriminative Models</h2><h3 id="Fixed-basis-functions"><a href="#Fixed-basis-functions" class="headerlink" title="Fixed basis functions"></a>Fixed basis functions</h3><h3 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h3><h3 id="Iterative-reweighted-least-squares"><a href="#Iterative-reweighted-least-squares" class="headerlink" title="Iterative reweighted least squares"></a>Iterative reweighted least squares</h3><h3 id="Multiclass-logistic-regression"><a href="#Multiclass-logistic-regression" class="headerlink" title="Multiclass logistic regression"></a>Multiclass logistic regression</h3><h3 id="Probit-regression"><a href="#Probit-regression" class="headerlink" title="Probit regression"></a>Probit regression</h3><h3 id="Canonical-link-functions"><a href="#Canonical-link-functions" class="headerlink" title="Canonical link functions"></a>Canonical link functions</h3><h2 id="The-Laplace-Approximation"><a href="#The-Laplace-Approximation" class="headerlink" title="The Laplace Approximation"></a>The Laplace Approximation</h2><h3 id="Model-comparison-and-BIC"><a href="#Model-comparison-and-BIC" class="headerlink" title="Model comparison and BIC"></a>Model comparison and BIC</h3><h2 id="Bayesian-Logistic-Regression"><a href="#Bayesian-Logistic-Regression" class="headerlink" title="Bayesian Logistic Regression"></a>Bayesian Logistic Regression</h2><h3 id="Laplace-approximation"><a href="#Laplace-approximation" class="headerlink" title="Laplace approximation"></a>Laplace approximation</h3><h3 id="Predictive-distribution"><a href="#Predictive-distribution" class="headerlink" title="Predictive distribution"></a>Predictive distribution</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -380,6 +420,117 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Discriminant-Functions-判别函数">
+        <span class="has-mr-6">1</span>
+        <span>Discriminant Functions(判别函数)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Two-classes">
+        <span class="has-mr-6">1.1</span>
+        <span>Two classes</span>
+        </a></li><li>
+        <a class="is-flex" href="#Multiple-classes">
+        <span class="has-mr-6">1.2</span>
+        <span>Multiple classes</span>
+        </a></li><li>
+        <a class="is-flex" href="#Least-squares-for-classification">
+        <span class="has-mr-6">1.3</span>
+        <span>Least squares for classification</span>
+        </a></li><li>
+        <a class="is-flex" href="#Fisher’s-linear-discriminant">
+        <span class="has-mr-6">1.4</span>
+        <span>Fisher’s linear discriminant</span>
+        </a></li><li>
+        <a class="is-flex" href="#Relation-to-least-squares">
+        <span class="has-mr-6">1.5</span>
+        <span>Relation to least squares</span>
+        </a></li><li>
+        <a class="is-flex" href="#Fisher’s-discriminant-for-multiple-classes">
+        <span class="has-mr-6">1.6</span>
+        <span>Fisher’s discriminant for multiple classes</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-perceptron-algorithm">
+        <span class="has-mr-6">1.7</span>
+        <span>The perceptron algorithm</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Probabilistic-Generative-Models">
+        <span class="has-mr-6">2</span>
+        <span>Probabilistic Generative Models</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Continuous-inputs">
+        <span class="has-mr-6">2.1</span>
+        <span>Continuous inputs</span>
+        </a></li><li>
+        <a class="is-flex" href="#Maximum-likelihood-solution">
+        <span class="has-mr-6">2.2</span>
+        <span>Maximum likelihood solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Discrete-features">
+        <span class="has-mr-6">2.3</span>
+        <span>Discrete features</span>
+        </a></li><li>
+        <a class="is-flex" href="#Exponential-family">
+        <span class="has-mr-6">2.4</span>
+        <span>Exponential family</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Probabilistic-Discriminative-Models">
+        <span class="has-mr-6">3</span>
+        <span>Probabilistic Discriminative Models</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Fixed-basis-functions">
+        <span class="has-mr-6">3.1</span>
+        <span>Fixed basis functions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Logistic-regression">
+        <span class="has-mr-6">3.2</span>
+        <span>Logistic regression</span>
+        </a></li><li>
+        <a class="is-flex" href="#Iterative-reweighted-least-squares">
+        <span class="has-mr-6">3.3</span>
+        <span>Iterative reweighted least squares</span>
+        </a></li><li>
+        <a class="is-flex" href="#Multiclass-logistic-regression">
+        <span class="has-mr-6">3.4</span>
+        <span>Multiclass logistic regression</span>
+        </a></li><li>
+        <a class="is-flex" href="#Probit-regression">
+        <span class="has-mr-6">3.5</span>
+        <span>Probit regression</span>
+        </a></li><li>
+        <a class="is-flex" href="#Canonical-link-functions">
+        <span class="has-mr-6">3.6</span>
+        <span>Canonical link functions</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#The-Laplace-Approximation">
+        <span class="has-mr-6">4</span>
+        <span>The Laplace Approximation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Model-comparison-and-BIC">
+        <span class="has-mr-6">4.1</span>
+        <span>Model comparison and BIC</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Bayesian-Logistic-Regression">
+        <span class="has-mr-6">5</span>
+        <span>Bayesian Logistic Regression</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Laplace-approximation">
+        <span class="has-mr-6">5.1</span>
+        <span>Laplace approximation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Predictive-distribution">
+        <span class="has-mr-6">5.2</span>
+        <span>Predictive distribution</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
 
     
         <div class="card widget">
