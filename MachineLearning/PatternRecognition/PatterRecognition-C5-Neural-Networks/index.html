@@ -10,16 +10,16 @@
 <title>PatterRecognition-C5-Neural-Networks - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+    <meta name="description" content="Keywords: Gradient descent optimization, Error backpropagation, Hessian Matrix, Jacobian Matrix, Regularization, Mixture Density Network, Bayesian Neural Network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PatterRecognition-C5-Neural-Networks">
 <meta property="og:url" content="https://keneyr.com/MachineLearning/PatternRecognition/PatterRecognition-C5-Neural-Networks/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+<meta property="og:description" content="Keywords: Gradient descent optimization, Error backpropagation, Hessian Matrix, Jacobian Matrix, Regularization, Mixture Density Network, Bayesian Neural Network">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:49:29.000Z">
-<meta property="article:modified_time" content="2023-10-25T14:04:03.421Z">
+<meta property="article:modified_time" content="2023-10-26T11:03:37.507Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 minutes read (About 1478 words)
+                    30 minutes read (About 4462 words)
                 </span>
                 
                 
@@ -188,7 +188,7 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition</p>
+            <p><strong><em>Keywords</em></strong>: Gradient descent optimization, Error backpropagation, Hessian Matrix, Jacobian Matrix, Regularization, Mixture Density Network, Bayesian Neural Network </p>
 <a id="more"></a>
 
 <p>In &#x1F449;<a href="">Linear Models for Regression &gt;&gt;</a> and &#x1F449;<a href="">Linear Models for Classification &gt;&gt;</a> that comprised <strong><em>linear combinations of fixed basis functions</em></strong>. We saw that such models have useful analytical and computational properties but that their practical applicability was limited by the <u>curse of dimensionality</u>.</p>
@@ -230,7 +230,110 @@
 <p>$$<br>\pmb{w}^{\tau + 1} = \pmb{w}^{(\tau)} - \eta \nabla E(\pmb{w}^{(\tau)})<br>\tag{5.41}<br>$$<br>where the parameter $\eta &gt; 0$ is known as the <strong><em>learning rate</em></strong>.</p>
 <p><strong>For batch optimization</strong>, there are more efficient methods, such as <u>conjugate gradients</u> and <u>quasi-Newton methods</u>, which are much more robust and much faster than simple gradient descent.<br>Unlike gradient descent, these algorithms have the property that the error function always decreases at each iteration unless the weight vector has arrived at a local or global minimum.</p>
 <p>There is, however, an <strong>on-line version</strong> of gradient descent that has proved useful in practice for training neural networks on large data sets</p>
-<h2 id="Error-Backpropagation"><a href="#Error-Backpropagation" class="headerlink" title="Error Backpropagation"></a>Error Backpropagation</h2><h3 id="Evaluation-of-error-function-derivatives"><a href="#Evaluation-of-error-function-derivatives" class="headerlink" title="Evaluation of error-function derivatives"></a>Evaluation of error-function derivatives</h3><h3 id="A-simple-example"><a href="#A-simple-example" class="headerlink" title="A simple example"></a>A simple example</h3><h3 id="Efficiency-of-backpropagation"><a href="#Efficiency-of-backpropagation" class="headerlink" title="Efficiency of backpropagation"></a>Efficiency of backpropagation</h3><h3 id="The-Jacobian-matrix"><a href="#The-Jacobian-matrix" class="headerlink" title="The Jacobian matrix"></a>The Jacobian matrix</h3><h2 id="The-Hessian-Matrix"><a href="#The-Hessian-Matrix" class="headerlink" title="The Hessian Matrix"></a>The Hessian Matrix</h2><h3 id="Diagonal-approximation"><a href="#Diagonal-approximation" class="headerlink" title="Diagonal approximation"></a>Diagonal approximation</h3><h3 id="Outer-product-approximation"><a href="#Outer-product-approximation" class="headerlink" title="Outer product approximation"></a>Outer product approximation</h3><h3 id="Inverse-Hessian"><a href="#Inverse-Hessian" class="headerlink" title="Inverse Hessian"></a>Inverse Hessian</h3><h3 id="Finite-differences"><a href="#Finite-differences" class="headerlink" title="Finite differences"></a>Finite differences</h3><h3 id="Exact-evaluation-of-the-Hessian"><a href="#Exact-evaluation-of-the-Hessian" class="headerlink" title="Exact evaluation of the Hessian"></a>Exact evaluation of the Hessian</h3><h3 id="Fast-multiplication-by-the-Hessian"><a href="#Fast-multiplication-by-the-Hessian" class="headerlink" title="Fast multiplication by the Hessian"></a>Fast multiplication by the Hessian</h3><h2 id="Regularization-in-Neural-Networks"><a href="#Regularization-in-Neural-Networks" class="headerlink" title="Regularization in Neural Networks"></a>Regularization in Neural Networks</h2><h3 id="Consistent-Gaussian-priors"><a href="#Consistent-Gaussian-priors" class="headerlink" title="Consistent Gaussian priors"></a>Consistent Gaussian priors</h3><h3 id="Early-stopping"><a href="#Early-stopping" class="headerlink" title="Early stopping"></a>Early stopping</h3><h3 id="Invariances"><a href="#Invariances" class="headerlink" title="Invariances"></a>Invariances</h3><h3 id="Tangent-propagation"><a href="#Tangent-propagation" class="headerlink" title="Tangent propagation"></a>Tangent propagation</h3><h3 id="Training-with-transformed-data"><a href="#Training-with-transformed-data" class="headerlink" title="Training with transformed data"></a>Training with transformed data</h3><h3 id="Convolutional-networks"><a href="#Convolutional-networks" class="headerlink" title="Convolutional networks"></a>Convolutional networks</h3><h3 id="Soft-weight-sharing"><a href="#Soft-weight-sharing" class="headerlink" title="Soft weight sharing"></a>Soft weight sharing</h3><h2 id="Mixture-Density-Networks"><a href="#Mixture-Density-Networks" class="headerlink" title="Mixture Density Networks"></a>Mixture Density Networks</h2><h2 id="Bayesian-Neural-Networks"><a href="#Bayesian-Neural-Networks" class="headerlink" title="Bayesian Neural Networks"></a>Bayesian Neural Networks</h2><h3 id="Posterior-parameter-distribution"><a href="#Posterior-parameter-distribution" class="headerlink" title="Posterior parameter distribution"></a>Posterior parameter distribution</h3><h3 id="Hyperparameter-optimization"><a href="#Hyperparameter-optimization" class="headerlink" title="Hyperparameter optimization"></a>Hyperparameter optimization</h3><h3 id="Bayesian-neural-networks-for-classification"><a href="#Bayesian-neural-networks-for-classification" class="headerlink" title="Bayesian neural networks for classification"></a>Bayesian neural networks for classification</h3>
+<h2 id="Error-Backpropagation"><a href="#Error-Backpropagation" class="headerlink" title="Error Backpropagation"></a>Error Backpropagation</h2><h3 id="Evaluation-of-error-function-derivatives"><a href="#Evaluation-of-error-function-derivatives" class="headerlink" title="Evaluation of error-function derivatives"></a>Evaluation of error-function derivatives</h3><p>Consider first a simple linear model in which the outputs $y_k$ are linear combinations of the input variables $x_i$ so that<br>$$<br>y_k = \sum_i w_{ki}x_i<br>\tag{5.45}<br>$$<br>together with an error function that, for a particular input pattern $n$, takes the form<br>$$<br>E_n = \frac{1}{2}\sum_k (y_{nk} - t_{nk})^2, y_{nk} = y_k(x_n, \pmb{w})<br>\tag{5.46}<br>$$<br>The gradient of this error function with respect to a weight $w_{ji}$ is given by<br>$$<br>\frac{\partial E_n}{\partial w_{ji}} = (y_{nj}-t_{nj})x_{ni}<br>\tag{5.47}<br>$$<br>which can be interpreted as a ‘local’ computation involving the product of an ‘error signal’ $y_{nj} − t_{nj}$ associated with the output end of the link $w_{ji}$ and the variable $x_{ni}$ associated with the input end of the link.</p>
+<p>In a general feed-forward network, each unit computes a weighted sum of its inputs of the form<br>$$<br>a_j = \sum_i w_{ji}z_i<br>\tag{5.48}<br>$$<br>where $z_i$ is the activation of a unit, or input, that sends a connection to unit $j$, and $w_{ji}$ is the weight associated with that connection.</p>
+<p>The sum in (5.48) is transformed by a nonlinear activation function $h(\cdot)$ to give the activation $z_j$ of unit $j$ in the form<br>$$<br>z_j  = h(a_j)<br>\tag{5.49}<br>$$<br>We can therefore apply the &#x1F449;<a href="/Math/Calculus/Calculus-C3-Derivatives/#The-Chaine-Rule">chain rule &gt;&gt;</a> for partial derivatives to give<br>$$<br>\frac{\partial E_n}{\partial w_{ji}} = \frac{\partial E_n}{\partial a_j} \frac{\partial a_j}{\partial w_{ji}}<br>\tag{5.50}<br>$$<br>let $\delta_j$ be errors,<br>$$<br>\delta_j = \frac{\partial E_n}{\partial a_j}<br>\tag{5.51}<br>$$<br>By equation(5.48), we get<br>$$<br>\frac{\partial a_j}{\partial w_{ji}} = z_i<br>\tag{5.52}<br>$$<br>Substituting (5.51) and (5.52) into(5.50), we obtain<br>$$<br>\frac{\partial E_n}{\partial w_{ji}} = \delta_j z_i<br>\tag{5.53}<br>$$<br>Equation (5.53) has the same form with equation(5.47), right?</p>
+<p>As we have seen already, for the output units, we have<br>$$<br>\delta_k = y_k - t_k<br>\tag{5.54}<br>$$<br>To evaluate the $\sigma$’s for hidden units, we again make use of the chain rule for partial derivatives,<br>$$<br>\delta_j \equiv \frac{\partial E_n}{\partial a_j} = \sum_k \frac{\partial E_n}{\partial a_k} \frac{\partial a_k}{\partial a_j}<br>\tag{5.55}<br>$$<br>where the sum runs over all units $k$ to which unit $j$ sends connections.</p>
+<p><img src="/images/PatternRecognition/c5/backpropagation.png" alt="backpropagation"></p>
+<p>If we now substitute the definition of $\sigma$ given by (5.51) into (5.55), and make use of (5.48) and (5.49), we obtain the following backpropagation formula<br>$$<br>\delta_j = h’(a_j)\sum_k w_{kj} \delta_k<br>\tag{5.56}<br>$$<br>which tells us that the value of $\sigma$ for a particular hidden unit can be obtained by propagating the $\sigma$’s backwards from units higher up in the network, as illustrated in Figure 5.7.</p>
+<p><img src="/images/PatternRecognition/c5/error-propagation.png" alt="error propagation process"></p>
+<h3 id="A-simple-example"><a href="#A-simple-example" class="headerlink" title="A simple example"></a>A simple example</h3><h3 id="Efficiency-of-backpropagation"><a href="#Efficiency-of-backpropagation" class="headerlink" title="Efficiency of backpropagation"></a>Efficiency of backpropagation</h3><h3 id="The-Jacobian-matrix"><a href="#The-Jacobian-matrix" class="headerlink" title="The Jacobian matrix"></a>The Jacobian matrix</h3><p>The technique of backpropagation can also be applied to the calculation of other derivatives.</p>
+<p>Here we consider the evaluation of the Jacobian matrix, whose elements are given by the derivatives of the network outputs with respect to the inputs<br>$$<br>J_{ki} \equiv \frac{\partial y_k}{\partial x_i}<br>\tag{5.70}<br>$$<br>Jacobian matrices play a useful role in systems built from a number of distinct modules, as illustrated in Figure 5.8.</p>
+<p><img src="/images/PatternRecognition/c5/jacobian-matrix.png" alt="jacobian matrix"></p>
+<p>Suppose we wish to minimize an error function $E$ with respect to the parameter $w$ in Figure 5.8. The derivative of the error function is given by<br>$$<br>\frac{\partial E}{\partial w} = \sum_{k,j} \frac{\partial E}{\partial y_k}\frac{\partial y_k}{\partial z_j}\frac{\partial z_j}{\partial w}<br>\tag{5.71}<br>$$</p>
+<p>In general, the network mapping represented by a trained neural network will be nonlinear, and so the elements of the Jacobian matrix will not be constants but will depend on the particular input vector used.</p>
+<p>$$<br>\begin{aligned}<br>J_{ki} &amp;= \frac{\partial y_k}{\partial x_i}\\<br>&amp;= \sum_j \frac{\partial y_k}{\partial a_j}\frac{\partial a_j}{\partial x_i}\\<br>&amp;= \sum_j w_{ji}\frac{\partial y_k}{\partial a_j}<br>\end{aligned}<br>\tag{5.73}<br>$$</p>
+<p>We now write down a <u>recursive backpropagation formula</u> to determine the derivatives $\frac{\partial y_k}{\partial a_j}$<br>$$<br>\begin{aligned}<br>\frac{\partial y_k}{\partial a_j} &amp;= \sum_l \frac{\partial y_k}{\partial a_l} \frac{\partial a_l}{\partial a_j}\\<br>&amp;=  h’(a_j)\sum_l w_{lj}\frac{\partial y_k}{\partial a_l}<br>\end{aligned}<br>\tag{5.74}<br>$$</p>
+<p>&#x1F449;<a href="">Jacobian matrix in Numberical Analysis &gt;&gt;</a></p>
+<h2 id="The-Hessian-Matrix"><a href="#The-Hessian-Matrix" class="headerlink" title="The Hessian Matrix"></a>The Hessian Matrix</h2><p>The Hessian plays an important role in many aspects of neural computing, including the following:</p>
+<ol>
+<li>Several nonlinear optimization algorithms used for training neural networks are based on considerations of the second-order properties of the error surface, which are controlled by the Hessian matrix (Bishop and Nabney, 2008).</li>
+<li>The Hessian forms the basis of a fast procedure for re-training a feed-forward network following a small change in the training data (Bishop, 1991).</li>
+<li>The inverse of the Hessian has been used to identify the least significant weights in a network as part of network ‘pruning’ algorithms (Le Cun et al., 1990).</li>
+<li>The Hessian plays a central role in the Laplace approximation for a Bayesian neural network (see Section 5.7). Its inverse is used to determine the predictive distribution for a trained network, its eigenvalues determine the values of hyperparameters, and its determinant is used to evaluate the model evidence.</li>
+</ol>
+<h3 id="Diagonal-approximation"><a href="#Diagonal-approximation" class="headerlink" title="Diagonal approximation"></a>Diagonal approximation</h3><p>From (5.48), the diagonal elements of the Hessian, for pattern $n$, can be written<br>$$<br>\frac{\partial^2 E_n}{\partial w^2_{ji}} = \frac{\partial^2 E_n}{\partial a^2_j} z^2_i<br>\tag{5.79}<br>$$<br>recursively using the chain rule of differential calculus to give a backpropagation equation of the form<br>$$<br>\frac{\partial^2 E_n}{\partial a^2_j} = h’(a_j)^2 \sum_k \sum_{k’} w_{kj}w_{k’j} \frac{\partial^2 E_n}{\partial a_k \partial a_{k’}} + h’’(a_j) \sum_k w_{kj} \frac{\partial^2 E_n}{\partial a_k}<br>\tag{5.80}<br>$$<br>If we now neglect off-diagonal elements in the second-derivative terms,<br>$$<br>\frac{\partial^2 E_n}{\partial a^2_j} = h’(a_j)^2 \sum_k  w^2_{kj} \frac{\partial^2 E_n}{\partial^2 a_k} + h’’(a_j) \sum_k w_{kj} \frac{\partial E_n}{\partial a_k}<br>\tag{5.81}<br>$$<br>The major roblem with diagonal approximations, however, is that in practice the Hessian is typically found to be strongly nondiagonal, and so these approximations, which are driven mainly be computational convenience, must be treated with care.</p>
+<h3 id="Outer-product-approximation"><a href="#Outer-product-approximation" class="headerlink" title="Outer product approximation"></a>Outer product approximation</h3><p>When neural networks are applied to regression problems, it is common to use a sum-of-squares error function of the form<br>$$<br>E = \frac{1}{2} \sum_{n=1}^N(y_n - t_n)^2<br>\tag{5.82}<br>$$<br>We can then write the Hessian matrix in the form<br>$$<br>\pmb{H} = \nabla \nabla E = \sum_{n=1}^{N} \nabla y_n \nabla y_n + \sum_{n=1}^N (y_n - t_n)\nabla \nabla y_n<br>\tag{5.83}<br>$$<br>By neglecting the second term in (5.83), we arrive at the <strong><em>Levenberg–Marquardt approximation</em></strong> or outer product approximation (because the Hessian matrix is built up from a sum of outer products of vectors), given by<br>$$<br>\pmb{H} \simeq \sum_{n=1}^N \pmb{b_n b_n^T}, \pmb{b_n} = \nabla y_n = \nabla a_n<br>\tag{5.84}<br>$$<br>Evaluation of the outer product approximation for the Hessian is straightforward as it only involves first derivatives of the error function,which can be evaluated efficiently in $O(W)$ steps using standard backpropagation.</p>
+<blockquote>
+<p>It is important to emphasize that this approximation is only likely to be valid for a network that has been trained appropriately.</p>
+</blockquote>
+<h3 id="Inverse-Hessian"><a href="#Inverse-Hessian" class="headerlink" title="Inverse Hessian"></a>Inverse Hessian</h3><p>First we write the outer-product approximation in matrix notation as<br>$$<br>\pmb{H_N} = \sum_{n=1}^N \pmb{b_n b_n^T}<br>\tag{5.86}<br>$$<br>where $\pmb{b_n} \equiv ∇_{\pmb{w}}a_n$ is the contribution to the gradient of the output unit activation arising from data point $n$.</p>
+<p>Suppose we have already obtained the inverse Hessian using the first $L$ data points. By separating off the contribution from data point $L + 1$, we obtain</p>
+<p>$$<br>\pmb{H} _{L+1} = \pmb{H} _L + \pmb{b} _{L+1} \pmb{b^T} _{L+1}<br>\tag{5.87}<br>$$</p>
+<p>In order to evaluate the inverse of the Hessian, we now consider the matrix identity</p>
+<p>$$<br>(\pmb{M+vv^T})^{-1} = \pmb{M}^{-1}- \frac{(\pmb{M^{-1}v})(\pmb{v^TM^{-1}})}{1+\pmb{v^TM^{-1}v}}<br>\tag{5.88}<br>$$</p>
+<p>If we now identify $\pmb{H_{L}}$ with $\pmb{M}$ and $\pmb{b}_{L+1}$ with $\pmb{v}$, we obtain</p>
+<p>$$<br>\pmb{H_{L+1}}^{-1} = \pmb{H_L}^{-1}- \frac{(\pmb{H_L^{-1}b_{L+1}})(\pmb{b_{L+1}^TH_L^{-1}})}{1+\pmb{b_{L+1}^TH_L^{-1}b_{L+1}}}<br>\tag{5.89}<br>$$<br>In this way, data points are sequentially absorbed until $L+1 = N$ and the whole data set has been processed.</p>
+<p>In particular, <em>quasi-Newton nonlinear optimization algorithms</em> gradually build up an approximation to the inverse of the Hessian during training.</p>
+<h3 id="Finite-differences"><a href="#Finite-differences" class="headerlink" title="Finite differences"></a>Finite differences</h3><h3 id="Exact-evaluation-of-the-Hessian"><a href="#Exact-evaluation-of-the-Hessian" class="headerlink" title="Exact evaluation of the Hessian"></a>Exact evaluation of the Hessian</h3><h3 id="Fast-multiplication-by-the-Hessian"><a href="#Fast-multiplication-by-the-Hessian" class="headerlink" title="Fast multiplication by the Hessian"></a>Fast multiplication by the Hessian</h3><p>For many applications of the Hessian, the quantity of interest is not the Hessian matrix $\pmb{H}$ itself but the product of $\pmb{H}$ with some vector $\pmb{v}$.</p>
+<h2 id="Regularization-in-Neural-Networks"><a href="#Regularization-in-Neural-Networks" class="headerlink" title="Regularization in Neural Networks"></a>Regularization in Neural Networks</h2><p>Note that $M$ controls the number of parameters (weights and biases) in the network, and so we might expect that in a maximum likelihood setting there will be an optimum value of $M$ that gives the best generalization performance, corresponding to the optimum balance between under-fitting and over-fitting.</p>
+<p><img src="/images/PatternRecognition/c5/different-M.png" alt="different M effect"></p>
+<h3 id="Consistent-Gaussian-priors"><a href="#Consistent-Gaussian-priors" class="headerlink" title="Consistent Gaussian priors"></a>Consistent Gaussian priors</h3><p>Remember in Chapter1, we see that an alternative approach is to choose a relatively large value for $M$ and then to control complexity by the addition of a regularization term to the error function. The simplest regularizer is the quadratic, giving a regularized error of the form</p>
+<p>$$<br>\widetilde{E}(\pmb{w}) = E(\pmb{w}) + \frac{\lambda}{2}\pmb{w^Tw}<br>\tag{5.112}<br>$$<br>This regularizer is also known as <strong><em>weight decay</em></strong>. One limitation of this form is <u>inconsistent with certain scaling properties of network mappings</u>.</p>
+<p>Consider a multilayer perceptron network having two layers of weights and linear output units. The activations of the hidden units in the first hidden layer take the form</p>
+<p>$$<br>z_j = h(\sum_i w_{ji}x_i + w_{j0})<br>\tag{5.113}<br>$$</p>
+<p>while the activations of the output units are given by</p>
+<p>$$<br>y_k = \sum_j w_{kj}z_j + w_{k0}<br>\tag{5.114}<br>$$</p>
+<p>Suppose we perform a linear transformation of the input data of the form</p>
+<p>$$<br>x_i \rightarrow \widetilde{x_i} = ax_i + b<br>\tag{5.115}<br>$$<br>$$<br>y_k \rightarrow \widetilde{y_k} = cy_k + d<br>\tag{5.118}<br>$$<br>also, we can perform a corresponding linear transformation of output data and the weights parameters.</p>
+<p>If we train one network using the original data and one network using data for which the input and/or target variables are transformed by one of the above linear transformations, then <u>consistency</u> requires that we should obtain equivalent networks that differ only by the linear transformation of the weights as given. </p>
+<blockquote>
+<p>Any regularizer should be consistent with this property.</p>
+</blockquote>
+<p>These require that the regularizer should be invariant to re-scaling of the weights and to shifts of the biases. Such a regularizer is given by<br>$$<br>\frac{\lambda_1}{2} \sum_{w \in \mathcal{W_1}} w^2 + \frac{\lambda_2}{2} \sum_{w \in \mathcal{W_2}} w^2<br>\tag{5.121}<br>$$<br>where $\mathcal{W_1}$ denotes the set of weights in the first layer, $\mathcal{W_2}$ denotes the set of weights in the second layer, and biases are excluded from the summations.</p>
+<p>This regularizer will remain unchanged under the weight transformations provided the regularization parameters are re-scaled using </p>
+<p>$$<br>\lambda_1 \rightarrow a^{1/2}\lambda_1\\<br>\lambda_2 \rightarrow c^{-1/2}\lambda_2<br>$$</p>
+<p>The regularizer (5.121) corresponds to a prior of the form</p>
+<p>$$<br>p(\pmb{w}|\alpha_1, \alpha_2) \propto exp(-\frac{\alpha_1}{2}\sum_{w \in \mathcal{W_1}} w^2 - \frac{\alpha_2}{2}\sum_{w \in \mathcal{W_2}} w^2)<br>\tag{5.122}<br>$$</p>
+<p>We can illustrate the effect of the resulting four hyperparameters by drawing samples from the prior and plotting the corresponding network functions, as shown in Figure 5.11.</p>
+<p><img src="/images/PatternRecognition/c5/hyper-parameters.png" alt="hyper parameters"></p>
+<p>More generally, we can consider priors in which the weights are divided into any number of groups $\mathcal{W_k}$ so that</p>
+<p>$$<br>p(\pmb{w}) \propto exp(-\frac{1}{2}\sum_k \alpha_k ||\pmb{w}||_k^2)<br>\tag{5.123}<br>$$</p>
+<p>where,</p>
+<p>$$<br>||\pmb{w}|| _k^2 = \sum_{j \in \mathcal{W_k}} w_j^2<br>\tag{5.124}<br>$$</p>
+<h3 id="Early-stopping"><a href="#Early-stopping" class="headerlink" title="Early stopping"></a>Early stopping</h3><p>An alternative to regularization as a way of controlling the effective complexity of a network is the procedure of early stopping.</p>
+<p><img src="/images/PatternRecognition/c5/early-stopping.png" alt="early stopping"></p>
+<h3 id="Invariances"><a href="#Invariances" class="headerlink" title="Invariances"></a>Invariances</h3><p>For example, in the classification of objects in two-dimensional images, such as handwritten digits, a particular object should be assigned the same classification irrespective of its position within the image (translation invariance) or of its size (scale invariance). </p>
+<p>Such transformations produce significant changes in the raw data, expressed in terms of the intensities at each of the pixels in the image, and yet should give rise to the same output from the classification system.</p>
+<p>We therefore seek alternative approaches for encouraging an adaptive model to exhibit the required invariances. These can broadly be divided into four categories:</p>
+<ol>
+<li>The training set is augmented using replicas of the training patterns, transformed according to the desired invariances. For instance, in our digit recognition example, we could make multiple copies of each example in which the digit is shifted to a different position in each image.</li>
+</ol>
+<p><img src="/images/PatternRecognition/c5/augumented-data.png" alt="augumented data"></p>
+<ol start="2">
+<li>A regularization term is added to the error function that penalizes changes in the model output when the input is transformed. This leads to the technique of <u>tangent propagation</u>, discussed in Section 5.5.4.</li>
+</ol>
+<ol start="3">
+<li>Invariance is built into the pre-processing by extracting features that are invariant under the required transformations. Any subsequent regression or classification system that uses such features as inputs will necessarily also respect these invariances.</li>
+</ol>
+<ol start="4">
+<li>The final option is to build the invariance properties into the structure of a neural network (or into the definition of a kernel function in the case of techniques such as the relevance vector machine). One way to achieve this is through the use of local receptive fields and shared weights, as discussed in the context of <u>convolutional neural networks</u> in Section 5.5.6.</li>
+</ol>
+<h3 id="Tangent-propagation"><a href="#Tangent-propagation" class="headerlink" title="Tangent propagation"></a>Tangent propagation</h3><p>Suppose the transformation is governed by a single parameter $\xi$ (which might be rotation angle for instance). Then the subspace $\mathcal{M}$ swept out by $x_n$ will be one-dimensional, and will be parameterized by $\xi$.</p>
+<p>Let the vector that results from acting on $x_n$ by this transformation be denoted by $s(x_n, \xi)$, which is defined so that $s(x_n, 0) = x$. Then the tangent to the curve $M$ is given by the &#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/#Directional-Derivatives-and-Gradient-Vectors">directional derivative &gt;&gt;</a> $\tau = \frac{\partial s}{\partial \xi}$, and the tangent vector at the point $x_n$ is given by</p>
+<p>$$<br>\tau_n = \frac{\partial s(x_n, \xi)}{\partial \xi}|_{\xi = 0}<br>\tag{5.125}<br>$$</p>
+<p><img src="/images/PatternRecognition/c5/tangent-vector.png" alt="tangent vector"></p>
+<blockquote>
+<p>Image a function $z = f(x,y)$, the directional derivative is $D_{\pmb{u}}f|P_0$, is the slope of the trace curve on the surface at point $P_0$.</p>
+</blockquote>
+<p>The derivative of output $k$ with respect to $\xi$ is given by<br>$$<br>\frac{\partial y_k}{\partial \xi} |_{\xi = 0} = \sum_{i=1}^D \frac{\partial y_k}{\partial x_i}\frac{\partial x_i}{\partial \xi}|_{\xi = 0} = \sum_{i=1}^D J_{ki}\tau_i<br>\tag{5.126}<br>$$<br>where $J_{ki}$ is the $(k, i)$ element of the Jacobian matrix $J$.</p>
+<p>The result (5.126) can be used to modify the standard error function, so as to encourage local invariance in the neighbourhood of the data points, by the addition to the original error function $E$ of a regularization function $\Omega$ to give a total error function of the form</p>
+<p>$$<br>\widetilde{E} = E + \lambda \Omega<br>\tag{5.127}<br>$$<br>where $\lambda$ is a regularization coefficient and</p>
+<p>$$<br>\begin{aligned}<br>\Omega &amp;= \frac{1}{2} \sum_n \sum_k (\frac{\partial y_{nk}}{\partial \xi}|_{\xi = 0})^2 \\<br>&amp;= \frac{1}{2} \sum_n \sum_k (\sum_{i=1}^D J_{nki}\tau _{ni})^2<br>\end{aligned}<br>\tag{5.128}<br>$$<br>The regularization function will be zero when the network mapping function is invariant under the transformation in the neighbourhood of each pattern vector, and the value of the parameter $\lambda$ determines the balance between fitting the training data and learning the invariance property.</p>
+<p><img src="/images/PatternRecognition/c5/digital-tangent-vector.png" alt="tangent vector rotation"></p>
+<h3 id="Training-with-transformed-data"><a href="#Training-with-transformed-data" class="headerlink" title="Training with transformed data"></a>Training with transformed data</h3><h3 id="Convolutional-networks"><a href="#Convolutional-networks" class="headerlink" title="Convolutional networks"></a>Convolutional networks</h3><p>Another approach to creating models that are invariant to certain transformation of the inputs is to build the invariance properties into the structure of a neural network. This is the basis for the convolutional neural network (Le Cun et al., 1989; LeCun et al., 1998), which has been widely applied to image data.</p>
+<p><img src="/images/PatternRecognition/c5/convolutional-networks.png" alt="convolutional network"></p>
+<p>&#x1F449;<a href="https://www.geeksforgeeks.org/introduction-convolution-neural-network/">First Understanding CNN &gt;&gt; </a></p>
+<h3 id="Soft-weight-sharing"><a href="#Soft-weight-sharing" class="headerlink" title="Soft weight sharing"></a>Soft weight sharing</h3><h2 id="Mixture-Density-Networks"><a href="#Mixture-Density-Networks" class="headerlink" title="Mixture Density Networks"></a>Mixture Density Networks</h2><p>The goal of supervised learning is to <strong><em>model a conditional distribution</em></strong> $p(T|X)$, which for many simple regression problems is chosen to be <em>Gaussian</em>.（maximum likelihood function, posterior distribution, predictive distribution…）</p>
+<p>However, practical machine learning problems can often have significantly non-Gaussian distributions. These can arise, for example, with <strong><em>inverse problems</em></strong> in which the distribution can be multimodal(多模态), in which case the Gaussian assumption can lead to very poor predictions.</p>
+<p><img src="/images/PatternRecognition/c5/kinametics.png" alt="kinametics"></p>
+<p>For example, Data for this problem is generated by sampling a variable $x$ uniformly over the interval $(0, 1)$, to give a set of values ${x_n}$, and the corresponding target values tn are obtained by computing the function $x_n + 0.3 \sin(2\pi x_n)$ and then adding uniform noise over the interval $(−0.1, 0.1)$.</p>
+<p>The inverse problem is then obtained by keeping the same data points but exchanging the roles of $x$ and $t$.</p>
+<p><u>Least squares corresponds to maximum likelihood under a Gaussian assumption</u>. We see that this leads to a very poor model for the highly non-Gaussian inverse problem.</p>
+<p><img src="/images/PatternRecognition/c5/forward-inverse-problem.png" alt="forward inverse problem by neural network"></p>
+<p>We therefore seek a general framework for modelling conditional probability distributions.</p>
+<p><img src="/images/PatternRecognition/c5/mixture-density-network.png" alt="mixture density network"></p>
+<h2 id="Bayesian-Neural-Networks"><a href="#Bayesian-Neural-Networks" class="headerlink" title="Bayesian Neural Networks"></a>Bayesian Neural Networks</h2><h3 id="Posterior-parameter-distribution"><a href="#Posterior-parameter-distribution" class="headerlink" title="Posterior parameter distribution"></a>Posterior parameter distribution</h3><h3 id="Hyperparameter-optimization"><a href="#Hyperparameter-optimization" class="headerlink" title="Hyperparameter optimization"></a>Hyperparameter optimization</h3><h3 id="Bayesian-neural-networks-for-classification"><a href="#Bayesian-neural-networks-for-classification" class="headerlink" title="Bayesian neural networks for classification"></a>Bayesian neural networks for classification</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -376,7 +479,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            74
+                            73
                         </p>
                     </a>
                 </div>
@@ -388,7 +491,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            19
+                            18
                         </p>
                     </a>
                 </div>
@@ -400,7 +503,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            15
+                            14
                         </p>
                     </a>
                 </div>
@@ -721,7 +824,7 @@
                 <span class="level-item">Math</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">44</span>
+                <span class="level-item tag">43</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Math/Calculus/">
@@ -754,14 +857,6 @@
             </span>
             <span class="level-end">
                 <span class="level-item tag">14</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Math/Probability/">
-            <span class="level-start">
-                <span class="level-item">Probability</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Variation/">
@@ -806,7 +901,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/Probability/" style="font-size: 10px;">Probability</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 18px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 18px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -898,7 +993,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">54</span>
+                    <span class="level-item tag">53</span>
                 </span>
             </a>
         </li>
@@ -1013,13 +1108,6 @@
                     <a class="tags has-addons" href="/tags/Numerical-Analysis/">
                         <span class="tag">Numerical Analysis</span>
                         <span class="tag is-grey">14</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Probability/">
-                        <span class="tag">Probability</span>
-                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
