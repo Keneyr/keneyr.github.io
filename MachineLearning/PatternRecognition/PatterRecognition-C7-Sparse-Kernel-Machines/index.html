@@ -10,16 +10,16 @@
 <title>PatterRecognition-C7-Sparse-Kernel-Machines - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+    <meta name="description" content="Keywords: SVM, RVM, Sparse Kernel technique">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PatterRecognition-C7-Sparse-Kernel-Machines">
 <meta property="og:url" content="https://keneyr.com/MachineLearning/PatternRecognition/PatterRecognition-C7-Sparse-Kernel-Machines/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+<meta property="og:description" content="Keywords: SVM, RVM, Sparse Kernel technique">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:49:52.000Z">
-<meta property="article:modified_time" content="2023-10-16T08:57:20.465Z">
+<meta property="article:modified_time" content="2023-10-27T07:26:56.950Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 24 words)
+                    a minute read (About 140 words)
                 </span>
                 
                 
@@ -188,11 +188,13 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition</p>
+            <p><strong><em>Keywords</em></strong>: SVM, RVM, Sparse Kernel technique</p>
 <a id="more"></a>
 
-<p>This is the Chapter3 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-
+<p>This is the Chapter7 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
+<p>One of the significant limitations of many such algorithms is that the kernel function $k(\pmb{x_n}, \pmb{x_m})$ must be evaluated for all possible pairs xn and xm of training points, which can be computationally infeasible during training and can lead to excessive computation times when making predictions for new data points.</p>
+<p>In this chapter we shall look at kernel-based algorithms that have sparse solutions, so that predictions for new inputs depend only on the kernel function evaluated at a subset of the training data points.</p>
+<h2 id="Maximum-Margin-Classifiers"><a href="#Maximum-Margin-Classifiers" class="headerlink" title="Maximum Margin Classifiers"></a>Maximum Margin Classifiers</h2><h3 id="Overlapping-class-distributions"><a href="#Overlapping-class-distributions" class="headerlink" title="Overlapping class distributions"></a>Overlapping class distributions</h3><h3 id="Relation-to-logistic-regression"><a href="#Relation-to-logistic-regression" class="headerlink" title="Relation to logistic regression"></a>Relation to logistic regression</h3><h3 id="Multiclass-SVMs"><a href="#Multiclass-SVMs" class="headerlink" title="Multiclass SVMs"></a>Multiclass SVMs</h3><h3 id="SVMs-for-regression"><a href="#SVMs-for-regression" class="headerlink" title="SVMs for regression"></a>SVMs for regression</h3><h3 id="Computational-learning-theory"><a href="#Computational-learning-theory" class="headerlink" title="Computational learning theory"></a>Computational learning theory</h3><h2 id="Relevance-Vector-Machines"><a href="#Relevance-Vector-Machines" class="headerlink" title="Relevance Vector Machines"></a>Relevance Vector Machines</h2><h3 id="RVM-for-regression"><a href="#RVM-for-regression" class="headerlink" title="RVM for regression"></a>RVM for regression</h3><h3 id="Analysis-of-sparsity"><a href="#Analysis-of-sparsity" class="headerlink" title="Analysis of sparsity"></a>Analysis of sparsity</h3><h3 id="RVM-for-classification"><a href="#RVM-for-classification" class="headerlink" title="RVM for classification"></a>RVM for classification</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -380,6 +382,57 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Maximum-Margin-Classifiers">
+        <span class="has-mr-6">1</span>
+        <span>Maximum Margin Classifiers</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Overlapping-class-distributions">
+        <span class="has-mr-6">1.1</span>
+        <span>Overlapping class distributions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Relation-to-logistic-regression">
+        <span class="has-mr-6">1.2</span>
+        <span>Relation to logistic regression</span>
+        </a></li><li>
+        <a class="is-flex" href="#Multiclass-SVMs">
+        <span class="has-mr-6">1.3</span>
+        <span>Multiclass SVMs</span>
+        </a></li><li>
+        <a class="is-flex" href="#SVMs-for-regression">
+        <span class="has-mr-6">1.4</span>
+        <span>SVMs for regression</span>
+        </a></li><li>
+        <a class="is-flex" href="#Computational-learning-theory">
+        <span class="has-mr-6">1.5</span>
+        <span>Computational learning theory</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Relevance-Vector-Machines">
+        <span class="has-mr-6">2</span>
+        <span>Relevance Vector Machines</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#RVM-for-regression">
+        <span class="has-mr-6">2.1</span>
+        <span>RVM for regression</span>
+        </a></li><li>
+        <a class="is-flex" href="#Analysis-of-sparsity">
+        <span class="has-mr-6">2.2</span>
+        <span>Analysis of sparsity</span>
+        </a></li><li>
+        <a class="is-flex" href="#RVM-for-classification">
+        <span class="has-mr-6">2.3</span>
+        <span>RVM for classification</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
 
     
         <div class="card widget">

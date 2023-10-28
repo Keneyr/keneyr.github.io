@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:49:40.000Z">
-<meta property="article:modified_time" content="2023-10-26T11:19:49.871Z">
+<meta property="article:modified_time" content="2023-10-27T06:31:01.489Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 59 words)
+                    8 minutes read (About 1193 words)
                 </span>
                 
                 
@@ -192,7 +192,40 @@
 <a id="more"></a>
 
 <p>This is the Chapter6 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-<h2 id="Dual-Representations"><a href="#Dual-Representations" class="headerlink" title="Dual Representations"></a>Dual Representations</h2><h2 id="Constructing-Kernels"><a href="#Constructing-Kernels" class="headerlink" title="Constructing Kernels"></a>Constructing Kernels</h2><h2 id="Radial-Basis-Function-Networks"><a href="#Radial-Basis-Function-Networks" class="headerlink" title="Radial Basis Function Networks"></a>Radial Basis Function Networks</h2><h3 id="Nadaraya-Watson-model"><a href="#Nadaraya-Watson-model" class="headerlink" title="Nadaraya-Watson model"></a>Nadaraya-Watson model</h3><h2 id="Gaussian-Processes"><a href="#Gaussian-Processes" class="headerlink" title="Gaussian Processes"></a>Gaussian Processes</h2><h3 id="Linear-regression-revisited"><a href="#Linear-regression-revisited" class="headerlink" title="Linear regression revisited"></a>Linear regression revisited</h3><h3 id="Gaussian-processes-for-regression"><a href="#Gaussian-processes-for-regression" class="headerlink" title="Gaussian processes for regression"></a>Gaussian processes for regression</h3><h3 id="Learning-the-hyperparameters"><a href="#Learning-the-hyperparameters" class="headerlink" title="Learning the hyperparameters"></a>Learning the hyperparameters</h3><h3 id="Automatic-relevance-determination"><a href="#Automatic-relevance-determination" class="headerlink" title="Automatic relevance determination"></a>Automatic relevance determination</h3><h3 id="Gaussian-processes-for-classification"><a href="#Gaussian-processes-for-classification" class="headerlink" title="Gaussian processes for classification"></a>Gaussian processes for classification</h3><h3 id="Laplace-approximation"><a href="#Laplace-approximation" class="headerlink" title="Laplace approximation"></a>Laplace approximation</h3><h3 id="Connection-to-neural-networks"><a href="#Connection-to-neural-networks" class="headerlink" title="Connection to neural networks"></a>Connection to neural networks</h3>
+<h2 id="Dual-Representations-二元表示"><a href="#Dual-Representations-二元表示" class="headerlink" title="Dual Representations(二元表示)"></a>Dual Representations(二元表示)</h2><p>Here we consider a linear regression model whose parameters are determined by minimizing a regularized sum-of-squares error function given by</p>
+<p>$$<br>J(\pmb{w}) = \frac{1}{2}\sum_{n=1}^N \lbrace \pmb{w}^T\phi(x_n) - t_n\rbrace^2 + \frac{\lambda}{2} \pmb{w^Tw}<br>\tag{6.2}<br>$$</p>
+<p>If we set the gradient of $J(\pmb{w})$ with respect to $\pmb{w}$ equal to zero,</p>
+<p>$$<br>\begin{aligned}<br>\pmb{w} &amp;= -\frac{1}{\lambda} \sum_{n=1}^{N} \lbrace \pmb{w^T}\phi(x_n) - t_n\rbrace \phi(x_n)\\<br>&amp;= \sum_{n=1}^N a_n\phi(x_n) \\<br>&amp;= \pmb{\Phi^Ta}<br>\end{aligned}<br>\tag{6.3}<br>$$<br>where $\pmb{\Phi}$ is the design matrix, whose $n^{th}$ row is given by $\phi(x_n)^T$. Here the vector $\pmb{a} = (a_1, \cdots, a_N)^T$, and we have defined</p>
+<p>$$<br>a_n = -\frac{1}{\lambda} \lbrace \pmb{w^T\phi(x_n) - t_n}\rbrace<br>\tag{6.4}<br>$$</p>
+<p>If we substitute $\pmb{w = \Phi^Ta}$ into $J(\pmb{w})$, we obtain</p>
+<p>$$<br>J(\pmb{a}) = \frac{1}{2}\pmb{a^T\Phi \Phi^T \Phi \Phi^T a - a^T\Phi \Phi^T T + \frac{1}{2} T^TT + \frac{\lambda}{2}a^T \Phi \Phi^Ta}<br>\tag{6.5}<br>$$<br>We now define the Gram matrix $\pmb{K = \Phi \Phi^T}$, which is an $N × N$ symmetric matrix with elements<br>$$<br>K_{nm} = \phi(x_n)^T \phi(x_m) = k(x_n, x_m)<br>\tag{6.6}<br>$$<br>the <strong><em>kernel function</em></strong> is<br>$$<br>k(x,x’) = \phi(x)^T \phi(x’)<br>\tag{6.1}<br>$$</p>
+<p>In terms of the Gram matrix, the sum-of-squares error function can be written as<br>$$<br>J(\pmb{a}) = \frac{1}{2}\pmb{a^T KK a - a^T K T + \frac{1}{2} T^TT + \frac{\lambda}{2}a^T K a}<br>\tag{6.7}<br>$$<br>Setting the gradient of $J(\pmb{a})$ with respect to a to zero, we obtain the following solution<br>$$<br>\pmb{a} = (\pmb{K} + \lambda \pmb{I_N})^{-1}T<br>\tag{6.8}<br>$$<br>If we substitute this back into the linear regression model, we obtain the following prediction for a new input $x$<br>$$<br>\begin{aligned}<br>y(x) &amp;= \pmb{w^T}\phi(x) \\<br>&amp;= \pmb{a^T}\Phi \phi(x) \\<br>&amp;= k(x)^T (\pmb{K} + \lambda \pmb{I_N})^{-1}T<br>\end{aligned}<br>\tag{6.9}<br>$$</p>
+<p>Thus we see that the dual formulation allows the solution to the least-squares problem to be expressed entirely in terms of the kernel function $k(x, x’)$.</p>
+<p>We can therefore work directly in terms of kernels and avoid the explicit introduction of the feature vector $\phi(x)$, which allows us implicitly to use feature spaces of high, even infinite, dimensionality.</p>
+<h2 id="Constructing-Kernels"><a href="#Constructing-Kernels" class="headerlink" title="Constructing Kernels"></a>Constructing Kernels</h2><p>One approach is to choose a <strong><em>feature space mapping</em></strong> $\phi(x)$ and then use this to find the corresponding kernel, as is illustrated in Figure 6.1. Here the kernel function is defined for a one-dimensional input space by<br>$$<br>k(x,x’) = \phi(x)^T \phi(x’) = \sum_{i=1}^M \phi_i(x) \phi_i(x’)<br>\tag{6.10}<br>$$<br>where $\phi_i(x)$ are the <strong><em>basis functions</em></strong>.</p>
+<p>For example, consider a kernel function given by<br>$$<br>k(\pmb{x,z}) = (\pmb{x^Tz})^2<br>\tag{6.11}<br>$$<br>If we take the particular case of a two-dimensional input space $\pmb{x} = (x_1, x_2)$ we can expand out the terms and thereby identify the corresponding nonlinear feature mapping<br>$$<br>\begin{aligned}<br>k(\pmb{x,z}) &amp;= (\pmb{x^Tz})^2\\<br>&amp;=(x_1 z_1 + x_2 z_2)^2\\<br>&amp;= (x_1^2, \sqrt{2}x_1x_2, x_2^2)(z_1^2, \sqrt{2}z_1z_2, z_2^2)^T\\<br>&amp;= \phi(\pmb{x})^T\phi(\pmb{z})<br>\end{aligned}<br>\tag{6.12}<br>$$</p>
+<p><img src="/images/PatternRecognition/c6/construct-new-kernel.png" alt="construct new kernel"></p>
+<p>Equipped with these properties, we can now embark on the construction of more complex kernels appropriate to specific applications.</p>
+<p>We saw that the simple polynomial kernel $k(\pmb{x, x’}) = (\pmb{x^Tx’})^2$ contains only terms of degree two.<br>Similarly, $k(\pmb{x, x’}) = (\pmb{x^Tx’})^M$ contains all monomials of order $M$.</p>
+<p>For instance, if $\pmb{x}$ and $\pmb{x’}$ are two images, then the kernel represents a particular weighted sum of all possible products of $M$ pixels in the first image with $M$ pixels in the second image.</p>
+<p>Another commonly used kernel takes the form is often called a <em>‘Gaussian’ kernel</em>,<br>$$<br>k(\pmb{x, x’}) = exp(-||\pmb{x-x’}||^2 / 2\sigma^2)<br>\tag{6.23}<br>$$</p>
+<p>Since,<br>$$<br>||\pmb{x - x’}||^2 = \pmb{x^Tx} + (\pmb{x’^Tx’}) - 2\pmb{x^Tx’}<br>\tag{6.24}<br>$$<br>then,<br>$$<br>k(\pmb{x, x’}) = exp(-\pmb{x^Tx}/2\sigma^2)exp(\pmb{x^Tx’}/\sigma^2)exp(-\pmb{x’^Tx’}/2\sigma^2)<br>\tag{6.25}<br>$$<br>define $\kappa(\pmb{x,x’}) = \pmb{x^Tx’}$,then<br>$$<br>k(\pmb{x, x’}) = exp\lbrace -\frac{1}{2\sigma^2} (\kappa(\pmb{x,x}) + \kappa(\pmb{x’,x’}) - 2\kappa(\pmb{x,x’}))\rbrace<br>\tag{6.26}<br>$$</p>
+<p>One powerful approach to the construction of kernels starts from a probabilistic generative model (Haussler, 1999), which allows us to apply generative models in a discriminative setting.</p>
+<p>Given a generative model $p(\pmb{x})$ we can define a kernel by<br>$$<br>k(\pmb{x,x’}) = p(\pmb{x})p(\pmb{x’})<br>\tag{6.28}<br>$$<br>This is clearly a valid kernel function because we can interpret it as an &#x1F449;<a href="/Math/Linear-Algebra/Algebra-C6-Orthogonality-And-Least-Squares/#Inner-Product-Spaces">inner product &gt;&gt;</a> in the one-dimensional feature space defined by the mapping $p(\pmb{x})$.</p>
+<p>By (6.13), (6.17), we extend the class of kernels with <em>positive weighting coefficients</em> $p(i)$,<br>$$<br>k(\pmb{x,x’}) = \sum_i p(\pmb{x}|i)p(\pmb{x’}|i)p(i)<br>\tag{6.29}<br>$$<br>This is equivalent, up to an overall multiplicative constant, to a mixture distribution in which the components factorize, with the index $i$ playing the role of a <strong><em>‘latent’ variable(潜在变量)</em></strong>.</p>
+<p>we can also consider kernels of the form<br>$$<br>k(\pmb{x,x’}) = \int p(\pmb{x|z})p(\pmb{x’|z})p(\pmb{z}) d\pmb{z}<br>\tag{6.30}<br>$$<br>where $z$ is a continuous latent variable.</p>
+<p>Now suppose that our data consists of ordered sequences of length $L$ so that an observation is given by $X = {x_1, \cdots , x_L}$.</p>
+<blockquote>
+<p>A popular generative model for sequences is the <strong><em>hidden Markov model</em></strong>, which expresses the distribution $p(X)$ as a marginalization over a corresponding sequence of <em>hidden states</em> $Z = {z_1, \cdots , z_L}$.</p>
+</blockquote>
+<p>We can use this approach to define a kernel function measuring the <em>similarity</em> of two sequences $X$ and $X’$ by extending the mixture representation (6.29) to give<br>$$<br>k(X,X’) = \sum_Z p(X|Z)p(X’|Z)p(Z)<br>\tag{6.31}<br>$$</p>
+<blockquote>
+<p>so that both observed sequences are generated by the same <em>hidden sequence</em> $Z$. This model can easily be extended to allow sequences of differing length to be compared.</p>
+</blockquote>
+<h2 id="Radial-Basis-Function-Networks"><a href="#Radial-Basis-Function-Networks" class="headerlink" title="Radial Basis Function Networks"></a>Radial Basis Function Networks</h2><p>radial basis functions have the property that each basis function depends only on the radial distance (typically Euclidean) from a centre $\pmb{\mu}_j$ , so that $\phi_j(\pmb{x}) = h(||\pmb{x - \mu_j}||)$.</p>
+<p><img src="/images/PatternRecognition/c6/gaussian-kernels.png" alt="gaussian kernels"></p>
+<h3 id="Nadaraya-Watson-model"><a href="#Nadaraya-Watson-model" class="headerlink" title="Nadaraya-Watson model"></a>Nadaraya-Watson model</h3><h2 id="Gaussian-Processes"><a href="#Gaussian-Processes" class="headerlink" title="Gaussian Processes"></a>Gaussian Processes</h2><p>In the Gaussian process viewpoint, we dispense with the parametric model and instead define a prior probability distribution over functions directly.</p>
+<h3 id="Linear-regression-revisited"><a href="#Linear-regression-revisited" class="headerlink" title="Linear regression revisited"></a>Linear regression revisited</h3><h3 id="Gaussian-processes-for-regression"><a href="#Gaussian-processes-for-regression" class="headerlink" title="Gaussian processes for regression"></a>Gaussian processes for regression</h3><h3 id="Learning-the-hyperparameters"><a href="#Learning-the-hyperparameters" class="headerlink" title="Learning the hyperparameters"></a>Learning the hyperparameters</h3><h3 id="Automatic-relevance-determination"><a href="#Automatic-relevance-determination" class="headerlink" title="Automatic relevance determination"></a>Automatic relevance determination</h3><h3 id="Gaussian-processes-for-classification"><a href="#Gaussian-processes-for-classification" class="headerlink" title="Gaussian processes for classification"></a>Gaussian processes for classification</h3><h3 id="Laplace-approximation"><a href="#Laplace-approximation" class="headerlink" title="Laplace approximation"></a>Laplace approximation</h3><h3 id="Connection-to-neural-networks"><a href="#Connection-to-neural-networks" class="headerlink" title="Connection to neural networks"></a>Connection to neural networks</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -388,9 +421,9 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Dual-Representations">
+        <a class="is-flex" href="#Dual-Representations-二元表示">
         <span class="has-mr-6">1</span>
-        <span>Dual Representations</span>
+        <span>Dual Representations(二元表示)</span>
         </a></li><li>
         <a class="is-flex" href="#Constructing-Kernels">
         <span class="has-mr-6">2</span>

@@ -10,16 +10,16 @@
 <title>PatterRecognition-C8-Graphical-Models - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+    <meta name="description" content="Keywords: Bayesian Networks, Markov Random Fields, Inference">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PatterRecognition-C8-Graphical-Models">
 <meta property="og:url" content="https://keneyr.com/MachineLearning/PatternRecognition/PatterRecognition-C8-Graphical-Models/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+<meta property="og:description" content="Keywords: Bayesian Networks, Markov Random Fields, Inference">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:50:05.000Z">
-<meta property="article:modified_time" content="2023-10-16T08:56:34.844Z">
+<meta property="article:modified_time" content="2023-10-27T10:11:45.061Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 24 words)
+                    9 minutes read (About 1294 words)
                 </span>
                 
                 
@@ -188,11 +188,50 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition</p>
+            <p><strong><em>Keywords</em></strong>: Bayesian Networks, Markov Random Fields, Inference</p>
 <a id="more"></a>
 
-<p>This is the Chapter3 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-
+<p>This is the Chapter8 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
+<p>We shall find it highly advantageous to augment the analysis using diagrammatic representations of probability distributions, called <strong><em>probabilistic graphical models</em></strong>. These offer several useful properties:</p>
+<ol>
+<li>They provide a simple way to visualize the structure of a probabilistic model and can be used to design and motivate new models.(直观的看到概率模型的结构，可以推动设计新的模型)</li>
+<li>Insights into the properties of the model, including conditional independence properties, can be obtained by inspection of the graph.(直观的看到概率模型的属性，包括条件独立等)</li>
+<li>Complex computations, required to perform inference and learning in sophisticated models, can be expressed in terms of graphical manipulations, in which underlying mathematical expressions are carried along implicitly.(通过图计算，可以表达复杂的数学计算，推断学习等过程)</li>
+</ol>
+<h2 id="Bayesian-Networks"><a href="#Bayesian-Networks" class="headerlink" title="Bayesian Networks"></a>Bayesian Networks</h2><p>Consider first an arbitrary joint distribution $p(a, b, c)$ over three variables $a, b$, and $c$. By application of the product rule of probability (1.11), we can write the joint distribution in the form<br>$$<br>\begin{aligned}<br>p(a,b,c) &amp;= p(c|a,b)p(a,b)\\<br>&amp;= p(c|a,b)p(b|a)p(a)<br>\end{aligned}<br>\tag{8.2}<br>$$</p>
+<p><img src="/images/PatternRecognition/c8/graph.png" alt="directed graph"></p>
+<p>By repeated application of the product rule of probability, this joint distribution can be written as a product of conditional distributions, one for each of the variables<br>$$<br>p(x_1, \cdots, x_K) = p(x_k|x_1,\cdots, x_{K-1})\cdots p(x_2|x_1)p(x_1)<br>\tag{8.3}<br>$$<br>We say that this graph is <em>fully connected</em> because there is a link between every pair of nodes.</p>
+<p>See Figure8.2, the joint distribution of all 7 variables is therefore given by<br>$$<br>p(x_1)p(x_2)p(x_3)p(x_4|x_1, x_2, x_3)p(x_5|x_1, x_3)p(x_6|x_4)p(x_7|x_4, x_5)<br>\tag{8.4}<br>$$<br>Thus, for a graph with $K$ nodes, the joint distribution is given by<br>$$<br>p(\pmb{x}) = \prod_{k=1}^{K} p(x_k | pa_k)<br>\tag{8.5}<br>$$<br>where $pa_k$ denotes the set of parents of $x_k$, and $\pmb{x} = \lbrace x_1, \cdots , x_K \rbrace$. This key equation expresses the <strong><em>factorization properties</em></strong> of the joint distribution for a directed graphical model.</p>
+<h3 id="Example-Polynomial-regression"><a href="#Example-Polynomial-regression" class="headerlink" title="Example: Polynomial regression"></a>Example: Polynomial regression</h3><p>We consider the &#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C1-Introduction/#Bayesian-curve-fitting-using-integration">Bayesian polynomial regression model &gt;&gt;</a>.</p>
+<p><u>Random Variables in this model</u>: the vector of polynomial coefficients $\pmb{w}$, the observed data $T = (t_1, \cdots , t_N)^T$.</p>
+<p><u>Parameters in this model</u>: the input data $X = (x_1, \cdots , x_N)^T$, the noise variance $\sigma^2$, the hyperparameter $\alpha$ representing the precision of the Gaussian prior over $\pmb{w}$.</p>
+<blockquote>
+<p>Note that, the parameters definition here is a little different from before. We usually say $\pmb{w}$ is a parameter and $T$ is the observation/target data in Chaper 1.</p>
+</blockquote>
+<p>we see that the <u>joint distribution</u> is given by the product of the prior $p(\pmb{w})$ and $N$ conditional distributions $p(t_n|\pmb{w})$ for $n = 1, \cdots , N$ so that<br>$$<br>p(T,\pmb{w}) = p(\pmb{w})\prod_{n=1}^N p(t_n|\pmb{w})<br>\Longleftrightarrow<br>p(T,\pmb{w}|X,\alpha,\sigma^2) = p(\pmb{w}|\alpha) \prod_{n=1}^N p(t_n|\pmb{w}, x_n, \sigma^2)<br>\tag{8.6}<br>$$<br>Correspondingly, we can make $X$ and $\alpha$ explicit in the graphical representation.</p>
+<p><img src="/images/PatternRecognition/c8/polynomial-regression.png" alt="polynomial regression"></p>
+<blockquote>
+<p>Note that the value of $\pmb{w}$ is not observed, and so $\pmb{w}$ is an example of a <strong><em>latent variable</em></strong>, also known as a <strong><em>hidden variable</em></strong>.</p>
+</blockquote>
+<p>Having observed the values $\lbrace t_n \rbrace$ we can, if desired, evaluate the <u>posterior distribution</u> of the polynomial coefficients $\pmb{w}$ as discussed before. For the moment, we note that this involves a straightforward application of &#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C1-Introduction/#Bayesian-probabilities">Bayes’ theorem &gt;&gt;</a><br>$$<br>p(\pmb{w}|T) \propto p(\pmb{w})\prod_{n=1}^N p(t_n|\pmb{w})<br>\tag{8.7}<br>$$</p>
+<p>Suppose we are given a new input value $\hat{x}$ and we wish to find the corresponding probability distribution for $\hat{t}$ conditioned on the observed data.</p>
+<p>the corresponding joint distribution of all of the random variables in this model, conditioned on the deterministic parameters, is then given by<br>$$<br>p(\hat{t}, T, \pmb{w} | \hat{x}, X, \alpha, \sigma^2) = \left[ \prod_{n=1}^{N}p(t_n|x_n, \pmb{w}, \sigma^2) \right] p(\pmb{w}|\alpha) p(\hat{t}|\hat{x}, \pmb{w}, \sigma^2)<br>\tag{8.8}<br>$$<br>The required <u>predictive distribution</u> for $\hat{t}$ is then obtained, from the <strong><em>sum rule of probability</em></strong>, by integrating out the model parameters $\pmb{w}$ so that<br>$$<br>p(\hat{t}|\hat{x}, X,T, \alpha, \sigma^2) \propto \int p(\hat{t}, T, \pmb{w} | \hat{x}, X, \alpha, \sigma^2) d\pmb{w}<br>$$<br>where we are implicitly setting the random variables in $T$ to the specific values observed in the data set.</p>
+<h3 id="Generative-models"><a href="#Generative-models" class="headerlink" title="Generative models"></a>Generative models</h3><p>Consider a joint distribution $p(x_1, \cdots, x_K)$ over $K$ variables that factorizes according to (8.5) corresponding to a directed acyclic graph. <strong><em>Our goal</em></strong> is to draw a sample $\hat{x_1}, \cdots, \hat{x_k}$ from the joint distribution.</p>
+<ol>
+<li>we start with the lowest-numbered node and draw a sample from the distribution $p(x_1)$, which we call $\hat{x_1}$.</li>
+<li>then work through each of the nodes in order, so that for node $n$ we draw a sample from the conditional distribution $p(x_n|pa_n)$ in which the parent variables have been set to their sampled values.</li>
+<li>Once we have sampled from the final variable $x_K$, we will have achieved our objective of obtaining a sample from the joint distribution.</li>
+</ol>
+<p><u>We can interpret such models as expressing the processes by which the observed data arose</u>. For instance, consider an <u>object recognition task</u> in which each observed data point corresponds to an image (comprising a vector of pixel intensities) of one of the objects. In this case, the <u>latent variables</u> might have an interpretation as the <em>position and orientation of the object</em>. </p>
+<p>Given a particular observed image, <strong><em>our goal</em></strong> is to find the <u>posterior distribution</u> over objects, in which we integrate over all possible positions and orientations. We can represent this problem using a graphical model of the form show in Figure 8.8.</p>
+<p><img src="/images/PatternRecognition/c8/generative-model.png" alt="generative model"></p>
+<blockquote>
+<p>The graphical model captures the <em>causal process</em> (Pearl, 1988) by which the observed data was generated. For this reason, such models are often called <strong><em>generative models</em></strong>.</p>
+</blockquote>
+<p>By contrast, the polynomial regression model described by Figure 8.5 is not generative because there is no probability distribution associated with the input variable $x$, and so it is not possible to generate synthetic data points from this model. We could make it generative by introducing a suitable prior distribution $p(x)$, at the expense of a more complex model.</p>
+<h3 id="Discrete-variables"><a href="#Discrete-variables" class="headerlink" title="Discrete variables"></a>Discrete variables</h3><p>&#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C2-Probability-Distributions/#The-Exponential-Family">First to know Exponential Family &gt;&gt;</a></p>
+<p>The probability distribution $p(x|\mu)$ for a single discrete variable $x$ having $K$ possible states (using the 1-of-K representation) is given by<br>$$<br>p(x|\mu) = \prod_{k=1}^K \mu_k^{x_k}<br>\tag{8.9}<br>$$<br>and is governed by the parameters $\mu = (\mu_1, \cdots , \mu_K)^T$.</p>
+<h3 id="Linear-Gaussian-models"><a href="#Linear-Gaussian-models" class="headerlink" title="Linear-Gaussian models"></a>Linear-Gaussian models</h3><h2 id="Conditional-Independence"><a href="#Conditional-Independence" class="headerlink" title="Conditional Independence"></a>Conditional Independence</h2><h3 id="Three-example-graphs"><a href="#Three-example-graphs" class="headerlink" title="Three example graphs"></a>Three example graphs</h3><h3 id="D-separation"><a href="#D-separation" class="headerlink" title="D-separation"></a>D-separation</h3><h2 id="Markov-Random-Fields"><a href="#Markov-Random-Fields" class="headerlink" title="Markov Random Fields"></a>Markov Random Fields</h2><h3 id="Conditional-independence-properties"><a href="#Conditional-independence-properties" class="headerlink" title="Conditional independence properties"></a>Conditional independence properties</h3><h3 id="Factorization-properties"><a href="#Factorization-properties" class="headerlink" title="Factorization properties"></a>Factorization properties</h3><h3 id="Illustration-Image-de-noising"><a href="#Illustration-Image-de-noising" class="headerlink" title="Illustration: Image de-noising"></a>Illustration: Image de-noising</h3><h3 id="Relation-to-directed-graphs"><a href="#Relation-to-directed-graphs" class="headerlink" title="Relation to directed graphs"></a>Relation to directed graphs</h3><h2 id="Inference-in-Graphical-Models"><a href="#Inference-in-Graphical-Models" class="headerlink" title="Inference in Graphical Models"></a>Inference in Graphical Models</h2><h3 id="Inference-on-a-chain"><a href="#Inference-on-a-chain" class="headerlink" title="Inference on a chain"></a>Inference on a chain</h3><h3 id="Trees"><a href="#Trees" class="headerlink" title="Trees"></a>Trees</h3><h3 id="Factor-graphs"><a href="#Factor-graphs" class="headerlink" title="Factor graphs"></a>Factor graphs</h3><h3 id="The-sum-product-algorithm"><a href="#The-sum-product-algorithm" class="headerlink" title="The sum-product algorithm"></a>The sum-product algorithm</h3><h3 id="The-max-sum-algorithm"><a href="#The-max-sum-algorithm" class="headerlink" title="The max-sum algorithm"></a>The max-sum algorithm</h3><h3 id="Exact-inference-in-general-graphs"><a href="#Exact-inference-in-general-graphs" class="headerlink" title="Exact inference in general graphs"></a>Exact inference in general graphs</h3><h3 id="Loopy-belief-propagation"><a href="#Loopy-belief-propagation" class="headerlink" title="Loopy belief propagation"></a>Loopy belief propagation</h3><h3 id="Learning-the-graph-structure"><a href="#Learning-the-graph-structure" class="headerlink" title="Learning the graph structure"></a>Learning the graph structure</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -380,6 +419,105 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Bayesian-Networks">
+        <span class="has-mr-6">1</span>
+        <span>Bayesian Networks</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Example-Polynomial-regression">
+        <span class="has-mr-6">1.1</span>
+        <span>Example: Polynomial regression</span>
+        </a></li><li>
+        <a class="is-flex" href="#Generative-models">
+        <span class="has-mr-6">1.2</span>
+        <span>Generative models</span>
+        </a></li><li>
+        <a class="is-flex" href="#Discrete-variables">
+        <span class="has-mr-6">1.3</span>
+        <span>Discrete variables</span>
+        </a></li><li>
+        <a class="is-flex" href="#Linear-Gaussian-models">
+        <span class="has-mr-6">1.4</span>
+        <span>Linear-Gaussian models</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Conditional-Independence">
+        <span class="has-mr-6">2</span>
+        <span>Conditional Independence</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Three-example-graphs">
+        <span class="has-mr-6">2.1</span>
+        <span>Three example graphs</span>
+        </a></li><li>
+        <a class="is-flex" href="#D-separation">
+        <span class="has-mr-6">2.2</span>
+        <span>D-separation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Markov-Random-Fields">
+        <span class="has-mr-6">3</span>
+        <span>Markov Random Fields</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Conditional-independence-properties">
+        <span class="has-mr-6">3.1</span>
+        <span>Conditional independence properties</span>
+        </a></li><li>
+        <a class="is-flex" href="#Factorization-properties">
+        <span class="has-mr-6">3.2</span>
+        <span>Factorization properties</span>
+        </a></li><li>
+        <a class="is-flex" href="#Illustration-Image-de-noising">
+        <span class="has-mr-6">3.3</span>
+        <span>Illustration: Image de-noising</span>
+        </a></li><li>
+        <a class="is-flex" href="#Relation-to-directed-graphs">
+        <span class="has-mr-6">3.4</span>
+        <span>Relation to directed graphs</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Inference-in-Graphical-Models">
+        <span class="has-mr-6">4</span>
+        <span>Inference in Graphical Models</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Inference-on-a-chain">
+        <span class="has-mr-6">4.1</span>
+        <span>Inference on a chain</span>
+        </a></li><li>
+        <a class="is-flex" href="#Trees">
+        <span class="has-mr-6">4.2</span>
+        <span>Trees</span>
+        </a></li><li>
+        <a class="is-flex" href="#Factor-graphs">
+        <span class="has-mr-6">4.3</span>
+        <span>Factor graphs</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-sum-product-algorithm">
+        <span class="has-mr-6">4.4</span>
+        <span>The sum-product algorithm</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-max-sum-algorithm">
+        <span class="has-mr-6">4.5</span>
+        <span>The max-sum algorithm</span>
+        </a></li><li>
+        <a class="is-flex" href="#Exact-inference-in-general-graphs">
+        <span class="has-mr-6">4.6</span>
+        <span>Exact inference in general graphs</span>
+        </a></li><li>
+        <a class="is-flex" href="#Loopy-belief-propagation">
+        <span class="has-mr-6">4.7</span>
+        <span>Loopy belief propagation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Learning-the-graph-structure">
+        <span class="has-mr-6">4.8</span>
+        <span>Learning the graph structure</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
 
     
         <div class="card widget">
