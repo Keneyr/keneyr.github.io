@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:50:18.000Z">
-<meta property="article:modified_time" content="2023-10-27T10:18:47.867Z">
+<meta property="article:modified_time" content="2023-10-29T04:52:58.412Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 65 words)
+                    7 minutes read (About 1078 words)
                 </span>
                 
                 
@@ -192,7 +192,39 @@
 <a id="more"></a>
 
 <p>This is the Chapter9 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-<h2 id="K-means-Clustering"><a href="#K-means-Clustering" class="headerlink" title="K-means Clustering"></a>K-means Clustering</h2><h3 id="Image-segmentation-and-compression"><a href="#Image-segmentation-and-compression" class="headerlink" title="Image segmentation and compression"></a>Image segmentation and compression</h3><h2 id="Mixtures-of-Gaussians"><a href="#Mixtures-of-Gaussians" class="headerlink" title="Mixtures of Gaussians"></a>Mixtures of Gaussians</h2><h3 id="Maximum-likelihood"><a href="#Maximum-likelihood" class="headerlink" title="Maximum likelihood"></a>Maximum likelihood</h3><h3 id="EM-for-Gaussian-mixtures"><a href="#EM-for-Gaussian-mixtures" class="headerlink" title="EM for Gaussian mixtures"></a>EM for Gaussian mixtures</h3><h2 id="An-Alternative-View-of-EM"><a href="#An-Alternative-View-of-EM" class="headerlink" title="An Alternative View of EM"></a>An Alternative View of EM</h2><h3 id="Gaussian-mixtures-revisited"><a href="#Gaussian-mixtures-revisited" class="headerlink" title="Gaussian mixtures revisited"></a>Gaussian mixtures revisited</h3><h3 id="Relation-to-K-means"><a href="#Relation-to-K-means" class="headerlink" title="Relation to K-means"></a>Relation to K-means</h3><h3 id="Mixtures-of-Bernoulli-distributions"><a href="#Mixtures-of-Bernoulli-distributions" class="headerlink" title="Mixtures of Bernoulli distributions"></a>Mixtures of Bernoulli distributions</h3><h3 id="EM-for-Bayesian-linear-regression"><a href="#EM-for-Bayesian-linear-regression" class="headerlink" title="EM for Bayesian linear regression"></a>EM for Bayesian linear regression</h3><h2 id="The-EM-Algorithm-in-General"><a href="#The-EM-Algorithm-in-General" class="headerlink" title="The EM Algorithm in General"></a>The EM Algorithm in General</h2>
+<h2 id="K-means-Clustering"><a href="#K-means-Clustering" class="headerlink" title="K-means Clustering"></a>K-means Clustering</h2><p><img src="/images/PatternRecognition/c9/k-means.png" alt="k-means algorithm"></p>
+<h3 id="Image-segmentation-and-compression"><a href="#Image-segmentation-and-compression" class="headerlink" title="Image segmentation and compression"></a>Image segmentation and compression</h3><h2 id="Mixtures-of-Gaussians"><a href="#Mixtures-of-Gaussians" class="headerlink" title="Mixtures of Gaussians"></a>Mixtures of Gaussians</h2><p>&#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C2-Probability-Distributions/#Mixtures-of-Gaussians">First Understanding Mixtures of Gaussians &gt;&gt;</a></p>
+<p>We now turn to a formulation of Gaussian mixtures in terms of discrete latent variables.</p>
+<p>Gaussian mixture distribution can be written as a linear superposition of Gaussians in the form,<br>$$<br>p(\pmb{x}) = \sum_{k=1}^K \pi_k \mathcal{N}(\pmb{x|\mu_k}, \pmb{\Sigma_k})<br>\tag{9.7}<br>$$</p>
+<p><strong><em>Proof:</em></strong></p>
+<p>Let us introduce a $K$-dimensional binary random variable $\pmb{z}$ having a $1$-of-$K$ representation in which a particular element $z_k$ is equal to $1$ and all other elements are equal to $0$.</p>
+<p>The marginal distribution over $\pmb{z}$ is specified in terms of the mixing coefficients $\pi_k$, such that<br>$$<br>p(z_k = 1) = \pi_k<br>$$<br>where the parameters $\lbrace \pi_k \rbrace$ must satisfy<br>$$<br>0 \leq \pi_k \leq 1<br>\tag{9.8}<br>$$<br>together with<br>$$<br>\sum_{k=1}^K \pi_k = 1<br>\tag{9.9}<br>$$<br>in order to be valid probabilities.</p>
+<p>We shall define the joint distribution $p(\pmb{x}, \pmb{z})$ in terms of a marginal distribution $p(\pmb{z})$ and a conditional distribution $p(\pmb{x}|\pmb{z})$, corresponding to the graphical model in Figure 9.4.</p>
+<p><img src="/images/PatternRecognition/c9/pxz.png" alt="mixture model"></p>
+<p>Because $\pmb{z}$ uses a $1$-of-$K$ representation, we can also write this distribution in the form<br>$$<br>p(\pmb{z}) = \prod_{k=1}^K \pi_k^{z_k}<br>\tag{9.10}<br>$$<br>Similarly, the conditional distribution of $\pmb{x}$ given a particular value for $\pmb{z}$ is a Gaussian<br>$$<br>p(\pmb{x}|z_k = 1) = \mathcal{N}(\pmb{x}|\pmb{\mu_k}, \pmb{\Sigma_k})<br>$$<br>$$<br>p(\pmb{x}|\pmb{z}) = \prod_{k=1}^K \mathcal{N}(\pmb{x}| \pmb{\mu_k}, \pmb{\Sigma_k})^{z_k}<br>\tag{9.11}<br>$$<br>the marginal distribution of $\pmb{x}$ is then obtained by summing the joint distribution over all possible states of $\pmb{z}$ to give<br>$$<br>\begin{aligned}<br>p(\pmb{x}) &amp;= \sum_{\pmb{z}} p(\pmb{z}) p(\pmb{x}|\pmb{z}) \\<br>&amp;= \sum_{k=1}^K \pi_k \mathcal{N}(\pmb{x} | \pmb{\mu_k}, \pmb{\Sigma_k})<br>\end{aligned}<br>\tag{9.12}<br>$$<br>Thus the marginal distribution of $\pmb{x}$ is a Gaussian mixture of the form (9.7).</p>
+<blockquote>
+<p>because we have represented the marginal distribution in the form $p(\pmb{x}) = \sum_{\pmb{z}} p(\pmb{x}, \pmb{z})$, it follows that for every observed data point $\pmb{x_n}$ there is a corresponding <strong><em>latent variable</em></strong> $\pmb{z_n}$.</p>
+</blockquote>
+<p>We shall use $\gamma(z_k)$ to denote $p(z_k = 1| \pmb{x})$, whose value can be found using Bayes’ theorem<br>$$<br>\begin{aligned}<br>\gamma(z_k) &amp; \equiv p(z_k = 1 | \pmb{x})\\<br>&amp;= \frac{p(z_k = 1) p(\pmb{x}|z_k=1)}{\sum_{j=1}^K p(z_j = 1)p(\pmb{x} | z_j = 1)} \\<br>&amp;= \frac{\pi_k \mathcal{N}(\pmb{x} | \pmb{\mu_k}, \pmb{\Sigma_k})}{\sum_{j=1}^K \pi_j \mathcal{N}(\pmb{x} | \pmb{\mu_j}, \pmb{\Sigma_j})}<br>\end{aligned}<br>\tag{9.13}<br>$$<br>prior probability of $z_k = 1$: $\pi_k$</p>
+<p>posterior probability: $\gamma(z_k)$ once we have observed $\pmb{x}$.</p>
+<p>$\gamma(z_k)$ can also be viewed as the <strong><em>responsibility</em></strong> that component $k$ takes for ‘explaining’ the observation $\pmb{x}$.</p>
+<p><img src="/images/PatternRecognition/c9/gaussian-mixture.png" alt="gaussian mixture"></p>
+<h3 id="Maximum-likelihood"><a href="#Maximum-likelihood" class="headerlink" title="Maximum likelihood"></a>Maximum likelihood</h3><p>$\pmb{X}$: $N \times D$ matrix, in which the $n^{th}$ row is given by $\pmb{x_n}^T$.</p>
+<p>$\pmb{Z}$: $N \times K$ matrix, in which the $n^{th}$ row is given by $\pmb{z_n}^T$.</p>
+<p>If we assume that the data points are drawn independently from the distribution, then we can express the Gaussian mixture model for this <strong><em>i.i.d.</em></strong> data set using the graphical representation shown in Figure 9.6. From (9.7) the <u>log of the likelihood function</u> is given by</p>
+<p>$$<br>\ln p(\pmb{X} | \pmb{\pi}, \pmb{\mu}, \pmb{\Sigma}) = \sum_{n=1}^{N} \ln \lbrace \sum_{k=1}^{K} \pi_k \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k}) \rbrace<br>\tag{9.14}<br>$$</p>
+<p>Consider a Gaussian mixture whose components have <strong><em>covariance matrices</em></strong> given by $\pmb{\Sigma_k} = \sigma_k^2 \pmb{I}$, where $\pmb{I}$ is the unit matrix.</p>
+<p>Suppose that one of the components of the mixture model, let us say the $j^{th}$ component, has its mean $\pmb{\mu_j}$ exactly equal to one of the data points so that $\pmb{\mu_j} = \pmb{x_n}$ for some value of $n$.</p>
+<p>This data point will then contribute a term in the likelihood function of the form<br>$$<br>\mathcal{N}(\pmb{x_n} | \pmb{x_n}, \sigma_j^2 \pmb{I}) = \frac{1}{(2\pi)^{\frac{1}{2}}} \frac{1}{\sigma_j}<br>\tag{9.15}<br>$$</p>
+<blockquote>
+<p>If we consider the limit $\sigma_j \rightarrow 0$, then we see that this term goes to infinity and so the log likelihood function will also go to infinity.<br>Thus the maximization of the log likelihood function is not a well posed problem because such <strong><em>singularities</em></strong> will always be present and will occur whenever one of the Gaussian components ‘collapses’ onto a specific data point.</p>
+</blockquote>
+<p><img src="/images/PatternRecognition/c9/likelihood-function.png" alt="likelihood function"></p>
+<blockquote>
+<p>如果单个高斯函数折叠到一个数据点上，它将对由其他数据点产生的似然函数产生乘性因子，这些因子将以指数形式快速趋于零，从而使总体似然函数趋于零而不是无穷。<br>然而，一旦我们在混合中有(至少)两个成分，其中一个成分可能具有有限的方差，因此为所有数据点分配有限的概率，而另一个成分可以缩小到一个特定的数据点，从而为对数似然提供越来越大的附加值。</p>
+</blockquote>
+<h3 id="EM-for-Gaussian-mixtures"><a href="#EM-for-Gaussian-mixtures" class="headerlink" title="EM for Gaussian mixtures"></a>EM for Gaussian mixtures</h3><p>An elegant and powerful method for finding maximum likelihood solutions for<br>models with latent variables is called the expectation-maximization algorithm, or EM<br>algorithm (Dempster et al., 1977; McLachlan and Krishnan, 1997).</p>
+<h2 id="An-Alternative-View-of-EM"><a href="#An-Alternative-View-of-EM" class="headerlink" title="An Alternative View of EM"></a>An Alternative View of EM</h2><h3 id="Gaussian-mixtures-revisited"><a href="#Gaussian-mixtures-revisited" class="headerlink" title="Gaussian mixtures revisited"></a>Gaussian mixtures revisited</h3><h3 id="Relation-to-K-means"><a href="#Relation-to-K-means" class="headerlink" title="Relation to K-means"></a>Relation to K-means</h3><h3 id="Mixtures-of-Bernoulli-distributions"><a href="#Mixtures-of-Bernoulli-distributions" class="headerlink" title="Mixtures of Bernoulli distributions"></a>Mixtures of Bernoulli distributions</h3><h3 id="EM-for-Bayesian-linear-regression"><a href="#EM-for-Bayesian-linear-regression" class="headerlink" title="EM for Bayesian linear regression"></a>EM for Bayesian linear regression</h3><h2 id="The-EM-Algorithm-in-General"><a href="#The-EM-Algorithm-in-General" class="headerlink" title="The EM Algorithm in General"></a>The EM Algorithm in General</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
