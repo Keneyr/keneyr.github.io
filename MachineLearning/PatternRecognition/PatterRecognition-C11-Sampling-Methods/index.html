@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:50:45.000Z">
-<meta property="article:modified_time" content="2023-10-31T09:34:28.409Z">
+<meta property="article:modified_time" content="2023-10-31T11:25:45.524Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 35 words)
+                    a few seconds read (About 67 words)
                 </span>
                 
                 
@@ -192,7 +192,7 @@
 <a id="more"></a>
 
 <p>This is the Chapter11 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-<h2 id="Basic-Sampling-Algorithms"><a href="#Basic-Sampling-Algorithms" class="headerlink" title="Basic Sampling Algorithms"></a>Basic Sampling Algorithms</h2><h2 id="Markov-Chain-Monte-Carlo"><a href="#Markov-Chain-Monte-Carlo" class="headerlink" title="Markov Chain Monte Carlo"></a>Markov Chain Monte Carlo</h2><h2 id="Gibbs-Sampling"><a href="#Gibbs-Sampling" class="headerlink" title="Gibbs Sampling"></a>Gibbs Sampling</h2><h2 id="Slice-Sampling"><a href="#Slice-Sampling" class="headerlink" title="Slice Sampling"></a>Slice Sampling</h2><h2 id="The-Hybrid-Monte-Carlo-Algorithm"><a href="#The-Hybrid-Monte-Carlo-Algorithm" class="headerlink" title="The Hybrid Monte Carlo Algorithm"></a>The Hybrid Monte Carlo Algorithm</h2>
+<h2 id="Basic-Sampling-Algorithms"><a href="#Basic-Sampling-Algorithms" class="headerlink" title="Basic Sampling Algorithms"></a>Basic Sampling Algorithms</h2><h3 id="Standard-distributions"><a href="#Standard-distributions" class="headerlink" title="Standard distributions"></a>Standard distributions</h3><h3 id="Rejection-sampling"><a href="#Rejection-sampling" class="headerlink" title="Rejection sampling"></a>Rejection sampling</h3><h3 id="Adaptive-rejection-sampling"><a href="#Adaptive-rejection-sampling" class="headerlink" title="Adaptive rejection sampling"></a>Adaptive rejection sampling</h3><h3 id="Importance-sampling"><a href="#Importance-sampling" class="headerlink" title="Importance sampling"></a>Importance sampling</h3><h3 id="Sampling-importance-resampling"><a href="#Sampling-importance-resampling" class="headerlink" title="Sampling-importance-resampling"></a>Sampling-importance-resampling</h3><h3 id="Sampling-and-the-EM-algorithm"><a href="#Sampling-and-the-EM-algorithm" class="headerlink" title="Sampling and the EM algorithm"></a>Sampling and the EM algorithm</h3><h2 id="Markov-Chain-Monte-Carlo"><a href="#Markov-Chain-Monte-Carlo" class="headerlink" title="Markov Chain Monte Carlo"></a>Markov Chain Monte Carlo</h2><h3 id="Markov-chains"><a href="#Markov-chains" class="headerlink" title="Markov chains"></a>Markov chains</h3><h3 id="The-Metropolis-Hastings-algorithm"><a href="#The-Metropolis-Hastings-algorithm" class="headerlink" title="The Metropolis-Hastings algorithm"></a>The Metropolis-Hastings algorithm</h3><h2 id="Gibbs-Sampling"><a href="#Gibbs-Sampling" class="headerlink" title="Gibbs Sampling"></a>Gibbs Sampling</h2><h2 id="Slice-Sampling"><a href="#Slice-Sampling" class="headerlink" title="Slice Sampling"></a>Slice Sampling</h2><h2 id="The-Hybrid-Monte-Carlo-Algorithm"><a href="#The-Hybrid-Monte-Carlo-Algorithm" class="headerlink" title="The Hybrid Monte Carlo Algorithm"></a>The Hybrid Monte Carlo Algorithm</h2><h3 id="Dynamical-systems"><a href="#Dynamical-systems" class="headerlink" title="Dynamical systems"></a>Dynamical systems</h3><h3 id="Hybrid-Monte-Carlo"><a href="#Hybrid-Monte-Carlo" class="headerlink" title="Hybrid Monte Carlo"></a>Hybrid Monte Carlo</h3><h2 id="Estimating-the-Partition-Function"><a href="#Estimating-the-Partition-Function" class="headerlink" title="Estimating the Partition Function"></a>Estimating the Partition Function</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -391,11 +391,43 @@
         <a class="is-flex" href="#Basic-Sampling-Algorithms">
         <span class="has-mr-6">1</span>
         <span>Basic Sampling Algorithms</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Standard-distributions">
+        <span class="has-mr-6">1.1</span>
+        <span>Standard distributions</span>
         </a></li><li>
+        <a class="is-flex" href="#Rejection-sampling">
+        <span class="has-mr-6">1.2</span>
+        <span>Rejection sampling</span>
+        </a></li><li>
+        <a class="is-flex" href="#Adaptive-rejection-sampling">
+        <span class="has-mr-6">1.3</span>
+        <span>Adaptive rejection sampling</span>
+        </a></li><li>
+        <a class="is-flex" href="#Importance-sampling">
+        <span class="has-mr-6">1.4</span>
+        <span>Importance sampling</span>
+        </a></li><li>
+        <a class="is-flex" href="#Sampling-importance-resampling">
+        <span class="has-mr-6">1.5</span>
+        <span>Sampling-importance-resampling</span>
+        </a></li><li>
+        <a class="is-flex" href="#Sampling-and-the-EM-algorithm">
+        <span class="has-mr-6">1.6</span>
+        <span>Sampling and the EM algorithm</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Markov-Chain-Monte-Carlo">
         <span class="has-mr-6">2</span>
         <span>Markov Chain Monte Carlo</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Markov-chains">
+        <span class="has-mr-6">2.1</span>
+        <span>Markov chains</span>
         </a></li><li>
+        <a class="is-flex" href="#The-Metropolis-Hastings-algorithm">
+        <span class="has-mr-6">2.2</span>
+        <span>The Metropolis-Hastings algorithm</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Gibbs-Sampling">
         <span class="has-mr-6">3</span>
         <span>Gibbs Sampling</span>
@@ -407,6 +439,18 @@
         <a class="is-flex" href="#The-Hybrid-Monte-Carlo-Algorithm">
         <span class="has-mr-6">5</span>
         <span>The Hybrid Monte Carlo Algorithm</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Dynamical-systems">
+        <span class="has-mr-6">5.1</span>
+        <span>Dynamical systems</span>
+        </a></li><li>
+        <a class="is-flex" href="#Hybrid-Monte-Carlo">
+        <span class="has-mr-6">5.2</span>
+        <span>Hybrid Monte Carlo</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Estimating-the-Partition-Function">
+        <span class="has-mr-6">6</span>
+        <span>Estimating the Partition Function</span>
         </a></li></ul>
             </div>
         </div>
