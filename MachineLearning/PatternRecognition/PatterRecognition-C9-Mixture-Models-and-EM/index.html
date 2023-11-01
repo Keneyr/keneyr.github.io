@@ -19,9 +19,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:50:18.000Z">
-<meta property="article:modified_time" content="2023-10-29T04:52:58.412Z">
+<meta property="article:modified_time" content="2023-10-31T10:05:26.293Z">
 <meta property="article:author" content="Keneyr">
-<meta property="article:tag" content="Regression">
+<meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
 
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1078 words)
+                    19 minutes read (About 2885 words)
                 </span>
                 
                 
@@ -192,14 +192,16 @@
 <a id="more"></a>
 
 <p>This is the Chapter9 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-<h2 id="K-means-Clustering"><a href="#K-means-Clustering" class="headerlink" title="K-means Clustering"></a>K-means Clustering</h2><p><img src="/images/PatternRecognition/c9/k-means.png" alt="k-means algorithm"></p>
+<h2 id="K-means-Clustering"><a href="#K-means-Clustering" class="headerlink" title="K-means Clustering"></a>K-means Clustering</h2><p>For each data point $\pmb{x_n}$, we introduce a corresponding set of binary indicator variables $r_{nk} \in \left\{ 0, 1 \right\}$, where $k = 1, \cdots , K$ describing which of the $K$ clusters the data point $\pmb{x_n}$ is assigned to, so that if data point $\pmb{x_n}$ is assigned to cluster $k$ then $r_{nk} = 1$, and $r_{nj} = 0$ for $j \neq k$. This is known as the $1-of-K$ coding scheme. We can then define an objective function, sometimes called a <strong><em>distortion measure</em></strong>, given by<br>$$<br>J = \sum_{n=1}^N \sum_{k=1}^K r_{nk} ||\pmb{x_n} - \pmb{\mu_k}||^2<br>\tag{9.1}<br>$$<br>which represents the sum of the squares of the distances of each data point to its assigned vector $\pmb{\mu_k}$.<strong><em>Our goal</em></strong> is to find values for the $\left\{ r_{nk} \right\}$ and the $\left\{ \pmb{\mu_{nk}} \right\}$ so as to minimize $J$.</p>
+<p><img src="/images/PatternRecognition/c9/k-means.png" alt="k-means algorithm"></p>
 <h3 id="Image-segmentation-and-compression"><a href="#Image-segmentation-and-compression" class="headerlink" title="Image segmentation and compression"></a>Image segmentation and compression</h3><h2 id="Mixtures-of-Gaussians"><a href="#Mixtures-of-Gaussians" class="headerlink" title="Mixtures of Gaussians"></a>Mixtures of Gaussians</h2><p>&#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C2-Probability-Distributions/#Mixtures-of-Gaussians">First Understanding Mixtures of Gaussians &gt;&gt;</a></p>
 <p>We now turn to a formulation of Gaussian mixtures in terms of discrete latent variables.</p>
 <p>Gaussian mixture distribution can be written as a linear superposition of Gaussians in the form,<br>$$<br>p(\pmb{x}) = \sum_{k=1}^K \pi_k \mathcal{N}(\pmb{x|\mu_k}, \pmb{\Sigma_k})<br>\tag{9.7}<br>$$</p>
 <p><strong><em>Proof:</em></strong></p>
-<p>Let us introduce a $K$-dimensional binary random variable $\pmb{z}$ having a $1$-of-$K$ representation in which a particular element $z_k$ is equal to $1$ and all other elements are equal to $0$.</p>
-<p>The marginal distribution over $\pmb{z}$ is specified in terms of the mixing coefficients $\pi_k$, such that<br>$$<br>p(z_k = 1) = \pi_k<br>$$<br>where the parameters $\lbrace \pi_k \rbrace$ must satisfy<br>$$<br>0 \leq \pi_k \leq 1<br>\tag{9.8}<br>$$<br>together with<br>$$<br>\sum_{k=1}^K \pi_k = 1<br>\tag{9.9}<br>$$<br>in order to be valid probabilities.</p>
+<p><mark>Let us introduce a $K$-dimensional binary random variable $\pmb{z}$ having a $1$-of-$K$ representation in which a particular element $z_k$ is equal to $1$ and all other elements are equal to $0$.</mark></p>
+<p>The marginal distribution over $\pmb{z}$ is specified in terms of the mixing coefficients $\pi_k$, such that<br>$$<br>p(z_k = 1) = \pi_k<br>$$<br>where the parameters $\left\{ \pi_k \right\}$ must satisfy<br>$$<br>0 \leq \pi_k \leq 1<br>\tag{9.8}<br>$$<br>together with<br>$$<br>\sum_{k=1}^K \pi_k = 1<br>\tag{9.9}<br>$$<br>in order to be valid probabilities.</p>
 <p>We shall define the joint distribution $p(\pmb{x}, \pmb{z})$ in terms of a marginal distribution $p(\pmb{z})$ and a conditional distribution $p(\pmb{x}|\pmb{z})$, corresponding to the graphical model in Figure 9.4.</p>
+<p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C7-Symmetric-Matrices-And-Quadratic-Forms/#Applications-to-Image-Processing-and-Statistics">More About $\pmb{\Sigma}$ Meaning &gt;&gt;</a></p>
 <p><img src="/images/PatternRecognition/c9/pxz.png" alt="mixture model"></p>
 <p>Because $\pmb{z}$ uses a $1$-of-$K$ representation, we can also write this distribution in the form<br>$$<br>p(\pmb{z}) = \prod_{k=1}^K \pi_k^{z_k}<br>\tag{9.10}<br>$$<br>Similarly, the conditional distribution of $\pmb{x}$ given a particular value for $\pmb{z}$ is a Gaussian<br>$$<br>p(\pmb{x}|z_k = 1) = \mathcal{N}(\pmb{x}|\pmb{\mu_k}, \pmb{\Sigma_k})<br>$$<br>$$<br>p(\pmb{x}|\pmb{z}) = \prod_{k=1}^K \mathcal{N}(\pmb{x}| \pmb{\mu_k}, \pmb{\Sigma_k})^{z_k}<br>\tag{9.11}<br>$$<br>the marginal distribution of $\pmb{x}$ is then obtained by summing the joint distribution over all possible states of $\pmb{z}$ to give<br>$$<br>\begin{aligned}<br>p(\pmb{x}) &amp;= \sum_{\pmb{z}} p(\pmb{z}) p(\pmb{x}|\pmb{z}) \\<br>&amp;= \sum_{k=1}^K \pi_k \mathcal{N}(\pmb{x} | \pmb{\mu_k}, \pmb{\Sigma_k})<br>\end{aligned}<br>\tag{9.12}<br>$$<br>Thus the marginal distribution of $\pmb{x}$ is a Gaussian mixture of the form (9.7).</p>
 <blockquote>
@@ -212,7 +214,7 @@
 <h3 id="Maximum-likelihood"><a href="#Maximum-likelihood" class="headerlink" title="Maximum likelihood"></a>Maximum likelihood</h3><p>$\pmb{X}$: $N \times D$ matrix, in which the $n^{th}$ row is given by $\pmb{x_n}^T$.</p>
 <p>$\pmb{Z}$: $N \times K$ matrix, in which the $n^{th}$ row is given by $\pmb{z_n}^T$.</p>
 <p>If we assume that the data points are drawn independently from the distribution, then we can express the Gaussian mixture model for this <strong><em>i.i.d.</em></strong> data set using the graphical representation shown in Figure 9.6. From (9.7) the <u>log of the likelihood function</u> is given by</p>
-<p>$$<br>\ln p(\pmb{X} | \pmb{\pi}, \pmb{\mu}, \pmb{\Sigma}) = \sum_{n=1}^{N} \ln \lbrace \sum_{k=1}^{K} \pi_k \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k}) \rbrace<br>\tag{9.14}<br>$$</p>
+<p>$$<br>\ln p(\pmb{X} | \pmb{\pi}, \pmb{\mu}, \pmb{\Sigma}) = \sum_{n=1}^{N} \ln \left\{ \sum_{k=1}^{K} \pi_k \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k}) \right\}<br>\tag{9.14}<br>$$</p>
 <p>Consider a Gaussian mixture whose components have <strong><em>covariance matrices</em></strong> given by $\pmb{\Sigma_k} = \sigma_k^2 \pmb{I}$, where $\pmb{I}$ is the unit matrix.</p>
 <p>Suppose that one of the components of the mixture model, let us say the $j^{th}$ component, has its mean $\pmb{\mu_j}$ exactly equal to one of the data points so that $\pmb{\mu_j} = \pmb{x_n}$ for some value of $n$.</p>
 <p>This data point will then contribute a term in the likelihood function of the form<br>$$<br>\mathcal{N}(\pmb{x_n} | \pmb{x_n}, \sigma_j^2 \pmb{I}) = \frac{1}{(2\pi)^{\frac{1}{2}}} \frac{1}{\sigma_j}<br>\tag{9.15}<br>$$</p>
@@ -223,15 +225,61 @@
 <blockquote>
 <p>如果单个高斯函数折叠到一个数据点上，它将对由其他数据点产生的似然函数产生乘性因子，这些因子将以指数形式快速趋于零，从而使总体似然函数趋于零而不是无穷。<br>然而，一旦我们在混合中有(至少)两个成分，其中一个成分可能具有有限的方差，因此为所有数据点分配有限的概率，而另一个成分可以缩小到一个特定的数据点，从而为对数似然提供越来越大的附加值。</p>
 </blockquote>
-<h3 id="EM-for-Gaussian-mixtures"><a href="#EM-for-Gaussian-mixtures" class="headerlink" title="EM for Gaussian mixtures"></a>EM for Gaussian mixtures</h3><p>An elegant and powerful method for finding maximum likelihood solutions for<br>models with latent variables is called the expectation-maximization algorithm, or EM<br>algorithm (Dempster et al., 1977; McLachlan and Krishnan, 1997).</p>
-<h2 id="An-Alternative-View-of-EM"><a href="#An-Alternative-View-of-EM" class="headerlink" title="An Alternative View of EM"></a>An Alternative View of EM</h2><h3 id="Gaussian-mixtures-revisited"><a href="#Gaussian-mixtures-revisited" class="headerlink" title="Gaussian mixtures revisited"></a>Gaussian mixtures revisited</h3><h3 id="Relation-to-K-means"><a href="#Relation-to-K-means" class="headerlink" title="Relation to K-means"></a>Relation to K-means</h3><h3 id="Mixtures-of-Bernoulli-distributions"><a href="#Mixtures-of-Bernoulli-distributions" class="headerlink" title="Mixtures of Bernoulli distributions"></a>Mixtures of Bernoulli distributions</h3><h3 id="EM-for-Bayesian-linear-regression"><a href="#EM-for-Bayesian-linear-regression" class="headerlink" title="EM for Bayesian linear regression"></a>EM for Bayesian linear regression</h3><h2 id="The-EM-Algorithm-in-General"><a href="#The-EM-Algorithm-in-General" class="headerlink" title="The EM Algorithm in General"></a>The EM Algorithm in General</h2>
+<h3 id="EM-for-Gaussian-mixtures-without-latent-view"><a href="#EM-for-Gaussian-mixtures-without-latent-view" class="headerlink" title="EM for Gaussian mixtures(without latent view)"></a>EM for Gaussian mixtures(<strong>without latent view</strong>)</h3><p>An elegant and powerful method for finding maximum likelihood solutions for<br>models with latent variables is called the expectation-maximization algorithm, or EM<br>algorithm (Dempster et al., 1977; McLachlan and Krishnan, 1997).</p>
+<p>Setting the <u>derivatives</u> of $\ln p(\pmb{X}|\pmb{\pi}, \pmb{\mu}, \pmb{\Sigma})$ in (9.14) with respect to the means $\pmb{\mu_k}$ of the Gaussian components to zero, we obtain<br>$$<br>0 = -\sum_{n=1}^N \underbrace{\frac{\pi_k \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k})}{\sum_j \pi_j \mathcal{N}(\pmb{x_n} | \pmb{\mu_j}, \pmb{\Sigma_j})}}_{\gamma(z_{nk})} \pmb{\Sigma_k}(\pmb{x_n} - \pmb{\mu_k})<br>\tag{9.16}<br>$$<br>Multiplying by $\pmb{\Sigma_k^{-1}}$ (which we assume to be nonsingular) and rearranging we obtain<br>$$<br>\pmb{\mu_k} = \frac{1}{N_k} \sum_{n=1}^{N} \gamma(z_{nk})\pmb{x_n}<br>\tag{9.17}<br>$$<br>where,<br>$$<br>N_k = \sum_{n=1}^{N} \gamma(z_{nk})<br>\tag{9.18}<br>$$</p>
+<blockquote>
+<p>$N_k$ : effective number of points assigned to cluster $k$.<br>$\pmb{\mu_k}$: take a weighted mean of all of the points in the data set, in which the weighting factor for data point $\pmb{x_n}$ is given by the posterior probability $\gamma(z_{nk})$ that component $k$ was responsible for generating $\pmb{x_n}$.</p>
+</blockquote>
+<p>Similar, we maximize $\ln p(\pmb{X}|\pmb{\pi}, \pmb{\mu}, \pmb{\Sigma})$ with respect to the mixing coefficients $\pmb{\Sigma_k}$,</p>
+<p>$$<br>\pmb{\Sigma_k} = \frac{1}{N_k} \sum_{n=1}^N \gamma(z_{nk}) (\pmb{x_n} - \pmb{\mu_k})(\pmb{x_n} - \pmb{\mu_k})^T<br>\tag{9.19}<br>$$</p>
+<p>Similar, we maximize $\ln p(\pmb{X}|\pmb{\pi}, \pmb{\mu}, \pmb{\Sigma})$ with respect to the mixing coefficients $\pi_k$, Here we must take account of the constraint (9.9), which requires the mixing coefficients to sum to one.</p>
+<p>$$<br>\begin{cases}<br>\ln p(\pmb{X} | \pmb{\pi}, \pmb{\mu}, \pmb{\Sigma}) = \sum_{n=1}^{N} \ln \left\{ \sum_{k=1}^{K} \pi_k \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k}) \right\} \\<br>\sum_{k=1}^K \pi_k = 1<br>\end{cases}<br>$$</p>
+<p>This can be achieved using a &#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/#Constrained-Maxima-and-Minima">Lagrange multiplier &gt;&gt;</a> and maximizing the following quantity</p>
+<p>$$<br>\ln p(\pmb{X} | \pmb{\pi}, \pmb{\mu}, \pmb{\Sigma}) + \lambda (\sum_{k=1}^K \pi_k - 1)<br>$$<br>which gives<br>$$<br>0 = \sum_{n=1}^{N} \frac{\mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k})}{\sum_j \pi_j \mathcal{N}(\pmb{x_n} | \pmb{\mu_j}, \pmb{\Sigma_j})} + \lambda<br>\tag{9.21}<br>$$<br>we get<br>$$<br>\pi_k = \frac{N_k}{N}<br>\tag{9.22}<br>$$<br>so that the mixing coefficient for the $k$th component is given by the average responsibility which that component takes for explaining the data points.</p>
+<p>It is worth emphasizing that the results (9.17), (9.19), and (9.22) do not constitute a closed-form solution for the parameters of the mixture model because the responsibilities $\gamma(z_{nk})$ depend on those parameters in a complex way through (9.13).</p>
+<p><strong><em>Iterative EM algorithm</em></strong>:</p>
+<p>We first choose some initial values for the means, covariances, and mixing coefficients. Then we alternate between the following two updates that we shall call the E step and the M step.</p>
+<p>In the expectation step, or E step, we use the current values for the parameters to evaluate the posterior probabilities, or responsibilities, given by (9.13). We then use these probabilities in the maximization step, or M step, to re-estimate the means, covariances, and mixing coefficients using the results (9.17), (9.19), and (9.22).</p>
+<p><img src="/images/PatternRecognition/c9/EM.png" alt="EM Process"></p>
+<blockquote>
+<p>As with <strong><em>gradient-based approaches</em></strong> for maximizing the log likelihood, techniques must be employed to avoid <strong><em>singularities</em></strong> of the likelihood function in which a Gaussian component collapses onto a particular data point.<br>It should be emphasized that there will generally be multiple local maxima of the log likelihood function, and that EM is not guaranteed to find the largest of these maxima.</p>
+</blockquote>
+<h2 id="An-Alternative-View-of-EM"><a href="#An-Alternative-View-of-EM" class="headerlink" title="An Alternative View of EM"></a>An Alternative View of EM</h2><p><strong><em>The goal</em></strong> of the EM algorithm is to find maximum likelihood solutions for models having latent variables.</p>
+<p>The set of all model parameters is denoted by $\pmb{\theta}$, and so the log likelihood function is given by</p>
+<p>$$<br>\ln p(\pmb{X}|\pmb{\theta}) = \ln \left\{ \sum_{\pmb{Z}} p(\pmb{X,Z|\theta}) \right\}<br>\tag{9.29}<br>$$<br>Note that our discussion will apply equally well to <u>continuous latent variables simply by replacing the sum over $\pmb{Z}$ with an integral</u>.</p>
+<blockquote>
+<p>Now suppose that, for each observation in $\pmb{X}$, we were told the corresponding value of the latent variable $\pmb{Z}$. We shall call $\left\{ \pmb{X}, \pmb{Z} \right\}$ the <strong><em>complete data set</em></strong>, and we shall refer to the actual observed data $\pmb{X}$ as <strong><em>incomplete</em></strong>, <u>In practice</u>, however, we are not given the complete data set $\left\{ \pmb{X}, \pmb{Z} \right\}$, but only the incomplete data $\pmb{X}$.</p>
+</blockquote>
+<p>The likelihood function for the complete data set simply takes the form $\ln p(\pmb{X},\pmb{Z}|\pmb{\theta})$.</p>
+<p>In the <strong><em>E step</em></strong>, we use the current parameter values $\pmb{\theta^{old}}$ to find the <u>posterior distribution of the latent variables</u> given by $p(\pmb{Z}|\pmb{X}, \pmb{\theta^{old}})$. We then use this posterior distribution to find the <u>expectation of the complete-data</u> log likelihood evaluated for some general parameter value $\pmb{\theta}$. This expectation, denoted $E$, is given by<br>$$<br>E(\pmb{\theta, \theta^{old}}) = \sum_{\pmb{Z}} p(\pmb{Z} | \pmb{X}, \pmb{\theta^{old}}) \ln p(\pmb{X}, \pmb{Z} | \pmb{\theta})<br>\tag{9.30}<br>$$<br>In the <strong><em>M step</em></strong>, we determine the revised parameter estimate $\pmb{\theta^{new}}$ by maximizing this function<br>$$<br>\pmb{\theta^{new}} = \underset{\theta}{argmax} E (\pmb{\theta, \theta^{old}})<br>\tag{9.31}<br>$$</p>
+<p><img src="/images/PatternRecognition/c9/general-EM.png" alt="General EM Process"></p>
+<h3 id="Gaussian-mixtures-revisited-with-latent-view"><a href="#Gaussian-mixtures-revisited-with-latent-view" class="headerlink" title="Gaussian mixtures revisited(with latent view)"></a>Gaussian mixtures revisited(<strong>with latent view</strong>)</h3><p>Now consider the problem of maximizing the likelihood for the <em>complete data set</em> $\left\{ \pmb{X}, \pmb{Z} \right\}$. From (9.10) and (9.11), this likelihood function takes the form<br>$$<br>p(\pmb{X}, \pmb{Z} | \pmb{\mu}, \pmb{\Sigma}, \pmb{\pi}) = \prod_{n=1}^{N} \prod_{k=1}^{K} \pi_k^{z_{nk}} \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k})^{z_{nk}}<br>\tag{9.35}<br>$$<br>where $z_{nk}$ denotes the $k^{th}$ component of $\pmb{z}_n$. Taking the logarithm, we obtain</p>
+<p>$$<br>\ln p(\pmb{X}, \pmb{Z} | \pmb{\mu}, \pmb{\Sigma}, \pmb{\pi}) = \sum_{n=1}^{N} \sum_{k=1}^{K} z_{nk} \left\{ \ln \pi_k + \ln \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k}) \right\}<br>\tag{9.36}<br>$$</p>
+<p>by Lagrange multiplier as before,<br>$$<br>\pi_k = \frac{1}{N} \sum_{n=1}^{N} z_{nk}<br>\tag{9.37}<br>$$</p>
+<p><img src="/images/PatternRecognition/c9/Gaussian-EM.png" alt="Gaussian-EM"></p>
+<p>Using (9.10) and (9.11) together with Bayes’ theorem, we see that this posterior distribution takes the form</p>
+<p>$$<br>p(\pmb{Z}| \pmb{X}, \pmb{\mu}, \pmb{\Sigma}, \pmb{\pi}) \propto \prod_{n=1}^{N} \prod_{k=1}^{K} \left[\pi_k \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k})\right]^{z_{nk}}<br>\tag{9.38}<br>$$<br>The expected value of the indicator variable $z_{nk}$ under this posterior distribution is then given by<br>$$<br>E[z_{nk}] = \frac{\sum_{z_{nk}}z_{nk} [\pi_k \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k})]^{z_{nk}}}{\sum_{z_{nj}} [\pi_j \mathcal{N}(\pmb{x_n} | \pmb{\mu_j}, \pmb{\Sigma_j})]^{z_{nj}}}<br>=\frac{\pi_k \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k})}{\sum_{j=1}^{K}\pi_j \mathcal{N}(\pmb{x_n} | \pmb{\mu_j}, \pmb{\Sigma_j})} = \gamma(z_{nk})<br>\tag{9.39}<br>$$</p>
+<p>The expected value of the complete-data log likelihood function is therefore given by<br>$$<br>E_{\pmb{Z}} [\ln p(\pmb{X}, \pmb{Z}|  \pmb{\mu}, \pmb{\Sigma}, \pmb{\pi})] = \sum_{n=1}^{N} \sum_{k=1}^{K} \gamma(z_{nk}) \left\{ \ln \pi_k + \ln \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k}) \right\}<br>\tag{9.40}<br>$$</p>
+<blockquote>
+<p>We can now proceed as follows.<br><strong><em>E step :</em></strong> First we choose some initial values for the parameters $\pmb{\mu^{old}}$, $\pmb{\Sigma^{old}}$ and $\pmb{\pi^{old}}$, and use these to evaluate the responsibilities.<br><strong><em>M step :</em></strong> We then keep the responsibilities fixed and maximize (9.40) with respect to $\pmb{\mu}$, $\pmb{\Sigma}$ and $\pmb{\pi}$.<br>This leads to closed form solutions for $\pmb{\mu^{new}}$, $\pmb{\Sigma^{new}}$ and $\pmb{\pi^{new}}$ given by (9.17), (9.19), and (9.22) as before.<br>This is precisely the EM algorithm for Gaussian mixtures as derived earlier.</p>
+</blockquote>
+<h3 id="Relation-to-K-means"><a href="#Relation-to-K-means" class="headerlink" title="Relation to K-means"></a>Relation to K-means</h3><p>Whereas the K-means algorithm performs a <em>hard assignment</em> of data points to clusters, in which each data point is associated uniquely with one cluster, the EM algorithm makes a <em>soft assignment</em> based on the posterior probabilities. </p>
+<p>In fact, we can derive the K-means algorithm as a particular limit of EM for Gaussian mixtures as follows.</p>
+<h3 id="Mixtures-of-Bernoulli-distributions"><a href="#Mixtures-of-Bernoulli-distributions" class="headerlink" title="Mixtures of Bernoulli distributions"></a>Mixtures of Bernoulli distributions</h3><p>&#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/#Constrained-Maxima-and-Minima">First Understanding Bernoulli distributions &gt;&gt;</a></p>
+<h3 id="EM-for-Bayesian-linear-regression"><a href="#EM-for-Bayesian-linear-regression" class="headerlink" title="EM for Bayesian linear regression"></a>EM for Bayesian linear regression</h3><h2 id="The-EM-Algorithm-in-General"><a href="#The-EM-Algorithm-in-General" class="headerlink" title="The EM Algorithm in General"></a>The EM Algorithm in General</h2><p>&#x1F449;<a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">First Understanding $KL$ Divergence &gt;&gt;</a></p>
+<p>The expectation maximization algorithm, or EM algorithm, is a general technique for <strong><em>finding maximum likelihood solutions</em></strong> for <strong><em>probabilistic models</em></strong> having <strong><em>latent variables</em></strong> (Dempster et al., 1977; McLachlan and Krishnan, 1997).</p>
+<p><strong><em>Our goal</em></strong> is to maximize the likelihood function that is given by<br>$$<br>p(\pmb{X}|\pmb{\theta}) = \sum_{\pmb{Z}} p(\pmb{X}, \pmb{Z}|\pmb{\theta})<br>\tag{9.69}<br>$$<br>We shall suppose that direct optimization of $p(\pmb{X}|\pmb{\theta})$ is difficult, but that optimization of the complete-data likelihood function $p(\pmb{X}, \pmb{Z}|\pmb{\theta})$ is significantly easier.</p>
+<p>We introduce a distribution $q(\pmb{Z})$ defined over the latent variables, and we observe that, for any choice of $q(\pmb{Z})$, the following decomposition holds<br>$$<br>\ln p(\pmb{X}|\pmb{\theta}) = \mathcal{L}(q,\pmb{\theta}) + KL(q||p)<br>\tag{9.70}<br>$$<br>where<br>$$<br>\mathcal{L}(q,\pmb{\theta}) = \sum_{\pmb{Z}} q(\pmb{Z}) \ln \left\{ \frac{p(\pmb{X}, \pmb{Z} | \pmb{\theta})}{q(\pmb{Z})} \right\}<br>\tag{9.71}<br>$$<br>$$<br>KL(q||p) = - \sum_{\pmb{Z}} q(\pmb{Z}) \ln \left\{ \frac{p(\pmb{Z}|\pmb{X}, \pmb{\theta})}{q(\pmb{Z})} \right\}<br>\tag{9.72}<br>$$<br>Note that $\mathcal{L}(q, \pmb{\theta})$ is a functional of the distribution $q(\pmb{Z})$, and a function of the parameters $\pmb{\theta}$.</p>
+<p><strong><em>Proof of (9.70)</em></strong>:</p>
+<p><img src="/images/PatternRecognition/c9/General-EM-KL.png" alt="Final General EM Algorithm"></p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Regression/" rel="tag">Regression</a>
+                    <a class="has-link-grey -link" href="/tags/MachineLearning/" rel="tag">MachineLearning</a>
                 </div>
             </div>
         </div>
@@ -436,17 +484,17 @@
         <span class="has-mr-6">2.1</span>
         <span>Maximum likelihood</span>
         </a></li><li>
-        <a class="is-flex" href="#EM-for-Gaussian-mixtures">
+        <a class="is-flex" href="#EM-for-Gaussian-mixtures-without-latent-view">
         <span class="has-mr-6">2.2</span>
-        <span>EM for Gaussian mixtures</span>
+        <span>EM for Gaussian mixtures(without latent view)</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#An-Alternative-View-of-EM">
         <span class="has-mr-6">3</span>
         <span>An Alternative View of EM</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Gaussian-mixtures-revisited">
+        <a class="is-flex" href="#Gaussian-mixtures-revisited-with-latent-view">
         <span class="has-mr-6">3.1</span>
-        <span>Gaussian mixtures revisited</span>
+        <span>Gaussian mixtures revisited(with latent view)</span>
         </a></li><li>
         <a class="is-flex" href="#Relation-to-K-means">
         <span class="has-mr-6">3.2</span>
@@ -712,7 +760,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 18px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -909,6 +957,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/MachineLearning/">
+                        <span class="tag">MachineLearning</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/MotionCaptureAnimation/">
                         <span class="tag">MotionCaptureAnimation</span>
                         <span class="tag is-grey">1</span>
@@ -926,13 +981,6 @@
                     <a class="tags has-addons" href="/tags/RandomForest/">
                         <span class="tag">RandomForest</span>
                         <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Regression/">
-                        <span class="tag">Regression</span>
-                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 

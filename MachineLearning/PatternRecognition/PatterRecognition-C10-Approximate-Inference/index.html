@@ -10,18 +10,18 @@
 <title>PatterRecognition-C10-Approximate-Inference - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+    <meta name="description" content="Keywords: Variational Linear Regression,  Variational Logistic Regression, Variational Inference">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PatterRecognition-C10-Approximate-Inference">
 <meta property="og:url" content="https://keneyr.com/MachineLearning/PatternRecognition/PatterRecognition-C10-Approximate-Inference/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition">
+<meta property="og:description" content="Keywords: Variational Linear Regression,  Variational Logistic Regression, Variational Inference">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:50:34.000Z">
-<meta property="article:modified_time" content="2023-10-16T08:56:15.124Z">
+<meta property="article:modified_time" content="2023-10-31T10:21:29.122Z">
 <meta property="article:author" content="Keneyr">
-<meta property="article:tag" content="Regression">
+<meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
 
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 24 words)
+                    a minute read (About 221 words)
                 </span>
                 
                 
@@ -188,18 +188,24 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Linear Model, Bayesian Model, Evidence Approximation, Bias-Variance Decomposition</p>
+            <p><strong><em>Keywords</em></strong>: Variational Linear Regression,  Variational Logistic Regression, Variational Inference</p>
 <a id="more"></a>
 
-<p>This is the Chapter3 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
-
+<p>This is the Chapter10 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
+<h2 id="Variational-Inference"><a href="#Variational-Inference" class="headerlink" title="Variational Inference"></a>Variational Inference</h2><p>Functional like entropy $H[p]$, which takes a probability distribution $p(x)$ as the input and returns the quantity:<br>$$<br>H[p] = \int p(x) \ln p(x) dx<br>\tag{10.1}<br>$$<br>as the output.</p>
+<p>We can the introduce the concept of a functional derivative, which expresses how the value of the functional changes in response to infinitesimal changes to the input function.</p>
+<p>Suppose we have a fully Bayesian model in which all parameters are given prior distributions.</p>
+<p>Our probabilistic model specifies the joint distribution $p(\pmb{X},\pmb{Z})$, and <strong><em>our goal</em></strong> is to find an approximation for the posterior distribution $p(\pmb{Z}|\pmb{X})$ as well as for the model evidence $p(X)$.</p>
+<p><img src="/images/PatternRecognition/c10/compare.png" alt="Compare"></p>
+<p><img src="/images/PatternRecognition/c10/approximation.png" alt="Approximation"></p>
+<h3 id="Factorized-distributions"><a href="#Factorized-distributions" class="headerlink" title="Factorized distributions"></a>Factorized distributions</h3><h3 id="Properties-of-factorized-approximations"><a href="#Properties-of-factorized-approximations" class="headerlink" title="Properties of factorized approximations"></a>Properties of factorized approximations</h3><h3 id="Example-The-univariate-Gaussian"><a href="#Example-The-univariate-Gaussian" class="headerlink" title="Example: The univariate Gaussian"></a>Example: The univariate Gaussian</h3><h3 id="Model-comparison"><a href="#Model-comparison" class="headerlink" title="Model comparison"></a>Model comparison</h3><h2 id="Illustration-Variational-Mixture-of-Gaussians"><a href="#Illustration-Variational-Mixture-of-Gaussians" class="headerlink" title="Illustration: Variational Mixture of Gaussians"></a>Illustration: Variational Mixture of Gaussians</h2><h3 id="Variational-distribution"><a href="#Variational-distribution" class="headerlink" title="Variational distribution"></a>Variational distribution</h3><h3 id="Variational-lower-bound"><a href="#Variational-lower-bound" class="headerlink" title="Variational lower bound"></a>Variational lower bound</h3><h3 id="Predictive-density"><a href="#Predictive-density" class="headerlink" title="Predictive density"></a>Predictive density</h3><h3 id="Determining-the-number-of-components"><a href="#Determining-the-number-of-components" class="headerlink" title="Determining the number of components"></a>Determining the number of components</h3><h3 id="Induced-factorizations"><a href="#Induced-factorizations" class="headerlink" title="Induced factorizations"></a>Induced factorizations</h3><h2 id="Variational-Linear-Regression"><a href="#Variational-Linear-Regression" class="headerlink" title="Variational Linear Regression"></a>Variational Linear Regression</h2><h3 id="Variational-distribution-1"><a href="#Variational-distribution-1" class="headerlink" title="Variational distribution"></a>Variational distribution</h3><h3 id="Predictive-distribution"><a href="#Predictive-distribution" class="headerlink" title="Predictive distribution"></a>Predictive distribution</h3><h3 id="Lower-bound"><a href="#Lower-bound" class="headerlink" title="Lower bound"></a>Lower bound</h3><h2 id="Exponential-Family-Distributions"><a href="#Exponential-Family-Distributions" class="headerlink" title="Exponential Family Distributions"></a>Exponential Family Distributions</h2><h3 id="Lower-bound-1"><a href="#Lower-bound-1" class="headerlink" title="Lower bound"></a>Lower bound</h3><h2 id="Local-Variational-Methods"><a href="#Local-Variational-Methods" class="headerlink" title="Local Variational Methods"></a>Local Variational Methods</h2><h2 id="Variational-Logistic-Regression"><a href="#Variational-Logistic-Regression" class="headerlink" title="Variational Logistic Regression"></a>Variational Logistic Regression</h2><h3 id="Variational-posterior-distribution"><a href="#Variational-posterior-distribution" class="headerlink" title="Variational posterior distribution"></a>Variational posterior distribution</h3><h3 id="Optimizing-the-variational-parameters"><a href="#Optimizing-the-variational-parameters" class="headerlink" title="Optimizing the variational parameters"></a>Optimizing the variational parameters</h3><h3 id="Inference-of-hyperparameters"><a href="#Inference-of-hyperparameters" class="headerlink" title="Inference of hyperparameters"></a>Inference of hyperparameters</h3><h2 id="Expectation-Propagation"><a href="#Expectation-Propagation" class="headerlink" title="Expectation Propagation"></a>Expectation Propagation</h2><h3 id="Example-The-clutter-problem"><a href="#Example-The-clutter-problem" class="headerlink" title="Example: The clutter problem"></a>Example: The clutter problem</h3><h3 id="Expectation-propagation-on-graphs"><a href="#Expectation-propagation-on-graphs" class="headerlink" title="Expectation propagation on graphs"></a>Expectation propagation on graphs</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Regression/" rel="tag">Regression</a>
+                    <a class="has-link-grey -link" href="/tags/MachineLearning/" rel="tag">MachineLearning</a>
                 </div>
             </div>
         </div>
@@ -380,6 +386,117 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Variational-Inference">
+        <span class="has-mr-6">1</span>
+        <span>Variational Inference</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Factorized-distributions">
+        <span class="has-mr-6">1.1</span>
+        <span>Factorized distributions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Properties-of-factorized-approximations">
+        <span class="has-mr-6">1.2</span>
+        <span>Properties of factorized approximations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Example-The-univariate-Gaussian">
+        <span class="has-mr-6">1.3</span>
+        <span>Example: The univariate Gaussian</span>
+        </a></li><li>
+        <a class="is-flex" href="#Model-comparison">
+        <span class="has-mr-6">1.4</span>
+        <span>Model comparison</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Illustration-Variational-Mixture-of-Gaussians">
+        <span class="has-mr-6">2</span>
+        <span>Illustration: Variational Mixture of Gaussians</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Variational-distribution">
+        <span class="has-mr-6">2.1</span>
+        <span>Variational distribution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Variational-lower-bound">
+        <span class="has-mr-6">2.2</span>
+        <span>Variational lower bound</span>
+        </a></li><li>
+        <a class="is-flex" href="#Predictive-density">
+        <span class="has-mr-6">2.3</span>
+        <span>Predictive density</span>
+        </a></li><li>
+        <a class="is-flex" href="#Determining-the-number-of-components">
+        <span class="has-mr-6">2.4</span>
+        <span>Determining the number of components</span>
+        </a></li><li>
+        <a class="is-flex" href="#Induced-factorizations">
+        <span class="has-mr-6">2.5</span>
+        <span>Induced factorizations</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Variational-Linear-Regression">
+        <span class="has-mr-6">3</span>
+        <span>Variational Linear Regression</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Variational-distribution-1">
+        <span class="has-mr-6">3.1</span>
+        <span>Variational distribution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Predictive-distribution">
+        <span class="has-mr-6">3.2</span>
+        <span>Predictive distribution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Lower-bound">
+        <span class="has-mr-6">3.3</span>
+        <span>Lower bound</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Exponential-Family-Distributions">
+        <span class="has-mr-6">4</span>
+        <span>Exponential Family Distributions</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Lower-bound-1">
+        <span class="has-mr-6">4.1</span>
+        <span>Lower bound</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Local-Variational-Methods">
+        <span class="has-mr-6">5</span>
+        <span>Local Variational Methods</span>
+        </a></li><li>
+        <a class="is-flex" href="#Variational-Logistic-Regression">
+        <span class="has-mr-6">6</span>
+        <span>Variational Logistic Regression</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Variational-posterior-distribution">
+        <span class="has-mr-6">6.1</span>
+        <span>Variational posterior distribution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Optimizing-the-variational-parameters">
+        <span class="has-mr-6">6.2</span>
+        <span>Optimizing the variational parameters</span>
+        </a></li><li>
+        <a class="is-flex" href="#Inference-of-hyperparameters">
+        <span class="has-mr-6">6.3</span>
+        <span>Inference of hyperparameters</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Expectation-Propagation">
+        <span class="has-mr-6">7</span>
+        <span>Expectation Propagation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Example-The-clutter-problem">
+        <span class="has-mr-6">7.1</span>
+        <span>Example: The clutter problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Expectation-propagation-on-graphs">
+        <span class="has-mr-6">7.2</span>
+        <span>Expectation propagation on graphs</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
 
     
         <div class="card widget">
@@ -625,7 +742,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Regression/" style="font-size: 18px;">Regression</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -822,6 +939,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/MachineLearning/">
+                        <span class="tag">MachineLearning</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/MotionCaptureAnimation/">
                         <span class="tag">MotionCaptureAnimation</span>
                         <span class="tag is-grey">1</span>
@@ -839,13 +963,6 @@
                     <a class="tags has-addons" href="/tags/RandomForest/">
                         <span class="tag">RandomForest</span>
                         <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Regression/">
-                        <span class="tag">Regression</span>
-                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
