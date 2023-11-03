@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:50:18.000Z">
-<meta property="article:modified_time" content="2023-10-31T10:05:26.293Z">
+<meta property="article:modified_time" content="2023-11-01T14:26:08.675Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 minutes read (About 2885 words)
+                    20 minutes read (About 2956 words)
                 </span>
                 
                 
@@ -251,6 +251,7 @@
 <p>Now suppose that, for each observation in $\pmb{X}$, we were told the corresponding value of the latent variable $\pmb{Z}$. We shall call $\left\{ \pmb{X}, \pmb{Z} \right\}$ the <strong><em>complete data set</em></strong>, and we shall refer to the actual observed data $\pmb{X}$ as <strong><em>incomplete</em></strong>, <u>In practice</u>, however, we are not given the complete data set $\left\{ \pmb{X}, \pmb{Z} \right\}$, but only the incomplete data $\pmb{X}$.</p>
 </blockquote>
 <p>The likelihood function for the complete data set simply takes the form $\ln p(\pmb{X},\pmb{Z}|\pmb{\theta})$.</p>
+<p>Our state of knowledge of the values of the latent variables in $\pmb{Z}$ is given only by the posterior distribution $p(\pmb{Z}| \pmb{X}, \pmb{\theta})$. Because we cannot use the complete-data log likelihood, we consider instead its expected value under the posterior distribution of the latent variable, which corresponds (as we shall see) to the $E$ step of the $EM$ algorithm. </p>
 <p>In the <strong><em>E step</em></strong>, we use the current parameter values $\pmb{\theta^{old}}$ to find the <u>posterior distribution of the latent variables</u> given by $p(\pmb{Z}|\pmb{X}, \pmb{\theta^{old}})$. We then use this posterior distribution to find the <u>expectation of the complete-data</u> log likelihood evaluated for some general parameter value $\pmb{\theta}$. This expectation, denoted $E$, is given by<br>$$<br>E(\pmb{\theta, \theta^{old}}) = \sum_{\pmb{Z}} p(\pmb{Z} | \pmb{X}, \pmb{\theta^{old}}) \ln p(\pmb{X}, \pmb{Z} | \pmb{\theta})<br>\tag{9.30}<br>$$<br>In the <strong><em>M step</em></strong>, we determine the revised parameter estimate $\pmb{\theta^{new}}$ by maximizing this function<br>$$<br>\pmb{\theta^{new}} = \underset{\theta}{argmax} E (\pmb{\theta, \theta^{old}})<br>\tag{9.31}<br>$$</p>
 <p><img src="/images/PatternRecognition/c9/general-EM.png" alt="General EM Process"></p>
 <h3 id="Gaussian-mixtures-revisited-with-latent-view"><a href="#Gaussian-mixtures-revisited-with-latent-view" class="headerlink" title="Gaussian mixtures revisited(with latent view)"></a>Gaussian mixtures revisited(<strong>with latent view</strong>)</h3><p>Now consider the problem of maximizing the likelihood for the <em>complete data set</em> $\left\{ \pmb{X}, \pmb{Z} \right\}$. From (9.10) and (9.11), this likelihood function takes the form<br>$$<br>p(\pmb{X}, \pmb{Z} | \pmb{\mu}, \pmb{\Sigma}, \pmb{\pi}) = \prod_{n=1}^{N} \prod_{k=1}^{K} \pi_k^{z_{nk}} \mathcal{N}(\pmb{x_n} | \pmb{\mu_k}, \pmb{\Sigma_k})^{z_{nk}}<br>\tag{9.35}<br>$$<br>where $z_{nk}$ denotes the $k^{th}$ component of $\pmb{z}_n$. Taking the logarithm, we obtain</p>
@@ -272,6 +273,7 @@
 <p>We introduce a distribution $q(\pmb{Z})$ defined over the latent variables, and we observe that, for any choice of $q(\pmb{Z})$, the following decomposition holds<br>$$<br>\ln p(\pmb{X}|\pmb{\theta}) = \mathcal{L}(q,\pmb{\theta}) + KL(q||p)<br>\tag{9.70}<br>$$<br>where<br>$$<br>\mathcal{L}(q,\pmb{\theta}) = \sum_{\pmb{Z}} q(\pmb{Z}) \ln \left\{ \frac{p(\pmb{X}, \pmb{Z} | \pmb{\theta})}{q(\pmb{Z})} \right\}<br>\tag{9.71}<br>$$<br>$$<br>KL(q||p) = - \sum_{\pmb{Z}} q(\pmb{Z}) \ln \left\{ \frac{p(\pmb{Z}|\pmb{X}, \pmb{\theta})}{q(\pmb{Z})} \right\}<br>\tag{9.72}<br>$$<br>Note that $\mathcal{L}(q, \pmb{\theta})$ is a functional of the distribution $q(\pmb{Z})$, and a function of the parameters $\pmb{\theta}$.</p>
 <p><strong><em>Proof of (9.70)</em></strong>:</p>
 <p><img src="/images/PatternRecognition/c9/General-EM-KL.png" alt="Final General EM Algorithm"></p>
+<p><img src="/images/PatternRecognition/c9/summary.png" alt="summary"></p>
 
         </div>
         
@@ -418,7 +420,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            73
+                            76
                         </p>
                     </a>
                 </div>
@@ -430,7 +432,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            18
+                            21
                         </p>
                     </a>
                 </div>
@@ -442,7 +444,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            14
+                            17
                         </p>
                     </a>
                 </div>
@@ -591,6 +593,17 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -731,9 +744,33 @@
                 <span class="level-item">Paper</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">6</span>
             </span>
         </a><ul><li>
+        <a class="level is-marginless" href="/categories/Paper/Human-Pose/">
+            <span class="level-start">
+                <span class="level-item">Human Pose</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Motion-Generation/">
+            <span class="level-start">
+                <span class="level-item">Motion Generation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Animation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Animation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Paper/Sketch-Consolidation/">
             <span class="level-start">
                 <span class="level-item">Sketch Consolidation</span>
@@ -760,7 +797,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/CPP/" style="font-size: 12px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 16px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 10px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -769,6 +806,45 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-02T08:56:49.000Z">2023-11-02</time></div>
+                    <a href="/Paper/Sketch-Animation/Paper-Live-Sketch-Video-driven-Dynamic-Deformation-of-Static-Drawings/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Live-Sketch-Video-driven-Dynamic-Deformation-of-Static-Drawings</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch-Animation/">Sketch Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-02T08:48:29.000Z">2023-11-02</time></div>
+                    <a href="/Paper/Human-Pose/Paper-Normalized-Human-Pose-Features-for-Human-Action-Video-Alignment/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Normalized-Human-Pose-Features-for-Human-Action-Video-Alignment</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Human-Pose/">Human Pose</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-02T01:07:03.000Z">2023-11-02</time></div>
+                    <a href="/Paper/Motion-Generation/Paper-Keyframe-Control-of-Music-driven-3D-Dance-Generation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Keyframe-Control-of-Music-driven-3D-Dance-Generation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Motion-Generation/">Motion Generation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -796,45 +872,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:51:02.000Z">2023-10-16</time></div>
-                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C12-Continuous-Latent-Variables/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C12-Continuous-Latent-Variables</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:50:45.000Z">2023-10-16</time></div>
-                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C11-Sampling-Methods/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C11-Sampling-Methods</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:50:34.000Z">2023-10-16</time></div>
-                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C10-Approximate-Inference/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C10-Approximate-Inference</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -845,6 +882,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/10/">
@@ -950,6 +998,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Human-Pose/">
+                        <span class="tag">Human Pose</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Linear-Algebra/">
                         <span class="tag">Linear Algebra</span>
                         <span class="tag is-grey">8</span>
@@ -960,6 +1015,13 @@
                     <a class="tags has-addons" href="/tags/MachineLearning/">
                         <span class="tag">MachineLearning</span>
                         <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Motion-Generation/">
+                        <span class="tag">Motion Generation</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -988,6 +1050,13 @@
                     <a class="tags has-addons" href="/tags/Rendering/">
                         <span class="tag">Rendering</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketch-Animation/">
+                        <span class="tag">Sketch Animation</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
