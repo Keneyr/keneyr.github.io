@@ -10,16 +10,16 @@
 <title>Paper-Normalized-Human-Pose-Features-for-Human-Action-Video-Alignment - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Probability Distribution Model,">
+    <meta name="description" content="Keywords: Metric Learning,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Paper-Normalized-Human-Pose-Features-for-Human-Action-Video-Alignment">
 <meta property="og:url" content="https://keneyr.com/Paper/Human-Pose/Paper-Normalized-Human-Pose-Features-for-Human-Action-Video-Alignment/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Probability Distribution Model,">
+<meta property="og:description" content="Keywords: Metric Learning,">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-11-02T08:48:29.000Z">
-<meta property="article:modified_time" content="2023-11-03T06:28:12.727Z">
+<meta property="article:modified_time" content="2023-11-03T11:54:34.028Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Human Pose">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 45 words)
+                    10 minutes read (About 1454 words)
                 </span>
                 
                 
@@ -188,13 +188,72 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Probability Distribution Model, </p>
+            <p><strong><em>Keywords</em></strong>: Metric Learning, </p>
 <a id="more"></a>
 
 <p><strong><em>Normalized Human Pose Features for Human Action Video Alignment_ICCV_2021</em></strong></p>
 <p>Jingyuan Liu 1 Mingyi Shi 2 Qifeng Chen 1 Hongbo Fu 3 Chiew-Lan Tai 1</p>
 <p>1 The Hong Kong University of Science and Technology</p>
 <p>2 The University of Hong Kong 3 The City University of Hong Kong</p>
+<p><img src="/images/ReadingPaper/cityu_fuhongbo/humanpose_feature/overview.png" alt="overview"></p>
+<h2 id="WorkFlow"><a href="#WorkFlow" class="headerlink" title="WorkFlow"></a>WorkFlow</h2><h3 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h3><p>A common approach to the problem of human action video alignment is to first estimate 2D or 3D human poses from two input videos, and then find the alignments by matching with features extracted from joint positions [48, 11], However, human poses still contain large variations in scale, bone length ratios, orientations, etc.</p>
+<p>Global orientation normalization by Procrustes alignment(普氏对齐) is hard to be applied to in-the-wild videos when the ground-truth 3D poses are not available.</p>
+<p>At first sight, a straightforward solution might be to compute joint angles from joint positions, and use raw joint angles [10] or their aggregations [35, 52] as features for matching. </p>
+<p>However, the joint angle features suffer from information loss by dropping the skeleton’s relational context, which has a proven significance in capturing pose discrimination [8, 40].</p>
+<p><u>To address the limitations in position-based and angular based pose representations</u>, we propose to use a normalized human pose, an intermediate pose representation that reflects the pose information with respect to joint rotations, and is parameterized by joint positions to preserve the relational context of body configurations, as shown in Figure 1(c).</p>
+<p>This normalized pose representation is <strong><em>enlightened</em></strong> by the recent works that use joint rotations as pose parameterizations for motion reconstruction [45] and pose sequence generation [53, 38]. </p>
+<blockquote>
+<p>They incorporate a deterministic forward kinematics (FK) layer in neural networks to convert the joint rotations into joint positions to avoid the joint rotation <a href="">ambiguity problem in IK &gt;&gt;</a>.</p>
+</blockquote>
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><p><img src="/images/ReadingPaper/cityu_fuhongbo/humanpose_feature/pipeline.png" alt="pipeline"></p>
+<h4 id="Pose-Normalization"><a href="#Pose-Normalization" class="headerlink" title="Pose Normalization"></a>Pose Normalization</h4><p>For a video containing $T$ frames, we denote the $2D$ position of joint $n$ at frame $t$ as $x^n_t<br>\in R^2, t = 1, 2, \cdots, T, n = 1, 2, \cdots, N$, where $N$ is the total number of joints. </p>
+<p>The joint rotations, computed from the input $2D$ poses by $E_Q$, are represented as a <a href=""><u>unit quaternion</u> &gt;&gt;</a> for each joint $\alpha_t^n \in R^4$.</p>
+<p>Denote the $FK$ process as</p>
+<p>$$<br>X = FK(s, \alpha)<br>$$</p>
+<p>where bones in a skeleton $s$ are rotated according to a set of joint rotations $\alpha$, resulting in the 3D joint positions $X$ of the skeleton.</p>
+<p>In order to train $E_Q$, we apply the joint rotations $\alpha_t^n$ computed from 2D poses $x^n_t$ on two types of skeletons:</p>
+<ul>
+<li>the <u>condition skeleton</u> $S$, to facilitate the learning of pose normalization;</li>
+<li>the $3D$ <u>source skeletons</u> of the video subjects st computed from the ground-truth $3D$ poses, to assist the training of $E_Q$.</li>
+</ul>
+<h5 id="Reconstruction-Branch"><a href="#Reconstruction-Branch" class="headerlink" title="Reconstruction Branch"></a>Reconstruction Branch</h5><p>Applying $\alpha_t^n$ on the  $3D$ <u>source skeletons</u> $s_t$ results in reconstructed $3D$ poses $X^t<br>_s$, which can be directly supervised by the groundtruth $3D$ poses $X_t^n$ using the reconstruction loss:</p>
+<p>$$<br>\mathcal{L_{recon}} = \sum_{t_n} ||FK(s_t, \alpha_t^n) - X_t^n||^2<br>$$</p>
+<h5 id="Cycle-Reconstruction-Branch"><a href="#Cycle-Reconstruction-Branch" class="headerlink" title="Cycle Reconstruction Branch"></a>Cycle Reconstruction Branch</h5><p>The design of the cycle reconstruction branch is based on the observation that, since the <u>condition skeleton</u> has the same poses as the poses of the subject in the video frames, its projections should yield the same 3D joint rotations as the 3D joint rotations produced by the original input 2D poses.</p>
+<p><strong><em>However,</em></strong> applying rotations $\alpha_t^n$ on the condition skeleton results in new $3D$ poses $\bar{X_S}$ <u>without paired groundtruth for supervised training</u>. Thus, we adopt this cycle reconstruction that projects the $3D$ condition skeleton pose into $2D$ pose, and then compute $3D$ joint rotations from the projected $2D$ poses.</p>
+<blockquote>
+<p>本质上来讲，就是经过这样一通操作，<strong><em>condition skeleton motion</em></strong> is the same with <strong><em>source skeleton motion</em></strong> though they may have different motion data, and the neural network $E_Q$ will become a model to infer correct <strong><em>condition skeleton rotation motion</em></strong> instead of <strong><em>source skeleton rotation motion</em></strong>.</p>
+</blockquote>
+<p>The joint rotation consistency loss is computed as the differences between joint rotations from the input 2D poses and from the projected skeleton poses:</p>
+<p>$$<br>\mathcal{L_{jrc}} = \sum_{t,n} ||\alpha_t^n - \hat{\alpha_t^n}||^2<br>$$</p>
+<p>The cycle reconstruction loss is:<br>$$<br>\mathcal{L_{cycle}} = \sum_{t,n} ||FK(s_t, \hat{\alpha_t^n}) - X_t^n||^2<br>$$<br>Besides the above losses, we also adopted the foot contact loss $\mathcal{L_{fc}}$, which is commonly used in 3D pose estimations to reduce the skating effect [46].</p>
+<p>The total loss function for training is:<br>$$<br>\mathcal{L} = \mathcal{L_{recon}} + \phi\mathcal{L_{cycle}} + \beta\mathcal{L_{jrc}} + \lambda\mathcal{L_{fc}}<br>$$</p>
+<p>For inference, only the regressor $E_Q$ is used to compute the $3D$ joint rotations from $2D$ poses to be applied onto the condition skeleton.</p>
+<blockquote>
+<p><strong><em>Now we can understand the key idea of this paper:</em></strong></p>
+<ol>
+<li>We design a neural network that learns to normalize human poses in videos. Specifically, the pose normalization network takes in $2D$ poses and estimate joint rotations, which are then applied by $FK$ on a pre-defined $3D$ skeleton with unified fixed bone lengths <strong><em>(called condition skeleton as in [53])</em></strong>. </li>
+<li>The joint rotations of the subjects’ poses in videos are thus converted into the joint positions of the condition skeleton to normalize the poses. </li>
+<li>In this way, the difference in joint positions of the condition skeleton is caused only by the difference in joint rotations. </li>
+<li>Since the normalized poses are not paired with ground-truth poses for training, our network adopted a cycle consistency training strategy (Section 3.2). With joint rotations, the poses can also be easily unified to the same global orientation by specifying the root joint rotation. </li>
+<li>Finally, the pose features are learned from the normalized $3D$ poses by metric learning. The resulting pose features are high-level human pose representations and can be directly compared by the Euclidean distance.</li>
+</ol>
+</blockquote>
+<h4 id="Pose-Embedding"><a href="#Pose-Embedding" class="headerlink" title="Pose Embedding"></a>Pose Embedding</h4><p>After the poses in the video frames are normalized into unified bone lengths and viewpoints, we use <strong><em>metric learning</em></strong> to map the poses to a pose embedding space to extract highlevel pose features.</p>
+<blockquote>
+<p>深度学习的任务就是把高维原始数据（图像，句子）映射到低维流形，使得高维的原始数据被映射到低维流形之后变得可分，而这个映射就叫做Embedding, 或者这样理解, Embedding就是从原始数据提取出来的Feature，也就是那个通过神经网络映射之后的低维向量。</p>
+</blockquote>
+<h3 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h3><h3 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h3><ul>
+<li><p>it extracts features from a complete normalized pose.(一个完整的归一化的姿态，也就是说不能有关节缺失) Future work includes modeling the normalized pose with partial observations. A potential solution that worth exploring is to adopt a probabilistic modeling with kinematics constraints [46, 23] as priors for the FK layer in the network, such that the missing joint positions would be filled by satisfying both kinematics<br>priors and non-missing joint positions.</p>
+</li>
+<li><p>it requires ground-truth 3D joint positions in training.（需要在训练阶段有3d关节点的位置做ground-truth） Adopting weakly-supervised settings, such as using ordinal depths of joint pairs [36, 42] might enable training on in-the-wild datasets.</p>
+</li>
+</ul>
+<h2 id="Classic-Reference"><a href="#Classic-Reference" class="headerlink" title="Classic Reference"></a>Classic Reference</h2><p>[2]Andreas Aristidou, Daniel Cohen-Or, Jessica K Hodgins, Yiorgos Chrysanthou, and Ariel Shamir. Deep motifs and motion signatures. ACM Transactions on Graphics (TOG), 37(6):1–13, 2018. 3, 5</p>
+<p>[10]Myung Geol Choi, Kyungyong Yang, Takeo Igarashi, Jun Mitani, and Jehee Lee. Retrieval and visualization of human motion data via stick figures. In Computer Graphics Forum, volume 31, pages 2057–2065. Wiley Online Library, 2012. 2, 3, 6, 8</p>
+<p>[28]Julieta Martinez, Rayat Hossain, Javier Romero, and James J Little. A simple yet effective baseline for 3d human pose estimation. In Proceedings of the IEEE International Conference on Computer Vision, pages 2640–2649, 2017. 1, 3, 5, 6, 7, 8</p>
+<p>[56]Long Zhao, Xi Peng, Yu Tian, Mubbasir Kapadia, and Dimitris N. Metaxas. Semantic graph convolutional networks for 3d human pose regression. In IEEE Conference on Computer Vision and Pattern Recognition, pages 3425–3435, 2019. 5, 6, 7, 8</p>
+<p>[48]Jennifer J Sun, Jiaping Zhao, Liang-Chieh Chen, Florian Schroff, Hartwig Adam, and Ting Liu. View-invariant probabilistic embedding for human pose. In European Conference on Computer Vision, pages 53–70. Springer, 2020. 1, 3, 6, 8</p>
+<p>[24]Muhammed Kocabas, Nikos Athanasiou, and Michael J Black. Vibe: Video inference for human body pose and shape estimation. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 5253–5263, 2020. 3, 6, 8</p>
 
         </div>
         
@@ -383,6 +442,49 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#WorkFlow">
+        <span class="has-mr-6">1</span>
+        <span>WorkFlow</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Inspiration">
+        <span class="has-mr-6">1.1</span>
+        <span>Inspiration</span>
+        </a></li><li>
+        <a class="is-flex" href="#Methods">
+        <span class="has-mr-6">1.2</span>
+        <span>Methods</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Pose-Normalization">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Pose Normalization</span>
+        </a></li><li>
+        <a class="is-flex" href="#Pose-Embedding">
+        <span class="has-mr-6">1.2.2</span>
+        <span>Pose Embedding</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Ablation-Study">
+        <span class="has-mr-6">1.3</span>
+        <span>Ablation Study</span>
+        </a></li><li>
+        <a class="is-flex" href="#Limitations">
+        <span class="has-mr-6">1.4</span>
+        <span>Limitations</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Classic-Reference">
+        <span class="has-mr-6">2</span>
+        <span>Classic Reference</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
 
     
         <div class="card widget">
