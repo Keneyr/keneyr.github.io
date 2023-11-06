@@ -10,16 +10,16 @@
 <title>Paper-A-Method-for-Animating-Childrens-Drawings-of-the-Human-Figure - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Children’s Drawing,">
+    <meta name="description" content="Keywords: Children’s Drawing, Existing Models and Techniques,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Paper-A-Method-for-Animating-Childrens-Drawings-of-the-Human-Figure">
 <meta property="og:url" content="https://keneyr.com/Paper/Sketch-Animation/Paper-A-Method-for-Animating-Childrens-Drawings-of-the-Human-Figure/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Children’s Drawing,">
+<meta property="og:description" content="Keywords: Children’s Drawing, Existing Models and Techniques,">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-11-03T14:48:51.000Z">
-<meta property="article:modified_time" content="2023-11-03T14:53:11.623Z">
+<meta property="article:modified_time" content="2023-11-06T07:56:03.953Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Sketch Animation">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 51 words)
+                    9 minutes read (About 1287 words)
                 </span>
                 
                 
@@ -188,11 +188,68 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Children’s Drawing,</p>
+            <p><strong><em>Keywords</em></strong>: Children’s Drawing, Existing Models and Techniques, </p>
 <a id="more"></a>
 
 <p><strong><em>A Method for Animating Children’s Drawings of the Human Figure_ACM Transactions on Graphics_2023</em></strong></p>
 <p>HARRISON JESSE SMITH , Meta AI Research, USA<br>QINGYUAN ZHENG , Tencent America, USA<br>YIFEI LI , MIT CSAIL, USA<br>SOMYA JAIN , Meta AI Research, USA<br>JESSICA K. HODGINS , Carnegie Mellon University, USA</p>
+<p>Authors’ addresses:<br>H. J. Smith and S. Jain, Meta AI, 1 Hacker Way, Menlo Park, CA 94025 USA; emails: {hjessmith, somyaj}@gmail.com;<br>Q. Zheng, Tencent America, 2747 Park Blvd, Palo Alto, CA 94306 USA; email: <a href="mailto:qyzzheng@global.tencent.com">qyzzheng@global.tencent.com</a>;<br>Y. Li, MIT CSAIL, 32 Vassar St, Cambridge, MA 02139 USA; email: <a href="mailto:liyifei@csail.mit.edu">liyifei@csail.mit.edu</a>;<br>J. K. Hodgins, Carnegie Mellon University, 5000 Forbes Ave, Pittsburgh, PA 15213 USA; email: <a href="mailto:jkh@cmu.edu">jkh@cmu.edu</a>.</p>
+<h2 id="WorkFlow"><a href="#WorkFlow" class="headerlink" title="WorkFlow"></a>WorkFlow</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Who among us has not wished, either as a child or as an adult, to see such figures come to life and move around on the page? Sadly, while it is relatively fast to produce a single drawing, creating the sequence of images necessary for animation is a much more tedious endeavor, requiring discipline, skill, patience, and sometimes complicated software. As a result, most of these figures remain static upon the page.</p>
+<h3 id="Innovation"><a href="#Innovation" class="headerlink" title="Innovation"></a>Innovation</h3><p><u>Inspired by the importance and appeal of the drawn human figure</u>, we design and build a system to automatically animate it given an in-the-wild photograph of a child’s drawing.</p>
+<p>While our system <u>leverages existing models and techniques</u>, most are <u>not directly applicable to the task due to the many differences between</u> photographic images and simple pen-and- paper representations.</p>
+<p>To summarize, our contributions are as follows:</p>
+<ol>
+<li><p>We <strong><em>explore the problem</em></strong> of <strong><em>automatic</em></strong> sketch-to-animation for children’s drawings of human figures and <strong><em>present a framework</em></strong> that achieves this effect.<br>We also <strong><em>present a set of experiments</em></strong> determining the amount of training data necessary to achieve high levels of success and a <strong><em>perceptual study validating</em></strong> the usefulness of our motion retargeting technique.</p>
+</li>
+<li><p>To encourage additional research in the domain of amateur drawings, <strong><em>we present a first-of-its-kind dataset of 178,166 user-submitted amateur drawings</em></strong>, along with user accepted bounding box, segmentation mask, and joint location annotations.</p>
+</li>
+</ol>
+<blockquote>
+<p><u>Our work builds on existing methods from several fields but is, to our knowledge, the first work focused specifically on fully automatic animation of children’s drawings of human figures</u>.</p>
+</blockquote>
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><blockquote>
+<p>In Machine Learning, in-the-wild means 数据源的多样性比较高，包含的场景多，可以用来间接证明模型的泛化能力比较强</p>
+</blockquote>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><h3 id="2D-Image-to-Animation"><a href="#2D-Image-to-Animation" class="headerlink" title="2D Image to Animation"></a>2D Image to Animation</h3><ol>
+<li><p>Hornung et al. present a method to animate a 2D character in a photograph, given user-annotated joint locations [Hornung et al. 2007].<br>&#x1F449;<em>Alexander Hornung, Ellen Dekkers, and Leif Kobbelt. 2007. Character animation from 2D pictures and 3D motion data. ACM Trans. Graph. 26, 1 (Jan. 2007), 1–es. DOI: <a href="https://doi.org/10.1145/1189762.1189763">https://doi.org/10.1145/1189762.1189763</a></em></p>
+</li>
+<li><p>Pan and Zhang demonstrate a method to animate 2D characters with user-annotated joint locations via a variable-length needle model [Pan and Zhang 2011].<br>&#x1F449;<em>Junjun Pan and Jian J. Zhang. 2011. Sketch-based Skeleton-driven 2D Animation and Motion Capture . Springer Berlin, 164–181. DOI: <a href="https://doi.org/10.1007/978-">https://doi.org/10.1007/978-</a> 3- 642- 22639-7 _ 17</em></p>
+</li>
+<li><p>Jain et al. present an integrated approach to generate 3D proxies for animation given joint locations, segmentation masks, and per-part bounding boxes [Jain et al. 2012].<br>&#x1F449;<em>Eakta Jain, Yaser Sheikh, Moshe Mahler, and Jessica Hodgins. 2012. Three- dimensional proxies for hand-drawn characters. ACM Trans. Graph. 31, 1 (Feb. 2012).</em></p>
+</li>
+</ol>
+<ol start="4">
+<li><p>Levi and Gotsman provide a method to create an artic- ulated 3D object from a set of annotated 2D images and an initial 3D skeletal pose [Levi and Gotsman 2013].<br>&#x1F449;<em>Zohar Levi and Craig Gotsman. 2013. ArtiSketch: A system for articulated sketch modeling. Comput. Graph. Forum 32, 2pt2 (2013), 235–244. DOI: <a href="https://doi.org/">https://doi.org/</a> 10.1111/cgf.12043</em></p>
+</li>
+<li><p>Live Sketch [Su et al. 2018] tracks control points from a video and applies their motion to user-specified control points upon a character.<br>&#x1F449;<em>Qingkun Su, Xue Bai, Hongbo Fu, Chiew-Lan Tai, and Jue Wang. 2018. Live sketch: Video-driven dynamic deformation of static drawings. In Proceedings of the CHI Conference on Human Factors in Computing Systems (CHI’18) . Association for Computing Machinery, New York, NY, 1–12. DOI: <a href="https://doi.org/10.1145/">https://doi.org/10.1145/</a> 3173574.3174236</em></p>
+</li>
+<li><p>Other approaches allow the user to specify character motions through a puppeteer interface, using RGB or RGB-D cameras [Barnes et al. 2008 ; Held et al. 2012].<br>&#x1F449;<em>Robert Held, Ankit Gupta, Brian Curless, and Maneesh Agrawala. 2012. 3D puppetry: A Kinect-based interface for 3D animation. In Proceedings of the 25th Annual ACM Symposium on User Interface Software and Technology (UIST’12) . Associa- tion for Computing Machinery, New York, NY, 423–434. DOI: <a href="https://doi.org/10">https://doi.org/10</a>. 1145/2380116.2380170</em></p>
+</li>
+</ol>
+<ol start="7">
+<li><p>ToonCap [Fan et al. 2018] focuses on an inverse problem, capturing poses of a known cartoon character, given a previous image of the character annotated with layers, joints, and handles.<br>&#x1F449;<em>Xinyi Fan, Amit H. Bermano, Vladimir G. Kim, Jovan Popović, and Szymon Rusinkiewicz. 2018. ToonCap: A layered deformable model for capturing poses from cartoon characters. In Proceedings of the Joint Symposium on Computational Aesthetics and Sketch-Based Interfaces and Modeling and Non-photorealistic Animation and Rendering (Expressive’18) . Association for Computing Machinery, New York, NY. DOI: <a href="https://doi.org/10.1145/3229147.3229149">https://doi.org/10.1145/3229147.3229149</a></em></p>
+</li>
+<li><p>ToonSynth [Dvorožnák et al. 2018 ] and Neural Puppet [Poursaeed et al. 2020] both present methods to synthesize animations of hand-drawn characters given a small set of drawings of the character in specified poses.<br>&#x1F449;<em>Marek Dvorožnák, Wilmot Li, Vladimir G. Kim, and Daniel Sýkora. 2018. ToonSynth: Example-based synthesis of hand-colored cartoon animations. ACM Trans. Graph. 37, 4 (July 2018). DOI: <a href="https://doi.org/10.1145/3197517.3201326">https://doi.org/10.1145/3197517.3201326</a></em><br> &#x1F449;<em>Omid Poursaeed, Vladimir Kim, Eli Shechtman, Jun Saito, and Serge Belongie. 2020. Neural puppet: Generative layered cartoon characters. In Proceedings of the IEEE Winter Conference on Applications of Computer Vision . 3346–3356.</em></p>
+</li>
+<li><p>Hinz et al. train a network to generate new animation frames of a single character given 8–15 training images with user-specified keypoint annotations [Hinz et al. 2022].<br>&#x1F449;<em>Tobias Hinz, Matthew Fisher, Oliver Wang, Eli Shechtman, and Stefan Wermter. 2022. CharacterGAN: Few-shot keypoint character animation and reposing. In Pro- ceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision . 1988–1997.</em></p>
+</li>
+</ol>
+<ol start="10">
+<li>Monster Mash [Dvorožňák et al. 2020] presents an intuitive framework for sketch-based modeling and animation.<br>&#x1F449;<em>Marek Dvorožňák, Daniel Sýkora, Cassidy Curtis, Brian Curless, Olga Sorkine- Hornung, and David Salesin. 2020. Monster mash: A single-view approach to ca- sual 3D modeling and animation. ACM Trans. Graph. 39, 6 (Nov. 2020). DOI: https: //doi.org/10.1145/3414685.3417805 .</em></li>
+</ol>
+<ol start="11">
+<li>2.5D Cartoon Models [Rivers et al. 2010] presents a novel method of con- structing 3D-like characters from a small number of 2D represen- tations.<br>&#x1F449;<em>Alec Rivers, Takeo Igarashi, and Frédo Durand. 2010. 2.5D cartoon models. ACM Trans. Graph. 29, 4 (July 2010). DOI: <a href="https://doi.org/10.1145/1778765.1778796">https://doi.org/10.1145/1778765.1778796</a></em></li>
+</ol>
+<p>Some animation methods are specifically tailored toward par- ticular forms, such as faces [Averbuch-Elor et al. 2017], coloring- book characters [Magnenat et al. 2015], or characters with human- like proportions. One notable work that is focused on the human form is Photo Wake Up [Weng et al. 2019].</p>
+<h3 id="Detection-Segmentation-and-Pose-Estimation-on-Non-photorealistic-Images"><a href="#Detection-Segmentation-and-Pose-Estimation-on-Non-photorealistic-Images" class="headerlink" title="Detection, Segmentation, and Pose Estimation on Non-photorealistic Images"></a>Detection, Segmentation, and Pose Estimation on Non-photorealistic Images</h3><p>Some researchers are addressing this problem by devel- oping methods and releasing datasets focused on </p>
+<ol>
+<li><p>the domain of anime characters [Chen and Zwicker 2022; Khungurn and Chou 2016]<br>&#x1F449;<em>Shuhong Chen and Matthias Zwicker. 2022. Transfer learning for pose estimation of illustrated characters. In Proceedings of the IEEE/CVF Winter Conference on Appli- cations of Computer Vision .</em></p>
+</li>
+<li><p>professional sketches [Brodt and Bessmeltsev 2022]<br>&#x1F449;<em>Kirill Brodt and Mikhail Bessmeltsev. 2022. Sketch2Pose: Estimating a 3D character pose from a bitmap sketch. ACM Trans. Graph. 41, 4 (July 2022). DOI: <a href="https://doi">https://doi</a>. org/10.1145/3528223.3530106</em></p>
+</li>
+<li><p>mouse doodles [Ha and Eck 2017].</p>
+</li>
+</ol>
 
         </div>
         
@@ -374,6 +431,45 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#WorkFlow">
+        <span class="has-mr-6">1</span>
+        <span>WorkFlow</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Problem">
+        <span class="has-mr-6">1.1</span>
+        <span>Problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Innovation">
+        <span class="has-mr-6">1.2</span>
+        <span>Innovation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Methods">
+        <span class="has-mr-6">1.3</span>
+        <span>Methods</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Related-Work">
+        <span class="has-mr-6">2</span>
+        <span>Related Work</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#2D-Image-to-Animation">
+        <span class="has-mr-6">2.1</span>
+        <span>2D Image to Animation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Detection-Segmentation-and-Pose-Estimation-on-Non-photorealistic-Images">
+        <span class="has-mr-6">2.2</span>
+        <span>Detection, Segmentation, and Pose Estimation on Non-photorealistic Images</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
 
     
         <div class="card widget">
