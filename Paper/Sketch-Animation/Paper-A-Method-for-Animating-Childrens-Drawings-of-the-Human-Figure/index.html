@@ -10,16 +10,16 @@
 <title>Paper-A-Method-for-Animating-Childrens-Drawings-of-the-Human-Figure - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Children’s Drawing, Existing Models and Techniques,">
+    <meta name="description" content="Keywords: Children’s Drawing, Existing Models and Techniques, Mask R-CNN,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Paper-A-Method-for-Animating-Childrens-Drawings-of-the-Human-Figure">
 <meta property="og:url" content="https://keneyr.com/Paper/Sketch-Animation/Paper-A-Method-for-Animating-Childrens-Drawings-of-the-Human-Figure/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Children’s Drawing, Existing Models and Techniques,">
+<meta property="og:description" content="Keywords: Children’s Drawing, Existing Models and Techniques, Mask R-CNN,">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-11-03T14:48:51.000Z">
-<meta property="article:modified_time" content="2023-11-06T07:56:03.953Z">
+<meta property="article:modified_time" content="2023-11-06T13:48:13.236Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="Sketch Animation">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes read (About 1287 words)
+                    14 minutes read (About 2027 words)
                 </span>
                 
                 
@@ -188,12 +188,14 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Children’s Drawing, Existing Models and Techniques, </p>
+            <p><strong><em>Keywords</em></strong>: Children’s Drawing, Existing Models and Techniques, Mask R-CNN, </p>
 <a id="more"></a>
 
 <p><strong><em>A Method for Animating Children’s Drawings of the Human Figure_ACM Transactions on Graphics_2023</em></strong></p>
 <p>HARRISON JESSE SMITH , Meta AI Research, USA<br>QINGYUAN ZHENG , Tencent America, USA<br>YIFEI LI , MIT CSAIL, USA<br>SOMYA JAIN , Meta AI Research, USA<br>JESSICA K. HODGINS , Carnegie Mellon University, USA</p>
 <p>Authors’ addresses:<br>H. J. Smith and S. Jain, Meta AI, 1 Hacker Way, Menlo Park, CA 94025 USA; emails: {hjessmith, somyaj}@gmail.com;<br>Q. Zheng, Tencent America, 2747 Park Blvd, Palo Alto, CA 94306 USA; email: <a href="mailto:qyzzheng@global.tencent.com">qyzzheng@global.tencent.com</a>;<br>Y. Li, MIT CSAIL, 32 Vassar St, Cambridge, MA 02139 USA; email: <a href="mailto:liyifei@csail.mit.edu">liyifei@csail.mit.edu</a>;<br>J. K. Hodgins, Carnegie Mellon University, 5000 Forbes Ave, Pittsburgh, PA 15213 USA; email: <a href="mailto:jkh@cmu.edu">jkh@cmu.edu</a>.</p>
+<p><a href="https://sketch.metademolab.com/">https://sketch.metademolab.com/</a></p>
+<p><img src="/images/ReadingPaper/cmu_jessica/child_drawing/overview.png" alt="Overview"></p>
 <h2 id="WorkFlow"><a href="#WorkFlow" class="headerlink" title="WorkFlow"></a>WorkFlow</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Who among us has not wished, either as a child or as an adult, to see such figures come to life and move around on the page? Sadly, while it is relatively fast to produce a single drawing, creating the sequence of images necessary for animation is a much more tedious endeavor, requiring discipline, skill, patience, and sometimes complicated software. As a result, most of these figures remain static upon the page.</p>
 <h3 id="Innovation"><a href="#Innovation" class="headerlink" title="Innovation"></a>Innovation</h3><p><u>Inspired by the importance and appeal of the drawn human figure</u>, we design and build a system to automatically animate it given an in-the-wild photograph of a child’s drawing.</p>
 <p>While our system <u>leverages existing models and techniques</u>, most are <u>not directly applicable to the task due to the many differences between</u> photographic images and simple pen-and- paper representations.</p>
@@ -210,6 +212,43 @@
 <h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><blockquote>
 <p>In Machine Learning, in-the-wild means 数据源的多样性比较高，包含的场景多，可以用来间接证明模型的泛化能力比较强</p>
 </blockquote>
+<p><img src="/images/ReadingPaper/cmu_jessica/child_drawing/workflow.png" alt="workflow"></p>
+<h4 id="Figure-Detection"><a href="#Figure-Detection" class="headerlink" title="Figure Detection"></a>Figure Detection</h4><p>We make use of a state-of-the-art object detection model, <strong>Mask R-CNN [He et al. 2017], with a ResNet-50+FPN backbone</strong>.</p>
+<p><img src="/images/ReadingPaper/cmu_jessica/child_drawing/detection.png" alt="detection"></p>
+<p>Therefore, we fine-tune the model.<br>The model’s backbone weights are frozen and attached to a head, which predicts a single class, human figure. The weights of the head are then <strong>optimized</strong> using <strong>cross-entropy loss</strong> and <strong>stochastic gradient descent</strong> with an initial <strong>learning rat</strong>e of 0.02, <strong>momentum</strong> of 0.9, <strong>weight decay</strong> of 1e-4, and <strong>minibatches</strong> of size 8. Training was conducted using <strong>OpenMMLab Detection Toolbox [Chen et al. 2019]</strong>; all other hyperparameters were kept at the default values provided by the toolbox.</p>
+<h4 id="Figure-Segmentation"><a href="#Figure-Segmentation" class="headerlink" title="Figure Segmentation"></a>Figure Segmentation</h4><p><img src="/images/ReadingPaper/cmu_jessica/child_drawing/segmentation.png" alt="segmentation"></p>
+<blockquote>
+<p>traditional contour detection algorithms / 形态学 轮廓 边界跟踪 算法</p>
+</blockquote>
+<p>First, we <strong>resize</strong> the bounding box-cropped image to a width of 400 pixels while preserving the aspect ratio. </p>
+<p>Next, we convert the image to <strong>grayscale</strong> and perform <strong>adaptive thresholding</strong>, where the threshold value is a <strong>Gaussian-weighted sum</strong> of the neighborhood pixel values minus a constant C [Gonzalez and Woods 2008].Here, we use a distance of 8 pixels to define the neighborhood and a value of 115 for $C$. </p>
+<blockquote>
+<p>高斯核模糊：平滑最终提取的轮廓, Gaussian kernel blur: Smooths the final extracted contour</p>
+</blockquote>
+<p>To remove noise and connect foreground pixels, we next perform morphological closing, followed by <strong>dilating(扩张)</strong>, using 3×3 rectangular kernels. </p>
+<blockquote>
+<p>扩张可以防止提取到的轮廓过于贴合从而丢失完整性, Dilation prevents the extracted contours from fitting too well and losing completeness</p>
+</blockquote>
+<p>We then <strong>flood fill</strong> from the edges of the image, ensuring that any closed groups of foreground pixels are solid and do not contain holes. (BFS)</p>
+<p>Finally, we calculate the area of each distinct foreground <strong>polygon</strong> and retain only the one with the largest area.</p>
+<blockquote>
+<p>OpenCV has Mature algorithms</p>
+</blockquote>
+<p>However, it will fail when body parts are drawn separated, limbs are drawn touching at points other than the joints, the figure is not fully contained by the bounding box, or the outline of the figure is not completely connected.</p>
+<h4 id="Pose-Estimation"><a href="#Pose-Estimation" class="headerlink" title="Pose Estimation"></a>Pose Estimation</h4><p><img src="/images/ReadingPaper/cmu_jessica/child_drawing/estimation.png" alt="estimation"></p>
+<p>We assume the presence of the 17 keypoints used by <strong>MS-COCO [Lin et al. 2014]</strong>(see Figure 8 ) and use a pose estimation model to predict their locations.</p>
+<p>We therefore <strong>train a custom pose estimation model utilizing a ResNet-50 backbone</strong>, pretrained on <strong>ImageNet</strong>, and a <strong>top-down heat map keypoint</strong> head that predicts an individual heatmap for each joint location.</p>
+<p>The cropped human figure bounding box is resized to 192×256 and fed into the model, and the highest-valuedpixel in each heatmap is taken as the predicted joint location. </p>
+<p><strong>Mean squared error</strong> is used for joint loss, and optimization is performed using <strong>Adaptive Momentum Estimation</strong> with learning rate of 5e-4 and <strong>minibatches</strong> of size 512. Training was conducted using the <strong>OpenMMLab Pose Toolbox [Contributors 2020]</strong>; all other hyperparameters were kept at the default values provided by this toolbox.</p>
+<h4 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h4><p><img src="/images/ReadingPaper/cmu_jessica/child_drawing/interface.png" alt="interface"></p>
+<p>From the segmentation mask, we use <strong>Delaunay triangulation</strong> to generate a 2D mesh.</p>
+<p>Using the joint locations, we construct a character skeleton.</p>
+<p>We average the position of the two hips to <strong>obtain a root joint</strong> and average the position of the two shoulders to obtain the chest joint. We connect these joints to create the skeletal rig as shown in <u>Figure 8 (b)</u>.</p>
+<p>Finally, we <strong>assign each mesh triangle to one of nine different body part groups</strong> (left upper leg, left lower leg, right up- per leg, right lower leg, left upper arm, left lower arm, right upper arm, right lower arm, and trunk) by finding the <strong>closest bone to each triangle’s centroid</strong>.</p>
+<p>We animate the character rig by translating the joints and using <strong>as-rigid-as-possible (ARAP) shape manipulation[Igarashi et al. 2005]</strong> to repose the character mesh.</p>
+<p>To make the process simple for the user, we drive the character rig using <strong>a library of preselected motion clips</strong> obtained from human performers.</p>
+<p>We retarget the motion in the following manner:</p>
+<h4 id="Fine-Tune"><a href="#Fine-Tune" class="headerlink" title="Fine-Tune"></a>Fine-Tune</h4><p><img src="/images/ReadingPaper/cmu_jessica/child_drawing/fine-tune.png" alt="fine-tune"></p>
 <h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><h3 id="2D-Image-to-Animation"><a href="#2D-Image-to-Animation" class="headerlink" title="2D Image to Animation"></a>2D Image to Animation</h3><ol>
 <li><p>Hornung et al. present a method to animate a 2D character in a photograph, given user-annotated joint locations [Hornung et al. 2007].<br>&#x1F449;<em>Alexander Hornung, Ellen Dekkers, and Leif Kobbelt. 2007. Character animation from 2D pictures and 3D motion data. ACM Trans. Graph. 26, 1 (Jan. 2007), 1–es. DOI: <a href="https://doi.org/10.1145/1189762.1189763">https://doi.org/10.1145/1189762.1189763</a></em></p>
 </li>
@@ -454,7 +493,27 @@
         <a class="is-flex" href="#Methods">
         <span class="has-mr-6">1.3</span>
         <span>Methods</span>
-        </a></li></ul></li><li>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Figure-Detection">
+        <span class="has-mr-6">1.3.1</span>
+        <span>Figure Detection</span>
+        </a></li><li>
+        <a class="is-flex" href="#Figure-Segmentation">
+        <span class="has-mr-6">1.3.2</span>
+        <span>Figure Segmentation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Pose-Estimation">
+        <span class="has-mr-6">1.3.3</span>
+        <span>Pose Estimation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Animation">
+        <span class="has-mr-6">1.3.4</span>
+        <span>Animation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Fine-Tune">
+        <span class="has-mr-6">1.3.5</span>
+        <span>Fine-Tune</span>
+        </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#Related-Work">
         <span class="has-mr-6">2</span>
         <span>Related Work</span>
