@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Animation-C3-Interpolating-Values - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: Interpolation, Quaternion, pipeline">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Animation-C3-Interpolating-Values">
+<meta property="og:url" content="https://keneyr.com/Graphics/Animation/Animation-C3-Interpolating-Values/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: Interpolation, Quaternion, pipeline">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-11-07T03:07:19.000Z">
+<meta property="article:modified_time" content="2023-11-27T04:16:54.126Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Animation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="Animation-C3-Interpolating-Values" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/Animation">Animation</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-11-07T03:07:19.000Z">2023-11-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1289 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Animation-C3-Interpolating-Values
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: Interpolation, Quaternion, pipeline</p>
+<a id="more"></a>
+
+<p>This is the Chapter3 ReadingNotes from book <em>Computer Animation_ Algorithms and Techniques_ Parent-Elsevier (2012)</em>.</p>
+<h2 id="Interpolation"><a href="#Interpolation" class="headerlink" title="Interpolation"></a>Interpolation</h2><h3 id="The-appropriate-function"><a href="#The-appropriate-function" class="headerlink" title="The appropriate function"></a>The appropriate function</h3><h4 id="Interpolation-versus-approximation"><a href="#Interpolation-versus-approximation" class="headerlink" title="Interpolation versus approximation"></a>Interpolation versus approximation</h4><p>Commonly used interpolating functions are the <strong><em>Hermite formulation</em></strong> and the <strong><em>Catmull-Rom spline</em></strong>.</p>
+<p><img src="/images/Animation/c3/interpolation.png" alt="interpolation"></p>
+<h4 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h4><p>The simpler the underlying equations of the interpolating function, the faster its evaluation. In practice, polynomials are easy to compute, and piecewise <strong>cubic polynomials</strong> are the lowest degree polynomials that provide sufficient smoothness while still allowing enough flexibility to satisfy other constraints such as beginning and ending positions and tangents.</p>
+<h4 id="Continuity"><a href="#Continuity" class="headerlink" title="Continuity"></a>Continuity</h4><p><em>Zero-order continuity</em> refers to the continuity of values of the curve itself.</p>
+<p>If the same can be said of the first derivative of the function (the instantaneous change in values of the curve), then the function has <em>first-order, or tangential, continuity</em>.</p>
+<p><em>Second-order continuity</em> refers to continuous curvature or instantaneous change of the tangent vector.</p>
+<p><img src="/images/Animation/c3/continuity.png" alt="continuity"></p>
+<h4 id="Global-versus-local-control"><a href="#Global-versus-local-control" class="headerlink" title="Global versus local control"></a>Global versus local control</h4><p>A formulation in which control points have a limited effect on the curve is referred to as providing <em>local control</em>. </p>
+<p>If repositioning one control point redefines the entire curve, however slightly, then the formulation provides only <em>global control</em>.</p>
+<p><img src="/images/Animation/c3/control.png" alt="control"></p>
+<p>&#x1F449;<a href="/Math/Geometry/Geometry-Curves/">Curves in Geometry&gt;&gt;</a></p>
+<h2 id="Controlling-the-motion-of-a-point-along-a-curve"><a href="#Controlling-the-motion-of-a-point-along-a-curve" class="headerlink" title="Controlling the motion of a point along a curve"></a>Controlling the motion of a point along a curve</h2><p>for a given value of $u$, will produce a value that is a point in space, that is, $\pmb{p} = \pmb{P(u)}$.<br>for any specified time, $u$, a position $(X, Y, Z)$ can be produced as $(P_x(u), P_y(u), P_z(u)) = P(u)$.</p>
+<p>If positions are being interpolated by varying $u$ at a constant rate, the positions that are generated will not necessarily, in fact will seldom, represent a constant speed (e.g., see Figure 3.4).</p>
+<p>To ensure a constant speed for the interpolated value, the interpolating function has to be parameterized by <strong><em>arc length</em></strong>, that is, distance along the curve of interpolation.</p>
+<p><img src="/images/Animation/c3/non-constantspeed.png" alt="non-constantspeed"></p>
+<h3 id="Computing-arc-length"><a href="#Computing-arc-length" class="headerlink" title="Computing arc length"></a>Computing arc length</h3><p>Alternatively, instead of specifying time constraints, <u>the animator</u> might want to specify the relative velocities that an object should have along the curve.</p>
+<blockquote>
+<p>It is important to remember that in animation the path swept out by the curve in space is not the only important thing. Equally important is how the path is swept out over time.</p>
+</blockquote>
+<p><img src="/images/Animation/c3/length.png" alt="length"></p>
+<p>&#x1F449;<a href="/Math/Calculus/Calculus-C6-Applications-of-Definite-Integrals/#Arc-Length">Arc Length in Calculus &gt;&gt;</a></p>
+<h4 id="The-analytic-approach-to-computing-arc-length"><a href="#The-analytic-approach-to-computing-arc-length" class="headerlink" title="The analytic approach to computing arc length"></a>The analytic approach to computing arc length</h4><p>The length of the curve from a point $\pmb{P}(u_a)$ to any other point $\pmb{P}(u_b)$ can be found by evaluating the arc length integral [4] by<br>$$<br>s = \int_{u_a}^{u_b} |dP/du| du<br>\tag{3.3}<br>$$<br>where the derivative of the space curve with respect to the <u>parameterizing variable</u> is defined to be<br>that shown in Equations 3.4 and 3.5.<br>$$<br>d\pmb{P} / du = ((dx(u)/(du)), (dy(u)/(du)), (dz(u)/(du)))<br>\tag{3.4}<br>$$<br>$$<br>|d\pmb{P} / du| = \sqrt{(dx(u)/du)^2 + (dy(u)/du)^2 + (dz(u)/du)^2}<br>\tag{3.5}<br>$$</p>
+<p>&#x1F449;<a href="/Math/Calculus/Calculus-C13-Vector-Valued-Fuctions-and-Motion-in-Space/#Arc-Length-in-Space">Space Arc Length in Calculus &gt;&gt;</a></p>
+<h4 id="Estimating-arc-length-by-forward-differencing"><a href="#Estimating-arc-length-by-forward-differencing" class="headerlink" title="Estimating arc length by forward differencing"></a>Estimating arc length by forward differencing</h4><p>As mentioned previously, analytic techniques are not tractable for many curves of interest to animation.</p>
+<p>The easiest and conceptually simplest strategy for establishing the correspondence between parameter value and arc length is to sample the curve at a multitude of parametric values.</p>
+<p><img src="/images/Animation/c3/arc-length.png" alt="arc-length-by-Lookup table"></p>
+<p>&#x1F4A1; for example&#x1F4A1;:<br>the user wants to know the distance (arc length) from the beginning of the curve to the point on the curve corresponding to a parametric value of 0.73.  </p>
+<p>Solution:</p>
+<p>The parametric entry closest to 0.73 must be located in the table. Since the parametric entries are evenly spaced, the distance between parametric entries is<br>$$<br>d = 0.05<br>$$<br>thus, the idex $i$,<br>$$<br>\begin{aligned}<br>i &amp;= \lfloor \frac{v}{d} + 0.5 \rfloor \\&amp;= \lfloor \frac{0.73}{0.05} + 0.5 \rfloor \\ &amp;= 15<br>\end{aligned}<br>$$</p>
+<p><u>A better approximation</u> can be obtained by interpolating between the arc lengths corresponding to entries on either side of the given parametric value.</p>
+<p>$$<br>i = \lfloor \frac{v}{d} \rfloor = 14<br>$$</p>
+<p>thus,<br>$$<br>\begin{aligned}<br>s &amp;= G[i] + \frac{v - V[i]}{V[i+1]-V[i]}(G[i+1]-G[i])\\<br>&amp;= 0.944 + \frac{0.73-0.70}{0.75-0.70}(0.959-0.944)\\<br>&amp;= 0.953<br>\end{aligned}<br>$$</p>
+<blockquote>
+<p>What if given the arc length, I want to know the corresponding parameter value?</p>
+</blockquote>
+<p>&#x1F4A1; for example&#x1F4A1;:</p>
+<p>Estimate the location of the point on the curve that is 0.75 unit of arc length from the beginning of the curve.</p>
+<p>Solution:</p>
+<p>the value of 0.75 is three-eighths of the way between the table values 0.72 and 0.80. An estimate of the parametric value would be calculated as</p>
+<p>$$<br>u = 0.40 + \frac{3}{8}(0.45 - 0.40) = 0.41875<br>$$</p>
+<blockquote>
+<p>Advantage: easy to implement, intuitive, fast to compute.<br>Disadvantage: errors.</p>
+<ol>
+<li>The curve can be supersampled to help reduce errors in forming the table.</li>
+<li>Instead of linear interpolation, higher-degree interpolation procedures can be used in computing the parametric value.</li>
+</ol>
+</blockquote>
+<h4 id="Adaptive-approach"><a href="#Adaptive-approach" class="headerlink" title="Adaptive approach"></a>Adaptive approach</h4><p>The adaptive approach begins by initializing the table with an entry for the first point of the curve, $&lt;0.0, P(0)&gt;$, and initializing the list of segments to be tested with the entire curve, $&lt;0.0,1.0&gt;$.</p>
+<p>The segment’s midpoint is computed by evaluating the curve at the middle of the range of its parametric value. The curve is also evaluated at the endpoint of the segment; the position of the start of the segment is already in the table and can be retrieved from there.</p>
+<p>$$<br>|||P(0.0) - P(1.0)|| - (||P(0.0) - P(0.5)|| + ||P(0.5) - P(1.0)||)| &lt; \epsilon<br>$$<br><img src="/images/Animation/c3/subdivision.png" alt="subdivision"></p>
+<p>If the difference between these two values is above some user-specified threshold, then both halves, in order, are added to the list of segments to be tested along with their error tolerance ($\epsilon/2^n$ where $n$ is the level of subdivision). </p>
+<p>If the values are within tolerance, then the parametric value of the midpoint is recorded in the table along with the arc length of the first point of the segment plus the distance from the first point to the midpoint. </p>
+<p>Also added to the table is the last parametric value of the segment along with the arc length to the midpoint plus the distance from the midpoint to the last point. </p>
+<p>When the list of segments to be tested becomes empty, a list of $&lt;$parametric value, arc length$&gt;$ has been generated for the entire curve.</p>
+<h4 id="Estimating-the-arc-length-integral-numerically"><a href="#Estimating-the-arc-length-integral-numerically" class="headerlink" title="Estimating the arc length integral numerically"></a>Estimating the arc length integral numerically</h4><p>Many numerical integration techniques approximate the integral of a function with the weighted sum of values of the function at various points in the interval of integration. </p>
+<p>Techniques such as <u>Simpson’s and trapezoidal integration</u> use evenly spaced sample intervals. <u>Gaussian quadrature</u> [1] uses unevenly spaced intervals in an attempt to get the greatest accuracy using the smallest number of function evaluations.</p>
+<p>&#x1F449;<a href="/Math/Numerical-Analysis/NumericalAnalysis-C5-Numerical-Differentiation-and-Integration/">Numerical Differentiation and Integration &gt;&gt;</a></p>
+<p>$$<br>\begin{aligned}<br>&amp;\int_{-1}^{1} f(u) = \sum_i w_i f(u_i)\\<br>&amp;t = f(u) = \frac{(b-a)}{2}u + \frac{b+a}{2}\\<br>&amp;\int_a^b g(t) dt = \int_{-1}^{1}g(\frac{(b-a)}{2}u + \frac{b+a}{2})du<br>\end{aligned}<br>$$</p>
+<h4 id="Adaptive-Gaussian-integration"><a href="#Adaptive-Gaussian-integration" class="headerlink" title="Adaptive Gaussian integration"></a>Adaptive Gaussian integration</h4><p>Adaptive Gaussian integration is similar to the previously discussed adaptive forward differencing.</p>
+<h4 id="Find-a-point-that-is-a-given-distance-along-a-curve"><a href="#Find-a-point-that-is-a-given-distance-along-a-curve" class="headerlink" title="Find a point that is a given distance along a curve"></a>Find a point that is a given distance along a curve</h4><h3 id="Speed-control"><a href="#Speed-control" class="headerlink" title="Speed control"></a>Speed control</h3><h3 id="Ease-in-ease-out"><a href="#Ease-in-ease-out" class="headerlink" title="Ease-in/ease-out"></a>Ease-in/ease-out</h3><p>Sine interpolation<br>Using sinusoidal pieces for acceleration and deceleration<br>Single cubic polynomial ease-in/ease-out<br>Constant acceleration: parabolic ease-in/ease-out</p>
+<h3 id="General-distance-time-functions"><a href="#General-distance-time-functions" class="headerlink" title="General distance-time functions"></a>General distance-time functions</h3><h3 id="Curve-fitting-to-position-time-pairs"><a href="#Curve-fitting-to-position-time-pairs" class="headerlink" title="Curve fitting to position-time pairs"></a>Curve fitting to position-time pairs</h3><h2 id="Interpolation-of-orientations"><a href="#Interpolation-of-orientations" class="headerlink" title="Interpolation of orientations"></a>Interpolation of orientations</h2><h3 id="Interpolating-quaternions"><a href="#Interpolating-quaternions" class="headerlink" title="Interpolating quaternions"></a>Interpolating quaternions</h3><h2 id="Working-with-paths"><a href="#Working-with-paths" class="headerlink" title="Working with paths"></a>Working with paths</h2><h3 id="Path-following"><a href="#Path-following" class="headerlink" title="Path following"></a>Path following</h3><h3 id="Orientation-along-a-path"><a href="#Orientation-along-a-path" class="headerlink" title="Orientation along a path"></a>Orientation along a path</h3><h3 id="Smoothing-a-path"><a href="#Smoothing-a-path" class="headerlink" title="Smoothing a path"></a>Smoothing a path</h3><h3 id="Determining-a-path-along-a-surface"><a href="#Determining-a-path-along-a-surface" class="headerlink" title="Determining a path along a surface"></a>Determining a path along a surface</h3><h3 id="Path-finding"><a href="#Path-finding" class="headerlink" title="Path finding"></a>Path finding</h3><h2 id="Appendix-B-5"><a href="#Appendix-B-5" class="headerlink" title="Appendix B.5"></a>Appendix B.5</h2>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Animation/" rel="tag">Animation</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Graphics/Animation/Animation-C4-Interpolation-Based-Animation/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Animation-C4-Interpolation-Based-Animation</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Graphics/Animation/Animation-C2-Technical-Background/">
+                <span class="level-item">Animation-C2-Technical-Background</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: 'd15c68c72d19e91c8f207b457f966646',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            89
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            21
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            17
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Interpolation">
+        <span class="has-mr-6">1</span>
+        <span>Interpolation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-appropriate-function">
+        <span class="has-mr-6">1.1</span>
+        <span>The appropriate function</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Interpolation-versus-approximation">
+        <span class="has-mr-6">1.1.1</span>
+        <span>Interpolation versus approximation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Complexity">
+        <span class="has-mr-6">1.1.2</span>
+        <span>Complexity</span>
+        </a></li><li>
+        <a class="is-flex" href="#Continuity">
+        <span class="has-mr-6">1.1.3</span>
+        <span>Continuity</span>
+        </a></li><li>
+        <a class="is-flex" href="#Global-versus-local-control">
+        <span class="has-mr-6">1.1.4</span>
+        <span>Global versus local control</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#Controlling-the-motion-of-a-point-along-a-curve">
+        <span class="has-mr-6">2</span>
+        <span>Controlling the motion of a point along a curve</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Computing-arc-length">
+        <span class="has-mr-6">2.1</span>
+        <span>Computing arc length</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-analytic-approach-to-computing-arc-length">
+        <span class="has-mr-6">2.1.1</span>
+        <span>The analytic approach to computing arc length</span>
+        </a></li><li>
+        <a class="is-flex" href="#Estimating-arc-length-by-forward-differencing">
+        <span class="has-mr-6">2.1.2</span>
+        <span>Estimating arc length by forward differencing</span>
+        </a></li><li>
+        <a class="is-flex" href="#Adaptive-approach">
+        <span class="has-mr-6">2.1.3</span>
+        <span>Adaptive approach</span>
+        </a></li><li>
+        <a class="is-flex" href="#Estimating-the-arc-length-integral-numerically">
+        <span class="has-mr-6">2.1.4</span>
+        <span>Estimating the arc length integral numerically</span>
+        </a></li><li>
+        <a class="is-flex" href="#Adaptive-Gaussian-integration">
+        <span class="has-mr-6">2.1.5</span>
+        <span>Adaptive Gaussian integration</span>
+        </a></li><li>
+        <a class="is-flex" href="#Find-a-point-that-is-a-given-distance-along-a-curve">
+        <span class="has-mr-6">2.1.6</span>
+        <span>Find a point that is a given distance along a curve</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Speed-control">
+        <span class="has-mr-6">2.2</span>
+        <span>Speed control</span>
+        </a></li><li>
+        <a class="is-flex" href="#Ease-in-ease-out">
+        <span class="has-mr-6">2.3</span>
+        <span>Ease-in/ease-out</span>
+        </a></li><li>
+        <a class="is-flex" href="#General-distance-time-functions">
+        <span class="has-mr-6">2.4</span>
+        <span>General distance-time functions</span>
+        </a></li><li>
+        <a class="is-flex" href="#Curve-fitting-to-position-time-pairs">
+        <span class="has-mr-6">2.5</span>
+        <span>Curve fitting to position-time pairs</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Interpolation-of-orientations">
+        <span class="has-mr-6">3</span>
+        <span>Interpolation of orientations</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Interpolating-quaternions">
+        <span class="has-mr-6">3.1</span>
+        <span>Interpolating quaternions</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Working-with-paths">
+        <span class="has-mr-6">4</span>
+        <span>Working with paths</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Path-following">
+        <span class="has-mr-6">4.1</span>
+        <span>Path following</span>
+        </a></li><li>
+        <a class="is-flex" href="#Orientation-along-a-path">
+        <span class="has-mr-6">4.2</span>
+        <span>Orientation along a path</span>
+        </a></li><li>
+        <a class="is-flex" href="#Smoothing-a-path">
+        <span class="has-mr-6">4.3</span>
+        <span>Smoothing a path</span>
+        </a></li><li>
+        <a class="is-flex" href="#Determining-a-path-along-a-surface">
+        <span class="has-mr-6">4.4</span>
+        <span>Determining a path along a surface</span>
+        </a></li><li>
+        <a class="is-flex" href="#Path-finding">
+        <span class="has-mr-6">4.5</span>
+        <span>Path finding</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Appendix-B-5">
+        <span class="has-mr-6">5</span>
+        <span>Appendix B.5</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.youtube.com/@Gdconf/videos" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">GDC</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.youtube.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.esports.net/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Esports</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.esports.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.blender.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">blender</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.blender.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://dl.acm.org/topic/ccs2012/10010147.10010371.10010352" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">acmLibrary</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dl.acm.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.physicsbasedanimation.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">physicalAnimation</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.physicsbasedanimation.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://graphics.pixar.com/research/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Pixar Studio</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">graphics.pixar.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.ubisoft.com/en-us/studio/laforge" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Ubisoft Studio</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ubisoft.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://theorangeduck.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Daniel Holden</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">theorangeduck.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.ode.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">ODE</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ode.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/NVIDIAGameWorks/PhysX/tree/4.1" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">PhysX</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/google-deepmind/mujoco" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">mujoco</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rodolphe-vaillant.fr/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">rodolphe</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rodolphe-vaillant.fr</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://arrowinmyknee.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">arrowinmyknee</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">arrowinmyknee.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.3dgep.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">3dgep</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.3dgep.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/GameProgramming/">
+            <span class="level-start">
+                <span class="level-item">GameProgramming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/GameProgramming/System/">
+            <span class="level-start">
+                <span class="level-item">System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">19</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Animation/">
+            <span class="level-start">
+                <span class="level-item">Animation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">13</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Language/">
+            <span class="level-start">
+                <span class="level-item">Language</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/">
+            <span class="level-start">
+                <span class="level-item">MachineLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">15</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
+            <span class="level-start">
+                <span class="level-item">PatternRecognition</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">15</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">41</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Calculus/">
+            <span class="level-start">
+                <span class="level-item">Calculus</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
+            <span class="level-start">
+                <span class="level-item">Numerical Analysis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Variation/">
+            <span class="level-start">
+                <span class="level-item">Variation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Paper/">
+            <span class="level-start">
+                <span class="level-item">Paper</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Paper/Human-Pose/">
+            <span class="level-start">
+                <span class="level-item">Human Pose</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Motion-Generation/">
+            <span class="level-start">
+                <span class="level-item">Motion Generation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Animation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Animation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Consolidation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Consolidation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Generation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Generation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-15T07:01:37.000Z">2023-11-15</time></div>
+                    <a href="/Graphics/Animation/Animation-C14-Skinning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C14-Skinning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-14T07:38:58.000Z">2023-11-14</time></div>
+                    <a href="/Graphics/Animation/Animation-C13-Learning-based-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C13-Learning-based-Animation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-10T08:40:44.000Z">2023-11-10</time></div>
+                    <a href="/Math/Linear-Algebra/Algebra-Summary/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algebra-Summary</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:40.000Z">2023-11-07</time></div>
+                    <a href="/Graphics/Animation/Animation-C12-Special-Models-for-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C12-Special-Models-for-Animation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
+                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">18</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">52</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">13</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPP/">
+                        <span class="tag">CPP</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Calculus/">
+                        <span class="tag">Calculus</span>
+                        <span class="tag is-grey">17</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CurveFitting-of-Sketches/">
+                        <span class="tag">CurveFitting of Sketches</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GameProgramming/">
+                        <span class="tag">GameProgramming</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Human-Pose/">
+                        <span class="tag">Human Pose</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MachineLearning/">
+                        <span class="tag">MachineLearning</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Motion-Generation/">
+                        <span class="tag">Motion Generation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Numerical-Analysis/">
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RandomForest/">
+                        <span class="tag">RandomForest</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketch-Animation/">
+                        <span class="tag">Sketch Animation</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Consolidatoin/">
+                        <span class="tag">Sketh Consolidatoin</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Facical-Generation/">
+                        <span class="tag">Sketh Facical Generation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Variation/">
+                        <span class="tag">Variation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="Animation-C3-Interpolating-Values" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

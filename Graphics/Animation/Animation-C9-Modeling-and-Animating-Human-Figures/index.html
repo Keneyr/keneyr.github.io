@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Animation-C9-Modeling-and-Animating-Human-Figures - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: Walk, Reaching and Grasping">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Animation-C9-Modeling-and-Animating-Human-Figures">
+<meta property="og:url" content="https://keneyr.com/Graphics/Animation/Animation-C9-Modeling-and-Animating-Human-Figures/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: Walk, Reaching and Grasping">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-11-07T03:10:47.000Z">
+<meta property="article:modified_time" content="2023-11-08T08:15:58.697Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Animation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="Animation-C9-Modeling-and-Animating-Human-Figures" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/Animation">Animation</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-11-07T03:10:47.000Z">2023-11-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1338 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Animation-C9-Modeling-and-Animating-Human-Figures
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: Walk, Reaching and Grasping</p>
+<a id="more"></a>
+
+<p>This is the Chapter9 ReadingNotes from book <em>Computer Animation_ Algorithms and Techniques_ Parent-Elsevier (2012)</em>.</p>
+<h2 id="Overview-of-virtual-human-representation"><a href="#Overview-of-virtual-human-representation" class="headerlink" title="Overview of virtual human representation"></a>Overview of virtual human representation</h2><h3 id="Representing-body-geometry"><a href="#Representing-body-geometry" class="headerlink" title="Representing body geometry"></a>Representing body geometry</h3><p>The vast majority of human figures are modeled using a boundary representation constructed from either polygons (often triangles) or patches (usually nonuniform rational B-splines; NURBS).</p>
+<p>If the figure is constructed for real-time display in a game on a low-end PC or gaming console, usually it will be assembled from a relatively low number of triangular polygons, which, while giving a chunky appearance to the model, can be rendered quickly.</p>
+<p>If the figure will be used in an animation that will be rendered off-line by a high-end rendering package, it might be modeled with NURBS patch data, to obtain smooth curved contours.</p>
+<h4 id="Polygonal-representations"><a href="#Polygonal-representations" class="headerlink" title="Polygonal representations"></a>Polygonal representations</h4><p>When multiple objects are used, they are generally arranged in a hierarchy of joints and rigid segments. Rotating a joint rotates all of that joint’s children (e.g., rotating a hip joint rotates all of the child’s leg segments and joints around the hip). </p>
+<p>If a single mesh is used, then rotating a joint must deform the vertices surrounding that joint, as well as rotate the vertices in the affected limb.</p>
+<h4 id="Patch-representations"><a href="#Patch-representations" class="headerlink" title="Patch representations"></a>Patch representations</h4><p>While patches can easily provide much smoother surfaces than polygons in general, it is more challenging to add localized detail to a figure without adding a great deal of more global data. Hierarchical splines provide a partial solution to this problem [21].</p>
+<h4 id="Other-representations"><a href="#Other-representations" class="headerlink" title="Other representations"></a>Other representations</h4><p>Implicit surfaces (Chapter 12.1) can be employed as sculpting material for building virtual humans. Frequently the term “metaballs” is used for spherical implicit surfaces.</p>
+<h3 id="Geometry-data-acquisition"><a href="#Geometry-data-acquisition" class="headerlink" title="Geometry data acquisition"></a>Geometry data acquisition</h3><p>Data representing a specific individual are often captured using a laser scanner or by performing image processing on video images.(三维重建)</p>
+<h3 id="Geometry-deformation"><a href="#Geometry-deformation" class="headerlink" title="Geometry deformation"></a>Geometry deformation</h3><p>Body parts are arranged in a hierarchy of joints and segments such that rotating a joint rotates all of the child segments and joints beneath it in the hierarchy [31]. While this method is quick, it yields suboptimal visual results at the joints, particularly if the body is textured, because the rigid parts merely overlap and occlude each other at the joint.</p>
+<p>When a bone rotates, the vertices move along with it [7]. Better results can be obtained, at the cost of additional computation, if the vertices surrounding a joint are weighted so that their position is affected by <strong><em>multiple</em></strong> bones [41].</p>
+<p>While weighting the effects of bone rotations on vertices results in smoother skin around joints, severe problems can still occur with extreme joint bends.<strong><em>FFDs</em></strong> have been used in this case to simulate the skin-on-skin collision and the accompanying squashing and bulging that occur when a joint such as the elbow is fully bent [13].</p>
+<p>Surface deformations that would be caused by changes in underlying material, such as muscle and fat in a real human, can be produced in a virtual human by a number of means. Methods range from those that simply allow an animator to specify muscular deformations [13] to those that require complex dynamics simulations of the various tissue layers and densities [49] [57].</p>
+<h3 id="Surface-detail"><a href="#Surface-detail" class="headerlink" title="Surface detail"></a>Surface detail</h3><p>skin, wrinkles etc.</p>
+<h3 id="Layered-approach-to-human-figure-modeling"><a href="#Layered-approach-to-human-figure-modeling" class="headerlink" title="Layered approach to human figure modeling"></a>Layered approach to human figure modeling</h3><p>A common approach to animating the human figure is to construct the figure in layers consisting of skeleton, muscles, and skin.</p>
+<p>The muscle layer implements a system of FFD lattices in which the surface geometry is embedded. The lattice is organized with two planes on each end that are responsible for maintaining continuity with adjoining lattices, and the interior planes are responsible for deforming the skin to simulate muscle bulging (Figure 9.1).</p>
+<p><img src="/images/Animation/c9/FFD.png" alt="FFD"></p>
+<p><img src="/images/Animation/c9/muscle.png" alt="muscle"></p>
+<h4 id="Rigging"><a href="#Rigging" class="headerlink" title="Rigging"></a>Rigging</h4><p>Rigging, as used here, refers to setting up interactive controls to facilitate animation of a character or other object.</p>
+<h2 id="Reaching-and-grasping"><a href="#Reaching-and-grasping" class="headerlink" title="Reaching and grasping"></a>Reaching and grasping</h2><h3 id="Modeling-the-arm"><a href="#Modeling-the-arm" class="headerlink" title="Modeling the arm"></a>Modeling the arm</h3><p><img src="/images/Animation/c9/model-arm.png" alt="model-arm"></p>
+<h3 id="The-shoulder-joint"><a href="#The-shoulder-joint" class="headerlink" title="The shoulder joint"></a>The shoulder joint</h3><h3 id="The-hand"><a href="#The-hand" class="headerlink" title="The hand"></a>The hand</h3><h3 id="Coordinated-movement"><a href="#Coordinated-movement" class="headerlink" title="Coordinated movement"></a>Coordinated movement</h3><h3 id="Reaching-around-obstacles"><a href="#Reaching-around-obstacles" class="headerlink" title="Reaching around obstacles"></a>Reaching around obstacles</h3><h3 id="Strength"><a href="#Strength" class="headerlink" title="Strength"></a>Strength</h3><h2 id="Walking"><a href="#Walking" class="headerlink" title="Walking"></a>Walking</h2><p>An aspect of walking that complicates its analysis and generation is that it is dynamically stable but not statically stable.</p>
+<h3 id="The-mechanics-of-locomotion"><a href="#The-mechanics-of-locomotion" class="headerlink" title="The mechanics of locomotion"></a>The mechanics of locomotion</h3><h4 id="Walk-cycle"><a href="#Walk-cycle" class="headerlink" title="Walk cycle"></a>Walk cycle</h4><p>The walk cycle can be broken down into various <strong><em>phases</em></strong> [11] based on the relation of the feet to their points of contact with the ground (see Figure 9.14).</p>
+<p>The <strong><em>stride</em></strong> is defined by the sequence of motions between two consecutive repetitions of a body configuration [32].</p>
+<p>The <strong><em>left stance phase</em></strong> of a stride is initiated with the right foot on the ground and the left heel just starting to strike the ground. 右脚着地，左脚跟刚开始着地</p>
+<p>The <strong><em>right swing phase</em></strong> is the period in which the right toe leaves the ground, the right leg swings forward, and the right heel strikes the ground. Notice that the right swing phase is a subinterval of the left stance phase.</p>
+<p><img src="/images/Animation/c9/walk-cycle.png" alt="walk-cycle"></p>
+<h4 id="Run-cycle"><a href="#Run-cycle" class="headerlink" title="Run cycle"></a>Run cycle</h4><p><img src="/images/Animation/c9/run-cycle.png" alt="run-cycle"></p>
+<h4 id="Pelvic-transport"><a href="#Pelvic-transport" class="headerlink" title="Pelvic transport"></a>Pelvic transport</h4><p>Figure 9.16 shows how the pelvis is supported by the stance leg at various points during the stance phase of the walk cycle. </p>
+<p>Figure 9.17 shows these positions superposed during a full stride and illustrates the abutting of two-dimensional circular arcs describing the basic path of the pelvis as it is transported by the legs.</p>
+<p><img src="/images/Animation/c9/Pelvic.png" alt="Pelvic"></p>
+<h4 id="Pelvic-rotation"><a href="#Pelvic-rotation" class="headerlink" title="Pelvic rotation"></a>Pelvic rotation</h4><p>Figure 9.18 shows the position of the pelvis during various points in the walking cycle, as viewed from above. The pelvis rotates about a vertical axis centered at the stance leg, helping to lengthen the stride as the swing leg stretches out for its new foot placement.</p>
+<p>The top of the stance leg is rotating above the point of contact with the floor (Figure 9.18), so the path of the center of the pelvis resembles a sinusoidal curve (Figure 9.19).</p>
+<h4 id="Pelvic-list"><a href="#Pelvic-list" class="headerlink" title="Pelvic list"></a>Pelvic list</h4><h3 id="The-kinematics-of-the-walk"><a href="#The-kinematics-of-the-walk" class="headerlink" title="The kinematics of the walk"></a>The kinematics of the walk</h3><p>The most basic approach to generating the walking motion is for the <u>animator</u> to specify a list of joint angle values for each DOF involved in the walk. There are various sources for empirical data describing the kinematics of various walks at various speeds.<br>There are various sources for empirical data describing the kinematics of various walks at various speeds. Figures 9.23 through 9.27.</p>
+<p>When creating new walks, the animator can specify kinematic values such as pelvic movement, foot placement, and foot trajectories. Inverse kinematics can be used to determine the angles of the intermediate joints [12].</p>
+<p>By constructing the time-space curves traced by the pelvis and each foot, the user can determine the position of each for a given frame of the animation. Each leg can then be positioned by considering the pelvis fixed and the leg a linked appendage whose desired end-effector position is the corresponding position on the foot trajectory curve (Figure 9.28).</p>
+<p><img src="/images/Animation/c9/kinematic.png" alt="kinematic"></p>
+<h3 id="Using-dynamics-to-help-produce-realistic-motion"><a href="#Using-dynamics-to-help-produce-realistic-motion" class="headerlink" title="Using dynamics to help produce realistic motion"></a>Using dynamics to help produce realistic motion</h3><p>Dynamic simulation can be used to map specified actions and constraints to make the movement more accurate <u>physically</u>.</p>
+<h3 id="Forward-dynamic-control"><a href="#Forward-dynamic-control" class="headerlink" title="Forward dynamic control"></a>Forward dynamic control</h3><p>In some cases, forward dynamic control instead of kinematic control can be effectively used. Kinematics still plays a role.</p>
+<h2 id="Coverings"><a href="#Coverings" class="headerlink" title="Coverings"></a>Coverings</h2><h3 id="Clothing"><a href="#Clothing" class="headerlink" title="Clothing"></a>Clothing</h3><p>Real-time application, such as computer games, still often use virtual humans that sport rigid body armor that merely rotates along with whatever limb it is attached to.</p>
+<p>High-end off-line animation systems are starting to offer advanced clothing simulation modules that attempt to calculate the effects of gravity as well as cloth–cloth and cloth–body collisions by using mass-spring networks or energy functions.</p>
+<h3 id="Hair"><a href="#Hair" class="headerlink" title="Hair"></a>Hair</h3><p>The most common, visually poor but computationally inexpensive technique has been to merely construct a rigid piece of geometry in the rough shape of the volume of hair and attach it to the top of the head, like a helmet, as in Figure 9.31. Texture maps with transparency information are sometimes used to improve the appearance, providing for a wispy boundary. FFDs can be used to animate the global shape of rigidly defined hair.</p>
+<p><img src="/images/Animation/c9/hair.png" alt="hair"></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Animation/" rel="tag">Animation</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Graphics/Animation/Animation-C10-Facial-Animation/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Animation-C10-Facial-Animation</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Graphics/Animation/Animation-C8-Fluids/">
+                <span class="level-item">Animation-C8-Fluids</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '0587820688479953757dc77692e666ea',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            89
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            21
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            17
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Overview-of-virtual-human-representation">
+        <span class="has-mr-6">1</span>
+        <span>Overview of virtual human representation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Representing-body-geometry">
+        <span class="has-mr-6">1.1</span>
+        <span>Representing body geometry</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Polygonal-representations">
+        <span class="has-mr-6">1.1.1</span>
+        <span>Polygonal representations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Patch-representations">
+        <span class="has-mr-6">1.1.2</span>
+        <span>Patch representations</span>
+        </a></li><li>
+        <a class="is-flex" href="#Other-representations">
+        <span class="has-mr-6">1.1.3</span>
+        <span>Other representations</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Geometry-data-acquisition">
+        <span class="has-mr-6">1.2</span>
+        <span>Geometry data acquisition</span>
+        </a></li><li>
+        <a class="is-flex" href="#Geometry-deformation">
+        <span class="has-mr-6">1.3</span>
+        <span>Geometry deformation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Surface-detail">
+        <span class="has-mr-6">1.4</span>
+        <span>Surface detail</span>
+        </a></li><li>
+        <a class="is-flex" href="#Layered-approach-to-human-figure-modeling">
+        <span class="has-mr-6">1.5</span>
+        <span>Layered approach to human figure modeling</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Rigging">
+        <span class="has-mr-6">1.5.1</span>
+        <span>Rigging</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#Reaching-and-grasping">
+        <span class="has-mr-6">2</span>
+        <span>Reaching and grasping</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Modeling-the-arm">
+        <span class="has-mr-6">2.1</span>
+        <span>Modeling the arm</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-shoulder-joint">
+        <span class="has-mr-6">2.2</span>
+        <span>The shoulder joint</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-hand">
+        <span class="has-mr-6">2.3</span>
+        <span>The hand</span>
+        </a></li><li>
+        <a class="is-flex" href="#Coordinated-movement">
+        <span class="has-mr-6">2.4</span>
+        <span>Coordinated movement</span>
+        </a></li><li>
+        <a class="is-flex" href="#Reaching-around-obstacles">
+        <span class="has-mr-6">2.5</span>
+        <span>Reaching around obstacles</span>
+        </a></li><li>
+        <a class="is-flex" href="#Strength">
+        <span class="has-mr-6">2.6</span>
+        <span>Strength</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Walking">
+        <span class="has-mr-6">3</span>
+        <span>Walking</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#The-mechanics-of-locomotion">
+        <span class="has-mr-6">3.1</span>
+        <span>The mechanics of locomotion</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Walk-cycle">
+        <span class="has-mr-6">3.1.1</span>
+        <span>Walk cycle</span>
+        </a></li><li>
+        <a class="is-flex" href="#Run-cycle">
+        <span class="has-mr-6">3.1.2</span>
+        <span>Run cycle</span>
+        </a></li><li>
+        <a class="is-flex" href="#Pelvic-transport">
+        <span class="has-mr-6">3.1.3</span>
+        <span>Pelvic transport</span>
+        </a></li><li>
+        <a class="is-flex" href="#Pelvic-rotation">
+        <span class="has-mr-6">3.1.4</span>
+        <span>Pelvic rotation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Pelvic-list">
+        <span class="has-mr-6">3.1.5</span>
+        <span>Pelvic list</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#The-kinematics-of-the-walk">
+        <span class="has-mr-6">3.2</span>
+        <span>The kinematics of the walk</span>
+        </a></li><li>
+        <a class="is-flex" href="#Using-dynamics-to-help-produce-realistic-motion">
+        <span class="has-mr-6">3.3</span>
+        <span>Using dynamics to help produce realistic motion</span>
+        </a></li><li>
+        <a class="is-flex" href="#Forward-dynamic-control">
+        <span class="has-mr-6">3.4</span>
+        <span>Forward dynamic control</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Coverings">
+        <span class="has-mr-6">4</span>
+        <span>Coverings</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Clothing">
+        <span class="has-mr-6">4.1</span>
+        <span>Clothing</span>
+        </a></li><li>
+        <a class="is-flex" href="#Hair">
+        <span class="has-mr-6">4.2</span>
+        <span>Hair</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.youtube.com/@Gdconf/videos" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">GDC</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.youtube.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.esports.net/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Esports</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.esports.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.blender.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">blender</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.blender.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://dl.acm.org/topic/ccs2012/10010147.10010371.10010352" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">acmLibrary</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dl.acm.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.physicsbasedanimation.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">physicalAnimation</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.physicsbasedanimation.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://graphics.pixar.com/research/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Pixar Studio</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">graphics.pixar.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.ubisoft.com/en-us/studio/laforge" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Ubisoft Studio</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ubisoft.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://theorangeduck.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Daniel Holden</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">theorangeduck.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.ode.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">ODE</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ode.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/NVIDIAGameWorks/PhysX/tree/4.1" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">PhysX</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/google-deepmind/mujoco" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">mujoco</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rodolphe-vaillant.fr/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">rodolphe</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rodolphe-vaillant.fr</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://arrowinmyknee.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">arrowinmyknee</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">arrowinmyknee.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.3dgep.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">3dgep</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.3dgep.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/GameProgramming/">
+            <span class="level-start">
+                <span class="level-item">GameProgramming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/GameProgramming/System/">
+            <span class="level-start">
+                <span class="level-item">System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">19</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Animation/">
+            <span class="level-start">
+                <span class="level-item">Animation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">13</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Language/">
+            <span class="level-start">
+                <span class="level-item">Language</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/">
+            <span class="level-start">
+                <span class="level-item">MachineLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">15</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
+            <span class="level-start">
+                <span class="level-item">PatternRecognition</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">15</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">41</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Calculus/">
+            <span class="level-start">
+                <span class="level-item">Calculus</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
+            <span class="level-start">
+                <span class="level-item">Numerical Analysis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Variation/">
+            <span class="level-start">
+                <span class="level-item">Variation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Paper/">
+            <span class="level-start">
+                <span class="level-item">Paper</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Paper/Human-Pose/">
+            <span class="level-start">
+                <span class="level-item">Human Pose</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Motion-Generation/">
+            <span class="level-start">
+                <span class="level-item">Motion Generation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Animation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Animation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Consolidation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Consolidation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Generation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Generation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-15T07:01:37.000Z">2023-11-15</time></div>
+                    <a href="/Graphics/Animation/Animation-C14-Skinning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C14-Skinning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-14T07:38:58.000Z">2023-11-14</time></div>
+                    <a href="/Graphics/Animation/Animation-C13-Learning-based-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C13-Learning-based-Animation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-10T08:40:44.000Z">2023-11-10</time></div>
+                    <a href="/Math/Linear-Algebra/Algebra-Summary/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algebra-Summary</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:40.000Z">2023-11-07</time></div>
+                    <a href="/Graphics/Animation/Animation-C12-Special-Models-for-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C12-Special-Models-for-Animation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
+                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">18</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">52</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">13</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPP/">
+                        <span class="tag">CPP</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Calculus/">
+                        <span class="tag">Calculus</span>
+                        <span class="tag is-grey">17</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CurveFitting-of-Sketches/">
+                        <span class="tag">CurveFitting of Sketches</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GameProgramming/">
+                        <span class="tag">GameProgramming</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Human-Pose/">
+                        <span class="tag">Human Pose</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MachineLearning/">
+                        <span class="tag">MachineLearning</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Motion-Generation/">
+                        <span class="tag">Motion Generation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Numerical-Analysis/">
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RandomForest/">
+                        <span class="tag">RandomForest</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketch-Animation/">
+                        <span class="tag">Sketch Animation</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Consolidatoin/">
+                        <span class="tag">Sketh Consolidatoin</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Facical-Generation/">
+                        <span class="tag">Sketh Facical Generation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Variation/">
+                        <span class="tag">Variation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="Animation-C9-Modeling-and-Animating-Human-Figures" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

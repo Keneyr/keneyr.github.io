@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Animation-C5-Kinematic-Linkages - QinranY&#39;s Homepage</title>
+
+
+    <meta name="description" content="Keywords: Inverse kinematics, Forward kinematics, Hierarchy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Animation-C5-Kinematic-Linkages">
+<meta property="og:url" content="https://keneyr.com/Graphics/Animation/Animation-C5-Kinematic-Linkages/index.html">
+<meta property="og:site_name" content="QinranY&#39;s Homepage">
+<meta property="og:description" content="Keywords: Inverse kinematics, Forward kinematics, Hierarchy">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-11-07T03:09:40.000Z">
+<meta property="article:modified_time" content="2023-11-13T08:48:31.915Z">
+<meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Animation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/vs2015.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/beauty.jpg" alt="Animation-C5-Kinematic-Linkages" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+                <a class="navbar-item"
+                href="/publication">Publication</a>
+                
+                <a class="navbar-item"
+                href="/projects">Projects</a>
+                
+                <a class="navbar-item"
+                href="/life">Life</a>
+                
+                <a class="navbar-item"
+                href="/work">Work</a>
+                
+                <a class="navbar-item"
+                href="/Animation">Animation</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/CV">CV</a>
+                
+                <a class="navbar-item"
+                href="/extra">Extra</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Keneyr">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-11-07T03:09:40.000Z">2023-11-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    26 minutes read (About 3915 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Animation-C5-Kinematic-Linkages
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: Inverse kinematics, Forward kinematics, Hierarchy</p>
+<a id="more"></a>
+
+<p>This is the Chapter5 ReadingNotes from book <em>Computer Animation_ Algorithms and Techniques_ Parent-Elsevier (2012)</em>.</p>
+<p><img src="/images/Animation/c5/kinematics.png" alt="kinematics"></p>
+<p>This chapter is concerned with animating objects whose motion is relative to another object, especially when there is a sequence of objects where each object’s motion can easily be described relative to the previous one. Such an object sequence forms a <strong><em>motion hierarchy</em></strong>. </p>
+<p>Often the components of the hierarchy represent objects that are physically connected and are referred to by the term linked appendages or, more simply, as <strong><em>linkages</em></strong>.</p>
+<h2 id="Hierarchical-modeling"><a href="#Hierarchical-modeling" class="headerlink" title="Hierarchical modeling"></a>Hierarchical modeling</h2><p><strong><em>Hierarchical modeling</em></strong> is the enforcement of relative location constraints among objects organized in a treelike structure.</p>
+<p>A common type of hierarchical model used in graphics has objects that are connected end to end to form multibody jointed chains. Such hierarchies are useful for modeling animals and humans so that the joints of the limbs are manipulated to produce a figure with moving appendages. Such a figure is often referred to as <strong><em>articulated</em></strong> and the movement of an appendage by changing the configuration of a joint is referred to as <strong><em>articulation</em></strong>.</p>
+<p>The robotics literature discusses the modeling of manipulators, a sequence of objects connected in a chain by <em>joints</em>. The rigid objects forming the connections between the joints are called <em>links</em>, and the free end of the chain of alternating joints and links is called the <em>end effector</em>. The local coordinate system associated with each joint is referred to as the <em>frame</em>.</p>
+<p><img src="/images/Animation/c5/dof.png" alt="dof"></p>
+<p>The joints of Figure 5.3 allow motion in one direction and are said to have one <strong><em>degree of freedom (DOF)</em></strong>. Structures in which more than one DOF are coincident are called <strong><em>complex joints</em></strong>. Complex joints include the planar joint and the ball-and-socket joint.</p>
+<h3 id="Data-structure-for-hierarchical-modeling"><a href="#Data-structure-for-hierarchical-modeling" class="headerlink" title="Data structure for hierarchical modeling"></a>Data structure for hierarchical modeling</h3><p>The mapping between the hierarchy and tree structure relates a <strong><em>node</em></strong> of the tree to information about the <strong><em>object part (the link)</em></strong> and relates an <strong><em>arc</em></strong> of the tree (the <strong><em>joint</em></strong>) to the <strong><em>transformation</em></strong> to apply to all of the nodes below it in the hierarchy.</p>
+<blockquote>
+<p>树的结点对应是人体骨骼，树的边对应是转换矩阵（关节点做origin）, T-Pose或者A-Pose状态下就是顶点在子骨骼空间的坐标–&gt;顶点在父骨骼空间坐标的转换矩阵，e.g.<br>$$<br>T_1 Link_1 = Link_0空间下的坐标<br>$$</p>
+</blockquote>
+<p>Relating a tree arc to a figure joint may seem counterintuitive, <u>but it is convenient because a node of the tree can have several arcs emanating from it, just as an object part may have several joints attached to it</u>.</p>
+<p><img src="/images/Animation/c5/datastructure.png" alt="datastructure"></p>
+<h3 id="A-simple-example"><a href="#A-simple-example" class="headerlink" title="A simple example"></a>A simple example</h3><p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C4-Vector-Spaces/#Coordinate-Systems">Coordinate Systems in Algebra &gt;&gt;</a></p>
+<p>In this example, there is assumed to be no transformation at any of the nodes; the data are defined in a position ready for articulation.（T-pose, A-pose）</p>
+<p><img src="/images/Animation/c5/still.png" alt="still"></p>
+<p>the data are defined in a position ready for articulation. $Link_0$, the root object, is transformed to its orientation and position in global space by $T_0$.<br>$$<br>T_0<br>\begin{bmatrix}<br>    1 &amp; 0  &amp; 0\\ 0 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1<br>\end{bmatrix}是Link_0的坐标基矩阵<br>\begin{bmatrix}<br>    p &amp; q<br>\end{bmatrix}<br>$$<br>Because all of the other parts of the hierarchy will be defined relative to this part, this transformation affects the entire assemblage of parts and thus will transform the position and orientation of the entire structure. This transformation can be changed over time in order to animate the position and orientation of the rigid structure. </p>
+<p>$Link_1$ is defined relative to the untransformed root object by transformation $T_1$.</p>
+<p>Similarly, $Link_{1.1}$ is defined relative to the untransformed $Link_1$ by transformation $T_{1.1}$. These relationships can be represented in a tree structure by associating the links with nodes and the transformations with arcs. </p>
+<p>In the example shown in Figure 5.8, the articulation transformations are not yet included in the model.</p>
+<blockquote>
+<p>The vertices of a particular object can be transformed to their final positions by concatenating the transformations higher up the tree and applying the composite transformation matrix to the vertices.<br>注意，是顶点，是点坐标</p>
+</blockquote>
+<p>A vertex, $V_0$, of the root object, $Link_0$, is located in the world coordinate system, $V_0’$ by applying the rigid transformation that affects the entire structure; see Equation 5.1. (顶点$V_0$在$Link_0$骨骼空间下的坐标转换成了在世界坐标系standard coordinate下的坐标$V_0’$)<br>$$<br>V_0’ = T_0 V_0<br>\tag{5.1}<br>$$<br>A vertex of the $Link_1$ object is located in the world coordinate system by transforming it first to its location relative to $Link_0$ and then relocating it (conceptually along with $Link_0$) to world space by Equation 5.2.<br>$$<br>V_1’ = T_0T_1V_1<br>\tag{5.2}<br>$$</p>
+<p><img src="/images/Animation/c5/rotation.png" alt="rotation"></p>
+<p>To locate a vertex of $Link_1$ in world space, one must <strong><em>first</em></strong> transform it via the joint rotation matrix(关节旋转矩阵). Once that is complete, <strong><em>then</em></strong> the rest of the transformations up the hierarchy are applied (see Eq. 5.4).(Figure5.9,5.10)<br>$$<br>V_1’ = T_0T_1R_1(\theta_1) V_1<br>\tag{5.4}<br>$$<br>A vertex of $Link_{1.1}$ is transformed similarly by compositing all of the transformations up the hierarchy<br>to the root, as in Equation 5.5.<br>$$<br>V_{1.1}’ = T_0T_1R_1(\theta_1) T_{1.1}R_{1.1}(\theta_{1.1})V_{1.1}<br>\tag{5.5}<br>$$<br>For example Figure5.11,5.12, in a simplified human figure, the root hip area (see Figure 5.5) might branch into the torso and two legs. If prismatic joints are used, the strategy is the same; the only difference is that the rotation transformation of the joint (arc) is replaced by a translation.</p>
+<h3 id="Local-coordinate-frames"><a href="#Local-coordinate-frames" class="headerlink" title="Local coordinate frames"></a>Local coordinate frames</h3><p>In setting up complex hierarchies and in applying computationally involved procedures such as IK, it is convenient to be able to define points in the <strong><em>local coordinate system (frame)</em></strong> associated with a joint and to have a well-defined method for converting the coordinates of a point from one frame to another. A common use for this method is to convert points defined in the frame of a joint to the global coordinate system for display purposes.</p>
+<h2 id="Forward-kinematics"><a href="#Forward-kinematics" class="headerlink" title="Forward kinematics"></a>Forward kinematics</h2><p>Traversal follows a <strong><em>depth-first pattern 深搜</em></strong> from root to leaf node. The traversal then <strong><em>backtracks up回溯</em></strong> the tree until an unexplored downward arc is encountered. </p>
+<p>The downward arc is then traversed, followed by backtracking up to find the next unexplored arc. </p>
+<p>This traversal continues until all nodes and arcs have been visited.</p>
+<blockquote>
+<p>Whenever an arc is followed down the tree hierarchy, its transformations are concatenated to the transformations of its parent node.<br>Whenever an arc is traversed back up the tree to a node, the transformation of that node must be restored before traversal continues downward.</p>
+</blockquote>
+<p>each arc has associated with it the following:</p>
+<ul>
+<li>nodePtr: A pointer to a node that holds the data to be articulated by the arc.</li>
+<li>Lmatrix: A matrix that locates the following (child) node relative to the previous (parent) node. 骨骼空间转换矩阵</li>
+<li>Amatrix: A matrix that articulates the node data; this is the matrix that is changed in order to animat (articulate) the linkage. 骨骼运动矩阵</li>
+<li>arcPtr: A pointer to a sibling arc (another child of this arc’s parent node); this is NULL if there are no more siblings.</li>
+</ul>
+<p>Each node has associated with it the following:</p>
+<ul>
+<li>dataPtr: Data (possibly shared by other nodes) that represent the geometry of this segment of the figure.</li>
+<li>Tmatrix: A matrix to transform the node data into position to be articulated (e.g., put the point of rotation at the origin).</li>
+<li>ArcPtr: A pointer to a single child arc.</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">traverse(arcPtr,matrix)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//get transformations of arc and concatenate to current matrix</span></span><br><span class="line">    matrix = matrix * arcPtr-&gt;Lmatrix <span class="comment">// concatenate location</span></span><br><span class="line">    matrix = matrix * arcPtr-&gt;Amatrix <span class="comment">// concatenate articulation</span></span><br><span class="line">    <span class="comment">// process data at node</span></span><br><span class="line">    nodePtr = arcPtr-&gt;nodePtr <span class="comment">// get the node of the arc</span></span><br><span class="line">    push(matrix) <span class="comment">// save the matrix</span></span><br><span class="line">    matrix = matrix * nodePtr-&gt;matrix <span class="comment">// ready for articulation</span></span><br><span class="line"></span><br><span class="line">    articulatedData = transformData(matrix,dataPtr) <span class="comment">// articulate the data</span></span><br><span class="line">    draw(articulatedData)<span class="comment">// // and draw it</span></span><br><span class="line"></span><br><span class="line">    matrix = pop() <span class="comment">// restore matrix for node’s children</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// process children of node</span></span><br><span class="line">    <span class="keyword">if</span> (nodePtr-&gt;arcPtr!= <span class="literal">NULL</span>) </span><br><span class="line">    &#123; </span><br><span class="line">        <span class="comment">// if not a terminal node</span></span><br><span class="line">        nextArcPtr = nodePtr-&gt;arcPtr <span class="comment">// get first arc emanating from node</span></span><br><span class="line">        <span class="keyword">while</span> (nextArcPtr != <span class="literal">NULL</span>) </span><br><span class="line">        &#123; </span><br><span class="line">            <span class="comment">// while there’s an arc to process</span></span><br><span class="line">            push(matrix) <span class="comment">// save matrix at node</span></span><br><span class="line">            traverse(nextArcPtr,matrix) <span class="comment">// traverse arc</span></span><br><span class="line">            matrix = pop() <span class="comment">// restore matrix at node</span></span><br><span class="line">            nextArcPtr = nextArcPtr-&gt;arcPtr <span class="comment">// set next child of node</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">traverse(rootArcPtr,I) <span class="comment">// ‘I’ is identity matrix</span></span><br></pre></td></tr></table></figure>
+
+<p>In a simple animation, a user may determine a key position interactively or by specifying numeric values and then interpolate the joint values between key positions. </p>
+<p>Specifying all of the joint parameter values for key positions is called forward kinematics and is an easy way to animate the figure.</p>
+<p>A completely specified set of linkage parameters, which results in positioning the hierarchical figure, are called a pose. A pose is specified by a vector (<strong><em>the pose vector</em></strong>) consisting of one parameter for each DOF.</p>
+<h2 id="Inverse-kinematics"><a href="#Inverse-kinematics" class="headerlink" title="Inverse kinematics"></a>Inverse kinematics</h2><p>In IK, the desired position and possibly orientation of the end effector are given by the user along with the initial pose vector. From this, the joint values required to attain that configuration are calculated, giving the final pose vector.</p>
+<p>If there are so many constraints on the configuration that no solution exists, the system is called <strong><em>overconstrained</em></strong>.</p>
+<p>If there are relatively few constraints on the system and there are many solutions to the problem posed, then it is <strong><em>underconstrained</em></strong>. </p>
+<p>The <strong><em>reachable workspace</em></strong> is that volume which the end effector can reach. </p>
+<p>The <strong><em>dexterous workspace</em></strong> is the volume that the end effector can reach in any orientation.</p>
+<h3 id="Solving-a-simple-system-by-analysis"><a href="#Solving-a-simple-system-by-analysis" class="headerlink" title="Solving a simple system by analysis"></a>Solving a simple system by analysis</h3><p>Assume for now (without loss of generality) that the base is at the origin. In a simple IK problem, the user gives the $(X, Y)$ coordinate of the desired position for the end effector.</p>
+<p><img src="/images/Animation/c5/IK-Analytic.png" alt="IK-Analytic"></p>
+<p>The joint angles, $\theta_1$ and $\theta_2$, can be determined by computing the distance from the base to the goal and using the law of cosines to compute the interior angles.</p>
+<p>Most linkages used in robotic applications are designed to be simple enough for this algebraic manipulation. However, for many cases that arise in computer animation, analytic solutions are not tractable. In such cases, <strong><em>iterative numeric solutions</em></strong> must be relied on.</p>
+<h3 id="The-Jacobian"><a href="#The-Jacobian" class="headerlink" title="The Jacobian"></a>The Jacobian</h3><p>At each time step, a computation is performed that determines a way to change each joint angle in order to direct the current position and orientation of the end effector toward the desired configuration. There are several methods used to compute the change in joint angle, but most involve forming the matrix of <strong>partial derivatives</strong> called the Jacobian.</p>
+<p>&#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/#Partial-Derivatives">Partial Calculus &gt;&gt;</a></p>
+<p>Given specific values for the input variables, $x_i$, each of the output variables, $y_i$, can be computed by its respective function.<br>$$<br>y_1 = f_1(x_1, x_2, x_3, \cdots, x_6)\\<br>\cdots \\<br>y_6 = f_6(x_1, x_2, x_3, \cdots, x_6)<br>\tag{5.6}<br>$$<br>The differentials of $y_i$ can be written in terms of the differentials of $x_i$ using the <u>chain rule</u>. This generates Equation 5.7.<br>$$<br>dy_i = \frac{\partial f_i}{\partial x_1} dx_1 + \cdots + \frac{\partial f_i}{\partial x_6} dx_6<br>\tag{5.7}<br>$$</p>
+<p>Equations 5.6 and 5.7 can be put in vector notation, producing Equations 5.8 and 5.9, respectively.<br>$$<br>d\pmb{Y} = \frac{\partial \pmb{F}}{\partial \pmb{X}} d \pmb{X}<br>\tag{5.8}<br>$$<br>A matrix of partial derivatives, $\frac{\partial \pmb{F}}{\partial \pmb{X}}$, is called the <strong><em>Jacobian</em></strong> and is a function of the current values of $x_i$. </p>
+<blockquote>
+<p>The Jacobian can be thought of as mapping the velocities of $\pmb{X}$ to the velocities of $\pmb{Y}$ (Eq. 5.10).<br>$$<br>\dot{\pmb{Y}} = \pmb{J(X)}\dot{\pmb{X}}<br>\tag{5.10}<br>$$</p>
+</blockquote>
+<p>When one applies the Jacobian to a linked appendage, the input variables, $x_i$, become the joint values and the output variables, $y_i$, become the end effector position and orientation (in some suitable representation such as $x-y-z$ fixed angles).<br>$$<br>\pmb{Y} = \begin{bmatrix}<br>    p_x &amp; p_y &amp; p_z &amp; \alpha_x &amp; \alpha_y &amp; \alpha_z<br>\end{bmatrix}^T<br>\tag{5.11}<br>$$<br>In this case, the Jacobian relates the velocities of the joint angles, $\dot{\theta}$, to the velocities of the end effector position and orientation, $\pmb{\dot{Y}}$ (Eq. 5.12).<br>$$<br>\pmb{V} = \pmb{\dot{Y}} = \pmb{J}(\theta) \dot{\theta}<br>\tag{5.12}<br>$$<br>where, $\pmb{V}$ is the vector of linear and rotational velocities and represents the desired change in the end effector.<br>$$<br>\pmb{V} = \begin{bmatrix}<br>    v_x &amp; v_y &amp; v_z &amp; \omega_x &amp; \omega_y &amp; \omega_z<br>\end{bmatrix}^T<br>\tag{5.13}<br>$$<br>$\pmb{J}$, the Jacobian, is a matrix that relates the two and is a function of the current pose<br>$$<br>\pmb{J} = \begin{bmatrix}<br>    \frac{\partial p_x}{\partial \theta_1} &amp; \frac{\partial p_x}{\partial \theta_2} &amp; \cdots&amp; \frac{\partial p_x}{\partial \theta_n}\\<br>    \frac{\partial p_y}{\partial \theta_1} &amp; \frac{\partial p_y}{\partial \theta_2} &amp; \cdots &amp; \frac{\partial p_y}{\partial \theta_n}\\<br>    \cdots &amp; \cdots &amp; \cdots &amp; \cdots\\<br>    \frac{\partial \alpha_z}{\partial \theta_1} &amp; \frac{\partial \alpha_z}{\partial \theta_2} &amp; \cdots &amp; \frac{\partial \alpha_z}{\partial \theta_n}<br>\end{bmatrix}<br>\tag{5.15}<br>$$</p>
+<blockquote>
+<p>Each term of the Jacobian relates the change of a specific joint to a specific change in the end effector.</p>
+</blockquote>
+<p><img src="/images/Animation/c5/J.png" alt="changes"></p>
+<p>For a revolute joint, the rotational change in the end effector, $\omega$, is merely the velocity of the joint angle about the axis of revolution at the joint under consideration. 对于一个转动关节， 末端执行器的旋转变化，$\omega$，仅仅是关节角绕转轴的速度。</p>
+<p>For a prismatic joint, the end effector orientation is unaffected by the joint articulation. 对于移动关节，末端执行器方向不受关节运动的影响。</p>
+<p>For a rotational joint, the linear change in the end effector is the cross-product of the axis of revolution and a vector from the joint to the end effector. The rotation at a rotational joint induces an instantaneous linear direction of travel at the end effector. 对于一个旋转关节，末端执行器的线性变化是旋转轴和一个从关节到末端执行器的向量的叉积。旋转关节上的旋转会在末端执行器上产生瞬时的线性运动方向。<br>For a prismatic joint, the linear change is identical to the change at the joint (see Figure 5.16). 对于移动关节，线性变化等于关节处的变化。</p>
+<p>In forming the Jacobian matrix, this information must be converted into some common coordinate system such as the global inertial (world) coordinate system or the end effector coordinate system.</p>
+<h3 id="A-simple-example-1"><a href="#A-simple-example-1" class="headerlink" title="A simple example"></a>A simple example</h3><p>In this example, the objective is to move the end effector, $E$, to the goal position, $G$. The orientation of the end effector is of no concern in this example. </p>
+<p>The axis of rotation of each joint is perpendicular to the figure, coming out of the paper. 关节的旋转轴朝向读者</p>
+<p>The effect of an incremental rotation, $g_i$, of each joint can be determined by the <u>cross-product</u> of the joint axis and the vector from the joint to the end effector, $V_i$ (Figure 5.18), and form the columns of the Jacobian.</p>
+<p><img src="/images/Animation/c5/IK-example.png" alt="IK-example"></p>
+<p>A vector of the desired change in values is set equal to the Jacobian matrix (Eq. 5.17) multiplied by a vector of the unknown values, which are the changes to the joint angles.</p>
+<p>where desired change is,<br>$$<br>V = \begin{bmatrix}<br>(G-E)_x\\<br>(G-E)_y\\<br>(G-E)_z<br>\end{bmatrix}<br>$$<br>Jacobian matrix is,<br>$$<br>J =<br>\begin{bmatrix}<br>((0,0,1) \times E)_x &amp; ((0,0,1) \times (E - P_1))_x &amp; ((0,0,1) \times (E - P_2))_x\\<br>((0,0,1) \times E)_y &amp; ((0,0,1) \times (E - P_1))_y &amp; ((0,0,1) \times (E - P_2))_y\\<br>((0,0,1) \times E)_z &amp; ((0,0,1) \times (E - P_1))_z &amp; ((0,0,1) \times (E - P_2))_z<br>\end{bmatrix}<br>\tag{1.57}<br>$$</p>
+<p>从几何意义上来求Jacobian矩阵，就是这种叉乘的做法</p>
+<h3 id="Numeric-solutions-to-IK"><a href="#Numeric-solutions-to-IK" class="headerlink" title="Numeric solutions to IK"></a>Numeric solutions to IK</h3><h4 id="Solution-using-the-inverse-Jacobian"><a href="#Solution-using-the-inverse-Jacobian" class="headerlink" title="Solution using the inverse Jacobian"></a>Solution using the inverse Jacobian</h4><p>If the inverse of the Jacobian ($J^{-1}$) does not exist, then the system is said to be <strong>singular</strong> for the given joint angles. (奇异 = 不可逆) </p>
+<p>A singularity occurs when a linear combination of the joint angle velocities cannot be formed to produce the desired end effector velocities. 大部分情况下，$J^{-1}$都是直接求不出来的</p>
+<p>$$<br>V = J\dot{\theta}<br>\tag{5.18}<br>$$</p>
+<p>$$<br>J^{-1}V = \dot{\theta}<br>\tag{5.19}<br>$$</p>
+<p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-Summary/">Inverse Matrix in Algebra &gt;&gt;</a></p>
+<p><img src="/images/Animation/c5/singular.png" alt="singular-example"></p>
+<p>As shown in Figure5.19, a change in each joint angle would produce a vector perpendicular to the desired direction. Obviously, no linear combination of these vectors could produce the desired motion vector.</p>
+<p>Problems with singularities can be reduced if the manipulator is redundant—when there are more DOF than there are constraints to be satisfied. In this case, the Jacobian is not a square matrix and, potentially, there are an infinite number of solutions to the IK problem. 自由度大于约束的时候，可以减少奇点问题, 再这种情况下，Jacobian矩阵不是方阵，对于IK问题可能会存在很多个解</p>
+<p>If the columns of $J$ are linearly independent(i.e., $J$ has full column rank, 此时$J$是一个高瘦矩阵，比如$9 \times 3$), the $(J^TJ)^{-1}$ exists and instead, the pseudoinverse, $J^{\dagger}$  an be used as in Equation 5.20.</p>
+<p>$$<br>V = J\dot{\theta}\\<br>J^TV = J^TJ\dot{\theta}\\<br>(J^TJ)^{-1}J^TV = \dot{\theta}\\<br>J^{\dagger}V = \dot{\theta}<br>\tag{5.20}<br>$$</p>
+<p>understand pseudoinverse from least squares view:</p>
+<p><img src="/images/Animation/c5/pseudoinverse.png" alt="pseudoinverse"></p>
+<blockquote>
+<p>The pseudoinverse maps the desired velocities of the end effector to the required changes of the joint angles.</p>
+</blockquote>
+<p>If the rows of $J$ are linearly independent, 此时$J$是一个矮胖矩阵，比如$3 \times 9$。<br>$$<br>J^{\dagger} = J^T(JJ^T)^{-1}<br>$$<br>&#x1F449;<a href="/Math/Numerical-Analysis/NumericalAnalysis-C2-Systems-of-Equations/#The-LU-Factorization">LU decomposition &gt;&gt;</a> can be used to solve Equation.<br>$$<br>J^{\dagger}V = \dot{\theta}\\<br>J^T(JJ^T)^{-1}V = \dot{\theta}\\<br>$$<br>first, get $\beta$ value,<br>$$<br>\beta = (JJ^T)^{-1}V<br>\tag{5.22}<br>$$<br>then get $\dot{\theta}$ value<br>$$<br>(JJ^T)\beta = V\\<br>J^T\beta = \dot{\theta}<br>\tag{5.23}<br>$$</p>
+<p>Simple &#x1F449;<a href="/Math/Numerical-Analysis/NumericalAnalysis-C6-Ordinary-Differential-Equations/#Initial-Value-Problems">Euler integration</a> can be used at this point to update the joint angles. The Jacobian has changed at the next time step, so the computation must be performed again and another step taken. This process repeats until the end effector reaches the goal configuration within some acceptable (i.e., user-defined) tolerance.</p>
+<p>通常会用&#x1F449;<a href="/Math/Numerical-Analysis/NumericalAnalysis-C4-Least-Squares/#Gauss–Newton-Method">Gaussian-Newton</a>法对应Jacobian pseudoinverse方法</p>
+<p>For example:</p>
+<p><img src="/images/Animation/c5/IK-damp.png" alt="IK-damp"></p>
+<p>Even the underconstrained case still has problems with singularities，也就是说即便使用伪逆的方法来求解，有时候计算机精度的问题，可能还是不可逆，解决这个问题可以加上damp. A proposed solution to such bad behavior is the <u>damped least-squares approach</u> [1] [2]. Referring to Equation 5.24, a user-supplied parameter is used to add in a term that reduces the sensitivity of the pseudoinverse.<br>$$<br>\dot{\theta} = J^T(JJ^T + \lambda^2I)^{-1}V<br>\tag{5.24}<br>$$</p>
+<h4 id="Adding-more-control"><a href="#Adding-more-control" class="headerlink" title="Adding more control"></a>Adding more control</h4><p>To better control the kinematic model such as <u>encouraging joint angle constraints</u>, a control expression can be added to the pseudoinverse Jacobian solution.The form for the control expression is shown in Equation 5.25.</p>
+<p>$$<br>\dot{\theta} = (J^{\dagger}J - I)z<br>\tag{5.25}<br>$$<br>In Equation 5.26 it is shown that a change to pose parameters in the form of Equation 5.25 does not add anything to the velocities.</p>
+<p>$$<br>V = J\dot{\theta}\\<br>V = J(J^{\dagger}J - I)z\\<br>V = (JJ^{\dagger}J - J)z\\<br>V = 0z\\<br>V = 0<br>\tag{5.26}<br>$$</p>
+<p>To bias the solution toward specific joint angles, such as the middle angle between joint limits, $z$ is defined as in Equation 5.27(因为关节角的转动给了一定的约束，所以要尽量的使solution偏向约束下的关节角度)<br>$$<br>z = \alpha_i(\theta_i - \theta_{ci})^2<br>\tag{5.27}<br>$$<br>where, $\theta_i$ are the current joint angles, $\theta_{ci}$ are the desired joint angles, and $\alpha_i$ are the joint gains.</p>
+<p>The desired angles and gains are input parameters. The gain indicates the relative importance of the associated desired angle; the higher the gain, the stiffer the joint 增益越高，关节越硬.If the gain for a particular joint is high, then the solution will be such that the joint angle quickly approaches the desired joint angle.</p>
+<p>The control expression is added to the conventional pseudoinverse of the Jacobian (Eq. 5.28).<br>$$<br>\dot{\theta} = J^{\dagger}V + (J^{\dagger}J - I)z<br>\tag{5.28}<br>$$</p>
+<p><img src="/images/Animation/c5/IK-control-term.png" alt="IK-control-term"></p>
+<h4 id="Alternative-Jacobian"><a href="#Alternative-Jacobian" class="headerlink" title="Alternative Jacobian"></a>Alternative Jacobian</h4><p>Instead of trying to push the end effector toward the goal position, a formulation has been proposed that pulls the goal to the end effector [1].</p>
+<h4 id="Avoiding-the-inverse-using-the-transpose-of-the-Jacobian"><a href="#Avoiding-the-inverse-using-the-transpose-of-the-Jacobian" class="headerlink" title="Avoiding the inverse: using the transpose of the Jacobian"></a>Avoiding the inverse: using the transpose of the Jacobian</h4><p>the vector of joint parameter changes is formed by multiplying the transpose of the Jacobian times the velocity vector and using a scaled version of this as the joint parameter change vector.<br>$$<br>\dot{\theta} = \alpha J^TV<br>$$<br><img src="/images/Animation/c5/transpose.png" alt="Jacobian-transpose"></p>
+<p>这也是求解优化问题的梯度下降法</p>
+<h4 id="Procedurally-determining-the-angles-cyclic-coordinate-descent-CCD"><a href="#Procedurally-determining-the-angles-cyclic-coordinate-descent-CCD" class="headerlink" title="Procedurally determining the angles: cyclic coordinate descent CCD"></a>Procedurally determining the angles: cyclic coordinate descent CCD</h4><p>Cyclic coordinate descent considers each joint one at a time, sequentially from the outermost inward [5]. At each joint, an angle is chosen that best gets the end effector to the goal position.</p>
+<p><img src="/images/Animation/c5/CCD.png" alt="CCD"></p>
+<p>CCD很简单，就是对于每个关节点都让这个关节点旋转一定角度，从而使end effector离目标点最近</p>
+<p><em>[5] Welman C. Inverse Kinematics and Geometric Constraints for Articulated Figure Manipulation. M.S. Thesis. Simon Frasier University; 1993.</em></p>
+<h2 id="Chapter-summary"><a href="#Chapter-summary" class="headerlink" title="Chapter summary"></a>Chapter summary</h2><p>numeric approach is often needed. Trade-offs among the numeric approaches include ease of implementation, possible real-time behavior, and robustness in the face of singularities. </p>
+<p>An additional approach is targeted at linkages that are specifically human-like in their DOF and heuristically solves reaching problems by trying to model human-like reaching; this is discussed in Chapter 9.</p>
+<p>IK Survey:<br><a href="http://www.andreasaristidou.com/publications/papers/IK_survey.pdf">http://www.andreasaristidou.com/publications/papers/IK_survey.pdf</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Animation/" rel="tag">Animation</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Graphics/Animation/Animation-C6-Motion-Capture/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Animation-C6-Motion-Capture</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Graphics/Animation/Animation-C4-Interpolation-Based-Animation/">
+                <span class="level-item">Animation-C4-Interpolation-Based-Animation</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '98217657e16eb1780ce3c4e6807e4445',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/images/anna.jpg" alt="Anna">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Anna
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Game Programmer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai,China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            89
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            21
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            17
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/Keneyr" target="_blank" rel="noopener">
+                Follow</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Hierarchical-modeling">
+        <span class="has-mr-6">1</span>
+        <span>Hierarchical modeling</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Data-structure-for-hierarchical-modeling">
+        <span class="has-mr-6">1.1</span>
+        <span>Data structure for hierarchical modeling</span>
+        </a></li><li>
+        <a class="is-flex" href="#A-simple-example">
+        <span class="has-mr-6">1.2</span>
+        <span>A simple example</span>
+        </a></li><li>
+        <a class="is-flex" href="#Local-coordinate-frames">
+        <span class="has-mr-6">1.3</span>
+        <span>Local coordinate frames</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Forward-kinematics">
+        <span class="has-mr-6">2</span>
+        <span>Forward kinematics</span>
+        </a></li><li>
+        <a class="is-flex" href="#Inverse-kinematics">
+        <span class="has-mr-6">3</span>
+        <span>Inverse kinematics</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Solving-a-simple-system-by-analysis">
+        <span class="has-mr-6">3.1</span>
+        <span>Solving a simple system by analysis</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Jacobian">
+        <span class="has-mr-6">3.2</span>
+        <span>The Jacobian</span>
+        </a></li><li>
+        <a class="is-flex" href="#A-simple-example-1">
+        <span class="has-mr-6">3.3</span>
+        <span>A simple example</span>
+        </a></li><li>
+        <a class="is-flex" href="#Numeric-solutions-to-IK">
+        <span class="has-mr-6">3.4</span>
+        <span>Numeric solutions to IK</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Solution-using-the-inverse-Jacobian">
+        <span class="has-mr-6">3.4.1</span>
+        <span>Solution using the inverse Jacobian</span>
+        </a></li><li>
+        <a class="is-flex" href="#Adding-more-control">
+        <span class="has-mr-6">3.4.2</span>
+        <span>Adding more control</span>
+        </a></li><li>
+        <a class="is-flex" href="#Alternative-Jacobian">
+        <span class="has-mr-6">3.4.3</span>
+        <span>Alternative Jacobian</span>
+        </a></li><li>
+        <a class="is-flex" href="#Avoiding-the-inverse-using-the-transpose-of-the-Jacobian">
+        <span class="has-mr-6">3.4.4</span>
+        <span>Avoiding the inverse: using the transpose of the Jacobian</span>
+        </a></li><li>
+        <a class="is-flex" href="#Procedurally-determining-the-angles-cyclic-coordinate-descent-CCD">
+        <span class="has-mr-6">3.4.5</span>
+        <span>Procedurally determining the angles: cyclic coordinate descent CCD</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#Chapter-summary">
+        <span class="has-mr-6">4</span>
+        <span>Chapter summary</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.youtube.com/@Gdconf/videos" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">GDC</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.youtube.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.esports.net/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Esports</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.esports.net</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.blender.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">blender</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.blender.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://dl.acm.org/topic/ccs2012/10010147.10010371.10010352" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">acmLibrary</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dl.acm.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.physicsbasedanimation.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">physicalAnimation</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.physicsbasedanimation.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://graphics.pixar.com/research/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Pixar Studio</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">graphics.pixar.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.ubisoft.com/en-us/studio/laforge" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Ubisoft Studio</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ubisoft.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://theorangeduck.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Daniel Holden</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">theorangeduck.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.ode.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">ODE</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ode.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/NVIDIAGameWorks/PhysX/tree/4.1" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">PhysX</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/google-deepmind/mujoco" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">mujoco</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rodolphe-vaillant.fr/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">rodolphe</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rodolphe-vaillant.fr</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://arrowinmyknee.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">arrowinmyknee</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">arrowinmyknee.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.3dgep.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">3dgep</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.3dgep.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/GameProgramming/">
+            <span class="level-start">
+                <span class="level-item">GameProgramming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/GameProgramming/System/">
+            <span class="level-start">
+                <span class="level-item">System</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/">
+            <span class="level-start">
+                <span class="level-item">Graphics</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">19</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Graphics/Animation/">
+            <span class="level-start">
+                <span class="level-item">Animation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">13</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/Rendering/">
+            <span class="level-start">
+                <span class="level-item">Rendering</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Language/">
+            <span class="level-start">
+                <span class="level-item">Language</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/">
+            <span class="level-start">
+                <span class="level-item">MachineLearning</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">15</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
+            <span class="level-start">
+                <span class="level-item">PatternRecognition</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">15</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Math/">
+            <span class="level-start">
+                <span class="level-item">Math</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">41</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Math/Calculus/">
+            <span class="level-start">
+                <span class="level-item">Calculus</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
+            <span class="level-start">
+                <span class="level-item">Linear Algebra</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
+            <span class="level-start">
+                <span class="level-item">Numerical Analysis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">14</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Math/Variation/">
+            <span class="level-start">
+                <span class="level-item">Variation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Paper/">
+            <span class="level-start">
+                <span class="level-item">Paper</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Paper/Human-Pose/">
+            <span class="level-start">
+                <span class="level-item">Human Pose</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Motion-Generation/">
+            <span class="level-start">
+                <span class="level-item">Motion Generation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Animation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Animation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Consolidation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Consolidation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Sketch-Generation/">
+            <span class="level-start">
+                <span class="level-item">Sketch Generation</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-15T07:01:37.000Z">2023-11-15</time></div>
+                    <a href="/Graphics/Animation/Animation-C14-Skinning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C14-Skinning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-14T07:38:58.000Z">2023-11-14</time></div>
+                    <a href="/Graphics/Animation/Animation-C13-Learning-based-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C13-Learning-based-Animation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-10T08:40:44.000Z">2023-11-10</time></div>
+                    <a href="/Math/Linear-Algebra/Algebra-Summary/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algebra-Summary</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:40.000Z">2023-11-07</time></div>
+                    <a href="/Graphics/Animation/Animation-C12-Special-Models-for-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C12-Special-Models-for-Animation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
+                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">18</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">52</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">13</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CPP/">
+                        <span class="tag">CPP</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Calculus/">
+                        <span class="tag">Calculus</span>
+                        <span class="tag is-grey">17</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CurveFitting-of-Sketches/">
+                        <span class="tag">CurveFitting of Sketches</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/GameProgramming/">
+                        <span class="tag">GameProgramming</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Geometry/">
+                        <span class="tag">Geometry</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Human-Pose/">
+                        <span class="tag">Human Pose</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linear-Algebra/">
+                        <span class="tag">Linear Algebra</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MachineLearning/">
+                        <span class="tag">MachineLearning</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Motion-Generation/">
+                        <span class="tag">Motion Generation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Numerical-Analysis/">
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RandomForest/">
+                        <span class="tag">RandomForest</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Rendering/">
+                        <span class="tag">Rendering</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketch-Animation/">
+                        <span class="tag">Sketch Animation</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Consolidatoin/">
+                        <span class="tag">Sketh Consolidatoin</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh-Facical-Generation/">
+                        <span class="tag">Sketh Facical Generation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Variation/">
+                        <span class="tag">Variation</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/beauty.jpg" alt="Animation-C5-Kinematic-Linkages" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2023 Keneyr&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+
+                <span id="busuanzi_container_site_pv" class="theme-info">
+                    | PageView: <span id="busuanzi_value_site_pv">span>
+                    </span>
+
+                
+            <br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("2/28/2020 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "The site has been running "+dnum+" days "; 
+        document.getElementById("times").innerHTML = hnum + " hours " + mnum + " minutes " + snum + " seconds"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://keneyr.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    if (windowWidth > 480) {
+      document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+    }
+</script>  
+</html>

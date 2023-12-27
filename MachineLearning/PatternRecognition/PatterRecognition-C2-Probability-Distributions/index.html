@@ -10,16 +10,16 @@
 <title>PatterRecognition-C2-Probability-Distributions - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Gaussian Distribution, The Exponential Family">
+    <meta name="description" content="Keywords: Gaussian Distribution, The Exponential Family, Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PatterRecognition-C2-Probability-Distributions">
 <meta property="og:url" content="https://keneyr.com/MachineLearning/PatternRecognition/PatterRecognition-C2-Probability-Distributions/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Gaussian Distribution, The Exponential Family">
+<meta property="og:description" content="Keywords: Gaussian Distribution, The Exponential Family, Python">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:48:48.000Z">
-<meta property="article:modified_time" content="2023-10-31T09:33:28.739Z">
+<meta property="article:modified_time" content="2023-12-27T12:33:21.232Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,7 @@
                 href="/work">Work</a>
                 
                 <a class="navbar-item"
-                href="/reading">Reading</a>
+                href="/Animation">Animation</a>
                 
                 <a class="navbar-item"
                 href="/archives">Archives</a>
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 819 words)
+                    16 minutes read (About 2457 words)
                 </span>
                 
                 
@@ -188,10 +188,10 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Gaussian Distribution, The Exponential Family</p>
+            <p><strong><em>Keywords</em></strong>: Gaussian Distribution, The Exponential Family, Python</p>
 <a id="more"></a>
 
-<p>This is the Chapter2 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>.</p>
+<p>This is the Chapter2 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>. <a href="https://github.com/Keneyr/PRML">[Code_Python]</a></p>
 <p>One role for the distributions discussed in this chapter is to model the probability distribution $p(\pmb{x})$ of a random variable $\pmb{x}$, given a finite set $\lbrace \pmb{x_1}, \cdots , \pmb{x_N} \rbrace$ of observations. This problem is known as <strong><em>density estimation</em></strong>.</p>
 <h2 id="Binary-Variables"><a href="#Binary-Variables" class="headerlink" title="Binary Variables"></a>Binary Variables</h2><p>We begin by considering a <u>single binary random variable</u> $x \in \lbrace 0,1 \rbrace$. For example, $x$ might describe the outcome of flipping a coin, with $x = 1$ representing ‘heads’, and x = 0 representing ‘tails’.</p>
 <p>The probability of $x = 1$ will be denoted by the parameter $\mu$ so that<br>$$<br>p(x=1|\mu) = \mu<br>\tag{2.1}<br>$$<br>where $0 \leq \mu \leq 1$, from which it follows that $p(x = 0|\mu) = 1 − \mu$. The probability distribution over $x$ can therefore be written in the form<br>$$<br>Bern(x | \mu) = \mu^x (1-\mu)^{1-x}<br>\tag{2.2}<br>$$<br>which is known as the <strong><em>Bernoulli distribution 伯努利分布</em></strong>.</p>
@@ -199,7 +199,7 @@
 <p>Suppose we have a data set $D = \lbrace x_1, \cdots , x_N \rbrace$ of observed values of $x$, iid, so the likelyhood function is<br>$$<br>p(D|\mu) = \prod_{n=1}^{N} p(x_n|\mu) = \prod_{n=1}^{N} \mu^{x_n} (1 - \mu)^{1-x_n}<br>\tag{2.5}<br>$$</p>
 <p>$$<br>\ln p(D|\mu) = \sum_{n=1}^{N} \ln p(x_n|\mu) = \sum_{n=1}^{N} \lbrace x_n\ln \mu + (1-x_n)\ln(1 - \mu) \rbrace<br>\tag{2.6}<br>$$</p>
 <p>If we set the <u>derivative</u> of $\ln p(D|\mu)$  with respect to $\mu$ equal to zero, we obtain the maximum likelihood estimator<br>$$<br>\mu_{ML} = \frac{1}{N}\sum_{n=1}^{N} x_n<br>\tag{2.7}<br>$$<br>which is also known as the <strong><em>sample mean</em></strong>.<br>If we denote the number of observations of $x = 1$ (heads) within this data set by $m$, then we can write (2.7) in the form<br>$$<br>\mu_{ML} = \frac{m}{N}<br>\tag{2.8}<br>$$</p>
-<p>We can also work out the distribution of the number $m$ of observations of $x = 1$, given that the data set has size $N$. This is called the <strong><em>binomial distribution 二项分布</em></strong>,<br>$$<br>Bin(m|N,\mu) = \begin{pmatrix}<br>    N\\m<br>\end{pmatrix} \mu^m (1-\mu)^{N-m}<br>\tag{2.9}<br>$$<br>$$<br>E[m] = \sum_{m=1}^N m Bin(m|N,\mu) = N\mu\tag{2.11}<br>$$<br>$$<br>var[m] = N\mu(1-\mu)<br>\tag{2.12}<br>$$<br><img src="/images/PatternRecognition/c2/bionomial-distribution.png" alt="bionomial-distribution"></p>
+<p>We can also work out <u>the distribution of the number $m$</u> of observations of $x = 1$, given that the data set has size $N$. This is called the <strong><em>binomial distribution 二项分布</em></strong>,<br>$$<br>Bin(m|N,\mu) = \begin{pmatrix}<br>    N\\m<br>\end{pmatrix} \mu^m (1-\mu)^{N-m}<br>\tag{2.9}<br>$$<br>$$<br>E[m] = \sum_{m=1}^N m Bin(m|N,\mu) = N\mu\tag{2.11}<br>$$<br>$$<br>var[m] = N\mu(1-\mu)<br>\tag{2.12}<br>$$<br><img src="/images/PatternRecognition/c2/bionomial-distribution.png" alt="bionomial-distribution"></p>
 <h3 id="The-beta-distribution"><a href="#The-beta-distribution" class="headerlink" title="The beta distribution"></a>The beta distribution</h3><p>we note that the likelihood function takes the form of the product of factors of the form $\mu^{x} (1 - \mu)^{1-x}$.</p>
 <blockquote>
 <p>If we choose a prior to be proportional to powers of $\mu$ and $(1 − \mu)$, then the posterior distribution, which is proportional to the product of the prior and the likelihood function, will have the same functional form as the prior. This property is called <strong><em>conjugacy 共轭</em></strong>.</p>
@@ -213,8 +213,60 @@
 <blockquote>
 <p>贝叶斯视角下的后验概率的均值，随着观察数据的增多，越来越趋向于最大似然数得到的结果。</p>
 </blockquote>
-<h2 id="Multinomial-Variables"><a href="#Multinomial-Variables" class="headerlink" title="Multinomial Variables"></a>Multinomial Variables</h2><h3 id="The-Dirichlet-distribution"><a href="#The-Dirichlet-distribution" class="headerlink" title="The Dirichlet distribution"></a>The Dirichlet distribution</h3><p><img src="/images/PatternRecognition/c2/Dirichlet-distribution.png" alt="Dirichlet distribution"></p>
-<h2 id="The-Gaussian-Distribution"><a href="#The-Gaussian-Distribution" class="headerlink" title="The Gaussian Distribution"></a>The Gaussian Distribution</h2><h3 id="Conditional-Gaussian-distributions"><a href="#Conditional-Gaussian-distributions" class="headerlink" title="Conditional Gaussian distributions"></a>Conditional Gaussian distributions</h3><h3 id="Marginal-Gaussian-distributions"><a href="#Marginal-Gaussian-distributions" class="headerlink" title="Marginal Gaussian distributions"></a>Marginal Gaussian distributions</h3><h3 id="Bayes’-theorem-for-Gaussian-variables"><a href="#Bayes’-theorem-for-Gaussian-variables" class="headerlink" title="Bayes’ theorem for Gaussian variables"></a>Bayes’ theorem for Gaussian variables</h3><h3 id="Maximum-likelihood-for-the-Gaussian"><a href="#Maximum-likelihood-for-the-Gaussian" class="headerlink" title="Maximum likelihood for the Gaussian"></a>Maximum likelihood for the Gaussian</h3><h3 id="Sequential-estimation"><a href="#Sequential-estimation" class="headerlink" title="Sequential estimation"></a>Sequential estimation</h3><h3 id="Bayesian-inference-for-the-Gaussian"><a href="#Bayesian-inference-for-the-Gaussian" class="headerlink" title="Bayesian inference for the Gaussian"></a>Bayesian inference for the Gaussian</h3><h3 id="Student’s-t-distribution"><a href="#Student’s-t-distribution" class="headerlink" title="Student’s t-distribution"></a>Student’s t-distribution</h3><h3 id="Periodic-variables"><a href="#Periodic-variables" class="headerlink" title="Periodic variables"></a>Periodic variables</h3><h3 id="Mixtures-of-Gaussians"><a href="#Mixtures-of-Gaussians" class="headerlink" title="Mixtures of Gaussians"></a>Mixtures of Gaussians</h3><p><img src="/images/PatternRecognition/c2/gaussian-mixture.png" alt="gaussian-mixture"></p>
+<h2 id="Multinomial-Variables"><a href="#Multinomial-Variables" class="headerlink" title="Multinomial Variables"></a>Multinomial Variables</h2><p>If we have a variable that can take $K = 6$ states and a particular observation of the variable happens to correspond to the state where $x_3 = 1$, then $\pmb{x}$ will be represented by</p>
+<p>$$<br>\pmb{x} = (0,0,1,0,0,0)^T<br>$$</p>
+<p>where, $\sum_{k=1}^{K} x_k = 1$.</p>
+<p>If we denote the probability of $x_k = 1$ by the parameter $\mu_k$, then the distribution of $\pmb{x}$ is given<br>$$<br>p(\pmb{x}|\pmb{\mu}) = \prod_{k=1}^{K} \mu_k^{x_k}<br>\tag{2.26}<br>$$<br>where, $\pmb{\mu} = (\mu_1, \cdots, \mu_K)^T$ and, $\sum_{k} \mu_k = 1$</p>
+<p>The distribution (2.26) can be regarded as a generalization of the Bernoulli distribution to more than two outcomes. It is easily seen that the distribution is normalized<br>$$<br>\sum_{\pmb{x}} p(\pmb{x}|\pmb{\mu}) = \sum_{k=1}^{K} \mu_k = 1<br>$$</p>
+<p>and</p>
+<p>$$<br>E[\pmb{x}|\pmb{\mu}] = \sum_{\pmb{x}} p(\pmb{x}|\pmb{\mu}) \pmb{x} = \pmb{\mu}<br>\tag{2.28}<br>$$</p>
+<p>By maximum likelihood, we get</p>
+<p>$$<br>\mu_k^{ML} = \frac{m_k}{N}<br>\tag{2.33}<br>$$<br>which is the fraction of the $N$ observations for which $x_k = 1$.</p>
+<p>The multinomial distribution is:<br>$$<br>Mult(m_1, m_2, \cdots, m_K | \pmb{\mu}, N) = \begin{pmatrix}N \\ m_1m_2\cdots m_K\end{pmatrix}\prod_{k=1}^{K} \mu_k^{m_k}<br>\tag{2.34}<br>$$</p>
+<h3 id="The-Dirichlet-distribution"><a href="#The-Dirichlet-distribution" class="headerlink" title="The Dirichlet distribution"></a>The Dirichlet distribution</h3><p>By inspection of the form of the multinomial distribution, we see that the conjugate prior is given by</p>
+<p>$$<br>p(\pmb{\mu}|\pmb{\alpha}) \propto \prod_{k=1}^{K} \mu_k ^{\alpha_{k}-1}<br>$$</p>
+<p>the Dirichlet distribution is:<br>$$<br>Dir(\pmb{\mu}|\pmb{\alpha}) = \frac{\Gamma{(\alpha_0)}}{\Gamma{(\alpha_1)} \cdots \Gamma{(\alpha_K)}} \prod_{k=1}^K \mu_k^{\alpha_k - 1}<br>\tag{2.38}<br>$$</p>
+<p>Multiplying the prior (2.38) by the likelihood function (2.34), we obtain the posterior distribution for the parameters ${\mu_k}$ in the form<br>$$<br>p(\pmb{\mu}|D,\pmb{alpha}) \propto p(D|\pmb{\mu}) p(\pmb{\mu}|\pmb{alpha}) \propto \prod_{k=1}^{K} \mu_k^{\alpha_k + m_k - 1}<br>\tag{2.40}<br>$$<br>We see that the posterior distribution again takes the form of a Dirichlet distribution, confirming that the Dirichlet is indeed a conjugate prior for the multinomial.</p>
+<p><img src="/images/PatternRecognition/c2/Dirichlet-distribution.png" alt="Dirichlet distribution"></p>
+<h2 id="The-Gaussian-Distribution"><a href="#The-Gaussian-Distribution" class="headerlink" title="The Gaussian Distribution"></a>The Gaussian Distribution</h2><p>For a $D$-dimensional vector $\pmb{x}$, the multivariate Gaussian distribution takes the form<br>$$<br> \mathcal{N}(\pmb{x} | \pmb{\mu}, \pmb{\Sigma}) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\pmb{\Sigma}|^{1/2}} exp \lbrace -\frac{1}{2}(\pmb{x - \mu})^T \pmb{\Sigma}^{-1}(\pmb{x-\mu}) \rbrace<br>\tag{2.43}<br>$$</p>
+<p>Gaussian distribution arises is when we consider the sum of multiple random variables. The central limit theorem (due to Laplace) tells us that, subject to certain mild conditions, the sum of a set of random variables, which is of course itself a random variable, has a distribution that becomes increasingly Gaussian as the number of terms in the sum increases (Walker, 1969).</p>
+<p>We begin by considering the <u>geometrical form of the Gaussian distribution</u>. The functional dependence of the Gaussian on $x$ is through the quadratic form (高斯函数对$x$的函数依赖性通过二次形式表现)</p>
+<p>$$<br>\Delta^2 = (\pmb{x - \mu})^T \Sigma^{-1} (\pmb{x - \mu})<br>\tag{2.44}<br>$$<br>The quantity $\Delta$ is called the <strong>Mahalanobis distance</strong> from $\pmb{\mu}$ to $\pmb{x}$ and reduces to the <u>Euclidean distance</u> when $\Sigma$ is the <u>identity matrix</u>. <strong><em>The Gaussian distribution will be constant on surfaces in x-space for which this quadratic form is constant.</em></strong></p>
+<p>The covariance matrix $\Sigma$ is a symmetric matrix, it can be expressed as an expansion in terms of its eigenvectors in the form<br>$$<br>\Sigma = \sum_{i=1}^{D} \lambda_i \pmb{u_i u_i^T}<br>\tag{2.48}<br>$$</p>
+<p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C7-Symmetric-Matrices-And-Quadratic-Forms/">More about Symmetric matrix and EigenVectors &gt;&gt;</a></p>
+<p>$$<br>\Sigma^{-1} = \sum_{i=1}^{D} \frac{1}{\lambda_i} \pmb{u_i u_i^T}<br>\tag{2.49}<br>$$<br>Substituting (2.49) into (2.44), the quadratic form becomes<br>$$<br>\Delta^2 = \sum_{i=1}^{D} \frac{y_i^2}{\lambda_i}<br>\tag{2.50}<br>$$<br>where we have defined<br>$$<br>y_i = \pmb{u_i}^T(\pmb{x-\mu})<br>\tag{2.51}<br>$$</p>
+<blockquote>
+<p>$\pmb{x^TAx} = \pmb{y^TDy}$ where, $\pmb{x = Py}$ and $\pmb{P}$ is a matrix of eigen vectors of $\pmb{A}$.</p>
+</blockquote>
+<p>We can interpret ${y_i}$ as a new coordinate system defined by the orthonormal vectors $\pmb{u_i}$ that are shifted and rotated with respect to the original $x_i$ coordinates. Forming the vector $\pmb{y} = (y_1, \cdots, y_D)^T$, we have<br>$$<br>\pmb{y = U(x-\mu)}<br>\tag{2.52}<br>$$<br><strong><em>The quadratic form, and hence the Gaussian density, will be constant on surfaces for which (2.51) is constant.</em></strong></p>
+<p>Now consider the form of the Gaussian distribution in the <u>new coordinate system defined by the $y_i$</u>.<br>In going from the $\pmb{x}$ to the $\pmb{y}$ coordinate system, we have a <strong>Jacobian matrix</strong> $J$ with elements given by<br>$$<br>J_{ij} = \frac{\partial x_i}{\partial y_j} = U_{ji}<br>\tag{2.53}<br>$$<br>thus<br>$$<br>|J|^2 = |U^T|^2 = 1<br>\tag{2.54}<br>$$<br>the determinant $|\Sigma|$ of the covariance matrix can be written as the product of its eigenvalues, and hence<br>$$<br>|\Sigma|^{1/2} = \prod_{j=1}^{D}\lambda_j^{1/2}<br>\tag{2.55}<br>$$</p>
+<p>Thus in the $y_j$ coordinate system, the Gaussian distribution takes the form<br>$$<br>p(\pmb{y}) = p(\pmb{x})|J| = \prod_{j=1}^{D} \frac{1}{(2\pi\lambda_j)^{1/2}} exp\lbrace -\frac{y_j^2}{2\lambda_j} \rbrace<br>\tag{2.56}<br>$$<br>which is the product of $D$ independent univariate Gaussian distributions. ($D$ is the dimension of the vector, like $D = 2$, $\pmb{x} = (x_1, x_2)$)</p>
+<blockquote>
+<p>The eigenvectors therefore define a new set of shifted and rotated coordinates with respect to which the joint probability distribution <u>factorizes into</u> a product of independent distributions. The integral of the distribution in the $\pmb{y}$ coordinate system is then<br>$$<br>\int p(\pmb{y}) d\pmb{y} = \prod_{j=1}^{D} \int_{-\infty}^{\infty}  \frac{1}{(2\pi\lambda_j)^{1/2}} exp\lbrace -\frac{y_j^2}{2\lambda_j} \rbrace dy_j = 1<br>\tag{2.57}<br>$$<br>where we have used the result (1.48) for the normalization of the univariate Gaussian. This confirms that the multivariate Gaussian (2.43) is indeed normalized.<br>$$<br>\int_{-\infty}^{\infty}  \mathcal{N}(x|\mu, \sigma^2) dx = 1<br>\tag{1.48}<br>$$</p>
+</blockquote>
+<p>We now look at <strong><em>the moments of the Gaussian distribution</em></strong> and thereby provide an interpretation of the parameters $\pmb{\mu}$ and $\Sigma$.</p>
+<p><a href="https://en.wikipedia.org/wiki/Moment_(mathematics)">https://en.wikipedia.org/wiki/Moment_(mathematics)</a></p>
+<p>The expectation of $\pmb{x}$ under the Gaussian distribution is given by<br>$$<br>\begin{aligned}<br>E[\pmb{x}] &amp;= \frac{1}{(2\pi)^{D/2}}\frac{1}{|\pmb{\Sigma}|^{1/2}} \int exp \lbrace -\frac{1}{2}(\pmb{x - \mu})^T \pmb{\Sigma}^{-1}(\pmb{x-\mu}) \rbrace \pmb{x} d\pmb{x}\\<br>&amp;= \frac{1}{(2\pi)^{D/2}}\frac{1}{|\pmb{\Sigma}|^{1/2}} \int exp \lbrace -\frac{1}{2}\pmb{z}^T \pmb{\Sigma}^{-1}\pmb{z} \rbrace (\pmb{z+\mu}) d\pmb{z}\\<br>&amp;= \pmb{\mu}<br>\end{aligned}<br>\tag{2.58}<br>$$<br>and so we refer to $\pmb{\mu}$ as the mean of the Gaussian distribution.</p>
+<p>We now consider <strong><em>second order moments of the Gaussian</em></strong>.(variance)</p>
+<p>In the univariate case,<br>$$<br>E[x^2] = \int_{-\infty}^{\infty} N(x|\mu, \sigma^2) x^2 dx = \mu^2 + \sigma^2<br>\tag{1.50}<br>$$<br>$$<br>var[x] = E[x^2] - E[x]^2 = \sigma^2<br>\tag{1.51}<br>$$</p>
+<p>thus, For the multivariate Gaussian<br>$$<br>\begin{aligned}<br>E[\pmb{xx^T}] &amp;= \frac{1}{(2\pi)^{D/2}}\frac{1}{|\pmb{\Sigma}|^{1/2}} \int exp \lbrace -\frac{1}{2}(\pmb{x - \mu})^T \pmb{\Sigma}^{-1}(\pmb{x-\mu}) \rbrace \pmb{xx^T} d\pmb{x}\\<br>&amp;= \frac{1}{(2\pi)^{D/2}}\frac{1}{|\pmb{\Sigma}|^{1/2}} \int exp \lbrace -\frac{1}{2}\pmb{z}^T \pmb{\Sigma}^{-1}\pmb{z} \rbrace (\pmb{z+\mu})(\pmb{z+\mu})^T d\pmb{z}\\<br>&amp;= \pmb{\mu\mu^T} + \frac{1}{(2\pi)^{D/2}}\frac{1}{|\pmb{\Sigma}|^{1/2}} \int exp \lbrace -\frac{1}{2}\pmb{z}^T \pmb{\Sigma}^{-1}\pmb{z} \rbrace \pmb{z}\pmb{z}^T d\pmb{z}\\<br>&amp;= \pmb{\mu\mu^T} + \sum_{i=1}^{D} \pmb{u_iu_i^T}\lambda_i\\<br>&amp;= \pmb{\mu\mu^T} + \Sigma<br>\end{aligned}<br>\tag{2.61}<br>$$<br>where,<br>$$<br>\begin{aligned}<br>\pmb{z} &amp;= \pmb{x-\mu}\\<br>&amp;= \sum_{j=1}^{D} y_j \pmb{u_j}<br>\end{aligned}<br>\tag{2.60}<br>$$<br>thus,<br>$$<br>cov[\pmb{x}] = \Sigma<br>\tag{2.64}<br>$$</p>
+<p><img src="/images/PatternRecognition/c2/gaussian.png" alt="Gaussian distribution"></p>
+<p>Gaussian distribution has some sever limitations:</p>
+<ol>
+<li>to many parameters, computation expensive.</li>
+<li>intrinsically unimodal(单峰), unable to provide a good approximation to multimodal distributions.</li>
+</ol>
+<p>We will see later that the introduction of <strong><em>latent variables</em></strong>, also called hidden variables or unobserved variables, allows both of these problems to be addressed.</p>
+<h3 id="Conditional-Gaussian-distributions"><a href="#Conditional-Gaussian-distributions" class="headerlink" title="Conditional Gaussian distributions"></a>Conditional Gaussian distributions</h3><p>Suppose $\pmb{x}$ is a $D$-dimensional vector with Gaussian distribution $N(\pmb{x}|\pmb{\mu}, \Sigma)$ and that we partition $\pmb{x}$ into two disjoint subsets $\pmb{x}_a$ and $\pmb{x}_b$. Without loss of generality, we can take $\pmb{x}_a$ to form the first $M$ components of $\pmb{x}$, with $\pmb{x}_b$ comprising the remaining $D−M$ components, so that</p>
+<p>$$<br>\pmb{x} = \begin{pmatrix} \pmb{x_a} \\ \pmb{x_b}\end{pmatrix}<br>\tag{2.65}<br>$$</p>
+<p>corresponding partitions of the mean vector $\pmb{\mu}$ and covariance matrix $\Sigma$ given by<br>$$<br>\pmb{\mu} = \begin{pmatrix} \pmb{\mu_a} \\ \pmb{\mu_b}\end{pmatrix}<br>\tag{2.66}<br>$$<br>$$<br>\Sigma = \begin{bmatrix} \Sigma_{aa} &amp; \Sigma_{ab} \\ \Sigma_{ba} &amp; \Sigma_{bb}\end{bmatrix}<br>\tag{2.67}<br>$$<br>where, $\Sigma^T = \Sigma$. The <strong>precision matrix</strong> $\Lambda = \Sigma^{-1}$.</p>
+<p>Conditional distribution $p(\pmb{x_a|x_b})$ will be Gaussian:<br>$$<br>\pmb{\mu_{a|b}} = \pmb{\mu_a} + \Sigma_{ab}\Sigma_{bb}^{-1}(\pmb{x_b}-\pmb{\mu_b})<br>\tag{2.81}<br>$$<br>$$<br>\Sigma_{a|b} = \Sigma_{aa} - \Sigma_{ab}\Sigma_{bb}^{-1}\Sigma_{ba}<br>\tag{2.82}<br>$$</p>
+<p>Note that the mean of the conditional distribution $p(\pmb{x_a|x_b})$, given by (2.81), is a linear function of $\pmb{x_b}$ and that the covariance, given by (2.82), is independent of $\pmb{x_a}$. This represents an example of a <strong><em>linear-Gaussian model</em></strong>.</p>
+<h3 id="Marginal-Gaussian-distributions"><a href="#Marginal-Gaussian-distributions" class="headerlink" title="Marginal Gaussian distributions"></a>Marginal Gaussian distributions</h3><p>Now we turn to a discussion of the marginal distribution given by<br>$$<br>p(\pmb{x_a}) = \int p(\pmb{x_a, x_b}) d\pmb{x_b}<br>\tag{2.83}<br>$$<br>which, as we shall see, is also Gaussian.</p>
+<p><img src="/images/PatternRecognition/c2/conditional-gaussian.png" alt="conditional Gaussian distribution"></p>
+<h3 id="Bayes’-theorem-for-Gaussian-variables"><a href="#Bayes’-theorem-for-Gaussian-variables" class="headerlink" title="Bayes’ theorem for Gaussian variables"></a>Bayes’ theorem for Gaussian variables</h3><p>Here we shall suppose that we are given a Gaussian marginal distribution $p(\pmb{x})$ and a Gaussian conditional distribution $p(\pmb{y}|\pmb{x})$ in which $p(\pmb{y}|\pmb{x})$ has a mean that is a linear function of $\pmb{x}$, and a covariance which is independent of $\pmb{x}$.</p>
+<p><img src="/images/PatternRecognition/c2/marginal-gaussians.png" alt="marginal-conditional Gaussian distribution"></p>
+<h3 id="Maximum-likelihood-for-the-Gaussian"><a href="#Maximum-likelihood-for-the-Gaussian" class="headerlink" title="Maximum likelihood for the Gaussian"></a>Maximum likelihood for the Gaussian</h3><h3 id="Sequential-estimation"><a href="#Sequential-estimation" class="headerlink" title="Sequential estimation"></a>Sequential estimation</h3><h3 id="Bayesian-inference-for-the-Gaussian"><a href="#Bayesian-inference-for-the-Gaussian" class="headerlink" title="Bayesian inference for the Gaussian"></a>Bayesian inference for the Gaussian</h3><h3 id="Student’s-t-distribution"><a href="#Student’s-t-distribution" class="headerlink" title="Student’s t-distribution"></a>Student’s t-distribution</h3><h3 id="Periodic-variables"><a href="#Periodic-variables" class="headerlink" title="Periodic variables"></a>Periodic variables</h3><h3 id="Mixtures-of-Gaussians"><a href="#Mixtures-of-Gaussians" class="headerlink" title="Mixtures of Gaussians"></a>Mixtures of Gaussians</h3><p><img src="/images/PatternRecognition/c2/gaussian-mixture.png" alt="gaussian-mixture"></p>
 <h2 id="The-Exponential-Family"><a href="#The-Exponential-Family" class="headerlink" title="The Exponential Family"></a>The Exponential Family</h2><h3 id="Maximum-likelihood-and-sufficient-statistics"><a href="#Maximum-likelihood-and-sufficient-statistics" class="headerlink" title="Maximum likelihood and sufficient statistics"></a>Maximum likelihood and sufficient statistics</h3><h3 id="Conjugate-priors"><a href="#Conjugate-priors" class="headerlink" title="Conjugate priors"></a>Conjugate priors</h3><h3 id="Noninformative-priors"><a href="#Noninformative-priors" class="headerlink" title="Noninformative priors"></a>Noninformative priors</h3><h3 id="Nonparametric-Methods"><a href="#Nonparametric-Methods" class="headerlink" title="Nonparametric Methods"></a>Nonparametric Methods</h3><h3 id="Kernel-density-estimators"><a href="#Kernel-density-estimators" class="headerlink" title="Kernel density estimators"></a>Kernel density estimators</h3><h3 id="Nearest-neighbour-methods"><a href="#Nearest-neighbour-methods" class="headerlink" title="Nearest-neighbour methods"></a>Nearest-neighbour methods</h3>
         </div>
         
@@ -361,7 +413,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            77
+                            89
                         </p>
                     </a>
                 </div>
@@ -509,12 +561,12 @@
         <ul class="menu-list">
         
             <li>
-                <a class="level is-mobile" href="https://www.3dgep.com/" target="_blank" rel="noopener">
+                <a class="level is-mobile" href="https://www.youtube.com/@Gdconf/videos" target="_blank" rel="noopener">
                     <span class="level-left">
-                        <span class="level-item">3dgep</span>
+                        <span class="level-item">GDC</span>
                     </span>
                     <span class="level-right">
-                        <span class="level-item tag">www.3dgep.com</span>
+                        <span class="level-item tag">www.youtube.com</span>
                     </span>
                 </a>
             </li>
@@ -585,6 +637,105 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="https://graphics.pixar.com/research/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Pixar Studio</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">graphics.pixar.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.ubisoft.com/en-us/studio/laforge" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Ubisoft Studio</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ubisoft.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://theorangeduck.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Daniel Holden</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">theorangeduck.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.ode.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">ODE</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.ode.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/NVIDIAGameWorks/PhysX/tree/4.1" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">PhysX</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/google-deepmind/mujoco" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">mujoco</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rodolphe-vaillant.fr/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">rodolphe</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rodolphe-vaillant.fr</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://arrowinmyknee.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">arrowinmyknee</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">arrowinmyknee.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.3dgep.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">3dgep</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.3dgep.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -605,7 +756,7 @@
                 <span class="level-item">GameProgramming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/GameProgramming/System/">
@@ -613,7 +764,7 @@
                 <span class="level-item">System</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Graphics/">
@@ -621,7 +772,7 @@
                 <span class="level-item">Graphics</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">19</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Graphics/Animation/">
@@ -629,7 +780,15 @@
                 <span class="level-item">Animation</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">13</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Graphics/Geometry/">
+            <span class="level-start">
+                <span class="level-item">Geometry</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Graphics/Rendering/">
@@ -677,7 +836,7 @@
                 <span class="level-item">Math</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">43</span>
+                <span class="level-item tag">41</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Math/Calculus/">
@@ -688,20 +847,12 @@
                 <span class="level-item tag">17</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Math/Geometry/">
-            <span class="level-start">
-                <span class="level-item">Geometry</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Linear-Algebra/">
             <span class="level-start">
                 <span class="level-item">Linear Algebra</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Math/Numerical-Analysis/">
@@ -778,7 +929,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CPP/" style="font-size: 13.33px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 15px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 13.33px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 16.67px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.33px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/MotionCaptureAnimation/" style="font-size: 10px;">MotionCaptureAnimation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.33px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 13.33px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.67px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -792,10 +943,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-03T14:48:51.000Z">2023-11-03</time></div>
-                    <a href="/Paper/Sketch-Animation/Paper-A-Method-for-Animating-Childrens-Drawings-of-the-Human-Figure/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-A-Method-for-Animating-Childrens-Drawings-of-the-Human-Figure</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-15T07:01:37.000Z">2023-11-15</time></div>
+                    <a href="/Graphics/Animation/Animation-C14-Skinning/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C14-Skinning</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch-Animation/">Sketch Animation</a>
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
                     </p>
                 </div>
             </div>
@@ -805,10 +956,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-02T08:56:49.000Z">2023-11-02</time></div>
-                    <a href="/Paper/Sketch-Animation/Paper-Live-Sketch-Video-driven-Dynamic-Deformation-of-Static-Drawings/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Live-Sketch-Video-driven-Dynamic-Deformation-of-Static-Drawings</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-14T07:38:58.000Z">2023-11-14</time></div>
+                    <a href="/Graphics/Animation/Animation-C13-Learning-based-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C13-Learning-based-Animation</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Sketch-Animation/">Sketch Animation</a>
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
                     </p>
                 </div>
             </div>
@@ -818,10 +969,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-02T08:48:29.000Z">2023-11-02</time></div>
-                    <a href="/Paper/Human-Pose/Paper-Normalized-Human-Pose-Features-for-Human-Action-Video-Alignment/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Normalized-Human-Pose-Features-for-Human-Action-Video-Alignment</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-10T08:40:44.000Z">2023-11-10</time></div>
+                    <a href="/Math/Linear-Algebra/Algebra-Summary/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algebra-Summary</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Human-Pose/">Human Pose</a>
+                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
                     </p>
                 </div>
             </div>
@@ -831,10 +982,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-02T01:07:03.000Z">2023-11-02</time></div>
-                    <a href="/Paper/Motion-Generation/Paper-Keyframe-Control-of-Music-driven-3D-Dance-Generation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Keyframe-Control-of-Music-driven-3D-Dance-Generation</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:40.000Z">2023-11-07</time></div>
+                    <a href="/Graphics/Animation/Animation-C12-Special-Models-for-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C12-Special-Models-for-Animation</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Motion-Generation/">Motion Generation</a>
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
                     </p>
                 </div>
             </div>
@@ -844,10 +995,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-10-16T08:51:25.000Z">2023-10-16</time></div>
-                    <a href="/MachineLearning/PatternRecognition/PatterRecognition-C14-Combining-Models/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PatterRecognition-C14-Combining-Models</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
+                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/MachineLearning/">MachineLearning</a> / <a class="has-link-grey -link" href="/categories/MachineLearning/PatternRecognition/">PatternRecognition</a>
+                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
                     </p>
                 </div>
             </div>
@@ -870,7 +1021,7 @@
                     <span class="level-item">November 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">18</span>
                 </span>
             </a>
         </li>
@@ -881,7 +1032,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">53</span>
+                    <span class="level-item tag">52</span>
                 </span>
             </a>
         </li>
@@ -892,7 +1043,7 @@
                     <span class="level-item">September 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
@@ -944,6 +1095,13 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Animation/">
+                        <span class="tag">Animation</span>
+                        <span class="tag is-grey">13</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/CPP/">
                         <span class="tag">CPP</span>
                         <span class="tag is-grey">3</span>
@@ -967,7 +1125,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/GameProgramming/">
                         <span class="tag">GameProgramming</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -988,7 +1146,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Linear-Algebra/">
                         <span class="tag">Linear Algebra</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1002,13 +1160,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Motion-Generation/">
                         <span class="tag">Motion Generation</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/MotionCaptureAnimation/">
-                        <span class="tag">MotionCaptureAnimation</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
