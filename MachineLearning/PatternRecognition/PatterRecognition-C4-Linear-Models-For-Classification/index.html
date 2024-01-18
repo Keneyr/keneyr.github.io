@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:49:16.000Z">
-<meta property="article:modified_time" content="2023-12-27T09:53:25.289Z">
+<meta property="article:modified_time" content="2024-01-08T09:23:47.401Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 minutes read (About 1507 words)
+                    25 minutes read (About 3767 words)
                 </span>
                 
                 
@@ -232,7 +232,84 @@
 <p>We now apply the stochastic gradient descent algorithm to this error function. The change in the weight vector $\pmb{w}$ is then given by<br>$$<br>\pmb{w}^{(\tau + 1)} = \pmb{w}^{(\tau)} - \eta \nabla E_p(\pmb{w}) = \pmb{w}^{(\tau)} + \eta \phi_n t_n<br>\tag{4.55}<br>$$</p>
 <p><img src="/images/PatternRecognition/c4/perceptron-algorithm.png" alt="perceptron algorithm"></p>
 <p>Furthermore, for data sets that are not linearly separable, the perceptron learning algorithm will never converge.</p>
-<h2 id="Probabilistic-Generative-Models"><a href="#Probabilistic-Generative-Models" class="headerlink" title="Probabilistic Generative Models"></a>Probabilistic Generative Models</h2><h3 id="Continuous-inputs"><a href="#Continuous-inputs" class="headerlink" title="Continuous inputs"></a>Continuous inputs</h3><h3 id="Maximum-likelihood-solution"><a href="#Maximum-likelihood-solution" class="headerlink" title="Maximum likelihood solution"></a>Maximum likelihood solution</h3><h3 id="Discrete-features"><a href="#Discrete-features" class="headerlink" title="Discrete features"></a>Discrete features</h3><h3 id="Exponential-family"><a href="#Exponential-family" class="headerlink" title="Exponential family"></a>Exponential family</h3><h2 id="Probabilistic-Discriminative-Models"><a href="#Probabilistic-Discriminative-Models" class="headerlink" title="Probabilistic Discriminative Models"></a>Probabilistic Discriminative Models</h2><h3 id="Fixed-basis-functions"><a href="#Fixed-basis-functions" class="headerlink" title="Fixed basis functions"></a>Fixed basis functions</h3><h3 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h3><h3 id="Iterative-reweighted-least-squares"><a href="#Iterative-reweighted-least-squares" class="headerlink" title="Iterative reweighted least squares"></a>Iterative reweighted least squares</h3><h3 id="Multiclass-logistic-regression"><a href="#Multiclass-logistic-regression" class="headerlink" title="Multiclass logistic regression"></a>Multiclass logistic regression</h3><h3 id="Probit-regression"><a href="#Probit-regression" class="headerlink" title="Probit regression"></a>Probit regression</h3><h3 id="Canonical-link-functions"><a href="#Canonical-link-functions" class="headerlink" title="Canonical link functions"></a>Canonical link functions</h3><h2 id="The-Laplace-Approximation"><a href="#The-Laplace-Approximation" class="headerlink" title="The Laplace Approximation"></a>The Laplace Approximation</h2><h3 id="Model-comparison-and-BIC"><a href="#Model-comparison-and-BIC" class="headerlink" title="Model comparison and BIC"></a>Model comparison and BIC</h3><h2 id="Bayesian-Logistic-Regression"><a href="#Bayesian-Logistic-Regression" class="headerlink" title="Bayesian Logistic Regression"></a>Bayesian Logistic Regression</h2><h3 id="Laplace-approximation"><a href="#Laplace-approximation" class="headerlink" title="Laplace approximation"></a>Laplace approximation</h3><h3 id="Predictive-distribution"><a href="#Predictive-distribution" class="headerlink" title="Predictive distribution"></a>Predictive distribution</h3>
+<h2 id="Probabilistic-Generative-Models"><a href="#Probabilistic-Generative-Models" class="headerlink" title="Probabilistic Generative Models"></a>Probabilistic Generative Models</h2><p>Here we shall adopt a generative approach in which we model the class-conditional densities $p(\pmb{x} | C_k)$, as well as the class priors $p(C_k)$, and then use these to compute posterior probabilities $p(C_k|\pmb{x})$ through Bayes’ theorem.</p>
+<p>Consider first of all the case of two classes. The posterior probability for class $C_1$ can be written as</p>
+<p>$$<br>p(C_1 | \pmb{x}) = \frac{p(\pmb{x} | C_1) p(C_1)}{p(\pmb{x} | C_1) p(C_1) + p(\pmb{x} | C_2) p(C_2)} = \frac{1}{1 + exp(-a)} = \sigma(a)<br>\tag{4.57}<br>$$</p>
+<p>where<br>$$<br>a = \ln \frac{p(\pmb{x} | C_1) p(C_1)}{p(\pmb{x} | C_2) p(C_2)}<br>\tag{4.58}<br>$$</p>
+<p>For the case of $K &gt; 2$ classes, we have</p>
+<p>$$<br>p(C_k | \pmb{x}) = \frac{p(\pmb{x} | C_k) p(C_k)}{\sum_j p(\pmb{x} | C_j) p(C_j)} = \frac{exp(a_k)}{\sum_j exp(a_j)}<br>\tag{4.62}<br>$$</p>
+<p>The normalized exponential is also known as the <strong><em>softmax function</em></strong>, as it represents a smoothed version of the ‘max’ function because, if $a_k &gt;&gt; a_j$ for all $j \neq k$, then $p(C_k|\pmb{x}) \simeq 1$, and $p(C_j|\pmb{x}) \simeq 0$.</p>
+<h3 id="Continuous-inputs"><a href="#Continuous-inputs" class="headerlink" title="Continuous inputs"></a>Continuous inputs</h3><p>Assume the class-conditional densities are Gaussian and then explore the resulting form for the posterior probabilities. The density for class $C_k$ is given by<br>$$<br>p(\pmb{x} | C_k) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\Sigma|^{1/2}} exp \lbrace -\frac{1}{2} (\pmb{x - \mu_k})^T \Sigma^{-1} \pmb{x - \mu_k}\rbrace<br>\tag{4.64}<br>$$<br>From (4.57) and (4.58), we have</p>
+<p>$$<br>p(C_1 | \pmb{x}) = \sigma(\pmb{w^T x} + w_0)<br>\tag{4.65}<br>$$<br>where we have defined<br>$$<br>\pmb{w} = \Sigma^{-1} (\pmb{\mu_1 - \mu_2})<br>\tag{4.66}<br>$$<br>$$<br>w_0 = -\frac{1}{2} \pmb{\mu_1}^T \Sigma^{-1} \pmb{\mu_1} + \frac{1}{2} \pmb{\mu_2}^T \Sigma^{-1} \pmb{\mu_2} + \ln \frac{p(C_1)}{p(C_2)}<br>\tag{4.67}<br>$$</p>
+<p>For the general case of K classes we have, from (4.62) and (4.63),</p>
+<p>$$<br>a_k(\pmb{x}) = \pmb{w_k}^T\pmb{x} + w_{k0}<br>\tag{4.68}<br>$$<br>where we have defined<br>$$<br>\pmb{w} = \Sigma^{-1} (\pmb{\mu_k})<br>\tag{4.69}<br>$$<br>$$<br>w_0 = -\frac{1}{2} \pmb{\mu_k}^T \Sigma^{-1} \pmb{\mu_k} + \ln p(C_k)<br>\tag{4.70}<br>$$</p>
+<p><img src="/images/PatternRecognition/c4/continuous-input.png" alt="continuous-input"></p>
+<h3 id="Maximum-likelihood-solution"><a href="#Maximum-likelihood-solution" class="headerlink" title="Maximum likelihood solution"></a>Maximum likelihood solution</h3><blockquote>
+<p>Once we have specified a <strong><em>parametric functional form</em></strong> for the class-conditional densities $p(\pmb{x}|C_k)$, we can then determine the values of the parameters, together with the prior class probabilities $p(C_k)$, using maximum likelihood. This requires a data set comprising observations of $x$ along with their corresponding class labels.<br>就是说现在还是最大似然函数那一套：先建模，比如用高斯去参数化model，然后点估计，最大化似然函数得到参数 $w_{ML}$</p>
+</blockquote>
+<p>Consider first the case of two classes, each having a Gaussian class-conditional density with a shared covariance matrix, and suppose we have a data set $\lbrace x_n, t_n \rbrace$ where $n = 1, \cdots , N$. Here $t_n = 1$ denotes class $C_1$ and $t_n = 0$ denotes class $C_2$. We denote the prior class probability $p(C_1) = \pi$, so that $p(C_2) = 1−\pi$. For a data point $x_n$ from class $C_1$, we have $t_n = 1$ and hence</p>
+<p>$$<br>p(x_n, C_1) = p(C_1)p(x_n | C_1) = \pi N(x_n | \mu_1, \Sigma)<br>$$<br>Thus the likelihood function is given by<br>$$<br>p(T|\pi, \mu_1, \mu_2, \Sigma) = \prod_{n=1}^{N} [\pi N(x_n | \mu_1, \Sigma)]^{t_n}[(1-\pi)N(x_n | \mu_2, \Sigma)]^{1-t_n}<br>\tag{4.71}<br>$$<br>maximum the log of likelihood function we get,<br>$$<br>\pi = \frac{N_1}{N_1 + N_2}<br>\tag{4.73}<br>$$<br>where $N_1$ denotes the total number of data points in class $C_1$, and $N_2$ denotes the total number of data points in class $C_2$.<br>$$<br>\mu_1 = \frac{1}{N_1} \sum_{n=1}^N t_n x_n<br>\tag{4.75}<br>$$<br>which is simply the mean of all the input vectors $x_n$ assigned to class $C_1$. Similar,<br>$$<br>\mu_2 = \frac{1}{N_2} \sum_{n=1}^N (1 - t_n) x_n<br>\tag{4.76}<br>$$<br>Also, we have<br>$$<br>\Sigma = S = \frac{N_1}{N} S_1 + \frac{N_2}{N} S_2<br>\tag{4.78}<br>$$<br>where<br>$$<br>S_1 = \frac{1}{N_1} \sum_{n \in C_1} (x_n - \mu_1) (x_n - \mu_1)^T<br>\tag{4.79}<br>$$<br>$$<br>S_1 = \frac{1}{N_2} \sum_{n \in C_2} (x_n - \mu_2) (x_n - \mu_2)^T<br>\tag{4.80}<br>$$</p>
+<h3 id="Discrete-features"><a href="#Discrete-features" class="headerlink" title="Discrete features"></a>Discrete features</h3><h3 id="Exponential-family"><a href="#Exponential-family" class="headerlink" title="Exponential family"></a>Exponential family</h3><h2 id="Probabilistic-Discriminative-Models"><a href="#Probabilistic-Discriminative-Models" class="headerlink" title="Probabilistic Discriminative Models"></a>Probabilistic Discriminative Models</h2><h3 id="Fixed-basis-functions"><a href="#Fixed-basis-functions" class="headerlink" title="Fixed basis functions"></a>Fixed basis functions</h3><p><img src="/images/PatternRecognition/c4/basis-space.png" alt="basis space is important"></p>
+<h3 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h3><blockquote>
+<p>In our discussion of generative approaches before, we saw that under rather general assumptions, the posterior probability of class $C_1$ can be written as a logistic sigmoid acting on a linear function of the feature vector $\phi$ so that<br>$$<br>p(C_1 | \phi) = y(\phi) = \sigma(\pmb{w^T} \phi)<br>\tag{4.87}<br>$$<br>Here $\sigma(·)$ is the logistic sigmoid function defined by (4.59). In the terminology of statistics, this model is known as <strong><em>logistic regression</em></strong>, although it should be emphasized that this is a model for classification rather than regression.<br>$$<br>\sigma(a) = \frac{1}{1 + exp(-a)}<br>\tag{4.59}<br>$$</p>
+</blockquote>
+<p><strong><em>We now use maximum likelihood to determine the parameters of the logistic regression model.</em></strong></p>
+<p>For a dataset $\lbrace \phi_n, t_n\rbrace$, where $t_n \in \lbrace 0,1\rbrace$, and $\phi_n = \phi(x_n)$, with $n = 1, \cdots, N$. The <u>likelyhood function</u> is<br>$$<br>p(T|\pmb{w}) = \prod_{n=1}^{N} y_n^{t_n} \lbrace 1 - y_n\rbrace^{1-t_n}<br>\tag{4.89}<br>$$<br>where<br>$$<br>y_n = p(C_1|\phi_n)<br>$$<br>As usual, crossentropy error function in the form<br>$$<br>\begin{aligned}<br>E(\pmb{w}) &amp;= -\ln p(T|\pmb{w}) \\<br>&amp;= -\sum_{n=1}^{N} \lbrace t_n \ln y_n + (1-t_n)\ln(1-y_n)\rbrace<br>\end{aligned}<br>\tag{4.90}<br>$$<br>where<br>$$<br>y_n = \sigma(a_n)<br>$$<br>and<br>$$<br>a_n = \pmb{w}^T\phi_n<br>$$<br>Taking the gradient of the error function with respect to $\pmb{w}$, we obtain<br>$$<br>\nabla E(\pmb{w}) = \sum_{n=1}^N (y_n - t_n)\phi_n<br>\tag{4.91}<br>$$</p>
+<p>comparison with (3.13) shows that this takes precisely the same form as the gradient of the sum-of-squares error function for the linear regression model.<br>$$<br>\nabla \ln p(T|\pmb{w},\beta) = \sum_{n=1}^N \lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace \phi(x_n)^T<br>\tag{3.13}<br>$$</p>
+<h3 id="Iterative-reweighted-least-squares"><a href="#Iterative-reweighted-least-squares" class="headerlink" title="Iterative reweighted least squares"></a>Iterative reweighted least squares</h3><blockquote>
+<p>In the case of the linear regression models discussed in Chapter 3, the maximum likelihood solution, on the assumption of a Gaussian noise model, leads to a closed-form solution. This was a consequence of the quadratic dependence of the log likelihood function on the parameter vector $w$.<br>For logistic regression, there is no longer a closed-form solution, due to the nonlinearity of the logistic sigmoid function.<br>However, the departure from a quadratic form is not substantial. To be precise, the error function is concave, as we shall see shortly, and hence has a unique minimum.<br>Furthermore, the error function can be minimized by an efficient iterative technique based on the <strong><em>Newton-Raphson iterative optimization</em></strong> scheme, which uses a local quadratic approximation to the log likelihood function.<br>$$<br>\pmb{w}^{(new)} = \pmb{w}^{(old)} - \pmb{H}^{-1} \nabla E(\pmb{w})<br>\tag{4.92}<br>$$</p>
+</blockquote>
+<p><strong><em>Here we compare logistic regression with linear regression.</em></strong></p>
+<ol>
+<li>For Linear Regression</li>
+</ol>
+<p>$$<br>E_D(\pmb{w}) = \frac{1}{2} \sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2<br>\tag{3.12}<br>$$</p>
+<p>The gradient and Hessian of this error function are given by</p>
+<p>$$<br>\nabla E(\pmb{w}) = \sum_{n=1}^{N}(\pmb{w}^T \phi_n - t_n) \phi_n = \pmb{\Phi^T\Phi w - \Phi^T T}<br>\tag{4.93}<br>$$<br>$$<br>\pmb{H} = \nabla \nabla E(\pmb{w}) = \sum_{n=1}^{N} \phi_n \phi_n^T = \pmb{\Phi^T\Phi}<br>\tag{4.94}<br>$$</p>
+<p>The Newton-Raphson update then takes the form<br>$$<br>\pmb{w}^{(new)} = \pmb{(\Phi^T \Phi)^{-1} \Phi T}<br>$$</p>
+<p><strong><em>which we recognize as the standard least-squares solution.</em></strong></p>
+<ol start="2">
+<li>For Logistic Regression</li>
+</ol>
+<p>$$<br>\nabla E(\pmb{w}) = \sum_{n=1}^N (y_n - t_n)\phi_n = \pmb{\Phi^T(y-t)}<br>\tag{4.96}<br>$$<br>$$<br>\pmb{H} = \nabla \nabla E(\pmb{w}) = \sum_{n=1}^N y_n(1-y_n)\phi_n \phi_n^T = \pmb{\Phi^TR\Phi}<br>\tag{4.97}<br>$$<br>where<br>$$<br>R_{nn} = y_n(1-y_n)<br>\tag{4.98}<br>$$<br>The Newton-Raphson update then takes the form<br>$$<br>\pmb{w}^{(new)} = \pmb{(\Phi^T R \Phi)^{-1} \Phi^T R z}<br>\tag{4.99}<br>$$<br>where<br>$$<br>\pmb{z} = \pmb{\Phi w}^{(old)} - \pmb{R^{-1}(y-T)}<br>$$</p>
+<p>Because the weighing matrix $\pmb{R}$ is not constant but depends on the parameter vector $\pmb{w}$, we must apply the normal equations iteratively, each time using the new weight vector $\pmb{w}$ to compute a revised weighing matrix $\pmb{R}$. For this reason, the algorithm is known as <strong><em>iterative reweighted least squares</em></strong>, or <em>IRLS (Rubin, 1983)</em>.</p>
+<h3 id="Multiclass-logistic-regression"><a href="#Multiclass-logistic-regression" class="headerlink" title="Multiclass logistic regression"></a>Multiclass logistic regression</h3><p>also called softmax regression. The same with two-class logistic regression.</p>
+<blockquote>
+<p>maximum likelihood function–&gt; get the error function–&gt; use Newton-Raphson iterative method –&gt; get unique minimum.</p>
+</blockquote>
+<h3 id="Probit-regression"><a href="#Probit-regression" class="headerlink" title="Probit regression"></a>Probit regression</h3><h3 id="Canonical-link-functions"><a href="#Canonical-link-functions" class="headerlink" title="Canonical link functions"></a>Canonical link functions</h3><h2 id="The-Laplace-Approximation"><a href="#The-Laplace-Approximation" class="headerlink" title="The Laplace Approximation"></a>The Laplace Approximation</h2><p>Recall Bayesian Linear Regression in Chapter3, the <u>posterior distribution</u> is still a <u>Gaussian distribution</u>, but it’s not the same with Bayesian Logistic Regression.</p>
+<p>In particular, we cannot integrate exactly over the parameter vector $\pmb{w}$ since the posterior distribution is no longer Gaussian. It is therefore necessary to introduce some form of approximation.</p>
+<p>Consider first the case of a single continuous variable $z$, and suppose the distribution $p(z)$ is defined by<br>$$<br>p(z) = \frac{1}{Z}f(z)<br>\tag{4.125}<br>$$<br>where $Z = \int f(z) dz$ is the normalization coefficient.</p>
+<blockquote>
+<p>In the Laplace method the goal is to find a Gaussian approximation $q(z)$ which is centred on a mode of the distribution $p(z)$.</p>
+</blockquote>
+<p>The first step is to find a mode of $p(z)$, in other words a point $z_0$ such that $p’(z_0) = 0$, or equivalently</p>
+<p>$$<br>\frac{d f(z)}{dz} |_{z = z_0} = 0<br>\tag{4.126}<br>$$</p>
+<p>Now we know $z_0$ is a local maximum of the distribution, so if we make a <strong><em>Taylor expansion</em></strong> of $\ln f(z)$ centered on the mode $z_0$, we get</p>
+<p>$$<br>\ln f(z) \simeq \ln f(z_0) - \frac{1}{2}A(z - z_0)^2<br>$$<br>for M-dimensional space $\pmb{z}$, we have<br>$$<br>\ln f(\pmb{z}) \simeq \ln f(\pmb{z_0}) - \frac{1}{2} \pmb{(z - z_0)}^T \pmb{A} (\pmb{z - z_0})<br>\tag{4.131}<br>$$</p>
+<p>where</p>
+<p>$$<br>A = -\frac{d^2}{dz^2} \ln f(z) | _{z = z_0}<br>$$<br>the $M \times M$ Hessian Matrix $\pmb{A}$ is<br>$$<br>\pmb{A} = - \nabla \nabla \ln f(\pmb{z}) | _{\pmb{z = z_0}}<br>\tag{4.132}<br>$$</p>
+<p>the first-order term does not appear because the first-order at $z_0$ is zero.</p>
+<p>Taking the exponential we obtain<br>$$<br>f(z) \simeq f(z_0) exp \lbrace -\frac{A}{2}(z-z_0)^2 \rbrace<br>$$<br>for vector space we get<br>$$<br>f(\pmb{z}) \simeq f(\pmb{z_0}) exp \lbrace -\frac{1}{2} \pmb{(z - z_0)}^T \pmb{A} (\pmb{z - z_0})\rbrace<br>\tag{4.133}<br>$$</p>
+<p>We can then obtain a normalized distribution $q(z)$ by making use of the standard result for the normalization of a Gaussian, so that</p>
+<p>$$<br>q(z) = (\frac{A}{2\pi})^{1/2} exp \lbrace -\frac{A}{2}(z-z_0)^2\rbrace<br>$$</p>
+<p>using the standard result (2.43) for a normalized multivariate Gaussian, giving<br>$$<br> \mathcal{N}(\pmb{x} | \pmb{\mu}, \pmb{\Sigma}) = \frac{1}{(2\pi)^{D/2}}\frac{1}{|\pmb{\Sigma}|^{1/2}} exp \lbrace -\frac{1}{2}(\pmb{x - \mu})^T \pmb{\Sigma}^{-1}(\pmb{x-\mu}) \rbrace<br>\tag{2.43}<br>$$</p>
+<p>$$<br>q(\pmb{z}) = \frac{|\pmb{A}^{1/2}|}{(2\pi)^{M/2}} exp \lbrace -\frac{1}{2} (\pmb{z - z_0})^T \pmb{A} (\pmb{z - z_0})\rbrace = N(\pmb{z} | \pmb{z_0, A^{-1}})<br>\tag{4.134}<br>$$</p>
+<p>This Gaussian distribution will be well defined provided its precision matrix, given by $\pmb{A}$, is positive definite, which implies<br>that the stationary point $\pmb{z_0}$ must be a local maximum, not a minimum or a saddle point. (&#x1F449;<a href="/Math/Calculus/Calculus-C4-Applications-of-Derivatives/#Concavity-and-Curve-Sketching">Recall Extrema in Calculus &gt;&gt;</a>)</p>
+<p><img src="/images/PatternRecognition/c4/laplace-approximation.png" alt="laplace-approximation"></p>
+<h3 id="Model-comparison-and-BIC"><a href="#Model-comparison-and-BIC" class="headerlink" title="Model comparison and BIC"></a>Model comparison and BIC</h3><p>As well as approximating the distribution $p(\pmb{z})$ we can also obtain an approximation to the normalization constant $Z$. Using the approximation (4.133) we have</p>
+<p>$$<br>\begin{aligned}<br>Z &amp;= \int f(\pmb{z}) d\pmb{z} \\<br>&amp; \simeq f(\pmb{z_0}) \int exp \lbrace -\frac{1}{2} \pmb{(z - z_0)}^T \pmb{A} (\pmb{z - z_0})\rbrace d\pmb{z} \\<br>&amp;= f(\pmb{z_0}) \frac{(2\pi)^{M/2}}{|\pmb{A}|^{1/2}}<br>\end{aligned}<br>\tag{4.135}<br>$$</p>
+<h2 id="Bayesian-Logistic-Regression"><a href="#Bayesian-Logistic-Regression" class="headerlink" title="Bayesian Logistic Regression"></a>Bayesian Logistic Regression</h2><h3 id="Laplace-approximation"><a href="#Laplace-approximation" class="headerlink" title="Laplace approximation"></a>Laplace approximation</h3><p>Because we seek a Gaussian representation for the posterior distribution, it is natural to begin with a Gaussian prior, which we write in the general form<br>$$<br>p(\pmb{w}) = N(\pmb{w} | \pmb{m_0, S_0})<br>\tag{4.140}<br>$$</p>
+<p>The posterior distribution over $\pmb{w}$ is given by</p>
+<p>$$<br>p(\pmb{w | t}) \propto p(\pmb{w}) p(\pmb{t | w})<br>\tag{4.141}<br>$$<br>where $\pmb{t} = (t_1, \cdots , \pmb{t_N})^T$.</p>
+<p>(4.140) and (4.89), take the log of both sides, we get<br>$$<br>\ln p(\pmb{w|t}) = -\frac{1}{2}(\pmb{w - m_0})^T \pmb{S_0}^{-1} (\pmb{w - m_0}) + \sum_{n=1}^{N} \lbrace t_n \ln y_n + (1 - t_n) \ln (1-y_n)\rbrace + const<br>\tag{4.142}<br>$$</p>
+<p>where $y_n = \sigma(\pmb{w}^T \phi_n)$</p>
+<blockquote>
+<p>To obtain a Gaussian approximation to the posterior distribution, we first maximize the posterior distribution to give the MAP (maximum posterior) solution $\pmb{w_{MAP}}$, which defines the mean of the Gaussian.<br>The covariance is then given by the inverse of the matrix of second derivatives of the negative log likelihood, which takes the form<br>$$<br>\pmb{S_N} = - \nabla \nabla \ln p(\pmb{w|t}) = \pmb{S_0}^{-1} + \sum_{n=1}^{N} y_n(1-y_n)\phi_n \phi_n^T<br>\tag{4.143}<br>$$<br>The Gaussian approximation to the posterior distribution therefore takes the form<br>$$<br>q(\pmb{w}) = N(\pmb{w} | \pmb{w_{MAP}, S_N})<br>\tag{4.144}<br>$$</p>
+</blockquote>
+<h3 id="Predictive-distribution"><a href="#Predictive-distribution" class="headerlink" title="Predictive distribution"></a>Predictive distribution</h3><p>The predictive distribution for class $C_1$, is<br>$$<br>p(C_1 | \phi, \pmb{t}) = \int p(C_1 | \phi, \pmb{w}) p(\pmb{w|t}) d\pmb{w} \simeq \int \sigma(\pmb{w}^T \phi) q(\pmb{w}) d\pmb{w}<br>\tag{4.145}<br>$$<br>…</p>
+<p>we get<br>$$<br>p(C_1 | \phi, \pmb{t}) = \sigma(\kappa(\sigma_a^2)\mu_a)<br>\tag{4.155}<br>$$<br>where<br>$$<br>\kappa (\sigma^2) = (1 + \pi \sigma^2 / 8)^{-1/2}<br>\tag{4.154}<br>$$<br>$$<br>\mu_a = \pmb{w}_{MAP}^T \phi<br>\tag{4.149}<br>$$<br>$$<br>\sigma_a^2 = \phi^T \pmb{S_N} \phi<br>\tag{4.150}<br>$$</p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -390,7 +467,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            21
+                            22
                         </p>
                     </a>
                 </div>
@@ -597,28 +674,6 @@
             </li>
         
             <li>
-                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">excellentMathBooks</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">www.library.fudan.edu.cn</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">Probability Model</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">dpkingma.com</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
                 <a class="level is-mobile" href="https://graphics.pixar.com/research/" target="_blank" rel="noopener">
                     <span class="level-left">
                         <span class="level-item">Pixar Studio</span>
@@ -717,6 +772,39 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">DeepLearningBook</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.deeplearningbook.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -732,6 +820,30 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/CS/">
+            <span class="level-start">
+                <span class="level-item">CS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/CS/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CS/Algorithms/">
+            <span class="level-start">
+                <span class="level-item">Algorithms</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/GameProgramming/">
             <span class="level-start">
                 <span class="level-item">GameProgramming</span>
@@ -780,28 +892,12 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Language/">
-            <span class="level-start">
-                <span class="level-item">Language</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
-            <span class="level-start">
-                <span class="level-item">Advanced CPP</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/MachineLearning/">
             <span class="level-start">
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
@@ -809,7 +905,7 @@
                 <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -910,7 +1006,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -919,6 +1015,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-12-28T04:27:50.000Z">2023-12-28</time></div>
+                    <a href="/CS/Algorithms/Algorithms-C1-Foundations/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algorithms-C1-Foundations</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CS/">CS</a> / <a class="has-link-grey -link" href="/categories/CS/Algorithms/">Algorithms</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -972,19 +1081,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
-                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -995,6 +1091,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/11/">
@@ -1013,7 +1120,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">52</span>
+                    <span class="level-item tag">51</span>
                 </span>
             </a>
         </li>
@@ -1074,6 +1181,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithms/">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Animation/">
@@ -1153,13 +1267,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/RandomForest/">
-                        <span class="tag">RandomForest</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/Rendering/">
                         <span class="tag">Rendering</span>
                         <span class="tag is-grey">3</span>
@@ -1220,7 +1327,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Keneyr&nbsp;
+                &copy; 2024 Keneyr&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 

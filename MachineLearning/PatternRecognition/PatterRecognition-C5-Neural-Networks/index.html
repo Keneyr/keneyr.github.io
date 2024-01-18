@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:49:29.000Z">
-<meta property="article:modified_time" content="2023-12-27T09:53:31.666Z">
+<meta property="article:modified_time" content="2024-01-10T11:31:50.737Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    30 minutes read (About 4483 words)
+                    39 minutes read (About 5878 words)
                 </span>
                 
                 
@@ -201,7 +201,7 @@
 <ul>
 <li><strong>For regression</strong>. we use linear outputs and a sum-of-squares error.<br>$$<br>E(\pmb{w}) = \frac{1}{2}\sum_{n=1}^{N}\lbrace y(x_n, \pmb{w}) - t_n\rbrace^2<br>\tag{5.14}<br>$$</li>
 <li><strong>for (multiple independent) binary classifications</strong>. we use logistic sigmoid outputs and a cross-entropy error function.<br>$$<br>y = \sigma(a) = \frac{1}{1 + exp(-a)}<br>\tag{5.19}<br>$$<br>$$<br>E(\pmb{w}) = -\sum_{n=1}^{N}\lbrace t_n\ln y_n + (1-t_n)\ln(1-y_n)\rbrace, t_n = 0,1<br>\tag{5.21}<br>$$<br>If we have $K$ separate binary classifications to perform, then we can use a network having $K$ outputs each of which has a logistic sigmoid activation function. Associated with each output is a binary class label $t_k \in {0, 1}$, where $k = 1, . . . , K$.<br>$$<br>E(\pmb{w}) = -\sum_{n=1}^{N}\sum_{k=1}^{K} \lbrace t_{nk}\ln y_{nk} + (1 - t_{nk})\ln (1-y_{nk})\rbrace<br>\tag{5.23}<br>$$</li>
-<li><strong>for multiclass classification</strong>. we use softmax outputs with the corresponding multiclass cross-entropy error function.<br>$$<br>y_k(x,\pmb{w}) = \frac{exp(a_k(\pmb{w, w}))}{\sum_j exp(a_j(\pmb{x,w}))}<br>\tag{5.25}<br>$$<br>$$<br>E(\pmb{w}) = -\sum_{n=1}^{N}\sum_{k=1}^{K} t_{nk} \ln y_k(x_n, \pmb{w})<br>\tag{5.24}<br>$$</li>
+<li><strong>for multiclass classification</strong>. we use softmax outputs with the corresponding multiclass cross-entropy error function.<br>$$<br>y_k(x,\pmb{w}) = \frac{exp(a_k(\pmb{x, w}))}{\sum_j exp(a_j(\pmb{x,w}))}<br>\tag{5.25}<br>$$<br>$$<br>E(\pmb{w}) = -\sum_{n=1}^{N}\sum_{k=1}^{K} t_{nk} \ln y_k(x_n, \pmb{w})<br>\tag{5.24}<br>$$</li>
 <li><strong>For classification problems involving two classes</strong>. we can use a single logistic sigmoid output, or alternatively we can use a network with two outputs having a softmax output activation function.</li>
 </ul>
 <h3 id="Parameter-optimization"><a href="#Parameter-optimization" class="headerlink" title="Parameter optimization"></a>Parameter optimization</h3><p><img src="/images/PatternRecognition/c5/error-surface.png" alt="error surface"></p>
@@ -216,7 +216,11 @@
 <p>$$<br>(\pmb{H})_{ij} = \frac{\partial E}{\partial w_i \partial w_j} |_{\pmb{w = \hat{w}}}<br>\tag{5.30}<br>$$<br>From (5.28), the corresponding local approximation to the gradient is given by<br>$$<br>\nabla E \simeq \pmb{b} + \pmb{H}(\pmb{w - \hat{w}})<br>\tag{5.31}<br>$$</p>
 <p>Consider the particular case of a local quadratic approximation around a point $\pmb{w^{\ast}}$ that is a minimum of the error function. In this case there is no linear term, because $\nabla E = 0$ at $\pmb{w^{\ast}}$, and (5.28) becomes<br>$$<br>E(\pmb{w}) = E(\pmb{w\ast}) + \frac{1}{2}(\pmb{w-w^{\ast}})^T\pmb{H}(\pmb{w-w^{\ast}})<br>\tag{5.32}<br>$$<br>where the Hessian $\pmb{H}$ is evaluated at $\pmb{w^{\ast}}$.</p>
 <p>Consider the eigenvalue equation for Hessian Matrix:</p>
-<p>$$<br>\pmb{Hu_i} = \lambda_i \pmb{u_i}<br>\tag{5.33}<br>$$<br>where the eigenvectors $\pmb{u_i}$ form a complete orthonormal set so that<br>$$<br>\pmb{u_i^Tu_j} = \sigma_{ij}<br>\tag{5.34}<br>$$<br>We now expand $(\pmb{w − w^{\ast}})$ as a linear combination of the eigenvectors in the form<br>$$<br>\pmb{w-w^{\ast}} = \sum_i \alpha_i \pmb{u_i}<br>\tag{5.35}<br>$$<br>This can be regarded as a transformation of the coordinate system in which the origin is translated to the point $\pmb{w^{\ast}}$, and the axes are rotated to align with the eigenvectors.</p>
+<p>$$<br>\pmb{Hu_i} = \lambda_i \pmb{u_i}<br>\tag{5.33}<br>$$<br>where the eigenvectors $\pmb{u_i}$ form a complete orthonormal set so that<br>$$<br>\pmb{u_i^Tu_j} = \sigma_{ij}<br>\tag{5.34}<br>$$<br>We now expand $(\pmb{w − w^{\ast}})$ as a linear combination of the eigenvectors in the form<br>$$<br>\pmb{w-w^{\ast}} = \sum_i \alpha_i \pmb{u_i}<br>\tag{5.35}<br>$$</p>
+<blockquote>
+<p>Recall $x = Py$, $x^T A x = y^T D y$, columns of $P$ are the eigen vectors of $A$, $D$ is a diagonal matrix with eigen values.</p>
+</blockquote>
+<p>This can be regarded as a transformation of the coordinate system in which the origin is translated to the point $\pmb{w^{\ast}}$, and the axes are rotated to align with the eigenvectors.</p>
 <p>Substituting (5.35) into (5.32), and using (5.33) and (5.34), allows the error function to be written in the form<br>$$<br>E(\pmb{w}) = E(\pmb{w^{\ast}}) + \frac{1}{2}\sum_i \lambda_i \alpha_i^2<br>\tag{5.36}<br>$$<br>A matrix $\pmb{H}$ is said to be positive definite if, and only if,<br>$$<br>\pmb{v^THv} &gt; 0, for-all-\pmb{v}<br>\tag{5.37}<br>$$<br>Because the eigenvectors $\lbrace \pmb{u_i} \rbrace$ form a complete set, an arbitrary vector $\pmb{v}$ can be written in the form</p>
 <p>$$<br>\pmb{v} = \sum_i c_i \pmb{u_i}<br>\tag{5.38}<br>$$</p>
 <p>From (5.33) and (5.34), we then have<br>$$<br>\pmb{v^THv} = \sum_i c_i^2 \lambda_i<br>\tag{5.39}<br>$$</p>
@@ -229,16 +233,35 @@
 <p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C7-Symmetric-Matrices-And-Quadratic-Forms/">More about Positive Definite in Algebra &gt;&gt;</a></p>
 <h3 id="Use-of-gradient-information"><a href="#Use-of-gradient-information" class="headerlink" title="Use of gradient information"></a>Use of gradient information</h3><h3 id="Gradient-descent-optimization"><a href="#Gradient-descent-optimization" class="headerlink" title="Gradient descent optimization"></a>Gradient descent optimization</h3><p>The simplest approach to using gradient information is to choose the weight update in (5.27) to comprise a small step in the direction of the negative gradient, so that</p>
 <p>$$<br>\pmb{w}^{\tau + 1} = \pmb{w}^{(\tau)} - \eta \nabla E(\pmb{w}^{(\tau)})<br>\tag{5.41}<br>$$<br>where the parameter $\eta &gt; 0$ is known as the <strong><em>learning rate</em></strong>.</p>
-<p><strong>For batch optimization</strong>, there are more efficient methods, such as <u>conjugate gradients</u> and <u>quasi-Newton methods</u>, which are much more robust and much faster than simple gradient descent.<br>Unlike gradient descent, these algorithms have the property that the error function always decreases at each iteration unless the weight vector has arrived at a local or global minimum.</p>
-<p>There is, however, an <strong>on-line version</strong> of gradient descent that has proved useful in practice for training neural networks on large data sets</p>
+<p><strong>For batch optimization (Techniques that use the whole data set at once are called batch methods)</strong>, there are more efficient methods, such as <u>conjugate gradients</u> and <u>quasi-Newton methods</u>, which are much more robust and much faster than simple gradient descent.<br>Unlike gradient descent, these algorithms have the property that the error function always decreases at each iteration unless the weight vector has arrived at a local or global minimum.</p>
+<p>There is, however, an <strong>on-line version</strong> of gradient descent that has proved useful in practice for training neural networks on large data sets. On-line gradient descent, also known as <strong><em>sequential gradient descent</em></strong> or <strong><em>stochastic gradient descent</em></strong>, makes an update to the weight vector based on one data point at a time, so that</p>
+<p>$$<br>\pmb{w}^{\tau + 1} = \pmb{w}^{\tau} - \eta \nabla E_n(\pmb{w}^{(\tau)})<br>\tag{5.43}<br>$$</p>
+<blockquote>
+<ol>
+<li>One advantage of on-line methods compared to batch methods is that the former handle redundancy in the data much more efficiently.</li>
+<li>Another property of on-line gradient descent is the possibility of escaping from local minima, since a stationary point with respect to the error function for the whole data set will generally not be a stationary point for each data point individually.</li>
+</ol>
+</blockquote>
 <h2 id="Error-Backpropagation"><a href="#Error-Backpropagation" class="headerlink" title="Error Backpropagation"></a>Error Backpropagation</h2><h3 id="Evaluation-of-error-function-derivatives"><a href="#Evaluation-of-error-function-derivatives" class="headerlink" title="Evaluation of error-function derivatives"></a>Evaluation of error-function derivatives</h3><p>Consider first a simple linear model in which the outputs $y_k$ are linear combinations of the input variables $x_i$ so that<br>$$<br>y_k = \sum_i w_{ki}x_i<br>\tag{5.45}<br>$$<br>together with an error function that, for a particular input pattern $n$, takes the form<br>$$<br>E_n = \frac{1}{2}\sum_k (y_{nk} - t_{nk})^2, y_{nk} = y_k(x_n, \pmb{w})<br>\tag{5.46}<br>$$<br>The gradient of this error function with respect to a weight $w_{ji}$ is given by<br>$$<br>\frac{\partial E_n}{\partial w_{ji}} = (y_{nj}-t_{nj})x_{ni}<br>\tag{5.47}<br>$$<br>which can be interpreted as a ‘local’ computation involving the product of an ‘error signal’ $y_{nj} − t_{nj}$ associated with the output end of the link $w_{ji}$ and the variable $x_{ni}$ associated with the input end of the link.</p>
 <p>In a general feed-forward network, each unit computes a weighted sum of its inputs of the form<br>$$<br>a_j = \sum_i w_{ji}z_i<br>\tag{5.48}<br>$$<br>where $z_i$ is the activation of a unit, or input, that sends a connection to unit $j$, and $w_{ji}$ is the weight associated with that connection.</p>
-<p>The sum in (5.48) is transformed by a nonlinear activation function $h(\cdot)$ to give the activation $z_j$ of unit $j$ in the form<br>$$<br>z_j  = h(a_j)<br>\tag{5.49}<br>$$<br>We can therefore apply the &#x1F449;<a href="/Math/Calculus/Calculus-C3-Derivatives/#The-Chaine-Rule">chain rule &gt;&gt;</a> for partial derivatives to give<br>$$<br>\frac{\partial E_n}{\partial w_{ji}} = \frac{\partial E_n}{\partial a_j} \frac{\partial a_j}{\partial w_{ji}}<br>\tag{5.50}<br>$$<br>let $\delta_j$ be errors,<br>$$<br>\delta_j = \frac{\partial E_n}{\partial a_j}<br>\tag{5.51}<br>$$<br>By equation(5.48), we get<br>$$<br>\frac{\partial a_j}{\partial w_{ji}} = z_i<br>\tag{5.52}<br>$$<br>Substituting (5.51) and (5.52) into(5.50), we obtain<br>$$<br>\frac{\partial E_n}{\partial w_{ji}} = \delta_j z_i<br>\tag{5.53}<br>$$<br>Equation (5.53) has the same form with equation(5.47), right?</p>
+<p>The sum in (5.48) is transformed by a nonlinear activation function $h(\cdot)$ to give the activation $z_j$ of unit $j$ in the form<br>$$<br>z_j  = h(a_j)<br>\tag{5.49}<br>$$<br>We can therefore apply the &#x1F449;<a href="/Math/Calculus/Calculus-C3-Derivatives/#The-Chaine-Rule">chain rule &gt;&gt;</a> for partial derivatives to give<br>$$<br>\frac{\partial E_n}{\partial w_{ji}} = \frac{\partial E_n}{\partial a_j} \frac{\partial a_j}{\partial w_{ji}}<br>\tag{5.50}<br>$$<br>let $\delta_j$ be errors,<br>$$<br>\delta_j \equiv \frac{\partial E_n}{\partial a_j}<br>\tag{5.51}<br>$$<br>By equation(5.48), we get<br>$$<br>\frac{\partial a_j}{\partial w_{ji}} = z_i<br>\tag{5.52}<br>$$<br>Substituting (5.51) and (5.52) into(5.50), we obtain<br>$$<br>\frac{\partial E_n}{\partial w_{ji}} = \delta_j z_i<br>\tag{5.53}<br>$$<br>Equation (5.53) has the same form with equation(5.47), right?</p>
 <p>As we have seen already, for the output units, we have<br>$$<br>\delta_k = y_k - t_k<br>\tag{5.54}<br>$$<br>To evaluate the $\sigma$’s for hidden units, we again make use of the chain rule for partial derivatives,<br>$$<br>\delta_j \equiv \frac{\partial E_n}{\partial a_j} = \sum_k \frac{\partial E_n}{\partial a_k} \frac{\partial a_k}{\partial a_j}<br>\tag{5.55}<br>$$<br>where the sum runs over all units $k$ to which unit $j$ sends connections.</p>
 <p><img src="/images/PatternRecognition/c5/backpropagation.png" alt="backpropagation"></p>
 <p>If we now substitute the definition of $\sigma$ given by (5.51) into (5.55), and make use of (5.48) and (5.49), we obtain the following backpropagation formula<br>$$<br>\delta_j = h’(a_j)\sum_k w_{kj} \delta_k<br>\tag{5.56}<br>$$<br>which tells us that the value of $\sigma$ for a particular hidden unit can be obtained by propagating the $\sigma$’s backwards from units higher up in the network, as illustrated in Figure 5.7.</p>
 <p><img src="/images/PatternRecognition/c5/error-propagation.png" alt="error propagation process"></p>
-<h3 id="A-simple-example"><a href="#A-simple-example" class="headerlink" title="A simple example"></a>A simple example</h3><h3 id="Efficiency-of-backpropagation"><a href="#Efficiency-of-backpropagation" class="headerlink" title="Efficiency of backpropagation"></a>Efficiency of backpropagation</h3><h3 id="The-Jacobian-matrix"><a href="#The-Jacobian-matrix" class="headerlink" title="The Jacobian matrix"></a>The Jacobian matrix</h3><p>The technique of backpropagation can also be applied to the calculation of other derivatives.</p>
+<h3 id="A-simple-example"><a href="#A-simple-example" class="headerlink" title="A simple example"></a>A simple example</h3><p>Consider a two-layer network of the form illustrated in Figure 5.1, together with a sum-of-squares error, in which the output units have linear activation functions, so that $y_k = a_k$, while the hidden units have logistic sigmoid activation functions given by</p>
+<p>$$<br>h(a) \equiv tanh(a)<br>\tag{5.58}<br>$$<br>where<br>$$<br>tanh(a) = \frac{e^a - e^{-a}}{e^a + e^{-a}}<br>\tag{5.59}<br>$$</p>
+<p>this activation function’s derivative is,<br>$$<br>h(a) = 1 - h(a)^2<br>\tag{5.60}<br>$$</p>
+<p>for pattern n the sum-of-squares error function is given by</p>
+<p>$$<br>E_n = \frac{1}{2} \sum_{k=1}^K (y_k - t_k)^2<br>\tag{5.61}<br>$$</p>
+<p>where $y_k$ is the activation of output unit $k$, and $t_k$ is the corresponding target, for a particular input pattern $x_n$.</p>
+<p>For each pattern in the training set in turn, we first perform a forward propagation using<br>$$<br>a_j  = \sum_{i = 0}^D w_{ji}^{(1)} x_i<br>\tag{5.62}<br>$$</p>
+<p>$$<br>z_j = tanh(a_j)<br>\tag{5.63}<br>$$</p>
+<p>$$<br>y_k = \sum_{j=1}^M w_{kj}^{(2)} z_j<br>\tag{5.64}<br>$$</p>
+<p><img src="/images/PatternRecognition/c5/two-layer-network.png" alt="two-layer-network"></p>
+<p>Next we compute the $\sigma$’s for each output unit using</p>
+<p>$$<br>\sigma_k = y_k - t_k<br>\tag{5.65}<br>$$<br>Then we backpropagate these to obtain $\sigma s$ for the hidden units using<br>$$<br>\sigma_j = (1 - z_j^2) \sum_{k=1}^K w_{kj} \sigma_k<br>\tag{5.66}<br>$$<br>Finally, the derivatives with respect to the first-layer and second-layer weights are given by<br>$$<br>\frac{\partial E_n}{\partial w_{ji}^{(1)}} = \sigma_j x_i<br>$$<br>$$<br>\frac{\partial E_n}{\partial w_{kj}^{(2)}} = \sigma_k z_j<br>\tag{5.67}<br>$$</p>
+<h3 id="Efficiency-of-backpropagation"><a href="#Efficiency-of-backpropagation" class="headerlink" title="Efficiency of backpropagation"></a>Efficiency of backpropagation</h3><h3 id="The-Jacobian-matrix"><a href="#The-Jacobian-matrix" class="headerlink" title="The Jacobian matrix"></a>The Jacobian matrix</h3><p>The technique of backpropagation can also be applied to the calculation of other derivatives.</p>
 <p>Here we consider the evaluation of the Jacobian matrix, whose elements are given by the derivatives of the network outputs with respect to the inputs<br>$$<br>J_{ki} \equiv \frac{\partial y_k}{\partial x_i}<br>\tag{5.70}<br>$$<br>Jacobian matrices play a useful role in systems built from a number of distinct modules, as illustrated in Figure 5.8.</p>
 <p><img src="/images/PatternRecognition/c5/jacobian-matrix.png" alt="jacobian matrix"></p>
 <p>Suppose we wish to minimize an error function $E$ with respect to the parameter $w$ in Figure 5.8. The derivative of the error function is given by<br>$$<br>\frac{\partial E}{\partial w} = \sum_{k,j} \frac{\partial E}{\partial y_k}\frac{\partial y_k}{\partial z_j}\frac{\partial z_j}{\partial w}<br>\tag{5.71}<br>$$</p>
@@ -276,7 +299,8 @@
 <p>while the activations of the output units are given by</p>
 <p>$$<br>y_k = \sum_j w_{kj}z_j + w_{k0}<br>\tag{5.114}<br>$$</p>
 <p>Suppose we perform a linear transformation of the input data of the form</p>
-<p>$$<br>x_i \rightarrow \widetilde{x_i} = ax_i + b<br>\tag{5.115}<br>$$<br>$$<br>y_k \rightarrow \widetilde{y_k} = cy_k + d<br>\tag{5.118}<br>$$<br>also, we can perform a corresponding linear transformation of output data and the weights parameters.</p>
+<p>$$<br>x_i \rightarrow \widetilde{x_i} = ax_i + b<br>\tag{5.115}<br>$$</p>
+<p>$$<br>y_k \rightarrow \widetilde{y_k} = cy_k + d<br>\tag{5.118}<br>$$<br>also, we can perform a corresponding linear transformation of output data and the weights parameters.</p>
 <p>If we train one network using the original data and one network using data for which the input and/or target variables are transformed by one of the above linear transformations, then <u>consistency</u> requires that we should obtain equivalent networks that differ only by the linear transformation of the weights as given. </p>
 <blockquote>
 <p>Any regularizer should be consistent with this property.</p>
@@ -310,7 +334,7 @@
 <ol start="4">
 <li>The final option is to build the invariance properties into the structure of a neural network (or into the definition of a kernel function in the case of techniques such as the relevance vector machine). One way to achieve this is through the use of local receptive fields and shared weights, as discussed in the context of <u>convolutional neural networks</u> in Section 5.5.6.</li>
 </ol>
-<h3 id="Tangent-propagation"><a href="#Tangent-propagation" class="headerlink" title="Tangent propagation"></a>Tangent propagation</h3><p>Suppose the transformation is governed by a single parameter $\xi$ (which might be rotation angle for instance). Then the subspace $\mathcal{M}$ swept out by $x_n$ will be one-dimensional, and will be parameterized by $\xi$.</p>
+<h3 id="Tangent-propagation"><a href="#Tangent-propagation" class="headerlink" title="Tangent propagation"></a>Tangent propagation</h3><p>Suppose the transformation is governed by a single parameter $\xi$ (which might be rotation angle for instance). Then the subspace $\mathcal{M}$ <strong><em>swept out</em></strong> by $x_n$ will be one-dimensional, and will be parameterized by $\xi$.</p>
 <p>Let the vector that results from acting on $x_n$ by this transformation be denoted by $s(x_n, \xi)$, which is defined so that $s(x_n, 0) = x$. Then the tangent to the curve $M$ is given by the &#x1F449;<a href="/Math/Calculus/Calculus-C14-Partial-Derivatives/#Directional-Derivatives-and-Gradient-Vectors">directional derivative &gt;&gt;</a> $\tau = \frac{\partial s}{\partial \xi}$, and the tangent vector at the point $x_n$ is given by</p>
 <p>$$<br>\tau_n = \frac{\partial s(x_n, \xi)}{\partial \xi}|_{\xi = 0}<br>\tag{5.125}<br>$$</p>
 <p><img src="/images/PatternRecognition/c5/tangent-vector.png" alt="tangent vector"></p>
@@ -322,19 +346,44 @@
 <p>$$<br>\widetilde{E} = E + \lambda \Omega<br>\tag{5.127}<br>$$<br>where $\lambda$ is a regularization coefficient and</p>
 <p>$$<br>\begin{aligned}<br>\Omega &amp;= \frac{1}{2} \sum_n \sum_k (\frac{\partial y_{nk}}{\partial \xi}|_{\xi = 0})^2 \\<br>&amp;= \frac{1}{2} \sum_n \sum_k (\sum_{i=1}^D J_{nki}\tau _{ni})^2<br>\end{aligned}<br>\tag{5.128}<br>$$<br>The regularization function will be zero when the network mapping function is invariant under the transformation in the neighbourhood of each pattern vector, and the value of the parameter $\lambda$ determines the balance between fitting the training data and learning the invariance property.</p>
 <p><img src="/images/PatternRecognition/c5/digital-tangent-vector.png" alt="tangent vector rotation"></p>
-<h3 id="Training-with-transformed-data"><a href="#Training-with-transformed-data" class="headerlink" title="Training with transformed data"></a>Training with transformed data</h3><h3 id="Convolutional-networks"><a href="#Convolutional-networks" class="headerlink" title="Convolutional networks"></a>Convolutional networks</h3><p>Another approach to creating models that are invariant to certain transformation of the inputs is to build the invariance properties into the structure of a neural network. This is the basis for the convolutional neural network (Le Cun et al., 1989; LeCun et al., 1998), which has been widely applied to image data.</p>
+<p>A related technique, called tangent distance, can be used to build invariance properties into distance-based methods such as nearest-neighbour classifiers (Simardet al., 1993).</p>
+<h3 id="Training-with-transformed-data"><a href="#Training-with-transformed-data" class="headerlink" title="Training with transformed data"></a>Training with transformed data</h3><p>Encourage invariance of a model to a set of transformations is to expand the training set using transformed versions of the original<br>input patterns, this approach is closely related to the technique of tangent propagation.</p>
+<h3 id="Convolutional-networks"><a href="#Convolutional-networks" class="headerlink" title="Convolutional networks"></a>Convolutional networks</h3><p>Another approach to creating models that are invariant to certain transformation of the inputs is to build the invariance properties into the structure of a neural network. This is the basis for the convolutional neural network (Le Cun et al., 1989; LeCun et al., 1998), which has been widely applied to image data.</p>
 <p><img src="/images/PatternRecognition/c5/convolutional-networks.png" alt="convolutional network"></p>
 <p>&#x1F449;<a href="https://www.geeksforgeeks.org/introduction-convolution-neural-network/">First Understanding CNN &gt;&gt; </a></p>
-<h3 id="Soft-weight-sharing"><a href="#Soft-weight-sharing" class="headerlink" title="Soft weight sharing"></a>Soft weight sharing</h3><h2 id="Mixture-Density-Networks"><a href="#Mixture-Density-Networks" class="headerlink" title="Mixture Density Networks"></a>Mixture Density Networks</h2><p>The goal of supervised learning is to <strong><em>model a conditional distribution</em></strong> $p(T|X)$, which for many simple regression problems is chosen to be <em>Gaussian</em>.（maximum likelihood function, posterior distribution, predictive distribution…）</p>
+<h3 id="Soft-weight-sharing"><a href="#Soft-weight-sharing" class="headerlink" title="Soft weight sharing"></a>Soft weight sharing</h3><p>Recall that the simple weight decay regularizer, given in (5.112), can be viewed as the negative log of a Gaussian prior distribution over the weights.</p>
+<p>We can encourage the weight values to form several groups, rather than just one group, by considering instead a probability distribution that is a mixture of Gaussians. </p>
+<p>The centres and variances of the Gaussian components, as well as the mixing coefficients, will be considered as adjustable parameters to be determined as part of the learning process. Thus, we have a probability density of the form</p>
+<p>$$<br>p(\pmb{w}) = \prod_i p(w_i)<br>\tag{5.136}<br>$$<br>where<br>$$<br>p(w_i) = \sum_{j=1}^M \pi_j N(w_i | \mu_j, \sigma_j^2)<br>\tag{5.137}<br>$$<br>Taking the negative logarithm then leads to a regularization function of the form<br>$$<br>\Omega (\pmb{w}) = - \sum_i \ln (\sum_{j=1}^M \pi_j N(w_j|\mu_j, \sigma_j^2))<br>\tag{5.138}<br>$$<br>The total error function is then given by<br>$$<br>\widetilde{E}(\pmb{w}) = E(\pmb{w}) + \lambda \Omega (\pmb{w})<br>\tag{5.139}<br>$$</p>
+<h2 id="Mixture-Density-Networks"><a href="#Mixture-Density-Networks" class="headerlink" title="Mixture Density Networks"></a>Mixture Density Networks</h2><p>The goal of supervised learning is to <strong><em>model a conditional distribution</em></strong> $p(T|X)$, which for many simple regression problems is chosen to be <em>Gaussian</em>.（maximum likelihood function, posterior distribution, predictive distribution…）</p>
 <p>However, practical machine learning problems can often have significantly non-Gaussian distributions. These can arise, for example, with <strong><em>inverse problems</em></strong> in which the distribution can be multimodal(多模态), in which case the Gaussian assumption can lead to very poor predictions.</p>
 <p><img src="/images/PatternRecognition/c5/kinametics.png" alt="kinametics"></p>
 <p>For example, Data for this problem is generated by sampling a variable $x$ uniformly over the interval $(0, 1)$, to give a set of values ${x_n}$, and the corresponding target values tn are obtained by computing the function $x_n + 0.3 \sin(2\pi x_n)$ and then adding uniform noise over the interval $(−0.1, 0.1)$.</p>
 <p>The inverse problem is then obtained by keeping the same data points but exchanging the roles of $x$ and $t$.</p>
 <p><u>Least squares corresponds to maximum likelihood under a Gaussian assumption</u>. We see that this leads to a very poor model for the highly non-Gaussian inverse problem.</p>
 <p><img src="/images/PatternRecognition/c5/forward-inverse-problem.png" alt="forward inverse problem by neural network"></p>
-<p>We therefore seek a general framework for modelling conditional probability distributions.</p>
+<p>We therefore seek a general framework for modelling conditional probability distributions. This can be achieved by using a mixture model for $p(\pmb{t|x})$ in which both the <u>mixing coefficients</u> as well as the <u>component densities</u> are flexible functions of the input vector $\pmb{x}$, giving rise to the mixture density network. </p>
+<p>For any given value of $\pmb{x}$, the mixture model provides a general formalism for modelling an arbitrary conditional density function $p(\pmb{t|x})$. Provided we consider a sufficiently flexible network, we then have a framework for approximating arbitrary conditional distributions. Here we shall develop the model explicitly for Gaussian components, so that<br>$$<br>p(\pmb{t|x}) = \sum_{k=1}^K \pi_k(\pmb{x}) N(\pmb{t}|\pmb{\mu_k}, \sigma_k^2(\pmb{x}))<br>\tag{5.148}<br>$$</p>
 <p><img src="/images/PatternRecognition/c5/mixture-density-network.png" alt="mixture density network"></p>
-<h2 id="Bayesian-Neural-Networks"><a href="#Bayesian-Neural-Networks" class="headerlink" title="Bayesian Neural Networks"></a>Bayesian Neural Networks</h2><h3 id="Posterior-parameter-distribution"><a href="#Posterior-parameter-distribution" class="headerlink" title="Posterior parameter distribution"></a>Posterior parameter distribution</h3><h3 id="Hyperparameter-optimization"><a href="#Hyperparameter-optimization" class="headerlink" title="Hyperparameter optimization"></a>Hyperparameter optimization</h3><h3 id="Bayesian-neural-networks-for-classification"><a href="#Bayesian-neural-networks-for-classification" class="headerlink" title="Bayesian neural networks for classification"></a>Bayesian neural networks for classification</h3>
+<p>The neural network in Figure 5.20 can, for example, be a two-layer network having sigmoidal (‘tanh’) hidden units. If there are $L$(e.g. L = 1, only Gaussian) components in the mixture model (5.148), and if $t$ has $K$(e.g. K = 3, 3 gaussian distribution mixture) components. Then the network will have $L$ output unit activations denoted by $a_k^{\pi}$ that determine the mixing coefficients $\pi_k(x)$, K outputs denoted by $a_k^{\sigma}$ that determine the kernel widths $\sigma_k(x)$, and $L \times K$ outputs denoted by $a_{kj}^{\mu}$ that determine the components $\mu_{kj}(x)$ of the kernel centres $\mu_k(x)$. ???</p>
+<blockquote>
+<p>The mixing coefficients must satisfy the constraints<br>$$<br>\sum_{k=1}^K \pi_k(x) = 1<br>\tag{5.149}<br>$$<br>which can be achieved using a set of softmax outputs<br>$$<br>\pi_k(x) = \frac{exp (a_k^\pi)}{\sum_{l=1}^K exp(a_l^\pi)}<br>\tag{5.150}<br>$$<br>Similarly, the variances must satisfy $\sigma_k^2(x) \geq 0$ and so can be represented in terms of the exponentials of the corresponding network activations using<br>$$<br>\sigma_k(x) = exp(a_k^{\sigma})<br>\tag{5.151}<br>$$<br>Finally, because the means $\mu_k(x)$ have real components, they can be represented directly by the network output activations<br>$$<br>\mu_{kj}(x) = a_{kj}^{\mu}<br>$$</p>
+</blockquote>
+<p><img src="/images/PatternRecognition/c5/mixture-results.png" alt="results"></p>
+<h2 id="Bayesian-Neural-Networks"><a href="#Bayesian-Neural-Networks" class="headerlink" title="Bayesian Neural Networks"></a>Bayesian Neural Networks</h2><h3 id="Posterior-parameter-distribution"><a href="#Posterior-parameter-distribution" class="headerlink" title="Posterior parameter distribution"></a>Posterior parameter distribution</h3><p>Consider the problem of predicting a single continuous target variable $t$ from a vector $\pmb{x}$ of inputs (the extension to multiple targets is straightforward). We shall suppose that the conditional distribution $p(t|\pmb{x})$ is Gaussian, with an $x$-dependent mean given by the output of a neural network model $y(\pmb{x},\pmb{w})$, and with precision (inverse variance) $\beta$.</p>
+<p>We can find a Gaussian approximation to the posterior distribution by using the &#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C4-Linear-Models-For-Classification/#The-Laplace-Approximation">Laplace approximation &gt;&gt; </a>.</p>
+<p>$$<br>p(\pmb{w} | D, \alpha, \beta) \propto p(\pmb{w} | \alpha) p(D | \pmb{w}, \beta)<br>\tag{5.164}<br>$$</p>
+<p>$$<br>q(\pmb{w} | D) = N( \pmb{w} | \pmb{w_{MAP}}, \pmb{A}^{-1})<br>\tag{5.167}<br>$$</p>
+<blockquote>
+<p>However, even with the Gaussian approximation to the posterior, this integration is still analytically intractable due to the <strong><em>nonlinearity</em></strong> of the network function $y(\pmb{x}, \pmb{w})$ as a function of $\pmb{w}$.<br>$$<br>p(t|\pmb{x}, D) = \int p(t|\pmb{x, w}) q(\pmb{w}|D) d\pmb{w}<br>\tag{5.168}<br>$$</p>
+</blockquote>
+<p>To make progress, we now assume that the posterior distribution has small variance compared with the characteristic scales of $\pmb{w}$ over which $y(\pmb{x}, \pmb{w})$ is varying. This allows us to make a <strong><em>Taylor series expansion of the network function</em></strong> around $\pmb{w_{MAP}}$ and retain only the linear terms</p>
+<p>$$<br>y(\pmb{x}, \pmb{w}) \simeq y(\pmb{x}, \pmb{w_{MAP}}) + \pmb{g^T(w - w_{MAP})}<br>\tag{5.169}<br>$$<br>where we have defined<br>$$<br>\pmb{g} = \nabla _w y(\pmb{x, w})|_wMAP<br>\tag{5.170}<br>$$</p>
+<p>With this approximation, we now have a linear-Gaussian model with a Gaussian distribution for $p(\pmb{w})$ and a Gaussian for $p(t|\pmb{w})$ whose mean is a linear function of $\pmb{w}$ of the form</p>
+<p>$$<br>p(t | \pmb{x},\pmb{w}, \beta) \simeq N(t | y(\pmb{x, w_{MAP}} + \pmb{g^T(w-w_{MAP})}), \beta^{-1})<br>\tag{5.171}<br>$$<br>We can therefore make use of the general result (2.115) for the marginal $p(t)$ to give<br>&#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C2-Probability-Distributions/#Bayes’-theorem-for-Gaussian-variables">2.115 &gt;&gt; </a></p>
+<p>$$<br>p(t | \pmb{x}, D, \alpha, \beta) = N(t | y(\pmb{x} , \pmb{w_{MAP}}), \sigma^2(\pmb{x}))<br>\tag{5.172}<br>$$<br>where<br>$$<br>\sigma^2{\pmb{x}} = \beta^{-1} + \pmb{g^TA^{-1}g}<br>\tag{5.173}<br>$$</p>
+<h3 id="Hyperparameter-optimization"><a href="#Hyperparameter-optimization" class="headerlink" title="Hyperparameter optimization"></a>Hyperparameter optimization</h3><p>So far, we have assumed that the hyperparameters $\alpha$ and $\beta$ are fixed and known. We can make use of the <u>evidence framework</u>, discussed in Section 3.5, together with the Gaussian approximation to the posterior obtained using the <u>Laplace approximation</u>, to obtain a practical procedure for choosing the values of such <u>hyperparameters</u>.</p>
+<h3 id="Bayesian-neural-networks-for-classification"><a href="#Bayesian-neural-networks-for-classification" class="headerlink" title="Bayesian neural networks for classification"></a>Bayesian neural networks for classification</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -492,7 +541,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            21
+                            22
                         </p>
                     </a>
                 </div>
@@ -723,28 +772,6 @@
             </li>
         
             <li>
-                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">excellentMathBooks</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">www.library.fudan.edu.cn</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">Probability Model</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">dpkingma.com</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
                 <a class="level is-mobile" href="https://graphics.pixar.com/research/" target="_blank" rel="noopener">
                     <span class="level-left">
                         <span class="level-item">Pixar Studio</span>
@@ -843,6 +870,39 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">DeepLearningBook</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.deeplearningbook.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -858,6 +918,30 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/CS/">
+            <span class="level-start">
+                <span class="level-item">CS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/CS/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CS/Algorithms/">
+            <span class="level-start">
+                <span class="level-item">Algorithms</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/GameProgramming/">
             <span class="level-start">
                 <span class="level-item">GameProgramming</span>
@@ -906,28 +990,12 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Language/">
-            <span class="level-start">
-                <span class="level-item">Language</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
-            <span class="level-start">
-                <span class="level-item">Advanced CPP</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/MachineLearning/">
             <span class="level-start">
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
@@ -935,7 +1003,7 @@
                 <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -1036,7 +1104,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -1045,6 +1113,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-12-28T04:27:50.000Z">2023-12-28</time></div>
+                    <a href="/CS/Algorithms/Algorithms-C1-Foundations/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algorithms-C1-Foundations</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CS/">CS</a> / <a class="has-link-grey -link" href="/categories/CS/Algorithms/">Algorithms</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1098,19 +1179,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
-                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1121,6 +1189,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/11/">
@@ -1139,7 +1218,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">52</span>
+                    <span class="level-item tag">51</span>
                 </span>
             </a>
         </li>
@@ -1200,6 +1279,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithms/">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Animation/">
@@ -1279,13 +1365,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/RandomForest/">
-                        <span class="tag">RandomForest</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/Rendering/">
                         <span class="tag">Rendering</span>
                         <span class="tag is-grey">3</span>
@@ -1346,7 +1425,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Keneyr&nbsp;
+                &copy; 2024 Keneyr&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 

@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-06T04:27:00.000Z">
-<meta property="article:modified_time" content="2023-12-27T09:53:22.667Z">
+<meta property="article:modified_time" content="2024-01-11T04:00:38.695Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 minutes read (About 2182 words)
+                    29 minutes read (About 4349 words)
                 </span>
                 
                 
@@ -192,13 +192,13 @@
 <a id="more"></a>
 
 <p>This is the Chapter3 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>. <a href="https://github.com/Keneyr/PRML">[Code_Python]</a></p>
-<h2 id="Linear-Basis-Function-Models"><a href="#Linear-Basis-Function-Models" class="headerlink" title="Linear Basis Function Models"></a>Linear Basis Function Models</h2><p><img src="/images/PatternRecognition/c3/basis-function.png" alt="basis-function"></p>
-<p>$$<br>y(\pmb{x}, \pmb{w}) = w_0 + w_1 x_1 + \cdots + w_Dx_D<br>\tag{3.1}<br>$$<br>where, $\pmb{x} = (x_1, \cdots, x_D)^T$.</p>
+<h2 id="Linear-Basis-Function-Models"><a href="#Linear-Basis-Function-Models" class="headerlink" title="Linear Basis Function Models"></a>Linear Basis Function Models</h2><p>$$<br>y(\pmb{x}, \pmb{w}) = w_0 + w_1 x_1 + \cdots + w_Dx_D<br>\tag{3.1}<br>$$<br>where, $\pmb{x} = (x_1, \cdots, x_D)^T$.</p>
 <p>$$<br>y(\pmb{x}, \pmb{w}) = w_0 + \sum_{j=1}^{M-1}w_j\phi_j(\pmb{x})<br>\tag{3.2}<br>$$<br>where, $\phi_j(\pmb{x})$ is called <strong><em>bisis functions</em></strong>, the parameter $w_0$ is called as a <strong><em>bias</em></strong> parameter.</p>
 <p>$$<br>y(\pmb{x,w}) = \sum_{j=0}^{M-1}w_j\phi_j(\pmb{x}) = \pmb{w^T}\phi(\pmb{x})<br>\tag{3.3}<br>$$<br>where, $\phi_0{(\pmb{x})} = 1$.</p>
 <p>The <u>polynomial regression</u> considered in Chapter 1 is a particular example of this model in which there is a <u>single input variable $x$</u>, and the basis functions take the form of powers of $x$ so that $\phi_j(x) = x^j$.</p>
 <p><strong><em>‘Gaussian’ basis functions</em></strong>:<br>$$<br>\phi_j(x) = exp\lbrace -\frac{(x-\mu_j)^2}{2s^2} \rbrace<br>\tag{3.4}<br>$$<br>where the $\mu_j$ govern the locations of the basis functions in input space, and the parameter $s$ governs their spatial scale.</p>
 <p><strong><em>sigmoidal basis function</em></strong>:<br>$$<br>\phi_j(x) = \sigma(\frac{x-\mu_j}{s})<br>\tag{3.5}<br>$$<br>where, $\sigma(a)$ is the <strong><em>logistic sigmoid function</em></strong> defined by<br>$$<br>\sigma(a) = \frac{1}{1 + exp(-a)}<br>\tag{3.6}<br>$$<br>Similar function<br>$$<br>tanh(a) = 2\sigma(a)-1<br>$$</p>
+<p><img src="/images/PatternRecognition/c3/basis-function.png" alt="basis-function"></p>
 <h3 id="Maximum-likelihood-and-least-squares"><a href="#Maximum-likelihood-and-least-squares" class="headerlink" title="Maximum likelihood and least squares"></a>Maximum likelihood and least squares</h3><p>Still the polynomial curve fitting problem in Chapter 1. As before, we assume that the target variable $t$ is given by a deterministic function $y(x,\pmb{w})$ with additive Gaussian noise so that<br>$$<br>t = y(x, \pmb{w}) + \epsilon<br>\tag{3.7}<br>$$<br>where $\epsilon$ is a zero mean Gaussian random variable with precision (inverse variance) $\beta$. Thus we can write<br>$$<br>p(t|x,\pmb{w}, \beta) = \mathcal{N}(t|y(x,\pmb{w}), \beta^{-1})<br>\tag{3.8}<br>$$</p>
 <p>if we assume a squared loss function, then the optimal prediction, for a new value of $x$, will be given by the conditional mean of the target variable.<br>$$<br>E[t|x] = \int tp(t|x) dt = y(x,\pmb{w})<br>\tag{3.8}<br>$$</p>
 <p>Now consider a data set of inputs $X = \lbrace x_1, \cdots, x_N \rbrace$ with corresponding target values T = $\lbrace t_1, \cdots, t_N \rbrace$. The likelihood function</p>
@@ -208,7 +208,7 @@
 <p>The <mark>gradient</mark> of the log likelihood function (3.11) takes the form<br>$$<br>\nabla \ln p(T|\pmb{w},\beta) = \sum_{n=1}^N \lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace \phi(x_n)^T<br>\tag{3.13}<br>$$<br>Setting this gradient to zero gives<br>$$<br>0 = \sum_{n=1}^{N} t_n \phi(x_n)^T - \pmb{w^T}(\sum_{n=1}^{N}\phi(x_n)\phi(x_n)^T)<br>\tag{3.14}<br>$$<br>Solving for $\pmb{w}$ we obtain<br>$$<br>\pmb{w}_{ML} = (\Phi^T\Phi)^{-1}\Phi^T T<br>\tag{3.15}<br>$$<br>which are known as the <u>normal equations</u> for the least squares problem. Here $\Phi$ is an $N \times M$ matrix, called the <u>design matrix</u>, whose elements are given by $\Phi_{nj} = \phi_j(x_n)$, so that<br>$$<br>\Phi =<br>\begin{bmatrix}<br>    \phi_0(x_1) &amp; \phi_1(x_1) &amp; \cdots &amp; \phi_{M-1}(x_1) \\<br>    \phi_0(x_2) &amp; \phi_1(x_2) &amp; \cdots &amp; \phi_{M-1}(x_2) \\<br>    \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\<br>    \phi_0(x_N) &amp; \phi_1(x_N) &amp; \cdots &amp; \phi_{M-1}(x_N)<br>\end{bmatrix}<br>$$</p>
 <p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C6-Orthogonality-And-Least-Squares/#Orthogonal-Projections">Least Squares in Algebra &gt;&gt;</a></p>
 <p>&#x1F449;<a href="/Math/Numerical-Analysis/NumericalAnalysis-C4-Least-Squares/">Least Squares in Numerical Analysis &gt;&gt;</a></p>
-<p>$$<br>\Phi^\dagger = (\Phi^T\Phi)^{-1}\Phi^T<br>$$</p>
+<p><strong><em>Moore-Penrose pseudo-inverse of the matrix</em></strong> $\Phi$ is:<br>$$<br>\Phi^\dagger = (\Phi^T\Phi)^{-1}\Phi^T<br>$$</p>
 <p>Now back to $w_0$, the bias parameter. the error function (3.12)</p>
 <p>$$<br>\begin{aligned}<br>    E_D(\pmb{w}) &amp;= \frac{1}{2} \sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2 \\<br>    &amp;= \frac{1}{2} \sum_{n=1}^{N}\lbrace t_n - w_0 -\sum_{j=1}^{M-1} w_j\phi_j(x_n)\rbrace^2<br>\end{aligned}<br>\tag{3.18}<br>$$<br>Setting the <u>derivative</u> with respect to $w_0$ equal to zero, and solving for $w_0$, we obtain<br>$$<br>w_0 = \bar{t} - \sum_{j=1}^{M-1}w_j\bar{\phi_j}<br>\tag{3.19}<br>$$<br>where,<br>$$<br>\bar{t} = \frac{1}{N}\sum_{n=1}^{N} t_n\\<br>\bar{\phi_j} = \frac{1}{N}\sum_{n=1}^{N}\phi_j(x_n)<br>\tag{3.20}<br>$$<br>Thus the bias $w_0$ compensates for the difference between the averages (over the training set) of the target values and the weighted sum of the averages of the basis function values.</p>
 <p>We can also maximize the log likelihood function (3.11) with respect to the noise precision parameter $\beta$, giving<br>$$<br>\frac{1}{\beta_{ML}} = \frac{1}{N} \sum_{n=1}^{N} \lbrace t_n - \pmb{w_{ML}^T} \phi(x_n)\rbrace^2<br>\tag{3.21}<br>$$<br>so we see that the inverse of the noise precision is given by <u>the residual variance of the target values around the regression function</u>.</p>
@@ -230,10 +230,41 @@
 <h2 id="Multiple-outputs"><a href="#Multiple-outputs" class="headerlink" title="Multiple outputs"></a>Multiple outputs</h2><p>$$<br>\pmb{y(x,w)} = \pmb{W^T} \phi(\pmb{x})<br>\tag{3.31}<br>$$<br>Here, $\pmb{t}$ or $\pmb{y(x,w)}$ is not a single target variable, but a $K$-dimensional vector. $\pmb{W}$ is an $M \times K$ matrix of parameters. $\phi(\pmb{x})$ is an $M$-dimensional column vector with elements $\phi_j(x)$, $\phi_0(x) = 1$ as before.</p>
 <p>Suppose we take the <u>conditional distribution of the target vector</u> to be an isotropic Gaussian of the form<br>$$<br>p(\pmb{t}|\pmb{x}, \pmb{W}, \beta) = \mathcal{N}(\pmb{t}|\pmb{W^T\phi(x)}, \beta^{-1}I)<br>\tag{3.32}<br>$$</p>
 <p>If we have a set of observations $\pmb{t_1}, \cdots, \pmb{t_N}$, we can combine these into a matrix $\pmb{T}$ of size $N \times K$ such that the $n^{th}$ row is given by $\pmb{t^T_n}$.</p>
-<h2 id="The-Bias-Variance-Decomposition"><a href="#The-Bias-Variance-Decomposition" class="headerlink" title="The Bias-Variance Decomposition"></a>The Bias-Variance Decomposition</h2><h2 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h2><p>We now turn to a <u>Bayesian treatment of linear regression</u>, which will avoid the over-fitting problem of maximum likelihood, and which will also lead to automatic methods of determining model complexity using the training data alone.</p>
+<h2 id="The-Bias-Variance-Decomposition"><a href="#The-Bias-Variance-Decomposition" class="headerlink" title="The Bias-Variance Decomposition"></a>The Bias-Variance Decomposition</h2><p>As we have seen in earlier chapters, the phenomenon of over-fitting is really an unfortunate property of maximum likelihood and does not arise when we marginalize over parameters in a Bayesian setting.</p>
+<p>Here we generate $100$ data sets, each containing $N = 25$ data points, independently from the sinusoidal curve $h(x) = \sin (2\pi x)$. The data sets are indexed by $l = 1, \cdots, L$, where $L = 100$, and for each data set $D^{(l)}$ we fit a model with 24 Gaussian basis functions by minimizing the regularized error function (3.27) to give a prediction function $y^{(l)}(x)$ as shown in Figure 3.5.</p>
+<p>$$<br>E_D(\pmb{w}) + \lambda E_W(\pmb{w}) =<br>\frac{1}{2}\sum_{n=1}^{N}\lbrace t_n - \pmb{w^T}\phi(x_n)\rbrace^2 + \frac{\lambda}{2}\pmb{w^T}\pmb{w}<br>\tag{3.27}<br>$$</p>
+<p><img src="/images/PatternRecognition/c3/bias-variance.png" alt="bias-variance decomposition"></p>
+<blockquote>
+<p>The top row corresponds to a large value of the regularization coefficient $\lambda$ that gives <u>low variance</u> (because the red curves in the left plot look similar) but <u>high bias</u> (because the two curves in the right plot are very different).<br>Conversely on the bottom row, for which $\lambda$ is small, there is <u>large variance</u> (shown by the high variability between the red curves in the left plot) but </u>low bias</u> (shown by the good fit between the average model fit and the original sinusoidal function).</p>
+</blockquote>
+<p>Now we consider a frequentist viewpoint of the model complexity issue, known as the <strong><em>bias-variance trade-off</em></strong>.</p>
+<p>For regression problem, we considered various loss functions each of which leads to a corresponding optimal prediction once we are given the <strong><em>conditional distribution</em></strong>(called <strong><em>predictive distribution</em></strong> in Chapter 1) $p(t|x)$. A popular choice is the squared loss function, <u>for which the optimal prediction is given by the conditional expectation</u>, which we denote by $h(x)$ and which is given by</p>
+<p>$$<br>h(x) = E[t|x] = \int t p(t|x) dt<br>\tag{3.36}<br>$$</p>
+<p>the expected squared loss can be written in the form</p>
+<p>$$<br>E[L] = \int \lbrace y(x) - h(x)\rbrace ^2 p(x) dx + \int \lbrace h(x) - t\rbrace^2 p(x,t) dx dt<br>\tag{3.37}<br>$$</p>
+<p>For any given data set $D$, we can run our learning algorithm and obtain a prediction function $y(x;D)$.<br>Consider the integrand of the first term in (3.37), which for a particular data set $D$ takes the form</p>
+<p>$$<br>\lbrace y(x; D) - h(x)\rbrace^2<br>\tag{3.38}<br>$$</p>
+<p>We now take the expectation of this expression with respect to $D$ and note that the final term will vanish, giving</p>
+<p>$$<br>E_D[\lbrace y(x;D) - h(x)\rbrace^2] = \underbrace{\lbrace E_D[y(x;D)] - h(x) \rbrace ^2}_{bias^2} +<br>$$</p>
+<p>$$<br>\underbrace{E_D[\lbrace y(x;D) - E_D[y(x;D)] \rbrace^2]}_{variance}<br>\tag{3.40}<br>$$</p>
+<p>So far, we have considered a single input value $x$. If we substitute this expansion back into (3.37)(代入展开式到3.37), we obtain the following <strong><em>decomposition of the expected squared loss(平方期望损失)</em></strong></p>
+<p>$$<br>expected \space loss = (bias)^2 + variance + noise<br>\tag{3.41}<br>$$<br>where,</p>
+<p>$$<br>(bias)^2 = \int \lbrace E_D{y(x;D)} - h(x)\rbrace ^2 p(x) dx<br>\tag{3.42}<br>$$</p>
+<p>$$<br>variance = \int E_D[\lbrace y(x;D - E_D[y(x;D)]\rbrace^2)] p(x) dx<br>\tag{3.43}<br>$$</p>
+<p>$$<br>noise = \int \lbrace h(x) - t\rbrace^2 p(x,t) dx dt<br>$$</p>
+<blockquote>
+<p>The model with the optimal predictive capability is the one that leads to the best balance between bias and variance.</p>
+</blockquote>
+<p>Back to the fitting problem, the average prediction is estimated from </p>
+<p>$$<br>\bar{y}(x) = \frac{1}{L} \sum_{l=1}^L y^{(l)} (x)<br>\tag{3.45}<br>$$<br>and the integrated squared bias and integrated variance are then given by<br>$$<br>(bias)^2 = \frac{1}{N} \sum_{n=1}^{N} \lbrace \bar{y}(x_n) - h(x_n)\rbrace^2<br>\tag{3.46}<br>$$</p>
+<p>$$<br>variance = \frac{1}{N} \sum_{n=1}^{N} \frac{1}{L} \sum_{l=1}^L \lbrace y^{(l)}(x_n) - \bar y (x_n) \rbrace^2<br>\tag{3.47}<br>$$</p>
+<blockquote>
+<p>Although the bias-variance decomposition may provide some interesting insights into the model complexity issue from a frequentist perspective, it is of limited practical value, because the bias-variance decomposition is based on averages with respect to ensembles of data sets, whereas in practice we have only the single observed data set.<br>If we had a large number of independent training sets of a given size, we would be better off combining them into a single large training set, which of course would reduce the level of over-fitting for a given model complexity.<br>Given these limitations, we turn in the next section to a Bayesian treatment of linear basis function models, which not only provides powerful insights into the issues of over-fitting but which also leads to practical techniques for addressing the question model complexity.</p>
+</blockquote>
+<h2 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h2><p>We now turn to a <u>Bayesian treatment of linear regression</u>, which will avoid the over-fitting problem of maximum likelihood, and which will also lead to automatic methods of determining model complexity using the training data alone.</p>
 <h3 id="Parameter-distribution"><a href="#Parameter-distribution" class="headerlink" title="Parameter distribution"></a>Parameter distribution</h3><p>we shall treat the noise precision parameter $β$ as a known constant, thus, equation (3.10) becomes<br>$$<br>p(T|X,\pmb{w},\beta) \Leftrightarrow p(T|\pmb{w})\\<br>= \prod_{n=1}^{N}\mathcal{N}(t_n|\pmb{w^T}\phi(x_n), \beta^{-1})<br>$$<br>this function is a exponential of a quadratic function of $\pmb{w}$. The corresponding conjugate <u>prior</u> is therefore given by a Gaussian distribution of the form<br>$$<br>p(\pmb{w}) = \mathcal{N}(\pmb{w}|\pmb{m_0},\pmb{S_0})<br>\tag{3.48}<br>$$<br>having mean $\pmb{m_0}$ and covariance $\pmb{S_0}$.</p>
 <p>Next we compute the <u>posterior distribution</u>, which is proportional to the product of the <u>likelihood function</u> and the <u>prior</u>.<br>$$<br>p(\pmb{w}|T) \propto p(T|\pmb{w}) p(\pmb{w})<br>$$<br>thus,<br>$$<br>p(\pmb{w}|T) = \mathcal{N}(\pmb{w}|\pmb{m_N},\pmb{S_N})<br>\tag{3.49}<br>$$<br>where,<br>$$<br>\pmb{m_N }= \pmb{S_N}(\pmb{S_0^{-1}m_0} + \beta \pmb{\Phi^TT})<br>\tag{3.50}<br>$$<br>$$<br>\pmb{S_N^{-1}} = \pmb{S_0^{-1}} + \beta \pmb{\Phi^T\Phi}<br>\tag{3.51}<br>$$</p>
-<p>For simplicity, we consider a zero-mean isotropic Gaussian governed by a single precision parameter $\alpha$ so that<br>$$<br>p(\pmb{w}|\alpha) = \mathcal{N}(\pmb{w}|\pmb{0}, \alpha^{-1}\pmb{I})<br>\tag{3.52}<br>$$<br>and the corresponding posterior distribution over w is then given by (3.49) with<br>$$<br>\pmb{m_N} = \beta \pmb{S_N}\pmb{\Phi^T}T<br>\tag{3.53}<br>$$<br>$$<br>\pmb{S_N^{-1}} = \alpha \pmb{I} + \beta \pmb{\Phi^T\Phi}<br>\tag{3.54}<br>$$</p>
+<p>For simplicity, we consider a zero-mean isotropic Gaussian governed by a single precision parameter $\alpha$ so that<br>$$<br>p(\pmb{w}|\alpha) = \mathcal{N}(\pmb{w}|\pmb{0}, \alpha^{-1}\pmb{I})<br>\tag{3.52}<br>$$<br>and the corresponding posterior distribution over $\pmb{w}$ is then given by (3.49) with<br>$$<br>\pmb{m_N} = \beta \pmb{S_N}\pmb{\Phi^T}T<br>\tag{3.53}<br>$$<br>$$<br>\pmb{S_N^{-1}} = \alpha \pmb{I} + \beta \pmb{\Phi^T\Phi}<br>\tag{3.54}<br>$$</p>
 <p>&#x1F4A1;For example&#x1F4A1;:</p>
 <p>We can illustrate Bayesian learning in a linear basis function model, as well as the sequential update of a posterior distribution, using a simple example involving straight-line fitting.<br>$$<br>y(x,\pmb{w}) = w_0 + w_1x<br>$$</p>
 <p>We <u><em>generate points data</em></u> by function $f(x,\pmb{a}) = a_0 + a_1 x =-0.3 + 0.5 x$, using $x_n$ from uniform distribution $\mathcal{U}(x | -1, 1)$, then evaluating $f(x_n, \pmb{a})$, and finally adding <u><em>Gaussian noise</em></u> with standard deviation of $0.2$ to obtain the target values $t_n$.</p>
@@ -244,10 +275,47 @@
 <p>$$<br>p(t|T,\alpha, \beta) = \int p(t|\pmb{w}, \beta) p(w|T,\alpha, \beta) d\pmb{w}<br>\tag{3.57}<br>$$<br>The conditional distribution $p(t|x, \pmb{w}, \beta)$ of the target variable is given by (3.8), and the posterior weight distribution is given by (3.49).</p>
 <p>$$<br>p(t|x,T,\alpha, \beta) = \mathcal{N}(t|\pmb{m_N^T\phi(x)}, \sigma^2_N(x))<br>\tag{3.58}<br>$$</p>
 <p>where the variance $\sigma^2_N(x)$ of the predictive distribution is given by<br>$$<br>\sigma^2_N(x) = \frac{1}{\beta} + \phi(x)^T\pmb{S_N}\phi(x)<br>\tag{3.59}<br>$$</p>
+<p>The first term in (3.59) represents the noise on the data whereas the second term reflects the uncertainty associated with the parameters $\pmb{w}$. Because the noise process and the distribution of $\pmb{w}$ are independent Gaussians, their variances are additive.</p>
 <p><img src="/images/PatternRecognition/c3/predictive-distribution.png" alt="predictive distribution"></p>
 <p>we fit a model comprising a linear combination of Gaussian basis functions to data sets of various sizes and then look at the corresponding posterior distributions. Here the <u>green curves</u> correspond to the function $\sin(2\pi x)$ from which the data points were generated (with the addition of Gaussian noise). Data sets of size $N = 1, N = 2, N = 4$, and $N = 25$ are shown in the four plots by the <u>blue circles</u>. For each plot, the <u>red curve</u> shows the mean of the corresponding Gaussian predictive distribution, and the <u>red shaded region</u> spans one standard deviation either side of the mean. Note that the predictive uncertainty depends on $x$ and is smallest in the neighbourhood of the data points. Also note that the level of uncertainty decreases as more data points are observed.</p>
 <p>The plots in <em>Figure 3.8</em> only show the point-wise predictive variance as a function of $x$. In order to gain insight into the <u>covariance</u> between the predictions at different values of $x$, we can <u>draw samples</u> from the posterior distribution over $\pmb{w}$, and then plot the corresponding functions $y(x,\pmb{w})$, as shown in <em>Figure 3.9</em>.</p>
-<h3 id="Equivalent-kernel"><a href="#Equivalent-kernel" class="headerlink" title="Equivalent kernel"></a>Equivalent kernel</h3><h2 id="Bayesian-Model-Comparison"><a href="#Bayesian-Model-Comparison" class="headerlink" title="Bayesian Model Comparison"></a>Bayesian Model Comparison</h2><h2 id="The-Evidence-Approximation"><a href="#The-Evidence-Approximation" class="headerlink" title="The Evidence Approximation"></a>The Evidence Approximation</h2>
+<p>If we used localized basis functions such as Gaussians, then in regions away from the basis function centres, the contribution from the second term in the predictive variance (3.59) will go to zero, leaving only the noise contribution $\frac{1}{\beta}$. </p>
+<p>Thus, the model becomes very confident in its predictions when extrapolating outside the region occupied by the basis functions, which is generally an undesirable behaviour. This problem can be avoided by adopting an alternative Bayesian approach to regression known as a <strong><em>Gaussian process</em></strong>.</p>
+<h3 id="Equivalent-kernel"><a href="#Equivalent-kernel" class="headerlink" title="Equivalent kernel"></a>Equivalent kernel</h3><p>If we substitute (3.53) into the expression (3.3), we see that the predictive mean can be written in the form</p>
+<p>$$<br>\pmb{m_N} = \beta \pmb{S_N}\pmb{\Phi^T}T<br>\tag{3.53}<br>$$</p>
+<p>$$<br>y(\pmb{x,w}) = \sum_{j=0}^{M-1}w_j\phi_j(\pmb{x}) = \pmb{w^T}\phi(\pmb{x})<br>\tag{3.3}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>y(x, m_N) &amp;= m_N^T \phi(x)\\<br>&amp;= \beta \phi(x)^TS_N \Phi^T T \\<br>&amp;= \sum_{n=1}^N \beta \phi(x)^T S_N \phi(x_n) t_n<br>\end{aligned}<br>\tag{3.60}<br>$$<br>where $S_N$ is defined by (3.51).</p>
+<p>$$<br>\pmb{S_N^{-1}} = \pmb{S_0^{-1}} + \beta \pmb{\Phi^T\Phi}<br>\tag{3.51}<br>$$<br>Thus the mean of the <u>predictive distribution</u> at a point $x$ is given by a linear combination of the training set target variables $t_n$, so that we can write</p>
+<p>$$<br>y(x, m_N) = \sum_{n=1}^N k(x,x_n) t_n<br>\tag{3.61}<br>$$<br>where the function<br>$$<br>k(x,x’) = \beta \phi(x)^T S_N \phi(x’)<br>\tag{3.62}<br>$$<br>is known as the <strong><em>smoother matrix</em></strong> or the <strong><em>equivalent kernel</em></strong>.</p>
+<blockquote>
+<p>The equivalent kernel is illustrated for the case of Gaussian basis functions in Figure 3.10 in which the kernel functions $k(x, x’)$ have been plotted as a function of $x’$ for three different values of $x$.<br>We see that they are localized around $x$, and so the mean of the predictive distribution at $x$, given by $y(x,m_N)$, is obtained by forming a weighted combination of the target values in which data points close to $x$ are given higher weight than points further removed from $x$.</p>
+</blockquote>
+<p><img src="/images/PatternRecognition/c3/kernel.png" alt="kernel"></p>
+<p>Further insight into the role of the equivalent kernel can be obtained by considering the covariance between $y(x)$ and $y(x’)$, which is given by<br>$$<br>\begin{aligned}<br>cov[y(x), y(x’)] &amp;= cov[phi(x)^T w, w^T phi(x’)] \\<br>&amp;= \phi(x)^T S_N \phi(x’) \\<br>&amp;= \beta^{-1}k(x,x’)<br>\end{aligned}<br>\tag{3.63}<br>$$<br>From the form of the equivalent kernel, we see that the predictive mean at nearby points will be highly correlated, whereas for more distant pairs of points the correlation will be smaller.</p>
+<p>The formulation of linear regression in terms of a kernel function suggests an alternative approach to regression as follows. Instead of introducing a set of basis functions, which implicitly determines an equivalent kernel, we can instead define a localized kernel directly and use this to make predictions for new input vectors $x$, given the observed training set. This leads to a practical framework for regression (and classification) called <strong><em>Gaussian processes</em></strong>.</p>
+<h2 id="Bayesian-Model-Comparison"><a href="#Bayesian-Model-Comparison" class="headerlink" title="Bayesian Model Comparison"></a>Bayesian Model Comparison</h2><p>As we shall see, the over-fitting associated with maximum likelihood can be avoided by marginalizing (summing or integrating) over the model parameters instead of making point estimates of their values.</p>
+<p>Suppose we wish to compare a set of $L$ models $\lbrace M_i\rbrace$, where $i = 1, \cdots, L$. Here a model refers to a probability distribution<br>over the observed data $D$. We shall suppose that the data is generated from one of these models but we are uncertain which one.</p>
+<p>Our uncertainty is expressed through a <u>prior probability distribution</u> $p(M_i)$. Given a training set $D$, we then wish to evaluate the <u>posterior distribution</u></p>
+<p>$$<br>p(M_i | D) \propto p(M_i) \underbrace{p(D|M_i)}_{model-evidence}<br>\tag{3.66}<br>$$<br><strong><em>model-evidence</em></strong> expresses the preference shown by the data for different models, it is also called the <strong><em>marginal likelihood</em></strong> because it can be viewed as a likelihood function over the space of models, in which the parameters have been marginalized out.</p>
+<p>The ratio of model evidences $p(D|M_i)/p(D|M_j)$ for two models is known as a <strong><em>Bayes factor</em></strong>.</p>
+<p>The <u>predictive distribution</u> is given by,<br>$$<br>p(t|x, D) = \sum_{i=1}^L p(t|x, M_i, D) p(M_i| D)<br>\tag{3.67}<br>$$</p>
+<p>This is an example of a <strong><em>mixture distribution</em></strong> in which the overall predictive distribution is obtained by averaging the predictive distributions $p(t|x,M_i,D)$ of individual models, <u>weighted by the posterior probabilities $p(M_i|D)$ of those models</u>.</p>
+<p>For a model governed by a set of parameters $\pmb{w}$, the model evidence is given, from the sum and product rules of probability, by</p>
+<p>$$<br>\underbrace{p(D|M_i)}_{model-evidence} = \int p(D|\pmb{w}, M_i) p(\pmb{w}|M_i) d\pmb{w}<br>\tag{3.68}<br>$$</p>
+<p><strong><em>From a sampling perspective</em></strong>, the <u>marginal likelihood</u> can be viewed as the probability of generating the data set $D$ from a model whose parameters are sampled at random from the <u>prior</u>.</p>
+<p>It is also interesting to note that the evidence is precisely the normalizing term that appears in the denominator in <strong><em>Bayes’ theorem</em></strong> when evaluating the <u>posterior distribution</u> over parameters because<br>$$<br>p(\pmb{w} | D, M_i) = \frac{p(D|\pmb{w}, M_i) p(\pmb{w} | M_i)}{p(D | M_i)}<br>\tag{3.69}<br>$$</p>
+<p>Consider first the case of a model having a single parameter $w$. The <u>posterior distribution over parameters</u> is proportional to<br>$p(D|w)p(w)$, <em>where we omit the dependence on the model $M_i$ to keep the notation uncluttered</em>. </p>
+<p>If we assume that the <u>posterior distribution</u> is sharply peaked around the most probable value $w_{MAP}$, with width $\Delta w_{posterior}$, then we can approximate the integral by the value of the integrand at its maximum times the width of the peak. </p>
+<p>If we further assume that the prior is flat with width $\Delta w_{prior}$ so that $p(w) = 1/\Delta w_{prior}$, then we have</p>
+<p>$$<br>p(D) = \int p(D|w) p(w) dw \simeq p(D|w_{MAP}) \frac{\Delta w_{posterior}}{\Delta w_{prior}}<br>\tag{3.70}<br>$$<br>so taking logs we obtain </p>
+<p>$$<br>\ln p(D) \simeq  \ln p(D|w_{MAP}) + \ln \frac{\Delta w_{posterior}}{\Delta w_{prior}}<br>\tag{3.71}<br>$$</p>
+<p><img src="/images/PatternRecognition/c3/model-selection.png" alt="model-selection"></p>
+<h2 id="The-Evidence-Approximation"><a href="#The-Evidence-Approximation" class="headerlink" title="The Evidence Approximation"></a>The Evidence Approximation</h2><p>Here we discuss an approximation in which we set the <strong>hyperparameters</strong> to specific values determined by maximizing the <u>marginal likelihood function </u>obtained by first integrating over the parameters $\pmb{w}$. This framework is known in the statistics literature as <strong><em>empirical Bayes</em></strong>.</p>
+<p>If we introduce hyperpriors over $\alpha$ and $\beta$, the <u>predictive distribution</u> is obtained by marginalizing over $\pmb{w}$, $\alpha$ and $\beta$ so that</p>
+<p>$$<br>p(t|T) = \int \int \int p(t | \pmb{w}, \beta) p(\pmb{w} | T, \alpha, \beta) p(\alpha, \beta | T) d\pmb{w} d\alpha d\beta<br>\tag{3.74}<br>$$</p>
+<p>where $p(t | \pmb{w}, \beta)$ is given by<br>$$<br>p(t|x,\pmb{w}, \beta) = \mathcal{N}(t|y(x,\pmb{w}), \beta^{-1})<br>\tag{3.8}<br>$$<br>$p(\pmb{w} | T, \alpha, \beta)$ is given by<br>$$<br>p(\pmb{w}|T) = \mathcal{N}(\pmb{w}|\pmb{m_N},\pmb{S_N})<br>\tag{3.49}<br>$$</p>
+<p>If the posterior distribution $p(\alpha, \beta | T)$ is sharply peaked around values $\hat{\alpha}$ and $\hat{\beta}$, then the predictive distribution is obtained simply by marginalizing over $\pmb{w}$ in which $\alpha$ and $\beta$ are fixed to the values $\hat{\alpha}$ and $\hat{\beta}$, so that<br>$$<br>p(t|T) \simeq p(t|T,\hat{\alpha}, \hat{\beta}) = \int  p(t | \pmb{w}, \hat{\beta}) p(\pmb{w} | T, \hat{\alpha}, \hat{\beta}) d\pmb{w}<br>\tag{3.75}<br>$$<br>From <strong><em>Bayes’ theorem</em></strong>, the <u>posterior distribution</u> for $\alpha$ and $\beta$ is given by<br>$$<br>p(\alpha, \beta | T) \propto p(T | \alpha, \beta) p(\alpha, \beta)<br>\tag{3.76}<br>$$<br>If the prior is relatively flat, then in the evidence framework the values of $\hat{\alpha}$ and $\hat{\beta}$ are obtained by <strong><em>maximizing the marginal likelihood function</em></strong> $p(T | \alpha, \beta)$.</p>
+<h3 id="Evaluation-of-the-evidence-function"><a href="#Evaluation-of-the-evidence-function" class="headerlink" title="Evaluation of the evidence function"></a>Evaluation of the evidence function</h3><h3 id="Maximizing-the-evidence-function"><a href="#Maximizing-the-evidence-function" class="headerlink" title="Maximizing the evidence function"></a>Maximizing the evidence function</h3><h3 id="Effective-number-of-parameters"><a href="#Effective-number-of-parameters" class="headerlink" title="Effective number of parameters"></a>Effective number of parameters</h3><h2 id="Limitations-of-Fixed-Basis-Functions"><a href="#Limitations-of-Fixed-Basis-Functions" class="headerlink" title="Limitations of Fixed Basis Functions"></a>Limitations of Fixed Basis Functions</h2>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -314,8 +382,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/MachineLearning/PatternRecognition/PatterRecognition-RandomForest/">
-                <span class="level-item">PatterRecognition-RandomForest</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/Paper/Sketch-Consolidation/Paper-StripMaker-Sketch-Consolidation/">
+                <span class="level-item">Paper-StripMaker-Sketch-Consolidation</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -405,7 +473,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            21
+                            22
                         </p>
                     </a>
                 </div>
@@ -494,6 +562,22 @@
         <a class="is-flex" href="#The-Evidence-Approximation">
         <span class="has-mr-6">6</span>
         <span>The Evidence Approximation</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Evaluation-of-the-evidence-function">
+        <span class="has-mr-6">6.1</span>
+        <span>Evaluation of the evidence function</span>
+        </a></li><li>
+        <a class="is-flex" href="#Maximizing-the-evidence-function">
+        <span class="has-mr-6">6.2</span>
+        <span>Maximizing the evidence function</span>
+        </a></li><li>
+        <a class="is-flex" href="#Effective-number-of-parameters">
+        <span class="has-mr-6">6.3</span>
+        <span>Effective number of parameters</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Limitations-of-Fixed-Basis-Functions">
+        <span class="has-mr-6">7</span>
+        <span>Limitations of Fixed Basis Functions</span>
         </a></li></ul>
             </div>
         </div>
@@ -559,28 +643,6 @@
                     </span>
                     <span class="level-right">
                         <span class="level-item tag">www.physicsbasedanimation.com</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">excellentMathBooks</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">www.library.fudan.edu.cn</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">Probability Model</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">dpkingma.com</span>
                     </span>
                 </a>
             </li>
@@ -684,6 +746,39 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">DeepLearningBook</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.deeplearningbook.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -699,6 +794,30 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/CS/">
+            <span class="level-start">
+                <span class="level-item">CS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/CS/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CS/Algorithms/">
+            <span class="level-start">
+                <span class="level-item">Algorithms</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/GameProgramming/">
             <span class="level-start">
                 <span class="level-item">GameProgramming</span>
@@ -747,28 +866,12 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Language/">
-            <span class="level-start">
-                <span class="level-item">Language</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
-            <span class="level-start">
-                <span class="level-item">Advanced CPP</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/MachineLearning/">
             <span class="level-start">
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
@@ -776,7 +879,7 @@
                 <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -877,7 +980,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -886,6 +989,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-12-28T04:27:50.000Z">2023-12-28</time></div>
+                    <a href="/CS/Algorithms/Algorithms-C1-Foundations/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algorithms-C1-Foundations</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CS/">CS</a> / <a class="has-link-grey -link" href="/categories/CS/Algorithms/">Algorithms</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -939,19 +1055,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
-                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -962,6 +1065,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/11/">
@@ -980,7 +1094,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">52</span>
+                    <span class="level-item tag">51</span>
                 </span>
             </a>
         </li>
@@ -1041,6 +1155,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithms/">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Animation/">
@@ -1120,13 +1241,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/RandomForest/">
-                        <span class="tag">RandomForest</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/Rendering/">
                         <span class="tag">Rendering</span>
                         <span class="tag is-grey">3</span>
@@ -1187,7 +1301,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Keneyr&nbsp;
+                &copy; 2024 Keneyr&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 

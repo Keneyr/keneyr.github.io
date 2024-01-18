@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:48:48.000Z">
-<meta property="article:modified_time" content="2023-12-27T12:33:21.232Z">
+<meta property="article:modified_time" content="2024-01-03T10:14:36.024Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    16 minutes read (About 2457 words)
+                    29 minutes read (About 4339 words)
                 </span>
                 
                 
@@ -266,8 +266,61 @@
 <p><img src="/images/PatternRecognition/c2/conditional-gaussian.png" alt="conditional Gaussian distribution"></p>
 <h3 id="Bayes’-theorem-for-Gaussian-variables"><a href="#Bayes’-theorem-for-Gaussian-variables" class="headerlink" title="Bayes’ theorem for Gaussian variables"></a>Bayes’ theorem for Gaussian variables</h3><p>Here we shall suppose that we are given a Gaussian marginal distribution $p(\pmb{x})$ and a Gaussian conditional distribution $p(\pmb{y}|\pmb{x})$ in which $p(\pmb{y}|\pmb{x})$ has a mean that is a linear function of $\pmb{x}$, and a covariance which is independent of $\pmb{x}$.</p>
 <p><img src="/images/PatternRecognition/c2/marginal-gaussians.png" alt="marginal-conditional Gaussian distribution"></p>
-<h3 id="Maximum-likelihood-for-the-Gaussian"><a href="#Maximum-likelihood-for-the-Gaussian" class="headerlink" title="Maximum likelihood for the Gaussian"></a>Maximum likelihood for the Gaussian</h3><h3 id="Sequential-estimation"><a href="#Sequential-estimation" class="headerlink" title="Sequential estimation"></a>Sequential estimation</h3><h3 id="Bayesian-inference-for-the-Gaussian"><a href="#Bayesian-inference-for-the-Gaussian" class="headerlink" title="Bayesian inference for the Gaussian"></a>Bayesian inference for the Gaussian</h3><h3 id="Student’s-t-distribution"><a href="#Student’s-t-distribution" class="headerlink" title="Student’s t-distribution"></a>Student’s t-distribution</h3><h3 id="Periodic-variables"><a href="#Periodic-variables" class="headerlink" title="Periodic variables"></a>Periodic variables</h3><h3 id="Mixtures-of-Gaussians"><a href="#Mixtures-of-Gaussians" class="headerlink" title="Mixtures of Gaussians"></a>Mixtures of Gaussians</h3><p><img src="/images/PatternRecognition/c2/gaussian-mixture.png" alt="gaussian-mixture"></p>
-<h2 id="The-Exponential-Family"><a href="#The-Exponential-Family" class="headerlink" title="The Exponential Family"></a>The Exponential Family</h2><h3 id="Maximum-likelihood-and-sufficient-statistics"><a href="#Maximum-likelihood-and-sufficient-statistics" class="headerlink" title="Maximum likelihood and sufficient statistics"></a>Maximum likelihood and sufficient statistics</h3><h3 id="Conjugate-priors"><a href="#Conjugate-priors" class="headerlink" title="Conjugate priors"></a>Conjugate priors</h3><h3 id="Noninformative-priors"><a href="#Noninformative-priors" class="headerlink" title="Noninformative priors"></a>Noninformative priors</h3><h3 id="Nonparametric-Methods"><a href="#Nonparametric-Methods" class="headerlink" title="Nonparametric Methods"></a>Nonparametric Methods</h3><h3 id="Kernel-density-estimators"><a href="#Kernel-density-estimators" class="headerlink" title="Kernel density estimators"></a>Kernel density estimators</h3><h3 id="Nearest-neighbour-methods"><a href="#Nearest-neighbour-methods" class="headerlink" title="Nearest-neighbour methods"></a>Nearest-neighbour methods</h3>
+<h3 id="Maximum-likelihood-for-the-Gaussian"><a href="#Maximum-likelihood-for-the-Gaussian" class="headerlink" title="Maximum likelihood for the Gaussian"></a>Maximum likelihood for the Gaussian</h3><p>Given a data set $\pmb{X} = (\pmb{x_1}, \cdots , \pmb{x_N})^T$ in which the observations $\lbrace \pmb{x_n} \rbrace$ are assumed to be drawn independently from a multivariate Gaussian distribution, we can estimate the parameters of the distribution by maximum likelihood, and get<br>$$<br>\pmb{\mu_{ML}} = \frac{1}{N} \sum_{n=1}^{N}\pmb{x_n}<br>$$<br>$$<br>\pmb{\widetilde{\Sigma}} = \frac{1}{N-1} \sum_{n=1}^{N}(\pmb{x_n}-\pmb{\mu_{ML}})(\pmb{x_n}-\pmb{\mu_{ML}})^T<br>$$</p>
+<h3 id="Sequential-estimation"><a href="#Sequential-estimation" class="headerlink" title="Sequential estimation"></a>Sequential estimation</h3><p>Sequential methods allow data points to be processed one at a time and then discarded and are important for on-line applications, and also where large data sets are involved so that batch processing of all data points at once is infeasible.</p>
+<h3 id="Bayesian-inference-for-the-Gaussian"><a href="#Bayesian-inference-for-the-Gaussian" class="headerlink" title="Bayesian inference for the Gaussian"></a>Bayesian inference for the Gaussian</h3><p>The maximum likelihood framework gave point estimates for the parameters $\pmb{\mu}$ and $\pmb{\Sigma}$. Now we develop a Bayesian treatment by introducing prior distributions over these parameters.</p>
+<p>We shall suppose that the variance $\sigma^2$ is known, and we consider the task of inferring the mean $\mu$ given a set of $N$ observations $\pmb{X} = \lbrace x_1, \cdots , x_N \rbrace $. The likelihood function, that is the probability of the observed data given $\mu$, viewed as a function of $\mu$, is given by<br>$$<br>\begin{aligned}<br>p(\pmb{X}|\mu) &amp;= \prod_{n=1}^{N} p(x_n|\mu) \\<br>&amp;= \frac{1}{(2\pi\sigma^2)^{N/2}} exp \lbrace -\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n - \mu)^2\rbrace<br>\end{aligned}<br>\tag{2.137}<br>$$</p>
+<p>the posterior distribution is given by,<br>$$<br>p(\mu|\pmb{X}) \propto p(\pmb{X}|\mu)p(\mu)<br>\tag{2.139}<br>$$</p>
+<p>where<br>$$<br>p(\mu) = N(\mu|mu_0, \sigma_0^2)<br>\tag{2.138}<br>$$</p>
+<p>thus, we get<br>$$<br>\mu_N = \frac{\sigma^2}{N\sigma_0^2 + \sigma^2}\mu_0 + \frac{N\sigma_0^2}{N\sigma_0^2+\sigma^2}\mu_{ML}<br>\tag{2.141}<br>$$<br>$$<br>\frac{1}{\sigma_N^2} = \frac{1}{\sigma_0^2} + \frac{N}{\sigma^2}<br>\tag{2.142}<br>$$</p>
+<p>In fact, the Bayesian paradigm leads very naturally to a sequential view of the inference problem. To see this in the context of the inference of the mean of a Gaussian, we write the posterior distribution with the contribution from the final data point $\pmb{x_N}$ separated out so that</p>
+<p>$$<br>p(\pmb{\mu}|D) \propto [ p(\pmb{\mu}) \prod_{n=1}^{N-1} p(\pmb{x_n}|\pmb{\mu}) ] p(\pmb{x_N}|\pmb{\mu})<br>$$</p>
+<p>The term in square brackets is (up to a normalization coefficient) just the posterior distribution after observing $N − 1$ data points. We see that this can be viewed as a prior distribution, which is combined using Bayes’ theorem with the likelihood function associated with data point $\pmb{x_N}$ to arrive at the posterior distribution after observing $N$ data points. This sequential view of Bayesian inference is very general and applies to any problem in which the observed data are assumed to be independent and identically distributed.</p>
+<p>So far, we have assumed that the variance of the Gaussian distribution over the data is known and our goal is to infer the mean. Now let us suppose that the mean is known and we wish to infer the variance.</p>
+<p>Let $\lambda \equiv \frac{1}{\sigma^2}$, then, </p>
+<p>$$<br>\begin{aligned}<br>p(\pmb{X}|\lambda) &amp;= \prod_{n=1}^{N} N(x_n | \mu, \lambda^{-1}) \\<br>&amp;\propto \lambda^{N/2} exp \lbrace -\frac{\lambda}{2} \sum_{n=1}^{N} (x_n - \mu)^2\rbrace<br>\end{aligned}<br>\tag{2.145}<br>$$</p>
+<p>the posterior distribution we get is<br>$$<br>p(\lambda|\pmb{X}) \propto \lambda^{a_0 - 1} \lambda^{N/2} exp \lbrace -b_0\lambda - \frac{\lambda}{2} \sum_{n=1}^{N} (x_n - \mu)^2 \rbrace<br>\tag{2.149}<br>$$<br>where the prior distribution of $\lambda$ is<br>$$<br>Gam(\lambda|a,b) = \frac{1}{\Gamma(a)} b^a \lambda^{a-1} exp(-b\lambda)<br>\tag{2.146}<br>$$</p>
+<p>we get<br>$$<br>a_N = a_0 + \frac{N}{2}<br>\tag{2.150}<br>$$</p>
+<p>$$<br>b_N = b_0 + \frac{1}{2} \sum_{n=1}^{N} (x_n - \mu)^2 = b_0 + \frac{N}{2} \sigma^2_{ML}<br>\tag{2.151}<br>$$</p>
+<p><img src="/images/PatternRecognition/c2/gaussian-bayse.png" alt="bayesian gaussian distribution"></p>
+<h3 id="Student’s-t-distribution"><a href="#Student’s-t-distribution" class="headerlink" title="Student’s t-distribution"></a>Student’s t-distribution</h3><p>If we have a univariate Gaussian $N(x|\mu, \tau)$ together with a Gamma prior $Gam(\tau | a, b)$ and we integrate out the precision, we obtain the marginal distribution of $x$ in the form</p>
+<p>$$<br>\begin{aligned}<br>p(x | \mu, a, b) &amp;= \int_0^\infty N(x | \mu, \tau^{-1}) Gam(\tau | a, b) d\tau \\<br>&amp;= \frac{b^a}{\Gamma(a)} (\frac{1}{2\pi})^{1/2} [b+\frac{(x-\mu)^2}{2}]^{-a-1/2} \Gamma(a+1/2)<br>\end{aligned}<br>\tag{2.158}<br>$$</p>
+<p>By convention we define new parameters given by $ν = 2a$ and $\lambda = a / b$, in terms of which the distribution $p(x|\mu, a, b)$ takes the form</p>
+<p>$$<br>St(x|\mu, \lambda, v) = \frac{\Gamma (v / 2 + 1 / 2)}{\Gamma (v/2)} (\frac{\lambda}{\pi v})^{1/2} [1 +  \frac{\lambda (x - \mu)^2}{v}]^{-v/2-1/2}<br>\tag{2.159}<br>$$</p>
+<p>which is known as Student’s t-distribution. The parameter $\lambda$ is sometimes called the <strong>precision</strong> of the t-distribution, even though it is not in general equal to the inverse of the variance. The parameter $v$ is called the <strong>degrees of freedom</strong>, and its effect is illustrated in Figure 2.15.</p>
+<p>From (2.158), we see that Student’s t-distribution is obtained by adding up an infinite number of Gaussian distributions having the same mean but different precisions.This gives the tdistribution an important property called robustness, which means that it is much less sensitive than the Gaussian to the presence of a few data points which are outliers. The <strong>robustness</strong> of the t-distribution is illustrated in Figure 2.16, which compares the maximum likelihood solutions for a Gaussian and a t-distribution</p>
+<p><img src="/images/PatternRecognition/c2/student-t.png" alt="bayesian gaussian distribution"></p>
+<p>$$<br>St(\pmb{x}|\pmb{\mu, \Lambda}, v) = \frac{\Gamma(D/2+v/2)}{\Gamma(v/2)} \frac{|\Lambda|^{1/2}}{(\pi v)^{D/2}} [1+\frac{\Delta^2}{v}]^{-D/2-v/2}<br>\tag{2.162}<br>$$<br>where<br>$$<br>\Delta^2 = (\pmb{x-\mu}^T)\Lambda(\pmb{x-\mu})<br>\tag{2.163}<br>$$</p>
+<p>This is the multivariate form of Student’s t-distribution and satisfies the following properties<br>$$<br>E[\pmb{x}] = \pmb{\mu}, v &gt; 1\\<br>cov[\pmb{x}] = \frac{v}{(v-2)}\Lambda^{-1}, v &gt; 2\\<br>mode[\pmb{x}] = \pmb{\mu}<br>$$</p>
+<h3 id="Periodic-variables"><a href="#Periodic-variables" class="headerlink" title="Periodic variables"></a>Periodic variables</h3><h3 id="Mixtures-of-Gaussians"><a href="#Mixtures-of-Gaussians" class="headerlink" title="Mixtures of Gaussians"></a>Mixtures of Gaussians</h3><p>We therefore consider a superposition of K Gaussian densities of the form<br>$$<br>p(\pmb{x}) = \sum_{k=1}^{K} \pi_k N(\pmb{x}|\pmb{\mu_K, \Sigma_k})<br>\tag{2.188}<br>$$<br>where<br>$$<br>\sum_{k=1}^K \pi_k = 1<br>\tag{2.189}<br>$$<br>which is called a <strong>mixture of Gaussians</strong>.</p>
+<p><img src="/images/PatternRecognition/c2/gaussian-mixture.png" alt="gaussian-mixture"></p>
+<p>From the sum and product rules, the marginal density is given by<br>$$<br>p(\pmb{x}) = \sum_{k=1}^{K} p(k) p(\pmb{x}|k)<br>\tag{2.191}<br>$$</p>
+<p>we can view $\pi_k = p(k)$ as the prior probability of picking the $k^{th}$ component, and the density $N(\pmb{x}|\pmb{\mu_k}, \Sigma_k) = p(\pmb{x}|k)$ as the probability of $\pmb{x}$ conditioned on $k$.</p>
+<p>An important role is played by the posterior probabilities $p(k|\pmb{x})$, which are also known as responsibilities. From Bayes’ theorem it is given by</p>
+<p>$$<br>\begin{aligned}<br>\gamma_k(\pmb{x}) &amp;\equiv p(k|\pmb{x}) \\<br>&amp;= \frac{p(k)p(\pmb{x}|k)}{\sum_l p(l)p(\pmb{x}|l)}\\<br>&amp;= \frac{\pi_k N(\pmb{x}|\pmb{\mu_k}, \Sigma_k)}{\sum_l \pi_l N(\pmb{x}|\pmb{\mu_l}, \Sigma_l)}<br>\end{aligned}<br>\tag{2.192}<br>$$</p>
+<p>As a result, the maximum likelihood solution for the parameters no longer has a closed-form analytical solution. Alternatively we can employ a powerful framework called expectation maximization,</p>
+<h2 id="The-Exponential-Family"><a href="#The-Exponential-Family" class="headerlink" title="The Exponential Family"></a>The Exponential Family</h2><p>The exponential family of distributions over $\pmb{x}$, given parameters $\eta$, is defined to be the set of distributions of the form</p>
+<p>$$<br>p(\pmb{x}|\pmb{\eta}) = h(\pmb{x})g(\pmb{\eta}) exp \lbrace \pmb{\eta^T} u(\pmb{x}) \rbrace<br>\tag{2.194}<br>$$<br>Here $\pmb{\eta}$ are called the <em>natural parameters</em> of the distribution, and $u(\pmb{x})$ is some function of $\pmb{x}$. The function $g(\pmb{\eta})$ can be interpreted as the coefficient that ensures that the distribution is normalized and therefore satisfies<br>$$<br>g(\pmb{\eta}) \int h(\pmb{x}) exp \lbrace \pmb{\eta^T} u(\pmb{x}) \rbrace d\pmb{x} = 1<br>\tag{2.159}<br>$$</p>
+<h3 id="Maximum-likelihood-and-sufficient-statistics"><a href="#Maximum-likelihood-and-sufficient-statistics" class="headerlink" title="Maximum likelihood and sufficient statistics"></a>Maximum likelihood and sufficient statistics</h3><p>Taking the gradient of both sides of (2.195) with respect to $\pmb{\eta}$, we have</p>
+<p>$$<br>\nabla g(\pmb{\eta}) \int h(\pmb{x}) exp \lbrace \pmb{\eta}^T u(\pmb{x}) \rbrace d\pmb{x} + g(\pmb{\eta}) \int h(\pmb{x}) exp \lbrace \pmb{\eta}^T u(\pmb{x}) \rbrace u(\pmb{x}) d\pmb{x} = 0<br>\tag{2.224}<br>$$</p>
+<p>thus, we get</p>
+<p>$$<br>-\nabla \ln g(\pmb{\eta}) = E[u(\pmb{x})]<br>\tag{2.226}<br>$$</p>
+<p>Now consider a set of independent identically distributed data denoted by $\pmb{X} = \lbrace \pmb{x_1}, \cdots, \pmb{x_n} \rbrace$, for which the <u>likelihood function</u> is given by</p>
+<p>$$<br>p(\pmb{X}|\pmb{\eta}) = (\prod_{n=1}^{N} h(\pmb{x_n})) g(\pmb{\eta})^N exp \lbrace \pmb{\eta}^T \sum_{n=1}^{N} u(\pmb{x_n})\rbrace<br>$$</p>
+<p>Setting the gradient of $\ln p(\pmb{X}|\pmb{\eta})$ with respect to $\pmb{\eta}$ to zero, we get the following condition to be satisfied by the maximum likelihood estimator $\pmb{\eta}_{ML}$</p>
+<p>$$<br>-\nabla \ln g(\pmb{\eta_{ML}}) = \frac{1}{N} \sum_{n=1}^{N} u(\pmb{x_n})<br>\tag{2.228}<br>$$</p>
+<p>We see that the solution for the maximum likelihood estimator depends on the data only through $\sum_n u(\pmb{x_n})$, which is therefore called the <strong><em>sufficient statistic of the distribution</em></strong> (2.194). We do not need to store the entire data set itself but only the value of the sufficient statistic. </p>
+<p>For the Bernoulli distribution, for example, the function $u(\pmb{x})$ is given just by $\pmb{x}$ and so we need only keep the sum of the data points $\lbrace \pmb{x_n} \rbrace $, whereas for the Gaussian $u(\pmb{x}) = (\pmb{x}, \pmb{x^2})^T$, and so we should keep both the sum of $\lbrace \pmb{x_n} \rbrace $ and the sum of $\lbrace \pmb{x_n^2} \rbrace $.</p>
+<p>If we consider the limit $N \rightarrow \infty$, then the right-hand side of (2.228) becomes $E[u(\pmb{x})]$, and so by comparing with (2.226) we see that in this limit $\pmb{\eta_{ML}}$ will equal the true value $\pmb{\eta}$.</p>
+<h3 id="Conjugate-priors"><a href="#Conjugate-priors" class="headerlink" title="Conjugate priors"></a>Conjugate priors</h3><p>For any member of the exponential family (2.194), there exists a conjugate prior that can be written in the form</p>
+<p>$$<br>p(\pmb{\eta}|\pmb{\chi}, v) = f(\pmb{\chi}, v) g(\pmb{\eta})^v exp \lbrace v \pmb{\eta}^T \pmb{\chi} \rbrace<br>\tag{2.229}<br>$$<br>the posterior distribution is like<br>$$<br>p(\pmb{\eta}|\pmb{X}, \pmb{\chi}, v) \propto g(\pmb{\eta})^{v+N} exp \lbrace \pmb{\eta}^T (\sum_{n=1}^N u(\pmb{x_n}) + v\pmb{\chi})\rbrace<br>$$</p>
+<h3 id="Noninformative-priors"><a href="#Noninformative-priors" class="headerlink" title="Noninformative priors"></a>Noninformative priors</h3><h2 id="Nonparametric-Methods"><a href="#Nonparametric-Methods" class="headerlink" title="Nonparametric Methods"></a>Nonparametric Methods</h2><p>Throughout this chapter, we have focussed on the use of probability distributions having specific functional forms governed by a small number of parameters whose values are to be determined from a data set. This is called the <strong><em>parametric approach to density modelling</em></strong>.</p>
+<p>An important limitation of this approach is that the chosen density might be a poor model of the distribution that generates the data, which can result in poor predictive performance. For instance, if the process that generates the data is <strong><em>multimodal</em></strong>, then this aspect of the distribution can never be captured by a Gaussian, which is necessarily unimodal.</p>
+<p>we turn now to a discussion of two widely used nonparametric techniques for density estimation, kernel estimators and nearest neighbours.</p>
+<h3 id="Kernel-density-estimators"><a href="#Kernel-density-estimators" class="headerlink" title="Kernel density estimators"></a>Kernel density estimators</h3><p>kernel density estimators:</p>
+<p>$$<br>p(\pmb{x}) = \frac{1}{N} \sum_{n=1}^N \frac{1}{h^D} k(\frac{\pmb{x} - \pmb{x_n}}{h})<br>\tag{2.249}<br>$$<br>We can obtain a smoother density model if we choose a smoother kernel function, and a common choice is the Gaussian, which gives rise to the following kernel density model<br>$$<br>p(\pmb{x}) = \frac{1}{N} \sum_{n=1}^N \frac{1}{(2\pi h^2)^{1/2}} exp \lbrace -\frac{||\pmb{x}-\pmb{x_n}||^2}{2h^2} \rbrace<br>\tag{2.250}<br>$$</p>
+<p><img src="/images/PatternRecognition/c2/kernel.png" alt="kernel &amp; nearest-neighbour"></p>
+<h3 id="Nearest-neighbour-methods"><a href="#Nearest-neighbour-methods" class="headerlink" title="Nearest-neighbour methods"></a>Nearest-neighbour methods</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -425,7 +478,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            21
+                            22
                         </p>
                     </a>
                 </div>
@@ -534,17 +587,17 @@
         <a class="is-flex" href="#Noninformative-priors">
         <span class="has-mr-6">4.3</span>
         <span>Noninformative priors</span>
-        </a></li><li>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#Nonparametric-Methods">
-        <span class="has-mr-6">4.4</span>
+        <span class="has-mr-6">5</span>
         <span>Nonparametric Methods</span>
-        </a></li><li>
+        </a><ul class="menu-list"><li>
         <a class="is-flex" href="#Kernel-density-estimators">
-        <span class="has-mr-6">4.5</span>
+        <span class="has-mr-6">5.1</span>
         <span>Kernel density estimators</span>
         </a></li><li>
         <a class="is-flex" href="#Nearest-neighbour-methods">
-        <span class="has-mr-6">4.6</span>
+        <span class="has-mr-6">5.2</span>
         <span>Nearest-neighbour methods</span>
         </a></li></ul></li></ul>
             </div>
@@ -611,28 +664,6 @@
                     </span>
                     <span class="level-right">
                         <span class="level-item tag">www.physicsbasedanimation.com</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">excellentMathBooks</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">www.library.fudan.edu.cn</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">Probability Model</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">dpkingma.com</span>
                     </span>
                 </a>
             </li>
@@ -736,6 +767,39 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">DeepLearningBook</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.deeplearningbook.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -751,6 +815,30 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/CS/">
+            <span class="level-start">
+                <span class="level-item">CS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/CS/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CS/Algorithms/">
+            <span class="level-start">
+                <span class="level-item">Algorithms</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/GameProgramming/">
             <span class="level-start">
                 <span class="level-item">GameProgramming</span>
@@ -799,28 +887,12 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Language/">
-            <span class="level-start">
-                <span class="level-item">Language</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
-            <span class="level-start">
-                <span class="level-item">Advanced CPP</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/MachineLearning/">
             <span class="level-start">
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
@@ -828,7 +900,7 @@
                 <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -929,7 +1001,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -938,6 +1010,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-12-28T04:27:50.000Z">2023-12-28</time></div>
+                    <a href="/CS/Algorithms/Algorithms-C1-Foundations/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algorithms-C1-Foundations</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CS/">CS</a> / <a class="has-link-grey -link" href="/categories/CS/Algorithms/">Algorithms</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -991,19 +1076,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
-                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1014,6 +1086,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/11/">
@@ -1032,7 +1115,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">52</span>
+                    <span class="level-item tag">51</span>
                 </span>
             </a>
         </li>
@@ -1093,6 +1176,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithms/">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Animation/">
@@ -1172,13 +1262,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/RandomForest/">
-                        <span class="tag">RandomForest</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/Rendering/">
                         <span class="tag">Rendering</span>
                         <span class="tag is-grey">3</span>
@@ -1239,7 +1322,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Keneyr&nbsp;
+                &copy; 2024 Keneyr&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 

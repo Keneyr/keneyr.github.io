@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: Advanced CPP - QinranY&#39;s Homepage</title>
+<title>Algorithms-C1-Foundations - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="explore the world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="QinranY&#39;s Homepage">
-<meta property="og:url" content="https://keneyr.com/categories/Language/Advanced-CPP/index.html">
+    <meta name="description" content="Keywords: InsertSort, MergeSort, Divide and Conquer, C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithms-C1-Foundations">
+<meta property="og:url" content="https://keneyr.com/CS/Algorithms/Algorithms-C1-Foundations/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="explore the world">
+<meta property="og:description" content="Keywords: InsertSort, MergeSort, Divide and Conquer, C++">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-12-28T04:27:50.000Z">
+<meta property="article:modified_time" content="2024-01-04T12:38:47.197Z">
 <meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Algorithms">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
 
@@ -76,7 +79,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/beauty.jpg" alt="QinranY&#39;s Homepage" height="28">
+                <img src="/images/beauty.jpg" alt="Algorithms-C1-Foundations" height="28">
             
             </a>
         </div>
@@ -133,6 +136,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -146,179 +153,158 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-12-28T04:27:50.000Z">2023-12-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CS/">CS</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/CS/Algorithms/">Algorithms</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 600 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Algorithms-C1-Foundations
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: InsertSort, MergeSort, Divide and Conquer, C++</p>
+<a id="more"></a>
+
+<h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><h3 id="InsertionSort"><a href="#InsertionSort" class="headerlink" title="InsertionSort"></a>InsertionSort</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSERTION-SORT(A)</span><br><span class="line"><span class="keyword">for</span> j = <span class="number">2</span> to A.length</span><br><span class="line">    key = A[j]</span><br><span class="line">    <span class="comment">// Insert A[j] into the sorte sequence A[1...j-1].</span></span><br><span class="line">    i = j - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> A[i] &gt; key</span><br><span class="line">        A[i + <span class="number">1</span>] = A[i]</span><br><span class="line">        i = i - <span class="number">1</span></span><br><span class="line">    A[i + <span class="number">1</span>] = key</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>conventions in our pseudocode:</p>
+<ol>
+<li>Indentation indicates block structure.</li>
+<li>The looping constructs <code>while</code>, <code>for</code>, and <code>repeat-until</code> and the <code>if-else</code> conditional construct have interpretations similar to those in <code>C, C++, Java, Python, and Pascal</code>.</li>
+<li>We typically organize compound data into objects, which are composed of attributes. <code>A.length</code></li>
+</ol>
+</blockquote>
+<h3 id="MergeSort"><a href="#MergeSort" class="headerlink" title="MergeSort"></a>MergeSort</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">MERGE(A,p,q,r)</span><br><span class="line">    n_1 = q - p + <span class="number">1</span></span><br><span class="line">    n_2 = r - q</span><br><span class="line">    let L[<span class="number">1.</span>.n_1+<span class="number">1</span>] <span class="keyword">and</span> R[<span class="number">1.</span>.n_2+<span class="number">1</span>] be <span class="keyword">new</span> arrays</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to n_1</span><br><span class="line">        L[i] = A[p + i - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> j = <span class="number">1</span> to n_2</span><br><span class="line">        R[j] = A[q + j]</span><br><span class="line">    L[n_1 + <span class="number">1</span>] = infty</span><br><span class="line">    R[n_2 + <span class="number">1</span>] = infty</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    j = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> k = p to r</span><br><span class="line">        <span class="keyword">if</span> L[i] &lt;= R[j]</span><br><span class="line">            A[k] = L[i]</span><br><span class="line">            i = i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            A[k] = R[j]</span><br><span class="line">            j = j + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">MERGE-SORT(A,p,r)</span><br><span class="line">    <span class="keyword">if</span> p &lt; r</span><br><span class="line">        q = <span class="built_in">floor</span> (p + r)/<span class="number">2</span></span><br><span class="line">        MERGE-SORT(A, p, q)</span><br><span class="line">        MERGE-SORT(A, q + <span class="number">1</span>, r)</span><br><span class="line">        MERGE(A, p, q, r)</span><br></pre></td></tr></table></figure>
+<h2 id="Divide-and-Conquer"><a href="#Divide-and-Conquer" class="headerlink" title="Divide-and-Conquer"></a>Divide-and-Conquer</h2><h3 id="the-maximum-subarray-problem"><a href="#the-maximum-subarray-problem" class="headerlink" title="the maximum-subarray problem"></a>the maximum-subarray problem</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">FIND-MAX-CROSSING-SUBARRAY(A,low,mid,high)</span><br><span class="line">    left-sum = -infty</span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i = mid downto low</span><br><span class="line">        sum = sum + A[i]</span><br><span class="line">        <span class="keyword">if</span> sum &gt; left-sum</span><br><span class="line">            left-sum = sum</span><br><span class="line">            <span class="built_in">max</span>-left = i</span><br><span class="line">    right-sum = -infty</span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j = mid+<span class="number">1</span> to high</span><br><span class="line">        sum = sum + A[j]</span><br><span class="line">        <span class="keyword">if</span> sum &gt; right-sum</span><br><span class="line">            right-sum = sum</span><br><span class="line">            <span class="built_in">max</span>-right = j</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">max</span>-left, <span class="built_in">max</span>-right, left-sum+right-sum)</span><br><span class="line"></span><br><span class="line">FIND-MAXIMUM-SUBARRAY(A,low,high)</span><br><span class="line">    <span class="keyword">if</span> high == low</span><br><span class="line">        <span class="keyword">return</span> (low, high, A[low])</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        mid = (low + high) / <span class="number">2</span></span><br><span class="line">        (left-low, left-high, left-sum) = FIND-MAXIMUM-SUBARRAY(A, low, mid)</span><br><span class="line">        (right-low, right-high, right-sum) = FIND-MAXIMUM-SUBARRAY(A, mid+<span class="number">1</span>, high)</span><br><span class="line">        (cross-low, cross-high, cross-sum) = FIND-MAX-CROSSING-SUBARRAY(A, low, mid, high)</span><br><span class="line">        <span class="keyword">if</span> left-sum &gt;= right-sum <span class="keyword">and</span> left-sum &gt;= cross-sum</span><br><span class="line">            <span class="keyword">return</span>(left-low, left-high, left-sum)</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> right-sum &gt;= left-sum <span class="keyword">and</span> right-sum &gt;= cross-sum</span><br><span class="line">            <span class="keyword">return</span>(right-low, right-high, right-sum)</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> (cross-low, cross-high, cross-sum)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Strassen’s-algorithm-for-matrix-multiplication"><a href="#Strassen’s-algorithm-for-matrix-multiplication" class="headerlink" title="Strassen’s algorithm for matrix multiplication"></a>Strassen’s algorithm for matrix multiplication</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SQUARE-MATRIX-MULTIPLY(A,B)</span><br><span class="line">    n = A.rows</span><br><span class="line">    Let C be a <span class="keyword">new</span> n x n matrix</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">        <span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line">            c_ij = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> k = <span class="number">1</span> to n</span><br><span class="line">                c_ij = c_ij + a_ik b_kj</span><br><span class="line"><span class="keyword">return</span> C</span><br></pre></td></tr></table></figure>
+
+<p>this simple divide-and-conquer approach is no faster than the straightforward SQUARE-MATRIX-MULTIPLY procedure.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SQUARE-MATRIX-MULTIPLY-RECURSIVE(A,B)</span><br><span class="line">    n = A.rows</span><br><span class="line">    Let C be a <span class="keyword">new</span> n x n matrix</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span></span><br><span class="line">        c_11 = a_11 b_11</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        partition A,B,<span class="keyword">and</span> C as in equations(<span class="number">4.9</span>)</span><br><span class="line">        C_11 = SQUARE-MATRIX-MULTIPLY-RECURSIVE(A_11,B_11) + SQUARE-MATRIX-MULTIPLY-RECURSIVE(A_12,B_21)</span><br><span class="line">        C_12 = SQUARE-MATRIX-MULTIPLY-RECURSIVE(A_11,B_12) + SQUARE-MATRIX-MULTIPLY-RECURSIVE(A_12,B_22)</span><br><span class="line">        C_21 = SQUARE-MATRIX-MULTIPLY-RECURSIVE(A_21,B_11) + SQUARE-MATRIX-MULTIPLY-RECURSIVE(A_22,B_21)</span><br><span class="line">        C_22 = SQUARE-MATRIX-MULTIPLY-RECURSIVE(A_21,B_12) + SQUARE-MATRIX-MULTIPLY-RECURSIVE(A_22,B_22)</span><br><span class="line"><span class="keyword">return</span> C</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>A =<br>\begin{bmatrix}<br>A_{11} &amp; A_{12}\\<br>A_{21} &amp; A_{22}<br>\end{bmatrix},<br>B =<br>\begin{bmatrix}<br>B_{11} &amp; B_{12}\\<br>B_{21} &amp; B_{22}<br>\end{bmatrix},<br>$$</p>
+<p>$$<br>C =<br>\begin{bmatrix}<br>C_{11} &amp; C_{12}\\<br>C_{21} &amp; C_{22}<br>\end{bmatrix}<br>=\begin{bmatrix}<br>A_{11} &amp; A_{12}\\<br>A_{21} &amp; A_{22}<br>\end{bmatrix}\begin{bmatrix}<br>B_{11} &amp; B_{12}\\<br>B_{21} &amp; B_{22}<br>\end{bmatrix}<br>\tag{4.9}<br>$$</p>
+<h2 id="Probabilistic-Analysis-and-Randomized-Algorithms"><a href="#Probabilistic-Analysis-and-Randomized-Algorithms" class="headerlink" title="Probabilistic Analysis and Randomized Algorithms"></a>Probabilistic Analysis and Randomized Algorithms</h2><h3 id="the-hiring-problem"><a href="#the-hiring-problem" class="headerlink" title="the hiring problem"></a>the hiring problem</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HIRE-ASSISTANT(n)</span><br><span class="line">    best = <span class="number">0</span>    <span class="comment">//candidate 0 is a least-qualified dummy candidate</span></span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">        interview candidate i </span><br><span class="line">        <span class="keyword">if</span> candidate i is better than candidate best</span><br><span class="line">            best = i</span><br><span class="line">            hire candidate i</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Algorithms/" rel="tag">Algorithms</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">Categories</a></li>
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
             
-            <li><a href="/categories/Language/">Language</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">Advanced CPP</a></li>
-        </ul>
-        </nav>
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
     </div>
 </div>
 
-    
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Graphics/Animation/Animation-C14-Skinning/">
+                <span class="level-item">Animation-C14-Skinning</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
 <div class="card">
-    
-    <div class="card-content article ">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-29T04:06:41.000Z">2020-03-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Language/">Language</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Language/Advanced-CPP/">Advanced CPP</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    18 minutes read (About 2691 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/Language/Advanced-CPP/STL-Vector/">something-from-vector-implementation</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong><em>Keywords</em></strong>: STL</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/Language/Advanced-CPP/STL-Vector/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '869818563e775a6b6dc101816cef408c',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
     </div>
 </div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-29T03:20:28.000Z">2020-03-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Language/">Language</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Language/Advanced-CPP/">Advanced CPP</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 138 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/Language/Advanced-CPP/STL-Address-Opereator/">address-opereator</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong><em>Keywords</em></strong>: address</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/Language/Advanced-CPP/STL-Address-Opereator/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-12T04:58:36.000Z">2020-03-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Language/">Language</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Language/Advanced-CPP/">Advanced CPP</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 249 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/Language/Advanced-CPP/STL-FunctionTemplate/">Function-Template</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong><em>Keywords</em></strong>: FunctionTemplate</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/Language/Advanced-CPP/STL-FunctionTemplate/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -376,7 +362,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            21
+                            22
                         </p>
                     </a>
                 </div>
@@ -406,6 +392,50 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Getting-Started">
+        <span class="has-mr-6">1</span>
+        <span>Getting Started</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#InsertionSort">
+        <span class="has-mr-6">1.1</span>
+        <span>InsertionSort</span>
+        </a></li><li>
+        <a class="is-flex" href="#MergeSort">
+        <span class="has-mr-6">1.2</span>
+        <span>MergeSort</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Divide-and-Conquer">
+        <span class="has-mr-6">2</span>
+        <span>Divide-and-Conquer</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#the-maximum-subarray-problem">
+        <span class="has-mr-6">2.1</span>
+        <span>the maximum-subarray problem</span>
+        </a></li><li>
+        <a class="is-flex" href="#Strassen’s-algorithm-for-matrix-multiplication">
+        <span class="has-mr-6">2.2</span>
+        <span>Strassen’s algorithm for matrix multiplication</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Probabilistic-Analysis-and-Randomized-Algorithms">
+        <span class="has-mr-6">3</span>
+        <span>Probabilistic Analysis and Randomized Algorithms</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#the-hiring-problem">
+        <span class="has-mr-6">3.1</span>
+        <span>the hiring problem</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -466,28 +496,6 @@
                     </span>
                     <span class="level-right">
                         <span class="level-item tag">www.physicsbasedanimation.com</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">excellentMathBooks</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">www.library.fudan.edu.cn</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">Probability Model</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">dpkingma.com</span>
                     </span>
                 </a>
             </li>
@@ -591,6 +599,39 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">DeepLearningBook</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.deeplearningbook.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -606,6 +647,30 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/CS/">
+            <span class="level-start">
+                <span class="level-item">CS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/CS/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CS/Algorithms/">
+            <span class="level-start">
+                <span class="level-item">Algorithms</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/GameProgramming/">
             <span class="level-start">
                 <span class="level-item">GameProgramming</span>
@@ -654,28 +719,12 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Language/">
-            <span class="level-start">
-                <span class="level-item">Language</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
-            <span class="level-start">
-                <span class="level-item">Advanced CPP</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/MachineLearning/">
             <span class="level-start">
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
@@ -683,7 +732,7 @@
                 <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -784,7 +833,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -793,6 +842,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-12-28T04:27:50.000Z">2023-12-28</time></div>
+                    <a href="/CS/Algorithms/Algorithms-C1-Foundations/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algorithms-C1-Foundations</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CS/">CS</a> / <a class="has-link-grey -link" href="/categories/CS/Algorithms/">Algorithms</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -846,19 +908,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
-                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -869,6 +918,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/11/">
@@ -887,7 +947,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">52</span>
+                    <span class="level-item tag">51</span>
                 </span>
             </a>
         </li>
@@ -948,6 +1008,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithms/">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Animation/">
@@ -1027,13 +1094,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/RandomForest/">
-                        <span class="tag">RandomForest</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/Rendering/">
                         <span class="tag">Rendering</span>
                         <span class="tag is-grey">3</span>
@@ -1090,11 +1150,11 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/beauty.jpg" alt="QinranY&#39;s Homepage" height="28">
+                    <img src="/images/beauty.jpg" alt="Algorithms-C1-Foundations" height="28">
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Keneyr&nbsp;
+                &copy; 2024 Keneyr&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 

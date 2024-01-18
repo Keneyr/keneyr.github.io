@@ -10,16 +10,16 @@
 <title>PatterRecognition-C12-Continuous-Latent-Variables - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="Keywords: Nonlinear Latent Variable Models, Probabilistic PCA, Python">
+    <meta name="description" content="Keywords: Conventional PCA, Probabilistic PCA, Nonlinear Latent Variable Models, Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PatterRecognition-C12-Continuous-Latent-Variables">
 <meta property="og:url" content="https://keneyr.com/MachineLearning/PatternRecognition/PatterRecognition-C12-Continuous-Latent-Variables/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="Keywords: Nonlinear Latent Variable Models, Probabilistic PCA, Python">
+<meta property="og:description" content="Keywords: Conventional PCA, Probabilistic PCA, Nonlinear Latent Variable Models, Python">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
 <meta property="article:published_time" content="2023-10-16T08:51:02.000Z">
-<meta property="article:modified_time" content="2023-12-27T09:53:52.050Z">
+<meta property="article:modified_time" content="2024-01-18T04:18:17.651Z">
 <meta property="article:author" content="Keneyr">
 <meta property="article:tag" content="MachineLearning">
 <meta name="twitter:card" content="summary">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 81 words)
+                    17 minutes read (About 2566 words)
                 </span>
                 
                 
@@ -188,12 +188,98 @@
             
         </h1>
         <div class="content">
-            <p><strong><em>Keywords</em></strong>: Nonlinear Latent Variable Models, Probabilistic PCA, Python</p>
+            <p><strong><em>Keywords</em></strong>: Conventional PCA, Probabilistic PCA, Nonlinear Latent Variable Models, Python</p>
 <a id="more"></a>
 
 <p>This is the Chapter12 ReadingNotes from book <em>Bishop-Pattern-Recognition-and-Machine-Learning-2006</em>. <a href="https://github.com/Keneyr/PRML">[Code_Python]</a></p>
-<p>&#x1F449;<a href="">First Understanding PCA in Algebra &gt;&gt;</a></p>
-<h2 id="Principal-Component-Analysis"><a href="#Principal-Component-Analysis" class="headerlink" title="Principal Component Analysis"></a>Principal Component Analysis</h2><h3 id="Maximum-variance-formulation"><a href="#Maximum-variance-formulation" class="headerlink" title="Maximum variance formulation"></a>Maximum variance formulation</h3><h3 id="Minimum-error-formulation"><a href="#Minimum-error-formulation" class="headerlink" title="Minimum-error formulation"></a>Minimum-error formulation</h3><h3 id="Applications-of-PCA"><a href="#Applications-of-PCA" class="headerlink" title="Applications of PCA"></a>Applications of PCA</h3><h3 id="PCA-for-high-dimensional-data"><a href="#PCA-for-high-dimensional-data" class="headerlink" title="PCA for high-dimensional data"></a>PCA for high-dimensional data</h3><h2 id="Probabilistic-PCA"><a href="#Probabilistic-PCA" class="headerlink" title="Probabilistic PCA"></a>Probabilistic PCA</h2><h3 id="Maximum-likelihood-PCA"><a href="#Maximum-likelihood-PCA" class="headerlink" title="Maximum likelihood PCA"></a>Maximum likelihood PCA</h3><h3 id="EM-algorithm-for-PCA"><a href="#EM-algorithm-for-PCA" class="headerlink" title="EM algorithm for PCA"></a>EM algorithm for PCA</h3><h3 id="Bayesian-PCA"><a href="#Bayesian-PCA" class="headerlink" title="Bayesian PCA"></a>Bayesian PCA</h3><h3 id="Factor-analysis"><a href="#Factor-analysis" class="headerlink" title="Factor analysis"></a>Factor analysis</h3><h2 id="Kernel-PCA"><a href="#Kernel-PCA" class="headerlink" title="Kernel PCA"></a>Kernel PCA</h2><h2 id="Nonlinear-Latent-Variable-Models"><a href="#Nonlinear-Latent-Variable-Models" class="headerlink" title="Nonlinear Latent Variable Models"></a>Nonlinear Latent Variable Models</h2><h3 id="Independent-component-analysis"><a href="#Independent-component-analysis" class="headerlink" title="Independent component analysis"></a>Independent component analysis</h3><h3 id="Autoassociative-neural-networks"><a href="#Autoassociative-neural-networks" class="headerlink" title="Autoassociative neural networks"></a>Autoassociative neural networks</h3><h3 id="Modelling-nonlinear-manifolds"><a href="#Modelling-nonlinear-manifolds" class="headerlink" title="Modelling nonlinear manifolds"></a>Modelling nonlinear manifolds</h3>
+<p>&#x1F449;<a href="/Math/Linear-Algebra/Algebra-C7-Symmetric-Matrices-And-Quadratic-Forms/#Applications-to-Image-Processing-and-Statistics">First Understanding PCA in Algebra &gt;&gt;</a></p>
+<h2 id="Principal-Component-Analysis"><a href="#Principal-Component-Analysis" class="headerlink" title="Principal Component Analysis"></a>Principal Component Analysis</h2><p>There are two commonly used definitions of PCA that give rise to the same algorithm: Maximum variance and  Minimum-error.</p>
+<h3 id="Maximum-variance-formulation"><a href="#Maximum-variance-formulation" class="headerlink" title="Maximum variance formulation"></a>Maximum variance formulation</h3><p>$\pmb{x} \in R^D$, consider the projection onto a one-dimensional space (M = 1), We can define the direction of this space using a $D$-dimensional vector $\pmb{u_1}$, which for convenience (and without loss of generality) we shall choose to be a unit vector so that $\pmb{u_1^T u_1} = 1$.</p>
+<p>the mean of samples<br>$$<br>\bar{\pmb{x}} = \frac{1}{N} \sum_{n=1}^N \pmb{x_n}<br>\tag{12.1}<br>$$<br>the variance of the projected data is given by<br>$$<br>\frac{1}{N} \sum_{n=1}^N \lbrace \pmb{u_1^Tx_n - u_1^T\bar{x}}\rbrace^2 = \pmb{u_1^TSu_1}<br>\tag{12.2}<br>$$<br>where $\pmb{S}$ is the data covariance matrix defined by<br>$$<br>\pmb{S} = \frac{1}{N} \sum_{n=1}^N (\pmb{x_n - \bar{x}})(\pmb{x_n - \bar{x}})^T<br>\tag{12.3}<br>$$<br>use Lagrange multiplier and make an unconstrained maximization of<br>$$<br>\pmb{u_1^TSu_1} + \lambda _1 (1 - pmb{u_1^Tu_1})<br>\tag{12.4}<br>$$<br>we get<br>$$<br>\pmb{Su_1} = \lambda _1 \pmb{u_1}<br>$$<br>so the variance will be a maximum when we set $\pmb{u_1}$ equal to the eigenvector having the largest eigenvalue $\lambda _1$. This eigenvector is known as the <strong><em>first principal component</em></strong>.</p>
+<p>To summarize, principal component analysis involves evaluating the mean $\bar{\pmb{x}}$ and the covariance matrix $\pmb{S}$ of the data set and then finding the $M$ eigenvectors of S corresponding to the $M$ largest eigenvalues.</p>
+<h3 id="Minimum-error-formulation"><a href="#Minimum-error-formulation" class="headerlink" title="Minimum-error formulation"></a>Minimum-error formulation</h3><p>we introduce a complete orthonormal set of $D$-dimensional basis vectors $\lbrace \pmb{u_i} \rbrace$ where $i = 1, \cdots , D$ that satisfy</p>
+<p>$$<br>\pmb{u_i^Tu_j} = \sigma_{ij}<br>\tag{12.7}<br>$$<br>Because this basis is complete, each data point can be represented exactly by a linear combination of the basis vectors<br>$$<br>\begin{aligned}<br>\pmb{x_n} &amp;= \sum_{i=1}^D \alpha_{ni} \pmb{u_i} \\<br>&amp;= \sum_{i=1}^D (\pmb{x_n^T u_i}) \pmb{u_i}<br>\end{aligned}<br>\tag{12.8}<br>$$</p>
+<blockquote>
+<p>This simply corresponds to a rotation of the coordinate system to a new system defined by the $\lbrace \pmb{u_i} \rbrace$, and the original $D$ components $\lbrace x_{n1}, \cdots, x_{nD} \rbrace$ are replaced by an equivalent set $\lbrace \alpha_{n1}, \cdots, \alpha_{nD} \rbrace$.</p>
+</blockquote>
+<p>The $M$ -dimensional linear subspace can be represented, without loss of generality, by the first $M$ of the basis vectors, and so we approximate each data point $\pmb{x_n}$ by</p>
+<p>$$<br>\widetilde{\pmb{x_n}} = \sum_{i=1}^M z_{ni}\pmb{u_i} + \sum_{i = M+1}^{D} b_i \pmb{u_i}<br>\tag{12.10}<br>$$<br>we are going to minimize the distortion introduced by the reduction in dimensionality.<br>$$<br>J = \frac{1}{N} \sum_{n=1}^N ||\pmb{x_n - \widetilde{x_n}}||^2<br>\tag{12.11}<br>$$<br>get<br>$$<br>z_{nj} = \pmb{x_n^Tu_j}<br>\tag{12.12}<br>$$<br>$$<br>b_j = \bar{\pmb{x}}^T \pmb{u_j}<br>\tag{12.13}<br>$$</p>
+<p>substitute (12.12), (12.13) to (12.11), we get<br>$$<br>\pmb{x_n - \widetilde{x_n}} = \sum_{i = M+1}^D \lbrace (\pmb{x_n - \bar{x}})^T \pmb{u_i}\rbrace \pmb{u_i}<br>\tag{12.14}<br>$$<br>from which we see that the displacement vector from $\pmb{x_n}$ to $\widetilde{\pmb{x_n}}$ lies in the space orthogonal to the <strong><em>principal subspace</em></strong>.</p>
+<p>This result accords with our intuition that, in order to minimize the average squared projection distance, we should choose the principal component subspace to pass through the mean of the data points and to be aligned with the directions of maximum variance.</p>
+<p>thus, we get distortion measure $J$ as<br>$$<br>J = \frac{1}{N} \sum_{n=1}^N \sum_{i=M+1}^D (\pmb{x_n^T u_i - \bar{x}^T u_i})^2 = \sum_{i=M+1}^D \pmb{u_i^T S u_i}<br>\tag{12.15}<br>$$</p>
+<h3 id="Applications-of-PCA"><a href="#Applications-of-PCA" class="headerlink" title="Applications of PCA"></a>Applications of PCA</h3><p><img src="/images/PatternRecognition/c12/PCA.png" alt="PCA"></p>
+<ol>
+<li><p>For data compression.</p>
+</li>
+<li><p>data pre-processing.</p>
+</li>
+<li><p>data visualization.</p>
+</li>
+</ol>
+<h3 id="PCA-for-high-dimensional-data"><a href="#PCA-for-high-dimensional-data" class="headerlink" title="PCA for high-dimensional data"></a>PCA for high-dimensional data</h3><h2 id="Probabilistic-PCA"><a href="#Probabilistic-PCA" class="headerlink" title="Probabilistic PCA"></a>Probabilistic PCA</h2><p>This reformulation of PCA, known as probabilistic peA, brings several advantages compared with conventional PCA.</p>
+<ol>
+<li>deal with missing values in the data set.</li>
+<li>trained using the EM algorithm, which is computationally efficient.</li>
+<li>forms the basis for a Bayesian treatment of PCA.</li>
+<li>can be used to model class-conditional densities.</li>
+<li>can be run generatively to provide samples from the distribution.</li>
+<li>represents a constrained form of the Gaussian distribution.</li>
+</ol>
+<p><img src="/images/PatternRecognition/c12/Probabilistic-PCA.png" alt="Probabilistic-PCA"></p>
+<p>We can formulate probabilistic PCA by first introducing an explicit latent variable $\pmb{z}$ corresponding to the principal-component subspace.</p>
+<p>the prior distribution is<br>$$<br>p(\pmb{z}) = N(\pmb{z | 0, I})<br>\tag{12.31}<br>$$</p>
+<p>the conditional distribution is<br>$$<br>p(\pmb{x|z}) = N(\pmb{x}| \pmb{Wz + \mu}, \sigma^2 \pmb{I})<br>\tag{12.32}<br>$$</p>
+<p>the columns of $\pmb{W}: D \times M$ span a linear subspace within the data space that corresponds to the principal subspace.</p>
+<p>We can view the probabilistic PCA model from a generative viewpoint in which a sampled value of the observed variable is obtained by first choosing a value for the latent variable and then sampling the observed variable conditioned on this latent value. Specifically, the $D$-dimensional observed variable $\pmb{x}$ is defined by a linear transformation of the $M$-dimensional latent variable $\pmb{z}$ plus additive Gaussian ‘noise’, so that<br>$$<br>\pmb{x} = \pmb{Wz + \mu + \epsilon}<br>\tag{12.33}<br>$$<br>the marginal distribution of $p(\pmb{x})$ is<br>$$<br>p(\pmb{x}) = \int p(\pmb{x|z})p(\pmb{z}) d\pmb{z} = N(\pmb{x | \mu, C})<br>\tag{12.34}<br>$$<br>where the $D \times D$ matrix $\pmb{C}$ is<br>$$<br>\pmb{C} = \pmb{WW^T} + \sigma^2 \pmb{I}<br>\tag{12.36}<br>$$<br>from &#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C2-Probability-Distributions/#Bayes’-theorem-for-Gaussian-variables">2.116 &gt;&gt;</a>, we get the posterior distribution $p(\pmb{z|x})$,<br>$$<br>p(\pmb{z|x}) = N(\pmb{z} | \pmb{M^{-1} W^T (x - \mu)}, \sigma^{2}\pmb{M})<br>\tag{12.42}<br>$$<br>where the $M \times M$ matrix $\pmb{M}$ is defined by<br>$$<br>\pmb{M} = \pmb{W^TW} + \sigma^2 \pmb{I}<br>$$</p>
+<h3 id="Maximum-likelihood-PCA"><a href="#Maximum-likelihood-PCA" class="headerlink" title="Maximum likelihood PCA"></a>Maximum likelihood PCA</h3><p>The corresponding log likelihood function is given by<br>$$<br>\begin{aligned}<br>\ln p(\pmb{X} | \pmb{\mu, W}, \sigma^2) &amp;= \sum_{n=1}^N \ln p(\pmb{x_n} | \pmb{W, \mu}, \sigma^2) \\<br>&amp;= -\frac{ND}{2} \ln(2\pi) - \frac{N}{2} \ln |\pmb{C}| - \frac{1}{2} \sum_{n=1}^N (\pmb{x_n - \mu})^T \pmb{C}^{-1} (\pmb{x_n - \mu}) \\<br>&amp;= -\frac{N}{2} \lbrace D \ln(2\pi) + \ln |\pmb{C}| + Tr(\pmb{C^{-1}S})\rbrace<br>\end{aligned}<br>\tag{12.44}<br>$$</p>
+<p>maximum log likelihood, we get<br>$$<br>\pmb{W_{ML}} = \pmb{U_{M}} (\pmb{L_M} - \sigma^2 \pmb{I})^{1/2} \pmb{R}<br>\tag{12.45}<br>$$<br>where, $\pmb{U_M}$ is a $D \times M$ matrix whose columns are given by <u>any subset (of size $M$) of the eigenvectors</u> of the data covariance matrix $\pmb{S}$, the $M \times M$ diagonal matrix $\pmb{L_M}$ has elements given by the corresponding eigenvalues $\lambda_i$, and $\pmb{R}$ is an arbitrary $M \times M$ orthogonal matrix.<br>$$<br>\sigma_{ML}^2 = \frac{1}{D - M} \sum_{i = M + 1}^D \lambda_i<br>\tag{12.46}<br>$$<br>so that $\sigma_{ML}^2$ is the average variance associated with the discarded dimensions.</p>
+<blockquote>
+<p>Because $\pmb{R}$ is orthogonal, it can be interpreted as a rotation matrix in the $M \times M$ latent space. For the particular case of $\pmb{R} = \pmb{I}$, we see that the columns of $\pmb{W}$ are the <u>principal component eigenvectors scaled by the variance parameters</u> $\lambda_i - \sigma^2$.<br>The interpretation of these scaling factors is clear once we recognize that for a convolution of independent Gaussian distributions (in this case the latent space distribution and the noise model) the variances are additive.<br>Thus the variance $\lambda_i$ in the direction of an eigenvector $\pmb{u_i}$ is composed of the sum of a contribution $\lambda_i - \sigma^2$ from the projection of the unit-variance latent space distribution into data space through the corresponding column of $\pmb{W}$, plus an isotropic contribution of variance $\sigma^2$ which is added in all directions by the noise model.</p>
+</blockquote>
+<h3 id="EM-algorithm-for-PCA"><a href="#EM-algorithm-for-PCA" class="headerlink" title="EM algorithm for PCA"></a>EM algorithm for PCA</h3><p>In spaces of high dimensionality, there may be computational advantages in using an iterative EM procedure rather than working directly with the sample covariance matrix. This EM procedure can also be extended to the factor analysis model, for which there is no closed-form solution. Finally, it allows missing data to be handled in a principled way.</p>
+<p>the complete-data log likelihood function takes the form<br>$$<br>\ln p(\pmb{X,Z} | \pmb{\mu, W}, \sigma^2) = \sum_{n=1}^N \lbrace \ln p(\pmb{x_n} | \pmb{z_n}) + \ln p(\pmb{z_n}) \rbrace<br>\tag{12.52}<br>$$<br>the $Q$ function(expectation of log likelihood function) is<br>$$<br>\begin{aligned}<br>E[\ln p(\pmb{X,Z} | \pmb{\mu, W}, \sigma^2)] &amp;= -\sum_{n=1}^N \lbrace \frac{D}{2} \ln(2\pi\sigma^2) + \frac{1}{2} Tr(E[\pmb{z_nz_n^T}])\\<br>&amp;+ \frac{1}{2\sigma^2} ||\pmb{x_n - \mu}||^2 - \frac{1}{\sigma^2} E[\pmb{z_n}]^T \pmb{W}^T (\pmb{x_n - \mu}) \\<br>&amp;+ \frac{1}{2\sigma^2} Tr(E[\pmb{z_nz_n^T}] \pmb{W^TW})\rbrace<br>\end{aligned}<br>$$<br>where<br>$$<br>E[\pmb{z_n}] = \pmb{M^{-1}W^T(x_n - \bar{x})}<br>\tag{12.54}<br>$$<br>$$<br>E[\pmb{z_nz_n^T}] = \sigma^2 \pmb{M}^{-1} + E[\pmb{z_n}]E[\pmb{z_n}]^T<br>\tag{12.55}<br>$$<br>Now in the M step, we get</p>
+<p><img src="/images/PatternRecognition/c12/M.png" alt="M Step"></p>
+<p>Note that this EM algorithm can be implemented in an on-line form in which each $D$-dimensional data point is read in and processed and then discarded before the next data point is considered.</p>
+<p><img src="/images/PatternRecognition/c12/missing-data.png" alt="missing-data"></p>
+<h3 id="Bayesian-PCA"><a href="#Bayesian-PCA" class="headerlink" title="Bayesian PCA"></a>Bayesian PCA</h3><p>We want to infer the reduced dimention $M$ by our model, not be given by users. So here comes Bayesian PCA, we use <strong><em>evidence approximation</em></strong>. Recall the definiton,</p>
+<blockquote>
+<p>In Bayesian statistics, the evidence (also known as the marginal likelihood) is the probability of observing the data given a particular model, averaged over all possible parameter values. It serves as a normalizing constant when updating the prior beliefs to obtain the posterior distribution. The evidence is crucial for comparing different models and selecting the one that best explains the observed data.<br>The evidence for a model $M$ given the data $D$ is denoted as $p(D|M)$ and calculated as:<br>$$<br>p(D|M) = \int p(D|\theta, M) p(\theta|M) d\theta<br>$$<br>where<br>$p(D|\theta, M)$ is the likelihood, representing the probability of the data given the model parameters.<br>$p(\theta | M)$ is the prior, representing the prior distribution over the model parameters.</p>
+</blockquote>
+<p>So here, we assume the prior of $\pmb{W}$ is Gaussian,<br>$$<br>p(\pmb{W} | \pmb{\alpha}) = \prod_{i=1}^M (\frac{\alpha_i}{2\pi})^{D/2} exp \lbrace -\frac{1}{2} \alpha_i \pmb{w_i^T w_i}\rbrace<br>\tag{12.60}<br>$$<br>The values of $\alpha_i$ are re-estimated during training by maximizing the <u>log marginal likelihood</u> given by<br>$$<br>p(\pmb{X}| \pmb{\alpha, \mu}, \sigma^2) = \int \underbrace{p(\pmb{X} | \pmb{W, \mu}, \sigma^2)}_{12.43} p(\pmb{W} | \pmb{\alpha}) d\pmb{W}<br>\tag{12.61}<br>$$</p>
+<blockquote>
+<p>Because this integration is intractable, we make use of the Laplace approximation. </p>
+</blockquote>
+<p>If we assume that the posterior distribution is sharply peaked, as will occur for sufficiently large data sets, then the re-estimation equations obtained by maximizing the marginal likelihood with respect to $\alpha_i$ take the simple form</p>
+<p>$$<br>\alpha_i^{new} = \frac{D}{\pmb{w_i^Tw_i}}<br>\tag{12.62}<br>$$<br>which follows from &#x1F449;<a href="/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/#The-Evidence-Approximation">(3.98) &gt;&gt;</a>,</p>
+<p>These reestimations are interleaved with the <u>EM algorithm</u> updates for determining $\pmb{W}$ and $\sigma^2$, the only change is to the M. Step equation for $\pmb{W}$,</p>
+<p><img src="/images/PatternRecognition/c12/Bayseian-PCA.png" alt="Bayseian-PCA"></p>
+<h3 id="Factor-analysis"><a href="#Factor-analysis" class="headerlink" title="Factor analysis"></a>Factor analysis</h3><p>Factor analysis is a linear-Gaussian latent variable model that is closely related to probabilistic PCA.</p>
+<h2 id="Kernel-PCA"><a href="#Kernel-PCA" class="headerlink" title="Kernel PCA"></a>Kernel PCA</h2><p>Kernel Principal Component Analysis (Kernel PCA) is an extension of the classical Principal Component Analysis (PCA) technique that allows for the nonlinear transformation of data by using kernel functions.</p>
+<p><img src="/images/PatternRecognition/c12/kernel-PCA.png" alt="kernel-PCA"></p>
+<p>Kernel PCA is particularly useful for capturing complex, nonlinear relationships in the data. The choice of the kernel function and its parameters is crucial and may depend on the specific characteristics of the data.</p>
+<h2 id="Nonlinear-Latent-Variable-Models"><a href="#Nonlinear-Latent-Variable-Models" class="headerlink" title="Nonlinear Latent Variable Models"></a>Nonlinear Latent Variable Models</h2><p>the issues of nonlinearity and non-Gaussianity are related because a general probability density can be obtained from a simple fixed reference density, such as a Gaussian, by making a nonlinear change of variables.</p>
+<h3 id="Independent-component-analysis"><a href="#Independent-component-analysis" class="headerlink" title="Independent component analysis"></a>Independent component analysis</h3><p><strong><em>independent component analysis</em></strong>: the observed variables are related linearly to the latent variables, but for which the latent distribution is non-Gaussian.</p>
+<p>Consider a situation in which two people are talking at the same time, and we record their voices using two microphones. If we ignore effects such as time delay and echoes, then the signals received by the microphones at any point in time will be given by linear combinations of the amplitudes of the two voices. The coefficients of this linear combination will be constant, and if we can infer their values from sample data, then we can invert the mixing process (assuming it is nonsingular) and thereby obtain two clean signals each of which contains the voice of just one person.</p>
+<blockquote>
+<p>This type of problem is sometimes addressed using the following approach (MacKay, 2003) in which we ignore the temporal nature of the signals and treat the successive samples as i.i.d.</p>
+</blockquote>
+<ol>
+<li><p>We consider a generative model in which there are two latent variables corresponding to the unobserved speech signal amplitudes, and there are two observed variables given by the signal values at the microphones.</p>
+</li>
+<li><p>The latent variables have a joint distribution that factorizes as,<br>$$<br>p(\pmb{z}) = \prod_{j=1}^M p(z_j)<br>\tag{12.89}<br>$$<br>and the observed variables are given by a linear combination of the latent variables.</p>
+</li>
+<li><p>Given a data set of observations, The log likelihood can be maximized using gradient-based optimization giving rise to a particular version of independent component analysis.</p>
+</li>
+</ol>
+<blockquote>
+<p>The success of this approach requires that the latent variables have non-Gaussian distributions. Why?</p>
+<ol>
+<li>Recall that in probabilistic PCA (and in factor analysis) the latent-space distribution is given by a zero-mean isotropic Gaussian.<br>The model therefore cannot distinguish between two different choices for the latent variables where these differ simply by a rotation in latent space.<br>This can be verified directly by noting that the marginal density (12.35), and hence the likelihood function, is unchanged if we make the transformation $\pmb{W} \rightarrow \pmb{WR}$ where $\pmb{R}$ is an orthogonal matrix satisfying $\pmb{RR^T} = \pmb{I}$, because the matrix $\pmb{C}$ given by (12.36) is itself invariant.<br>$$<br>p(\pmb{x}) = N(\pmb{x | \mu, C})<br>\tag{12.35}<br>$$<br>$$<br>\pmb{C} = \pmb{WW^T} + \sigma^2 \pmb{I}<br>\tag{12.36}<br>$$</li>
+<li>Another way to see why a Gaussian latent variable distribution in a linear model is insufficient to find independent components is to note that the principal components represent a rotation of the coordinate system in data space such as to diagonalize the covariance matrix, so that the data distribution in the new coordinates is then uncorrelated. Although zero correlation is a necessary condition for independence it is not, however, sufficient. In practice, a common choice for the latent-variable distribution is given by<br>$$<br>p(z_j) = \frac{1}{\pi \cosh(z_j)} = \frac{1}{\pi(e^{z_j} + e^{-z_j})}<br>\tag{12.90}<br>$$</li>
+</ol>
+</blockquote>
+<h3 id="Autoassociative-neural-networks"><a href="#Autoassociative-neural-networks" class="headerlink" title="Autoassociative neural networks"></a>Autoassociative neural networks</h3><p><img src="/images/PatternRecognition/c12/neural-network.png" alt="Autoassociative neural-network"></p>
+<h3 id="Modelling-nonlinear-manifolds"><a href="#Modelling-nonlinear-manifolds" class="headerlink" title="Modelling nonlinear manifolds"></a>Modelling nonlinear manifolds</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -351,7 +437,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            21
+                            22
                         </p>
                     </a>
                 </div>
@@ -518,28 +604,6 @@
             </li>
         
             <li>
-                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">excellentMathBooks</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">www.library.fudan.edu.cn</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">Probability Model</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">dpkingma.com</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
                 <a class="level is-mobile" href="https://graphics.pixar.com/research/" target="_blank" rel="noopener">
                     <span class="level-left">
                         <span class="level-item">Pixar Studio</span>
@@ -638,6 +702,39 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="http://www.library.fudan.edu.cn/wjzx/2019njybgjskt/list1.htm" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">excellentMathBooks</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.library.fudan.edu.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">DeepLearningBook</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.deeplearningbook.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://dpkingma.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Probability Model</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">dpkingma.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -653,6 +750,30 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/CS/">
+            <span class="level-start">
+                <span class="level-item">CS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/CS/Advanced-CPP/">
+            <span class="level-start">
+                <span class="level-item">Advanced CPP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CS/Algorithms/">
+            <span class="level-start">
+                <span class="level-item">Algorithms</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/GameProgramming/">
             <span class="level-start">
                 <span class="level-item">GameProgramming</span>
@@ -701,28 +822,12 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Language/">
-            <span class="level-start">
-                <span class="level-item">Language</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Language/Advanced-CPP/">
-            <span class="level-start">
-                <span class="level-item">Advanced CPP</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/MachineLearning/">
             <span class="level-start">
                 <span class="level-item">MachineLearning</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/MachineLearning/PatternRecognition/">
@@ -730,7 +835,7 @@
                 <span class="level-item">PatternRecognition</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/Math/">
@@ -831,7 +936,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/RandomForest/" style="font-size: 10px;">RandomForest</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 10px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -840,6 +945,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-12-28T04:27:50.000Z">2023-12-28</time></div>
+                    <a href="/CS/Algorithms/Algorithms-C1-Foundations/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algorithms-C1-Foundations</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CS/">CS</a> / <a class="has-link-grey -link" href="/categories/CS/Algorithms/">Algorithms</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -893,19 +1011,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-07T03:11:25.000Z">2023-11-07</time></div>
-                    <a href="/Graphics/Animation/Animation-C11-Behavioral-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C11-Behavioral-Animation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -916,6 +1021,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/11/">
@@ -934,7 +1050,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">52</span>
+                    <span class="level-item tag">51</span>
                 </span>
             </a>
         </li>
@@ -995,6 +1111,13 @@
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithms/">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Animation/">
@@ -1074,13 +1197,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/RandomForest/">
-                        <span class="tag">RandomForest</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/Rendering/">
                         <span class="tag">Rendering</span>
                         <span class="tag is-grey">3</span>
@@ -1141,7 +1257,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2023 Keneyr&nbsp;
+                &copy; 2024 Keneyr&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
