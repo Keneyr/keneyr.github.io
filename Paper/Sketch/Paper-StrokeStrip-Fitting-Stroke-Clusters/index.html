@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: Sketch Consolidation - QinranY&#39;s Homepage</title>
+<title>Paper-StrokeStrip-Fitting-Stroke-Clusters - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="explore the world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="QinranY&#39;s Homepage">
-<meta property="og:url" content="https://keneyr.com/categories/Paper/Sketch-Consolidation/index.html">
+    <meta name="description" content="Keywords: Curve Fitting to Strokes, Variational Optimization, Cluster Strokes, C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper-StrokeStrip-Fitting-Stroke-Clusters">
+<meta property="og:url" content="https://keneyr.com/Paper/Sketch/Paper-StrokeStrip-Fitting-Stroke-Clusters/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="explore the world">
+<meta property="og:description" content="Keywords: Curve Fitting to Strokes, Variational Optimization, Cluster Strokes, C++">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2023-10-08T07:30:01.000Z">
+<meta property="article:modified_time" content="2024-02-26T03:42:25.586Z">
 <meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Sketch">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
 
@@ -76,7 +79,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/beauty.jpg" alt="QinranY&#39;s Homepage" height="28">
+                <img src="/images/beauty.jpg" alt="Paper-StrokeStrip-Fitting-Stroke-Clusters" height="28">
             
             </a>
         </div>
@@ -133,6 +136,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -146,21 +153,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">Categories</a></li>
-            
-            <li><a href="/categories/Paper/">Paper</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">Sketch Consolidation</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
@@ -170,7 +163,7 @@
                 <time class="level-item has-text-grey" datetime="2023-10-08T07:30:01.000Z">2023-10-08</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Paper/">Paper</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Paper/Sketch-Consolidation/">Sketch Consolidation</a>
+                <a class="has-link-grey -link" href="/categories/Paper/">Paper</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Paper/Sketch/">Sketch</a>
                 </div>
                 
                 
@@ -181,91 +174,150 @@
                 </span>
                 
                 
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/Paper/Sketch-Consolidation/Paper-StrokeStrip-Fitting-Stroke-Clusters/">Paper-StrokeStrip-Fitting-Stroke-Clusters</a>
+                Paper-StrokeStrip-Fitting-Stroke-Clusters
             
         </h1>
         <div class="content">
             <p><strong><em>Keywords</em></strong>: Curve Fitting to Strokes, Variational Optimization, Cluster Strokes, C++</p>
+<a id="more"></a>
+
+<p><a href="https://www.cs.ubc.ca/labs/imager/tr/2021/StrokeStrip/">https://www.cs.ubc.ca/labs/imager/tr/2021/StrokeStrip/</a></p>
+<p><img src="/images/ReadingPaper/ubc_sheffa/StrokeStripOverview.png" alt="Overview"></p>
+<h2 id="WorkFlow"><a href="#WorkFlow" class="headerlink" title="WorkFlow"></a>WorkFlow</h2><h3 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h3><p>We achieve this goal by leveraging insights about human perception of stroke clusters.</p>
+<p><img src="/images/ReadingPaper/ubc_sheffa/userPerception.png" alt="How viewer see stroke clusters"></p>
+<p><img src="/images/ReadingPaper/ubc_sheffa/WTS-adjacent.png" alt="How viewer see adjacent points,(WTS: within the strip)"></p>
+<h3 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h3><p>we do not know which points on different strokes that are adjacent in Euclidean space are perceived as WTS adjacent. our algorithm needs to compute these crosssections given only the raw strokes as input. </p>
+<p>We consequently face two interconnected challenges: </p>
+<p><em>we must compute optimal isovalues along each cluster cross-section while simultaneously computing the cross-sections themselves.</em></p>
+<h3 id="Address-the-Challenges"><a href="#Address-the-Challenges" class="headerlink" title="Address the Challenges"></a>Address the Challenges</h3><p>We robustly address both challenges at once by casting the computation of the parameterization and the underlying isoline crosssections as a <u>constrained variational problem</u>. We then solve it using a <u>combined discrete-continuous optimization framework</u>.</p>
+<ul>
+<li>Step1. determine the optimal orientations of parameterization gradients along each stroke（决定沿着每个笔画的最优梯度(参数化)朝向）, converting monotonicity constraints into more tractable inequality ones（把单调约束转化为更容易解决的不等式问题）</li>
+<li>Step2. jointly solve for cluster cross-sections and parameter values along them using a variational optimization framework（使用变分优化框架联合解决等值线和沿着等值线的参数值）</li>
+</ul>
+<h3 id="The-Main-Process"><a href="#The-Main-Process" class="headerlink" title="The Main Process"></a>The Main Process</h3><p><img src="/images/ReadingPaper/ubc_sheffa/StrokStripWorkflow.png" alt="Workflow Process"></p>
+<h4 id="Some-Definitions"><a href="#Some-Definitions" class="headerlink" title="Some Definitions"></a>Some Definitions</h4><p>A strip is well described by its centerline $\gamma(t) \in R^2$, parameterized by its arclength $t \in [0, L]$, and width $W(t)$</p>
+<p>The two sides of a strip are then the two curves at the distance of $W(t)/2$ from the centerline in the <u>normal direction</u>, or more formally $\gamma(t) \pm \frac{W(t)}{2}n(t)$.</p>
+<p>Simply put, it is a function $u(x)$ defined for all points in the strip, such that straight line segments $C(t) = \lbrace \gamma(t) + an(t)| a \in [-\frac{W(t)}{2}, \frac{W(t)}{2}]\rbrace$ are the parameterization’s isolines（等值线，和中心线正交的线）.</p>
+<p>$t = u(x), x ∈ C(t)$.</p>
+<p><img src="/images/ReadingPaper/ubc_sheffa/u-c.png" alt="the ralationship between u(x) and C(t)"></p>
+<p>centerline tangent $\tau(t)$, about the centerline, we prioritize tangent alignment over centrality when computing the strip parameterizations and paths.</p>
+<p><img src="/images/ReadingPaper/ubc_sheffa/centerline.png" alt="compute centerline"></p>
+<p>thus, given the oriendted strokes $S = \lbrace s_i, i = 1, \cdots, N\rbrace$, we are looking for a map(映射)<br>$$<br>u(x): U_iS_i \mapsto [0;L]<br>$$</p>
+<p>For a non self-intersecting strip $S \subset R^2$, its arc length parameterization $u: S \rightarrow R$ is the minimizer of the following <mark>variational problem</mark>:<br>$$<br>\underset{u}{min} \int_0^L ||\frac{1}{W(t)} \int_{C(t)} \nabla u(x)dx - \tau(t)||^2dt<br>$$</p>
+<h4 id="GRADIENT-ORIENTATION"><a href="#GRADIENT-ORIENTATION" class="headerlink" title="GRADIENT ORIENTATION"></a>GRADIENT ORIENTATION</h4><p><img src="/images/ReadingPaper/ubc_sheffa/Gradient-Orientation.png" alt="Gradient-Orientation"></p>
+<p><img src="/images/ReadingPaper/ubc_sheffa/StrokePair-Orientation.png" alt="Gradient-Orientation"></p>
+<h3 id="Innovation"><a href="#Innovation" class="headerlink" title="Innovation"></a>Innovation</h3><h3 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h3><h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><h3 id="arc-length-parameterization"><a href="#arc-length-parameterization" class="headerlink" title="arc-length parameterization"></a>arc-length parameterization</h3><h3 id="Variational-Principle"><a href="#Variational-Principle" class="headerlink" title="Variational Principle"></a>Variational Principle</h3><h3 id="Code-Analysis"><a href="#Code-Analysis" class="headerlink" title="Code Analysis"></a>Code Analysis</h3><p><a href="https://github.com/davepagurek/StrokeStrip">https://github.com/davepagurek/StrokeStrip</a></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/Paper/Sketch-Consolidation/Paper-StrokeStrip-Fitting-Stroke-Clusters/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Sketch/" rel="tag">Sketch</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
         
     </div>
 </div>
 
 
 
-
-
-
-
-
-    
 <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2023-10-02T10:59:25.000Z">2023-10-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Paper/">Paper</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Paper/Sketch-Consolidation/">Sketch Consolidation</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 minutes read (About 1157 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/Paper/Sketch-Consolidation/Paper-StripMaker-Sketch-Consolidation/">Paper-StripMaker-Sketch-Consolidation</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong><em>Keywords</em></strong>: ClusterStrokes, Random Forest, Vector Sketch Consolidation</p>
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Math/Calculus/Calculus-C1-Functions/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Calculus-C1-Functions</span>
+            </a>
         </div>
         
         
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/Paper/Sketch-Consolidation/Paper-StripMaker-Sketch-Consolidation/#more">Read More</a>
-                </div>
-            </div>
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/MachineLearning/PatternRecognition/PatterRecognition-C3-LinearModels-for-Regression/">
+                <span class="level-item">PatterRecognition-C3-LinearModels-for-Regression</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: 'e32feb33ed799cd36d9f7d082a72a4cd',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
 
-
-
-
-
+    </div>
+</div>
 </div>
                 
 
@@ -311,7 +363,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            90
+                            91
                         </p>
                     </a>
                 </div>
@@ -323,7 +375,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            22
+                            21
                         </p>
                     </a>
                 </div>
@@ -335,7 +387,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            17
+                            16
                         </p>
                     </a>
                 </div>
@@ -353,6 +405,70 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#WorkFlow">
+        <span class="has-mr-6">1</span>
+        <span>WorkFlow</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Inspiration">
+        <span class="has-mr-6">1.1</span>
+        <span>Inspiration</span>
+        </a></li><li>
+        <a class="is-flex" href="#Challenges">
+        <span class="has-mr-6">1.2</span>
+        <span>Challenges</span>
+        </a></li><li>
+        <a class="is-flex" href="#Address-the-Challenges">
+        <span class="has-mr-6">1.3</span>
+        <span>Address the Challenges</span>
+        </a></li><li>
+        <a class="is-flex" href="#The-Main-Process">
+        <span class="has-mr-6">1.4</span>
+        <span>The Main Process</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Some-Definitions">
+        <span class="has-mr-6">1.4.1</span>
+        <span>Some Definitions</span>
+        </a></li><li>
+        <a class="is-flex" href="#GRADIENT-ORIENTATION">
+        <span class="has-mr-6">1.4.2</span>
+        <span>GRADIENT ORIENTATION</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Innovation">
+        <span class="has-mr-6">1.5</span>
+        <span>Innovation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Limitation">
+        <span class="has-mr-6">1.6</span>
+        <span>Limitation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#More">
+        <span class="has-mr-6">2</span>
+        <span>More</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#arc-length-parameterization">
+        <span class="has-mr-6">2.1</span>
+        <span>arc-length parameterization</span>
+        </a></li><li>
+        <a class="is-flex" href="#Variational-Principle">
+        <span class="has-mr-6">2.2</span>
+        <span>Variational Principle</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code-Analysis">
+        <span class="has-mr-6">2.3</span>
+        <span>Code Analysis</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -446,6 +562,17 @@
                     </span>
                     <span class="level-right">
                         <span class="level-item tag">theorangeduck.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://artanim.ch/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">artanim</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">artanim.ch</span>
                     </span>
                 </a>
             </li>
@@ -697,7 +824,7 @@
                 <span class="level-item">Paper</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Paper/Human-Pose/">
@@ -708,6 +835,14 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Paper/Motion-Control/">
+            <span class="level-start">
+                <span class="level-item">Motion Control</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Paper/Motion-Generation/">
             <span class="level-start">
                 <span class="level-item">Motion Generation</span>
@@ -716,28 +851,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Paper/Sketch-Animation/">
+        <a class="level is-marginless" href="/categories/Paper/Sketch/">
             <span class="level-start">
-                <span class="level-item">Sketch Animation</span>
+                <span class="level-item">Sketch</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Paper/Sketch-Consolidation/">
-            <span class="level-start">
-                <span class="level-item">Sketch Consolidation</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Paper/Sketch-Generation/">
-            <span class="level-start">
-                <span class="level-item">Sketch Generation</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -750,7 +869,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/CurveFitting-of-Sketches/" style="font-size: 10px;">CurveFitting of Sketches</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 11.43px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch-Animation/" style="font-size: 11.43px;">Sketch Animation</a> <a href="/tags/Sketh-Consolidatoin/" style="font-size: 10px;">Sketh Consolidatoin</a> <a href="/tags/Sketh-Facical-Generation/" style="font-size: 10px;">Sketh Facical Generation</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 11.43px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Control/" style="font-size: 10px;">Motion Control</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch/" style="font-size: 12.86px;">Sketch</a> <a href="/tags/Sketh/" style="font-size: 11.43px;">Sketh</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -759,6 +878,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2024-02-21T07:49:31.000Z">2024-02-21</time></div>
+                    <a href="/Paper/Motion-Control/Paper-Learned-Motion-Matching/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-Learned-Motion-Matching</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Motion-Control/">Motion Control</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -812,19 +944,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-10T08:40:44.000Z">2023-11-10</time></div>
-                    <a href="/Math/Linear-Algebra/Algebra-Summary/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Algebra-Summary</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Math/">Math</a> / <a class="has-link-grey -link" href="/categories/Math/Linear-Algebra/">Linear Algebra</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -835,6 +954,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2024/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2024</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2024/01/">
@@ -966,13 +1096,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/CurveFitting-of-Sketches/">
-                        <span class="tag">CurveFitting of Sketches</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/GameProgramming/">
                         <span class="tag">GameProgramming</span>
                         <span class="tag is-grey">4</span>
@@ -1008,6 +1131,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/Motion-Control/">
+                        <span class="tag">Motion Control</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Motion-Generation/">
                         <span class="tag">Motion Generation</span>
                         <span class="tag is-grey">1</span>
@@ -1029,23 +1159,16 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Sketch-Animation/">
-                        <span class="tag">Sketch Animation</span>
+                    <a class="tags has-addons" href="/tags/Sketch/">
+                        <span class="tag">Sketch</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Sketh/">
+                        <span class="tag">Sketh</span>
                         <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Sketh-Consolidatoin/">
-                        <span class="tag">Sketh Consolidatoin</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Sketh-Facical-Generation/">
-                        <span class="tag">Sketh Facical Generation</span>
-                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1078,7 +1201,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/beauty.jpg" alt="QinranY&#39;s Homepage" height="28">
+                    <img src="/images/beauty.jpg" alt="Paper-StrokeStrip-Fitting-Stroke-Clusters" height="28">
                 
                 </a>
                 <p class="is-size-7">
