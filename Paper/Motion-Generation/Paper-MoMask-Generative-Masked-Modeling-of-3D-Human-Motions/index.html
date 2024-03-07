@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Archives: 2023/10 - QinranY&#39;s Homepage</title>
+<title>Paper-MoMask-Generative-Masked-Modeling-of-3D-Human-Motions - QinranY&#39;s Homepage</title>
 
 
-    <meta name="description" content="explore the world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="QinranY&#39;s Homepage">
-<meta property="og:url" content="https://keneyr.com/archives/2023/10/page/6/index.html">
+    <meta name="description" content="Keywords: Text2Motion, VQ-VQE, Resnet, Transformer, 2024">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper-MoMask-Generative-Masked-Modeling-of-3D-Human-Motions">
+<meta property="og:url" content="https://keneyr.com/Paper/Motion-Generation/Paper-MoMask-Generative-Masked-Modeling-of-3D-Human-Motions/index.html">
 <meta property="og:site_name" content="QinranY&#39;s Homepage">
-<meta property="og:description" content="explore the world">
+<meta property="og:description" content="Keywords: Text2Motion, VQ-VQE, Resnet, Transformer, 2024">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://keneyr.com/images/og_image.png">
+<meta property="article:published_time" content="2024-03-07T07:11:55.000Z">
+<meta property="article:modified_time" content="2024-03-07T10:22:55.858Z">
 <meta property="article:author" content="Keneyr">
+<meta property="article:tag" content="Motion Generation">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://keneyr.com/images/og_image.png">
 
@@ -76,7 +79,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/beauty.jpg" alt="QinranY&#39;s Homepage" height="28">
+                <img src="/images/beauty.jpg" alt="Paper-MoMask-Generative-Masked-Modeling-of-3D-Human-Motions" height="28">
             
             </a>
         </div>
@@ -133,6 +136,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -147,60 +154,163 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        October 2023
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2024-03-07T07:11:55.000Z">2024-03-07</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2023-10-02T02:38:40.000Z">2023-10-02</time>
-                        <a href="/Graphics/Geometry/Geometry-ConvexHull/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Geometry-ConvexHull</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Geometry/">Geometry</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Paper/">Paper</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Paper/Motion-Generation/">Motion Generation</a>
                 </div>
-            </article>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 628 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
         
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Paper-MoMask-Generative-Masked-Modeling-of-3D-Human-Motions
+            
+        </h1>
+        <div class="content">
+            <p><strong><em>Keywords</em></strong>: Text2Motion, VQ-VQE, Resnet, Transformer, 2024</p>
+<a id="more"></a>
+
+<p><strong><em>MoMask: Generative Masked Modeling of 3D Human Motions_CVPR_2024</em></strong></p>
+<p>Chuan Guo∗ Yuxuan Mu∗ Muhammad Gohar Javed∗ Sen Wang<br>Li Cheng<br>University of Alberta<br>{cguo2, ymu3, javed4, lcheng5}@ualberta.ca</p>
+<p>Web:<br><a href="https://ericguo5513.github.io/momask/">https://ericguo5513.github.io/momask/</a></p>
+<p><img src="/images/ReadingPaper/alberta_guo/MoMask/overview.png" alt="overview"></p>
+<h2 id="WorkFlow"><a href="#WorkFlow" class="headerlink" title="WorkFlow"></a>WorkFlow</h2><p><img src="/images/ReadingPaper/alberta_guo/MoMask/pipeline.png" alt="framework"></p>
+<h3 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h3><p>Conventional motion VQ-VAEs [16, 21, 49, 52] transform a motion sequence into one tuple of discrete motion tokens. inevitably leads to information loss, which further limits the quality of reconstruction.</p>
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><p>Our main contributions can be summarized as follows:<br>First, our MoMask is the first generative masked modeling framework for the problem of text-to-motion generation. It comprises of a hierarchical quantization generative model and the dedicated mechanism for precise residual quantization, base token generation and residual token prediction.</p>
+<p>Second, our MoMask pipeline produces precise and efficient text-to-motion generation. Empirically, it achieves new state-of-the-art performance on text-to-motion generation task with an FID of 0.045 (vs. 0.141 in [49]) on HumanML3D and 0.204 (vs. 0.514 in [49]) on KIT-ML. </p>
+<p>Third, our MoMask also works well for related tasks, such as textguided motion inpainting.</p>
+<h4 id="RVQ-VQE"><a href="#RVQ-VQE" class="headerlink" title="RVQ-VQE"></a>RVQ-VQE</h4><p>borrowed from this paper:<br><a href="https://arxiv.org/pdf/2107.03312.pdf">https://arxiv.org/pdf/2107.03312.pdf</a></p>
+<p><img src="/images/ReadingPaper/alberta_guo/MoMask/vave.png" alt="framework"></p>
+<h4 id="Masked-Transformer"><a href="#Masked-Transformer" class="headerlink" title="Masked-Transformer"></a>Masked-Transformer</h4><p><img src="/images/ReadingPaper/alberta_guo/MoMask/Masked-Transformer.png" alt="Masked-Transformer"></p>
+<h4 id="Residual-Transformer"><a href="#Residual-Transformer" class="headerlink" title="Residual-Transformer"></a>Residual-Transformer</h4><p><img src="/images/ReadingPaper/alberta_guo/MoMask/Residual-Transformer.png" alt="Residual-Transformer"></p>
+<h3 id="Comparision"><a href="#Comparision" class="headerlink" title="Comparision"></a>Comparision</h3><p><img src="/images/ReadingPaper/alberta_guo/MoMask/compare.png" alt="compare"></p>
+<h3 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h3><p>Firstly, while MoMask excels in fidelity and faithfulness for text-to-motion synthesis, its diversity is relatively limited.</p>
+<p>Secondly, MoMask requires the target length as input for motion generation. This could be properly addressed by applying the text2length sampling [15] beforehand.</p>
+<p>Thirdly, akin to most VQ-based methods, MoMask may face challenges when generating motions with fast-changing root motions, such as spinning.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>x[9] Xin Chen, Biao Jiang, Wen Liu, Zilong Huang, Bin Fu, Tao Chen, and Gang Yu. Executing your commands via motion diffusion in latent space. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 18000–18010, 2023.</p>
+<p>x[15] Chuan Guo, Shihao Zou, Xinxin Zuo, Sen Wang, Wei Ji, Xingyu Li, and Li Cheng. Generating diverse and natural 3d human motions from text. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 5152–5161, 2022.</p>
+<p>x[16] Chuan Guo, Xinxin Zuo, Sen Wang, and Li Cheng. Tm2t: Stochastic and tokenized modeling for the reciprocal generation of 3d human motions and texts. In European Conference on Computer Vision, pages 580–597. Springer, 2022</p>
+<p>[21] Biao Jiang, Xin Chen, Wen Liu, Jingyi Yu, Gang Yu, and Tao Chen. Motiongpt: Human motion as a foreign language. arXiv preprint arXiv:2306 14795, 2023. </p>
+<p>[23] Hanyang Kong, Kehong Gong, Dongze Lian, Michael Bi Mi, and Xinchao Wang. Priority-centric human motion generation in discrete latent space. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 14806–14816, 2023.</p>
+<p>x[42] Guy Tevet, Sigal Raab, Brian Gordon, Yonatan Shafir, Daniel Cohen-Or, and Amit H Bermano. Human motion diffusion model. arXiv preprint arXiv:2209.14916, 2022.</p>
+<p>x[49] Jianrong Zhang, Yangsong Zhang, Xiaodong Cun, Shaoli Huang, Yong Zhang, Hongwei Zhao, Hongtao Lu, and Xi Shen. T2m-gpt: Generating human motion from textual descriptions with discrete representations. arXiv preprint arXiv:2301.06052, 2023.</p>
+<p>[52] Yaqi Zhang, Di Huang, Bin Liu, Shixiang Tang, Yan Lu, Lu Chen, Lei Bai, Qi Chu, Nenghai Yu, andWanli Ouyang. Motiongpt: Finetuned llms are general-purpose motion generators. arXiv preprint arXiv:2306.10900, 2023.</p>
+<p>x[50] Mingyuan Zhang, Zhongang Cai, Liang Pan, Fangzhou Hong, Xinying Guo, Lei Yang, and Ziwei Liu. Motiondiffuse: Text-driven human motion generation with diffusion model. arXiv preprint arXiv:2208.15001, 2022.</p>
+<p>x[51] Mingyuan Zhang, Xinying Guo, Liang Pan, Zhongang Cai, Fangzhou Hong, Huirong Li, Lei Yang, and Ziwei Liu. Remodiffuse: Retrieval-augmented motion diffusion model. arXiv preprint arXiv:2304.01116, 2023.</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Motion-Generation/" rel="tag">Motion Generation</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5e58d41ecdbda60012fcd87d&amp;product=inline-share-buttons&amp;cms=sop' async='async'></script>
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/Wechatpay.jpg" alt="Wechat"></div>
+</a>
+
+                
         </div>
     </div>
 </div>
 
 
 
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/2023/10/page/5/">Previous</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Paper/Motion-Control/Paper-Learned-Motion-Matching/">
+                <span class="level-item">Paper-Learned-Motion-Matching</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/2023/10/page/7/">Next</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/2023/10/">1</a></li>
-            
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/2023/10/page/5/">5</a></li>
-            
-            <li><a class="pagination-link is-current" href="/archives/2023/10/page/6/">6</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'f7d6d05297c7a1b94ee1',
+        clientSecret: 'f3c964e1d94edd347ea044c1bc1ecdadac432326',
+        id: '951089a9c99279eee17c654b0df89c02',
+        repo: 'keneyr.github.io',
+        owner: 'Keneyr',
+        admin: "Keneyr",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
 </div>
 </div>
                 
@@ -289,6 +399,54 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#WorkFlow">
+        <span class="has-mr-6">1</span>
+        <span>WorkFlow</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Inspiration">
+        <span class="has-mr-6">1.1</span>
+        <span>Inspiration</span>
+        </a></li><li>
+        <a class="is-flex" href="#Methods">
+        <span class="has-mr-6">1.2</span>
+        <span>Methods</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#RVQ-VQE">
+        <span class="has-mr-6">1.2.1</span>
+        <span>RVQ-VQE</span>
+        </a></li><li>
+        <a class="is-flex" href="#Masked-Transformer">
+        <span class="has-mr-6">1.2.2</span>
+        <span>Masked-Transformer</span>
+        </a></li><li>
+        <a class="is-flex" href="#Residual-Transformer">
+        <span class="has-mr-6">1.2.3</span>
+        <span>Residual-Transformer</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Comparision">
+        <span class="has-mr-6">1.3</span>
+        <span>Comparision</span>
+        </a></li><li>
+        <a class="is-flex" href="#Limitation">
+        <span class="has-mr-6">1.4</span>
+        <span>Limitation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Reference">
+        <span class="has-mr-6">2</span>
+        <span>Reference</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -496,6 +654,17 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="https://lilianweng.github.io/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">AI Blog</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">lilianweng.github.io</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
@@ -668,7 +837,7 @@
                 <span class="level-item">Motion Generation</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Paper/Sketch/">
@@ -676,7 +845,7 @@
                 <span class="level-item">Sketch</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -689,7 +858,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 11.43px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Control/" style="font-size: 10px;">Motion Control</a> <a href="/tags/Motion-Generation/" style="font-size: 10px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch/" style="font-size: 12.86px;">Sketch</a> <a href="/tags/Sketh/" style="font-size: 11.43px;">Sketh</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Animation/" style="font-size: 17.14px;">Animation</a> <a href="/tags/CPP/" style="font-size: 12.86px;">CPP</a> <a href="/tags/Calculus/" style="font-size: 20px;">Calculus</a> <a href="/tags/GameProgramming/" style="font-size: 14.29px;">GameProgramming</a> <a href="/tags/Geometry/" style="font-size: 12.86px;">Geometry</a> <a href="/tags/Human-Pose/" style="font-size: 11.43px;">Human Pose</a> <a href="/tags/Linear-Algebra/" style="font-size: 15.71px;">Linear Algebra</a> <a href="/tags/MachineLearning/" style="font-size: 18.57px;">MachineLearning</a> <a href="/tags/Motion-Control/" style="font-size: 10px;">Motion Control</a> <a href="/tags/Motion-Generation/" style="font-size: 11.43px;">Motion Generation</a> <a href="/tags/Numerical-Analysis/" style="font-size: 18.57px;">Numerical Analysis</a> <a href="/tags/Rendering/" style="font-size: 12.86px;">Rendering</a> <a href="/tags/Sketch/" style="font-size: 12.86px;">Sketch</a> <a href="/tags/Sketh/" style="font-size: 10px;">Sketh</a> <a href="/tags/Variation/" style="font-size: 10px;">Variation</a>
     </div>
 </div>
     
@@ -698,6 +867,19 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2024-03-07T07:11:55.000Z">2024-03-07</time></div>
+                    <a href="/Paper/Motion-Generation/Paper-MoMask-Generative-Masked-Modeling-of-3D-Human-Motions/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Paper-MoMask-Generative-Masked-Modeling-of-3D-Human-Motions</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Paper/">Paper</a> / <a class="has-link-grey -link" href="/categories/Paper/Motion-Generation/">Motion Generation</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -751,19 +933,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2023-11-14T07:38:58.000Z">2023-11-14</time></div>
-                    <a href="/Graphics/Animation/Animation-C13-Learning-based-Animation/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Animation-C13-Learning-based-Animation</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Graphics/">Graphics</a> / <a class="has-link-grey -link" href="/categories/Graphics/Animation/">Animation</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -774,6 +943,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2024/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2024</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2024/02/">
@@ -825,7 +1005,7 @@
                     <span class="level-item">October 2023</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">51</span>
+                    <span class="level-item tag">50</span>
                 </span>
             </a>
         </li>
@@ -960,7 +1140,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Motion-Generation/">
                         <span class="tag">Motion Generation</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -988,7 +1168,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Sketh/">
                         <span class="tag">Sketh</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1021,7 +1201,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/beauty.jpg" alt="QinranY&#39;s Homepage" height="28">
+                    <img src="/images/beauty.jpg" alt="Paper-MoMask-Generative-Masked-Modeling-of-3D-Human-Motions" height="28">
                 
                 </a>
                 <p class="is-size-7">
